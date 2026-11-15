@@ -1,0 +1,74 @@
+[
+  {
+    "repo": "alejandrohdez/alien-models",
+    "revision": "533937876344f11a10f5171cfea809255c9d952b",
+    "files": [
+      {
+        "path": "availability_model/COMPLETE",
+        "sha256": "ae2c7e92d6b9a644f833a2c6c35230d92bbfb26a9f3791f95c8ce9f1e63e8f58",
+        "bytes": 44
+      },
+      {
+        "path": "availability_model/author_embeddings.pt",
+        "sha256": "16bfdf7dcc08a41dea4709d567fbda89f1cfd45c5a365f54f45664765c2a4aa4",
+        "bytes": 81493636
+      },
+      {
+        "path": "availability_model/author_id_to_index.json",
+        "sha256": "ad4b12e283e60e94db3cee5b1d2cbece76c42241731b09173a8f680f58feb14d",
+        "bytes": 1121013
+      },
+      {
+        "path": "availability_model/metrics.jsonl",
+        "sha256": "2a1f5baf316c583baa90e7661cbf11a4e551f50e94b11c487b78b079324a722e",
+        "bytes": 31173
+      },
+      {
+        "path": "availability_model/model.pt",
+        "sha256": "11a6286c3bb50012e3d257aaad2456a192f069269b04aeef3942d7840f44664f",
+        "bytes": 104596293
+      },
+      {
+        "path": "availability_model/run_config.json",
+        "sha256": "95a4f2b8c5699579ba44005f074742da766f7f4ccb0afc436c7bbbb2fd4f036b",
+        "bytes": 407
+      },
+      {
+        "path": "availability_model/token_mapping.json",
+        "sha256": "e6e8208466749758cf3f8aca0ffb0e4f8e540343d5c88aa4b43c1907bf5b261a",
+        "bytes": 18274
+      },
+      {
+        "path": "coherence_model/model.pt",
+        "sha256": "93468cae4555f7e0ce3797a846fcdd2ac44655ed30392e4a03a70ea6b55b68d1",
+        "bytes": 171080342
+      },
+      {
+        "path": "coherence_model/token_mapping.json",
+        "sha256": "2e86436c9835f0136795707de111a53131590b83a0980e2d0b43e7f52a13fe2d",
+        "bytes": 18274
+      }
+    ]
+  },
+  {
+    "repo": "alejandrohdez/alien-data",
+    "revision": "3aec3c90c04442606d4cab3f42e02edf7be8cab5",
+    "files": [
+      {
+        "path": "data.tar.gz",
+        "sha256": "e23c43e601f41e34c3f3732781945b6b132cf3f6d8292f1eb5392f1f232f47d2",
+        "bytes": 20088514
+      },
+      {
+        "path": "papers.tar.gz",
+        "sha256": "a7699f3aa3ec9379d321f9ffc65b8bcf18dcb5895e9a61f4d2abad5a520aa10d",
+        "bytes": 98106326
+      },
+      {
+        "path": "research-assets.tar.gz",
+        "sha256": "258cc8802ffb9a662de566ca5c88f3b07af91d309e7245c4028f75603a3e1ff1",
+        "bytes": 3053006
+      }
+    ]
+  }
+]

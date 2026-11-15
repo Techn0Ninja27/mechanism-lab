@@ -101,8 +101,9 @@ def audit_provenance(
             for cid, c in sorted(by_scorer.items())
         }
         out["safe_for_canonical_join"] = bool(
-            compared and all(x["agreement"] >= min_cluster_agreement
-                              for x in out["per_scorer_canonical_map"].values())
+            compared and set(by_scorer) == ids and all(
+                c.get(cid, 0) / sum(c.values()) >= min_cluster_agreement
+                for cid, c in by_scorer.items())
         )
         if require_safe and not out["safe_for_canonical_join"]:
             raise ProvenanceError(
@@ -122,7 +123,8 @@ def paper_id_set(clusters_path: str | Path) -> set[str]:
 
 def compare_paper_ids(clusters_path: str | Path, jsonl_path: str | Path) -> dict:
     """Compare the assignment corpus to a JSONL scorer dataset by paper ID."""
-    ids = {json.loads(line)["paper_id"] for line in Path(jsonl_path).open(encoding="utf-8") if line.strip()}
+    with Path(jsonl_path).open(encoding="utf-8") as handle:
+        ids = {json.loads(line)["paper_id"] for line in handle if line.strip()}
     source = paper_id_set(clusters_path)
     return {"assignment_papers": len(source), "dataset_papers": len(ids),
             "assignment_only": sorted(source - ids), "dataset_only": sorted(ids - source),

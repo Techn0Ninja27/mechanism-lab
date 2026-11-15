@@ -14,3 +14,20 @@ numeric ID without this audit. Canonical names may have been copied onto a
 different label ordering. A mismatch warning means descriptions and supporting
 papers must not be treated as evidence for scorer IDs; use the exact scorer
 assignment file or rebuild the mapping from the original clustering run.
+
+## Local release audit (2026-11-16)
+
+All 15,203 released coherence-dataset paper atom sets exactly match the expanded
+`clusters_80.json` assignments; none exactly matches `clusters.json`. Thus the
+scorer corpus is identifiable, but that does not validate its canonical names.
+Across 24,541 shared non-noise units, exact numeric-label agreement between the
+two cluster artifacts is only 0.0088016. A majority remap is also unsafe: nearly
+all expanded clusters mix many original labels. The causal source of this
+artifact inconsistency is not established by this audit.
+
+The corrected proposal baseline uses original `clusters.json` descriptions and
+source units as unranked concepts, strips scorer scores from decoder inputs,
+and makes no claim that this semantic interpretation inherits scorer ranking.
+Repairing the scoring experiment itself requires reconstructing a coherent
+assignment/description corpus and training or validating checkpoints against it;
+no repaired scorer is claimed here.

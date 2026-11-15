@@ -62,3 +62,12 @@ python scripts/compare_search_sources.py --runs results/mps-10000 \
 Each source attempts 10,000 draws; duplicate/repeated-atom losses are visible in accounting. Equal draws are not equal compute or equal unique-set budgets. The comparison script uses a shared union's normalization to avoid attributing normalization changes to candidate quality. It reports diversity and absence from the released paper atom sets, neither of which establishes scientific novelty.
 
 On this one-seed experiment at beta 0.7/top30, the autoregressive pool had 18 combinations absent from corpus papers, hybrid 25, uniform 30. Uniform also had lower mean coherence. These are descriptive search tradeoffs, not proof that random sampling produces better science. Future evaluation must match costs, use several seeds and assess quality blind to method.
+
+## Evidence and evaluation extensions
+
+- `alien.py rerank` applies optional coherence quantiles and pair-diversity limits to a saved pool. Normalization is computed before filtering; these guards do not establish novelty.
+- `generation/evidence_review.py` constructs bounded literature-comparison prompts and validates source IDs and exact abstract quotes. Model output cannot mark itself human-adjudicated or training-eligible.
+- `generation/temporal_data.py` constructs publication-year partitions and strict-new triple counts. The released vocabulary includes future information, so this is a fixed-vocabulary diagnostic. See TEMPORAL_EVALUATION.md.
+- See DATASET_ROADMAP.md for a source-backed dataset plan and REGULARIZATION.md for the small-model pilot and its reproduction caveat.
+
+Source assignment provenance must be validated before interpreting scorer IDs or presenting canonical descriptions as evidence-grounded. Numeric-ID agreement alone is insufficient across clustering artifacts.

@@ -7,6 +7,7 @@ from collections.abc import Callable
 
 
 COMMANDS: dict[str, tuple[str, str, str]] = {
+    "rerank": ("generation.rerank", "main", "Re-rank saved scores without model or API calls."),
     "atomize": (
         "atomization.pipeline",
         "run_pipeline",
