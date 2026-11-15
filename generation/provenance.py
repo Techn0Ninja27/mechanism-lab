@@ -36,6 +36,8 @@ def audit_provenance(
     canonical_clusters: str | Path | None = None,
     coherence_mapping: str | Path | None = None,
     availability_mapping: str | Path | None = None,
+    min_cluster_agreement: float = 0.95,
+    require_safe: bool = False,
 ) -> dict:
     """Audit exact ID coverage and (optionally) cross-file label agreement.
 
@@ -65,6 +67,8 @@ def audit_provenance(
         if mids != ids:
             raise ProvenanceError(f"{name} mapping IDs do not exactly match assignment clusters")
 
+    if not 0 <= min_cluster_agreement <= 1:
+        raise ValueError("min_cluster_agreement must be in [0, 1]")
     if canonical_clusters is not None:
         canonical = _read(canonical_clusters)
         canonical_by_unit = {
@@ -72,19 +76,57 @@ def audit_provenance(
             for x in canonical.get("atom_assignments", [])
             if x.get("cluster") is not None
         }
-        counts = Counter(); compared = 0
+        counts = Counter(); compared = 0; by_scorer: dict[int, Counter] = {}
         for row in assignments.get("atom_assignments", []):
             key = (str(row.get("paper_id")), str(row.get("text")))
-            if key in canonical_by_unit:
+            if key in canonical_by_unit and canonical_by_unit[key] != -1 and int(row.get("cluster", -1)) != -1:
                 compared += 1
-                counts[(int(row.get("cluster")), canonical_by_unit[key])] += 1
+                scorer_id = int(row.get("cluster")); canonical_id = canonical_by_unit[key]
+                counts[(scorer_id, canonical_id)] += 1
+                by_scorer.setdefault(scorer_id, Counter())[canonical_id] += 1
         same = sum(n for (a, b), n in counts.items() if a == b)
         out["canonical_clusters"] = str(Path(canonical_clusters))
         out["canonical_sha256"] = _fingerprint(canonical_clusters)
         out["canonical_label_agreement"] = same / compared if compared else 0.0
         out["canonical_units_compared"] = compared
         out["canonical_label_mismatch_warning"] = bool(compared and same / compared < 0.95)
+        out["canonical_nonnoise_units_compared"] = compared
+        out["per_scorer_canonical_map"] = {
+            str(cid): {
+                "majority_canonical_id": c.most_common(1)[0][0],
+                "majority_count": c.most_common(1)[0][1],
+                "compared": sum(c.values()),
+                "agreement": c.most_common(1)[0][1] / sum(c.values()),
+            }
+            for cid, c in sorted(by_scorer.items())
+        }
+        out["safe_for_canonical_join"] = bool(
+            compared and all(x["agreement"] >= min_cluster_agreement
+                              for x in out["per_scorer_canonical_map"].values())
+        )
+        if require_safe and not out["safe_for_canonical_join"]:
+            raise ProvenanceError(
+                "canonical descriptions are not safely joined to scorer IDs; "
+                "use the exact scorer assignment file or rebuild semantic metadata"
+            )
+    elif require_safe:
+        raise ProvenanceError("require_safe=True needs canonical_clusters for a semantic join audit")
     return out
+
+
+def paper_id_set(clusters_path: str | Path) -> set[str]:
+    """Return paper IDs represented by an assignment file."""
+    data = _read(clusters_path)
+    return {str(x["paper_id"]) for x in data.get("atom_assignments", []) if x.get("paper_id") is not None}
+
+
+def compare_paper_ids(clusters_path: str | Path, jsonl_path: str | Path) -> dict:
+    """Compare the assignment corpus to a JSONL scorer dataset by paper ID."""
+    ids = {json.loads(line)["paper_id"] for line in Path(jsonl_path).open(encoding="utf-8") if line.strip()}
+    source = paper_id_set(clusters_path)
+    return {"assignment_papers": len(source), "dataset_papers": len(ids),
+            "assignment_only": sorted(source - ids), "dataset_only": sorted(ids - source),
+            "exact_match": source == ids}
 
 
 def validate_candidate_ids(cluster_ids: Iterable[int], audit: dict) -> tuple[int, ...]:
