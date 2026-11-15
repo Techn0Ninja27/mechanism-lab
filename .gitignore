@@ -33,3 +33,5 @@ logs/
 
 # Downloaded public proposal artifacts
 /research_assets/
+
+/diagnostics/

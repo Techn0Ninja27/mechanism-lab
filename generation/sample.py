@@ -28,6 +28,7 @@ from generation.scoring import (
     score_sets_alien,
 )
 from generation.token_mapping import TokenMapping
+from generation.search_sources import uniform_sets, hybrid_sets
 
 
 def generate_pool(
@@ -270,7 +271,11 @@ def main() -> None:
                         help="1 preserves serial baseline; larger values batch generation")
     parser.add_argument("--candidate-pool", type=Path,
                         help="Reuse a scored_candidates.json pool (one k only); rescores all candidates")
+    parser.add_argument("--candidate-source", choices=["autoregressive", "uniform", "hybrid"], default="autoregressive")
+    parser.add_argument("--autoregressive-fraction", type=float, default=0.5)
     args = parser.parse_args()
+    if not 0 <= args.autoregressive_fraction <= 1:
+        parser.error("autoregressive-fraction must be in [0,1]")
     if args.generation_batch_size < 1:
         parser.error("generation-batch-size must be positive")
     if args.candidate_pool and (len(args.ks) != 1 or args.exhaustive_ks):
@@ -363,6 +368,8 @@ def main() -> None:
         "tt_top_k": int(args.tt_top_k),
         "exhaustive_ks": sorted(exhaustive_ks),
         "seed": args.seed,
+        "candidate_source": args.candidate_source,
+        "autoregressive_fraction": args.autoregressive_fraction,
         "device": device,
         "generation_batch_size": args.generation_batch_size,
         "candidate_pool": str(args.candidate_pool) if args.candidate_pool else None,
@@ -378,6 +385,7 @@ def main() -> None:
         k_output_dir = args.output_dir / f"k{k}"
         k_output_dir.mkdir(parents=True, exist_ok=True)
 
+        source_metadata = {}
         if args.candidate_pool:
             try:
                 pool = json.loads(args.candidate_pool.read_text())
@@ -401,6 +409,18 @@ def main() -> None:
                 f"  Built pool of {len(cand_sets):,} unique sets "
                 f"({time.time() - t0:.1f}s)\n"
             )
+        elif args.candidate_source in {"uniform", "hybrid"}:
+            if args.candidate_source == "uniform":
+                pool = uniform_sets(atom_ids, num_draws=args.n_gen, k=k, seed=args.seed)
+            else:
+                pool = hybrid_sets(coherence_model, model_tm, atom_ids,
+                    num_draws=args.n_gen, k=k, seed=args.seed,
+                    autoregressive_fraction=args.autoregressive_fraction,
+                    temperature=args.gen_temperature, top_k=args.gen_top_k,
+                    device=device, batch_size=args.generation_batch_size)
+            cand_sets = list(pool.sets)
+            source_metadata = pool.metadata()
+            sys.stderr.write(f"Candidate source: {pool.source}; {len(cand_sets)} unique sets from {pool.attempted_draws} draws\n")
         else:
             cand_sets = generate_pool(
                 coherence_model, model_tm,
@@ -443,6 +463,7 @@ def main() -> None:
             **config_extra_base,
             "k": int(k),
             "n_candidate_sets": len(cand_sets),
+            "source_accounting": source_metadata,
         }
 
         pool_path = k_output_dir / "scored_candidates.json"
@@ -487,6 +508,7 @@ def main() -> None:
             "k": int(k),
             "output_dir": str(k_output_dir),
             "n_candidate_sets": len(cand_sets),
+            "source_accounting": source_metadata,
             "summary_path": str(summary_path),
         }
 

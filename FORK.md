@@ -43,3 +43,22 @@ Tests cover batch-one equivalence to serial token sampling, partial batches, see
 4. Only then change atom extraction or scoring objectives. Updated corpora need new model training and temporally isolated evaluation.
 
 No generated proposal should be labeled novel merely because it scores highly. Reusing authors' precomputed checkpoints is inference reproduction, not training reproduction.
+
+## Candidate-source experiment
+
+Two optional sources now supplement the original autoregressive generator:
+
+```sh
+python alien.py sample --device mps --batch-size 128 --generation-batch-size 128 \
+  --candidate-source hybrid --autoregressive-fraction 0.5 --n-gen 10000 \
+  --betas 0 0.4 0.7 --top-k 30 --output-dir results/hybrid-10000
+python alien.py sample --device mps --batch-size 128 \
+  --candidate-source uniform --n-gen 10000 --betas 0 0.4 0.7 \
+  --top-k 30 --output-dir results/uniform-10000
+python scripts/compare_search_sources.py --runs results/mps-10000 \
+  results/hybrid-10000 results/uniform-10000
+```
+
+Each source attempts 10,000 draws; duplicate/repeated-atom losses are visible in accounting. Equal draws are not equal compute or equal unique-set budgets. The comparison script uses a shared union's normalization to avoid attributing normalization changes to candidate quality. It reports diversity and absence from the released paper atom sets, neither of which establishes scientific novelty.
+
+On this one-seed experiment at beta 0.7/top30, the autoregressive pool had 18 combinations absent from corpus papers, hybrid 25, uniform 30. Uniform also had lower mean coherence. These are descriptive search tradeoffs, not proof that random sampling produces better science. Future evaluation must match costs, use several seeds and assess quality blind to method.
