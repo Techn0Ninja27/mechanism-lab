@@ -35,3 +35,8 @@ logs/
 /research_assets/
 
 /diagnostics/
+
+# Local research workbench: user documents and runtime database
+/workspace/
+/workbench/jobs/
+/workbench/adjudications.json
