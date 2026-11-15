@@ -31,3 +31,9 @@ and makes no claim that this semantic interpretation inherits scorer ranking.
 Repairing the scoring experiment itself requires reconstructing a coherent
 assignment/description corpus and training or validating checkpoints against it;
 no repaired scorer is claimed here.
+
+Reproduce the release audit without any API calls:
+
+```sh
+python scripts/audit_release_provenance.py --output results/provenance-audit.json
+```

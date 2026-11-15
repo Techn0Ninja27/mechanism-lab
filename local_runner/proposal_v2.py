@@ -56,6 +56,7 @@ Return 900-1400 words of Markdown with: precise title; one-sentence hypothesis; 
   c=d['choices'][0];receipt={'id':d.get('id'),'model':d.get('model'),'usage':d.get('usage'),'finish_reason':c.get('finish_reason'),'max_tokens':MAX_TOKENS,'temperature':.5,'prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest()}
   (directory/f'receipt-{time.time_ns()}.json').write_text(json.dumps(receipt,indent=2))
   text=c['message'].get('content')
+  if c.get('finish_reason')=='content_filter':raise RuntimeError('Provider refusal; no automatic fallback: '+r['id'])
   if not text or c.get('finish_reason')=='length':raise RuntimeError('Incomplete response: '+r['id'])
   (directory/'proposal.md').write_text(text);print('Completed',r['id'],flush=True)
  def safe_one(r):
