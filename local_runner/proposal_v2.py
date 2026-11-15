@@ -11,7 +11,7 @@ ROOT=pathlib.Path(os.environ.get('ALIEN_WORKSPACE', pathlib.Path(__file__).resol
 from generation.rerank import rerank
 OUT=ROOT/os.environ.get('PROPOSAL_OUTPUT', 'results/proposals-v3');OUT.mkdir(parents=True,exist_ok=True)
 MAX_TOKENS=int(os.environ.get('DECODE_MAX_TOKENS', '16384'))
-MODEL=os.environ.get('DECODE_MODEL', 'anthropic/claude-fable-5.2')
+MODEL=os.environ.get('DECODE_MODEL', 'anthropic/claude-opus-5.5')
 if not 1024 <= MAX_TOKENS <= 16384: raise ValueError('Output budget must be between 1024 and 16384')
 def select():
  poolpath=UP/'results/hybrid-50000-seed45/k3/scored_candidates.json';pool=json.loads(poolpath.read_text())
@@ -48,12 +48,12 @@ Return 900-1400 words of Markdown with: precise title; one-sentence hypothesis; 
 '''+ '\nLESSONS FROM PREVIOUS REVIEWS:\n'+lessons+'\nCANDIDATE AND SOURCE MATERIAL:\n'+json.dumps(r,ensure_ascii=False)+'\nTARGETED PRIOR ART NOTES:\n'+background
   (directory/'prompt.txt').write_text(prompt)
   if (directory/'proposal.md').exists():return
-  request=urllib.request.Request('https://openrouter.ai/api/v1/chat/completions',data=json.dumps({'model':MODEL,'messages':[{'role':'user','content':prompt}],'temperature':.5,'max_tokens':MAX_TOKENS}).encode(),headers={'Content-Type':'application/json','Authorization':'Bearer '+key()})
+  request=urllib.request.Request('https://openrouter.ai/api/v1/chat/completions',data=json.dumps({'model':MODEL,'messages':[{'role':'user','content':prompt}],'reasoning':{'effort':'low'},'max_tokens':MAX_TOKENS}).encode(),headers={'Content-Type':'application/json','Authorization':'Bearer '+key()})
   try:
    with urllib.request.urlopen(request,timeout=240,context=HTTPS_CONTEXT) as response:d=json.load(response)
   except urllib.error.HTTPError as e:raise RuntimeError(f'OpenRouter HTTP {e.code}; body omitted') from None
   (directory/f'response-{time.time_ns()}.json').write_text(json.dumps(d,indent=2))
-  c=d['choices'][0];receipt={'id':d.get('id'),'model':d.get('model'),'usage':d.get('usage'),'finish_reason':c.get('finish_reason'),'max_tokens':MAX_TOKENS,'temperature':.5,'prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest()}
+  c=d['choices'][0];receipt={'id':d.get('id'),'model':d.get('model'),'usage':d.get('usage'),'finish_reason':c.get('finish_reason'),'max_tokens':MAX_TOKENS,'reasoning_effort':'low','prompt_sha256':hashlib.sha256(prompt.encode()).hexdigest()}
   (directory/f'receipt-{time.time_ns()}.json').write_text(json.dumps(receipt,indent=2))
   text=c['message'].get('content')
   if c.get('finish_reason')=='content_filter':raise RuntimeError('Provider refusal; no automatic fallback: '+r['id'])
