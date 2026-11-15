@@ -1,0 +1,110 @@
+{
+  "id": "abstracts-0",
+  "arm": "abstracts",
+  "replicate": 0,
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "train_eligible": false,
+  "status": "complete",
+  "proposal": {
+    "title": "Anchor-Decoupled Mask-Invariant Boosting (ADMIB) for tabular classification under missingness shift",
+    "hypothesis": "When features are missing, a native-NaN booster learns two signals: what the missing values were, and how often features go missing in training. Removing the second signal should improve mean average precision (mAP) on held-out MNAR and structural masks at a small clean-data cost. The method only works when the label-relevant signal can be recovered from always-observed anchors plus observed values.",
+    "mechanism": "Native-NaN splits (1603.02754v3) send missing rows to a learned default direction. That direction encodes P(Y|M) learned under training MCAR. When the mechanism shifts, the target P(Y|X_obs,M) changes (2603.17599v1, 2406.16484v1). ADMIB has three parts. First, it builds a pattern-neutral imputation from the anchors only. Second, it adds an iterative completion step. Third, it trains under resampled masks of several types, so that mask-indicator splits no longer predict the label. This targets the mask-to-label causal path directly, rather than adding preprocessing.",
+    "components": [
+      "1603.02754v3",
+      "2106.00311v2",
+      "arxiv:2507.08280",
+      "2406.16484v1",
+      "P_anchor_cond_imputer",
+      "P_mechanism_mixture_resampling",
+      "P_indicator_decorrelation",
+      "2603.17599v1"
+    ],
+    "proposed_primitives": [
+      {
+        "id": "P_anchor_cond_imputer",
+        "definition": "For each non-anchor feature j, fit E[x_j | anchors x0,x1, other observed values] on rows where j is observed in training. Fill missing entries with predictions. Never use labels or clean values.",
+        "source_support_ids": [
+          "2106.00311v2",
+          "arxiv:2609.39613"
+        ],
+        "novelty_established": false
+      },
+      {
+        "id": "P_mechanism_mixture_resampling",
+        "definition": "Add extra masks per batch from a family: MCAR at rates 0.2\u20130.5, MAR driven by anchor quantiles, and block masks over random feature groups. Mask probabilities are computed from observed or imputed values only.",
+        "source_support_ids": [
+          "arxiv:2512.19602",
+          "arxiv:2609.39051",
+          "arxiv:2507.08280"
+        ],
+        "novelty_established": false
+      },
+      {
+        "id": "P_indicator_decorrelation",
+        "definition": "Reweight training rows by inverse P(M-pattern cluster | anchors, imputed X). This makes the mask approximately independent of Y given the completed features. Weights enter only the tree loss, with no scaler afterwards, so they cannot cancel algebraically.",
+        "source_support_ids": [
+          "arxiv:2507.08280",
+          "2406.16484v1"
+        ],
+        "novelty_established": false
+      }
+    ],
+    "relations": [
+      {
+        "source": "P_anchor_cond_imputer",
+        "target": "1603.02754v3",
+        "type": "replaces_default_direction_input",
+        "counterfactual_prediction": "Removing it brings back NaN default-direction reliance, and held-out MNAR mAP drops."
+      },
+      {
+        "source": "P_mechanism_mixture_resampling",
+        "target": "P_indicator_decorrelation",
+        "type": "supplies_mask_variation",
+        "counterfactual_prediction": "Without it, the weights collapse to near-uniform under MCAR, and there is no gain over the imputer alone."
+      },
+      {
+        "source": "P_indicator_decorrelation",
+        "target": "2603.17599v1",
+        "type": "enforces_mask_agnostic_target",
+        "counterfactual_prediction": "Removing it raises validation-MAR mAP but lowers reversed-MNAR mAP."
+      }
+    ],
+    "assumptions": [
+      "Held-out MNAR is restricted to self-masking where the missing values are partly predictable from the anchors and observed features. Under this assumption the Bayes predictor of the mask-agnostic target is shared across mechanisms.",
+      "Failure case: if a missing value carries label information that cannot be predicted from observed variables, no mask-agnostic method can recover it. The method then underperforms the native-NaN model on same-direction MNAR, where the mask itself is informative.",
+      "No unlabeled target-batch statistics are used.",
+      "The 5 redundant features are linear combinations, so imputation from anchors and observed features is feasible."
+    ],
+    "strongest_prior_art": [
+      "2507.08280v2 (MIRRAMS): overlaps in aiming for mask-robust, label-relevant features. It differs by using deep mutual-information losses. ADMIB uses tree weighting and imputation.",
+      "2106.00311v2: overlaps on impute-then-regress. It differs by not addressing mechanism shift.",
+      "2406.16484v1: diagnosis of ignorable versus non-ignorable shifts only, with no proposed method."
+    ],
+    "algorithm": [
+      "Split the data 60/20/20. Training data keeps its native MCAR20% masks.",
+      "Fit the anchor-conditional imputer on observed training entries only.",
+      "Sample K=3 extra masks per row from the mechanism family and apply them on top of the existing missingness.",
+      "Impute each masked copy.",
+      "Fit a pattern classifier P(cluster | anchors, imputed X) and compute clipped inverse weights.",
+      "Train HistGradientBoosting on imputed X with the weights. No mask indicators are given as inputs.",
+      "Select hyperparameters by mean mAP across the clean, MCAR20, MCAR40 and MAR validation masks.",
+      "Evaluate once on the three held-out mechanisms."
+    ],
+    "baseline": "Native-NaN HistGradientBoosting. Second baseline: the same model plus random MCAR mask augmentation. Strongest constituent baseline: NeuMiss-style joint impute-and-regress (2106.00311v2), implemented as an MLP small enough for CPU.",
+    "ablations": [
+      "Remove the imputer and use native NaN, keeping resampling and weights.",
+      "Remove resampling, keeping MCAR only.",
+      "Remove the weights.",
+      "Add mask indicators as features, to test whether the mask-to-label path returns.",
+      "Replace the anchor-conditional imputer with mean imputation.",
+      "Use MCAR-only resampling with weights.",
+      "Match the total number of augmented rows across all arms."
+    ],
+    "metric": "Primary: mean mAP across the three held-out mechanisms. Secondary: Brier score, clean-data mAP, and the worst-mechanism mAP. All reported as 10-seed means with paired bootstrap confidence intervals.",
+    "falsification": "Reject the hypothesis if either condition holds: (a) ADMIB's held-out mean mAP fails to beat native NaN plus augmentation by at least 0.01, with the paired 95% confidence interval excluding 0; or (b) ablations show that the weights or the imputer contribute no measurable gain. Also report whether clean-data mAP drops by more than 0.02.",
+    "feasibility": "Each seed involves 3000 training rows \u00d74 copies, about 20 imputation regressions, and one booster, which should take under 90 seconds on a laptop CPU.",
+    "decision": "investigate"
+  },
+  "validation_note": "Revalidated saved response: proposed primitive names need not have a specific prefix; known arXiv aliases normalized; grounded edge endpoints included in component list. No semantic content or model calls added."
+}

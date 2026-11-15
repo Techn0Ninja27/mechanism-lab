@@ -1,0 +1,99 @@
+{
+  "id": "molecules-0",
+  "arm": "molecules",
+  "replicate": 0,
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "train_eligible": false,
+  "status": "complete",
+  "proposal": {
+    "title": "Mechanism-diversified self-masking augmentation with group-robust boosting for missingness shift (unvalidated hypothesis)",
+    "hypothesis": "Native-NaN HistGradientBoosting (HGB) trained under MCAR20% learns split directions for missing values tied to one mechanism. Its errors under own-value MNAR come from that learned mask-to-label association, not from lost information. We propose training on extra masks applied to already-observed entries. Some of these masks depend on the entry's own observed value, high or low. A group-DRO reweighting across mask mechanisms then penalizes reliance on any single mask-to-label association. Prediction: this lowers the worst-case mAP drop on own-value and reversed MNAR relative to random-mask augmentation. Clean and MCAR mAP should stay within 0.005 of baseline. No universal claim is made.",
+    "mechanism": "Random masking alone leaves a mask independent of value. Self-masking applied to observed values creates training regimes where the mask carries value information in both directions. Group DRO then forces the learned missing-branch split directions to work under both. This is a direct intervention on the mask-to-prediction causal edge, not imputation preprocessing.",
+    "components": [
+      "atom_2d8b79ac4827e859",
+      "atom_42235e794c05a946",
+      "atom_a7b4cd2b88c13161",
+      "atom_81f4eb1590ebfa55",
+      "atom_39f339d257798e63",
+      "atom_7190cad6ad604c27",
+      "atom_de53a7a78be5aeec",
+      "proposed_self_mask_sim",
+      "proposed_mech_group_dro_trees"
+    ],
+    "proposed_primitives": [
+      {
+        "id": "proposed_self_mask_sim",
+        "definition": "For an observed non-anchor entry x_j, drop it with probability sigmoid(s*a*(q_j(x_j)-0.5)). Here q_j is the empirical CDF of observed training values, s is +1 or -1, and a is fixed at 4. Only observed values are used. Hidden clean values are never used.",
+        "source_support_ids": [
+          "atom_39f339d257798e63",
+          "atom_42235e794c05a946"
+        ],
+        "novelty_established": false
+      },
+      {
+        "id": "proposed_mech_group_dro_trees",
+        "definition": "Outer loop over HGB refits, 3 rounds. Each round upweights mechanism groups by exp(eta*group log-loss), computed on a mechanism-augmented copy of the validation features. These group weights are passed through sample_weight. No feature scaling is applied, so the weights cannot cancel.",
+        "source_support_ids": [
+          "atom_7190cad6ad604c27"
+        ],
+        "novelty_established": false
+      }
+    ],
+    "relations": [
+      {
+        "source": "proposed_self_mask_sim",
+        "target": "atom_81f4eb1590ebfa55",
+        "type": "intervenes_on (diversifies the mask-to-split-direction association)",
+        "counterfactual_prediction": "If the simulator is removed and only random masks remain, the MNAR mAP gain over random-mask augmentation disappears to within seed noise."
+      },
+      {
+        "source": "proposed_mech_group_dro_trees",
+        "target": "proposed_self_mask_sim",
+        "type": "balances (prevents the dominant augmented group from setting the missing-branch direction)",
+        "counterfactual_prediction": "If uniform weights are used, the worst-case MNAR mAP is lower, but the mean over mechanisms is roughly unchanged."
+      },
+      {
+        "source": "atom_2d8b79ac4827e859",
+        "target": "proposed_mech_group_dro_trees",
+        "type": "justifies_scope (ignorable shifts need no adaptation)",
+        "counterfactual_prediction": "MAR and MCAR validation gains should be about zero. If not, the gain is regularization, not mechanism robustness."
+      }
+    ],
+    "assumptions": [
+      "Narrow assumption: held-out MNAR is per-feature monotone self-masking in its own value, with P(Y|X) stable.",
+      "Training-observed value quantiles approximate target quantiles.",
+      "Within the augmented family, the anchors' own-value missingness stays at zero.",
+      "Failure modes: grouped structural missingness that depends on the label or on latent groups; non-monotone MNAR; and shifts in P(Y|X). All are outside the assumption and are reported as failures, not tuned away.",
+      "No unlabeled target-batch statistics are used. Any variant that uses them is declared separately."
+    ],
+    "strongest_prior_art": [
+      "arxiv:2507.08280 (MIRRAMS): overlaps in seeking robustness to unseen missingness shift without assuming a mechanism. It differs in using an MI-based neural objective rather than simulated mechanism groups. It is the main comparator, implemented as a small CPU MLP.",
+      "arxiv:2512.19602: overlaps in using missingness as augmentation. It differs in that its masks are random, not value-dependent.",
+      "arxiv:2603.00046: overlaps in group DRO over availability groups. It differs in grouping by modality combination rather than missingness mechanism."
+    ],
+    "algorithm": [
+      "1. Split the data 60/20/20 and apply the training mask (MCAR20%). Labels are used only for train and validation.",
+      "2. Build augmented training copies from the observed entries: G0 = original, G1 = random extra 20%, G2 = self-mask s=+1, G3 = self-mask s=-1.",
+      "3. Build the same groups on validation features. MAR and MCAR validation remain untouched for model selection.",
+      "4. Fit native-NaN HGB with uniform group weights.",
+      "5. For each round r = 1..3: compute group log-loss L_g on the validation groups; set w_g proportional to exp(eta*L_g); refit with sample_weight = w_g.",
+      "6. Select eta from {0.5, 1, 2} by mean validation AP over clean, MCAR20, MCAR40, and MAR. Held-out mechanisms are not consulted.",
+      "7. Predict at test time from observed values and NaNs only.",
+      "8. Report AP, Brier score, and clean AP per mechanism; report worst-case AP; report mean \u00b1 std over 10 seeds."
+    ],
+    "baseline": "B1: native-NaN HGB. B2: HGB with random-mask augmentation matched in augmented row count. B3: MIRRAMS-style MLP.",
+    "ablations": [
+      "A1: drop G2 and G3, matched in row count (edge removal).",
+      "A2: uniform weights (removes the DRO edge).",
+      "A3: G2 only (single direction).",
+      "A4: mask-blind control, i.e. HGB on mean-filled values without NaN branching.",
+      "A5: shuffle which value the self-mask uses (permuted q_j). This tests that the effect comes from value dependence."
+    ],
+    "metric": "Primary: mean AP across the three held-out mechanisms, plus worst-case AP. Secondary: Brier score and clean AP.",
+    "falsification": "The hypothesis is rejected under any of three outcomes. First, the full method fails to beat A1 by at least 0.01 mean MNAR AP with a paired seed sign test (p<0.05). Second, A5 matches the full method. Third, clean AP drops by more than 0.005.",
+    "feasibility": "5000\u00d720 with 4\u00d7 augmentation and 4 HGB fits takes about 30 s per seed on a CPU. The MLP comparator takes about 90 s. Both are under 5 minutes.",
+    "decision": "investigate"
+  },
+  "validation_note": "Revalidated saved response: proposed primitive names need not have a specific prefix; known arXiv aliases normalized; grounded edge endpoints included in component list. No semantic content or model calls added."
+}

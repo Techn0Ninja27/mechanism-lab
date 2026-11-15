@@ -1,0 +1,87 @@
+{
+  "ablation_parameters": {
+    "K_target_views": [
+      1,
+      4,
+      8
+    ],
+    "indicator_shuffle": "documented no-op: indicators are never model inputs; same seed/config expected exact duplicate",
+    "raw_label_target": true,
+    "supermask_compositions": [
+      "mixed_mcar_group",
+      "mcar_only"
+    ]
+  },
+  "candidate_id": "abstracts-1",
+  "choice_rule": "candidate_mixed_k8 is compared against the strongest control selected by the largest aggregate validation shift mean AP among native_hgb, median_imputed_hgb_no_indicator, random_mask_augmentation_hgb, random_mask_augmentation_hgb_200_trees. Validation is descriptive; no tuning or parameter changes after this registration. Validation shift cases include both rate shift and new MAR mechanism; final evaluation uses reserved fixture mechanisms exactly once after parent review.",
+  "effect_threshold": {
+    "maximum_clean_AP_decrease": 0.01,
+    "minimum_mean_paired_AP_gain_over_strongest_control": 0.005
+  },
+  "frozen_at_utc": "2026-11-15T22:06:04.239184+00:00",
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "phase": "one_validation_only",
+  "preregistered_validation_summary_not_used_for_selection": [
+    {
+      "seed": 9401,
+      "shift_mean_ap": {
+        "median_imputed_hgb_no_indicator": 0.83492924989996,
+        "native_hgb": 0.8434445514100446,
+        "random_mask_augmentation_hgb": 0.8496174069666954,
+        "random_mask_augmentation_hgb_200_trees": 0.8620670582691052
+      }
+    },
+    {
+      "seed": 9403,
+      "shift_mean_ap": {
+        "median_imputed_hgb_no_indicator": 0.8412062275906841,
+        "native_hgb": 0.8424864246605751,
+        "random_mask_augmentation_hgb": 0.8597671311792346,
+        "random_mask_augmentation_hgb_200_trees": 0.8700229266529905
+      }
+    },
+    {
+      "seed": 9407,
+      "shift_mean_ap": {
+        "median_imputed_hgb_no_indicator": 0.7815668512863722,
+        "native_hgb": 0.7910413963284048,
+        "random_mask_augmentation_hgb": 0.7974751352529595,
+        "random_mask_augmentation_hgb_200_trees": 0.805050991053772
+      }
+    }
+  ],
+  "primary_metric": "mean average precision averaged equally across validation mcar_0.2, mcar_0.4, mar_anchor_x0, then equally across seeds",
+  "selected_parameters": {
+    "K": 8,
+    "anchor_columns": [
+      0,
+      1
+    ],
+    "base_hgb": {
+      "early_stopping": false,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.1,
+      "max_iter": 100,
+      "max_leaf_nodes": 15
+    },
+    "calibration": "none (avoids validation-label reuse)",
+    "synthetic_mcar_probability": 0.2,
+    "teacher_views": [
+      "mcar",
+      "group"
+    ],
+    "validation_seeds": [
+      9401,
+      9403,
+      9407
+    ]
+  },
+  "source_hashes": {
+    "README.md": "a09a1a2e29604f03fc25aa9d4da71675a0d23d090ea05399469fe4fe6812bc6d",
+    "experiment.py": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+    "fixture.py": "c00dd2fb365e9efd08d1b84ac44c5ee946a2c4442f4352239d0fca9de85a3aaf",
+    "proposal.json": "bf4bf4b0aec71ee25b938454c55cf82470ae9039fc0147d6633f6ae2df2deb86"
+  },
+  "validation_artifact_sha256": "afe1c83272cef7781c8a1e1a47185b438745e648bc7224bd9bd3abc491c07b5f"
+}

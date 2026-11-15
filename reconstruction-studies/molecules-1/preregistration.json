@@ -1,0 +1,52 @@
+{
+  "study_id": "molecules-1",
+  "phase": "one_validation_only",
+  "primary_metric": "mean average precision across validation conditions clean, mcar_0.2, mcar_0.4, mar_anchor_x0; separately report shifted-only mean over mcar_0.4 and mar_anchor_x0",
+  "effect_threshold": {
+    "minimum_mean_ap_gain_over_strongest_matched_control": 0.005,
+    "maximum_clean_ap_decrease": 0.01
+  },
+  "choice_rule": "Candidate is anchor_full with fixed estimator/remasking settings. Strongest control is selected as the maximum three-seed mean_ap_all among uniform_augmentation, native_nan_duplicate, and impute_indicators; no candidate parameters are selected or tuned from validation labels.",
+  "selected_candidate": "anchor_full",
+  "selected_strongest_control": "native_nan_duplicate",
+  "selected_parameters": {
+    "seeds": [
+      9401,
+      9403,
+      9407
+    ],
+    "model": {
+      "max_iter": 80,
+      "max_leaf_nodes": 15,
+      "min_samples_leaf": 20,
+      "learning_rate": 0.08,
+      "early_stopping": false
+    },
+    "training_remask_copies": 3,
+    "inference_remasks": 8,
+    "anchor_bins": 5,
+    "remask_multiplier": "Uniform(0.5,2.0)",
+    "threads": 1
+  },
+  "matched_controls": [
+    "uniform_augmentation",
+    "native_nan_duplicate",
+    "impute_indicators"
+  ],
+  "ablations": [
+    "anchor_train_only",
+    "anchor_test_only",
+    "anchor_k1",
+    "permuted_anchor_rates"
+  ],
+  "validation_artifact_sha256": "ab47378b317cf3decb14acaf832a61769b02ce0ef1fbd94c69f8792deea03fe9",
+  "source_sha256": {
+    "experiment.py": "12bc5a76bf1363d9f0bb262d3afe51764581169a37e95cd9bcfe5cc8f3191d1e",
+    "proposal.json": "668a744faa67eaf5eaaa781ddf432cd87043a57830a0351b0e9507a767fedab2",
+    "missingness_shift_fixture.py": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "expanded-papers.json": "24b459bf540f1767bfba851489ccdd64477ec7e50eb5339e06de95f7e00e73cb",
+    "context-atoms.json": "3a26f1df40edfe4bcfbc3225cec96f2d1ce780664f6bca877cbe4f9d71aad8b6"
+  },
+  "phase_one_boundary": "Validation only. MNAR and reversed MNAR are absent from the validation fixture, so this phase cannot establish the proposal\u2019s defining shortcut-sign-reversal claim. Final fixture mode has not been called.",
+  "novelty_established": false
+}

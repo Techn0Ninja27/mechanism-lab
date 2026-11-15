@@ -1,0 +1,39 @@
+{
+  "candidate_id": "abstracts-0",
+  "phase": "phase-one-validation-frozen-before-final-evaluation",
+  "seeds": [9401, 9403, 9407],
+  "primary_metric": "mean average precision across all six final held-out mechanisms and all three seeds; validation screen reports mean AP over clean, MCAR 0.2, MCAR 0.4, and anchor-MAR across all seeds",
+  "effect_threshold": {
+    "minimum_mean_ap_gain_over_strongest_matched_control": 0.005,
+    "maximum_clean_ap_decrease": 0.01
+  },
+  "choice_rule": "Freeze ADMIB as implemented. Strongest matched control is selected by highest validation mean AP among the fixed non-ADMIB arms with equal four-copy row count and booster capacity. Report all fixed arms; do not tune from final outcomes.",
+  "selected_parameters": {
+    "imputer": "sklearn IterativeImputer(BayesianRidge, max_iter=5, tol=0.001, skip_complete=True, random_state=seed), fitted on masked 80% training subset only",
+    "booster": "HistGradientBoostingClassifier(max_iter=100, max_leaf_nodes=15, learning_rate=0.08, l2_regularization=1.0, early_stopping=False, random_state=33)",
+    "propensity": "StandardScaler + multinomial LogisticRegression(max_iter=100, C=0.5); probabilities clipped to [0.05,1], inverse clipped to [0.25,4], normalized within regime then globally",
+    "augmentation": "three additional masked copies per training row: MCAR p=0.2, MAR from observed anchor x0 with sigmoid propensity, and random block mask over columns 2:8; paired control uses three independent MCAR p=0.2 copies",
+    "threads": 1,
+    "prediction_interface": "masked feature matrix only; no condition name or held-out labels"
+  },
+  "source_sha256": {
+    "proposal.json": "1fd60e30b9e8e44c79bbcf4c8400a067738ad94bed60c440e20996e5a9307e85",
+    "experiment.py": "02771cb14bd201b569ff9baa4917dc42afd95f79bbb6af03b5f8294d1db4d0ec",
+    "missingness_shift_fixture.py": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41"
+  },
+  "validation_artifact_sha256": "a28654089bc4d533ad33d0e2c6c1eee74daa91ddf155bedd15c1e49bec25c7bb",
+  "validation_compute_seconds": 16.42308887499894,
+  "prior_art_status": "closest identified overlap: MIRRAMS (arXiv:2507.08280) explicitly targets unseen missingness shifts; impute-then-regress and NeuMiss are established (arXiv:2106.00311); robustness depends on shift mechanism (arXiv:2406.16484). No novelty claim.",
+  "validation_summary": {
+    "admib_mean_ap": 0.8946962842781496,
+    "strongest_matched_control": "completed (mean AP 0.899177750668406)",
+    "admib_minus_strongest_control": -0.0044814663902564,
+    "admib_clean_ap": 0.9081422965139421,
+    "strongest_control_clean_ap": 0.9173868188088868,
+    "clean_ap_delta": -0.0092445222949447,
+    "threshold_met": false
+  },
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "phase_two_authorized": false
+}

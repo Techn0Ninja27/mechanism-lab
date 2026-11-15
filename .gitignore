@@ -35,3 +35,5 @@ logs/
 /research_assets/
 
 /diagnostics/
+
+.venv-benchmark/

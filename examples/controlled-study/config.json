@@ -1,0 +1,9 @@
+{
+  "purpose": "runner smoke check of known missingness augmentation; not a novel study",
+  "plugin": "examples/controlled-study/plugin.py",
+  "variants": [
+    {"id":"native","role":"control","params":{"copies":1}},
+    {"id":"duplicate","role":"control","params":{"copies":2}},
+    {"id":"augmentation","role":"candidate","params":{"copies":2,"extra_missing_rate":0.2}}
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "all_control_means": {
+    "native_nan_hgb": {
+      "ap": 0.8580001492506464,
+      "brier": 0.06714056213466912
+    },
+    "randommask_dro_matched": {
+      "ap": 0.8636032992577151,
+      "brier": 0.06725566419351352
+    },
+    "selfmask_uniform": {
+      "ap": 0.860651409144635,
+      "brier": 0.06764011761012936
+    }
+  },
+  "candidate_id": "molecules-0",
+  "faithful_implementation": {
+    "core_intervention": "value-dependent positive and reversed self-mask augmentation of finite training entries, with training-only group-loss reweighting",
+    "prediction_access": "masked feature matrix only; no condition name or labels",
+    "proposal_as_written": false,
+    "reason": "The proposal specifies repeated refits weighted by group losses computed on validation features and labels. That would fit against validation labels. The implemented parent-approved correction estimates group losses with three-fold out-of-fold predictions internal to training data."
+  },
+  "human_adjudicated": false,
+  "limitations": [
+    "Validation mean AP gain over the preregistered random-mask DRO control was +0.00454, below the +0.005 threshold; this validation failure remains even after final evaluation.",
+    "On final, candidate mean AP was lower than random-mask DRO and self-mask uniform weighting. Native HGB had higher clean AP by more than 0.01.",
+    "Only three fixed synthetic seeds and one fixed fixture were evaluated; no real-world or broad MNAR claim follows.",
+    "Validation conditions were clean, MCAR 0.2/0.4, and anchor-driven MAR. MNAR and block conditions were final-only.",
+    "Eta was selected on validation and then frozen per seed; no final-test tuning was performed.",
+    "The written proposal used validation labels in the group-loss refit loop; results apply to the train-only OOF correction, not that literal procedure.",
+    "MIRRAMS was not implemented because the proposal did not specify its objective or model; no generic MLP was mislabeled as MIRRAMS.",
+    "No atoms or source findings are promoted."
+  ],
+  "mean_candidate": {
+    "ap": 0.8599767333488498,
+    "brier": 0.06776653702265535
+  },
+  "mean_strongest_control": {
+    "ap": 0.8636032992577151,
+    "brier": 0.06725566419351352,
+    "name": "randommask_dro_matched"
+  },
+  "novelty_established": false,
+  "paired_deltas": {
+    "native_nan_hgb": {
+      "by_condition_mean_ap_delta": {
+        "block_mcar_2_8": 0.03283598854386671,
+        "block_mcar_8_14": -0.013345706036141528,
+        "clean": -0.014154990652338939,
+        "mcar_0.2": -0.002481061601025125,
+        "mnar_own_feature": 0.005563380413775909,
+        "mnar_reversed_sign": 0.0034418939210834423
+      },
+      "by_seed": {
+        "9401": {
+          "by_condition": {
+            "block_mcar_2_8": 0.0024237325418509093,
+            "block_mcar_8_14": -0.016225472337050073,
+            "clean": -0.02218511204299911,
+            "mcar_0.2": -0.010154768924111934,
+            "mnar_own_feature": -0.014786632227343888,
+            "mnar_reversed_sign": -0.007608466951573023
+          },
+          "mean_ap_delta": -0.011422786656871187
+        },
+        "9403": {
+          "by_condition": {
+            "block_mcar_2_8": 0.04190509308757162,
+            "block_mcar_8_14": -0.018723830528882934,
+            "clean": -0.016149952284024827,
+            "mcar_0.2": -0.009823582712589984,
+            "mnar_own_feature": 0.006623282503104844,
+            "mnar_reversed_sign": -0.014447417469954482
+          },
+          "mean_ap_delta": -0.0017694012341292937
+        },
+        "9407": {
+          "by_condition": {
+            "block_mcar_2_8": 0.054179140002177606,
+            "block_mcar_8_14": -0.005087815242491578,
+            "clean": -0.004129907629992879,
+            "mcar_0.2": 0.012535166833626543,
+            "mnar_own_feature": 0.02485349096556677,
+            "mnar_reversed_sign": 0.03238156618477783
+          },
+          "mean_ap_delta": 0.019121940185610715
+        }
+      },
+      "control_mean_ap": 0.8580001492506464,
+      "mean_candidate_minus_control_ap": 0.001976584098203412
+    },
+    "randommask_dro_matched": {
+      "by_condition_mean_ap_delta": {
+        "block_mcar_2_8": -0.002202271427052205,
+        "block_mcar_8_14": -0.00850380153911027,
+        "clean": -0.0032957031791980285,
+        "mcar_0.2": -0.001386049936985138,
+        "mnar_own_feature": -0.0027730853634840105,
+        "mnar_reversed_sign": -0.003598484007361513
+      },
+      "by_seed": {
+        "9401": {
+          "by_condition": {
+            "block_mcar_2_8": -0.005960477295064548,
+            "block_mcar_8_14": -0.008441038112410704,
+            "clean": -0.003561991635541384,
+            "mcar_0.2": -0.004368010625750984,
+            "mnar_own_feature": -0.011622991042859798,
+            "mnar_reversed_sign": -0.007861091525431019
+          },
+          "mean_ap_delta": -0.006969266706176406
+        },
+        "9403": {
+          "by_condition": {
+            "block_mcar_2_8": -0.0015901382912421047,
+            "block_mcar_8_14": -0.004446590870801126,
+            "clean": -0.00015026811655671768,
+            "mcar_0.2": 0.005011121395011142,
+            "mnar_own_feature": 0.00489495058208711,
+            "mnar_reversed_sign": -0.007831460670539747
+          },
+          "mean_ap_delta": -0.0006853976620069072
+        },
+        "9407": {
+          "by_condition": {
+            "block_mcar_2_8": 0.0009438013051500382,
+            "block_mcar_8_14": -0.012623775634118983,
+            "clean": -0.006174849785495984,
+            "mcar_0.2": -0.004801260580215572,
+            "mnar_own_feature": -0.0015912156296793434,
+            "mnar_reversed_sign": 0.004897100173886226
+          },
+          "mean_ap_delta": -0.0032250333584122695
+        }
+      },
+      "control_mean_ap": 0.8636032992577151,
+      "mean_candidate_minus_control_ap": -0.0036265659088651945
+    },
+    "selfmask_uniform": {
+      "by_condition_mean_ap_delta": {
+        "block_mcar_2_8": 0.006521435269204863,
+        "block_mcar_8_14": -0.005415032733533276,
+        "clean": -0.002256289221640858,
+        "mcar_0.2": -0.0024172611141736557,
+        "mnar_own_feature": -0.0005769151076313225,
+        "mnar_reversed_sign": 9.600813306320788e-05
+      },
+      "by_seed": {
+        "9401": {
+          "by_condition": {
+            "block_mcar_2_8": 0.007754134059037132,
+            "block_mcar_8_14": -0.002320245163119461,
+            "clean": 0.0025008846858043388,
+            "mcar_0.2": -0.0015744111687673312,
+            "mnar_own_feature": -0.0013756827107158642,
+            "mnar_reversed_sign": 0.0015302346042340709
+          },
+          "mean_ap_delta": 0.0010858190510788142
+        },
+        "9403": {
+          "by_condition": {
+            "block_mcar_2_8": -0.0045151541058492395,
+            "block_mcar_8_14": -0.011191735514533119,
+            "clean": -0.006239225696918704,
+            "mcar_0.2": -0.004612623922433667,
+            "mnar_own_feature": -0.004943875385041152,
+            "mnar_reversed_sign": -0.007847098112264583
+          },
+          "mean_ap_delta": -0.006558285456173411
+        },
+        "9407": {
+          "by_condition": {
+            "block_mcar_2_8": 0.016325325854426698,
+            "block_mcar_8_14": -0.002733117522947248,
+            "clean": -0.0030305266538082076,
+            "mcar_0.2": -0.001064748251319969,
+            "mnar_own_feature": 0.004588812772863049,
+            "mnar_reversed_sign": 0.006604887907220136
+          },
+          "mean_ap_delta": 0.0034484390177390765
+        }
+      },
+      "control_mean_ap": 0.860651409144635,
+      "mean_candidate_minus_control_ap": -0.0006746757957851734
+    }
+  },
+  "prior_art_sources": [
+    {
+      "id": "2406.16484",
+      "url": "https://arxiv.org/abs/2406.16484"
+    },
+    {
+      "id": "2507.08280",
+      "url": "https://arxiv.org/abs/2507.08280"
+    },
+    {
+      "id": "2512.19602",
+      "url": "https://arxiv.org/abs/2512.19602"
+    },
+    {
+      "id": "2603.00046",
+      "url": "https://arxiv.org/abs/2603.00046"
+    },
+    {
+      "id": "1911.08731",
+      "url": "https://arxiv.org/abs/1911.08731"
+    },
+    {
+      "id": "2007.01627",
+      "url": "https://arxiv.org/abs/2007.01627"
+    }
+  ],
+  "prior_art_status": "Substantial prior art on missingness-shift robustness, missingness augmentation, and group DRO was checked from primary sources. Exact combination novelty is not established; search was not exhaustive.",
+  "source_hash": {
+    "final_code_sha256": "7f5d2ef6fa233fff2f24259c2832316f64b0735b6ec0181058c83ca8831846e5",
+    "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "parent_approved_final_sha256": "d41e250edbe4eab214f5cd72ff25b1a7038f605c64bfdb9875d776ca0f8475cd",
+    "preregistration_sha256": "025e52c3f46ea8cebd08e7d37e462629fdb733b2b13e15d77ed690786cba0f48",
+    "results_sha256": "87d6b8ae2be94f5d6d0db49a0ba445dcfbc8ade78756e16df0e17e146ffcff22",
+    "validation_sha256": "d70c727cf8bbf04def0b196bed1047e737010bd78e9b71f84fa0d65375ab32a6"
+  },
+  "status": "no_gain",
+  "validation_context": {
+    "mean_candidate_ap": 0.8412458079753885,
+    "mean_randommask_dro_ap": 0.8367071905246957,
+    "paired_delta": 0.0045386174506928485,
+    "preregistered_threshold": 0.005,
+    "threshold_met": false
+  }
+}

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "2506.03530v3",
+    "title": "How Far Are We from Generating Missing Modalities with Foundation Models?",
+    "url": "https://arxiv.org/abs/2506.03530v3",
+    "published": "2025-06-04T03:22:44Z",
+    "updated": "2026-05-22T06:55:17Z",
+    "source_sha256": "98cffbf25c1c18172759a5ca69c5aa7b8920c35ed183453ac1594a077002c824",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2409.04407v2",
+    "title": "Exploiting Missing Data Remediation Strategies using Adversarial Missingness Attacks",
+    "url": "https://arxiv.org/abs/2409.04407v2",
+    "published": "2024-09-06T17:10:28Z",
+    "updated": "2025-11-17T03:22:55Z",
+    "source_sha256": "c1984773ab562e82ff5778bb37f527a01c9dd7c7587b03734b3183d9ac1bde63",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2603.17599v1",
+    "title": "Prediction with Missing Data: Target Probabilities and Missingness Mechanisms",
+    "url": "https://arxiv.org/abs/2603.17599v1",
+    "published": "2026-03-18T11:13:41Z",
+    "updated": "2026-03-18T11:13:41Z",
+    "source_sha256": "a0a089daae3152c4b1b915db3bea645ef44211a39d4285153c33639ab4182b16",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2601.18500v2",
+    "title": "Nearly Optimal Bayesian Inference for Structural Missingness",
+    "url": "https://arxiv.org/abs/2601.18500v2",
+    "published": "2026-01-26T14:03:11Z",
+    "updated": "2026-01-27T12:05:37Z",
+    "source_sha256": "43dc55b82ad5dcb2ca510d6a4159f1e3e55a79209d0a9810e29e3c1faa3128c4",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "1603.02754v3",
+    "title": "XGBoost: A Scalable Tree Boosting System",
+    "url": "https://arxiv.org/abs/1603.02754v3",
+    "published": "2016-03-09T01:11:51Z",
+    "updated": "2016-06-10T23:23:51Z",
+    "source_sha256": "515486101e9b344f79b21dc1fab86ca0c68b3ab2a4fdcd0919c07f7df0d687b4",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2608.19119v2",
+    "title": "Discretizing Continuous Time Series for Imputation with Masked Diffusion Training",
+    "url": "https://arxiv.org/abs/2608.19119v2",
+    "published": "2026-08-19T17:16:27Z",
+    "updated": "2026-11-06T04:35:22Z",
+    "source_sha256": "906696928dc9aa973cd20516196749a8829017975c52302254f70d6a9d5e993d",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2106.00311v2",
+    "title": "What's a good imputation to predict with missing values?",
+    "url": "https://arxiv.org/abs/2106.00311v2",
+    "published": "2021-06-01T08:40:30Z",
+    "updated": "2021-11-30T10:32:27Z",
+    "source_sha256": "5e40c040ef6bf69c95322977bf7a35b0a99ed6443f56df02e2f383416a30d41e",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2406.16484v1",
+    "title": "Robust prediction under missingness shifts",
+    "url": "https://arxiv.org/abs/2406.16484v1",
+    "published": "2024-06-24T09:39:30Z",
+    "updated": "2024-06-24T09:39:30Z",
+    "source_sha256": "33b682b280701128bf207c5eeebe47c3c99c7b37aec4e4d70c709fcdbbbfb603",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "2504.00322v1",
+    "title": "Domain Adaptation Under MNAR Missingness",
+    "url": "https://arxiv.org/abs/2504.00322v1",
+    "published": "2025-04-01T01:03:56Z",
+    "updated": "2025-04-01T01:03:56Z",
+    "source_sha256": "3fe614823e22c4cf503a22120225b33b5242a393fa74244a73c19813b7331830",
+    "evidence_level": "primary_abstract"
+  },
+  {
+    "id": "arxiv:1802.00154",
+    "title": "Bootstrapping and Multiple Imputation Ensemble Approaches for Missing Data",
+    "url": "http://arxiv.org/abs/1802.00154v5",
+    "published": "2018-02-01",
+    "source_sha256": "223c4c4a4047f2f0acb1f216d6d78ae591a8fbc8e8ce62a17aab23f2e5b6311b",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2506.09208",
+    "title": "Integrated Analysis for Electronic Health Records with Structured and Sporadic Missingness",
+    "url": "http://arxiv.org/abs/2506.09208v2",
+    "published": "2025-06-10",
+    "source_sha256": "d59548127c6cda7f9a407151b92368c94b07f9f92b4c5c69045750456de7341a",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2609.31033",
+    "title": "Robust Graph Clustering Network for Multiple Missing Data",
+    "url": "http://arxiv.org/abs/2609.31033v1",
+    "published": "2026-09-25",
+    "source_sha256": "d2b86bbc99559bbeb2368352fb28a1b7aa6a6d89a0eae65d5a8e290d383bd528",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2610.20342",
+    "title": "When Does Task-Aware Imputation Matter? An Analysis of Robustness Under Train-Test Mismatch",
+    "url": "http://arxiv.org/abs/2610.20342v1",
+    "published": "2026-10-14",
+    "source_sha256": "236206e16fe9cd6c5c431ffd458d50f7885d0354d09b93dfa6aae5bc7c2fc621",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2107.08574",
+    "title": "A Modulation Layer to Increase Neural Network Robustness Against Data Quality Issues",
+    "url": "http://arxiv.org/abs/2107.08574v4",
+    "published": "2021-07-19",
+    "source_sha256": "4c35be27f35c76360795492381ebe15d15df8abb809f93596b8264de70869e38",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "local:conf/ijcai/WuYZM025",
+    "title": "General Incomplete Time Series Analysis via Patch Dropping Without Imputation",
+    "url": "https://www.ijcai.org/proceedings/2025/0734.pdf",
+    "published": "2025-01-01",
+    "source_sha256": "42b819cefcf22de49f960f16ffe4ca58147d01fe82fb6249f90bf34945dba78c",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "local_sqlite"
+  },
+  {
+    "id": "arxiv:2609.39613",
+    "title": "Hybrid Methods for Robust Tabular Data Imputation",
+    "url": "http://arxiv.org/abs/2609.39613v1",
+    "published": "2026-09-30",
+    "source_sha256": "0b37ef7aad53a4e5055dfd59e25d25d1c9c9d57a8bf545bc0348fe1c9c109066",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2002.12359",
+    "title": "A Kernel to Exploit Informative Missingness in Multivariate Time Series from EHRs",
+    "url": "http://arxiv.org/abs/2002.12359v1",
+    "published": "2020-02-27",
+    "source_sha256": "0713b69de1802eaaf696ee942f3d9dfcad84105e16d43aee4f820e10784c9abc",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2602.00844",
+    "title": "Multivariate Time Series Data Imputation via Distributionally Robust Regularization",
+    "url": "http://arxiv.org/abs/2602.00844v2",
+    "published": "2026-01-31",
+    "source_sha256": "d32ec02dda4694afcb2801d40179529b05e318d02f952be621f7a45b2d6c2a3c",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2604.23112",
+    "title": "Conditional Imputation for Within-Modality Missingness in Multi-Modal Federated Learning",
+    "url": "http://arxiv.org/abs/2604.23112v1",
+    "published": "2026-04-25",
+    "source_sha256": "d6336fc7402f60364f3beceec79ba618819c613fc7a1b2929a95f20d1bbd7e90",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2506.08660",
+    "title": "Towards Robust Real-World Multivariate Time Series Forecasting: A Unified Framework for Dependency, Asynchrony, and Missingness",
+    "url": "http://arxiv.org/abs/2506.08660v4",
+    "published": "2025-06-10",
+    "source_sha256": "05986d155a0ed0dad4f2a6f9ff66219e562835281dd4323ad0e7b491a2d7f5ba",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2605.13081",
+    "title": "PRA-PoE: Robust Multimodal Alzheimer's Diagnosis with Arbitrary Missing Modalities",
+    "url": "http://arxiv.org/abs/2605.13081v2",
+    "published": "2026-05-13",
+    "source_sha256": "c1250d9f7e19a23326c73d289ba1b3b870bf5616cd30ce45d58771a8a3710991",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2609.28105",
+    "title": "Fed-ReMasker: Federated Tabular Imputation under Feature-Level Missingness",
+    "url": "http://arxiv.org/abs/2609.28105v1",
+    "published": "2026-09-23",
+    "source_sha256": "86e04cafe06930d49a4d0c385ff63d0185194bb5568fea72b1771d1fbe07cad7",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2512.19602",
+    "title": "No Data? No Problem: Robust Vision-Tabular Learning with Missing Values",
+    "url": "http://arxiv.org/abs/2512.19602v2",
+    "published": "2025-12-22",
+    "source_sha256": "0748d28c457cf96c449153fd9edca861748bc2f700985ddf1c62b5cc6279b644",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2507.08280",
+    "title": "MIRRAMS: Learning Robust Tabular Models under Unseen Missingness Shifts",
+    "url": "http://arxiv.org/abs/2507.08280v2",
+    "published": "2025-07-11",
+    "source_sha256": "5f3796e6ad24ef736ffaf1c175caf5ce9a09c25013cecf520aff8525035b4581",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2605.12031",
+    "title": "Resilient Vision-Tabular Multimodal Learning under Modality Missingness",
+    "url": "http://arxiv.org/abs/2605.12031v1",
+    "published": "2026-05-12",
+    "source_sha256": "03ab1460479ee69586cd82cb344f74cef362627bd871a7fc46dfe7128cb87c8e",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2609.05202",
+    "title": "Real-World Multi-Modal and Longitudinal Lung Cancer Dataset",
+    "url": "http://arxiv.org/abs/2609.05202v1",
+    "published": "2026-09-04",
+    "source_sha256": "d45ed789f3aca8f63ce8044510b089e83a8bc49d5a60aa61d3c822c4ef8db1cb",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "local:md68e8iZK1",
+    "title": "Large Language Models Are Zero-Shot Time Series Forecasters",
+    "url": "https://openreview.net/forum?id=md68e8iZK1",
+    "published": "2023-01-01",
+    "source_sha256": "15931dc1555a7a8021f56575a53f83cc0e26ef263a1bb74895e82ad7fc36ecfa",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "local_sqlite"
+  },
+  {
+    "id": "arxiv:2311.06719",
+    "title": "Efficient Multiple-Robust Estimation for Nonresponse Data Under Informative Sampling",
+    "url": "http://arxiv.org/abs/2311.06719v2",
+    "published": "2023-11-12",
+    "source_sha256": "c0d7a02352e69efe3c19fc03c6702676df8c0d8ac5f90c5a75fb2cdc61bca2cb",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2601.04855",
+    "title": "Rethinking GNNs and Missing Features: Challenges, Evaluation and a Robust Solution",
+    "url": "http://arxiv.org/abs/2601.04855v2",
+    "published": "2026-01-08",
+    "source_sha256": "6f882cb654c52269b3dc0b6d846674294da3efa53be208105f6adcc31e09acba",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2603.00046",
+    "title": "REMIND: Rethinking Medical High-Modality Learning under Missingness--A Long-Tailed Distribution Perspective",
+    "url": "http://arxiv.org/abs/2603.00046v1",
+    "published": "2026-02-09",
+    "source_sha256": "5d9e82913f0eb06722fa2771c9a3a66ec7709100c8c0633949b7bd7481352286",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "arxiv:2609.39051",
+    "title": "TSMD: Temporal-Stream Modality Dropout for Robust Video Highlight Detection",
+    "url": "http://arxiv.org/abs/2609.39051v1",
+    "published": "2026-09-30",
+    "source_sha256": "039f0cbff7fa32650a9a14d1ef614a22725313a20c4bc681ed426a47234ba9ca",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "arxiv_api"
+  },
+  {
+    "id": "local:conf/aaai/HuangM0CSLLW25",
+    "title": "STD-PLM: Understanding Both Spatial and Temporal Properties of Spatial-Temporal Data with PLM",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/download/33286/35441",
+    "published": "2025-01-01",
+    "source_sha256": "b122c7ed0cd094b36d5c438fd19c540e4eede722544ee32e3410b643381a201d",
+    "evidence_level": "catalogue_abstract",
+    "retrieval_method": "local_sqlite"
+  }
+]

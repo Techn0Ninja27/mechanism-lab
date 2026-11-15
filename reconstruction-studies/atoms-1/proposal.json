@@ -1,0 +1,101 @@
+{
+  "id": "atoms-1",
+  "arm": "atoms",
+  "replicate": 1,
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "train_eligible": false,
+  "status": "complete",
+  "proposal": {
+    "title": "Indicator-invariant pooled prediction with value-only experts under bounded own-value MNAR shift",
+    "hypothesis": "Under the fixture, held-out MNAR mechanisms mainly change P(M|X), and with it the label information carried by missingness indicators. A HistGradientBoosting (HGB) learner that routes NaNs natively learns indicator-label shortcuts from training MCAR, and those shortcuts can flip sign under own-value MNAR. Averaging over value-only experts, each trained with random feature subsets withheld, should improve held-out mean average precision (mAP) and Brier score relative to native-NaN HGB and to mask augmentation. Two narrow conditions are required: (1) the anchor columns (0, 1) plus the redundant columns partially reconstruct the informative signal, and (2) P(Y|X) is invariant across mechanisms.",
+    "mechanism": "Prediction comes from an ensemble of experts. Each expert sees only a declared observed feature subset S and is never given missingness indicators. The prediction pools the experts whose subset S is fully observed for the row. This removes the causal path from the mask M to the prediction \u0176 that bypasses X. Because the experts are exchangeable across masks, the mixture estimates E[Y|X_S] rather than E[Y|X_obs,M]. Under MAR this predictor is invariant ([2406.16484v1]). Under own-value MNAR it remains unbiased because no expert reads M, but it loses efficiency.",
+    "components": [
+      "atom_c5e073a3d9100497",
+      "atom_2d8b79ac4827e859",
+      "atom_42235e794c05a946",
+      "atom_a7b4cd2b88c13161",
+      "atom_81f4eb1590ebfa55",
+      "atom_de53a7a78be5aeec",
+      "atom_4a205114ad9001e1",
+      "subset_value_experts",
+      "mask_blind_pooling"
+    ],
+    "proposed_primitives": [
+      {
+        "id": "subset_value_experts",
+        "definition": "K HGB experts. Each is trained on rows where its random subset S_k (always including the anchors) is fully observed, with features restricted to S_k and no missingness indicator.",
+        "source_support_ids": [
+          "atom_c5e073a3d9100497",
+          "atom_4a205114ad9001e1"
+        ],
+        "novelty_established": false
+      },
+      {
+        "id": "mask_blind_pooling",
+        "definition": "For each row, average the logits of the experts whose S_k is observed in that row, using weights fixed from validation log-loss pooled over all validation masks.",
+        "source_support_ids": [
+          "atom_2d8b79ac4827e859",
+          "atom_de53a7a78be5aeec"
+        ],
+        "novelty_established": false
+      }
+    ],
+    "relations": [
+      {
+        "source": "subset_value_experts",
+        "target": "mask_blind_pooling",
+        "type": "enables",
+        "counterfactual_prediction": "Using a single native-NaN HGB instead reintroduces mask reading and should restore the MNAR drop."
+      },
+      {
+        "source": "atom_a7b4cd2b88c13161",
+        "target": "mask_blind_pooling",
+        "type": "motivates",
+        "counterfactual_prediction": "Feeding the mask as features should hurt reversed MNAR most."
+      },
+      {
+        "source": "atom_42235e794c05a946",
+        "target": "subset_value_experts",
+        "type": "bounds",
+        "counterfactual_prediction": "Gains should vanish if P(Y|X) itself shifts."
+      }
+    ],
+    "assumptions": [
+      "P(Y|X) is invariant across all mechanisms.",
+      "The anchors are always observed.",
+      "The redundant columns are linear combinations of the informative ones, so they carry the same signal.",
+      "No target statistics are used; any unlabeled target-batch statistics are explicitly declared unused.",
+      "Expert pooling weights are chosen using validation masks only."
+    ],
+    "strongest_prior_art": [
+      "atom_c5e073a3d9100497: pattern sub-modelling. Overlap: one model per pattern. Difference: our experts are subset-shared and deliberately mask-blind, rather than optimal for the training mechanism.",
+      "arxiv:2507.08280 MIRRAMS: also targets robustness to missingness shift. Difference: no mutual-information objective; this is a tree-ensemble approach. This is the strongest constituent comparator.",
+      "atom_4a205114ad9001e1: modality dropout. Difference: we drop features at the level of expert definition, not as a per-sample stochastic input."
+    ],
+    "algorithm": [
+      "Split the data 60/20/20; mask the training set MCAR20% on columns 2-19.",
+      "Sample K=40 subsets S_k = anchors \u222a a random 6-12 of the remaining columns.",
+      "Fit HGB_k on training rows where S_k is fully observed, using X[S_k] with no indicators.",
+      "On validation (clean, MCAR20, MCAR40, MAR), compute per-row the set of experts whose S_k is observed.",
+      "Fit a scalar temperature for the pooled logit mean on validation log-loss.",
+      "Optionally, weight experts proportional to exp(-validation loss), using validation data only.",
+      "At test time, pool the observed-subset experts; if none are available, fall back to the anchor-only expert.",
+      "Report mAP, Brier score, and clean mAP for each held-out mechanism."
+    ],
+    "baseline": "Native-NaN HGB; HGB plus random MCAR mask augmentation (rate sampled from 0-50%); a tree-model adaptation of MIRRAMS.",
+    "ablations": [
+      "Same experts with missingness indicators appended.",
+      "Pooling over all experts after mean imputation instead of observed-subset selection.",
+      "K=1 (anchor-only expert).",
+      "Random subsets excluding the anchors.",
+      "Mask augmentation with an equal tree budget.",
+      "Uniform pooling weights instead of validation-loss weights."
+    ],
+    "metric": "Primary: mean mAP across the three held-out mechanisms, 10 seeds, with paired bootstrap confidence intervals. Secondary: Brier score, clean mAP, and validation-mask mAP.",
+    "falsification": "The hypothesis is rejected if the method fails to beat mask augmentation on mean held-out mAP by \u22650.01 with the confidence interval excluding 0. It is also rejected if the indicator ablation is equal or better under reversed MNAR, or if the clean mAP loss exceeds 0.02. Expected failure cases: grouped structural missingness that removes all redundant copies of an informative feature, and settings where missingness itself causally predicts Y.",
+    "feasibility": "About 40 small HGB fits on 3000 rows: roughly 1-2 minutes per seed on a CPU laptop.",
+    "decision": "investigate"
+  },
+  "validation_note": "Revalidated saved response: proposed primitive names need not have a specific prefix; known arXiv aliases normalized; grounded edge endpoints included in component list. No semantic content or model calls added."
+}

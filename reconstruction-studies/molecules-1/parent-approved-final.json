@@ -1,0 +1,36 @@
+{
+  "study_id": "molecules-1",
+  "phase_two_authorization": "Parent approved phase two in follow-up: enable existing run_seed(mode=\"final\") path and pass --mode; no fit/predict functions, hyperparameters, or test-based choices may change.",
+  "diff_summary": [
+    "Removed the wrapper refusal that prevented run_seed(mode=\"final\") from scoring the frozen final_cases.",
+    "Passed CLI --mode through to run_seed; validation still uses only validation_cases, final uses only final_cases.",
+    "Made output summaries mode-aware and added final_case_hashes to final output.",
+    "Added a pre-load gate that checks this record, current experiment.py hash, fixture hash, and validation artifact hash before final fixture access.",
+    "No training code, prediction code, model settings, candidate/control set, or selection rule changed."
+  ],
+  "final_plan": {
+    "seeds": [
+      9401,
+      9403,
+      9407
+    ],
+    "evaluation_cases": "fixture.final_cases only: clean, mcar_0.2, mnar_own_feature, mnar_reversed_sign, mnar_block_2_8, mnar_block_8_14",
+    "comparison_methods": [
+      "anchor_full",
+      "native_nan_duplicate",
+      "anchor_train_only"
+    ],
+    "method_selection": "Frozen from phase one and parent instruction; no choices based on final labels.",
+    "all_frozen_methods_run": true,
+    "metrics": [
+      "average_precision",
+      "brier"
+    ]
+  },
+  "code_sha256_before_final": "b11dec205e1d89e7114fcdce8bae69e4a7a0642dc27430e34000bf89e08cc1ef",
+  "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+  "validation_artifact_sha256": "ab47378b317cf3decb14acaf832a61769b02ce0ef1fbd94c69f8792deea03fe9",
+  "preregistration_sha256_preserved": "1d40f49c444a2ddc1d5201ada551b3ac7494d2c3297be1a8fb980752643ad790",
+  "final_fixture_accessed_at_record_creation": false,
+  "novelty_established": false
+}

@@ -1,0 +1,29 @@
+{
+  "candidate_id": "atoms-0",
+  "phase": "phase-one-validation-preregistration",
+  "primary_metric": "mean average precision, equal-weighted over final unseen mechanisms mnar_own_feature, mnar_reversed_sign, block_mcar_2_8, block_mcar_8_14; first average within seed, then across seeds 9401, 9403, 9407",
+  "secondary_metrics": ["per-condition AP", "per-condition Brier", "clean AP"],
+  "effect_threshold": 0.005,
+  "clean_ap_noninferiority_margin": 0.01,
+  "decision_rule": "Candidate is a supported pilot only if mean paired primary-metric delta versus the single strongest matched control is >=0.005, every-seed average delta is positive, and the candidate's mean clean AP is no more than 0.01 below that control; otherwise no_gain or inconclusive per parent review. mcar_0.2 is reported separately and excluded from primary shift metric.",
+  "strongest_control_choice_rule": "Choose one control globally by highest pooled validation AP averaged equally over the three non-clean shared validation cases (mcar_0.2, mcar_0.4, mar_anchor_x0) and three seeds, among augmented_native_nan, all_masks, no_masks, single_conditional_mean, unconditional_mean, and no_augmentation. Freeze that single control before phase two. Also report native_nan and every ablation.",
+  "frozen_strongest_control_after_validation": "single_conditional_mean",
+  "selected_parameters": {
+    "conditional_imputation": "pairwise observed-pair mean/covariance from training inputs only, covariance shrunk 10% toward its diagonal to ensure positive definiteness; ridge 1e-3 on observed covariance for Gaussian conditioning; anchors 0 and 1 remain observed",
+    "prediction_draws": 5,
+    "augmentation_views": "base already-MCAR-masked training input plus one additional MCAR(Uniform[0,.4] per-row), one anchor-MAR, and one own-value MNAR overlay; each overlay masks only currently observed non-anchor entries",
+    "hgb": {"max_iter": 80, "max_leaf_nodes": 15, "learning_rate": 0.08, "l2_regularization": 1.0},
+    "gate_split": "stratified 80/20 internal split of available already-masked training rows, random_state seed+500; gate classifier uses 80%; feature mask permutation importance measured on 20% split under base+MCAR+anchor-MAR+own-value overlays",
+    "gate_rule": "retain non-anchor feature mask j iff each of four internal calibration-regime log-loss permutation increments >0, mean increment >=0.0001, and population coefficient of variation <=1.0; otherwise drop; anchors always have no mask channel",
+    "random_gate": "randomly choose the same number of non-anchor mask channels as stable gate using seed+800"
+  },
+  "validation_seeds": [9401, 9403, 9407],
+  "final_must_not_be_loaded_before_parent_review": true,
+  "source_hashes": {
+    "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "experiment_sha256": "1e0c273110f444c732aeede84d1d2a1bbdfd536500ba74076cac6eb9153a3ca2"
+  },
+  "validation_artifact_sha256": "b47adff202899e1f651f4336ea740773756ab63a99a560e6dd3faa3e413dece8",
+  "novelty_established": false,
+  "human_adjudicated": false
+}

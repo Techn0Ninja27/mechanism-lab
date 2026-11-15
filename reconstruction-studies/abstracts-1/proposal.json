@@ -1,0 +1,98 @@
+{
+  "id": "abstracts-1",
+  "arm": "abstracts",
+  "replicate": 1,
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "train_eligible": false,
+  "status": "complete",
+  "proposal": {
+    "title": "Mask-Invariant Value Pathway: Boosting on Observed Values with Mask-Information Removed via Synthetic-Mask Consistency",
+    "hypothesis": "Under held-out shifts where P(M|X) changes but P(Y|X) is fixed, a classifier whose predictions depend on observed values but not on which features are missing (beyond the reduced information) will retain more mean average precision than native-NaN HGB or random-mask augmentation. It may lose some performance under in-distribution informative MAR.",
+    "mechanism": "Native-NaN HGB routes missing values to a learned branch, which encodes P(Y|M). This encoding transfers across MCAR and MAR shifts but breaks when the mask mechanism changes (2406.16484v1). We propose to cut the path from the mask to the label. A teacher is trained on rows re-masked with known synthetic masks, and its pattern-specific pseudo-targets are averaged over mask draws. A student is then distilled to those targets, so it cannot exploit the mechanism that generated the training mask. Within a missingness pattern, the value-to-label relation is kept. The narrow assumption is that the shift affects only the mask, with P(Y|X) and P(X) fixed. The method fails when the mask itself causally carries label signal (informative-missingness gains are lost) and under MNAR where observed-value distributions shift strongly.",
+    "components": [
+      "2406.16484v1",
+      "2603.17599v1",
+      "2106.00311v2",
+      "arxiv:2507.08280",
+      "P_mask_marginalized_target",
+      "P_pattern_consistency_distill"
+    ],
+    "proposed_primitives": [
+      {
+        "id": "P_mask_marginalized_target",
+        "definition": "For each training row with observed set O, the target is t(x_O) = mean over K synthetic supersets M'\u2287M (anchor-preserving, mixed MCAR and grouped) of teacher p(y | x_{O\\M'}, M' synthetic). The target approximates E[Y|X_O] under mask-independent mechanisms rather than under the training mechanism.",
+        "source_support_ids": [
+          "2603.17599v1",
+          "2406.16484v1"
+        ],
+        "novelty_established": false
+      },
+      {
+        "id": "P_pattern_consistency_distill",
+        "definition": "The student HGB is fit by regression of logit(t) on the masked inputs. The training mask indicator is shuffled within rows of equal missing count, which breaks the mask-to-Y association while preserving the amount of information.",
+        "source_support_ids": [
+          "arxiv:2507.08280",
+          "2106.00311v2"
+        ],
+        "novelty_established": false
+      }
+    ],
+    "relations": [
+      {
+        "source": "P_mask_marginalized_target",
+        "target": "P_pattern_consistency_distill",
+        "type": "supplies_label_signal_independent_of_mask_mechanism",
+        "counterfactual_prediction": "If raw labels are used instead, the student relearns P(Y|M), and the MNAR mAP drop matches native HGB."
+      },
+      {
+        "source": "2406.16484v1",
+        "target": "P_mask_marginalized_target",
+        "type": "justifies_ignorable_shift_invariance",
+        "counterfactual_prediction": "Under MAR validation, there is no gain over HGB."
+      },
+      {
+        "source": "P_pattern_consistency_distill",
+        "target": "2603.17599v1",
+        "type": "targets_mask-free_prediction_target",
+        "counterfactual_prediction": "Without the shuffle, the gap between MNAR and reversed-MNAR performance widens."
+      }
+    ],
+    "assumptions": [
+      "Only the mask mechanism shifts; P(Y|X) and P(X) are invariant.",
+      "Anchors 0 and 1 are observed at train and test.",
+      "No unlabeled target statistics are used. This is declared.",
+      "Synthetic masks are drawn only over already-observed entries, so no hidden clean values are used.",
+      "The training regime is fully defined: the teacher and student are both HGB, with fixed K=8."
+    ],
+    "strongest_prior_art": [
+      "arxiv:2507.08280 MIRRAMS: overlaps on mutual-information invariance to unseen missingness shifts. It is a deep model with MI losses; this proposal is a tree teacher-student with explicit mask marginalization.",
+      "2406.16484v1: the analysis motivates the approach but proposes no learner.",
+      "2106.00311v2 NeuMiss: joint impute-regress, with no mask-shift invariance."
+    ],
+    "algorithm": [
+      "Split 60/20/20 with seeds; take the masked training data X~ and M.",
+      "Draw K=8 anchor-preserving synthetic supermasks per row, applied to observed entries only.",
+      "Fit a teacher HGB on the stacked re-masked rows with labels y.",
+      "Compute t_i = mean_k teacher(x_i under M'_k \u222a M_i), with no access to hidden clean values.",
+      "Shuffle the indicator columns within rows of equal missing count; never pass explicit indicators.",
+      "Fit a student HGB regressor on logit(t_i), using clipped targets.",
+      "Calibrate with isotonic regression on validation MCAR20 only.",
+      "Evaluate on clean, MCAR20, MCAR40, MAR, and the three held-out tests."
+    ],
+    "baseline": "Native-NaN HGB; HGB plus random-mask augmentation (K=8, no distillation); MIRRAMS-lite (MLP with MI losses) as the strongest constituent.",
+    "ablations": [
+      "Teacher only, without distillation.",
+      "Distillation with raw y in place of t.",
+      "Without the indicator shuffle.",
+      "MCAR-only versus grouped synthetic masks.",
+      "K\u2208{1,4,8}.",
+      "Compute-matched augmentation baseline with the same total number of trees."
+    ],
+    "metric": "Mean average precision averaged across the three held-out mechanisms, with 10 seeds and paired bootstrap. Brier score and clean mAP are also reported.",
+    "falsification": "Reject if the held-out mean mAP gain over the better of HGB and augmentation is below 0.01, or the 95% CI includes 0. Also reject if the ablation using raw y matches the full method, which would mean the effect comes from augmentation alone. Also reject if clean mAP drops by more than 0.02.",
+    "feasibility": "About 40k stacked rows for HGB, roughly 60 seconds per seed on a CPU laptop; MIRRAMS-lite takes about 2 minutes.",
+    "decision": "investigate"
+  },
+  "validation_note": "Revalidated saved response: proposed primitive names need not have a specific prefix; known arXiv aliases normalized; grounded edge endpoints included in component list. No semantic content or model calls added."
+}

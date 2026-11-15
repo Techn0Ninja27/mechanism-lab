@@ -1,0 +1,100 @@
+{
+  "id": "atoms-0",
+  "arm": "atoms",
+  "replicate": 0,
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "train_eligible": false,
+  "status": "complete",
+  "proposal": {
+    "title": "Anchor-Calibrated Mask-Channel Gating for HistGradientBoosting under Missingness Shift",
+    "hypothesis": "When the shifted mechanism makes missingness itself carry label information that changes across domains (own-value MNAR, its reversal, grouped blocks), a predictor whose dependence on mask indicators is restricted to what is stable across training-simulated mechanisms will beat native-NaN HGB and random-mask augmentation on held-out mean AP, at no more than 0.01 AP clean loss.",
+    "mechanism": "Native-NaN trees learn split directions for missing values, so P(y|x_obs,M) absorbs training-specific mask-label coupling. Under non-ignorable shift the Bayes predictor changes (atom_42235e794c05a946), and disregarding informative missingness helped most when that missingness was highly informative (atom_a7b4cd2b88c13161). We separate a value pathway from a mask pathway. Missing entries in the value pathway are filled by posterior draws conditioned on the anchors rather than a single plug-in value (atom_dbcde51203d2be87). The mask pathway is scored for cross-mechanism stability, and only features with stable mask effects keep a mask channel at inference.",
+    "components": [
+      "atom_42235e794c05a946",
+      "atom_a7b4cd2b88c13161",
+      "atom_2d8b79ac4827e859",
+      "atom_dbcde51203d2be87",
+      "atom_de53a7a78be5aeec",
+      "atom_4a205114ad9001e1",
+      "stable_mask_gate",
+      "anchor_conditional_multidraw"
+    ],
+    "proposed_primitives": [
+      {
+        "id": "stable_mask_gate",
+        "definition": "For each feature j, compare the change in validation log-loss from permuting mask column j across the four validation mechanisms. Keep the mask channel only if its sign and size are consistent (coefficient of variation below a threshold). Otherwise remove column j's mask channel and route j through the value pathway only.",
+        "source_support_ids": [
+          "atom_a7b4cd2b88c13161",
+          "atom_de53a7a78be5aeec"
+        ],
+        "novelty_established": false
+      },
+      {
+        "id": "anchor_conditional_multidraw",
+        "definition": "K=5 draws of missing values from a Gaussian conditional fit on observed pairs, conditioned on anchors 0 and 1. The fit uses training rows only. Predictions are averaged over the draws.",
+        "source_support_ids": [
+          "atom_dbcde51203d2be87",
+          "atom_3cca467611d75e87"
+        ],
+        "novelty_established": false
+      }
+    ],
+    "relations": [
+      {
+        "source": "stable_mask_gate",
+        "target": "atom_42235e794c05a946",
+        "type": "blocks_shift_sensitive_path",
+        "counterfactual_prediction": "Without the gate, held-out MNAR AP drops toward the native-NaN baseline."
+      },
+      {
+        "source": "anchor_conditional_multidraw",
+        "target": "atom_dbcde51203d2be87",
+        "type": "reduces_overconfidence",
+        "counterfactual_prediction": "Using a single conditional mean worsens Brier score but leaves AP roughly unchanged."
+      },
+      {
+        "source": "atom_4a205114ad9001e1",
+        "target": "stable_mask_gate",
+        "type": "supplies_mechanism_diversity",
+        "counterfactual_prediction": "Without augmentation, the gate estimates are noisy and select near-random features."
+      }
+    ],
+    "assumptions": [
+      "The label-relevant structure of the clean values is the same in train and target; only missingness shifts.",
+      "The anchors are always observed and predict the informative features well.",
+      "Mask effects that are stable across MCAR20, MCAR40 and anchor-MAR proxy those that would be stable under the held-out mechanisms. This is unverifiable in general.",
+      "No target-batch statistics are used. If an optional variant is run, it uses only target mask rates."
+    ],
+    "strongest_prior_art": [
+      "arxiv:2507.08280 (MIRRAMS): same goal of robustness to unseen missingness shift via label-relevant information. It uses mutual-information conditions rather than explicit per-feature mask gating with trees.",
+      "2406.16484v1: shows that dropping mask information helps under informative shift. It drops all mask information; we select features.",
+      "2106.00311v2: impute-then-regress is Bayes optimal within a fixed mechanism, but this does not address shift."
+    ],
+    "algorithm": [
+      "1. Split 60/20/20 with a fixed seed. Fit the anchor-conditional Gaussian on observed training pairs only.",
+      "2. Augment training data: add MCAR at 0-40% plus anchor-MAR masks on top of the observed masks. New masks are applied only to entries already observed.",
+      "3. Build a value view from K multidraw fills and a mask view from indicator columns.",
+      "4. Fit HGB on value view plus mask view, without scaling (trees ignore scaling, so there is no weight/scaler cancellation).",
+      "5. Score each mask channel by permutation on the four validation mechanisms and apply stable_mask_gate.",
+      "6. Refit with the ungated mask channels dropped. Tune hyperparameters on validation only.",
+      "7. At test time, predict as the average over K draws using observed values and masks only.",
+      "8. Report mean AP, Brier score and clean AP on the held-out mechanisms."
+    ],
+    "baseline": "Native-NaN HistGradientBoosting; the same model plus random-mask augmentation; MIRRAMS-style MI-regularized MLP as the strongest constituent method.",
+    "ablations": [
+      "Keep all mask channels (no gate).",
+      "Drop all mask channels.",
+      "Gate with a random feature subset of the same size.",
+      "Single conditional-mean fill (K=1).",
+      "Unconditional mean fill instead of anchor-conditional fill.",
+      "No augmentation.",
+      "Matched tree budget and seeds (10 seeds) across all arms."
+    ],
+    "metric": "Primary: mean AP averaged over the three held-out mechanisms. Secondary: Brier score and clean-test AP.",
+    "falsification": "Reject the hypothesis if the full method's held-out mean AP is not at least 0.01 above the better of the two HGB baselines in paired seeds (95% CI excludes 0). Also reject if the random-subset gate matches the stable gate, or if clean AP drops by more than 0.01. Expected failure case: grouped structural missingness of features that the anchors do not predict, or MNAR where the reversal flips a mask effect that looked stable in validation.",
+    "feasibility": "With 5000\u00d720 data, K=5 and HGB, the expected cost is under 1 minute per seed on a CPU. No held-out labels are used for development.",
+    "decision": "investigate"
+  },
+  "validation_note": "Revalidated saved response: proposed primitive names need not have a specific prefix; known arXiv aliases normalized; grounded edge endpoints included in component list. No semantic content or model calls added."
+}

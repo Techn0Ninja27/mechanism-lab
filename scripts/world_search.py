@@ -42,6 +42,9 @@ class Client:
  def call(self,case,stage,prompt):
   folder=self.out/'calls';folder.mkdir(exist_ok=True);path=folder/f'{case["id"]}-{stage}.json'
   req={'model':self.config['model'],'messages':[{'role':'user','content':prompt}],'temperature':.7,'max_tokens':self.config['max_tokens_per_stage'][stage],'reasoning':{'enabled':False},'provider':{'allow_fallbacks':False}}
+  if 'reasoning' in self.config:req['reasoning']=self.config['reasoning']
+  if self.config.get('temperature', .7) is None:req.pop('temperature', None)
+  else:req['temperature']=self.config.get('temperature', .7)
   request_hash=digest(req)
   with self.lock:
    if path.exists():

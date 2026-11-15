@@ -1,0 +1,49 @@
+{
+  "candidate_id": "abstracts-0",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "mean_candidate": 0.905723,
+  "mean_strongest_control": 0.906738,
+  "strongest_control": "completed_aug_unweighted",
+  "paired_deltas": {
+    "admib_minus_completed_aug_unweighted_by_seed": {
+      "9401": -0.00263945,
+      "9403": -0.00179047,
+      "9407": 0.00138385
+    },
+    "mean_admib_minus_completed_aug_unweighted": -0.0010153543798608888,
+    "admib_minus_mean_completed_aug_by_seed": {
+      "9401": 0.0509189,
+      "9403": 0.0187812,
+      "9407": 0.06528084
+    },
+    "mean_admib_minus_mean_completed_aug": 0.04499364812272214,
+    "admib_minus_completed_unaugmented_by_seed": {
+      "9401": -0.0016736,
+      "9403": -0.00504406,
+      "9407": 0.02375759
+    },
+    "mean_admib_minus_completed_unaugmented": 0.005679978779876101
+  },
+  "mean_brier_candidate": 0.053458,
+  "mean_brier_strongest_control": 0.053532,
+  "mean_clean_ap_candidate": 0.917563,
+  "mean_clean_ap_strongest_control": 0.917541,
+  "source_hash": {
+    "experiment.py": "02771cb14bd201b569ff9baa4917dc42afd95f79bbb6af03b5f8294d1db4d0ec",
+    "missingness_shift_fixture.py": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "validation.json": "a28654089bc4d533ad33d0e2c6c1eee74daa91ddf155bedd15c1e49bec25c7bb",
+    "results.json": "dad11441b432a10510df6597e7591efd211cf144c71b1b658cf02838cbac3175"
+  },
+  "prior_art_status": "Substantial close prior art found: MIRRAMS (arXiv:2507.08280) directly targets unseen missingness shifts; NeuMiss and impute-then-regress (arXiv:2106.00311); mechanism-dependent robustness analysis (arXiv:2406.16484). This is not an exhaustive novelty review.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "The practical validation screen failed: candidate mean AP was 0.00448 below the strongest matched validation control, though clean AP stayed within the allowed decrease.",
+    "On final data, candidate was 0.00102 AP below completed-plus-augmentation without weights, below the preregistered 0.005 utility threshold. Positive comparison against mean imputation is a weak-control result.",
+    "ADMIB exceeded the unaugmented completion arm by 0.00568 AP on final conditions, but this does not override the failed validation screen and matched augmented control result.",
+    "Only three synthetic fixture seeds were used; external data and deployment behavior are untested.",
+    "The four-class propensity weighting is a finite implementation of the proposal, but cannot guarantee conditional independence of masks and labels after lossy imputation.",
+    "NeuMiss was cited but not implemented as a control; no claim is made to outperform it."
+  ]
+}

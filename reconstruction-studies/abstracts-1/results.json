@@ -1,0 +1,1161 @@
+{
+  "candidate_id": "abstracts-1",
+  "configuration": {
+    "K": 8,
+    "anchor_columns": [
+      0,
+      1
+    ],
+    "base_hgb": {
+      "early_stopping": false,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.1,
+      "max_iter": 100,
+      "max_leaf_nodes": 15
+    },
+    "calibration": "none (avoids validation-label reuse)",
+    "synthetic_mcar_probability": 0.2,
+    "teacher_views": [
+      "mcar",
+      "group"
+    ],
+    "validation_seeds": [
+      9401,
+      9403,
+      9407
+    ]
+  },
+  "mode": "final",
+  "results": [
+    {
+      "augmentation": {
+        "mcar_only_teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": null,
+          "x_hash": "5b133d22ab2b0cfd1f306c14117a6be99de1ca91348783d69f5e1f24697b86c7",
+          "y_hash": "878870d33059389c8292d8c1ca0e14773782bd54d68c2b8fd6011fef5bec3bf4"
+        },
+        "teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": 0.23659950000001118,
+          "x_hash": "c4963f1399d59cc193a350038c6ff7159258300d686d1fc315de19367bac8afb",
+          "y_hash": "878870d33059389c8292d8c1ca0e14773782bd54d68c2b8fd6011fef5bec3bf4"
+        }
+      },
+      "errors": [],
+      "mcar_view_hashes": [
+        "f611f13b58b3e0b042208f9ff13ded00c4e41cc3c7cd3e9c7490505fa979bffe",
+        "96d5e25656ca0d82870be7a0a8e7b392da994c473a59a58bd5ba402159bb932a",
+        "e41aecba88ad4ee481c456ddf87094a91edc91bf6698b4e29b19867e2fa486c5",
+        "edf15cd818887135b8adcf34c3f9c2d376c80e5e2268854bc97489eb85ccd3ee",
+        "e3ce39ce3c4904b106003e620607c6e86f62805b4b56483f46aa1220e76a23b0",
+        "aa7e57033a35d86a0b468be2d9d59e38f18b126bcc4a11b2d4cf93d9a88ecb2f",
+        "f81d42409d44f5b80bb15393fa1fcc5ef6762156fd671f0e521ead5f86fb374c",
+        "7d8a3cf0145c568d2c889f324df5731f8f6ae56dde98a3d5f0068e13ab780c67"
+      ],
+      "metadata": {
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "final_case_hashes": {
+          "block_mcar_2_8": "4ee6186b3a18943643482733b7dff73ce6c0ae47de72b72239df46d384344ef7",
+          "block_mcar_8_14": "1265139b0525155a7cf5cb8ec0f57c3eb3dba9d45d611f8b1990b9ac15eb8356",
+          "clean": "26d47cc805a65b5095349faa948afcc754902e81a29a836d69e7cedad28fd1c0",
+          "mcar_0.2": "412f78a45e0eca31156c0a36d68643ad79bfd36c046f07a321b8144462d0cfef",
+          "mnar_own_feature": "9b960fd6fb8e33170143781c0a9979135731efa8f6472cbbe8d268999069ed25",
+          "mnar_reversed_sign": "e0b531b616675fd5944f4a73dbba36ad33e585f7de08176861fbb7ab62d03491"
+        },
+        "final_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mnar_own_feature",
+          "mnar_reversed_sign",
+          "block_mcar_2_8",
+          "block_mcar_8_14"
+        ],
+        "fixture_hashes": {
+          "test_clean": "26d47cc805a65b5095349faa948afcc754902e81a29a836d69e7cedad28fd1c0",
+          "train_clean": "8fc8107cdb0699a1cb45531c22288c287b76a1ca8d9f282de0a569252dd79e22",
+          "train_masked": "974180a7a79b702a585922fa730e945394c86aa489b52da503d9c3248a6c2e3e",
+          "validation_clean": "151c1e394d1fabb160c286c519a26d0832b6945f12bf9be17eed8125690f6025"
+        },
+        "informative": 5,
+        "mode": "final",
+        "n_features": 20,
+        "n_samples": 5000,
+        "redundant": 5,
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim.",
+        "seed": 9401,
+        "shuffle": false,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "statistics_used_for_mask_generation_only": true,
+        "test_available": true,
+        "test_label_policy": "final mode only; never use for model selection",
+        "train_missingness": {
+          "columns": "2:",
+          "kind": "MCAR",
+          "probability": 0.2
+        },
+        "train_only_statistics": true,
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "weights": [
+          0.8,
+          0.2
+        ]
+      },
+      "methods": {
+        "ablation_indicator_shuffle_noop": {
+          "block_mcar_2_8": {
+            "ap": 0.7396129802812744,
+            "brier": 0.09591860866887056
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8372247280196043,
+            "brier": 0.07745442566471411
+          },
+          "clean": {
+            "ap": 0.8550872911721622,
+            "brier": 0.07107337145378485
+          },
+          "mcar_0.2": {
+            "ap": 0.8014362108761529,
+            "brier": 0.08441110028408849
+          },
+          "mnar_own_feature": {
+            "ap": 0.7830193896109269,
+            "brier": 0.0873803643933426
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7993730670225059,
+            "brier": 0.08598938665930415
+          }
+        },
+        "ablation_mcar_only": {
+          "block_mcar_2_8": {
+            "ap": 0.7434985268480071,
+            "brier": 0.0967443837695707
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8399113160011621,
+            "brier": 0.07511364590046977
+          },
+          "clean": {
+            "ap": 0.8529331442836249,
+            "brier": 0.070835105343036
+          },
+          "mcar_0.2": {
+            "ap": 0.798291191032194,
+            "brier": 0.08424817810468686
+          },
+          "mnar_own_feature": {
+            "ap": 0.7856140250951476,
+            "brier": 0.08600108722949297
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8041256996071249,
+            "brier": 0.08417994545478806
+          }
+        },
+        "ablation_mixed_k1": {
+          "block_mcar_2_8": {
+            "ap": 0.7083244224903998,
+            "brier": 0.10385876427812396
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8245224049427554,
+            "brier": 0.08148895871605223
+          },
+          "clean": {
+            "ap": 0.8392040807948976,
+            "brier": 0.07516706797718314
+          },
+          "mcar_0.2": {
+            "ap": 0.7872081836098502,
+            "brier": 0.08791059833173946
+          },
+          "mnar_own_feature": {
+            "ap": 0.7673611379868773,
+            "brier": 0.09055546371154775
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7898977447670315,
+            "brier": 0.08727269880019883
+          }
+        },
+        "ablation_mixed_k4": {
+          "block_mcar_2_8": {
+            "ap": 0.728222758049648,
+            "brier": 0.09869066122026846
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8316840084906068,
+            "brier": 0.07850718917730759
+          },
+          "clean": {
+            "ap": 0.8497622198787101,
+            "brier": 0.07265548353670806
+          },
+          "mcar_0.2": {
+            "ap": 0.7911285002044763,
+            "brier": 0.08623098453935268
+          },
+          "mnar_own_feature": {
+            "ap": 0.7820487750460086,
+            "brier": 0.08753055794402678
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7893470693101359,
+            "brier": 0.08737033825451042
+          }
+        },
+        "ablation_raw_y_distillation": {
+          "block_mcar_2_8": {
+            "ap": 0.753466649412246,
+            "brier": 0.11252055211881924
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8536144065481431,
+            "brier": 0.0897827998770637
+          },
+          "clean": {
+            "ap": 0.8780342224610512,
+            "brier": 0.07961296622773872
+          },
+          "mcar_0.2": {
+            "ap": 0.813100957309212,
+            "brier": 0.09560460368442932
+          },
+          "mnar_own_feature": {
+            "ap": 0.7909072024337404,
+            "brier": 0.09998299344972855
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8176140717342619,
+            "brier": 0.09573131459251823
+          }
+        },
+        "candidate_mixed_k8": {
+          "block_mcar_2_8": {
+            "ap": 0.7396129802812744,
+            "brier": 0.09591860866887056
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8372247280196043,
+            "brier": 0.07745442566471411
+          },
+          "clean": {
+            "ap": 0.8550872911721622,
+            "brier": 0.07107337145378485
+          },
+          "mcar_0.2": {
+            "ap": 0.8014362108761529,
+            "brier": 0.08441110028408849
+          },
+          "mnar_own_feature": {
+            "ap": 0.7830193896109269,
+            "brier": 0.0873803643933426
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7993730670225059,
+            "brier": 0.08598938665930415
+          }
+        },
+        "median_imputed_hgb_no_indicator": {
+          "block_mcar_2_8": {
+            "ap": 0.7607227275661353,
+            "brier": 0.09568601956499019
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8793703274806965,
+            "brier": 0.06465616951282499
+          },
+          "clean": {
+            "ap": 0.897797121173233,
+            "brier": 0.05626968397261864
+          },
+          "mcar_0.2": {
+            "ap": 0.8421416473176021,
+            "brier": 0.0722136192281302
+          },
+          "mnar_own_feature": {
+            "ap": 0.8210679560933487,
+            "brier": 0.07909952470305033
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8313837165289565,
+            "brier": 0.07514503945767274
+          }
+        },
+        "native_hgb": {
+          "block_mcar_2_8": {
+            "ap": 0.7523942140448321,
+            "brier": 0.09323812015989028
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8884906707333349,
+            "brier": 0.06339153337847087
+          },
+          "clean": {
+            "ap": 0.903783630521635,
+            "brier": 0.056691895857920886
+          },
+          "mcar_0.2": {
+            "ap": 0.8469319491052324,
+            "brier": 0.07107688901295592
+          },
+          "mnar_own_feature": {
+            "ap": 0.8363061597584642,
+            "brier": 0.07342149033861002
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8436746583727069,
+            "brier": 0.07246513648219832
+          }
+        },
+        "random_mask_augmentation_hgb": {
+          "block_mcar_2_8": {
+            "ap": 0.7522676643665953,
+            "brier": 0.09412283253623997
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8799939016957177,
+            "brier": 0.06629291517681261
+          },
+          "clean": {
+            "ap": 0.8859383284312174,
+            "brier": 0.061732839730869606
+          },
+          "mcar_0.2": {
+            "ap": 0.8493614065500348,
+            "brier": 0.07198827475495322
+          },
+          "mnar_own_feature": {
+            "ap": 0.8327480084224744,
+            "brier": 0.07526115077958723
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8473385847262364,
+            "brier": 0.07220657751074415
+          }
+        },
+        "random_mask_augmentation_hgb_200_trees": {
+          "block_mcar_2_8": {
+            "ap": 0.7540654868491188,
+            "brier": 0.09573216060529254
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8893531428065974,
+            "brier": 0.06637727261949061
+          },
+          "clean": {
+            "ap": 0.8940731552203689,
+            "brier": 0.0627817836653547
+          },
+          "mcar_0.2": {
+            "ap": 0.858386891468821,
+            "brier": 0.07104711824881511
+          },
+          "mnar_own_feature": {
+            "ap": 0.8449952157702738,
+            "brier": 0.07352040162702446
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8576058617214665,
+            "brier": 0.0701630419779009
+          }
+        }
+      },
+      "mode": "final",
+      "runtimes_seconds": {
+        "ablation_indicator_shuffle_noop": 0.18684641599975294,
+        "ablation_mcar_only": 0.18547583400140866,
+        "ablation_mixed_k1": 0.10709737499928451,
+        "ablation_mixed_k4": 0.13661237500127754,
+        "ablation_raw_y_distillation": 0.0903119169997808,
+        "candidate_mixed_k8": 0.17681633299798705,
+        "mcar_only_teacher_fit": null,
+        "median_imputed_hgb_no_indicator": 0.08453520799957914,
+        "native_hgb": 0.10493637499894248,
+        "random_mask_augmentation_hgb": 0.019065749998844694,
+        "random_mask_augmentation_hgb_200_trees": 0.47077029200227116,
+        "teacher_fit": 0.23659950000001118
+      },
+      "seed": 9401,
+      "total_runtime_seconds": 2.089498541998182,
+      "train_mask_pattern_sha256": "4a7b319b80c34656e99ef2d160516f3307be115f658305b5077ed413d273fc3c",
+      "train_x_sha256": "974180a7a79b702a585922fa730e945394c86aa489b52da503d9c3248a6c2e3e",
+      "train_y_sha256": "025a0a2c5c42e6f4afd86ed06cc1b937780e08635bf765de812a620cdaab2b5a",
+      "view_hashes": [
+        "f611f13b58b3e0b042208f9ff13ded00c4e41cc3c7cd3e9c7490505fa979bffe",
+        "407460c5877f172ef49cf5c9d4eef6785ceb94f2b07154e44fb375fe174823de",
+        "b5c40a984b4e4ff4933760f521c09a1d627d625e3c5cff9feb30e47105ef29e2",
+        "ad318a095a9e49d0f5439afc999c9801862f324f30b23f76e098812e533c4101",
+        "95b2cfc6d011e61d8a220926f2d186e6c99fb290643b3510ead7920673944979",
+        "beb737a162fb74fe104da1d13fa56bd391a8d03bfe823ea1847c99b5b3cffd12",
+        "a927c6aadf0e1545779db4c047da1d3b47b775155d30bbe5dccac31cad94cae0",
+        "0e092cfeeaeff0ae4fc7ba5a818f30fd631be899e14939cb58fd1de5cc8bc5b6"
+      ]
+    },
+    {
+      "augmentation": {
+        "mcar_only_teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": null,
+          "x_hash": "3a87ec6dc6143942f4fc031369ba5df95db1da2ac937047b84057db06780c38a",
+          "y_hash": "4d7c7870e0c2ea619834bde65f0091a39d24eb24699d991e6a9387d57fb31e4b"
+        },
+        "teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": 0.24033595799846807,
+          "x_hash": "8abba68cb1aee90ec54baf23035b0115818c2226998fce791980c6672c47cd17",
+          "y_hash": "4d7c7870e0c2ea619834bde65f0091a39d24eb24699d991e6a9387d57fb31e4b"
+        }
+      },
+      "errors": [],
+      "mcar_view_hashes": [
+        "86e7415ae59a1ba73b940885760b3fd6d8314f91173f26f5ecc87fd064cf7cc4",
+        "e1f4cff8fd25523af88dbfa37e393b3c8dd9494d046025ebf34dfd3d7f7d7b09",
+        "384b98c28da3d595fd5f3e83dba087f58ffa9600e9cf2fdeaca174966307472f",
+        "cfead9c8f9306a399e9bd3fae41e29a0ae2d37958b325bd1a02641490e52a381",
+        "78acab130ce1ec38ba4e43b65f8445bde10ba630f72c09fce3201a03df81d0a2",
+        "b6ebde3d097205231f2ac6a3737b9aabba7db8f642ee039a0634ff7a8ea60bd6",
+        "3b67dbc2c083dd06b59d733e4a13c6b2c794892759c89e3aa4d4eb842852f96f",
+        "1bc9e250ee1e5a718d0e4ad168d00f8aade93cd28a263cfd0c9ea8e65a5f2e83"
+      ],
+      "metadata": {
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "final_case_hashes": {
+          "block_mcar_2_8": "8f0fe705001f73cc51a5b8f86d5351dd668cde83fe7f66e2eb2cf05f0e33f2f4",
+          "block_mcar_8_14": "e7da572a16083a960043b8433d0d7e0cdf5502d4ee951ea21abb6a56ee9169ae",
+          "clean": "013e8e58c3eaadc4bd44aa360885a4ea68590ca92909c62da159708bcadfe1b9",
+          "mcar_0.2": "06e4df0132eb57458c761006cda3309d4b08b6438bc9ab1eafdc78238c3a84f7",
+          "mnar_own_feature": "5c79e240a7ae575ba2328f469f9c16cc486f55eba391d1f4d6318de6745e39b5",
+          "mnar_reversed_sign": "5d2deeb5d3489bbeaf0cd20a4ca71c634448aa75120b2134c3a2b9cc29776b94"
+        },
+        "final_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mnar_own_feature",
+          "mnar_reversed_sign",
+          "block_mcar_2_8",
+          "block_mcar_8_14"
+        ],
+        "fixture_hashes": {
+          "test_clean": "013e8e58c3eaadc4bd44aa360885a4ea68590ca92909c62da159708bcadfe1b9",
+          "train_clean": "3a90f2a3fba33ac10f5353227af55ef3ea0a441ed3dacad8df6c4d915be6f40f",
+          "train_masked": "a3408ff195dcdac9e650e684590bb2011a1bf339bbaa5b447abb14f4ed1e67ba",
+          "validation_clean": "bd16a6632a3170d3a8590e569d9ffecd7be332f705d5b3c81f6ce0daa44fe7b5"
+        },
+        "informative": 5,
+        "mode": "final",
+        "n_features": 20,
+        "n_samples": 5000,
+        "redundant": 5,
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim.",
+        "seed": 9403,
+        "shuffle": false,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "statistics_used_for_mask_generation_only": true,
+        "test_available": true,
+        "test_label_policy": "final mode only; never use for model selection",
+        "train_missingness": {
+          "columns": "2:",
+          "kind": "MCAR",
+          "probability": 0.2
+        },
+        "train_only_statistics": true,
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "weights": [
+          0.8,
+          0.2
+        ]
+      },
+      "methods": {
+        "ablation_indicator_shuffle_noop": {
+          "block_mcar_2_8": {
+            "ap": 0.7932051374103071,
+            "brier": 0.08607447157863664
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9152228390527184,
+            "brier": 0.053732058578945856
+          },
+          "clean": {
+            "ap": 0.9217234934381398,
+            "brier": 0.049981403489069605
+          },
+          "mcar_0.2": {
+            "ap": 0.895191687675873,
+            "brier": 0.059889943563804296
+          },
+          "mnar_own_feature": {
+            "ap": 0.8406785461503385,
+            "brier": 0.07445366340149781
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8795165588189208,
+            "brier": 0.06520011848408219
+          }
+        },
+        "ablation_mcar_only": {
+          "block_mcar_2_8": {
+            "ap": 0.8028477476822746,
+            "brier": 0.0849200991542963
+          },
+          "block_mcar_8_14": {
+            "ap": 0.914055691554432,
+            "brier": 0.05494612014128548
+          },
+          "clean": {
+            "ap": 0.9230878042102408,
+            "brier": 0.04993230765049652
+          },
+          "mcar_0.2": {
+            "ap": 0.8953080115324547,
+            "brier": 0.06029739410917025
+          },
+          "mnar_own_feature": {
+            "ap": 0.8536916523208966,
+            "brier": 0.07214612777111577
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8860081305093572,
+            "brier": 0.06427538211019912
+          }
+        },
+        "ablation_mixed_k1": {
+          "block_mcar_2_8": {
+            "ap": 0.7983211003140817,
+            "brier": 0.08655185615875799
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9134166338132453,
+            "brier": 0.05466789175064059
+          },
+          "clean": {
+            "ap": 0.9198763362202261,
+            "brier": 0.05109859137683079
+          },
+          "mcar_0.2": {
+            "ap": 0.8918468618469007,
+            "brier": 0.05982986612696249
+          },
+          "mnar_own_feature": {
+            "ap": 0.8411341932510701,
+            "brier": 0.07460408288020079
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8769094331756558,
+            "brier": 0.06538270142513077
+          }
+        },
+        "ablation_mixed_k4": {
+          "block_mcar_2_8": {
+            "ap": 0.7822930376682106,
+            "brier": 0.08849505122934981
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9115999797178432,
+            "brier": 0.055752759511097226
+          },
+          "clean": {
+            "ap": 0.9193594478178312,
+            "brier": 0.052575616091542
+          },
+          "mcar_0.2": {
+            "ap": 0.8919389934720541,
+            "brier": 0.06184310463883587
+          },
+          "mnar_own_feature": {
+            "ap": 0.8449960557791368,
+            "brier": 0.07488086148277867
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8831621758567229,
+            "brier": 0.06564959451013495
+          }
+        },
+        "ablation_raw_y_distillation": {
+          "block_mcar_2_8": {
+            "ap": 0.81022386200846,
+            "brier": 0.09364663220275404
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9332028161901474,
+            "brier": 0.05190022971479954
+          },
+          "clean": {
+            "ap": 0.9407903562904417,
+            "brier": 0.0455928672547128
+          },
+          "mcar_0.2": {
+            "ap": 0.9077639520159954,
+            "brier": 0.0642544978414879
+          },
+          "mnar_own_feature": {
+            "ap": 0.8629550527863621,
+            "brier": 0.08161772633426997
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8895960435606062,
+            "brier": 0.07141789811566236
+          }
+        },
+        "candidate_mixed_k8": {
+          "block_mcar_2_8": {
+            "ap": 0.7932051374103071,
+            "brier": 0.08607447157863664
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9152228390527184,
+            "brier": 0.053732058578945856
+          },
+          "clean": {
+            "ap": 0.9217234934381398,
+            "brier": 0.049981403489069605
+          },
+          "mcar_0.2": {
+            "ap": 0.895191687675873,
+            "brier": 0.059889943563804296
+          },
+          "mnar_own_feature": {
+            "ap": 0.8406785461503385,
+            "brier": 0.07445366340149781
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8795165588189208,
+            "brier": 0.06520011848408219
+          }
+        },
+        "median_imputed_hgb_no_indicator": {
+          "block_mcar_2_8": {
+            "ap": 0.8231178294564899,
+            "brier": 0.07790329738122256
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9336277824634774,
+            "brier": 0.044114527946459946
+          },
+          "clean": {
+            "ap": 0.9444749463996539,
+            "brier": 0.0396114471053358
+          },
+          "mcar_0.2": {
+            "ap": 0.9106559272237588,
+            "brier": 0.05156231199523749
+          },
+          "mnar_own_feature": {
+            "ap": 0.8792295648705426,
+            "brier": 0.06221876018287118
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8966711592629832,
+            "brier": 0.05538115796349674
+          }
+        },
+        "native_hgb": {
+          "block_mcar_2_8": {
+            "ap": 0.8279322063836272,
+            "brier": 0.07617961799625408
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9414232846696008,
+            "brier": 0.04203802053496637
+          },
+          "clean": {
+            "ap": 0.9473544164197146,
+            "brier": 0.03807656114973523
+          },
+          "mcar_0.2": {
+            "ap": 0.919834204958002,
+            "brier": 0.048809676780942585
+          },
+          "mnar_own_feature": {
+            "ap": 0.8746516261688553,
+            "brier": 0.06370690719415821
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.9019755739708627,
+            "brier": 0.0560496502832681
+          }
+        },
+        "random_mask_augmentation_hgb": {
+          "block_mcar_2_8": {
+            "ap": 0.8456851132307215,
+            "brier": 0.07176052004124847
+          },
+          "block_mcar_8_14": {
+            "ap": 0.9405656308888755,
+            "brier": 0.04050103963801929
+          },
+          "clean": {
+            "ap": 0.9402086756275956,
+            "brier": 0.03879578057896625
+          },
+          "mcar_0.2": {
+            "ap": 0.9223984525642883,
+            "brier": 0.04658712456662749
+          },
+          "mnar_own_feature": {
+            "ap": 0.9000263474641128,
+            "brier": 0.05561159039906632
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.9155076474410919,
+            "brier": 0.051878007983895004
+          }
+        },
+        "random_mask_augmentation_hgb_200_trees": {
+          "block_mcar_2_8": {
+            "ap": 0.8550862801738767,
+            "brier": 0.06789054657421732
+          },
+          "block_mcar_8_14": {
+            "ap": 0.94357831739561,
+            "brier": 0.037668459786202264
+          },
+          "clean": {
+            "ap": 0.9439707306134939,
+            "brier": 0.03736785658448781
+          },
+          "mcar_0.2": {
+            "ap": 0.9265969899598779,
+            "brier": 0.0427470937366453
+          },
+          "mnar_own_feature": {
+            "ap": 0.9088587651991223,
+            "brier": 0.051437562115650565
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.9206722091825914,
+            "brier": 0.04838666353557599
+          }
+        }
+      },
+      "mode": "final",
+      "runtimes_seconds": {
+        "ablation_indicator_shuffle_noop": 0.18423595799686154,
+        "ablation_mcar_only": 0.18883862499933457,
+        "ablation_mixed_k1": 0.11412241599828121,
+        "ablation_mixed_k4": 0.14133600000059232,
+        "ablation_raw_y_distillation": 0.10114583299946389,
+        "candidate_mixed_k8": 0.17991574999905424,
+        "mcar_only_teacher_fit": null,
+        "median_imputed_hgb_no_indicator": 0.08840187499663443,
+        "native_hgb": 0.1037108749987965,
+        "random_mask_augmentation_hgb": 0.018854707999707898,
+        "random_mask_augmentation_hgb_200_trees": 0.4857526659980067,
+        "teacher_fit": 0.24033595799846807
+      },
+      "seed": 9403,
+      "total_runtime_seconds": 2.1379883749978035,
+      "train_mask_pattern_sha256": "9437b7dfeeb7262c89caed6151fb203b2118336d1a2f9f5d78c80bd621b447e0",
+      "train_x_sha256": "a3408ff195dcdac9e650e684590bb2011a1bf339bbaa5b447abb14f4ed1e67ba",
+      "train_y_sha256": "06de6e39d062a0fd81d0ceb2c9c04144995c5f3cf76875725bad4554d5fa1255",
+      "view_hashes": [
+        "86e7415ae59a1ba73b940885760b3fd6d8314f91173f26f5ecc87fd064cf7cc4",
+        "85dbf4706b92cdb7f2f34a90b7a5f4d277de0cc41641ed944b9a4f3990476102",
+        "5cf979e48aee5612487df3e25e38a17e9a7a833905cfabe43e9d40133f65b1a7",
+        "a147eccc76f43e55e7e39b6712f7ae6f752634af61ca0c8f08b3cfef863f0d0f",
+        "feb358c1e6e2b1f9ece5f4256fe4ba1b927b4bf8e9f02dd1d20e5f8d01715537",
+        "c0e2ef24c89c0060c7e0344ed4cb49ddd51286cdb8def7b8ca212fbe7d22e984",
+        "9d48be47008cb3f813faab4fc7ce3c9017c3e908f392bb973341e98cafb5633d",
+        "4f9481ce9e385480216313d4541476eb4f7c1bf3b43bc667a666dae1f210e53c"
+      ]
+    },
+    {
+      "augmentation": {
+        "mcar_only_teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": null,
+          "x_hash": "fef2fb6c79a4bdf9b0e7052f15864c43d9980e6f30b431fe1d21797ec20647af",
+          "y_hash": "bfb45a58444bdb89dd1aad28f0264486b299d6e7423658fa5f37c62777019a14"
+        },
+        "teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": 0.2513910419984313,
+          "x_hash": "a9530bc196dce5e1d6c46d64db00357ed324cb7380c6bb3a4fdc6a8750f48d23",
+          "y_hash": "bfb45a58444bdb89dd1aad28f0264486b299d6e7423658fa5f37c62777019a14"
+        }
+      },
+      "errors": [],
+      "mcar_view_hashes": [
+        "32da42b13ed9e715991977b47c70471c4291bb88681c6f951af3c6dd7b6addb5",
+        "6eb4f78ba3939fb8c2ef7196ac64ededb27290eda0c450b7499f7032f7c1ef01",
+        "eff818c4f4e932620b0fdecacf616a3abfaf0bea7ee3dfc498cbba2147ed9192",
+        "6218a9470003d49c0add2b29954c193ce7d652c61912ca1ca87b04a6a5519249",
+        "7e0e4981eb8cb8ed7dfe565c4f167772d175de46a7ac07f916c92ed9f1f05d9a",
+        "d14a4c1ef05aaf24cd019b97f928cd9a01bccba1ac58bba697ceb06db6dfdcd7",
+        "486c00bbae77661fe288aaa72e5f15299f38296bcf1b12c0d40930e23a3bddf7",
+        "dc4fac86ec21d5941ca7d4786479638ea81f5b31a42b50ac263bf9620b204253"
+      ],
+      "metadata": {
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "final_case_hashes": {
+          "block_mcar_2_8": "ee419c5bd27fcb8eb98bfbe1a5fd3e4085d2f2a5c4dea29d941cfbf1d657a7f5",
+          "block_mcar_8_14": "ef287dc46d7d0c71ae212d918bed043502f372a18bf9f0482dad6e11b5018825",
+          "clean": "1f6c453c2060141f91a9dee87636f4a1c076cdf38f4ebc95d24d33ab7278d8b9",
+          "mcar_0.2": "d6d554aca5da1128d9d04b5f331e8ddee9cfa058bc65709d3162f923859d129c",
+          "mnar_own_feature": "dad0b89d6797d922969a6816af59a8b3d45cd96139c2e94fbbe4bbe1c00d3cc6",
+          "mnar_reversed_sign": "6c45d06bb61606c9465deda78890a3a56a9ae16e9e2709c589327decb82473c9"
+        },
+        "final_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mnar_own_feature",
+          "mnar_reversed_sign",
+          "block_mcar_2_8",
+          "block_mcar_8_14"
+        ],
+        "fixture_hashes": {
+          "test_clean": "1f6c453c2060141f91a9dee87636f4a1c076cdf38f4ebc95d24d33ab7278d8b9",
+          "train_clean": "2c8bc3898f30a905771800259c6530a6bae374c232eb355bfa8f39b6c6aa1621",
+          "train_masked": "79ba5068808c7e99838d7937550211f3beb917d69a9704659e1bddbdca9ad9ba",
+          "validation_clean": "84aff6389fe7f75b43824c63f3deebb9381a9c308494c52c15d9bc764c02a824"
+        },
+        "informative": 5,
+        "mode": "final",
+        "n_features": 20,
+        "n_samples": 5000,
+        "redundant": 5,
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim.",
+        "seed": 9407,
+        "shuffle": false,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "statistics_used_for_mask_generation_only": true,
+        "test_available": true,
+        "test_label_policy": "final mode only; never use for model selection",
+        "train_missingness": {
+          "columns": "2:",
+          "kind": "MCAR",
+          "probability": 0.2
+        },
+        "train_only_statistics": true,
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "weights": [
+          0.8,
+          0.2
+        ]
+      },
+      "methods": {
+        "ablation_indicator_shuffle_noop": {
+          "block_mcar_2_8": {
+            "ap": 0.713230847266146,
+            "brier": 0.10047773612035467
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8622606089062694,
+            "brier": 0.06909318319685824
+          },
+          "clean": {
+            "ap": 0.8803528116887082,
+            "brier": 0.0637223298780032
+          },
+          "mcar_0.2": {
+            "ap": 0.8337607738351392,
+            "brier": 0.0759005084655545
+          },
+          "mnar_own_feature": {
+            "ap": 0.8000607777800024,
+            "brier": 0.08237527223608132
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7849091716514689,
+            "brier": 0.08744958130198571
+          }
+        },
+        "ablation_mcar_only": {
+          "block_mcar_2_8": {
+            "ap": 0.7345527525366556,
+            "brier": 0.09736745843346326
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8489734911506105,
+            "brier": 0.07329354106096322
+          },
+          "clean": {
+            "ap": 0.8783740022530974,
+            "brier": 0.06536045899630478
+          },
+          "mcar_0.2": {
+            "ap": 0.8253287818731682,
+            "brier": 0.07833243067818652
+          },
+          "mnar_own_feature": {
+            "ap": 0.8038018450814824,
+            "brier": 0.0832108148716458
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7920086952730203,
+            "brier": 0.08729212589985397
+          }
+        },
+        "ablation_mixed_k1": {
+          "block_mcar_2_8": {
+            "ap": 0.7378778375173183,
+            "brier": 0.09782116670607072
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8557684773569463,
+            "brier": 0.07340043060207627
+          },
+          "clean": {
+            "ap": 0.8785530273538504,
+            "brier": 0.06670506111958377
+          },
+          "mcar_0.2": {
+            "ap": 0.8311242305719555,
+            "brier": 0.07869706997602653
+          },
+          "mnar_own_feature": {
+            "ap": 0.8011019838122945,
+            "brier": 0.08485445096364827
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7909128427774768,
+            "brier": 0.08865983480486327
+          }
+        },
+        "ablation_mixed_k4": {
+          "block_mcar_2_8": {
+            "ap": 0.7282790662532738,
+            "brier": 0.09870097657840345
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8631447533031291,
+            "brier": 0.07037774009063671
+          },
+          "clean": {
+            "ap": 0.8850754656356993,
+            "brier": 0.0643139678907811
+          },
+          "mcar_0.2": {
+            "ap": 0.832460155288911,
+            "brier": 0.07680732040571354
+          },
+          "mnar_own_feature": {
+            "ap": 0.7991614880764929,
+            "brier": 0.08222544032111821
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7938439805227121,
+            "brier": 0.08598957736430143
+          }
+        },
+        "ablation_raw_y_distillation": {
+          "block_mcar_2_8": {
+            "ap": 0.7583529629162751,
+            "brier": 0.11237297755930874
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8830136910540298,
+            "brier": 0.06804388215116872
+          },
+          "clean": {
+            "ap": 0.8998122430306734,
+            "brier": 0.06040775816431008
+          },
+          "mcar_0.2": {
+            "ap": 0.8737224874644385,
+            "brier": 0.07684091886289221
+          },
+          "mnar_own_feature": {
+            "ap": 0.8310999761299342,
+            "brier": 0.08932952778615377
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.800940032495459,
+            "brier": 0.09999794349002226
+          }
+        },
+        "candidate_mixed_k8": {
+          "block_mcar_2_8": {
+            "ap": 0.713230847266146,
+            "brier": 0.10047773612035467
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8622606089062694,
+            "brier": 0.06909318319685824
+          },
+          "clean": {
+            "ap": 0.8803528116887082,
+            "brier": 0.0637223298780032
+          },
+          "mcar_0.2": {
+            "ap": 0.8337607738351392,
+            "brier": 0.0759005084655545
+          },
+          "mnar_own_feature": {
+            "ap": 0.8000607777800024,
+            "brier": 0.08237527223608132
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.7849091716514689,
+            "brier": 0.08744958130198571
+          }
+        },
+        "median_imputed_hgb_no_indicator": {
+          "block_mcar_2_8": {
+            "ap": 0.7527608979983933,
+            "brier": 0.09319244930743692
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8821539146502339,
+            "brier": 0.06196518528223695
+          },
+          "clean": {
+            "ap": 0.9054753995453132,
+            "brier": 0.05393172106992303
+          },
+          "mcar_0.2": {
+            "ap": 0.8615125310132647,
+            "brier": 0.06597863011397118
+          },
+          "mnar_own_feature": {
+            "ap": 0.8254431714482451,
+            "brier": 0.07556871214487014
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8160482925992205,
+            "brier": 0.07716843361652315
+          }
+        },
+        "native_hgb": {
+          "block_mcar_2_8": {
+            "ap": 0.7304597989162614,
+            "brier": 0.09713701704140704
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8878709763973517,
+            "brier": 0.05816850648793958
+          },
+          "clean": {
+            "ap": 0.8995139225881481,
+            "brier": 0.05322417333724901
+          },
+          "mcar_0.2": {
+            "ap": 0.8656284742475504,
+            "brier": 0.06365113647919823
+          },
+          "mnar_own_feature": {
+            "ap": 0.8204771293459369,
+            "brier": 0.07583952502355601
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8143560619988813,
+            "brier": 0.07784418534803263
+          }
+        },
+        "random_mask_augmentation_hgb": {
+          "block_mcar_2_8": {
+            "ap": 0.7543345341661983,
+            "brier": 0.09208717939554102
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8835869724190626,
+            "brier": 0.061401835158317215
+          },
+          "clean": {
+            "ap": 0.8959763552822639,
+            "brier": 0.05677422620340204
+          },
+          "mcar_0.2": {
+            "ap": 0.8631631160508628,
+            "brier": 0.06676403714479041
+          },
+          "mnar_own_feature": {
+            "ap": 0.8358496570220193,
+            "brier": 0.0737816511210714
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.833681128476227,
+            "brier": 0.07446831078418359
+          }
+        },
+        "random_mask_augmentation_hgb_200_trees": {
+          "block_mcar_2_8": {
+            "ap": 0.7464590660866446,
+            "brier": 0.09303077641053256
+          },
+          "block_mcar_8_14": {
+            "ap": 0.8869226116357956,
+            "brier": 0.05974955633118407
+          },
+          "clean": {
+            "ap": 0.8953892621778144,
+            "brier": 0.0566083054608523
+          },
+          "mcar_0.2": {
+            "ap": 0.8681952824578356,
+            "brier": 0.06430197433782402
+          },
+          "mnar_own_feature": {
+            "ap": 0.8461695023359143,
+            "brier": 0.07050151426500552
+          },
+          "mnar_reversed_sign": {
+            "ap": 0.8398288340024509,
+            "brier": 0.0719913370978331
+          }
+        }
+      },
+      "mode": "final",
+      "runtimes_seconds": {
+        "ablation_indicator_shuffle_noop": 0.1949052500021935,
+        "ablation_mcar_only": 0.1873270420001063,
+        "ablation_mixed_k1": 0.12540037500002654,
+        "ablation_mixed_k4": 0.1426420829993731,
+        "ablation_raw_y_distillation": 0.0942347919990425,
+        "candidate_mixed_k8": 0.18404679200102692,
+        "mcar_only_teacher_fit": null,
+        "median_imputed_hgb_no_indicator": 0.08732066599986865,
+        "native_hgb": 0.10281466699962039,
+        "random_mask_augmentation_hgb": 0.01834170799702406,
+        "random_mask_augmentation_hgb_200_trees": 0.48856804199749604,
+        "teacher_fit": 0.2513910419984313
+      },
+      "seed": 9407,
+      "total_runtime_seconds": 2.1682390829992073,
+      "train_mask_pattern_sha256": "d1b79c9cf40ac1a558784e4a5b9fad06ca6adba5d5935977c821eb46fe8a2f65",
+      "train_x_sha256": "79ba5068808c7e99838d7937550211f3beb917d69a9704659e1bddbdca9ad9ba",
+      "train_y_sha256": "32f52cd74741946eba07c37f54572c543068b3166d12c60ac8c54340bc05b714",
+      "view_hashes": [
+        "32da42b13ed9e715991977b47c70471c4291bb88681c6f951af3c6dd7b6addb5",
+        "ea0debbde8c5114a5292b0213550d891fe1adbb3d9b01d0632138a0a74005eb8",
+        "3ca63c94df385b989afecd0924546148e0e828dda4c2a13014965d68baa34a15",
+        "51c8cdaf56b5db2b96e8d316caf181bbf9ce29c9e4ef271a44c8b1b82facfa6c",
+        "8f11a46357ced17b48fdbb1fda21bbf4a1c5ca823694e5d3c48d45daf81b7e94",
+        "e447b5a9012c80c0129d71778f1c37183c659bd2608c72f5116a534505bdb6b1",
+        "ee7020ed176171f067426c4ed764a1a43d3ac93ea93b2466ee092688e8cffc14",
+        "e60edc0506bdf208e92b07cd0888f546ea10ee820dba9e5d3af9212155264dc4"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "experiment.py": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+    "fixture.py": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "proposal.json": "bf4bf4b0aec71ee25b938454c55cf82470ae9039fc0147d6633f6ae2df2deb86"
+  }
+}

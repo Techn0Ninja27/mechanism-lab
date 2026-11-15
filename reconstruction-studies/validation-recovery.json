@@ -1,0 +1,32 @@
+[
+  {
+    "id": "abstracts-0",
+    "status": "complete",
+    "source_ids_validated": true
+  },
+  {
+    "id": "atoms-0",
+    "status": "complete",
+    "source_ids_validated": true
+  },
+  {
+    "id": "molecules-0",
+    "status": "complete",
+    "source_ids_validated": true
+  },
+  {
+    "id": "abstracts-1",
+    "status": "complete",
+    "source_ids_validated": true
+  },
+  {
+    "id": "atoms-1",
+    "status": "complete",
+    "source_ids_validated": true
+  },
+  {
+    "id": "molecules-1",
+    "status": "complete",
+    "source_ids_validated": true
+  }
+]

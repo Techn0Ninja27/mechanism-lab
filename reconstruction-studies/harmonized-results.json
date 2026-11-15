@@ -1,0 +1,7027 @@
+{
+  "purpose": "Secondary descriptive harmonization to four new mask mechanisms; not a replacement for study preregistration, not a cross-arm causal effect estimate.",
+  "comparisons": [
+    {
+      "id": "abstracts-0",
+      "candidate_method": "admib",
+      "control_method": "completed_aug_unweighted",
+      "mean_ap": {
+        "candidate": 0.9001791297363203,
+        "control": 0.9013548754863111
+      },
+      "delta": -0.0011757457499907975,
+      "conditions": [
+        "mnar_own_feature",
+        "mnar_reversed_sign",
+        "block_mcar_2_8",
+        "block_mcar_8_14"
+      ],
+      "rows_per_method": 12,
+      "original_verdict": "no_gain"
+    },
+    {
+      "id": "abstracts-1",
+      "candidate_method": "candidate_mixed_k8",
+      "control_method": "random_mask_augmentation_hgb_200_trees",
+      "mean_ap": {
+        "candidate": 0.8123595543308736,
+        "control": 0.8577996077632886
+      },
+      "delta": -0.04544005343241497,
+      "conditions": [
+        "mnar_own_feature",
+        "mnar_reversed_sign",
+        "block_mcar_2_8",
+        "block_mcar_8_14"
+      ],
+      "rows_per_method": 12,
+      "original_verdict": "no_gain"
+    },
+    {
+      "id": "atoms-0",
+      "candidate_method": "stable_gate",
+      "control_method": "single_conditional_mean",
+      "mean_ap": {
+        "candidate": 0.8801053782340533,
+        "control": 0.8993657741689741
+      },
+      "delta": -0.019260395934920793,
+      "conditions": [
+        "mnar_own_feature",
+        "mnar_reversed_sign",
+        "block_mcar_2_8",
+        "block_mcar_8_14"
+      ],
+      "rows_per_method": 12,
+      "original_verdict": "no_gain"
+    },
+    {
+      "id": "atoms-1",
+      "candidate_method": "candidate",
+      "control_method": "native_nan_hgb",
+      "mean_ap": {
+        "candidate": 0.5332792045053694,
+        "control": 0.8498584842423685
+      },
+      "delta": -0.3165792797369992,
+      "conditions": [
+        "mnar_own_feature",
+        "mnar_reversed_sign",
+        "block_mcar_2_8",
+        "block_mcar_8_14"
+      ],
+      "rows_per_method": 12,
+      "original_verdict": "no_gain"
+    },
+    {
+      "id": "molecules-0",
+      "candidate_method": "candidate_selfmask_dro",
+      "control_method": "randommask_dro_matched",
+      "mean_ap": {
+        "candidate": 0.8481558179621488,
+        "control": 0.8524252285464008
+      },
+      "delta": -0.004269410584252009,
+      "conditions": [
+        "mnar_own_feature",
+        "mnar_reversed_sign",
+        "block_mcar_2_8",
+        "block_mcar_8_14"
+      ],
+      "rows_per_method": 12,
+      "original_verdict": "no_gain"
+    },
+    {
+      "id": "molecules-1",
+      "candidate_method": "anchor_full",
+      "control_method": "native_nan_duplicate",
+      "mean_ap": {
+        "candidate": 0.8262363545349873,
+        "control": 0.8383278633283878
+      },
+      "delta": -0.012091508793400485,
+      "conditions": [
+        "mnar_own_feature",
+        "mnar_reversed_sign",
+        "block_mcar_2_8",
+        "block_mcar_8_14"
+      ],
+      "rows_per_method": 12,
+      "original_verdict": "no_gain"
+    }
+  ],
+  "rows": [
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "clean",
+      "ap": 0.8892444213327442,
+      "brier": 0.060283398998377404
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.8355576662112549,
+      "brier": 0.07409004373699662
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8212404767350884,
+      "brier": 0.07772054432887429
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.836584554731811,
+      "brier": 0.0747353751077588
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7340387432197856,
+      "brier": 0.09647236553166828
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8771717113797254,
+      "brier": 0.06811599177359941
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_mcar_aug",
+      "condition": "clean",
+      "ap": 0.8897448776315868,
+      "brier": 0.06056374940663489
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_mcar_aug",
+      "condition": "mcar_0.2",
+      "ap": 0.8489725843911256,
+      "brier": 0.07103278794063723
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_mcar_aug",
+      "condition": "mnar_own_feature",
+      "ap": 0.83031502244344,
+      "brier": 0.07498572739454112
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_mcar_aug",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8493810453110778,
+      "brier": 0.07128714299878956
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_mcar_aug",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7598220627193762,
+      "brier": 0.09045825757627149
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "native_mcar_aug",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8841586568159204,
+      "brier": 0.063671530266962
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed",
+      "condition": "clean",
+      "ap": 0.9129512133012778,
+      "brier": 0.052807096747926496
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed",
+      "condition": "mcar_0.2",
+      "ap": 0.9111964181410201,
+      "brier": 0.05302135154452516
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed",
+      "condition": "mnar_own_feature",
+      "ap": 0.8950676203183416,
+      "brier": 0.05954264552126323
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9015519634129016,
+      "brier": 0.055293790668971936
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8013098269648896,
+      "brier": 0.07862281022168115
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9168333418819323,
+      "brier": 0.05136770210593467
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_unweighted",
+      "condition": "clean",
+      "ap": 0.9051195973354842,
+      "brier": 0.05707646815264381
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_unweighted",
+      "condition": "mcar_0.2",
+      "ap": 0.906036474214296,
+      "brier": 0.05686967964694094
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_unweighted",
+      "condition": "mnar_own_feature",
+      "ap": 0.8894473211473543,
+      "brier": 0.06212494135631743
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_unweighted",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.896717019576384,
+      "brier": 0.059160060320437795
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_unweighted",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8392101590139253,
+      "brier": 0.07320971310448754
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_unweighted",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9081749454570254,
+      "brier": 0.05645387028999153
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib",
+      "condition": "clean",
+      "ap": 0.903391450622173,
+      "brier": 0.056937491777922324
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib",
+      "condition": "mcar_0.2",
+      "ap": 0.902037250170494,
+      "brier": 0.0570536595633934
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib",
+      "condition": "mnar_own_feature",
+      "ap": 0.8881622649328954,
+      "brier": 0.06229825053795895
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8928067728023485,
+      "brier": 0.05972299957005521
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8350479889106994,
+      "brier": 0.07355386976078293
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9074230843151075,
+      "brier": 0.05618209579186782
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib_mcar_only",
+      "condition": "clean",
+      "ap": 0.9091074630535685,
+      "brier": 0.05322845251360342
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib_mcar_only",
+      "condition": "mcar_0.2",
+      "ap": 0.9108220954688548,
+      "brier": 0.05329578181246663
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib_mcar_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8975627872511547,
+      "brier": 0.05827775708058126
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib_mcar_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9007436480085611,
+      "brier": 0.05589285273208856
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib_mcar_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8264004128013639,
+      "brier": 0.07361762413266981
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "admib_mcar_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.913771288832242,
+      "brier": 0.05251769521903408
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "mean_completed_aug",
+      "condition": "clean",
+      "ap": 0.8781621559184345,
+      "brier": 0.06414575318411828
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "mean_completed_aug",
+      "condition": "mcar_0.2",
+      "ap": 0.8382773777237943,
+      "brier": 0.07370102215758491
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "mean_completed_aug",
+      "condition": "mnar_own_feature",
+      "ap": 0.8185949258502699,
+      "brier": 0.07958607370495567
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "mean_completed_aug",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8376808849777134,
+      "brier": 0.07537790253729804
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "mean_completed_aug",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7845280085156983,
+      "brier": 0.08690972047918914
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "mean_completed_aug",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8661120662038748,
+      "brier": 0.06792365521245412
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_indicators",
+      "condition": "clean",
+      "ap": 0.9066459406172281,
+      "brier": 0.05650495291828852
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_indicators",
+      "condition": "mcar_0.2",
+      "ap": 0.9077635247750965,
+      "brier": 0.055979252981720524
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_indicators",
+      "condition": "mnar_own_feature",
+      "ap": 0.893016321433551,
+      "brier": 0.06119308802567018
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_indicators",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8963210417502503,
+      "brier": 0.05893630340307143
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_indicators",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8433301643592872,
+      "brier": 0.07282424478951205
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9401,
+      "method": "completed_aug_indicators",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9096148537244163,
+      "brier": 0.055701568440469945
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "clean",
+      "ap": 0.9358752120444941,
+      "brier": 0.03967648254939821
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.911591275215893,
+      "brier": 0.050157331324772764
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.87589509406456,
+      "brier": 0.0634517549807442
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9035167097991843,
+      "brier": 0.055982281250968026
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8080875597235297,
+      "brier": 0.07933644420114573
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9333027455266537,
+      "brier": 0.04323496959829026
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_mcar_aug",
+      "condition": "clean",
+      "ap": 0.9421581351873561,
+      "brier": 0.037776636004946185
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_mcar_aug",
+      "condition": "mcar_0.2",
+      "ap": 0.9209299712070527,
+      "brier": 0.04746828243953848
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_mcar_aug",
+      "condition": "mnar_own_feature",
+      "ap": 0.8928413314396496,
+      "brier": 0.0581815947429791
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_mcar_aug",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9200443651361656,
+      "brier": 0.05241442850679167
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_mcar_aug",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8514407336924935,
+      "brier": 0.07001100146290375
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "native_mcar_aug",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9438271910189081,
+      "brier": 0.04028488229698384
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed",
+      "condition": "clean",
+      "ap": 0.9499198797190225,
+      "brier": 0.03626692591673394
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed",
+      "condition": "mcar_0.2",
+      "ap": 0.9471380594006801,
+      "brier": 0.0366233424594151
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed",
+      "condition": "mnar_own_feature",
+      "ap": 0.940024711311899,
+      "brier": 0.04158300516745662
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9445762104819279,
+      "brier": 0.03593449438318746
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8740104339940193,
+      "brier": 0.06275451650425265
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9491671378007074,
+      "brier": 0.03569945440898194
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_unweighted",
+      "condition": "clean",
+      "ap": 0.9389674660386205,
+      "brier": 0.04085355621337918
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_unweighted",
+      "condition": "mcar_0.2",
+      "ap": 0.9390125429804328,
+      "brier": 0.04057481042726052
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_unweighted",
+      "condition": "mnar_own_feature",
+      "ap": 0.933799638661292,
+      "brier": 0.04348625751027166
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_unweighted",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9306772017134682,
+      "brier": 0.042302625219142125
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_unweighted",
+      "condition": "block_mcar_2_8",
+      "ap": 0.9030324245770561,
+      "brier": 0.05291006867126655
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_unweighted",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9398256068967542,
+      "brier": 0.04033570509680759
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib",
+      "condition": "clean",
+      "ap": 0.9371499480312224,
+      "brier": 0.04088558134992071
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib",
+      "condition": "mcar_0.2",
+      "ap": 0.9369897355345953,
+      "brier": 0.04056515669282619
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib",
+      "condition": "mnar_own_feature",
+      "ap": 0.9304592617691476,
+      "brier": 0.043920547505152806
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9296054251856207,
+      "brier": 0.04163015778462019
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib",
+      "condition": "block_mcar_2_8",
+      "ap": 0.9017796634060264,
+      "brier": 0.05308008897362437
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9385880456102793,
+      "brier": 0.040460067009979825
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib_mcar_only",
+      "condition": "clean",
+      "ap": 0.9489871502259408,
+      "brier": 0.03667376297467763
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib_mcar_only",
+      "condition": "mcar_0.2",
+      "ap": 0.9440423683617724,
+      "brier": 0.03767989851044936
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib_mcar_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.9373077514527748,
+      "brier": 0.04197445493303931
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib_mcar_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9390785495745572,
+      "brier": 0.03676525833589785
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib_mcar_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8968559752625646,
+      "brier": 0.056214976023896523
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "admib_mcar_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9487255012773713,
+      "brier": 0.036088262533107665
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "mean_completed_aug",
+      "condition": "clean",
+      "ap": 0.941638686130842,
+      "brier": 0.03992400891405079
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "mean_completed_aug",
+      "condition": "mcar_0.2",
+      "ap": 0.911911004414795,
+      "brier": 0.05141782552829767
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "mean_completed_aug",
+      "condition": "mnar_own_feature",
+      "ap": 0.8902313359507859,
+      "brier": 0.05974129298828157
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "mean_completed_aug",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.911533054707832,
+      "brier": 0.05310526468717119
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "mean_completed_aug",
+      "condition": "block_mcar_2_8",
+      "ap": 0.872009163814566,
+      "brier": 0.06569172600693267
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "mean_completed_aug",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9345616065811726,
+      "brier": 0.0439090860007357
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_indicators",
+      "condition": "clean",
+      "ap": 0.9413667417994045,
+      "brier": 0.03945523999294687
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_indicators",
+      "condition": "mcar_0.2",
+      "ap": 0.9379862332782316,
+      "brier": 0.04022466857701912
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_indicators",
+      "condition": "mnar_own_feature",
+      "ap": 0.9354738171081265,
+      "brier": 0.042756353703691116
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_indicators",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9362235102551676,
+      "brier": 0.04070973682748058
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_indicators",
+      "condition": "block_mcar_2_8",
+      "ap": 0.9004120953455355,
+      "brier": 0.05369485699063141
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9403,
+      "method": "completed_aug_indicators",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9418632462784988,
+      "brier": 0.03909979175782287
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "clean",
+      "ap": 0.9031738075689287,
+      "brier": 0.053688214210029346
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.8651975560981738,
+      "brier": 0.06535331521410956
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8280184869923762,
+      "brier": 0.07542072817916558
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.812732777250544,
+      "brier": 0.0793049644106097
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7483062769490979,
+      "brier": 0.09250390320998564
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8853684963015701,
+      "brier": 0.06112966937653072
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_mcar_aug",
+      "condition": "clean",
+      "ap": 0.9056654302103934,
+      "brier": 0.05487468175666937
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_mcar_aug",
+      "condition": "mcar_0.2",
+      "ap": 0.8754925069657926,
+      "brier": 0.06424852326533775
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_mcar_aug",
+      "condition": "mnar_own_feature",
+      "ap": 0.8327122817373687,
+      "brier": 0.07507476603674387
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_mcar_aug",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8481391101752292,
+      "brier": 0.07227521701646605
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_mcar_aug",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7785138812612991,
+      "brier": 0.0877827928669582
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "native_mcar_aug",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8845969086420135,
+      "brier": 0.062442534224703306
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed",
+      "condition": "clean",
+      "ap": 0.9020436871649928,
+      "brier": 0.0533966609244623
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed",
+      "condition": "mcar_0.2",
+      "ap": 0.9014313688132145,
+      "brier": 0.05350004116344743
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed",
+      "condition": "mnar_own_feature",
+      "ap": 0.8995076463093565,
+      "brier": 0.05437783239653342
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8907318741598742,
+      "brier": 0.056089143443358656
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7638508903895564,
+      "brier": 0.08865281597293125
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8994637464744761,
+      "brier": 0.05315978626528088
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_unweighted",
+      "condition": "clean",
+      "ap": 0.9085351614648081,
+      "brier": 0.054216947951538634
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_unweighted",
+      "condition": "mcar_0.2",
+      "ap": 0.9073622790459809,
+      "brier": 0.05436571644172946
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_unweighted",
+      "condition": "mnar_own_feature",
+      "ap": 0.9055751611488818,
+      "brier": 0.054743218870817685
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_unweighted",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9015951694117006,
+      "brier": 0.054711098432354284
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_unweighted",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8596908703829251,
+      "brier": 0.06658510362357371
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_unweighted",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9085129878489666,
+      "brier": 0.053589188650136996
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib",
+      "condition": "clean",
+      "ap": 0.9121488559021841,
+      "brier": 0.05335498144173912
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib",
+      "condition": "mcar_0.2",
+      "ap": 0.9091488509813471,
+      "brier": 0.05391930083825221
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib",
+      "condition": "mnar_own_feature",
+      "ap": 0.9051182614679396,
+      "brier": 0.05421000302388596
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9017431461302438,
+      "brier": 0.05474493451293538
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8609130688126118,
+      "brier": 0.06676501654217412
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9105025734929234,
+      "brier": 0.05296325823011623
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib_mcar_only",
+      "condition": "clean",
+      "ap": 0.9087492567488039,
+      "brier": 0.05230302546474646
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib_mcar_only",
+      "condition": "mcar_0.2",
+      "ap": 0.9099287757069581,
+      "brier": 0.051938389728778546
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib_mcar_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.9053049375619225,
+      "brier": 0.05328328249985641
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib_mcar_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.904896653327326,
+      "brier": 0.0529137274975084
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib_mcar_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7912325557645686,
+      "brier": 0.083348610861635
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "admib_mcar_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9072967357224435,
+      "brier": 0.05207667759599023
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "mean_completed_aug",
+      "condition": "clean",
+      "ap": 0.8904895232226608,
+      "brier": 0.0599374146525427
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "mean_completed_aug",
+      "condition": "mcar_0.2",
+      "ap": 0.8438893886495864,
+      "brier": 0.07180592520106652
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "mean_completed_aug",
+      "condition": "mnar_own_feature",
+      "ap": 0.8165367027796225,
+      "brier": 0.07834435214447498
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "mean_completed_aug",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8264936082819799,
+      "brier": 0.07624404553098398
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "mean_completed_aug",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7679210854084028,
+      "brier": 0.08956762003800275
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "mean_completed_aug",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8625594027368296,
+      "brier": 0.06756929035385173
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_indicators",
+      "condition": "clean",
+      "ap": 0.9076924796634299,
+      "brier": 0.054062377145894104
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_indicators",
+      "condition": "mcar_0.2",
+      "ap": 0.9069626618633404,
+      "brier": 0.053761248783570345
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_indicators",
+      "condition": "mnar_own_feature",
+      "ap": 0.9023337308053835,
+      "brier": 0.05513295941555113
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_indicators",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8963361568584386,
+      "brier": 0.056071833572222514
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_indicators",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8644160512896293,
+      "brier": 0.06624564022949335
+    },
+    {
+      "study": "abstracts-0",
+      "seed": 9407,
+      "method": "completed_aug_indicators",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9041035060122178,
+      "brier": 0.053843011868779725
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7396129802812744,
+      "brier": 0.09591860866887056
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8372247280196043,
+      "brier": 0.07745442566471411
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "clean",
+      "ap": 0.8550872911721622,
+      "brier": 0.07107337145378485
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mcar_0.2",
+      "ap": 0.8014362108761529,
+      "brier": 0.08441110028408849
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mnar_own_feature",
+      "ap": 0.7830193896109269,
+      "brier": 0.0873803643933426
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7993730670225059,
+      "brier": 0.08598938665930415
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mcar_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7434985268480071,
+      "brier": 0.0967443837695707
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mcar_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8399113160011621,
+      "brier": 0.07511364590046977
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mcar_only",
+      "condition": "clean",
+      "ap": 0.8529331442836249,
+      "brier": 0.070835105343036
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mcar_only",
+      "condition": "mcar_0.2",
+      "ap": 0.798291191032194,
+      "brier": 0.08424817810468686
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mcar_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.7856140250951476,
+      "brier": 0.08600108722949297
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mcar_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8041256996071249,
+      "brier": 0.08417994545478806
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k1",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7083244224903998,
+      "brier": 0.10385876427812396
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k1",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8245224049427554,
+      "brier": 0.08148895871605223
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k1",
+      "condition": "clean",
+      "ap": 0.8392040807948976,
+      "brier": 0.07516706797718314
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k1",
+      "condition": "mcar_0.2",
+      "ap": 0.7872081836098502,
+      "brier": 0.08791059833173946
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k1",
+      "condition": "mnar_own_feature",
+      "ap": 0.7673611379868773,
+      "brier": 0.09055546371154775
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k1",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7898977447670315,
+      "brier": 0.08727269880019883
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k4",
+      "condition": "block_mcar_2_8",
+      "ap": 0.728222758049648,
+      "brier": 0.09869066122026846
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k4",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8316840084906068,
+      "brier": 0.07850718917730759
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k4",
+      "condition": "clean",
+      "ap": 0.8497622198787101,
+      "brier": 0.07265548353670806
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k4",
+      "condition": "mcar_0.2",
+      "ap": 0.7911285002044763,
+      "brier": 0.08623098453935268
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k4",
+      "condition": "mnar_own_feature",
+      "ap": 0.7820487750460086,
+      "brier": 0.08753055794402678
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_mixed_k4",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7893470693101359,
+      "brier": 0.08737033825451042
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_raw_y_distillation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.753466649412246,
+      "brier": 0.11252055211881924
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_raw_y_distillation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8536144065481431,
+      "brier": 0.0897827998770637
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_raw_y_distillation",
+      "condition": "clean",
+      "ap": 0.8780342224610512,
+      "brier": 0.07961296622773872
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mcar_0.2",
+      "ap": 0.813100957309212,
+      "brier": 0.09560460368442932
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mnar_own_feature",
+      "ap": 0.7909072024337404,
+      "brier": 0.09998299344972855
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8176140717342619,
+      "brier": 0.09573131459251823
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "candidate_mixed_k8",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7396129802812744,
+      "brier": 0.09591860866887056
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "candidate_mixed_k8",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8372247280196043,
+      "brier": 0.07745442566471411
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "candidate_mixed_k8",
+      "condition": "clean",
+      "ap": 0.8550872911721622,
+      "brier": 0.07107337145378485
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "candidate_mixed_k8",
+      "condition": "mcar_0.2",
+      "ap": 0.8014362108761529,
+      "brier": 0.08441110028408849
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "candidate_mixed_k8",
+      "condition": "mnar_own_feature",
+      "ap": 0.7830193896109269,
+      "brier": 0.0873803643933426
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "candidate_mixed_k8",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7993730670225059,
+      "brier": 0.08598938665930415
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7607227275661353,
+      "brier": 0.09568601956499019
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8793703274806965,
+      "brier": 0.06465616951282499
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "clean",
+      "ap": 0.897797121173233,
+      "brier": 0.05626968397261864
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mcar_0.2",
+      "ap": 0.8421416473176021,
+      "brier": 0.0722136192281302
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mnar_own_feature",
+      "ap": 0.8210679560933487,
+      "brier": 0.07909952470305033
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8313837165289565,
+      "brier": 0.07514503945767274
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "native_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7523942140448321,
+      "brier": 0.09323812015989028
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "native_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8884906707333349,
+      "brier": 0.06339153337847087
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "native_hgb",
+      "condition": "clean",
+      "ap": 0.903783630521635,
+      "brier": 0.056691895857920886
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "native_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8469319491052324,
+      "brier": 0.07107688901295592
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "native_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8363061597584642,
+      "brier": 0.07342149033861002
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "native_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8436746583727069,
+      "brier": 0.07246513648219832
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7522676643665953,
+      "brier": 0.09412283253623997
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8799939016957177,
+      "brier": 0.06629291517681261
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "clean",
+      "ap": 0.8859383284312174,
+      "brier": 0.061732839730869606
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8493614065500348,
+      "brier": 0.07198827475495322
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8327480084224744,
+      "brier": 0.07526115077958723
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8473385847262364,
+      "brier": 0.07220657751074415
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7540654868491188,
+      "brier": 0.09573216060529254
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8893531428065974,
+      "brier": 0.06637727261949061
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "clean",
+      "ap": 0.8940731552203689,
+      "brier": 0.0627817836653547
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mcar_0.2",
+      "ap": 0.858386891468821,
+      "brier": 0.07104711824881511
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mnar_own_feature",
+      "ap": 0.8449952157702738,
+      "brier": 0.07352040162702446
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9401,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8576058617214665,
+      "brier": 0.0701630419779009
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7932051374103071,
+      "brier": 0.08607447157863664
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9152228390527184,
+      "brier": 0.053732058578945856
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "clean",
+      "ap": 0.9217234934381398,
+      "brier": 0.049981403489069605
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mcar_0.2",
+      "ap": 0.895191687675873,
+      "brier": 0.059889943563804296
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mnar_own_feature",
+      "ap": 0.8406785461503385,
+      "brier": 0.07445366340149781
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8795165588189208,
+      "brier": 0.06520011848408219
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mcar_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8028477476822746,
+      "brier": 0.0849200991542963
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mcar_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.914055691554432,
+      "brier": 0.05494612014128548
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mcar_only",
+      "condition": "clean",
+      "ap": 0.9230878042102408,
+      "brier": 0.04993230765049652
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mcar_only",
+      "condition": "mcar_0.2",
+      "ap": 0.8953080115324547,
+      "brier": 0.06029739410917025
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mcar_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8536916523208966,
+      "brier": 0.07214612777111577
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mcar_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8860081305093572,
+      "brier": 0.06427538211019912
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k1",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7983211003140817,
+      "brier": 0.08655185615875799
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k1",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9134166338132453,
+      "brier": 0.05466789175064059
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k1",
+      "condition": "clean",
+      "ap": 0.9198763362202261,
+      "brier": 0.05109859137683079
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k1",
+      "condition": "mcar_0.2",
+      "ap": 0.8918468618469007,
+      "brier": 0.05982986612696249
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k1",
+      "condition": "mnar_own_feature",
+      "ap": 0.8411341932510701,
+      "brier": 0.07460408288020079
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k1",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8769094331756558,
+      "brier": 0.06538270142513077
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k4",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7822930376682106,
+      "brier": 0.08849505122934981
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k4",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9115999797178432,
+      "brier": 0.055752759511097226
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k4",
+      "condition": "clean",
+      "ap": 0.9193594478178312,
+      "brier": 0.052575616091542
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k4",
+      "condition": "mcar_0.2",
+      "ap": 0.8919389934720541,
+      "brier": 0.06184310463883587
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k4",
+      "condition": "mnar_own_feature",
+      "ap": 0.8449960557791368,
+      "brier": 0.07488086148277867
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_mixed_k4",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8831621758567229,
+      "brier": 0.06564959451013495
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_raw_y_distillation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.81022386200846,
+      "brier": 0.09364663220275404
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_raw_y_distillation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9332028161901474,
+      "brier": 0.05190022971479954
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_raw_y_distillation",
+      "condition": "clean",
+      "ap": 0.9407903562904417,
+      "brier": 0.0455928672547128
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mcar_0.2",
+      "ap": 0.9077639520159954,
+      "brier": 0.0642544978414879
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mnar_own_feature",
+      "ap": 0.8629550527863621,
+      "brier": 0.08161772633426997
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8895960435606062,
+      "brier": 0.07141789811566236
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "candidate_mixed_k8",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7932051374103071,
+      "brier": 0.08607447157863664
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "candidate_mixed_k8",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9152228390527184,
+      "brier": 0.053732058578945856
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "candidate_mixed_k8",
+      "condition": "clean",
+      "ap": 0.9217234934381398,
+      "brier": 0.049981403489069605
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "candidate_mixed_k8",
+      "condition": "mcar_0.2",
+      "ap": 0.895191687675873,
+      "brier": 0.059889943563804296
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "candidate_mixed_k8",
+      "condition": "mnar_own_feature",
+      "ap": 0.8406785461503385,
+      "brier": 0.07445366340149781
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "candidate_mixed_k8",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8795165588189208,
+      "brier": 0.06520011848408219
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8231178294564899,
+      "brier": 0.07790329738122256
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9336277824634774,
+      "brier": 0.044114527946459946
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "clean",
+      "ap": 0.9444749463996539,
+      "brier": 0.0396114471053358
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mcar_0.2",
+      "ap": 0.9106559272237588,
+      "brier": 0.05156231199523749
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mnar_own_feature",
+      "ap": 0.8792295648705426,
+      "brier": 0.06221876018287118
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8966711592629832,
+      "brier": 0.05538115796349674
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "native_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8279322063836272,
+      "brier": 0.07617961799625408
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "native_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9414232846696008,
+      "brier": 0.04203802053496637
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "native_hgb",
+      "condition": "clean",
+      "ap": 0.9473544164197146,
+      "brier": 0.03807656114973523
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "native_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.919834204958002,
+      "brier": 0.048809676780942585
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "native_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8746516261688553,
+      "brier": 0.06370690719415821
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "native_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9019755739708627,
+      "brier": 0.0560496502832681
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8456851132307215,
+      "brier": 0.07176052004124847
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9405656308888755,
+      "brier": 0.04050103963801929
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "clean",
+      "ap": 0.9402086756275956,
+      "brier": 0.03879578057896625
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.9223984525642883,
+      "brier": 0.04658712456662749
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.9000263474641128,
+      "brier": 0.05561159039906632
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9155076474410919,
+      "brier": 0.051878007983895004
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8550862801738767,
+      "brier": 0.06789054657421732
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "block_mcar_8_14",
+      "ap": 0.94357831739561,
+      "brier": 0.037668459786202264
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "clean",
+      "ap": 0.9439707306134939,
+      "brier": 0.03736785658448781
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mcar_0.2",
+      "ap": 0.9265969899598779,
+      "brier": 0.0427470937366453
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mnar_own_feature",
+      "ap": 0.9088587651991223,
+      "brier": 0.051437562115650565
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9403,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9206722091825914,
+      "brier": 0.04838666353557599
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "block_mcar_2_8",
+      "ap": 0.713230847266146,
+      "brier": 0.10047773612035467
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8622606089062694,
+      "brier": 0.06909318319685824
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "clean",
+      "ap": 0.8803528116887082,
+      "brier": 0.0637223298780032
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mcar_0.2",
+      "ap": 0.8337607738351392,
+      "brier": 0.0759005084655545
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mnar_own_feature",
+      "ap": 0.8000607777800024,
+      "brier": 0.08237527223608132
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_indicator_shuffle_noop",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7849091716514689,
+      "brier": 0.08744958130198571
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mcar_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7345527525366556,
+      "brier": 0.09736745843346326
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mcar_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8489734911506105,
+      "brier": 0.07329354106096322
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mcar_only",
+      "condition": "clean",
+      "ap": 0.8783740022530974,
+      "brier": 0.06536045899630478
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mcar_only",
+      "condition": "mcar_0.2",
+      "ap": 0.8253287818731682,
+      "brier": 0.07833243067818652
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mcar_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8038018450814824,
+      "brier": 0.0832108148716458
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mcar_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7920086952730203,
+      "brier": 0.08729212589985397
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k1",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7378778375173183,
+      "brier": 0.09782116670607072
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k1",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8557684773569463,
+      "brier": 0.07340043060207627
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k1",
+      "condition": "clean",
+      "ap": 0.8785530273538504,
+      "brier": 0.06670506111958377
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k1",
+      "condition": "mcar_0.2",
+      "ap": 0.8311242305719555,
+      "brier": 0.07869706997602653
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k1",
+      "condition": "mnar_own_feature",
+      "ap": 0.8011019838122945,
+      "brier": 0.08485445096364827
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k1",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7909128427774768,
+      "brier": 0.08865983480486327
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k4",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7282790662532738,
+      "brier": 0.09870097657840345
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k4",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8631447533031291,
+      "brier": 0.07037774009063671
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k4",
+      "condition": "clean",
+      "ap": 0.8850754656356993,
+      "brier": 0.0643139678907811
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k4",
+      "condition": "mcar_0.2",
+      "ap": 0.832460155288911,
+      "brier": 0.07680732040571354
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k4",
+      "condition": "mnar_own_feature",
+      "ap": 0.7991614880764929,
+      "brier": 0.08222544032111821
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_mixed_k4",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7938439805227121,
+      "brier": 0.08598957736430143
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_raw_y_distillation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7583529629162751,
+      "brier": 0.11237297755930874
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_raw_y_distillation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8830136910540298,
+      "brier": 0.06804388215116872
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_raw_y_distillation",
+      "condition": "clean",
+      "ap": 0.8998122430306734,
+      "brier": 0.06040775816431008
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mcar_0.2",
+      "ap": 0.8737224874644385,
+      "brier": 0.07684091886289221
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mnar_own_feature",
+      "ap": 0.8310999761299342,
+      "brier": 0.08932952778615377
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "ablation_raw_y_distillation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.800940032495459,
+      "brier": 0.09999794349002226
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "candidate_mixed_k8",
+      "condition": "block_mcar_2_8",
+      "ap": 0.713230847266146,
+      "brier": 0.10047773612035467
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "candidate_mixed_k8",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8622606089062694,
+      "brier": 0.06909318319685824
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "candidate_mixed_k8",
+      "condition": "clean",
+      "ap": 0.8803528116887082,
+      "brier": 0.0637223298780032
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "candidate_mixed_k8",
+      "condition": "mcar_0.2",
+      "ap": 0.8337607738351392,
+      "brier": 0.0759005084655545
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "candidate_mixed_k8",
+      "condition": "mnar_own_feature",
+      "ap": 0.8000607777800024,
+      "brier": 0.08237527223608132
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "candidate_mixed_k8",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7849091716514689,
+      "brier": 0.08744958130198571
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7527608979983933,
+      "brier": 0.09319244930743692
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8821539146502339,
+      "brier": 0.06196518528223695
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "clean",
+      "ap": 0.9054753995453132,
+      "brier": 0.05393172106992303
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mcar_0.2",
+      "ap": 0.8615125310132647,
+      "brier": 0.06597863011397118
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mnar_own_feature",
+      "ap": 0.8254431714482451,
+      "brier": 0.07556871214487014
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "median_imputed_hgb_no_indicator",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8160482925992205,
+      "brier": 0.07716843361652315
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "native_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7304597989162614,
+      "brier": 0.09713701704140704
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "native_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8878709763973517,
+      "brier": 0.05816850648793958
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "native_hgb",
+      "condition": "clean",
+      "ap": 0.8995139225881481,
+      "brier": 0.05322417333724901
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "native_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8656284742475504,
+      "brier": 0.06365113647919823
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "native_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8204771293459369,
+      "brier": 0.07583952502355601
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "native_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8143560619988813,
+      "brier": 0.07784418534803263
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7543345341661983,
+      "brier": 0.09208717939554102
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8835869724190626,
+      "brier": 0.061401835158317215
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "clean",
+      "ap": 0.8959763552822639,
+      "brier": 0.05677422620340204
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8631631160508628,
+      "brier": 0.06676403714479041
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8358496570220193,
+      "brier": 0.0737816511210714
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.833681128476227,
+      "brier": 0.07446831078418359
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7464590660866446,
+      "brier": 0.09303077641053256
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8869226116357956,
+      "brier": 0.05974955633118407
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "clean",
+      "ap": 0.8953892621778144,
+      "brier": 0.0566083054608523
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mcar_0.2",
+      "ap": 0.8681952824578356,
+      "brier": 0.06430197433782402
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mnar_own_feature",
+      "ap": 0.8461695023359143,
+      "brier": 0.07050151426500552
+    },
+    {
+      "study": "abstracts-1",
+      "seed": 9407,
+      "method": "random_mask_augmentation_hgb_200_trees",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8398288340024509,
+      "brier": 0.0719913370978331
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "all_masks",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8122537834177731,
+      "brier": 0.08088288293335544
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "augmented_native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7497657344289312,
+      "brier": 0.0937392742664697
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7435887924997995,
+      "brier": 0.09523640438937417
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "no_masks",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8040653396958106,
+      "brier": 0.08275763057553662
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "single_conditional_mean",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8456906407474706,
+      "brier": 0.07309859925211194
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "stable_gate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8059848770027295,
+      "brier": 0.08167872673130626
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "unconditional_mean",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7361150232562141,
+      "brier": 0.09721087531491397
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "all_masks",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8882522833144283,
+      "brier": 0.06271527990708306
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "augmented_native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8594400524128001,
+      "brier": 0.07067931472654128
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8792707687574896,
+      "brier": 0.06545995133827938
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "no_masks",
+      "condition": "block_mcar_8_14",
+      "ap": 0.893466300681518,
+      "brier": 0.06233175628864413
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "single_conditional_mean",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9095586911662891,
+      "brier": 0.054642651652921696
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "stable_gate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8932532320239259,
+      "brier": 0.06083382255240397
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "unconditional_mean",
+      "condition": "block_mcar_8_14",
+      "ap": 0.854852883498707,
+      "brier": 0.07099739049582547
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "all_masks",
+      "condition": "clean",
+      "ap": 0.8862325956296198,
+      "brier": 0.0627630577455197
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "augmented_native_nan",
+      "condition": "clean",
+      "ap": 0.8683167727543519,
+      "brier": 0.0671531034702375
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "clean",
+      "ap": 0.8919866307317109,
+      "brier": 0.06013054491576126
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "no_masks",
+      "condition": "clean",
+      "ap": 0.8943528912079114,
+      "brier": 0.06178019762006238
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "single_conditional_mean",
+      "condition": "clean",
+      "ap": 0.908504891842204,
+      "brier": 0.0548057175036871
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "stable_gate",
+      "condition": "clean",
+      "ap": 0.8931057752569449,
+      "brier": 0.06048224953697494
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "unconditional_mean",
+      "condition": "clean",
+      "ap": 0.8648970243365909,
+      "brier": 0.06820606129309464
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "all_masks",
+      "condition": "mcar_0.2",
+      "ap": 0.8743620007015518,
+      "brier": 0.06652344182074867
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "augmented_native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.8294320122107371,
+      "brier": 0.076608449788707
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.8372796523135585,
+      "brier": 0.0731635132834477
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "no_masks",
+      "condition": "mcar_0.2",
+      "ap": 0.8841487139000125,
+      "brier": 0.064600866805378
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "single_conditional_mean",
+      "condition": "mcar_0.2",
+      "ap": 0.9077260525925243,
+      "brier": 0.05509745578517821
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "stable_gate",
+      "condition": "mcar_0.2",
+      "ap": 0.8749152186246909,
+      "brier": 0.06514888972919236
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "unconditional_mean",
+      "condition": "mcar_0.2",
+      "ap": 0.810788102951612,
+      "brier": 0.08120733475937963
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "all_masks",
+      "condition": "mnar_own_feature",
+      "ap": 0.8577149137104726,
+      "brier": 0.07016899713294145
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "augmented_native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8185315814031432,
+      "brier": 0.07749110131656615
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8240764184641018,
+      "brier": 0.07653158951763807
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "no_masks",
+      "condition": "mnar_own_feature",
+      "ap": 0.8730600228339491,
+      "brier": 0.06686427682688575
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "single_conditional_mean",
+      "condition": "mnar_own_feature",
+      "ap": 0.8945301618377923,
+      "brier": 0.05864488170522888
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "stable_gate",
+      "condition": "mnar_own_feature",
+      "ap": 0.8651575647818431,
+      "brier": 0.06720125017506573
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "unconditional_mean",
+      "condition": "mnar_own_feature",
+      "ap": 0.7927838826136616,
+      "brier": 0.0841373352200899
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "all_masks",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8634259721722048,
+      "brier": 0.06887852646095426
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "augmented_native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8169728510303922,
+      "brier": 0.07884151569588206
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8328860759138013,
+      "brier": 0.07562122522801894
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "no_masks",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8740732527149735,
+      "brier": 0.06695315324088057
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "single_conditional_mean",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.894269594096514,
+      "brier": 0.05919032392178478
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "stable_gate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.86775216760373,
+      "brier": 0.06779116095093846
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9401,
+      "method": "unconditional_mean",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8151337875180139,
+      "brier": 0.0818798448462161
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "all_masks",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8889722920832076,
+      "brier": 0.06140052730496005
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "augmented_native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8667765011112762,
+      "brier": 0.06950463016670583
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8204468433367487,
+      "brier": 0.07796306526754437
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "no_masks",
+      "condition": "block_mcar_2_8",
+      "ap": 0.890164407123403,
+      "brier": 0.06216944548054771
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "single_conditional_mean",
+      "condition": "block_mcar_2_8",
+      "ap": 0.9032176481077837,
+      "brier": 0.05459338966033109
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "stable_gate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8803742851570918,
+      "brier": 0.06335888567315626
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "unconditional_mean",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8315072133590663,
+      "brier": 0.07934026230594347
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "all_masks",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9432197863542258,
+      "brier": 0.042042435162150386
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "augmented_native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9348667283933283,
+      "brier": 0.046872321860780504
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9381740539068087,
+      "brier": 0.044699890671196583
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "no_masks",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9406896740488027,
+      "brier": 0.043133280303577125
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "single_conditional_mean",
+      "condition": "block_mcar_8_14",
+      "ap": 0.950323596830319,
+      "brier": 0.036022756383893566
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "stable_gate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.937782449545008,
+      "brier": 0.043338952766482065
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "unconditional_mean",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9172058886994654,
+      "brier": 0.05221814296208386
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "all_masks",
+      "condition": "clean",
+      "ap": 0.9465433922310997,
+      "brier": 0.03948003288120212
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "augmented_native_nan",
+      "condition": "clean",
+      "ap": 0.9458242505421401,
+      "brier": 0.04076986112906596
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "clean",
+      "ap": 0.9426714698156238,
+      "brier": 0.0400747508461347
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "no_masks",
+      "condition": "clean",
+      "ap": 0.9433048468178676,
+      "brier": 0.04193584642700185
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "single_conditional_mean",
+      "condition": "clean",
+      "ap": 0.9506057203285713,
+      "brier": 0.03656682939226107
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "stable_gate",
+      "condition": "clean",
+      "ap": 0.9384276453063514,
+      "brier": 0.0427565527266543
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "unconditional_mean",
+      "condition": "clean",
+      "ap": 0.928838317190888,
+      "brier": 0.04635825714620562
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "all_masks",
+      "condition": "mcar_0.2",
+      "ap": 0.9370298183208445,
+      "brier": 0.04418026335021388
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "augmented_native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.9157141639050788,
+      "brier": 0.05188410603328926
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.9131155854300685,
+      "brier": 0.051931726014950594
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "no_masks",
+      "condition": "mcar_0.2",
+      "ap": 0.9309930500070495,
+      "brier": 0.04672817574001415
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "single_conditional_mean",
+      "condition": "mcar_0.2",
+      "ap": 0.9496455551096571,
+      "brier": 0.03642745435470219
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "stable_gate",
+      "condition": "mcar_0.2",
+      "ap": 0.9289242985872843,
+      "brier": 0.04596025793940816
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "unconditional_mean",
+      "condition": "mcar_0.2",
+      "ap": 0.8995851564677447,
+      "brier": 0.05883112393977875
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "all_masks",
+      "condition": "mnar_own_feature",
+      "ap": 0.9324084544222316,
+      "brier": 0.04688078830595518
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "augmented_native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8884661905652298,
+      "brier": 0.06189110794079085
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8716478673056512,
+      "brier": 0.06564561834229965
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "no_masks",
+      "condition": "mnar_own_feature",
+      "ap": 0.9281057467025926,
+      "brier": 0.04845045034437799
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "single_conditional_mean",
+      "condition": "mnar_own_feature",
+      "ap": 0.947046372082969,
+      "brier": 0.039434418176639965
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "stable_gate",
+      "condition": "mnar_own_feature",
+      "ap": 0.9220242555175571,
+      "brier": 0.04958442045998794
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "unconditional_mean",
+      "condition": "mnar_own_feature",
+      "ap": 0.8688746468118225,
+      "brier": 0.06858058871988547
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "all_masks",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9357644611328544,
+      "brier": 0.04571550823564639
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "augmented_native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9115950364243298,
+      "brier": 0.05505582772997427
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9039143182827595,
+      "brier": 0.05668441263187428
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "no_masks",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9287895911639656,
+      "brier": 0.04858691495451167
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "single_conditional_mean",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9448747410198848,
+      "brier": 0.03728662340738995
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "stable_gate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9290422191261414,
+      "brier": 0.04681354889454565
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9403,
+      "method": "unconditional_mean",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.895660418768554,
+      "brier": 0.062314113992126226
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "all_masks",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7763047474310001,
+      "brier": 0.08896121490780227
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "augmented_native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7736334782835635,
+      "brier": 0.08921128536069238
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7479953783514155,
+      "brier": 0.09338893056112596
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "no_masks",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7709914431840417,
+      "brier": 0.0883960399024173
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "single_conditional_mean",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7967823932107885,
+      "brier": 0.08099907943033662
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "stable_gate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7807928767110527,
+      "brier": 0.08777554467698212
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "unconditional_mean",
+      "condition": "block_mcar_2_8",
+      "ap": 0.76809829154126,
+      "brier": 0.09122531363460094
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "all_masks",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8881548106960444,
+      "brier": 0.06074918389471047
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "augmented_native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8736821149036825,
+      "brier": 0.06447410302785324
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8847782977164251,
+      "brier": 0.06122427071419898
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "no_masks",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8944113654686368,
+      "brier": 0.05869356445275261
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "single_conditional_mean",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9073273288995096,
+      "brier": 0.053150233387981784
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "stable_gate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9062193696136435,
+      "brier": 0.05752732355879832
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "unconditional_mean",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8539811455634552,
+      "brier": 0.07056760910356592
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "all_masks",
+      "condition": "clean",
+      "ap": 0.8957719844103909,
+      "brier": 0.058468175209809264
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "augmented_native_nan",
+      "condition": "clean",
+      "ap": 0.8949525237722683,
+      "brier": 0.05728354299995158
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "clean",
+      "ap": 0.9010841379029503,
+      "brier": 0.054929611294945016
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "no_masks",
+      "condition": "clean",
+      "ap": 0.8946153042729934,
+      "brier": 0.05803675455638012
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "single_conditional_mean",
+      "condition": "clean",
+      "ap": 0.9044698770523814,
+      "brier": 0.05320095399180912
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "stable_gate",
+      "condition": "clean",
+      "ap": 0.906564348488556,
+      "brier": 0.05592609705734176
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "unconditional_mean",
+      "condition": "clean",
+      "ap": 0.8847120310281452,
+      "brier": 0.06184330265786337
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "all_masks",
+      "condition": "mcar_0.2",
+      "ap": 0.8971662095285338,
+      "brier": 0.06028067400792232
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "augmented_native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.8623232287067041,
+      "brier": 0.0679092352561203
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "mcar_0.2",
+      "ap": 0.8508408768964465,
+      "brier": 0.06862505974332714
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "no_masks",
+      "condition": "mcar_0.2",
+      "ap": 0.8913052904896305,
+      "brier": 0.06098487560609756
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "single_conditional_mean",
+      "condition": "mcar_0.2",
+      "ap": 0.9047150904470911,
+      "brier": 0.05437954170758718
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "stable_gate",
+      "condition": "mcar_0.2",
+      "ap": 0.9017577352122835,
+      "brier": 0.05940542931974976
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "unconditional_mean",
+      "condition": "mcar_0.2",
+      "ap": 0.836861912277403,
+      "brier": 0.07594606232531767
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "all_masks",
+      "condition": "mnar_own_feature",
+      "ap": 0.8631684080296317,
+      "brier": 0.06727012374206426
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "augmented_native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8330810080902066,
+      "brier": 0.07571491132871393
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "mnar_own_feature",
+      "ap": 0.8215336137905516,
+      "brier": 0.07663064896873548
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "no_masks",
+      "condition": "mnar_own_feature",
+      "ap": 0.8756059574645513,
+      "brier": 0.06529742338839606
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "single_conditional_mean",
+      "condition": "mnar_own_feature",
+      "ap": 0.8975040316383956,
+      "brier": 0.05588125508642597
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "stable_gate",
+      "condition": "mnar_own_feature",
+      "ap": 0.889038616637392,
+      "brier": 0.06262463910608494
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "unconditional_mean",
+      "condition": "mnar_own_feature",
+      "ap": 0.8172112680760901,
+      "brier": 0.08094891658872642
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "all_masks",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8580976833295542,
+      "brier": 0.06943681118393005
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "augmented_native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8259677562506578,
+      "brier": 0.07714930462724277
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "native_nan",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8031621700231937,
+      "brier": 0.08145356046132472
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "no_masks",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8653337850083955,
+      "brier": 0.06692410692838592
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "single_conditional_mean",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9012640903899736,
+      "brier": 0.054166712218618074
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "stable_gate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8838426250885253,
+      "brier": 0.06557235799406974
+    },
+    {
+      "study": "atoms-0",
+      "seed": 9407,
+      "method": "unconditional_mean",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7909862020071329,
+      "brier": 0.08701986327009996
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.6426546845506723,
+      "brier": 0.14680383073829192
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "anchor_only_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.3636490069468727,
+      "brier": 0.15373984126980939
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "candidate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.513836046826779,
+      "brier": 0.1491279000807325
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "mask_indicator_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7071657077861679,
+      "brier": 0.1316505435733712
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7657727428575468,
+      "brier": 0.0942697414373423
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "random_mask_aug_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.722615724619425,
+      "brier": 0.10241406685311233
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "subset_without_anchors_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.508420679372485,
+      "brier": 0.14945081279275232
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "uniform_pool_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.51388635414297,
+      "brier": 0.14919915904309394
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.6864847862510773,
+      "brier": 0.14430831402738703
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "anchor_only_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.3636490069468727,
+      "brier": 0.15373984126980939
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "candidate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.5231062168960722,
+      "brier": 0.14830243271142052
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "mask_indicator_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.796138926849891,
+      "brier": 0.12310322531329576
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8936215664332865,
+      "brier": 0.06400162503789919
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "random_mask_aug_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.862077433317352,
+      "brier": 0.07499891731084206
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "subset_without_anchors_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.51468522985927,
+      "brier": 0.14877394340214262
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "uniform_pool_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.523241722547523,
+      "brier": 0.14836543866291335
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "clean",
+      "ap": 0.7584894073245354,
+      "brier": 0.13653666378249976
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "anchor_only_ablation",
+      "condition": "clean",
+      "ap": 0.3636490069468727,
+      "brier": 0.15373984126980939
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "candidate",
+      "condition": "clean",
+      "ap": 0.7584894073245354,
+      "brier": 0.13653666378249976
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "mask_indicator_ablation",
+      "condition": "clean",
+      "ap": 0.822338337388773,
+      "brier": 0.11737760373077347
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "clean",
+      "ap": 0.9077195408260579,
+      "brier": 0.05713058757300963
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "random_mask_aug_hgb",
+      "condition": "clean",
+      "ap": 0.8632220565422234,
+      "brier": 0.07097230395059989
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "subset_without_anchors_ablation",
+      "condition": "clean",
+      "ap": 0.7443769136010563,
+      "brier": 0.13739879087433302
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "uniform_pool_ablation",
+      "condition": "clean",
+      "ap": 0.7589277990919829,
+      "brier": 0.1366488657874261
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.648162316187203,
+      "brier": 0.14533895660929352
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "anchor_only_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.3636490069468727,
+      "brier": 0.15373984126980939
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "candidate",
+      "condition": "mcar_0.2",
+      "ap": 0.609122277563415,
+      "brier": 0.1382419018505086
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "mask_indicator_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.7579945793134686,
+      "brier": 0.1258765449274581
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8511488666340781,
+      "brier": 0.07086338189289301
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "random_mask_aug_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.816351596519491,
+      "brier": 0.08216405896613989
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.5842858706645285,
+      "brier": 0.1399248162648869
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "uniform_pool_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.6097525094617484,
+      "brier": 0.13828460371653253
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.6689314004155672,
+      "brier": 0.1461392829334452
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "anchor_only_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.3636490069468727,
+      "brier": 0.15373984126980939
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "candidate",
+      "condition": "mnar_own_feature",
+      "ap": 0.4469849872005015,
+      "brier": 0.14525940570044127
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "mask_indicator_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.7575902662577303,
+      "brier": 0.12739933611354823
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8436567245276616,
+      "brier": 0.07311411143698178
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "random_mask_aug_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8098102635783132,
+      "brier": 0.08255313893597557
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.4257101440784953,
+      "brier": 0.14700315674728018
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "uniform_pool_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.44667876921265764,
+      "brier": 0.1452811809392205
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.6502632260496878,
+      "brier": 0.1483984225812424
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "anchor_only_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.3636490069468727,
+      "brier": 0.15373984126980939
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "candidate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.45852451744324607,
+      "brier": 0.14618198404256857
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "mask_indicator_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7672850828952379,
+      "brier": 0.12851096629069464
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8472275293219549,
+      "brier": 0.07330750176138702
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "random_mask_aug_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8096747028613939,
+      "brier": 0.08165102005341916
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.4370887461893943,
+      "brier": 0.1480129781087412
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9401,
+      "method": "uniform_pool_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.4580740804790438,
+      "brier": 0.1462107843438798
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.676156017010305,
+      "brier": 0.14513412082685978
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "anchor_only_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.5219140363718342,
+      "brier": 0.13934869520410773
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "candidate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.49744894153656993,
+      "brier": 0.14795475233055902
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "mask_indicator_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7902620199301847,
+      "brier": 0.12544691477944564
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.823452428633027,
+      "brier": 0.07715795718258059
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "random_mask_aug_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8389230917643511,
+      "brier": 0.07305724124834426
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "subset_without_anchors_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.43578563192984954,
+      "brier": 0.15151136232273307
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "uniform_pool_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.4931555685225045,
+      "brier": 0.14820158681141948
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8193849431542811,
+      "brier": 0.13325911645781333
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "anchor_only_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.5219140363718342,
+      "brier": 0.13934869520410773
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "candidate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8102969556049441,
+      "brier": 0.1262234575867414
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "mask_indicator_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8733224507701334,
+      "brier": 0.11423986931400337
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9453096674546762,
+      "brier": 0.038006914450475535
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "random_mask_aug_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9294049505690021,
+      "brier": 0.04533448258059038
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "subset_without_anchors_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.7606715099896351,
+      "brier": 0.13377684644975613
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "uniform_pool_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.808158910067879,
+      "brier": 0.12671609203562248
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "clean",
+      "ap": 0.8354927092120572,
+      "brier": 0.12994080799413343
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "anchor_only_ablation",
+      "condition": "clean",
+      "ap": 0.5219140363718342,
+      "brier": 0.13934869520410773
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "candidate",
+      "condition": "clean",
+      "ap": 0.8354927092120572,
+      "brier": 0.12994080799413343
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "mask_indicator_ablation",
+      "condition": "clean",
+      "ap": 0.8846891070007213,
+      "brier": 0.11060918458604535
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "clean",
+      "ap": 0.9499781275901785,
+      "brier": 0.035562425886754366
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "random_mask_aug_hgb",
+      "condition": "clean",
+      "ap": 0.9248462017990425,
+      "brier": 0.045978155629272495
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "subset_without_anchors_ablation",
+      "condition": "clean",
+      "ap": 0.764141853522195,
+      "brier": 0.13735038129326477
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "uniform_pool_ablation",
+      "condition": "clean",
+      "ap": 0.8310109437121069,
+      "brier": 0.13043480210441522
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.7832672561496601,
+      "brier": 0.13721588513480346
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "anchor_only_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.5219140363718342,
+      "brier": 0.13934869520410773
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "candidate",
+      "condition": "mcar_0.2",
+      "ap": 0.6965082896510271,
+      "brier": 0.13358054931776536
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "mask_indicator_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.8452602195093954,
+      "brier": 0.11750492052897618
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.9261526397280042,
+      "brier": 0.0448532233184096
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "random_mask_aug_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8982181674338648,
+      "brier": 0.054482030561316806
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.6364383616266687,
+      "brier": 0.14066708953747656
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "uniform_pool_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.6942283608409996,
+      "brier": 0.13381576360429154
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.7563488070456309,
+      "brier": 0.14067152605708844
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "anchor_only_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.5219140363718342,
+      "brier": 0.13934869520410773
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "candidate",
+      "condition": "mnar_own_feature",
+      "ap": 0.575014066462779,
+      "brier": 0.1388437137756317
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "mask_indicator_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.816845508174531,
+      "brier": 0.12280583670475431
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8830744498253502,
+      "brier": 0.06030983219193576
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "random_mask_aug_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8720203899635942,
+      "brier": 0.06490040110294683
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.5103464640754891,
+      "brier": 0.14573755390768908
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "uniform_pool_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.5737159107375331,
+      "brier": 0.1389540120051093
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7740993574725414,
+      "brier": 0.14141800923167985
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "anchor_only_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.5219140363718342,
+      "brier": 0.13934869520410773
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "candidate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.5744166643672957,
+      "brier": 0.1392551202783044
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "mask_indicator_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8496896530791772,
+      "brier": 0.11967344818923481
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9155985893250772,
+      "brier": 0.05201723784408228
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "random_mask_aug_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8867767143584058,
+      "brier": 0.057746559797298445
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.49958540423391645,
+      "brier": 0.14537933825061156
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9403,
+      "method": "uniform_pool_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.569220121379559,
+      "brier": 0.13940978681759333
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.6374619872644053,
+      "brier": 0.14331975678204711
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "anchor_only_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.34284151560476284,
+      "brier": 0.15369189468497435
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "candidate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.5258672511060198,
+      "brier": 0.14707796876484502
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "mask_indicator_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.6924178115639088,
+      "brier": 0.13447877598910998
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.745347721435245,
+      "brier": 0.09359860001343683
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "random_mask_aug_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7540085028422665,
+      "brier": 0.09057584852971083
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "subset_without_anchors_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.525983580697282,
+      "brier": 0.1502228874903381
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "uniform_pool_ablation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.5258843832497746,
+      "brier": 0.14709544242040146
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.7099718855099625,
+      "brier": 0.13616370942553896
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "anchor_only_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.34284151560476284,
+      "brier": 0.15369189468497435
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "candidate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.5124266584751347,
+      "brier": 0.1473195325110816
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "mask_indicator_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.7700921376205078,
+      "brier": 0.1265909766829693
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8948647583265924,
+      "brier": 0.057631061939310856
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "random_mask_aug_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.848748650270186,
+      "brier": 0.0688493550233005
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "subset_without_anchors_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.5133742459799931,
+      "brier": 0.1502091664425255
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "uniform_pool_ablation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.5122668096400416,
+      "brier": 0.14732823463347824
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "clean",
+      "ap": 0.733404847716907,
+      "brier": 0.13490530929215946
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "anchor_only_ablation",
+      "condition": "clean",
+      "ap": 0.34284151560476284,
+      "brier": 0.15369189468497435
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "candidate",
+      "condition": "clean",
+      "ap": 0.733404847716907,
+      "brier": 0.13490530929215946
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "mask_indicator_ablation",
+      "condition": "clean",
+      "ap": 0.7884882219825766,
+      "brier": 0.12441690406679316
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "clean",
+      "ap": 0.9078976834115353,
+      "brier": 0.05138145140494099
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "random_mask_aug_hgb",
+      "condition": "clean",
+      "ap": 0.8886848343005181,
+      "brier": 0.057872524464563854
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "subset_without_anchors_ablation",
+      "condition": "clean",
+      "ap": 0.749225289766754,
+      "brier": 0.1400317238122375
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "uniform_pool_ablation",
+      "condition": "clean",
+      "ap": 0.7329808683441073,
+      "brier": 0.13492530903923214
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.6775023101229156,
+      "brier": 0.1397314965977896
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "anchor_only_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.34284151560476284,
+      "brier": 0.15369189468497435
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "candidate",
+      "condition": "mcar_0.2",
+      "ap": 0.6759338583036707,
+      "brier": 0.13391106822811846
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "mask_indicator_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.7485029928271824,
+      "brier": 0.12990790315740436
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8590545260137699,
+      "brier": 0.06432697555687826
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "random_mask_aug_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.841704631132808,
+      "brier": 0.06890027926696993
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.6546097715710605,
+      "brier": 0.13837238186835793
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "uniform_pool_ablation",
+      "condition": "mcar_0.2",
+      "ap": 0.6755073842693691,
+      "brier": 0.13394608653401283
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.6581897909582997,
+      "brier": 0.14053325391349364
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "anchor_only_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.34284151560476284,
+      "brier": 0.15369189468497435
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "candidate",
+      "condition": "mnar_own_feature",
+      "ap": 0.5075344942530633,
+      "brier": 0.14224972787327708
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "mask_indicator_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.7240860601652752,
+      "brier": 0.13124859961836666
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8276434569074093,
+      "brier": 0.07392447681754012
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "random_mask_aug_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.7963075941255581,
+      "brier": 0.07977789462010466
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.4713672987020816,
+      "brier": 0.14618378750396846
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "uniform_pool_ablation",
+      "condition": "mnar_own_feature",
+      "ap": 0.5073196463616078,
+      "brier": 0.1422644059368539
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "all_experts_mean_imputed_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.6110577419278012,
+      "brier": 0.1437547577109879
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "anchor_only_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.34284151560476284,
+      "brier": 0.15369189468497435
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "candidate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.4538936538920276,
+      "brier": 0.1463190593780389
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "mask_indicator_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7023479774614039,
+      "brier": 0.1342996480707349
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8127321758605951,
+      "brier": 0.07865805322067838
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "random_mask_aug_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.815946201468129,
+      "brier": 0.0762393781310991
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "subset_without_anchors_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.40854437280456357,
+      "brier": 0.14981740245763586
+    },
+    {
+      "study": "atoms-1",
+      "seed": 9407,
+      "method": "uniform_pool_ablation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.4542978960504717,
+      "brier": 0.14631877371459787
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "candidate_selfmask_dro",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7598878914222169,
+      "brier": 0.09192508210105928
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "candidate_selfmask_dro",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8643905422565022,
+      "brier": 0.06863482911845983
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "candidate_selfmask_dro",
+      "condition": "clean",
+      "ap": 0.8746068791527679,
+      "brier": 0.06483826619050553
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "candidate_selfmask_dro",
+      "condition": "mcar_0.2",
+      "ap": 0.835641509448983,
+      "brier": 0.07419616490239847
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "candidate_selfmask_dro",
+      "condition": "mnar_own_feature",
+      "ap": 0.8201502668235494,
+      "brier": 0.07814000298469478
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "candidate_selfmask_dro",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8320652549988431,
+      "brier": 0.07525773816762572
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "mask_blind_median_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7421634215539387,
+      "brier": 0.09748820804940053
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "mask_blind_median_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.872326381181122,
+      "brier": 0.06589236357885411
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "mask_blind_median_hgb",
+      "condition": "clean",
+      "ap": 0.8917189294167036,
+      "brier": 0.058004806159123574
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "mask_blind_median_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8363311716037686,
+      "brier": 0.0728942471468681
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "mask_blind_median_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8240157612589206,
+      "brier": 0.07767943154053626
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "mask_blind_median_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8321289310449527,
+      "brier": 0.07631497386529787
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.757464158880366,
+      "brier": 0.0915635543617916
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8806160145935523,
+      "brier": 0.06523482410511164
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "clean",
+      "ap": 0.896791991195767,
+      "brier": 0.05840507102454224
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8457962783730949,
+      "brier": 0.07171857149118993
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8349368990508933,
+      "brier": 0.07443141123389731
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "native_nan_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8396737219504161,
+      "brier": 0.07402010624084696
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "one_direction_uniform",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7561686603874986,
+      "brier": 0.09316086314130481
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "one_direction_uniform",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8702862386618916,
+      "brier": 0.0678255951769394
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "one_direction_uniform",
+      "condition": "clean",
+      "ap": 0.8780151473465404,
+      "brier": 0.0640454994534469
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "one_direction_uniform",
+      "condition": "mcar_0.2",
+      "ap": 0.8452379481356307,
+      "brier": 0.07290808311225576
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "one_direction_uniform",
+      "condition": "mnar_own_feature",
+      "ap": 0.8326574711074822,
+      "brier": 0.07491024240804638
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "one_direction_uniform",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8299910742982779,
+      "brier": 0.07656598134922409
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "randommask_dro_matched",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7658483687172815,
+      "brier": 0.09023331332356013
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "randommask_dro_matched",
+      "condition": "block_mcar_8_14",
+      "ap": 0.872831580368913,
+      "brier": 0.0664978885764555
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "randommask_dro_matched",
+      "condition": "clean",
+      "ap": 0.8781688707883093,
+      "brier": 0.0639777010201298
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "randommask_dro_matched",
+      "condition": "mcar_0.2",
+      "ap": 0.840009520074734,
+      "brier": 0.07401232399435229
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "randommask_dro_matched",
+      "condition": "mnar_own_feature",
+      "ap": 0.8317732578664092,
+      "brier": 0.0757605441745111
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "randommask_dro_matched",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8399263465242741,
+      "brier": 0.07413133328263032
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "selfmask_uniform",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7521337573631798,
+      "brier": 0.09358508459926568
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "selfmask_uniform",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8667107874196217,
+      "brier": 0.06834760700604714
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "selfmask_uniform",
+      "condition": "clean",
+      "ap": 0.8721059944669636,
+      "brier": 0.06609587717869986
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "selfmask_uniform",
+      "condition": "mcar_0.2",
+      "ap": 0.8372159206177503,
+      "brier": 0.07484553286010717
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "selfmask_uniform",
+      "condition": "mnar_own_feature",
+      "ap": 0.8215259495342653,
+      "brier": 0.07773183965659058
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "selfmask_uniform",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.830535020394609,
+      "brier": 0.07594131714572022
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "shuffled_rank_dro",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7614093813127748,
+      "brier": 0.09111611719895997
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "shuffled_rank_dro",
+      "condition": "block_mcar_8_14",
+      "ap": 0.875845065617996,
+      "brier": 0.06598631944275336
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "shuffled_rank_dro",
+      "condition": "clean",
+      "ap": 0.8799771889253226,
+      "brier": 0.06403411394329027
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "shuffled_rank_dro",
+      "condition": "mcar_0.2",
+      "ap": 0.8410002215663837,
+      "brier": 0.07407918430141808
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "shuffled_rank_dro",
+      "condition": "mnar_own_feature",
+      "ap": 0.8277979291499723,
+      "brier": 0.07639193467273245
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9401,
+      "method": "shuffled_rank_dro",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.836645632783525,
+      "brier": 0.07528313021245944
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "candidate_selfmask_dro",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8602538172639141,
+      "brier": 0.0702980740396072
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "candidate_selfmask_dro",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9205048618813184,
+      "brier": 0.049950609399913165
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "candidate_selfmask_dro",
+      "condition": "clean",
+      "ap": 0.926583213684943,
+      "brier": 0.04554641413429553
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "candidate_selfmask_dro",
+      "condition": "mcar_0.2",
+      "ap": 0.9103012179488225,
+      "brier": 0.053193327170965
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "candidate_selfmask_dro",
+      "condition": "mnar_own_feature",
+      "ap": 0.88410858834082,
+      "brier": 0.06165420072008879
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "candidate_selfmask_dro",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.894098928330223,
+      "brier": 0.05977003565194003
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "mask_blind_median_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8122540251339307,
+      "brier": 0.08033471463061735
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "mask_blind_median_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9361422023397175,
+      "brier": 0.045086220741501835
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "mask_blind_median_hgb",
+      "condition": "clean",
+      "ap": 0.9413674532245967,
+      "brier": 0.040187008870479456
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "mask_blind_median_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.9059894766271939,
+      "brier": 0.05287698512776363
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "mask_blind_median_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8723178381070081,
+      "brier": 0.06566867810197126
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "mask_blind_median_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8989736147786456,
+      "brier": 0.054554869898434485
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8183487241763425,
+      "brier": 0.07797881635719597
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9392286924102013,
+      "brier": 0.044324744354660425
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "clean",
+      "ap": 0.9427331659689678,
+      "brier": 0.0395165411890692
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.9201248006614124,
+      "brier": 0.0493051907024217
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8774853058377151,
+      "brier": 0.06369482625398679
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "native_nan_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9085463458001775,
+      "brier": 0.0563202160455102
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "one_direction_uniform",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8703637335863007,
+      "brier": 0.06701268836766557
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "one_direction_uniform",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9322082492372958,
+      "brier": 0.04689241984643395
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "one_direction_uniform",
+      "condition": "clean",
+      "ap": 0.9405758477296566,
+      "brier": 0.04205760725748346
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "one_direction_uniform",
+      "condition": "mcar_0.2",
+      "ap": 0.921577064358216,
+      "brier": 0.05073462395416009
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "one_direction_uniform",
+      "condition": "mnar_own_feature",
+      "ap": 0.8954451753474295,
+      "brier": 0.059179715571074966
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "one_direction_uniform",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9148349488968118,
+      "brier": 0.05475595564991841
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "randommask_dro_matched",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8618439555551562,
+      "brier": 0.06900853209593222
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "randommask_dro_matched",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9249514527521195,
+      "brier": 0.049975891816652206
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "randommask_dro_matched",
+      "condition": "clean",
+      "ap": 0.9267334818014997,
+      "brier": 0.04729102365022283
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "randommask_dro_matched",
+      "condition": "mcar_0.2",
+      "ap": 0.9052900965538113,
+      "brier": 0.05494955379511202
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "randommask_dro_matched",
+      "condition": "mnar_own_feature",
+      "ap": 0.8792136377587328,
+      "brier": 0.0635060083113523
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "randommask_dro_matched",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9019303890007627,
+      "brier": 0.05836259373670063
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "selfmask_uniform",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8647689713697634,
+      "brier": 0.06862904159514159
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "selfmask_uniform",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9316965973958515,
+      "brier": 0.047194153450240126
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "selfmask_uniform",
+      "condition": "clean",
+      "ap": 0.9328224393818617,
+      "brier": 0.043424075722879076
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "selfmask_uniform",
+      "condition": "mcar_0.2",
+      "ap": 0.9149138418712561,
+      "brier": 0.051828573180761166
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "selfmask_uniform",
+      "condition": "mnar_own_feature",
+      "ap": 0.8890524637258611,
+      "brier": 0.06068973330408957
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "selfmask_uniform",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9019460264424876,
+      "brier": 0.05774597518588966
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "shuffled_rank_dro",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8693684881153441,
+      "brier": 0.06831143120007269
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "shuffled_rank_dro",
+      "condition": "block_mcar_8_14",
+      "ap": 0.929292104920249,
+      "brier": 0.0477625585259779
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "shuffled_rank_dro",
+      "condition": "clean",
+      "ap": 0.9377379966673207,
+      "brier": 0.04336759324660875
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "shuffled_rank_dro",
+      "condition": "mcar_0.2",
+      "ap": 0.9112269390971872,
+      "brier": 0.05301182363577237
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "shuffled_rank_dro",
+      "condition": "mnar_own_feature",
+      "ap": 0.88594147914737,
+      "brier": 0.062092040946046534
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9403,
+      "method": "shuffled_rank_dro",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9037199775283955,
+      "brier": 0.05741683386572474
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "candidate_selfmask_dro",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7884989036887003,
+      "brier": 0.08667040919865404
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "candidate_selfmask_dro",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8725673621983546,
+      "brier": 0.065152255636031
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "candidate_selfmask_dro",
+      "condition": "clean",
+      "ap": 0.8912022593925938,
+      "brier": 0.05843559157071313
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "candidate_selfmask_dro",
+      "condition": "mcar_0.2",
+      "ap": 0.8633763051054021,
+      "brier": 0.06774138272115632
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "candidate_selfmask_dro",
+      "condition": "mnar_own_feature",
+      "ap": 0.8395698745877149,
+      "brier": 0.0745963648823383
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "candidate_selfmask_dro",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.841773523753628,
+      "brier": 0.0737969178173503
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "mask_blind_median_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7643357190530171,
+      "brier": 0.09041099819154774
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "mask_blind_median_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8781118039172865,
+      "brier": 0.06344881804478966
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "mask_blind_median_hgb",
+      "condition": "clean",
+      "ap": 0.9034555014343671,
+      "brier": 0.054586452586365825
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "mask_blind_median_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8653178320078191,
+      "brier": 0.06655129095194104
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "mask_blind_median_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8233272792975659,
+      "brier": 0.07656356725465034
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "mask_blind_median_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8204695823424751,
+      "brier": 0.076942252512896
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7343197636865227,
+      "brier": 0.09712010156490783
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8776551774408462,
+      "brier": 0.06204833112746344
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "clean",
+      "ap": 0.8953321670225867,
+      "brier": 0.055745973999519395
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "mcar_0.2",
+      "ap": 0.8508411382717755,
+      "brier": 0.06860996321062178
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "mnar_own_feature",
+      "ap": 0.8147163836221482,
+      "brier": 0.07804679207067751
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "native_nan_hgb",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8093919575688502,
+      "brier": 0.08044508309063025
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "one_direction_uniform",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7907900897253722,
+      "brier": 0.08553093281588722
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "one_direction_uniform",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8802106246435348,
+      "brier": 0.06299408274011371
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "one_direction_uniform",
+      "condition": "clean",
+      "ap": 0.8963541989270993,
+      "brier": 0.05738140582762291
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "one_direction_uniform",
+      "condition": "mcar_0.2",
+      "ap": 0.8603917343333334,
+      "brier": 0.06891991068243475
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "one_direction_uniform",
+      "condition": "mnar_own_feature",
+      "ap": 0.8354673358434945,
+      "brier": 0.07433474150025032
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "one_direction_uniform",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.82261266899965,
+      "brier": 0.07766875919946918
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "randommask_dro_matched",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7875551023835503,
+      "brier": 0.08645043225032537
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "randommask_dro_matched",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8851911378324736,
+      "brier": 0.06287642683103652
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "randommask_dro_matched",
+      "condition": "clean",
+      "ap": 0.8973771091780898,
+      "brier": 0.057433809491195316
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "randommask_dro_matched",
+      "condition": "mcar_0.2",
+      "ap": 0.8681775656856177,
+      "brier": 0.06690818790787707
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "randommask_dro_matched",
+      "condition": "mnar_own_feature",
+      "ap": 0.8411610902173943,
+      "brier": 0.07432079336786775
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "randommask_dro_matched",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8368764235797418,
+      "brier": 0.07490559785733
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "selfmask_uniform",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7721735778342737,
+      "brier": 0.08882009343306348
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "selfmask_uniform",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8753004797213019,
+      "brier": 0.06590385962997526
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "selfmask_uniform",
+      "condition": "clean",
+      "ap": 0.894232786046402,
+      "brier": 0.058481753018844444
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "selfmask_uniform",
+      "condition": "mcar_0.2",
+      "ap": 0.8644410533567221,
+      "brier": 0.06796260929043156
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "selfmask_uniform",
+      "condition": "mnar_own_feature",
+      "ap": 0.8349810618148519,
+      "brier": 0.07549630577339272
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "selfmask_uniform",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8351686358464079,
+      "brier": 0.07479868495118916
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "shuffled_rank_dro",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7754513676548448,
+      "brier": 0.0876680110298256
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "shuffled_rank_dro",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8554615897204128,
+      "brier": 0.06864369736578103
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "shuffled_rank_dro",
+      "condition": "clean",
+      "ap": 0.882666449154108,
+      "brier": 0.06075877976989174
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "shuffled_rank_dro",
+      "condition": "mcar_0.2",
+      "ap": 0.8582539136574907,
+      "brier": 0.06960698948034835
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "shuffled_rank_dro",
+      "condition": "mnar_own_feature",
+      "ap": 0.8201866436518439,
+      "brier": 0.07716494739114761
+    },
+    {
+      "study": "molecules-0",
+      "seed": 9407,
+      "method": "shuffled_rank_dro",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8320465220543286,
+      "brier": 0.07686254381957297
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_full",
+      "condition": "clean",
+      "ap": 0.8677219600770856,
+      "brier": 0.06815917008715072
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_full",
+      "condition": "mcar_0.2",
+      "ap": 0.8318216892865211,
+      "brier": 0.07857216299857125
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_full",
+      "condition": "mnar_own_feature",
+      "ap": 0.8104005919842119,
+      "brier": 0.08153760943020294
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_full",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.824315782480404,
+      "brier": 0.0799249364689118
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_full",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7387055545951695,
+      "brier": 0.09628610523438019
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_full",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8573493622088737,
+      "brier": 0.07342415336363324
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "uniform_augmentation",
+      "condition": "clean",
+      "ap": 0.8709468487789408,
+      "brier": 0.06746980360966603
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "uniform_augmentation",
+      "condition": "mcar_0.2",
+      "ap": 0.8368054013241778,
+      "brier": 0.07735608918521476
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "uniform_augmentation",
+      "condition": "mnar_own_feature",
+      "ap": 0.8124500706723153,
+      "brier": 0.08083007821544422
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "uniform_augmentation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8305802799032598,
+      "brier": 0.0786042112024602
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "uniform_augmentation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7441499137092591,
+      "brier": 0.09504517379765093
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "uniform_augmentation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8583394614316624,
+      "brier": 0.0731531338518965
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "native_nan_duplicate",
+      "condition": "clean",
+      "ap": 0.8911652002574051,
+      "brier": 0.0592390454154358
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "native_nan_duplicate",
+      "condition": "mcar_0.2",
+      "ap": 0.8375693418140822,
+      "brier": 0.07323222607809872
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "native_nan_duplicate",
+      "condition": "mnar_own_feature",
+      "ap": 0.8238470968019028,
+      "brier": 0.07704640907503402
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "native_nan_duplicate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8372919497674756,
+      "brier": 0.0744615143896092
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "native_nan_duplicate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7482912943975842,
+      "brier": 0.09374068635588943
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "native_nan_duplicate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8773266371614764,
+      "brier": 0.06685897645888184
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "impute_indicators",
+      "condition": "clean",
+      "ap": 0.8900859820554426,
+      "brier": 0.05932710808437182
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "impute_indicators",
+      "condition": "mcar_0.2",
+      "ap": 0.8386557058496925,
+      "brier": 0.07298381336836764
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "impute_indicators",
+      "condition": "mnar_own_feature",
+      "ap": 0.8220392458234715,
+      "brier": 0.07894787003040304
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "impute_indicators",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8325089197866276,
+      "brier": 0.07510613881949027
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "impute_indicators",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7477654492077069,
+      "brier": 0.09623634661438416
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "impute_indicators",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8752128293730692,
+      "brier": 0.06634222496131144
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_train_only",
+      "condition": "clean",
+      "ap": 0.8805011918975041,
+      "brier": 0.06363768072075884
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_train_only",
+      "condition": "mcar_0.2",
+      "ap": 0.8395946876608184,
+      "brier": 0.07476000785826713
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_train_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8312595737464945,
+      "brier": 0.07589725995905526
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_train_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.838761110626816,
+      "brier": 0.07430209159445944
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_train_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.756552738261333,
+      "brier": 0.09265080673988088
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_train_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8731139442422563,
+      "brier": 0.0670748638901959
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_test_only",
+      "condition": "clean",
+      "ap": 0.8811398962232996,
+      "brier": 0.06539160287291386
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_test_only",
+      "condition": "mcar_0.2",
+      "ap": 0.8327943876753032,
+      "brier": 0.07884700482446422
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_test_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8012473192451602,
+      "brier": 0.08421505407409363
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_test_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8192377851264705,
+      "brier": 0.08268427356156917
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_test_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7361101153805948,
+      "brier": 0.09711479525217395
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_test_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8545139340216239,
+      "brier": 0.07571773195359441
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_k1",
+      "condition": "clean",
+      "ap": 0.8306129189427408,
+      "brier": 0.07567089006402429
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_k1",
+      "condition": "mcar_0.2",
+      "ap": 0.8029735367636818,
+      "brier": 0.08306866901915325
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_k1",
+      "condition": "mnar_own_feature",
+      "ap": 0.7825256736208501,
+      "brier": 0.08561332543415573
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_k1",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8052002818875305,
+      "brier": 0.08313125643685762
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_k1",
+      "condition": "block_mcar_2_8",
+      "ap": 0.6943294403249817,
+      "brier": 0.10468058202878346
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "anchor_k1",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8308581991924633,
+      "brier": 0.07893213613214671
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "permuted_anchor_rates",
+      "condition": "clean",
+      "ap": 0.8679033393315668,
+      "brier": 0.06824343155887473
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "permuted_anchor_rates",
+      "condition": "mcar_0.2",
+      "ap": 0.83410461869894,
+      "brier": 0.07772915279377052
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "permuted_anchor_rates",
+      "condition": "mnar_own_feature",
+      "ap": 0.8037897961285763,
+      "brier": 0.08251989052749266
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "permuted_anchor_rates",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8268121719614111,
+      "brier": 0.07945305979543416
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "permuted_anchor_rates",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7417782927576733,
+      "brier": 0.09556828170072512
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9401,
+      "method": "permuted_anchor_rates",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8541235792456744,
+      "brier": 0.07332126310630166
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_full",
+      "condition": "clean",
+      "ap": 0.9223287044566383,
+      "brier": 0.0519224655869309
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_full",
+      "condition": "mcar_0.2",
+      "ap": 0.895939933606988,
+      "brier": 0.060562058857541304
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_full",
+      "condition": "mnar_own_feature",
+      "ap": 0.8627818354142612,
+      "brier": 0.07050151186423201
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_full",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8893405129930808,
+      "brier": 0.06409108841596864
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_full",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8526437507261017,
+      "brier": 0.07486655371842882
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_full",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9122469627998672,
+      "brier": 0.057508705605846956
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "uniform_augmentation",
+      "condition": "clean",
+      "ap": 0.9222863430699967,
+      "brier": 0.05084125684675717
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "uniform_augmentation",
+      "condition": "mcar_0.2",
+      "ap": 0.8966162934377674,
+      "brier": 0.05971516280060087
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "uniform_augmentation",
+      "condition": "mnar_own_feature",
+      "ap": 0.8621609358993382,
+      "brier": 0.07020508619678201
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "uniform_augmentation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8944755858066971,
+      "brier": 0.0626125769478963
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "uniform_augmentation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8499283554494841,
+      "brier": 0.07491416982077159
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "uniform_augmentation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9156517018441657,
+      "brier": 0.056111126161874
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "native_nan_duplicate",
+      "condition": "clean",
+      "ap": 0.9382809671457859,
+      "brier": 0.04049012415062593
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "native_nan_duplicate",
+      "condition": "mcar_0.2",
+      "ap": 0.9137250041523447,
+      "brier": 0.05092637442432836
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "native_nan_duplicate",
+      "condition": "mnar_own_feature",
+      "ap": 0.87649805568389,
+      "brier": 0.06386413730271545
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "native_nan_duplicate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8993658880224464,
+      "brier": 0.05720892980105637
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "native_nan_duplicate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8185818388281894,
+      "brier": 0.07801372725281161
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "native_nan_duplicate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9357802042744399,
+      "brier": 0.04434856658389064
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "impute_indicators",
+      "condition": "clean",
+      "ap": 0.9383356302362772,
+      "brier": 0.04084900138065879
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "impute_indicators",
+      "condition": "mcar_0.2",
+      "ap": 0.9069363589890004,
+      "brier": 0.05281303794212518
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "impute_indicators",
+      "condition": "mnar_own_feature",
+      "ap": 0.8817917314536602,
+      "brier": 0.06340745895745309
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "impute_indicators",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8986182842925557,
+      "brier": 0.056501984410887336
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "impute_indicators",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8023135843534901,
+      "brier": 0.08284549965326397
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "impute_indicators",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9387470892629132,
+      "brier": 0.0435317430678177
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_train_only",
+      "condition": "clean",
+      "ap": 0.9347554375630035,
+      "brier": 0.04399234061478137
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_train_only",
+      "condition": "mcar_0.2",
+      "ap": 0.9149716281325458,
+      "brier": 0.052532514296977355
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_train_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.883023498501215,
+      "brier": 0.06285588914616648
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_train_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.9019851883573272,
+      "brier": 0.057297366808553886
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_train_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8623226670136634,
+      "brier": 0.0688816613905642
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_train_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9287895092903105,
+      "brier": 0.048430884041430214
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_test_only",
+      "condition": "clean",
+      "ap": 0.9289294768851948,
+      "brier": 0.04914782636955043
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_test_only",
+      "condition": "mcar_0.2",
+      "ap": 0.8953416388664565,
+      "brier": 0.060658142773162976
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_test_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8531817958290033,
+      "brier": 0.07381380411016947
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_test_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8875764861414104,
+      "brier": 0.06584390106165958
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_test_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8086325469584374,
+      "brier": 0.08359242712656668
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_test_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9210313713971472,
+      "brier": 0.05513561676290414
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_k1",
+      "condition": "clean",
+      "ap": 0.8916550968175438,
+      "brier": 0.0594481153757913
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_k1",
+      "condition": "mcar_0.2",
+      "ap": 0.8742192385898678,
+      "brier": 0.06497247048878449
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_k1",
+      "condition": "mnar_own_feature",
+      "ap": 0.8467741576757314,
+      "brier": 0.07428201874340262
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_k1",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8602846130648493,
+      "brier": 0.06999818188891666
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_k1",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8281388757301866,
+      "brier": 0.07737002173995389
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "anchor_k1",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8757022598034958,
+      "brier": 0.06550847193595354
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "permuted_anchor_rates",
+      "condition": "clean",
+      "ap": 0.9243642638599849,
+      "brier": 0.05056459017662421
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "permuted_anchor_rates",
+      "condition": "mcar_0.2",
+      "ap": 0.8996950529860354,
+      "brier": 0.059276086719972164
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "permuted_anchor_rates",
+      "condition": "mnar_own_feature",
+      "ap": 0.8699794794503972,
+      "brier": 0.06970045804536788
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "permuted_anchor_rates",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8944635517829487,
+      "brier": 0.0638315139377005
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "permuted_anchor_rates",
+      "condition": "block_mcar_2_8",
+      "ap": 0.8558612962756126,
+      "brier": 0.07456471984124906
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9403,
+      "method": "permuted_anchor_rates",
+      "condition": "block_mcar_8_14",
+      "ap": 0.9142780171517229,
+      "brier": 0.057008334902736255
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_full",
+      "condition": "clean",
+      "ap": 0.8704826817247764,
+      "brier": 0.06809195857943989
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_full",
+      "condition": "mcar_0.2",
+      "ap": 0.8281611268668071,
+      "brier": 0.07978855277329495
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_full",
+      "condition": "mnar_own_feature",
+      "ap": 0.7890176146942744,
+      "brier": 0.08598965076579139
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_full",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7894903654664285,
+      "brier": 0.08785997459765105
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_full",
+      "condition": "block_mcar_2_8",
+      "ap": 0.748500683878377,
+      "brier": 0.09690301592579793
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_full",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8400432371787983,
+      "brier": 0.0756196506222692
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "uniform_augmentation",
+      "condition": "clean",
+      "ap": 0.8751821035045075,
+      "brier": 0.0668368949050576
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "uniform_augmentation",
+      "condition": "mcar_0.2",
+      "ap": 0.8315118152555225,
+      "brier": 0.07868556988940985
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "uniform_augmentation",
+      "condition": "mnar_own_feature",
+      "ap": 0.7985321318717039,
+      "brier": 0.08455849608834089
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "uniform_augmentation",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7914904971150096,
+      "brier": 0.08747204878155981
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "uniform_augmentation",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7501941316443954,
+      "brier": 0.09571519561915728
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "uniform_augmentation",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8432889260402149,
+      "brier": 0.07450440897402356
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "native_nan_duplicate",
+      "condition": "clean",
+      "ap": 0.897383109825423,
+      "brier": 0.05572243844410227
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "native_nan_duplicate",
+      "condition": "mcar_0.2",
+      "ap": 0.8624889960727289,
+      "brier": 0.06614095594721675
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "native_nan_duplicate",
+      "condition": "mnar_own_feature",
+      "ap": 0.8124486325616369,
+      "brier": 0.07841458635953705
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "native_nan_duplicate",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8041258925460896,
+      "brier": 0.08062528003906863
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "native_nan_duplicate",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7482938524584617,
+      "brier": 0.09314683284884058
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "native_nan_duplicate",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8780830174370605,
+      "brier": 0.06323951442844349
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "impute_indicators",
+      "condition": "clean",
+      "ap": 0.9014196677212682,
+      "brier": 0.05615862187062875
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "impute_indicators",
+      "condition": "mcar_0.2",
+      "ap": 0.8587933838529784,
+      "brier": 0.06941564425679783
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "impute_indicators",
+      "condition": "mnar_own_feature",
+      "ap": 0.8189219036961854,
+      "brier": 0.07759930774253027
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "impute_indicators",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8138079818905952,
+      "brier": 0.07964446343812544
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "impute_indicators",
+      "condition": "block_mcar_2_8",
+      "ap": 0.758708693365131,
+      "brier": 0.09162351069899762
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "impute_indicators",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8779862405130768,
+      "brier": 0.06438278462344751
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_train_only",
+      "condition": "clean",
+      "ap": 0.8901693917934077,
+      "brier": 0.058463359495862066
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_train_only",
+      "condition": "mcar_0.2",
+      "ap": 0.8613331058852841,
+      "brier": 0.06805475205491612
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_train_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.8193030282324102,
+      "brier": 0.07796580447256374
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_train_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.8138135506337897,
+      "brier": 0.07785753438905742
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_train_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7682961984503907,
+      "brier": 0.0903793542578002
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_train_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.872986617126591,
+      "brier": 0.0646057042654778
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_test_only",
+      "condition": "clean",
+      "ap": 0.871952654013,
+      "brier": 0.06787127246713306
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_test_only",
+      "condition": "mcar_0.2",
+      "ap": 0.820308903267549,
+      "brier": 0.08007643190039633
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_test_only",
+      "condition": "mnar_own_feature",
+      "ap": 0.7755844318612848,
+      "brier": 0.0874249532819749
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_test_only",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7695160470298863,
+      "brier": 0.09145095231215176
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_test_only",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7178957566714401,
+      "brier": 0.10017670381113493
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_test_only",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8428487715228068,
+      "brier": 0.07530389327609757
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_k1",
+      "condition": "clean",
+      "ap": 0.8507189697254655,
+      "brier": 0.07129679963049927
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_k1",
+      "condition": "mcar_0.2",
+      "ap": 0.7893081036205546,
+      "brier": 0.08489196524009279
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_k1",
+      "condition": "mnar_own_feature",
+      "ap": 0.7572542085334345,
+      "brier": 0.09180145970159044
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_k1",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7561289304969357,
+      "brier": 0.09062595880115308
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_k1",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7090945309987151,
+      "brier": 0.10140461346602367
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "anchor_k1",
+      "condition": "block_mcar_8_14",
+      "ap": 0.7984427800285683,
+      "brier": 0.0824623422109942
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "permuted_anchor_rates",
+      "condition": "clean",
+      "ap": 0.8720707639753421,
+      "brier": 0.06751311546472055
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "permuted_anchor_rates",
+      "condition": "mcar_0.2",
+      "ap": 0.8268415645363778,
+      "brier": 0.07990269799207664
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "permuted_anchor_rates",
+      "condition": "mnar_own_feature",
+      "ap": 0.7782733737611323,
+      "brier": 0.08707301942848807
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "permuted_anchor_rates",
+      "condition": "mnar_reversed_sign",
+      "ap": 0.7903913931643327,
+      "brier": 0.08770979326920411
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "permuted_anchor_rates",
+      "condition": "block_mcar_2_8",
+      "ap": 0.7389725465815487,
+      "brier": 0.09822724036703107
+    },
+    {
+      "study": "molecules-1",
+      "seed": 9407,
+      "method": "permuted_anchor_rates",
+      "condition": "block_mcar_8_14",
+      "ap": 0.8385348595650287,
+      "brier": 0.07558135300790134
+    }
+  ]
+}

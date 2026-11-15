@@ -1,0 +1,56 @@
+{
+  "approval_instruction": "Parent approved final evaluation after static review; execute once per seed and use final_cases only.",
+  "candidate_id": "abstracts-1",
+  "execution_plan": {
+    "final_cases": [
+      "clean",
+      "mcar_0.2",
+      "mnar_own_feature",
+      "mnar_reversed_sign",
+      "block_mcar_2_8",
+      "block_mcar_8_14"
+    ],
+    "mode": "final",
+    "output": "results.json",
+    "refuse_overwrite": true,
+    "seeds": [
+      9401,
+      9403,
+      9407
+    ],
+    "test_x_policy": "fixture final mode returns test_x=None; experiment reads only fixture.final_cases"
+  },
+  "fixture_change_note": "The frozen fixture file now returns test_x=None in final mode and exposes held-out conditions through final_cases. Its current file SHA differs from the phase-one fixture SHA, while validation train_x/train_y/mask hashes reproduce exactly for all three seeds. This current fixture SHA is pinned here before final mode is loaded.",
+  "frozen_at_utc": "2026-11-15T22:12:03.888824+00:00",
+  "frozen_comparison": {
+    "candidate": "candidate_mixed_k8",
+    "other_controls_and_ablations": [
+      "native_hgb",
+      "median_imputed_hgb_no_indicator",
+      "random_mask_augmentation_hgb",
+      "ablation_raw_y_distillation",
+      "ablation_mixed_k1",
+      "ablation_mixed_k4",
+      "ablation_indicator_shuffle_noop",
+      "ablation_mcar_only"
+    ],
+    "retuning": "none",
+    "strongest_control": "random_mask_augmentation_hgb_200_trees"
+  },
+  "hash_verification": {
+    "current_validation_train_arrays_reproduced_recorded_hashes": true,
+    "experiment_matches_preregistration": true,
+    "fixture_differs_from_phase_one_hash_due_to_frozen_final_fixture_update": true,
+    "validation_matches_preregistration": true
+  },
+  "hashes": {
+    "experiment.py": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+    "fixture.py_current_frozen_final_cases_api": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "preregistration.json": "5ff1664946ebf257ec508529650de03357bcf79a78e64f852a32956fa655fc77",
+    "validation.json": "afe1c83272cef7781c8a1e1a47185b438745e648bc7224bd9bd3abc491c07b5f"
+  },
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "parent_phase_two_approval": true,
+  "validation_interpretation": "Phase-one validation failed the preregistered utility threshold. Final evaluation is held-out descriptive evidence and cannot change that validation-stage result."
+}

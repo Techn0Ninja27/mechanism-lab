@@ -1,0 +1,223 @@
+{
+  "brier_summary": {
+    "by_final_condition": {
+      "block_mcar_2_8": [
+        {
+          "brier_delta": 0.00018644806357802357,
+          "seed": 9401
+        },
+        {
+          "brier_delta": 0.018183925004419316,
+          "seed": 9403
+        },
+        {
+          "brier_delta": 0.007446959709822107,
+          "seed": 9407
+        }
+      ],
+      "block_mcar_8_14": [
+        {
+          "brier_delta": 0.011077153045223498,
+          "seed": 9401
+        },
+        {
+          "brier_delta": 0.01606359879274359,
+          "seed": 9403
+        },
+        {
+          "brier_delta": 0.009343626865674172,
+          "seed": 9407
+        }
+      ],
+      "mcar_0.2": [
+        {
+          "brier_delta": 0.013363982035273378,
+          "seed": 9401
+        },
+        {
+          "brier_delta": 0.017142849827158996,
+          "seed": 9403
+        },
+        {
+          "brier_delta": 0.011598534127730487,
+          "seed": 9407
+        }
+      ],
+      "mnar_own_feature": [
+        {
+          "brier_delta": 0.013859962766318137,
+          "seed": 9401
+        },
+        {
+          "brier_delta": 0.023016101285847246,
+          "seed": 9403
+        },
+        {
+          "brier_delta": 0.011873757971075802,
+          "seed": 9407
+        }
+      ],
+      "mnar_reversed_sign": [
+        {
+          "brier_delta": 0.01582634468140326,
+          "seed": 9401
+        },
+        {
+          "brier_delta": 0.016813454948506203,
+          "seed": 9403
+        },
+        {
+          "brier_delta": 0.015458244204152607,
+          "seed": 9407
+        }
+      ]
+    },
+    "candidate_minus_control": 0.013416996221928448,
+    "mean_candidate_shift_brier": 0.07905336150654141,
+    "mean_control_shift_brier": 0.06563636528461296
+  },
+  "candidate_id": "abstracts-1",
+  "clean_mean_ap": {
+    "candidate": 0.8857211987663366,
+    "candidate_minus_control": -0.02542318390422249,
+    "control": 0.9111443826705591
+  },
+  "faithful_implementation": false,
+  "faithful_implementation_note": "Teacher-supermask training and pseudo-target student were implemented, but the proposed mask-invariance intervention is not implemented by the stated indicator shuffle: the indicators are not consumed and NaN locations remain model-visible. Distillation was tested; it did not beat the strongest control.",
+  "final_results_sha256": "2295b12daa1da7c0678fae1320b540f57285874153a83518d4d4a6b31c831514",
+  "human_adjudicated": false,
+  "limitations": [
+    "Small synthetic 20-feature benchmark; one train missingness regime and three seeds.",
+    "No MIRRAMS implementation/control; strongest implemented control is compute-matched HGB mask augmentation.",
+    "Final held-out set is a fixed synthetic fixture, not evidence of broad external robustness.",
+    "Final fixture API hash differs from phase-one hash; parent-approved-final.json pins the final fixture and train-data hashes reproduce validation.",
+    "The candidate mechanism fails its claimed mask-invariance interpretation because student HGB can read NaN patterns."
+  ],
+  "mean_candidate": 0.8185802216238433,
+  "mean_strongest_control": 0.8631182971363996,
+  "novelty_established": false,
+  "paired_deltas": {
+    "candidate_minus_control_by_final_condition": {
+      "block_mcar_2_8": [
+        {
+          "ap_delta": -0.014452506567844359,
+          "seed": 9401
+        },
+        {
+          "ap_delta": -0.0618811427635696,
+          "seed": 9403
+        },
+        {
+          "ap_delta": -0.033228218820498534,
+          "seed": 9407
+        }
+      ],
+      "block_mcar_8_14": [
+        {
+          "ap_delta": -0.05212841478699304,
+          "seed": 9401
+        },
+        {
+          "ap_delta": -0.02835547834289165,
+          "seed": 9403
+        },
+        {
+          "ap_delta": -0.024662002729526122,
+          "seed": 9407
+        }
+      ],
+      "mcar_0.2": [
+        {
+          "ap_delta": -0.05695068059266806,
+          "seed": 9401
+        },
+        {
+          "ap_delta": -0.031405302284004954,
+          "seed": 9403
+        },
+        {
+          "ap_delta": -0.03443450862269637,
+          "seed": 9407
+        }
+      ],
+      "mnar_own_feature": [
+        {
+          "ap_delta": -0.061975826159346936,
+          "seed": 9401
+        },
+        {
+          "ap_delta": -0.0681802190487838,
+          "seed": 9403
+        },
+        {
+          "ap_delta": -0.04610872455591186,
+          "seed": 9407
+        }
+      ],
+      "mnar_reversed_sign": [
+        {
+          "ap_delta": -0.05823279469896059,
+          "seed": 9401
+        },
+        {
+          "ap_delta": -0.04115565036367064,
+          "seed": 9403
+        },
+        {
+          "ap_delta": -0.054919662350982,
+          "seed": 9407
+        }
+      ]
+    },
+    "candidate_minus_control_by_seed": [
+      {
+        "candidate_shift_mean_ap": 0.7921332751620929,
+        "candidate_shift_mean_brier": 0.08623077713406399,
+        "clean_ap_delta": -0.0389858640482067,
+        "control_shift_mean_ap": 0.8408813197232554,
+        "control_shift_mean_brier": 0.07536799901570472,
+        "paired_shift_mean_ap_delta": -0.04874804456116255,
+        "paired_shift_mean_brier_delta": 0.01086277811835927,
+        "seed": 9401
+      },
+      {
+        "candidate_shift_mean_ap": 0.8647629538216316,
+        "candidate_shift_mean_brier": 0.06787005112139335,
+        "clean_ap_delta": -0.02224723717535415,
+        "control_shift_mean_ap": 0.9109585123822157,
+        "control_shift_mean_brier": 0.04962606514965829,
+        "paired_shift_mean_ap_delta": -0.046195558560584105,
+        "paired_shift_mean_brier_delta": 0.018243985971735065,
+        "seed": 9403
+      },
+      {
+        "candidate_shift_mean_ap": 0.7988444358878052,
+        "candidate_shift_mean_brier": 0.0830592562641669,
+        "clean_ap_delta": -0.01503645048910629,
+        "control_shift_mean_ap": 0.8375150593037282,
+        "control_shift_mean_brier": 0.07191503168847585,
+        "paired_shift_mean_ap_delta": -0.03867062341592298,
+        "paired_shift_mean_brier_delta": 0.011144224575691045,
+        "seed": 9407
+      }
+    ],
+    "final_shift_cases": [
+      "block_mcar_2_8",
+      "block_mcar_8_14",
+      "mcar_0.2",
+      "mnar_own_feature",
+      "mnar_reversed_sign"
+    ],
+    "strongest_control": "random_mask_augmentation_hgb_200_trees"
+  },
+  "prior_art_status": "Substantial direct prior art for missingness-shift robustness, invariant prediction targets, and MI-robust learning; see README. No novelty established.",
+  "source_hash": "742afbb95eb535077ed3ff4f6318fe1dd6a8d89ddef8cf2a1cf726e983dd9c83",
+  "source_hashes": {
+    "experiment.py": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+    "fixture.py": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "parent-approved-final.json": "98a7e03ecf92911635c3f8036c57e46e0f2139b189be132e59d7b9f240278e69",
+    "validation.json": "afe1c83272cef7781c8a1e1a47185b438745e648bc7224bd9bd3abc491c07b5f"
+  },
+  "status": "no_gain",
+  "validation_gate": "Failed preregistered threshold: validation mean AP 0.79836 versus 0.84571 for the strongest control (delta -0.04735); held-out final results are reported descriptively and do not overturn this failure."
+}

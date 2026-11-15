@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-16",
+  "scope": "phase-one code and validation review; no heavy execution",
+  "final_label_access_in_phase_one": false,
+  "cases": {
+    "abstracts-0": {"decision": "approve_final", "flags": ["compare ADMIB with completed_aug_unweighted and mean_completed_aug", "validation selection is normal"]},
+    "abstracts-1": {"decision": "approve_final", "flags": ["compare mixed-K8 with augmentation-only, K4 and K1", "teacher targets are train-view predictions"]},
+    "atoms-0": {"decision": "approve_final", "flags": ["gate uses an internal train split only", "retain native/no-mask/mean/random-gate controls"]},
+    "atoms-1": {"decision": "approve_final", "flags": ["pool weights and temperature selected on validation", "final function is parent-gated"]},
+    "molecules-0": {"decision": "approve_final", "flags": ["OOF group losses use training labels only", "retain eta and group-loss history"]},
+    "molecules-1": {"decision": "approve_final", "flags": ["anchor rates use masked train X only", "retain permutation, k1 and indicator controls"]}
+  },
+  "shared_fixture": {
+    "final_conditions": ["clean", "mcar_0.2", "mnar_own_feature", "mnar_reversed_sign", "block_mcar_2_8", "block_mcar_8_14"],
+    "validation_test_x": null,
+    "required_action": "freeze scripts/missingness_shift_fixture.py and do not tune after final labels are observed"
+  },
+  "residual_risks": [
+    "normal validation selection can overfit a tiny synthetic validation set",
+    "some proposals are modified by fixture constraints; report exact deviations",
+    "a positive final score does not establish novelty or transfer",
+    "the strongest constituent control must be shown for molecule claims"
+  ]
+}

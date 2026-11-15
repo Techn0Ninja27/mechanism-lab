@@ -1,0 +1,25 @@
+{
+  "candidate_id": "atoms-0",
+  "phase_two_authorization": "Parent explicitly approved phase two after static audit.",
+  "approval_message": "Parent staticaudit approves phase2 now hashesfrozen. Write parent-approved-final.json recordingfixture/code/validationhash BEFORE final, thenrunthreefinalseeds onceviagate no retuning. Fixture frozen block_mcar_2_8/8_14 andtest_xNone, predictfinal_cases only. Compare frozenstrongest single_conditional_mean plusnativeandno_gate ablations; failedvalidationstaysfailed. Preservegate training/calibration split andselectedthresholds. Write results/verdict/README. No commits.",
+  "frozen_hashes": {
+    "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "experiment_sha256": "1e0c273110f444c732aeede84d1d2a1bbdfd536500ba74076cac6eb9153a3ca2",
+    "validation_artifact_sha256": "b47adff202899e1f651f4336ea740773756ab63a99a560e6dd3faa3e413dece8"
+  },
+  "primary_final_conditions": [
+    "mnar_own_feature",
+    "mnar_reversed_sign",
+    "block_mcar_2_8",
+    "block_mcar_8_14"
+  ],
+  "final_prediction_input": "final_cases masked feature matrix only; no labels or condition names passed to any predictor; no test_x access by experiment logic",
+  "frozen_strongest_control": "single_conditional_mean",
+  "required_comparators": ["native_nan", "all_masks (no gate)"],
+  "validation_result_stays_failed": true,
+  "parameter_tuning_after_validation": false,
+  "final_runs": 3,
+  "phase_two_run_completed": true,
+  "no_post_validation_tuning": true,
+  "final_results_sha256": "dacabea81c283dcdeb399e58468b1cff25566e1720dbaf46fac04b3ff876b759"
+}

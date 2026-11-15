@@ -1,0 +1,98 @@
+{
+  "approval_record": "parent-approved-final.json",
+  "candidate_id": "atoms-1",
+  "clean_candidate_minus_native_ap_by_seed": {
+    "9401": -0.14923013,
+    "9403": -0.11448542,
+    "9407": -0.17449284
+  },
+  "faithful_implementation": true,
+  "final_artifact_hash": "0b99f6fa8d895b9022696e3517cde2b28e55a2b9fbcd898df55a5f6c0c4f80ed",
+  "final_mean_ap_by_method": {
+    "all_experts_mean_imputed_ablation": 0.6919802451477008,
+    "anchor_only_ablation": 0.4094681863078232,
+    "candidate": 0.5553258676818918,
+    "mask_indicator_ablation": 0.7744002599648224,
+    "native_nan_hgb": 0.8629209953493223,
+    "random_mask_aug_hgb": 0.8385344734935064,
+    "subset_without_anchors_ablation": 0.5142196037717999,
+    "uniform_pool_ablation": 0.5543105198658878
+  },
+  "final_mean_candidate_ap": 0.5553258676818918,
+  "final_mean_strongest_control_ap": 0.8629209953493223,
+  "human_adjudicated": false,
+  "limitations": [
+    "Validation did not include own-value MNAR or block-structured test mechanisms; final results are a one-shot, three-seed synthetic-fixture pilot.",
+    "The available-expert gate depends on the mask, so the proposed mask-invariant causal mechanism is not realized; experts omit indicator inputs but the pooled output may still vary with missingness pattern.",
+    "Native-NaN HGB is stronger than the candidate on both validation and final shifted-condition mean AP; validation clean AP is also substantially lower for the candidate.",
+    "MIRRAMS and published SPSM were not faithfully reproduced; HGB augmentation and ablations are constituent controls only.",
+    "Validation-fitted candidate weights and temperature were frozen for final evaluation; final labels were used only after predictions, for metric calculation."
+  ],
+  "novelty_established": false,
+  "paired_deltas_final_ap": {
+    "9401": {
+      "candidate_minus_native_nan_hgb": {
+        "block_mcar_2_8": -0.2519367,
+        "block_mcar_8_14": -0.37051535,
+        "mcar_0.2": -0.24202659,
+        "mnar_own_feature": -0.39667174,
+        "mnar_reversed_sign": -0.38870301
+      },
+      "candidate_minus_random_mask_aug_hgb": {
+        "block_mcar_2_8": -0.20877968,
+        "block_mcar_8_14": -0.33897122,
+        "mcar_0.2": -0.20722932,
+        "mnar_own_feature": -0.36282528,
+        "mnar_reversed_sign": -0.35115019
+      },
+      "mean_candidate_minus_native_nan_hgb": -0.32997067676890285,
+      "mean_candidate_minus_random_mask_aug_hgb": -0.29379113499319226
+    },
+    "9403": {
+      "candidate_minus_native_nan_hgb": {
+        "block_mcar_2_8": -0.32600349,
+        "block_mcar_8_14": -0.13501271,
+        "mcar_0.2": -0.22964435,
+        "mnar_own_feature": -0.30806038,
+        "mnar_reversed_sign": -0.34118192
+      },
+      "candidate_minus_random_mask_aug_hgb": {
+        "block_mcar_2_8": -0.34147415,
+        "block_mcar_8_14": -0.11910799,
+        "mcar_0.2": -0.20170988,
+        "mnar_own_feature": -0.29700632,
+        "mnar_reversed_sign": -0.31236005
+      },
+      "mean_candidate_minus_native_nan_hgb": -0.26798057146870385,
+      "mean_candidate_minus_random_mask_aug_hgb": -0.25433167929332046
+    },
+    "9407": {
+      "candidate_minus_native_nan_hgb": {
+        "block_mcar_2_8": -0.21948047,
+        "block_mcar_8_14": -0.3824381,
+        "mcar_0.2": -0.18312067,
+        "mnar_own_feature": -0.32010896,
+        "mnar_reversed_sign": -0.35883852
+      },
+      "candidate_minus_random_mask_aug_hgb": {
+        "block_mcar_2_8": -0.22814125,
+        "block_mcar_8_14": -0.33632199,
+        "mcar_0.2": -0.16577077,
+        "mnar_own_feature": -0.2887731,
+        "mnar_reversed_sign": -0.36205255
+      },
+      "mean_candidate_minus_native_nan_hgb": -0.2927973445027391,
+      "mean_candidate_minus_random_mask_aug_hgb": -0.2762119327618063
+    }
+  },
+  "prior_art_status": "Established overlapping antecedents: pattern submodels and SPSM predate this proposal; MIRRAMS is an additional robust-missingness method, not faithfully reproduced by tree controls.",
+  "source_hash": {
+    "approval_code": "be864f21b9b545cc2938a8559b982b71b309af624e0aaf63de3260dc588c5599",
+    "fixture_script": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "validation_artifact": "c9febee41e6d2a6ebe67bd875a4d30309371b34ea8341a8c680bc8a98f89a242"
+  },
+  "status": "no_gain",
+  "validation_artifact_hash": "c9febee41e6d2a6ebe67bd875a4d30309371b34ea8341a8c680bc8a98f89a242",
+  "validation_mean_candidate_ap": 0.48200807359035774,
+  "validation_mean_strongest_control_ap": 0.8334370501748789
+}

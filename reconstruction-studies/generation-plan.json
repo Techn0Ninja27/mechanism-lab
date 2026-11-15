@@ -1,0 +1,27 @@
+{
+  "model": "anthropic/claude-opus-5.5",
+  "reasoning": {
+    "effort": "low"
+  },
+  "temperature": null,
+  "max_tokens_per_stage": [
+    8192
+  ],
+  "budget_usd": 3.0,
+  "pricing": {
+    "prompt": 4e-06,
+    "completion": 2e-05
+  },
+  "script_sha256": "7e45afd8f86d1a67d8806395cad496bf4e66440f9ae0d86508452474952d8e13",
+  "paper_count": 32,
+  "atom_count": 91,
+  "input_hash": "eff3f03896b2de71a764cf07bcee8db07ccd340cd3a55c73b00d7a129e8f8cb5",
+  "cases": [
+    "abstracts-0",
+    "atoms-0",
+    "molecules-0",
+    "abstracts-1",
+    "atoms-1",
+    "molecules-1"
+  ]
+}

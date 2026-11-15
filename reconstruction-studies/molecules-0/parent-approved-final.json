@@ -1,0 +1,24 @@
+{
+  "approval_basis": "Parent follow-up authorizes phase two after static review.",
+  "controls_required": [
+    "native_nan_hgb",
+    "selfmask_uniform",
+    "randommask_dro_matched"
+  ],
+  "created_utc": "2026-11-15T22:12:27.287783+00:00",
+  "current_final_code_sha256": "7f5d2ef6fa233fff2f24259c2832316f64b0735b6ec0181058c83ca8831846e5",
+  "final_mode": "all three seeds together; evaluate final_cases only; no alternate eta fitting or final-label model selection",
+  "final_output_absent_at_approval": true,
+  "fixed_selected_eta_by_seed": {
+    "9401": 0.5,
+    "9403": 2.0,
+    "9407": 2.0
+  },
+  "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+  "output": "results.json",
+  "phase_one_validation_code_sha256": "ed2799f64f36143572d08bdf0ed2520b5546c6620ca5f7825648d8e647a478b6",
+  "phase_two_once": true,
+  "preregistration_sha256": "025e52c3f46ea8cebd08e7d37e462629fdb733b2b13e15d77ed690786cba0f48",
+  "study_id": "molecules-0",
+  "validation_artifact_sha256": "d70c727cf8bbf04def0b196bed1047e737010bd78e9b71f84fa0d65375ab32a6"
+}

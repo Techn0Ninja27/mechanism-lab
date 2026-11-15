@@ -1,0 +1,191 @@
+{
+  "candidate_id": "molecules-1",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "implementation_deviations": [
+    "Three fixed seeds per task specification instead of proposal\u2019s ten.",
+    "Estimator capacity fixed before validation rather than early-stopped on validation mixture.",
+    "Anchor-bin rate estimates are sampling noise because fixture training missingness is MCAR.",
+    "The implementation is stochastic remasking augmentation plus prediction averaging, not an optimized mask-invariance penalty."
+  ],
+  "mean_candidate": {
+    "method": "anchor_full",
+    "mean_ap_all": 0.840627352802148,
+    "mean_ap_shifted": 0.8262363545349873,
+    "mean_clean_ap": 0.8868444487528334,
+    "mean_brier": 0.07508940693866907
+  },
+  "mean_strongest_control": {
+    "method": "native_nan_duplicate",
+    "selection_basis": "preselected from phase-one validation choice rule; not selected using final labels",
+    "mean_ap_all": 0.8555859432893569,
+    "mean_ap_shifted": 0.8383278633283878,
+    "mean_clean_ap": 0.908943092409538,
+    "mean_brier": 0.0675955736308659
+  },
+  "additional_strong_control": {
+    "method": "anchor_train_only",
+    "mean_ap_all": 0.8595296148563978,
+    "mean_ap_shifted": 0.8458506353735498,
+    "mean_clean_ap": 0.9018086737513051,
+    "mean_brier": 0.06775777088870935
+  },
+  "paired_deltas": {
+    "anchor_full_minus_native_nan_duplicate": {
+      "overall_mean_ap": {
+        "per_seed": [
+          -0.014196096594610186,
+          -0.007825043018359956,
+          -0.022854631848656548
+        ],
+        "mean": -0.014958590487208897
+      },
+      "shifted_mean_ap": {
+        "per_seed": [
+          -0.013996421714945084,
+          -0.003303231218913627,
+          -0.018974873446342744
+        ],
+        "mean": -0.012091508793400485
+      },
+      "clean_ap": {
+        "per_seed": [
+          -0.023443240180319513,
+          -0.015952262689147623,
+          -0.026900428100646634
+        ],
+        "mean": -0.02209864365670459
+      }
+    },
+    "anchor_full_minus_anchor_train_only": {
+      "overall_mean_ap": {
+        "per_seed": [
+          -0.01491138430049277,
+          -0.015094371476854662,
+          -0.026701030385401947
+        ],
+        "mean": -0.01890226205424979
+      },
+      "shifted_mean_ap": {
+        "per_seed": [
+          -0.0172290189020603,
+          -0.014776950307301306,
+          -0.02683687330632578
+        ],
+        "mean": -0.019614280838562464
+      },
+      "clean_ap": {
+        "per_seed": [
+          -0.012779231820418513,
+          -0.012426733106365218,
+          -0.01968671006863132
+        ],
+        "mean": -0.014964224998471684
+      }
+    }
+  },
+  "final_condition_means": {
+    "clean": {
+      "anchor_full": {
+        "ap": 0.8868444487528334,
+        "brier": 0.06272453141784051
+      },
+      "native_nan_duplicate": {
+        "ap": 0.908943092409538,
+        "brier": 0.051817202670054664
+      },
+      "anchor_train_only": {
+        "ap": 0.9018086737513051,
+        "brier": 0.05536446027713409
+      }
+    },
+    "mcar_0.2": {
+      "anchor_full": {
+        "ap": 0.8519742499201054,
+        "brier": 0.07297425820980251
+      },
+      "native_nan_duplicate": {
+        "ap": 0.871261114013052,
+        "brier": 0.06343318548321461
+      },
+      "anchor_train_only": {
+        "ap": 0.8719664738928827,
+        "brier": 0.06511575807005354
+      }
+    },
+    "mnar_own_feature": {
+      "anchor_full": {
+        "ap": 0.8207333473642492,
+        "brier": 0.07934292402007545
+      },
+      "native_nan_duplicate": {
+        "ap": 0.8375979283491433,
+        "brier": 0.07310837757909551
+      },
+      "anchor_train_only": {
+        "ap": 0.8445287001600399,
+        "brier": 0.07223965119259516
+      }
+    },
+    "mnar_reversed_sign": {
+      "anchor_full": {
+        "ap": 0.8343822203133044,
+        "brier": 0.07729199982751049
+      },
+      "native_nan_duplicate": {
+        "ap": 0.8469279101120039,
+        "brier": 0.0707652414099114
+      },
+      "anchor_train_only": {
+        "ap": 0.8515199498726443,
+        "brier": 0.06981899759735691
+      }
+    },
+    "block_mcar_2_8": {
+      "anchor_full": {
+        "ap": 0.7799499963998827,
+        "brier": 0.08935189162620231
+      },
+      "native_nan_duplicate": {
+        "ap": 0.7717223285614118,
+        "brier": 0.0883004154858472
+      },
+      "anchor_train_only": {
+        "ap": 0.7957238679084624,
+        "brier": 0.08397060746274843
+      }
+    },
+    "block_mcar_8_14": {
+      "anchor_full": {
+        "ap": 0.869879854062513,
+        "brier": 0.06885083653058313
+      },
+      "native_nan_duplicate": {
+        "ap": 0.8970632862909923,
+        "brier": 0.05814901915707199
+      },
+      "anchor_train_only": {
+        "ap": 0.8916300235530525,
+        "brier": 0.060037150732367976
+      }
+    }
+  },
+  "source_hash": "b11dec205e1d89e7114fcdce8bae69e4a7a0642dc27430e34000bf89e08cc1ef",
+  "validation_artifact_hash": "ab47378b317cf3decb14acaf832a61769b02ce0ef1fbd94c69f8792deea03fe9",
+  "final_results_hash": "4bcd8e0bb2482e572cbb5132e103bc526720efed4e453e010789ac35dc152fc1",
+  "prior_art_status": "Substantial prior art overlaps in missingness-shift robustness and missingness augmentation; no novelty search sufficient to establish novelty.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Phase-one validation missed the proposed MNAR claim; phase two does test fixture MNAR and block masks, but only on a synthetic 20-feature dataset.",
+    "Candidate loses to both designated strong controls on mean final AP and on clean AP; minimum utility threshold is not met.",
+    "No confidence interval claim is made from only three paired seeds.",
+    "This does not establish performance on real-world missingness shifts or causal invariance."
+  ],
+  "no_atom_promotion": true,
+  "errors_by_seed": {
+    "9401": [],
+    "9403": [],
+    "9407": []
+  }
+}

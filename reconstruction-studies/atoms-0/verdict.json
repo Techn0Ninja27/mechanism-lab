@@ -1,0 +1,128 @@
+{
+  "candidate_id": "atoms-0",
+  "faithful_implementation": true,
+  "faithfulness_notes": "Implemented the stable mask-channel gate, Gaussian conditional multiple draws, and matched HistGradientBoosting controls. Gate calibration was moved to an internal train split to avoid fitting per-feature selection criteria on the same external validation labels later reported. Gaussian conditioning used pairwise training-observed covariance shrunk 10% toward its diagonal with 1e-3 ridge. No clean training or test values were used by the learner; predictions received only masked matrices. The validation-selected control and thresholds remained frozen.",
+  "final_conditions": [
+    "mnar_own_feature",
+    "mnar_reversed_sign",
+    "block_mcar_2_8",
+    "block_mcar_8_14"
+  ],
+  "frozen_strongest_control": "single_conditional_mean",
+  "human_adjudicated": false,
+  "limitations": [
+    "Validation had already failed against the frozen strongest control; final evidence does not reverse that decision.",
+    "Final evaluation is a small synthetic fixture with three seeds, not evidence of external validity.",
+    "The pairwise-Gaussian imputer is model-dependent and cannot identify the missing-value distribution under MNAR without assumptions.",
+    "The featurewise permutation gate can be unstable under correlated mask columns; one seed selected no mask features.",
+    "The gate beat native NaN and narrowly beat no-gate on overall primary mean AP, but did not reach the preregistered 0.005 margin over the strongest control.",
+    "Mean clean AP was below the strongest control by 0.00849, within the preregistered non-inferiority bound; this does not compensate for primary-metric failure."
+  ],
+  "mean_candidate": {
+    "clean_ap": 0.9126992563506174,
+    "primary_mean_ap": 0.8801053782340533
+  },
+  "mean_strongest_control": {
+    "clean_ap": 0.9211934964077189,
+    "name": "single_conditional_mean",
+    "primary_mean_ap": 0.8993657741689741
+  },
+  "novelty_established": false,
+  "paired_deltas": {
+    "candidate_minus_control_primary_mean_ap": -0.019260395934920793,
+    "mean_candidate_minus_native_nan_primary_ap": 0.040815828371657835,
+    "mean_candidate_minus_no_gate_all_masks_primary_ap": 0.004460578559584261,
+    "per_seed": [
+      {
+        "candidate_clean_ap": 0.8931057752569449,
+        "candidate_primary_mean_ap": 0.8580369603530571,
+        "clean_ap_delta": -0.015399116585259054,
+        "control_clean_ap": 0.908504891842204,
+        "control_primary_mean_ap": 0.8860122719620165,
+        "paired_delta_ap": -0.027975311608959386,
+        "per_condition_ap": {
+          "block_mcar_2_8": {
+            "single_conditional_mean": 0.8456906407474706,
+            "stable_gate": 0.8059848770027295
+          },
+          "block_mcar_8_14": {
+            "single_conditional_mean": 0.9095586911662891,
+            "stable_gate": 0.8932532320239259
+          },
+          "mnar_own_feature": {
+            "single_conditional_mean": 0.8945301618377923,
+            "stable_gate": 0.8651575647818431
+          },
+          "mnar_reversed_sign": {
+            "single_conditional_mean": 0.894269594096514,
+            "stable_gate": 0.86775216760373
+          }
+        },
+        "seed": 9401
+      },
+      {
+        "candidate_clean_ap": 0.9384276453063514,
+        "candidate_primary_mean_ap": 0.9173058023364495,
+        "clean_ap_delta": -0.012178075022219903,
+        "control_clean_ap": 0.9506057203285713,
+        "control_primary_mean_ap": 0.9363655895102392,
+        "paired_delta_ap": -0.019059787173789644,
+        "per_condition_ap": {
+          "block_mcar_2_8": {
+            "single_conditional_mean": 0.9032176481077837,
+            "stable_gate": 0.8803742851570918
+          },
+          "block_mcar_8_14": {
+            "single_conditional_mean": 0.950323596830319,
+            "stable_gate": 0.937782449545008
+          },
+          "mnar_own_feature": {
+            "single_conditional_mean": 0.947046372082969,
+            "stable_gate": 0.9220242555175571
+          },
+          "mnar_reversed_sign": {
+            "single_conditional_mean": 0.9448747410198848,
+            "stable_gate": 0.9290422191261414
+          }
+        },
+        "seed": 9403
+      },
+      {
+        "candidate_clean_ap": 0.906564348488556,
+        "candidate_primary_mean_ap": 0.8649733720126533,
+        "clean_ap_delta": 0.002094471436174694,
+        "control_clean_ap": 0.9044698770523814,
+        "control_primary_mean_ap": 0.8757194610346668,
+        "paired_delta_ap": -0.01074608902201346,
+        "per_condition_ap": {
+          "block_mcar_2_8": {
+            "single_conditional_mean": 0.7967823932107885,
+            "stable_gate": 0.7807928767110527
+          },
+          "block_mcar_8_14": {
+            "single_conditional_mean": 0.9073273288995096,
+            "stable_gate": 0.9062193696136435
+          },
+          "mnar_own_feature": {
+            "single_conditional_mean": 0.8975040316383956,
+            "stable_gate": 0.889038616637392
+          },
+          "mnar_reversed_sign": {
+            "single_conditional_mean": 0.9012640903899736,
+            "stable_gate": 0.8838426250885253
+          }
+        },
+        "seed": 9407
+      }
+    ]
+  },
+  "prior_art_status": "Broad problem and component ideas have direct prior art in Robust prediction under missingness shifts (arXiv:2406.16484), MIRRAMS (arXiv:2507.08280), impute-then-regress/NeuMiss (arXiv:2106.00311), and Bayesian inference for structural missingness (arXiv:2601.18500). No claim of novelty; no new finding established.",
+  "source_hash": {
+    "experiment_sha256": "1e0c273110f444c732aeede84d1d2a1bbdfd536500ba74076cac6eb9153a3ca2",
+    "final_results_sha256": "dacabea81c283dcdeb399e58468b1cff25566e1720dbaf46fac04b3ff876b759",
+    "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "validation_artifact_sha256": "b47adff202899e1f651f4336ea740773756ab63a99a560e6dd3faa3e413dece8"
+  },
+  "status": "no_gain",
+  "validation_failed_stays_failed": true
+}

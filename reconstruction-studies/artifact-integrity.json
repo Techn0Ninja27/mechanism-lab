@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-16",
+  "all_match": true,
+  "studies": [
+    {
+      "study": "abstracts-0",
+      "checks": [
+        {
+          "file": "reconstruction-studies/abstracts-0/experiment.py",
+          "file_sha256": "02771cb14bd201b569ff9baa4917dc42afd95f79bbb6af03b5f8294d1db4d0ec",
+          "frozen_digest": "02771cb14bd201b569ff9baa4917dc42afd95f79bbb6af03b5f8294d1db4d0ec",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "reconstruction-studies/abstracts-0/validation.json",
+          "file_sha256": "a28654089bc4d533ad33d0e2c6c1eee74daa91ddf155bedd15c1e49bec25c7bb",
+          "frozen_digest": "a28654089bc4d533ad33d0e2c6c1eee74daa91ddf155bedd15c1e49bec25c7bb",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "scripts/missingness_shift_fixture.py",
+          "file_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "frozen_digest": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        }
+      ]
+    },
+    {
+      "study": "abstracts-1",
+      "checks": [
+        {
+          "file": "reconstruction-studies/abstracts-1/experiment.py",
+          "file_sha256": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+          "frozen_digest": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "reconstruction-studies/abstracts-1/validation.json",
+          "file_sha256": "afe1c83272cef7781c8a1e1a47185b438745e648bc7224bd9bd3abc491c07b5f",
+          "frozen_digest": "afe1c83272cef7781c8a1e1a47185b438745e648bc7224bd9bd3abc491c07b5f",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "scripts/missingness_shift_fixture.py",
+          "file_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "frozen_digest": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        }
+      ]
+    },
+    {
+      "study": "atoms-0",
+      "checks": [
+        {
+          "file": "reconstruction-studies/atoms-0/experiment.py",
+          "file_sha256": "1e0c273110f444c732aeede84d1d2a1bbdfd536500ba74076cac6eb9153a3ca2",
+          "frozen_digest": "1e0c273110f444c732aeede84d1d2a1bbdfd536500ba74076cac6eb9153a3ca2",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "reconstruction-studies/atoms-0/validation.json",
+          "file_sha256": "b47adff202899e1f651f4336ea740773756ab63a99a560e6dd3faa3e413dece8",
+          "frozen_digest": "b47adff202899e1f651f4336ea740773756ab63a99a560e6dd3faa3e413dece8",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "scripts/missingness_shift_fixture.py",
+          "file_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "frozen_digest": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        }
+      ]
+    },
+    {
+      "study": "atoms-1",
+      "checks": [
+        {
+          "file": "reconstruction-studies/atoms-1/experiment.py",
+          "file_sha256": "be864f21b9b545cc2938a8559b982b71b309af624e0aaf63de3260dc588c5599",
+          "frozen_digest": "be864f21b9b545cc2938a8559b982b71b309af624e0aaf63de3260dc588c5599",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "reconstruction-studies/atoms-1/validation.json",
+          "file_sha256": "19d7e2f0975aa4b9e340666b5c33a54ddcef188d202761be353ee7a3fb7e8bf5",
+          "frozen_digest": "c9febee41e6d2a6ebe67bd875a4d30309371b34ea8341a8c680bc8a98f89a242",
+          "hash_method": "canonical_json_excluding_artifact_hash",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "scripts/missingness_shift_fixture.py",
+          "file_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "frozen_digest": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        }
+      ]
+    },
+    {
+      "study": "molecules-0",
+      "checks": [
+        {
+          "file": "reconstruction-studies/molecules-0/experiment.py",
+          "file_sha256": "7f5d2ef6fa233fff2f24259c2832316f64b0735b6ec0181058c83ca8831846e5",
+          "frozen_digest": "7f5d2ef6fa233fff2f24259c2832316f64b0735b6ec0181058c83ca8831846e5",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "reconstruction-studies/molecules-0/validation.json",
+          "file_sha256": "d70c727cf8bbf04def0b196bed1047e737010bd78e9b71f84fa0d65375ab32a6",
+          "frozen_digest": "d70c727cf8bbf04def0b196bed1047e737010bd78e9b71f84fa0d65375ab32a6",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "scripts/missingness_shift_fixture.py",
+          "file_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "frozen_digest": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        }
+      ]
+    },
+    {
+      "study": "molecules-1",
+      "checks": [
+        {
+          "file": "reconstruction-studies/molecules-1/experiment.py",
+          "file_sha256": "b11dec205e1d89e7114fcdce8bae69e4a7a0642dc27430e34000bf89e08cc1ef",
+          "frozen_digest": "b11dec205e1d89e7114fcdce8bae69e4a7a0642dc27430e34000bf89e08cc1ef",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "reconstruction-studies/molecules-1/validation.json",
+          "file_sha256": "ab47378b317cf3decb14acaf832a61769b02ce0ef1fbd94c69f8792deea03fe9",
+          "frozen_digest": "ab47378b317cf3decb14acaf832a61769b02ce0ef1fbd94c69f8792deea03fe9",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        },
+        {
+          "file": "scripts/missingness_shift_fixture.py",
+          "file_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "frozen_digest": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+          "hash_method": "file_bytes",
+          "matches_frozen_record": true
+        }
+      ]
+    }
+  ]
+}

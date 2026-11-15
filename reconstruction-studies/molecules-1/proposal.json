@@ -1,0 +1,95 @@
+{
+  "id": "molecules-1",
+  "arm": "molecules",
+  "replicate": 1,
+  "human_adjudicated": false,
+  "novelty_established": false,
+  "train_eligible": false,
+  "status": "complete",
+  "proposal": {
+    "title": "Anchor-Stable Mask-Shortcut Suppression for HistGradientBoosting under Missingness Shift (proposed hypothesis)",
+    "hypothesis": "When test missingness depends on a feature's own value (MNAR) and is shifted relative to training, HGB trained with native NaN learns mask-to-label shortcuts whose sign can flip at test time. We propose the following narrow assumption: P(y | x_obs) for value-informative structure changes under shift, while P(y | anchors x0, x1) does not. Under that assumption, a predictor that removes the label information carried by the mask beyond what the anchors explain should improve held-out mean AP relative to native-NaN HGB and random-mask augmentation. We do not claim this works for arbitrary MNAR.",
+    "mechanism": "Causal edge targeted: M -> Yhat shortcut (atom_42235e794c05a946, atom_a7b4cd2b88c13161). Training mixes two regimes. The first is native NaN on observed MCAR rows. The second is value-preserving remasking, where the mask pattern is resampled independently of y conditional on the anchors. A mask-invariance penalty is approximated by averaging predictions across K resampled masks, which follows the posterior integration idea in atom_3cca467611d75e87. Only observed values and masks are used. No target-batch statistics are used.",
+    "components": [
+      "2406.16484v1",
+      "atom_2d8b79ac4827e859",
+      "atom_42235e794c05a946",
+      "atom_a7b4cd2b88c13161",
+      "atom_3cca467611d75e87",
+      "atom_dbcde51203d2be87",
+      "atom_1deb487d80118780",
+      "arxiv:2507.08280",
+      "atom_de53a7a78be5aeec",
+      "atom_39f339d257798e63",
+      "1603.02754v3",
+      "atom_81f4eb1590ebfa55",
+      "proposed_anchor_conditional_remask"
+    ],
+    "proposed_primitives": [
+      {
+        "id": "proposed_anchor_conditional_remask",
+        "definition": "For each training row, resample the additional mask M' using a rate drawn from rate ~ g(anchor bin) estimated on training data. M' is independent of y given the anchors. The final mask is M_total = M_obs OR M'. The label is kept. At inference, the prediction is the mean over K extra remasks of the test row (observed entries only). The averaging is meant to suppress shortcuts that depend on the exact pattern.",
+        "source_support_ids": [
+          "atom_39f339d257798e63",
+          "atom_3cca467611d75e87",
+          "atom_2d8b79ac4827e859"
+        ],
+        "novelty_established": false
+      }
+    ],
+    "relations": [
+      {
+        "source": "proposed_anchor_conditional_remask",
+        "target": "atom_a7b4cd2b88c13161",
+        "type": "blocks M->Y shortcut (intervention on mask)",
+        "counterfactual_prediction": "Using uniform random masking that is not anchor-conditional should reduce the method to random augmentation. The held-out MNAR AP gap should then shrink to within 1 SE."
+      },
+      {
+        "source": "atom_3cca467611d75e87",
+        "target": "proposed_anchor_conditional_remask",
+        "type": "test-time marginalization over masks",
+        "counterfactual_prediction": "Using K=1 at inference should increase the Brier score and AP variance under reversed MNAR."
+      },
+      {
+        "source": "atom_2d8b79ac4827e859",
+        "target": "1603.02754v3",
+        "type": "justifies preserving NaN-routing for MAR",
+        "counterfactual_prediction": "Under MAR validation, the method should not beat native HGB. If it loses by more than 0.01 AP, that falsifies the claim that the method is costless."
+      }
+    ],
+    "assumptions": [
+      "Anchors are always observed and their relation to y is invariant across mechanisms.",
+      "Held-out MNAR changes only the masks, not P(x,y).",
+      "The sign of the mask-label correlation can differ between source and target.",
+      "Within-pattern value signal (atom_1deb487d80118780) remains usable.",
+      "The method should fail if missingness is the true causal signal (structural, grouped). In that case suppressing the mask throws away label information."
+    ],
+    "strongest_prior_art": [
+      "arxiv:2507.08280 MIRRAMS: Overlap: both aim for robustness to unseen missingness shifts via label-relevant information. Difference: MIRRAMS uses MI conditions in a neural model. Ours conditions remasking on anchors in trees.",
+      "atom_39f339d257798e63 RoVTL: Overlap: missingness used as augmentation. Difference: RoVTL masks unconditionally and does not use test-time mask averaging."
+    ],
+    "algorithm": [
+      "1. Split rows 60/20/20 with a fixed seed. Fit g = per-anchor-quantile observed missing rate using training data only.",
+      "2. For r in 1..R=3, create a copy of the training set with M' ~ Bernoulli(g(anchor)*u), where u ~ U(0.5,2).",
+      "3. Stack the original rows and the remasked copies, with no reweighting and no scaler, so there is no cancellation.",
+      "4. Fit HGB with native NaN on the stacked data. Use early stopping on the validation mixture (clean, MCAR20, MCAR40, MAR).",
+      "5. At inference, for each row, draw K=8 extra anchor-conditional remasks of observed entries.",
+      "6. Predict as the mean of the probabilities across the K remasks.",
+      "7. Score the held-out mechanisms once. Their labels are never used for tuning.",
+      "8. Report AP, Brier, and clean AP over 10 seeds."
+    ],
+    "baseline": "(a) Native-NaN HGB. (b) HGB with uniform random-mask augmentation at a matched expected rate and matched copy count. (c) Strongest constituent, impute-then-regress (atom_8ddbda79240111e1): mean imputation plus mask indicators, followed by HGB.",
+    "ablations": [
+      "Edge removal: uniform remask instead of anchor-conditional, with matched rate and R.",
+      "Inference averaging removed: K=1.",
+      "Training remask removed, with test-time averaging only.",
+      "Anchors permuted when fitting g.",
+      "Matched copy count without remasking, to control for data volume."
+    ],
+    "metric": "Primary: mean AP across the 3 held-out mechanisms. Secondary: Brier score and clean AP. The interaction is measured as \u0394 = gain(full) \u2212 gain(train-only) \u2212 gain(test-only), with a paired bootstrap across seeds.",
+    "falsification": "The hypothesis is rejected if any of the following holds: the full method fails to beat uniform augmentation on mean held-out AP by at least 0.01 with the 95% CI excluding 0; the interaction \u0394 is \u2264 0; or clean AP drops by more than 0.01. A loss on grouped structural missingness is expected, and is predicted in advance as a failure case.",
+    "feasibility": "About 4\u00d73000 training rows and 20 features for HGB, plus K=8 predictions. This should take under 1 minute per seed on a laptop CPU.",
+    "decision": "investigate"
+  },
+  "validation_note": "Revalidated saved response: proposed primitive names need not have a specific prefix; known arXiv aliases normalized; grounded edge endpoints included in component list. No semantic content or model calls added."
+}

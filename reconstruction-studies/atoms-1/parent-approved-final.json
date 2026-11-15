@@ -1,0 +1,43 @@
+{
+  "approval_scope": "atoms-1 phase two; all three frozen seeds, no tuning",
+  "approved_by_parent": true,
+  "code_sha256_before_final_load": "be864f21b9b545cc2938a8559b982b71b309af624e0aaf63de3260dc588c5599",
+  "diff_summary": {
+    "controls": "native-NaN HGB and random-mask augmentation retain the validation-matched 240 total iterations",
+    "evaluation_sources": "use final_cases only; do not read fixture.test_x or fixture.test_y; predict from masked case matrices before evaluating labels",
+    "frozen_from_validation_per_seed": [
+      "40 feature subsets",
+      "primary expert loss weights",
+      "primary temperature"
+    ],
+    "phase_one_validation_unchanged": true,
+    "phase_two_change": "replace the explicit final-mode gate with one frozen evaluator; no validation/model-selection code or selected parameter changed",
+    "validation_result_remains_binding": "validation showed no gain; final results will not reverse that conclusion or establish novelty"
+  },
+  "final_conditions_expected": [
+    "clean",
+    "mcar_0.2",
+    "mnar_own_feature",
+    "mnar_reversed_sign",
+    "mnar_block_2_8",
+    "mnar_block_8_14"
+  ],
+  "fixture_script_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+  "post_run_ablation_calibration_note": "The final runner reused primary candidate weights/temperature for the ablations because validation.json persisted only the primary values; validation had separately fit ablation calibration values but did not save them. Final ablation comparisons are exploratory under shared primary calibration.",
+  "post_run_condition_labels_observed": [
+    "clean",
+    "mcar_0.2",
+    "mnar_own_feature",
+    "mnar_reversed_sign",
+    "block_mcar_2_8",
+    "block_mcar_8_14"
+  ],
+  "preregistration_sha256": "2f5fd9c811d7d967ccbb2c4c8d6ce0ec144654f4f5fe6b7a833cf716001e9759",
+  "record_correction": "The pre-run expected-condition labels used mnar_block_2_8/mnar_block_8_14; the frozen fixture actually calls these block_mcar_2_8/block_mcar_8_14. The run used and recorded the fixture-provided labels, and no data or predictions were changed.",
+  "seeds": [
+    9401,
+    9403,
+    9407
+  ],
+  "validation_artifact_hash": "c9febee41e6d2a6ebe67bd875a4d30309371b34ea8341a8c680bc8a98f89a242"
+}

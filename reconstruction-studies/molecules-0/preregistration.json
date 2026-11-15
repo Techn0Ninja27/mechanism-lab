@@ -1,0 +1,92 @@
+{
+  "ablation_arms": [
+    "native_nan_hgb",
+    "randommask_dro_matched",
+    "selfmask_uniform",
+    "one_direction_uniform",
+    "shuffled_rank_dro",
+    "mask_blind_median_hgb"
+  ],
+  "augmentation": "four groups of equal row count; group 2/3 random comparator rate p=.50 on observed values to approximately match self-mask average rate",
+  "choice_rule": "select eta from [0.5,1.0,2.0] by mean AP over the four shared validation conditions; ties choose smaller eta; use that eta for random-mask DRO matched control; no final data involved",
+  "effect_threshold": {
+    "maximum_clean_ap_decrease": 0.01,
+    "minimum_mean_ap_over_strongest_matched_control": 0.005
+  },
+  "frozen_config_sha256": "386eda25667ca7e25a28991eea31d39afc498706691f0c471c32bf04abc076e4",
+  "group_definitions": {
+    "G0": "input train matrix as supplied (already MCAR20 masked)",
+    "G1": "extra random mask p=.20 on finite non-anchor entries",
+    "G2": "extra own-value self-mask sigmoid(4*(empirical_ecdf-.5))",
+    "G3": "extra reverse self-mask sigmoid(-4*(empirical_ecdf-.5))"
+  },
+  "held_out_protocol": "validation mode only; final fixture mode is prohibited until parent follow-up; no validation MNAR cases generated; prediction accepts masked X only",
+  "implementation_sha256": "ed2799f64f36143572d08bdf0ed2520b5546c6620ca5f7825648d8e647a478b6",
+  "metric": "mean average precision over exactly the shared validation conditions: clean, mcar_0.2, mcar_0.4, mar_anchor_x0",
+  "model_params": {
+    "early_stopping": false,
+    "l2_regularization": 0.01,
+    "learning_rate": 0.08,
+    "max_iter": 80,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "random_state": 0
+  },
+  "phase": "validation_preregistration",
+  "proposal_sha256": "934a0db25a2c5495477d1d4c1cafc5061e955d3d0eeb601357af79ca62861aed",
+  "secondary_metric": "Brier score by condition",
+  "seeds": [
+    9401,
+    9403,
+    9407
+  ],
+  "source_snapshots": [
+    {
+      "abstract_snapshot_sha256": "33b682b280701128bf207c5eeebe47c3c99c7b37aec4e4d70c709fcdbbbfb603",
+      "id": "2406.16484v1",
+      "title": "Robust prediction under missingness shifts",
+      "url": "https://arxiv.org/abs/2406.16484v1"
+    },
+    {
+      "abstract_snapshot_sha256": "18d0537948820e242fa6db14209af6b69df198dd7c13566481be8dabb05057b4",
+      "id": "2507.08280",
+      "title": "MIRRAMS: Learning Robust Tabular Models under Unseen Missingness Shifts",
+      "url": "https://arxiv.org/abs/2507.08280"
+    },
+    {
+      "abstract_snapshot_sha256": "6885c0c6e6b0aba958f894370669e4281766c780e438a2d2757dd82982b25e79",
+      "id": "2512.19602",
+      "title": "No Data? No Problem: Robust Vision-Tabular Learning with Missing Values",
+      "url": "https://arxiv.org/abs/2512.19602"
+    },
+    {
+      "abstract_snapshot_sha256": "c6fe3c1d4ea02cfd3d35fade1b51c4dcfa896a177e0dbc59eb686e8a905c1a9e",
+      "id": "2603.00046",
+      "title": "REMIND: Rethinking Medical High-Modality Learning under Missingness--A Long-Tailed Distribution Perspective",
+      "url": "https://arxiv.org/abs/2603.00046"
+    },
+    {
+      "abstract_snapshot_sha256": null,
+      "id": "1911.08731",
+      "title": "Distributionally Robust Neural Networks for Group Shifts: On the Importance of Regularization for Worst-Case Generalization",
+      "url": "https://arxiv.org/abs/1911.08731"
+    },
+    {
+      "abstract_snapshot_sha256": null,
+      "id": "2007.01627",
+      "title": "NeuMiss networks: differentiable programming for supervised learning with missing values",
+      "url": "https://arxiv.org/abs/2007.01627"
+    }
+  ],
+  "strongest_matched_control": "four-group random-mask augmentation plus the same three-round, three-fold training-only group-DRO procedure, same selected eta and HGB parameters",
+  "study_id": "molecules-0",
+  "training_only_calibration": "three repeated outer rounds of stratified three-fold OOF group log-loss on augmented training rows; weights multiply exp(eta*(group_loss - mean_group_loss)); final fit uses all training rows and group sample weights",
+  "validation_artifact_sha256": "d70c727cf8bbf04def0b196bed1047e737010bd78e9b71f84fa0d65375ab32a6",
+  "validation_artifact_sha256_file": "validation.json",
+  "validation_conditions": [
+    "clean",
+    "mcar_0.2",
+    "mcar_0.4",
+    "mar_anchor_x0"
+  ]
+}

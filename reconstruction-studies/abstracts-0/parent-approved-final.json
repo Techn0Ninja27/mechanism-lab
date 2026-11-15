@@ -1,0 +1,16 @@
+{
+  "candidate_id": "abstracts-0",
+  "authorization": "parent approved phase two",
+  "freeze_verified_before_final": true,
+  "run_count": "one final execution covering each frozen seed 9401, 9403, 9407",
+  "code_sha256": "02771cb14bd201b569ff9baa4917dc42afd95f79bbb6af03b5f8294d1db4d0ec",
+  "fixture_sha256": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+  "proposal_sha256": "1fd60e30b9e8e44c79bbcf4c8400a067738ad94bed60c440e20996e5a9307e85",
+  "validation_artifact_sha256": "a28654089bc4d533ad33d0e2c6c1eee74daa91ddf155bedd15c1e49bec25c7bb",
+  "validation_records_hash": "0fec29dc2c53b000d4ef3021a6e024413fc7145bdd0411cfd1b64d15cee1fbc6",
+  "frozen_primary_comparators": ["completed_aug_unweighted", "mean_completed_aug"],
+  "frozen_validation_outcome": "failed practical screen: ADMIB mean AP 0.89470, completed control 0.89918, delta -0.00448; clean AP decrease -0.00924 versus maximum permitted decrease 0.01",
+  "final_fixture_conditions": ["clean", "mcar_0.2", "mnar_own_feature", "mnar_reversed_sign", "block_mcar_2_8", "block_mcar_8_14"],
+  "final_access_policy": "Use fixture.final_cases only. Do not read or use test_x; prediction receives feature matrices only and never condition labels or held-out labels.",
+  "no_tuning_after_final": true
+}

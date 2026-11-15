@@ -1,0 +1,957 @@
+{
+  "study_id": "molecules-1",
+  "mode": "validation",
+  "methods": [
+    "anchor_full",
+    "uniform_augmentation",
+    "native_nan_duplicate",
+    "impute_indicators",
+    "anchor_train_only",
+    "anchor_test_only",
+    "anchor_k1",
+    "permuted_anchor_rates"
+  ],
+  "fixed_model": {
+    "max_iter": 80,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "learning_rate": 0.08,
+    "early_stopping": false,
+    "random_state": 47
+  },
+  "remask_copies": 3,
+  "prediction_masks": 8,
+  "seed_results": [
+    {
+      "seed": 9401,
+      "fixture_metadata": {
+        "seed": 9401,
+        "mode": "validation",
+        "n_samples": 5000,
+        "n_features": 20,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "informative": 5,
+        "redundant": 5,
+        "weights": [
+          0.8,
+          0.2
+        ],
+        "shuffle": false,
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "train_missingness": {
+          "kind": "MCAR",
+          "probability": 0.2,
+          "columns": "2:"
+        },
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "train_only_statistics": true,
+        "statistics_used_for_mask_generation_only": true,
+        "test_available": false,
+        "test_label_policy": "final mode only; never use for model selection",
+        "fixture_hashes": {
+          "train_clean": "8fc8107cdb0699a1cb45531c22288c287b76a1ca8d9f282de0a569252dd79e22",
+          "train_masked": "974180a7a79b702a585922fa730e945394c86aa489b52da503d9c3248a6c2e3e",
+          "validation_clean": "151c1e394d1fabb160c286c519a26d0832b6945f12bf9be17eed8125690f6025",
+          "test_clean": "26d47cc805a65b5095349faa948afcc754902e81a29a836d69e7cedad28fd1c0"
+        },
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim."
+      },
+      "methods": {
+        "anchor_full": {
+          "cases": {
+            "clean": {
+              "ap": 0.8921470709396698,
+              "brier": 0.05885497659777779
+            },
+            "mcar_0.2": {
+              "ap": 0.8673461687423544,
+              "brier": 0.06774397964778131
+            },
+            "mcar_0.4": {
+              "ap": 0.8018651905972779,
+              "brier": 0.08427399634346121
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8348292992082772,
+              "brier": 0.07694147560533313
+            }
+          },
+          "mean_ap_all": 0.8490469323718949,
+          "mean_ap_shifted": 0.8183472449027775,
+          "mean_brier": 0.07195360704858836,
+          "runtime_seconds": 0.2645624169999792,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "uniform_augmentation": {
+          "cases": {
+            "clean": {
+              "ap": 0.8841503765827681,
+              "brier": 0.061333199225774425
+            },
+            "mcar_0.2": {
+              "ap": 0.8633485548969029,
+              "brier": 0.06862852393760056
+            },
+            "mcar_0.4": {
+              "ap": 0.800244488021542,
+              "brier": 0.08417825092075608
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8295065097769979,
+              "brier": 0.07818102440303192
+            }
+          },
+          "mean_ap_all": 0.8443124823195527,
+          "mean_ap_shifted": 0.8148754988992699,
+          "mean_brier": 0.07308024962179074,
+          "runtime_seconds": 0.26433424999777344,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "native_nan_duplicate": {
+          "cases": {
+            "clean": {
+              "ap": 0.9091943191497,
+              "brier": 0.05153029882138761
+            },
+            "mcar_0.2": {
+              "ap": 0.8782266359498709,
+              "brier": 0.062069441237721755
+            },
+            "mcar_0.4": {
+              "ap": 0.7918990668699607,
+              "brier": 0.0852269914051779
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8358060449508911,
+              "brier": 0.07354747366179913
+            }
+          },
+          "mean_ap_all": 0.8537815167301057,
+          "mean_ap_shifted": 0.8138525559104259,
+          "mean_brier": 0.0680935512815216,
+          "runtime_seconds": 0.14780629099914222,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "impute_indicators": {
+          "cases": {
+            "clean": {
+              "ap": 0.9080194850948871,
+              "brier": 0.05166884716354809
+            },
+            "mcar_0.2": {
+              "ap": 0.8656197549840065,
+              "brier": 0.06567296434150402
+            },
+            "mcar_0.4": {
+              "ap": 0.7756901999002517,
+              "brier": 0.08811275990928974
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8204939119728308,
+              "brier": 0.07742338892580439
+            }
+          },
+          "mean_ap_all": 0.842455837987994,
+          "mean_ap_shifted": 0.7980920559365412,
+          "mean_brier": 0.07071949008503656,
+          "runtime_seconds": 0.23681508300069254,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "anchor_train_only": {
+          "cases": {
+            "clean": {
+              "ap": 0.9012899839720095,
+              "brier": 0.053687968086312966
+            },
+            "mcar_0.2": {
+              "ap": 0.8777137152455572,
+              "brier": 0.060728981558424856
+            },
+            "mcar_0.4": {
+              "ap": 0.8212348764173527,
+              "brier": 0.07718992649507246
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8442846732855744,
+              "brier": 0.069591902482439
+            }
+          },
+          "mean_ap_all": 0.8611308122301234,
+          "mean_ap_shifted": 0.8327597748514636,
+          "mean_brier": 0.06529969465556232,
+          "runtime_seconds": 0.1562169159988116,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "anchor_test_only": {
+          "cases": {
+            "clean": {
+              "ap": 0.8970661904855161,
+              "brier": 0.059249515576917676
+            },
+            "mcar_0.2": {
+              "ap": 0.8595027217100121,
+              "brier": 0.07109106997702717
+            },
+            "mcar_0.4": {
+              "ap": 0.7662557662395479,
+              "brier": 0.09328389488823378
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8098502661528586,
+              "brier": 0.08324439625419856
+            }
+          },
+          "mean_ap_all": 0.8331687361469837,
+          "mean_ap_shifted": 0.7880530161962033,
+          "mean_brier": 0.0767172191740943,
+          "runtime_seconds": 0.22958708399892203,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "anchor_k1": {
+          "cases": {
+            "clean": {
+              "ap": 0.8725998721723522,
+              "brier": 0.06417561212875796
+            },
+            "mcar_0.2": {
+              "ap": 0.8286532929870485,
+              "brier": 0.07592888537078048
+            },
+            "mcar_0.4": {
+              "ap": 0.7765349409567556,
+              "brier": 0.08785581463397722
+            },
+            "mar_anchor_x0": {
+              "ap": 0.79949093040243,
+              "brier": 0.08090206066337995
+            }
+          },
+          "mean_ap_all": 0.8193197591296466,
+          "mean_ap_shifted": 0.7880129356795929,
+          "mean_brier": 0.0772155931992239,
+          "runtime_seconds": 0.15182858299885993,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2001851851851852,
+            0.1974074074074074,
+            0.19740740740740742,
+            0.20212962962962963,
+            0.19870370370370372
+          ]
+        },
+        "permuted_anchor_rates": {
+          "cases": {
+            "clean": {
+              "ap": 0.8857687051874699,
+              "brier": 0.06114610486546584
+            },
+            "mcar_0.2": {
+              "ap": 0.8572118176429983,
+              "brier": 0.07000380440156646
+            },
+            "mcar_0.4": {
+              "ap": 0.792647771678044,
+              "brier": 0.08542078556009196
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8242080620862027,
+              "brier": 0.07861256636517226
+            }
+          },
+          "mean_ap_all": 0.8399590891486786,
+          "mean_ap_shifted": 0.8084279168821233,
+          "mean_brier": 0.07379581529807414,
+          "runtime_seconds": 0.2600427090001176,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20083333333333334,
+            0.1913888888888889,
+            0.20296296296296296,
+            0.19351851851851853,
+            0.2071296296296296
+          ]
+        }
+      },
+      "errors": [],
+      "data_hashes": {
+        "train_clean": "8fc8107cdb0699a1cb45531c22288c287b76a1ca8d9f282de0a569252dd79e22",
+        "train_masked": "974180a7a79b702a585922fa730e945394c86aa489b52da503d9c3248a6c2e3e",
+        "validation_clean": "151c1e394d1fabb160c286c519a26d0832b6945f12bf9be17eed8125690f6025",
+        "test_clean": "26d47cc805a65b5095349faa948afcc754902e81a29a836d69e7cedad28fd1c0"
+      }
+    },
+    {
+      "seed": 9403,
+      "fixture_metadata": {
+        "seed": 9403,
+        "mode": "validation",
+        "n_samples": 5000,
+        "n_features": 20,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "informative": 5,
+        "redundant": 5,
+        "weights": [
+          0.8,
+          0.2
+        ],
+        "shuffle": false,
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "train_missingness": {
+          "kind": "MCAR",
+          "probability": 0.2,
+          "columns": "2:"
+        },
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "train_only_statistics": true,
+        "statistics_used_for_mask_generation_only": true,
+        "test_available": false,
+        "test_label_policy": "final mode only; never use for model selection",
+        "fixture_hashes": {
+          "train_clean": "3a90f2a3fba33ac10f5353227af55ef3ea0a441ed3dacad8df6c4d915be6f40f",
+          "train_masked": "a3408ff195dcdac9e650e684590bb2011a1bf339bbaa5b447abb14f4ed1e67ba",
+          "validation_clean": "bd16a6632a3170d3a8590e569d9ffecd7be332f705d5b3c81f6ce0daa44fe7b5",
+          "test_clean": "013e8e58c3eaadc4bd44aa360885a4ea68590ca92909c62da159708bcadfe1b9"
+        },
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim."
+      },
+      "methods": {
+        "anchor_full": {
+          "cases": {
+            "clean": {
+              "ap": 0.8755522193630226,
+              "brier": 0.0636567773431443
+            },
+            "mcar_0.2": {
+              "ap": 0.8497650220125804,
+              "brier": 0.07006481277587216
+            },
+            "mcar_0.4": {
+              "ap": 0.8202462770070146,
+              "brier": 0.07876213497889006
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8232816693203403,
+              "brier": 0.07826899435479237
+            }
+          },
+          "mean_ap_all": 0.8422112969257395,
+          "mean_ap_shifted": 0.8217639731636774,
+          "mean_brier": 0.07268817986317472,
+          "runtime_seconds": 0.2701685409992933,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "uniform_augmentation": {
+          "cases": {
+            "clean": {
+              "ap": 0.888334793776923,
+              "brier": 0.06066783939803655
+            },
+            "mcar_0.2": {
+              "ap": 0.8597053006136042,
+              "brier": 0.0676220566361026
+            },
+            "mcar_0.4": {
+              "ap": 0.8217934656630189,
+              "brier": 0.07820227459369156
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8315190987289706,
+              "brier": 0.0762404927586431
+            }
+          },
+          "mean_ap_all": 0.8503381646956292,
+          "mean_ap_shifted": 0.8266562821959947,
+          "mean_brier": 0.07068316584661845,
+          "runtime_seconds": 0.25501333300053375,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "native_nan_duplicate": {
+          "cases": {
+            "clean": {
+              "ap": 0.9049564317535926,
+              "brier": 0.051544834212099135
+            },
+            "mcar_0.2": {
+              "ap": 0.8706080830449126,
+              "brier": 0.06207198487523862
+            },
+            "mcar_0.4": {
+              "ap": 0.829008911437857,
+              "brier": 0.074333977054439
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8350132766327074,
+              "brier": 0.07338860250211683
+            }
+          },
+          "mean_ap_all": 0.8598966757172675,
+          "mean_ap_shifted": 0.8320110940352823,
+          "mean_brier": 0.0653348496609734,
+          "runtime_seconds": 0.13940891600213945,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "impute_indicators": {
+          "cases": {
+            "clean": {
+              "ap": 0.8990970248921547,
+              "brier": 0.054536702633725245
+            },
+            "mcar_0.2": {
+              "ap": 0.8601528528187761,
+              "brier": 0.06565526194379337
+            },
+            "mcar_0.4": {
+              "ap": 0.8175704050781704,
+              "brier": 0.07665789979414947
+            },
+            "mar_anchor_x0": {
+              "ap": 0.826531309101462,
+              "brier": 0.07646903379508865
+            }
+          },
+          "mean_ap_all": 0.8508378979726408,
+          "mean_ap_shifted": 0.8220508570898162,
+          "mean_brier": 0.06832972454168917,
+          "runtime_seconds": 0.22522779100108892,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "anchor_train_only": {
+          "cases": {
+            "clean": {
+              "ap": 0.8898921086131173,
+              "brier": 0.05673167474826573
+            },
+            "mcar_0.2": {
+              "ap": 0.8608939565029378,
+              "brier": 0.0644357612969255
+            },
+            "mcar_0.4": {
+              "ap": 0.8332399672594594,
+              "brier": 0.07268071516628066
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8304030059460973,
+              "brier": 0.0751458661316016
+            }
+          },
+          "mean_ap_all": 0.853607259580403,
+          "mean_ap_shifted": 0.8318214866027783,
+          "mean_brier": 0.06724850433576837,
+          "runtime_seconds": 0.15816520799853606,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "anchor_test_only": {
+          "cases": {
+            "clean": {
+              "ap": 0.8893469999652652,
+              "brier": 0.05984284884229676
+            },
+            "mcar_0.2": {
+              "ap": 0.8539630169737654,
+              "brier": 0.06930368089851703
+            },
+            "mcar_0.4": {
+              "ap": 0.810430214039466,
+              "brier": 0.08277637701004881
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8240411200371136,
+              "brier": 0.07891419049180919
+            }
+          },
+          "mean_ap_all": 0.8444453377539025,
+          "mean_ap_shifted": 0.8172356670382899,
+          "mean_brier": 0.07270927431066794,
+          "runtime_seconds": 0.2550319580004725,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "anchor_k1": {
+          "cases": {
+            "clean": {
+              "ap": 0.8546174619664823,
+              "brier": 0.06753789512533173
+            },
+            "mcar_0.2": {
+              "ap": 0.818977110128501,
+              "brier": 0.07548865002305684
+            },
+            "mcar_0.4": {
+              "ap": 0.7949635685299461,
+              "brier": 0.08412231280622245
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7961964695848802,
+              "brier": 0.08287589938814531
+            }
+          },
+          "mean_ap_all": 0.8161886525524524,
+          "mean_ap_shifted": 0.7955800190574132,
+          "mean_brier": 0.07750618933568909,
+          "runtime_seconds": 0.15930212499733898,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.20472222222222222,
+            0.19740740740740742,
+            0.2024074074074074,
+            0.20277777777777778,
+            0.19546296296296295
+          ]
+        },
+        "permuted_anchor_rates": {
+          "cases": {
+            "clean": {
+              "ap": 0.8825391285368176,
+              "brier": 0.06165135323591776
+            },
+            "mcar_0.2": {
+              "ap": 0.8542242552279596,
+              "brier": 0.06882828889646359
+            },
+            "mcar_0.4": {
+              "ap": 0.8174882993368583,
+              "brier": 0.08005783240598953
+            },
+            "mar_anchor_x0": {
+              "ap": 0.8300681527126182,
+              "brier": 0.07704450161530343
+            }
+          },
+          "mean_ap_all": 0.8460799589535635,
+          "mean_ap_shifted": 0.8237782260247383,
+          "mean_brier": 0.07189549403841858,
+          "runtime_seconds": 0.264671000000817,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19861111111111113,
+            0.20592592592592593,
+            0.19925925925925927,
+            0.2025,
+            0.19648148148148148
+          ]
+        }
+      },
+      "errors": [],
+      "data_hashes": {
+        "train_clean": "3a90f2a3fba33ac10f5353227af55ef3ea0a441ed3dacad8df6c4d915be6f40f",
+        "train_masked": "a3408ff195dcdac9e650e684590bb2011a1bf339bbaa5b447abb14f4ed1e67ba",
+        "validation_clean": "bd16a6632a3170d3a8590e569d9ffecd7be332f705d5b3c81f6ce0daa44fe7b5",
+        "test_clean": "013e8e58c3eaadc4bd44aa360885a4ea68590ca92909c62da159708bcadfe1b9"
+      }
+    },
+    {
+      "seed": 9407,
+      "fixture_metadata": {
+        "seed": 9407,
+        "mode": "validation",
+        "n_samples": 5000,
+        "n_features": 20,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "informative": 5,
+        "redundant": 5,
+        "weights": [
+          0.8,
+          0.2
+        ],
+        "shuffle": false,
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "train_missingness": {
+          "kind": "MCAR",
+          "probability": 0.2,
+          "columns": "2:"
+        },
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "train_only_statistics": true,
+        "statistics_used_for_mask_generation_only": true,
+        "test_available": false,
+        "test_label_policy": "final mode only; never use for model selection",
+        "fixture_hashes": {
+          "train_clean": "2c8bc3898f30a905771800259c6530a6bae374c232eb355bfa8f39b6c6aa1621",
+          "train_masked": "79ba5068808c7e99838d7937550211f3beb917d69a9704659e1bddbdca9ad9ba",
+          "validation_clean": "84aff6389fe7f75b43824c63f3deebb9381a9c308494c52c15d9bc764c02a824",
+          "test_clean": "1f6c453c2060141f91a9dee87636f4a1c076cdf38f4ebc95d24d33ab7278d8b9"
+        },
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim."
+      },
+      "methods": {
+        "anchor_full": {
+          "cases": {
+            "clean": {
+              "ap": 0.8557904131372169,
+              "brier": 0.07134099535948679
+            },
+            "mcar_0.2": {
+              "ap": 0.7957877832984165,
+              "brier": 0.08477527049347482
+            },
+            "mcar_0.4": {
+              "ap": 0.7472368114080699,
+              "brier": 0.09479466110006379
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7500186185640254,
+              "brier": 0.0941229785319315
+            }
+          },
+          "mean_ap_all": 0.7872084066019323,
+          "mean_ap_shifted": 0.7486277149860476,
+          "mean_brier": 0.08625847637123923,
+          "runtime_seconds": 0.2593585409995285,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "uniform_augmentation": {
+          "cases": {
+            "clean": {
+              "ap": 0.86117498654141,
+              "brier": 0.07029221936971987
+            },
+            "mcar_0.2": {
+              "ap": 0.8035225302907634,
+              "brier": 0.08336962721476639
+            },
+            "mcar_0.4": {
+              "ap": 0.7496730198814859,
+              "brier": 0.0941442308060536
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7527177337932359,
+              "brier": 0.093555314717936
+            }
+          },
+          "mean_ap_all": 0.7917720676267238,
+          "mean_ap_shifted": 0.7511953768373609,
+          "mean_brier": 0.08534034802711896,
+          "runtime_seconds": 0.27313958300146624,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "native_nan_duplicate": {
+          "cases": {
+            "clean": {
+              "ap": 0.8792224025031721,
+              "brier": 0.06072963598366996
+            },
+            "mcar_0.2": {
+              "ap": 0.8351773514949257,
+              "brier": 0.07400425268068297
+            },
+            "mcar_0.4": {
+              "ap": 0.7727709943840723,
+              "brier": 0.08717641979963016
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7872682939338455,
+              "brier": 0.08502456090727666
+            }
+          },
+          "mean_ap_all": 0.8186097605790038,
+          "mean_ap_shifted": 0.7800196441589589,
+          "mean_brier": 0.07673371734281494,
+          "runtime_seconds": 0.1513177920023736,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "impute_indicators": {
+          "cases": {
+            "clean": {
+              "ap": 0.8809217106772482,
+              "brier": 0.06038923878087778
+            },
+            "mcar_0.2": {
+              "ap": 0.8240153906462238,
+              "brier": 0.07631580025848614
+            },
+            "mcar_0.4": {
+              "ap": 0.7688559327829978,
+              "brier": 0.08791171870283893
+            },
+            "mar_anchor_x0": {
+              "ap": 0.75452911765697,
+              "brier": 0.09014410750354714
+            }
+          },
+          "mean_ap_all": 0.8070805379408599,
+          "mean_ap_shifted": 0.7616925252199839,
+          "mean_brier": 0.0786902163114375,
+          "runtime_seconds": 0.2340390000026673,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "anchor_train_only": {
+          "cases": {
+            "clean": {
+              "ap": 0.8727370374557549,
+              "brier": 0.06320924459302577
+            },
+            "mcar_0.2": {
+              "ap": 0.8215815454745049,
+              "brier": 0.07692330322024546
+            },
+            "mcar_0.4": {
+              "ap": 0.7753133721314776,
+              "brier": 0.0871450265153535
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7854335063101135,
+              "brier": 0.08516298315769655
+            }
+          },
+          "mean_ap_all": 0.8137663653429628,
+          "mean_ap_shifted": 0.7803734392207955,
+          "mean_brier": 0.07811013937158032,
+          "runtime_seconds": 0.1581347920000553,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "anchor_test_only": {
+          "cases": {
+            "clean": {
+              "ap": 0.8623599904168869,
+              "brier": 0.06937868639587208
+            },
+            "mcar_0.2": {
+              "ap": 0.800125695345125,
+              "brier": 0.08474039160772344
+            },
+            "mcar_0.4": {
+              "ap": 0.741900127029512,
+              "brier": 0.09596416311919506
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7488064387521306,
+              "brier": 0.0947247231669556
+            }
+          },
+          "mean_ap_all": 0.7882980628859136,
+          "mean_ap_shifted": 0.7453532828908214,
+          "mean_brier": 0.08620199107243653,
+          "runtime_seconds": 0.2380817909979669,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "anchor_k1": {
+          "cases": {
+            "clean": {
+              "ap": 0.8012681992040644,
+              "brier": 0.08127208730457186
+            },
+            "mcar_0.2": {
+              "ap": 0.7759480159465715,
+              "brier": 0.08765279853448008
+            },
+            "mcar_0.4": {
+              "ap": 0.6994258167085285,
+              "brier": 0.10191056309103158
+            },
+            "mar_anchor_x0": {
+              "ap": 0.719136831410494,
+              "brier": 0.09855849465711818
+            }
+          },
+          "mean_ap_all": 0.7489447158174146,
+          "mean_ap_shifted": 0.7092813240595113,
+          "mean_brier": 0.09234848589680042,
+          "runtime_seconds": 0.1619570000002568,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.19685185185185186,
+            0.19935185185185186,
+            0.19916666666666666,
+            0.2001851851851852,
+            0.19796296296296295
+          ]
+        },
+        "permuted_anchor_rates": {
+          "cases": {
+            "clean": {
+              "ap": 0.8576373391667078,
+              "brier": 0.07116089696194769
+            },
+            "mcar_0.2": {
+              "ap": 0.7970592505965682,
+              "brier": 0.08464734491046559
+            },
+            "mcar_0.4": {
+              "ap": 0.7499549977614685,
+              "brier": 0.09464083954840673
+            },
+            "mar_anchor_x0": {
+              "ap": 0.7473413770961559,
+              "brier": 0.09502017127253512
+            }
+          },
+          "mean_ap_all": 0.7879982411552251,
+          "mean_ap_shifted": 0.7486481874288122,
+          "mean_brier": 0.08636731317333879,
+          "runtime_seconds": 0.28031887500037556,
+          "n_fit_rows": 12000,
+          "rate_bins": [
+            0.2,
+            0.1985185185185185,
+            0.19611111111111112,
+            0.20212962962962963,
+            0.19675925925925927
+          ]
+        }
+      },
+      "errors": [],
+      "data_hashes": {
+        "train_clean": "2c8bc3898f30a905771800259c6530a6bae374c232eb355bfa8f39b6c6aa1621",
+        "train_masked": "79ba5068808c7e99838d7937550211f3beb917d69a9704659e1bddbdca9ad9ba",
+        "validation_clean": "84aff6389fe7f75b43824c63f3deebb9381a9c308494c52c15d9bc764c02a824",
+        "test_clean": "1f6c453c2060141f91a9dee87636f4a1c076cdf38f4ebc95d24d33ab7278d8b9"
+      }
+    }
+  ],
+  "source_hashes": {
+    "scripts/missingness_shift_fixture.py": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "reconstruction-studies/molecules-1/proposal.json": "668a744faa67eaf5eaaa781ddf432cd87043a57830a0351b0e9507a767fedab2",
+    "reconstruction-studies/molecules-1/experiment.py": "12bc5a76bf1363d9f0bb262d3afe51764581169a37e95cd9bcfe5cc8f3191d1e",
+    "results/atomization-study-v1/expanded-papers.json": "24b459bf540f1767bfba851489ccdd64477ec7e50eb5339e06de95f7e00e73cb",
+    "results/atomization-study-v1/context-atoms.json": "3a26f1df40edfe4bcfbc3225cec96f2d1ce780664f6bca877cbe4f9d71aad8b6"
+  }
+}

@@ -6,8 +6,9 @@ This remains a fork of **The Alien Space of Science**. The authors already opera
 
 Our extensions focus on evidence-grounded evaluation, typed atom/molecule composition, provenance checks, and reproducible candidate studies. Current pilot results include failures and small exploratory gains, not established scientific discoveries.
 
+- [Literature atomization and reconstructed implementations](reconstruction-studies/README.md)
 - [World-search pilot and results](reports/world-search-2026-11-16/README.md)
-- [Full candidate studies](candidate-studies/manifest.json)
+- [Full candidate studies](candidate-studies/README.md)
 - [Molecule representation and evidence gates](docs/world-search/MOLECULES.md)
 - [Runbook](docs/world-search/README.md)
 - [Fork changes](FORK.md)

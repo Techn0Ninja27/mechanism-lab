@@ -1,0 +1,32 @@
+[
+  {
+    "id": "abstracts-0",
+    "title": "Anchor-Decoupled Mask-Invariant Boosting (ADMIB) for tabular classification under missingness shift",
+    "arm": "abstracts"
+  },
+  {
+    "id": "atoms-0",
+    "title": "Anchor-Calibrated Mask-Channel Gating for HistGradientBoosting under Missingness Shift",
+    "arm": "atoms"
+  },
+  {
+    "id": "molecules-0",
+    "title": "Mechanism-diversified self-masking augmentation with group-robust boosting for missingness shift (unvalidated hypothesis)",
+    "arm": "molecules"
+  },
+  {
+    "id": "abstracts-1",
+    "title": "Mask-Invariant Value Pathway: Boosting on Observed Values with Mask-Information Removed via Synthetic-Mask Consistency",
+    "arm": "abstracts"
+  },
+  {
+    "id": "atoms-1",
+    "title": "Indicator-invariant pooled prediction with value-only experts under bounded own-value MNAR shift",
+    "arm": "atoms"
+  },
+  {
+    "id": "molecules-1",
+    "title": "Anchor-Stable Mask-Shortcut Suppression for HistGradientBoosting under Missingness Shift (proposed hypothesis)",
+    "arm": "molecules"
+  }
+]

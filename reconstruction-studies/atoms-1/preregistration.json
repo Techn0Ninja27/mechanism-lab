@@ -1,0 +1,56 @@
+{
+  "candidate_id": "atoms-1",
+  "choice_rule": "Use the single frozen candidate configuration. Select strongest matched control by validation primary metric from native-NaN HGB and HGB with added random mask augmentation; compare candidate against the higher-scoring control. No parameter tuning or final fixture access in phase one.",
+  "effect_threshold": {
+    "maximum_clean_ap_decrease": 0.01,
+    "mean_ap_gain_over_strongest_matched_control": 0.005
+  },
+  "faithfulness_caveat": "The prediction's available-expert set depends on the mask, so this implementation does not satisfy the proposal's claimed no-mask-to-output path. Validation is an empirical test of the specified pooling algorithm, not validation of MNAR invariance.",
+  "phase": "phase-one-validation; final test not authorized yet",
+  "primary_metric": "mean average precision averaged equally over validation conditions mcar_0.2, mcar_0.4, mar_anchor_x0, then over seeds 9401, 9403, 9407",
+  "secondary_metrics": [
+    "per-condition average precision",
+    "per-condition Brier score",
+    "clean average precision",
+    "runtime"
+  ],
+  "selected_parameters": {
+    "augmentation_control": "independent per-row random additional NaN rate Uniform[0,0.5] on columns 2..19, applied only to already-observed training values",
+    "calibration": "one scalar temperature fit to pooled validation logits pooled across all four validation masks, bounded [0.25,4.0]",
+    "expert_fit_rows": "training rows where the selected subset is fully observed",
+    "expert_model": "HistGradientBoostingClassifier",
+    "fit_threads": 1,
+    "iterations_per_expert": 6,
+    "l2_regularization": 1.0,
+    "learning_rate": 0.08,
+    "matched_total_iterations": 240,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "pooling": "validation-fitted normalized exp(-mean expert log loss); average expert logits with weights over fully observed subsets; anchor-only fallback if no model available",
+    "seeds": [
+      9401,
+      9403,
+      9407
+    ],
+    "subset_columns": "always [0,1] plus 6-12 distinct columns sampled from 2..19",
+    "subset_rng": "numpy.default_rng(seed+81000)",
+    "subsets_per_candidate": 40,
+    "target_batch_adaptation": false
+  },
+  "source_sha256": {
+    "expanded_primary_source_abstract_hashes": {
+      "2406.16484v1": "33b682b280701128bf207c5eeebe47c3c99c7b37aec4e4d70c709fcdbbbfb603",
+      "arxiv:2507.08280": "5f3796e6ad24ef736ffaf1c175caf5ce9a09c25013cecf520aff8525035b4581",
+      "arxiv:2605.12031": "03ab1460479ee69586cd82cb344f74cef362627bd871a7fc46dfe7128cb87c8e"
+    },
+    "experiment_script": "47ff70ffeb488541066d2ab88ae7f0a31ae843548fc9195a578ad0b8f2940d74",
+    "fixture_script": "75fbe65bc6973423183f647e9efae520368a21a28dd5e3fd88e571f545d85c41",
+    "literature_source_ids": [
+      "2406.16484v1",
+      "arxiv:2507.08280",
+      "arxiv:2605.12031"
+    ],
+    "proposal_json": "441ec7be4be11e8c9a9bc5f534c7b881e46cd2f8fe79a3fea8291920c8abe0ad"
+  },
+  "validation_artifact_hash": "c9febee41e6d2a6ebe67bd875a4d30309371b34ea8341a8c680bc8a98f89a242"
+}

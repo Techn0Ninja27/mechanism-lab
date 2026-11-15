@@ -1,0 +1,870 @@
+{
+  "candidate_id": "abstracts-1",
+  "configuration": {
+    "K": 8,
+    "anchor_columns": [
+      0,
+      1
+    ],
+    "base_hgb": {
+      "early_stopping": false,
+      "l2_regularization": 1.0,
+      "learning_rate": 0.1,
+      "max_iter": 100,
+      "max_leaf_nodes": 15
+    },
+    "calibration": "none (avoids validation-label reuse)",
+    "synthetic_mcar_probability": 0.2,
+    "teacher_views": [
+      "mcar",
+      "group"
+    ],
+    "validation_seeds": [
+      9401,
+      9403,
+      9407
+    ]
+  },
+  "mode": "validation",
+  "results": [
+    {
+      "augmentation": {
+        "mcar_only_teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": null,
+          "x_hash": "5b133d22ab2b0cfd1f306c14117a6be99de1ca91348783d69f5e1f24697b86c7",
+          "y_hash": "878870d33059389c8292d8c1ca0e14773782bd54d68c2b8fd6011fef5bec3bf4"
+        },
+        "teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": 0.25332204200094566,
+          "x_hash": "c4963f1399d59cc193a350038c6ff7159258300d686d1fc315de19367bac8afb",
+          "y_hash": "878870d33059389c8292d8c1ca0e14773782bd54d68c2b8fd6011fef5bec3bf4"
+        }
+      },
+      "errors": [],
+      "mcar_view_hashes": [
+        "f611f13b58b3e0b042208f9ff13ded00c4e41cc3c7cd3e9c7490505fa979bffe",
+        "96d5e25656ca0d82870be7a0a8e7b392da994c473a59a58bd5ba402159bb932a",
+        "e41aecba88ad4ee481c456ddf87094a91edc91bf6698b4e29b19867e2fa486c5",
+        "edf15cd818887135b8adcf34c3f9c2d376c80e5e2268854bc97489eb85ccd3ee",
+        "e3ce39ce3c4904b106003e620607c6e86f62805b4b56483f46aa1220e76a23b0",
+        "aa7e57033a35d86a0b468be2d9d59e38f18b126bcc4a11b2d4cf93d9a88ecb2f",
+        "f81d42409d44f5b80bb15393fa1fcc5ef6762156fd671f0e521ead5f86fb374c",
+        "7d8a3cf0145c568d2c889f324df5731f8f6ae56dde98a3d5f0068e13ab780c67"
+      ],
+      "metadata": {
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "fixture_hashes": {
+          "test_clean": "26d47cc805a65b5095349faa948afcc754902e81a29a836d69e7cedad28fd1c0",
+          "train_clean": "8fc8107cdb0699a1cb45531c22288c287b76a1ca8d9f282de0a569252dd79e22",
+          "train_masked": "974180a7a79b702a585922fa730e945394c86aa489b52da503d9c3248a6c2e3e",
+          "validation_clean": "151c1e394d1fabb160c286c519a26d0832b6945f12bf9be17eed8125690f6025"
+        },
+        "informative": 5,
+        "mode": "validation",
+        "n_features": 20,
+        "n_samples": 5000,
+        "redundant": 5,
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim.",
+        "seed": 9401,
+        "shuffle": false,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "test_available": false,
+        "test_label_policy": "final mode only; never use for model selection",
+        "train_missingness": {
+          "columns": "2:",
+          "kind": "MCAR",
+          "probability": 0.2
+        },
+        "train_only_statistics": true,
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "weights": [
+          0.8,
+          0.2
+        ]
+      },
+      "methods": {
+        "ablation_indicator_shuffle_noop": {
+          "clean": {
+            "ap": 0.8784331373952297,
+            "brier": 0.06161851803141299
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7973436468792682,
+            "brier": 0.0838031419602093
+          },
+          "mcar_0.2": {
+            "ap": 0.8490510130159123,
+            "brier": 0.07136615340475798
+          },
+          "mcar_0.4": {
+            "ap": 0.7660988065820259,
+            "brier": 0.0910191922288259
+          }
+        },
+        "ablation_mcar_only": {
+          "clean": {
+            "ap": 0.8799039990642382,
+            "brier": 0.06204069114235685
+          },
+          "mar_anchor_x0": {
+            "ap": 0.800679260171964,
+            "brier": 0.08289034498512123
+          },
+          "mcar_0.2": {
+            "ap": 0.8453746016016693,
+            "brier": 0.07220670105778425
+          },
+          "mcar_0.4": {
+            "ap": 0.7724747957945122,
+            "brier": 0.09051080649475206
+          }
+        },
+        "ablation_mixed_k1": {
+          "clean": {
+            "ap": 0.8660892006599175,
+            "brier": 0.0653628002691224
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7835990957891928,
+            "brier": 0.08707783548101355
+          },
+          "mcar_0.2": {
+            "ap": 0.8313725217175618,
+            "brier": 0.0758807842172605
+          },
+          "mcar_0.4": {
+            "ap": 0.758359002545617,
+            "brier": 0.09304485375844292
+          }
+        },
+        "ablation_mixed_k4": {
+          "clean": {
+            "ap": 0.8738030130560039,
+            "brier": 0.06267537701287486
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7918971109601914,
+            "brier": 0.08514353250150092
+          },
+          "mcar_0.2": {
+            "ap": 0.8412972488561348,
+            "brier": 0.07297973050011111
+          },
+          "mcar_0.4": {
+            "ap": 0.7628625605174242,
+            "brier": 0.09190528804137069
+          }
+        },
+        "ablation_raw_y_distillation": {
+          "clean": {
+            "ap": 0.9092267375505007,
+            "brier": 0.058820446769952496
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8112997743683301,
+            "brier": 0.10049649187959249
+          },
+          "mcar_0.2": {
+            "ap": 0.8639507038795595,
+            "brier": 0.0799843979237669
+          },
+          "mcar_0.4": {
+            "ap": 0.7680717167292965,
+            "brier": 0.10387783418920118
+          }
+        },
+        "candidate_mixed_k8": {
+          "clean": {
+            "ap": 0.8784331373952297,
+            "brier": 0.06161851803141299
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7973436468792682,
+            "brier": 0.0838031419602093
+          },
+          "mcar_0.2": {
+            "ap": 0.8490510130159123,
+            "brier": 0.07136615340475798
+          },
+          "mcar_0.4": {
+            "ap": 0.7660988065820259,
+            "brier": 0.0910191922288259
+          }
+        },
+        "median_imputed_hgb_no_indicator": {
+          "clean": {
+            "ap": 0.9193669656074013,
+            "brier": 0.0479098960765824
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8323004902102399,
+            "brier": 0.07423942965102007
+          },
+          "mcar_0.2": {
+            "ap": 0.8816284309331229,
+            "brier": 0.060712602861170514
+          },
+          "mcar_0.4": {
+            "ap": 0.790858828556517,
+            "brier": 0.0850843913008768
+          }
+        },
+        "native_hgb": {
+          "clean": {
+            "ap": 0.9160048413547849,
+            "brier": 0.04854726317594218
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8418131475768843,
+            "brier": 0.07258522900573675
+          },
+          "mcar_0.2": {
+            "ap": 0.881247675522979,
+            "brier": 0.06040287258761295
+          },
+          "mcar_0.4": {
+            "ap": 0.8072728311302707,
+            "brier": 0.08117860610784647
+          }
+        },
+        "random_mask_augmentation_hgb": {
+          "clean": {
+            "ap": 0.9043947173895063,
+            "brier": 0.054685854760861394
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8459830994601583,
+            "brier": 0.07091925847210234
+          },
+          "mcar_0.2": {
+            "ap": 0.8800201311907581,
+            "brier": 0.0616138601041497
+          },
+          "mcar_0.4": {
+            "ap": 0.82284899024917,
+            "brier": 0.0767459148003664
+          }
+        },
+        "random_mask_augmentation_hgb_200_trees": {
+          "clean": {
+            "ap": 0.9125818195660469,
+            "brier": 0.0536956591221875
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8601359979494814,
+            "brier": 0.06828778465232167
+          },
+          "mcar_0.2": {
+            "ap": 0.8868493819719457,
+            "brier": 0.05956293555846199
+          },
+          "mcar_0.4": {
+            "ap": 0.8392157948858885,
+            "brier": 0.07233635170635452
+          }
+        }
+      },
+      "mode": "validation",
+      "runtimes_seconds": {
+        "ablation_indicator_shuffle_noop": 0.17388612500144518,
+        "ablation_mcar_only": 0.18945766700198874,
+        "ablation_mixed_k1": 0.11633841699949699,
+        "ablation_mixed_k4": 0.14100799999869196,
+        "ablation_raw_y_distillation": 0.08542579200002365,
+        "candidate_mixed_k8": 0.17557816699991236,
+        "mcar_only_teacher_fit": null,
+        "median_imputed_hgb_no_indicator": 0.07776183299938566,
+        "native_hgb": 0.10117499999978463,
+        "random_mask_augmentation_hgb": 0.013825124999129912,
+        "random_mask_augmentation_hgb_200_trees": 0.4470283750015369,
+        "teacher_fit": 0.25332204200094566
+      },
+      "seed": 9401,
+      "total_runtime_seconds": 2.0631730419991072,
+      "train_mask_pattern_sha256": "4a7b319b80c34656e99ef2d160516f3307be115f658305b5077ed413d273fc3c",
+      "train_x_sha256": "974180a7a79b702a585922fa730e945394c86aa489b52da503d9c3248a6c2e3e",
+      "train_y_sha256": "025a0a2c5c42e6f4afd86ed06cc1b937780e08635bf765de812a620cdaab2b5a",
+      "view_hashes": [
+        "f611f13b58b3e0b042208f9ff13ded00c4e41cc3c7cd3e9c7490505fa979bffe",
+        "407460c5877f172ef49cf5c9d4eef6785ceb94f2b07154e44fb375fe174823de",
+        "b5c40a984b4e4ff4933760f521c09a1d627d625e3c5cff9feb30e47105ef29e2",
+        "ad318a095a9e49d0f5439afc999c9801862f324f30b23f76e098812e533c4101",
+        "95b2cfc6d011e61d8a220926f2d186e6c99fb290643b3510ead7920673944979",
+        "beb737a162fb74fe104da1d13fa56bd391a8d03bfe823ea1847c99b5b3cffd12",
+        "a927c6aadf0e1545779db4c047da1d3b47b775155d30bbe5dccac31cad94cae0",
+        "0e092cfeeaeff0ae4fc7ba5a818f30fd631be899e14939cb58fd1de5cc8bc5b6"
+      ]
+    },
+    {
+      "augmentation": {
+        "mcar_only_teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": null,
+          "x_hash": "3a87ec6dc6143942f4fc031369ba5df95db1da2ac937047b84057db06780c38a",
+          "y_hash": "4d7c7870e0c2ea619834bde65f0091a39d24eb24699d991e6a9387d57fb31e4b"
+        },
+        "teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": 0.25624183399850153,
+          "x_hash": "8abba68cb1aee90ec54baf23035b0115818c2226998fce791980c6672c47cd17",
+          "y_hash": "4d7c7870e0c2ea619834bde65f0091a39d24eb24699d991e6a9387d57fb31e4b"
+        }
+      },
+      "errors": [],
+      "mcar_view_hashes": [
+        "86e7415ae59a1ba73b940885760b3fd6d8314f91173f26f5ecc87fd064cf7cc4",
+        "e1f4cff8fd25523af88dbfa37e393b3c8dd9494d046025ebf34dfd3d7f7d7b09",
+        "384b98c28da3d595fd5f3e83dba087f58ffa9600e9cf2fdeaca174966307472f",
+        "cfead9c8f9306a399e9bd3fae41e29a0ae2d37958b325bd1a02641490e52a381",
+        "78acab130ce1ec38ba4e43b65f8445bde10ba630f72c09fce3201a03df81d0a2",
+        "b6ebde3d097205231f2ac6a3737b9aabba7db8f642ee039a0634ff7a8ea60bd6",
+        "3b67dbc2c083dd06b59d733e4a13c6b2c794892759c89e3aa4d4eb842852f96f",
+        "1bc9e250ee1e5a718d0e4ad168d00f8aade93cd28a263cfd0c9ea8e65a5f2e83"
+      ],
+      "metadata": {
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "fixture_hashes": {
+          "test_clean": "013e8e58c3eaadc4bd44aa360885a4ea68590ca92909c62da159708bcadfe1b9",
+          "train_clean": "3a90f2a3fba33ac10f5353227af55ef3ea0a441ed3dacad8df6c4d915be6f40f",
+          "train_masked": "a3408ff195dcdac9e650e684590bb2011a1bf339bbaa5b447abb14f4ed1e67ba",
+          "validation_clean": "bd16a6632a3170d3a8590e569d9ffecd7be332f705d5b3c81f6ce0daa44fe7b5"
+        },
+        "informative": 5,
+        "mode": "validation",
+        "n_features": 20,
+        "n_samples": 5000,
+        "redundant": 5,
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim.",
+        "seed": 9403,
+        "shuffle": false,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "test_available": false,
+        "test_label_policy": "final mode only; never use for model selection",
+        "train_missingness": {
+          "columns": "2:",
+          "kind": "MCAR",
+          "probability": 0.2
+        },
+        "train_only_statistics": true,
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "weights": [
+          0.8,
+          0.2
+        ]
+      },
+      "methods": {
+        "ablation_indicator_shuffle_noop": {
+          "clean": {
+            "ap": 0.8846096766688089,
+            "brier": 0.06070230000993945
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8073910231692585,
+            "brier": 0.08028505336832278
+          },
+          "mcar_0.2": {
+            "ap": 0.8427069286092815,
+            "brier": 0.07095407387815252
+          },
+          "mcar_0.4": {
+            "ap": 0.8008885220733448,
+            "brier": 0.08188095812631054
+          }
+        },
+        "ablation_mcar_only": {
+          "clean": {
+            "ap": 0.878242251923577,
+            "brier": 0.06219142603071723
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8084147191548238,
+            "brier": 0.0798255559619126
+          },
+          "mcar_0.2": {
+            "ap": 0.8427437118658884,
+            "brier": 0.07172140456515533
+          },
+          "mcar_0.4": {
+            "ap": 0.799295032906466,
+            "brier": 0.08347071967105123
+          }
+        },
+        "ablation_mixed_k1": {
+          "clean": {
+            "ap": 0.876365733739245,
+            "brier": 0.06227177414470906
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8011014177536775,
+            "brier": 0.08124391320599662
+          },
+          "mcar_0.2": {
+            "ap": 0.8410079320819537,
+            "brier": 0.07141254774821969
+          },
+          "mcar_0.4": {
+            "ap": 0.7999056689732874,
+            "brier": 0.08154951426988664
+          }
+        },
+        "ablation_mixed_k4": {
+          "clean": {
+            "ap": 0.883687712509734,
+            "brier": 0.061035150799162156
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8135293064729009,
+            "brier": 0.07977618863115492
+          },
+          "mcar_0.2": {
+            "ap": 0.8400184182922797,
+            "brier": 0.07104620780536086
+          },
+          "mcar_0.4": {
+            "ap": 0.8092981490716842,
+            "brier": 0.08083720215447837
+          }
+        },
+        "ablation_raw_y_distillation": {
+          "clean": {
+            "ap": 0.9052910660452941,
+            "brier": 0.058503242237433827
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8266583483262437,
+            "brier": 0.08868988483299807
+          },
+          "mcar_0.2": {
+            "ap": 0.8695541179421762,
+            "brier": 0.0746237996325315
+          },
+          "mcar_0.4": {
+            "ap": 0.8155406409275909,
+            "brier": 0.08878295259476389
+          }
+        },
+        "candidate_mixed_k8": {
+          "clean": {
+            "ap": 0.8846096766688089,
+            "brier": 0.06070230000993945
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8073910231692585,
+            "brier": 0.08028505336832278
+          },
+          "mcar_0.2": {
+            "ap": 0.8427069286092815,
+            "brier": 0.07095407387815252
+          },
+          "mcar_0.4": {
+            "ap": 0.8008885220733448,
+            "brier": 0.08188095812631054
+          }
+        },
+        "median_imputed_hgb_no_indicator": {
+          "clean": {
+            "ap": 0.905416875145452,
+            "brier": 0.05250484716070927
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8299264424924316,
+            "brier": 0.07531788249070166
+          },
+          "mcar_0.2": {
+            "ap": 0.870278664749186,
+            "brier": 0.06268143974722121
+          },
+          "mcar_0.4": {
+            "ap": 0.8234135755304344,
+            "brier": 0.07532425750942577
+          }
+        },
+        "native_hgb": {
+          "clean": {
+            "ap": 0.911034411653915,
+            "brier": 0.05046488025113269
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8307625700508681,
+            "brier": 0.0740566290169063
+          },
+          "mcar_0.2": {
+            "ap": 0.8696362332967019,
+            "brier": 0.06254835055173887
+          },
+          "mcar_0.4": {
+            "ap": 0.8270604706341551,
+            "brier": 0.07445463474593851
+          }
+        },
+        "random_mask_augmentation_hgb": {
+          "clean": {
+            "ap": 0.9111769307059735,
+            "brier": 0.05040351647737566
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8518505648216556,
+            "brier": 0.06870508627926356
+          },
+          "mcar_0.2": {
+            "ap": 0.8780480895663093,
+            "brier": 0.05906872415556954
+          },
+          "mcar_0.4": {
+            "ap": 0.8494027391497387,
+            "brier": 0.06813893841285307
+          }
+        },
+        "random_mask_augmentation_hgb_200_trees": {
+          "clean": {
+            "ap": 0.9209961655737329,
+            "brier": 0.04952819761824334
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8564962856255446,
+            "brier": 0.0671702720245043
+          },
+          "mcar_0.2": {
+            "ap": 0.8902564427454341,
+            "brier": 0.056140053879825604
+          },
+          "mcar_0.4": {
+            "ap": 0.8633160515879931,
+            "brier": 0.06433707700748033
+          }
+        }
+      },
+      "mode": "validation",
+      "runtimes_seconds": {
+        "ablation_indicator_shuffle_noop": 0.17456166699776077,
+        "ablation_mcar_only": 0.18429858299714397,
+        "ablation_mixed_k1": 0.10577916699912748,
+        "ablation_mixed_k4": 0.15273487500235206,
+        "ablation_raw_y_distillation": 0.08607729099821881,
+        "candidate_mixed_k8": 0.1749748330003058,
+        "mcar_only_teacher_fit": null,
+        "median_imputed_hgb_no_indicator": 0.08503904199824319,
+        "native_hgb": 0.10795624999809661,
+        "random_mask_augmentation_hgb": 0.013221459001215408,
+        "random_mask_augmentation_hgb_200_trees": 0.45431679200191866,
+        "teacher_fit": 0.25624183399850153
+      },
+      "seed": 9403,
+      "total_runtime_seconds": 2.0843680839971057,
+      "train_mask_pattern_sha256": "9437b7dfeeb7262c89caed6151fb203b2118336d1a2f9f5d78c80bd621b447e0",
+      "train_x_sha256": "a3408ff195dcdac9e650e684590bb2011a1bf339bbaa5b447abb14f4ed1e67ba",
+      "train_y_sha256": "06de6e39d062a0fd81d0ceb2c9c04144995c5f3cf76875725bad4554d5fa1255",
+      "view_hashes": [
+        "86e7415ae59a1ba73b940885760b3fd6d8314f91173f26f5ecc87fd064cf7cc4",
+        "85dbf4706b92cdb7f2f34a90b7a5f4d277de0cc41641ed944b9a4f3990476102",
+        "5cf979e48aee5612487df3e25e38a17e9a7a833905cfabe43e9d40133f65b1a7",
+        "a147eccc76f43e55e7e39b6712f7ae6f752634af61ca0c8f08b3cfef863f0d0f",
+        "feb358c1e6e2b1f9ece5f4256fe4ba1b927b4bf8e9f02dd1d20e5f8d01715537",
+        "c0e2ef24c89c0060c7e0344ed4cb49ddd51286cdb8def7b8ca212fbe7d22e984",
+        "9d48be47008cb3f813faab4fc7ce3c9017c3e908f392bb973341e98cafb5633d",
+        "4f9481ce9e385480216313d4541476eb4f7c1bf3b43bc667a666dae1f210e53c"
+      ]
+    },
+    {
+      "augmentation": {
+        "mcar_only_teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": null,
+          "x_hash": "fef2fb6c79a4bdf9b0e7052f15864c43d9980e6f30b431fe1d21797ec20647af",
+          "y_hash": "bfb45a58444bdb89dd1aad28f0264486b299d6e7423658fa5f37c62777019a14"
+        },
+        "teacher_fit": {
+          "augmented_rows": 27000,
+          "runtime_seconds": 0.23520162500062725,
+          "x_hash": "a9530bc196dce5e1d6c46d64db00357ed324cb7380c6bb3a4fdc6a8750f48d23",
+          "y_hash": "bfb45a58444bdb89dd1aad28f0264486b299d6e7423658fa5f37c62777019a14"
+        }
+      },
+      "errors": [],
+      "mcar_view_hashes": [
+        "32da42b13ed9e715991977b47c70471c4291bb88681c6f951af3c6dd7b6addb5",
+        "6eb4f78ba3939fb8c2ef7196ac64ededb27290eda0c450b7499f7032f7c1ef01",
+        "eff818c4f4e932620b0fdecacf616a3abfaf0bea7ee3dfc498cbba2147ed9192",
+        "6218a9470003d49c0add2b29954c193ce7d652c61912ca1ca87b04a6a5519249",
+        "7e0e4981eb8cb8ed7dfe565c4f167772d175de46a7ac07f916c92ed9f1f05d9a",
+        "d14a4c1ef05aaf24cd019b97f928cd9a01bccba1ac58bba697ceb06db6dfdcd7",
+        "486c00bbae77661fe288aaa72e5f15299f38296bcf1b12c0d40930e23a3bddf7",
+        "dc4fac86ec21d5941ca7d4786479638ea81f5b31a42b50ac263bf9620b204253"
+      ],
+      "metadata": {
+        "always_observed_columns": [
+          0,
+          1
+        ],
+        "fixture_hashes": {
+          "test_clean": "1f6c453c2060141f91a9dee87636f4a1c076cdf38f4ebc95d24d33ab7278d8b9",
+          "train_clean": "2c8bc3898f30a905771800259c6530a6bae374c232eb355bfa8f39b6c6aa1621",
+          "train_masked": "79ba5068808c7e99838d7937550211f3beb917d69a9704659e1bddbdca9ad9ba",
+          "validation_clean": "84aff6389fe7f75b43824c63f3deebb9381a9c308494c52c15d9bc764c02a824"
+        },
+        "informative": 5,
+        "mode": "validation",
+        "n_features": 20,
+        "n_samples": 5000,
+        "redundant": 5,
+        "scope_note": "Task-specific synthetic stress fixture; no universal MNAR claim.",
+        "seed": 9407,
+        "shuffle": false,
+        "split": "60/20/20 stratified; train_test_split random states seed and seed+1",
+        "test_available": false,
+        "test_label_policy": "final mode only; never use for model selection",
+        "train_missingness": {
+          "columns": "2:",
+          "kind": "MCAR",
+          "probability": 0.2
+        },
+        "train_only_statistics": true,
+        "validation_conditions": [
+          "clean",
+          "mcar_0.2",
+          "mcar_0.4",
+          "mar_anchor_x0"
+        ],
+        "weights": [
+          0.8,
+          0.2
+        ]
+      },
+      "methods": {
+        "ablation_indicator_shuffle_noop": {
+          "clean": {
+            "ap": 0.8634069437048897,
+            "brier": 0.06756914774542816
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7576730186525867,
+            "brier": 0.0925304358536543
+          },
+          "mcar_0.2": {
+            "ap": 0.8010937593848078,
+            "brier": 0.08240072311921562
+          },
+          "mcar_0.4": {
+            "ap": 0.7630301032966107,
+            "brier": 0.09070778183217164
+          }
+        },
+        "ablation_mcar_only": {
+          "clean": {
+            "ap": 0.8497469769785356,
+            "brier": 0.07147592834789211
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7386565195676025,
+            "brier": 0.0965182803235552
+          },
+          "mcar_0.2": {
+            "ap": 0.798009012324164,
+            "brier": 0.08346188459527143
+          },
+          "mcar_0.4": {
+            "ap": 0.7405112633486982,
+            "brier": 0.09478954812033853
+          }
+        },
+        "ablation_mixed_k1": {
+          "clean": {
+            "ap": 0.8492209893825541,
+            "brier": 0.0721124944457282
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7348509056535519,
+            "brier": 0.09684079444572373
+          },
+          "mcar_0.2": {
+            "ap": 0.7844649067434231,
+            "brier": 0.08625824917378976
+          },
+          "mcar_0.4": {
+            "ap": 0.7493771850804913,
+            "brier": 0.09412644892413187
+          }
+        },
+        "ablation_mixed_k4": {
+          "clean": {
+            "ap": 0.8598533007858753,
+            "brier": 0.06899838442610266
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7534660811104942,
+            "brier": 0.09321491061928597
+          },
+          "mcar_0.2": {
+            "ap": 0.7997554144354783,
+            "brier": 0.08302173756443784
+          },
+          "mcar_0.4": {
+            "ap": 0.7613821983567587,
+            "brier": 0.09093415607661172
+          }
+        },
+        "ablation_raw_y_distillation": {
+          "clean": {
+            "ap": 0.8668295498037328,
+            "brier": 0.06894265732096003
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7735639998135746,
+            "brier": 0.10096933894232377
+          },
+          "mcar_0.2": {
+            "ap": 0.8266365683329797,
+            "brier": 0.0905403235142251
+          },
+          "mcar_0.4": {
+            "ap": 0.7701567133276465,
+            "brier": 0.10733046376541286
+          }
+        },
+        "candidate_mixed_k8": {
+          "clean": {
+            "ap": 0.8634069437048897,
+            "brier": 0.06756914774542816
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7576730186525867,
+            "brier": 0.0925304358536543
+          },
+          "mcar_0.2": {
+            "ap": 0.8010937593848078,
+            "brier": 0.08240072311921562
+          },
+          "mcar_0.4": {
+            "ap": 0.7630301032966107,
+            "brier": 0.09070778183217164
+          }
+        },
+        "median_imputed_hgb_no_indicator": {
+          "clean": {
+            "ap": 0.8746607301300806,
+            "brier": 0.06056761868737707
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7634064409730338,
+            "brier": 0.08796582214437723
+          },
+          "mcar_0.2": {
+            "ap": 0.825026281381449,
+            "brier": 0.07550953733646283
+          },
+          "mcar_0.4": {
+            "ap": 0.7562678315046337,
+            "brier": 0.08889259648119076
+          }
+        },
+        "native_hgb": {
+          "clean": {
+            "ap": 0.8816017747150103,
+            "brier": 0.05969673173937848
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7776353201630973,
+            "brier": 0.08616899414769044
+          },
+          "mcar_0.2": {
+            "ap": 0.8375089714293829,
+            "brier": 0.07288356075031964
+          },
+          "mcar_0.4": {
+            "ap": 0.7579798973927343,
+            "brier": 0.09072305359688505
+          }
+        },
+        "random_mask_augmentation_hgb": {
+          "clean": {
+            "ap": 0.8724624720369473,
+            "brier": 0.06403540836637853
+          },
+          "mar_anchor_x0": {
+            "ap": 0.7899402272211685,
+            "brier": 0.08407133415666856
+          },
+          "mcar_0.2": {
+            "ap": 0.8331385635073897,
+            "brier": 0.07442686950122565
+          },
+          "mcar_0.4": {
+            "ap": 0.7693466150303205,
+            "brier": 0.08783780719787425
+          }
+        },
+        "random_mask_augmentation_hgb_200_trees": {
+          "clean": {
+            "ap": 0.8715980923259702,
+            "brier": 0.06455801346376333
+          },
+          "mar_anchor_x0": {
+            "ap": 0.8034983216587503,
+            "brier": 0.0808304197305866
+          },
+          "mcar_0.2": {
+            "ap": 0.8397729761035199,
+            "brier": 0.07360071836869983
+          },
+          "mcar_0.4": {
+            "ap": 0.7718816753990458,
+            "brier": 0.08786880280853254
+          }
+        }
+      },
+      "mode": "validation",
+      "runtimes_seconds": {
+        "ablation_indicator_shuffle_noop": 0.19551370800036239,
+        "ablation_mcar_only": 0.21649437499945634,
+        "ablation_mixed_k1": 0.11034516599829658,
+        "ablation_mixed_k4": 0.14956133300074725,
+        "ablation_raw_y_distillation": 0.0889075419981964,
+        "candidate_mixed_k8": 0.188488874999166,
+        "mcar_only_teacher_fit": null,
+        "median_imputed_hgb_no_indicator": 0.0918243749983958,
+        "native_hgb": 0.09697241699905135,
+        "random_mask_augmentation_hgb": 0.013023791998421075,
+        "random_mask_augmentation_hgb_200_trees": 0.472897791001742,
+        "teacher_fit": 0.23520162500062725
+      },
+      "seed": 9407,
+      "total_runtime_seconds": 2.186333875000855,
+      "train_mask_pattern_sha256": "d1b79c9cf40ac1a558784e4a5b9fad06ca6adba5d5935977c821eb46fe8a2f65",
+      "train_x_sha256": "79ba5068808c7e99838d7937550211f3beb917d69a9704659e1bddbdca9ad9ba",
+      "train_y_sha256": "32f52cd74741946eba07c37f54572c543068b3166d12c60ac8c54340bc05b714",
+      "view_hashes": [
+        "32da42b13ed9e715991977b47c70471c4291bb88681c6f951af3c6dd7b6addb5",
+        "ea0debbde8c5114a5292b0213550d891fe1adbb3d9b01d0632138a0a74005eb8",
+        "3ca63c94df385b989afecd0924546148e0e828dda4c2a13014965d68baa34a15",
+        "51c8cdaf56b5db2b96e8d316caf181bbf9ce29c9e4ef271a44c8b1b82facfa6c",
+        "8f11a46357ced17b48fdbb1fda21bbf4a1c5ca823694e5d3c48d45daf81b7e94",
+        "e447b5a9012c80c0129d71778f1c37183c659bd2608c72f5116a534505bdb6b1",
+        "ee7020ed176171f067426c4ed764a1a43d3ac93ea93b2466ee092688e8cffc14",
+        "e60edc0506bdf208e92b07cd0888f546ea10ee820dba9e5d3af9212155264dc4"
+      ]
+    }
+  ],
+  "source_hashes": {
+    "experiment.py": "79a383286c84345d1a0a5865bb7561cc239f825c350b6311f390ff4f6508a6d0",
+    "fixture.py": "c00dd2fb365e9efd08d1b84ac44c5ee946a2c4442f4352239d0fca9de85a3aaf",
+    "proposal.json": "bf4bf4b0aec71ee25b938454c55cf82470ae9039fc0147d6633f6ae2df2deb86"
+  }
+}
