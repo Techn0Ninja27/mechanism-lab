@@ -118,3 +118,7 @@ python alien.py sample \
 The original atomization, clustering, and dataset-building tools are included. See [ADVANCED.md](ADVANCED.md) for their commands and API-key requirements. Prompts and source code are intended to be adapted to your corpus.
 
 Run `python alien.py --help` or `python alien.py <command> --help` for options.
+
+## Fork: local search improvements
+
+See [FORK.md](FORK.md) for opt-in batched sampling, explicit Apple MPS support, and saving/reusing complete candidate pools. Original serial generation remains the default.

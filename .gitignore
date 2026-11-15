@@ -30,3 +30,6 @@ logs/
 
 # Local release preparation (source data may contain contact identifiers)
 /release/
+
+# Downloaded public proposal artifacts
+/research_assets/

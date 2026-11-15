@@ -18,7 +18,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from generation.generation import generate_sequences
+from generation.generation import generate_sequences, generate_sequences_batched
 from generation.scoring import (
     load_author_embeddings,
     load_availability_model,
@@ -38,17 +38,20 @@ def generate_pool(
     gen_top_k: int,
     gen_temperature: float,
     device: str,
+    generation_batch_size: int = 1,
 ) -> list[tuple[int, ...]]:
     """Generate from the coherence model and dedupe to unique k-atom sets."""
     sys.stderr.write(f"\nGenerating {n_gen:,} sequences (k={k})...\n")
     t0 = time.time()
-    raw = generate_sequences(
+    generator = generate_sequences if generation_batch_size == 1 else generate_sequences_batched
+    extra = {} if generation_batch_size == 1 else {"batch_size": generation_batch_size}
+    raw = generator(
         coherence_model, token_mapping,
         num_samples=n_gen,
         max_length=k + 1,  # BOS + k atoms (EOS suppressed by max_length cap)
         temperature=gen_temperature,
         top_k=gen_top_k,
-        device=device,
+        device=device, **extra,
     )
     sys.stderr.write(f"  Generated {len(raw)} in {time.time() - t0:.1f}s\n")
 
@@ -261,9 +264,17 @@ def main() -> None:
     parser.add_argument("--gen-temperature", type=float, default=1.0)
     parser.add_argument("--tt-top-k", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=512)
-    parser.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
+    parser.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--generation-batch-size", type=int, default=1,
+                        help="1 preserves serial baseline; larger values batch generation")
+    parser.add_argument("--candidate-pool", type=Path,
+                        help="Reuse a scored_candidates.json pool (one k only); rescores all candidates")
     args = parser.parse_args()
+    if args.generation_batch_size < 1:
+        parser.error("generation-batch-size must be positive")
+    if args.candidate_pool and (len(args.ks) != 1 or args.exhaustive_ks):
+        parser.error("candidate-pool requires one k and no exhaustive-ks")
     if args.top_k < 1 or args.n_gen < 1 or args.batch_size < 1 or args.tt_top_k < 1:
         parser.error("top-k, n-gen, batch-size and tt-top-k must be positive")
     if any(not np.isfinite(b) or not 0 <= b <= 1 for b in args.betas):
@@ -281,6 +292,10 @@ def main() -> None:
         device = "cuda" if torch.cuda.is_available() else "cpu"
     else:
         device = args.device
+    if device == "mps" and not torch.backends.mps.is_available():
+        parser.error("MPS is unavailable on this machine")
+    if device == "cuda" and not torch.cuda.is_available():
+        parser.error("CUDA is unavailable on this machine")
     sys.stderr.write(f"Device: {device}\n")
     for folder, filenames in [
         (args.coherence_model, ["model.pt", "token_mapping.json"]),
@@ -348,6 +363,9 @@ def main() -> None:
         "tt_top_k": int(args.tt_top_k),
         "exhaustive_ks": sorted(exhaustive_ks),
         "seed": args.seed,
+        "device": device,
+        "generation_batch_size": args.generation_batch_size,
+        "candidate_pool": str(args.candidate_pool) if args.candidate_pool else None,
     }
 
     # ------------------------------------------------------------------
@@ -360,7 +378,18 @@ def main() -> None:
         k_output_dir = args.output_dir / f"k{k}"
         k_output_dir.mkdir(parents=True, exist_ok=True)
 
-        if k in exhaustive_ks:
+        if args.candidate_pool:
+            try:
+                pool = json.loads(args.candidate_pool.read_text())
+                raw = pool["candidates"]
+                cand_sets = [tuple(row["cluster_ids"]) for row in raw]
+                if not cand_sets or any(len(s) != k or len(set(s)) != k or
+                    any(type(c) is not int or c not in atom_ids for c in s) for s in cand_sets):
+                    raise ValueError("Invalid atom IDs or set sizes")
+                cand_sets = sorted(set(tuple(sorted(s)) for s in cand_sets))
+            except (OSError, ValueError, KeyError, TypeError) as exc:
+                parser.error(f"Invalid candidate pool: {exc}")
+        elif k in exhaustive_ks:
             n = model_tm.n_clusters
             n_combos = math.comb(n, k)
             sys.stderr.write(
@@ -377,7 +406,7 @@ def main() -> None:
                 coherence_model, model_tm,
                 n_gen=args.n_gen, k=k,
                 gen_top_k=args.gen_top_k, gen_temperature=args.gen_temperature,
-                device=device,
+                device=device, generation_batch_size=args.generation_batch_size,
             )
         if not cand_sets:
             sys.stderr.write(
@@ -416,6 +445,11 @@ def main() -> None:
             "n_candidate_sets": len(cand_sets),
         }
 
+        pool_path = k_output_dir / "scored_candidates.json"
+        pool_path.write_text(json.dumps({"config": config_extra, "candidates": [
+            {"cluster_ids": list(s), "coherence": float(c), "unavailability": float(u)}
+            for s, c, u in zip(cand_sets, coh_scores, avail_scores)
+        ]}, indent=2))
         summary: list[dict] = []
         for beta in betas:
             beta_dir = k_output_dir / f"beta_{beta:g}"

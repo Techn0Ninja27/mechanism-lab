@@ -166,3 +166,44 @@ def generate_random_sequences(
         )
 
     return generated_sequences
+
+
+def generate_sequences_batched(
+    model, token_mapping, num_samples=100, max_length=4,
+    temperature=1.0, top_k=0, device="cpu", batch_size=64,
+):
+    """Sample independent sequences in batches using the original token policy.
+
+    Batching changes RNG consumption, so identical seeds are reproducible for a
+    fixed batch size/backend, not bitwise identical to the serial sampler.
+    """
+    if batch_size < 1 or num_samples < 1 or max_length < 2 or temperature <= 0:
+        raise ValueError("Positive sizes/temperature and max_length >= 2 required")
+    model = model.to(device).eval()
+    output = []
+    with torch.inference_mode():
+        for start in range(0, num_samples, batch_size):
+            n = min(batch_size, num_samples - start)
+            tokens = torch.full((n, 1), token_mapping.bos_token_id,
+                                dtype=torch.long, device=device)
+            for _ in range(max_length - 1):
+                logits = model(tokens)[:, -1, :].clone()
+                logits[:, token_mapping.eos_token_id] = float('-inf')
+                logits /= temperature
+                if top_k > 0:
+                    threshold = torch.topk(logits, top_k, dim=-1).values[:, -1:]
+                    logits = logits.masked_fill(logits < threshold, float('-inf'))
+                invalid = torch.isinf(logits).all(dim=-1)
+                if invalid.any():
+                    logits[invalid] = 0
+                    logits[invalid, token_mapping.eos_token_id] = float('-inf')
+                next_tokens = torch.multinomial(F.softmax(logits, dim=-1), 1)
+                tokens = torch.cat((tokens, next_tokens), dim=1)
+            for row in tokens.cpu().tolist():
+                try:
+                    atoms = token_mapping.token_ids_to_cluster_ids(row)
+                except ValueError:
+                    continue
+                if atoms:
+                    output.append({'token_ids': row, 'clusters': atoms, 'length': len(atoms)})
+    return output
