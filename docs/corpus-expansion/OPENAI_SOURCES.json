@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Learning from Human Preferences",
+    "url": "https://openai.com/index/learning-from-human-preferences/",
+    "paper_url": "https://arxiv.org/abs/1706.03741",
+    "arxiv_id": "1706.03741",
+    "date": "2017-06-13",
+    "mechanism_summary": "Optimize a policy from pairwise human preferences over trajectories rather than hand-written reward functions.",
+    "limits": "Preference labels are expensive and encode the evaluator's observable proxy; the method does not solve distribution shift or evaluator error.",
+    "evidence_status": "primary_paper_and_OpenAI_release"
+  },
+  {
+    "title": "AI Safety via Debate",
+    "url": "https://openai.com/index/debate/",
+    "paper_url": "https://arxiv.org/abs/1805.00899",
+    "arxiv_id": "1805.00899",
+    "date": "2018-05-03",
+    "mechanism_summary": "Two agents argue for competing answers while a judge evaluates the debate, making difficult claims recursively inspectable.",
+    "limits": "The judge can be manipulated, debate quality depends on the question decomposition, and empirical demonstrations were narrow.",
+    "evidence_status": "primary_paper_and_OpenAI_release"
+  },
+  {
+    "title": "Learning to Summarize from Human Feedback",
+    "url": "https://openai.com/index/learning-to-summarize-from-human-feedback/",
+    "paper_url": "https://arxiv.org/abs/2009.01325",
+    "arxiv_id": "2009.01325",
+    "date": "2020-06-05",
+    "mechanism_summary": "Train a reward model from human comparisons of summaries, then optimize a language model against that learned preference signal.",
+    "limits": "Optimization can exploit reward-model blind spots; summaries are short and the task does not establish robust generalization to open-ended claims.",
+    "evidence_status": "primary_paper_and_OpenAI_release"
+  },
+  {
+    "title": "Learning to Reason with Human Feedback",
+    "url": "https://openai.com/index/learning-to-reason-with-human-feedback/",
+    "paper_url": "https://arxiv.org/abs/2203.02155",
+    "arxiv_id": "2203.02155",
+    "date": "2022-03-04",
+    "mechanism_summary": "Instruction-following models are fine-tuned from demonstrations and ranked outputs, then optimized with reinforcement learning from human feedback.",
+    "limits": "The objective is a proxy for helpfulness; preference optimization can reward style or agreement, and the training distribution remains bounded.",
+    "evidence_status": "primary_paper_and_OpenAI_release"
+  },
+  {
+    "title": "Improving Mathematical Reasoning with Process Supervision",
+    "url": "https://openai.com/index/improving-mathematical-reasoning-with-process-supervision/",
+    "paper_url": "https://arxiv.org/abs/2305.20050",
+    "arxiv_id": "2305.20050",
+    "date": "2023-05-31",
+    "mechanism_summary": "Reward each intermediate reasoning step with a process reward model instead of scoring only the final answer.",
+    "limits": "Step labels are costly, correctness of a local step can depend on later context, and process supervision was evaluated primarily on mathematical reasoning.",
+    "evidence_status": "primary_paper_dataset_and_OpenAI_release"
+  },
+  {
+    "title": "GPT-4 Technical Report",
+    "url": "https://openai.com/research/gpt-4",
+    "paper_url": "https://arxiv.org/abs/2303.08774",
+    "arxiv_id": "2303.08774",
+    "date": "2023-03-15",
+    "mechanism_summary": "Scale a multimodal transformer with post-training and alignment procedures to improve broad language, coding, and reasoning performance.",
+    "limits": "The report withholds most architecture and training details, and benchmark performance does not imply reliable autonomous research or factuality.",
+    "evidence_status": "primary_technical_report"
+  },
+  {
+    "title": "Weak-to-Strong Generalization",
+    "url": "https://openai.com/index/weak-to-strong-generalization/",
+    "paper_url": "https://cdn.openai.com/papers/weak-to-strong-generalization.pdf",
+    "arxiv_id": "2312.09390",
+    "date": "2023-12-14",
+    "mechanism_summary": "Use weak-model labels to fine-tune a stronger pretrained model, with confidence losses and bootstrapping to recover latent capability.",
+    "limits": "Naive supervision does not recover the full strong model and fails on some preference data; the analogy to superhuman alignment is incomplete.",
+    "evidence_status": "primary_paper_code_and_OpenAI_release"
+  },
+  {
+    "title": "Scaling and Evaluating Sparse Autoencoders",
+    "url": "https://cdn.openai.com/papers/sparse-autoencoders.pdf",
+    "paper_url": "https://cdn.openai.com/papers/sparse-autoencoders.pdf",
+    "arxiv_id": null,
+    "date": "2024-03-27",
+    "mechanism_summary": "Use k-sparse autoencoders to decompose model activations into sparse features, controlling sparsity directly and evaluating reconstruction, probes, and downstream effects.",
+    "limits": "Reconstruction and sparsity can improve while features remain unhelpful; sparse latent identities are not automatically causal or semantically correct.",
+    "evidence_status": "primary_OpenAI_paper_and_code"
+  },
+  {
+    "title": "Prover-Verifier Games Improve Legibility of Language Model Outputs",
+    "url": "https://openai.com/index/prover-verifier-games-improve-legibility/",
+    "paper_url": "https://openai.com/index/prover-verifier-games-improve-legibility/",
+    "arxiv_id": null,
+    "date": "2024-07-17",
+    "mechanism_summary": "Alternate training a verifier and a helpful or adversarial prover so correct solutions become easier for weaker evaluators to check.",
+    "limits": "Early adversarial proofs can fool the verifier; the method was tested on grade-school mathematics and legibility is not equivalent to truth.",
+    "evidence_status": "primary_OpenAI_publication"
+  },
+  {
+    "title": "MLE-bench",
+    "url": "https://openai.com/index/mle-bench/",
+    "paper_url": "https://openai.com/index/mle-bench/",
+    "arxiv_id": null,
+    "date": "2024-10-10",
+    "mechanism_summary": "Evaluate agents on 75 Kaggle machine-learning competitions with compute, data, and engineering tools, scoring bronze-level success and resource scaling.",
+    "limits": "Tasks can be contaminated by pretraining and leaderboard feedback; the environment is expensive and competition scores are not research novelty measures.",
+    "evidence_status": "primary_OpenAI_benchmark_release"
+  },
+  {
+    "title": "PaperBench",
+    "url": "https://openai.com/index/paperbench/",
+    "paper_url": "https://cdn.openai.com/papers/22265bac-3191-44e5-b057-7aaacd8e90cd/paperbench.pdf",
+    "arxiv_id": null,
+    "date": "2025-04-02",
+    "mechanism_summary": "Benchmark agents reproducing 20 ICML papers using hierarchical, author-developed rubrics and an auxiliary judge-evaluation benchmark.",
+    "limits": "Replication is different from discovering new science; LLM judges can disagree with experts, and the benchmark covers a small paper sample.",
+    "evidence_status": "primary_OpenAI_benchmark_and_paper"
+  },
+  {
+    "title": "Weight-Sparse Transformers Have Interpretable Circuits",
+    "url": "https://openai.com/index/understanding-neural-networks-through-sparse-circuits/",
+    "paper_url": "https://cdn.openai.com/pdf/41df8f28-d4ef-43e9-aed2-823f9393e470/circuit-sparsity-paper.pdf",
+    "arxiv_id": null,
+    "date": "2025-11-13",
+    "mechanism_summary": "Train transformers with mostly zero weights, then prune task-specific circuits whose neurons and residual channels can be inspected directly.",
+    "limits": "Sparsity trades capability for interpretability, and scaling beyond tens of millions of nonzero parameters remains unresolved.",
+    "evidence_status": "primary_OpenAI_paper"
+  },
+  {
+    "title": "Debugging Misaligned Completions with Sparse-Autoencoder Latent Attribution",
+    "url": "https://alignment.openai.com/sae-latent-attribution/",
+    "paper_url": "https://alignment.openai.com/sae-latent-attribution/",
+    "arxiv_id": null,
+    "date": "2025-12-01",
+    "mechanism_summary": "Model-diffing selects SAE latents changed by problematic fine-tuning; activation steering and judged completions test whether those latents causally influence behavior.",
+    "limits": "Latent selection and LLM grading are proxies; steering one latent may create off-target behavior and does not establish a complete causal model.",
+    "evidence_status": "primary_OpenAI_alignment_publication"
+  },
+  {
+    "title": "Deep Research System Card",
+    "url": "https://deploymentsafety.openai.com/deep-research/model-autonomy",
+    "paper_url": "https://deploymentsafety.openai.com/deep-research/model-autonomy",
+    "arxiv_id": null,
+    "date": "2025-02-25",
+    "mechanism_summary": "A browsing agent decomposes research tasks, searches and pivots across web sources, reads files, and executes analysis code under a safety evaluation process.",
+    "limits": "Browsing exposes prompt-injection, privacy, and source-quality risks; autonomous tool use remains bounded by evaluation tasks and human deployment controls.",
+    "evidence_status": "primary_OpenAI_system_card"
+  },
+  {
+    "title": "Using Thousands of AI Agents to Uncover New Leads in Biological Data",
+    "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
+    "paper_url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data/",
+    "arxiv_id": null,
+    "date": "2026-10-30",
+    "mechanism_summary": "Thousands of parallel agents analyze perturbation data and literature to connect gene disruptions with disease-related cell states and propose biological leads.",
+    "limits": "The reported leads are hypotheses from existing data, not validated treatments; parallel agreement does not replace wet-lab replication or causal intervention.",
+    "evidence_status": "primary_OpenAI_partner_publication"
+  }
+]
