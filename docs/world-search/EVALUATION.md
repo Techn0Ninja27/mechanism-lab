@@ -58,4 +58,3 @@ Run offline checks with:
 ```sh
 python -m unittest tests/test_world_evaluation.py
 ```
-

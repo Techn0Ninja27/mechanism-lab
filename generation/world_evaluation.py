@@ -208,4 +208,3 @@ def summarize(records: Iterable[Mapping[str, Any]], reviews: Iterable[Mapping[st
         "review_decisions": dict(sorted(review_status.items())),
         "interpretation": "Exact duplicate rates are descriptive string diagnostics, not semantic novelty or external prior-art evidence.",
     }
-

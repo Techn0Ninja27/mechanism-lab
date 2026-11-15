@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-world-3",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "world",
+  "seed_word": "braided",
+  "seed_index": 3,
+  "proposal": {
+    "title": "Structured-Block Dropout Augmentation with Margin-Weighted Ensemble Selection for Robust Digit Classification",
+    "intervention": "Replace random independent pixel dropout with structured 2\u00d72 block dropout during augmentation, and select the final preprocessing pipeline via a small parallel search across three candidate configurations evaluated on a shared validation set, using the best-performing configuration's validation margin as a soft weight when ensembling predictions at test time.",
+    "mechanism": "Structured block dropout forces the classifier to learn features robust to contiguous occlusion rather than salt-and-pepper noise alone, better matching realistic corruption patterns. Running three candidate pipelines in parallel on the same stratified split and weighting their test-time predictions by validation decision-function margin exploits the observation that higher-margin classifiers tend to generalize better under distribution shift. The margin weight replaces the fictional backward causality: instead of retroactively rewriting training, the winning configuration's margin score simply scales its contribution to the ensemble vote. No temporal paradox is required; the mechanism is a post-hoc weighted combination.",
+    "assumptions": "Impossible assumption replaced: backward causality, where a future result modifies past initialization, is physically impossible. It is replaced by prospective parallel evaluation followed by margin-weighted ensembling, which is entirely feasible within the time budget. Lateral memory across simultaneous strands is replaced by ordinary sequential result logging. Strand-death margin amplification is replaced by proportional margin-based vote weighting derived from validation decision-function scores.",
+    "baseline": "StandardScaler followed by RBF-SVM with independent pixel dropout augmentation at fixed severities, no ensembling, hyperparameters set by a single cross-validation pass on the training fold.",
+    "metric": "Mean accuracy averaged across the clean test set and two fixed corruption conditions: additive Gaussian pixel noise and structured block dropout, evaluated once on the held-out test split.",
+    "falsification": "If structured block dropout augmentation does not outperform random pixel dropout on the corrupted test conditions, or if margin-weighted ensembling does not improve over the single best individual pipeline selected by validation accuracy alone, the intervention fails. Ablation: replacing margin weights with uniform weights should degrade mean corrupted accuracy if margin weighting is doing real work.",
+    "implementation": "Load digits, perform fixed stratified 60/20/20 train/validation/test split. Fit three pipelines on train only: StandardScaler+RBF-SVM with pixel dropout, PCA(32)+RBF-SVM with block dropout, MinMaxScaler+RBF-SVM with mixed augmentation. Augment training data by appending corrupted copies. Evaluate each pipeline on validation set, extract decision-function margin magnitude as weight. At test time, compute weighted sum of decision scores across pipelines, take argmax. Compare mean clean+corrupted accuracy against single-pipeline baseline.",
+    "queries": [
+      "structured occlusion augmentation versus random dropout robustness SVM image classification",
+      "margin-weighted classifier ensemble decision function confidence aggregation"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

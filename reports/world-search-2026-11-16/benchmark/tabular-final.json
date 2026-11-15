@@ -1,0 +1,95 @@
+{
+  "config": {
+    "mode": "final",
+    "test_evaluated": true,
+    "levels": [
+      0,
+      0.1,
+      0.3,
+      0.5
+    ],
+    "seed": 42,
+    "deviations": [
+      "Direct trainable-MLP imputation proposal NOT implemented; no claim about its utility.",
+      "World formula alpha*mean is tested literally: alpha0 is zero imputation, contrary to the generated prose claiming median imputation.",
+      "Soft-imputation variants add shared training missingness augmentation omitted by the original world proposal; this tests a modified composition, not exact replication.",
+      "HGB180iterations shared acrossvariants, vs300 in randomproposal; all augmented variants have five training copies."
+    ],
+    "success_rule": "Improve mean AP over matched simpler control; no retuning on test."
+  },
+  "split_hashes": {
+    "train": "e34bd8dae45df2103534bc394aad221b381341edbb94c0a9b1e498385ed2c48e",
+    "validation": "f10d34bdfbc253234412e4cffcefe52a58e7def972fa5e99a24f26bc0db63834",
+    "test": "52da95764d717749b3b4d9d2cec95d67bbfea082552ddca5bdb2e442a3ef7880"
+  },
+  "results": [
+    {
+      "variant": "median_clean",
+      "mean_average_precision": 0.8191897303051461,
+      "conditions": [
+        0.9212998048095857,
+        0.8780740259146055,
+        0.8012901057201258,
+        0.676094984776267
+      ],
+      "train_rows": 3000
+    },
+    {
+      "variant": "median_fixed_aug",
+      "mean_average_precision": 0.8632612820741166,
+      "conditions": [
+        0.9115573580729255,
+        0.8926004527851669,
+        0.8765000730712866,
+        0.7723872443670874
+      ],
+      "train_rows": 15000
+    },
+    {
+      "variant": "native_nan_beta",
+      "mean_average_precision": 0.8687852218269134,
+      "conditions": [
+        0.9164022525659918,
+        0.9000886034045712,
+        0.8690237085392374,
+        0.7896263227978533
+      ],
+      "train_rows": 15000
+    },
+    {
+      "variant": "native_nan_beta_mask",
+      "mean_average_precision": 0.8687852218269134,
+      "conditions": [
+        0.9164022525659918,
+        0.9000886034045712,
+        0.8690237085392374,
+        0.7896263227978533
+      ],
+      "train_rows": 15000
+    },
+    {
+      "variant": "native_nan_fixed_mask",
+      "mean_average_precision": 0.8665039738997868,
+      "conditions": [
+        0.9130307328806497,
+        0.8939595857812017,
+        0.8703654706380196,
+        0.7886601062992762
+      ],
+      "train_rows": 15000
+    },
+    {
+      "variant": "soft_alpha_0.7",
+      "mean_average_precision": 0.8703330531011582,
+      "conditions": [
+        0.9165104070506482,
+        0.8996076463606528,
+        0.8773386578976659,
+        0.787875501095666
+      ],
+      "train_rows": 15000
+    }
+  ],
+  "selected_alpha": 0.7,
+  "elapsed_seconds": 2.2327382500006934
+}

@@ -1,0 +1,211 @@
+{
+  "model": "anthropic/claude-sonnet-4.6",
+  "seed": 42,
+  "max_tokens_per_stage": [
+    1024,
+    1536,
+    1536
+  ],
+  "max_output_tokens_total": 98304,
+  "budget_usd": 3.0,
+  "pricing": {
+    "prompt": 3e-06,
+    "completion": 1.5e-05
+  },
+  "reasoning_enabled": false,
+  "protocol": "Three stages in every arm; same output caps, actual tokens/cost reported separately. No learned Alien scorer used.",
+  "cases": [
+    {
+      "id": "digits_shift-direct-3",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "direct",
+      "seed_word": "braided",
+      "seed_index": 3
+    },
+    {
+      "id": "tabular_missing-random_seed-1",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "random_seed",
+      "seed_word": "mirrored",
+      "seed_index": 1
+    },
+    {
+      "id": "digits_shift-random_seed-2",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "random_seed",
+      "seed_word": "tidal",
+      "seed_index": 2
+    },
+    {
+      "id": "digits_shift-world-3",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "world",
+      "seed_word": "braided",
+      "seed_index": 3
+    },
+    {
+      "id": "digits_shift-direct-1",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "direct",
+      "seed_word": "mirrored",
+      "seed_index": 1
+    },
+    {
+      "id": "tabular_missing-world-2",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "world",
+      "seed_word": "tidal",
+      "seed_index": 2
+    },
+    {
+      "id": "digits_shift-random_seed-1",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "random_seed",
+      "seed_word": "mirrored",
+      "seed_index": 1
+    },
+    {
+      "id": "tabular_missing-world-3",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "world",
+      "seed_word": "braided",
+      "seed_index": 3
+    },
+    {
+      "id": "digits_shift-direct-2",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "direct",
+      "seed_word": "tidal",
+      "seed_index": 2
+    },
+    {
+      "id": "digits_shift-random_seed-0",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "random_seed",
+      "seed_word": "porous",
+      "seed_index": 0
+    },
+    {
+      "id": "tabular_missing-direct-1",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "direct",
+      "seed_word": "mirrored",
+      "seed_index": 1
+    },
+    {
+      "id": "digits_shift-direct-0",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "direct",
+      "seed_word": "porous",
+      "seed_index": 0
+    },
+    {
+      "id": "digits_shift-world-1",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "world",
+      "seed_word": "mirrored",
+      "seed_index": 1
+    },
+    {
+      "id": "tabular_missing-random_seed-2",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "random_seed",
+      "seed_word": "tidal",
+      "seed_index": 2
+    },
+    {
+      "id": "tabular_missing-world-1",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "world",
+      "seed_word": "mirrored",
+      "seed_index": 1
+    },
+    {
+      "id": "tabular_missing-direct-2",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "direct",
+      "seed_word": "tidal",
+      "seed_index": 2
+    },
+    {
+      "id": "digits_shift-world-2",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "world",
+      "seed_word": "tidal",
+      "seed_index": 2
+    },
+    {
+      "id": "tabular_missing-random_seed-0",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "random_seed",
+      "seed_word": "porous",
+      "seed_index": 0
+    },
+    {
+      "id": "digits_shift-random_seed-3",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "random_seed",
+      "seed_word": "braided",
+      "seed_index": 3
+    },
+    {
+      "id": "tabular_missing-random_seed-3",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "random_seed",
+      "seed_word": "braided",
+      "seed_index": 3
+    },
+    {
+      "id": "tabular_missing-world-0",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "world",
+      "seed_word": "porous",
+      "seed_index": 0
+    },
+    {
+      "id": "tabular_missing-direct-0",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "direct",
+      "seed_word": "porous",
+      "seed_index": 0
+    },
+    {
+      "id": "tabular_missing-direct-3",
+      "problem_id": "tabular_missing",
+      "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+      "arm": "direct",
+      "seed_word": "braided",
+      "seed_index": 3
+    },
+    {
+      "id": "digits_shift-world-0",
+      "problem_id": "digits_shift",
+      "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+      "arm": "world",
+      "seed_word": "porous",
+      "seed_index": 0
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-world-1",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "world",
+  "seed_word": "mirrored",
+  "seed_index": 1,
+  "proposal": {
+    "title": "Validation-Regularized PCA-Denoised RBF-SVM with Centroid-Anchored Corruption Augmentation",
+    "intervention": "Three coordinated modifications to a standard RBF-SVM pipeline: (1) joint train-plus-validation loss optimization during any differentiable preprocessing stage, replaced here by selecting hyperparameters via a composite score equally weighting train and held-out validation accuracy rather than validation alone; (2) corruption augmentation where each corrupted sample's feature vector is softly pulled toward its class centroid computed on clean training data, weighted by corruption severity; (3) PCA reconstruction applied only to test-time samples whose SVM decision margin falls below a confidence threshold, using a PCA fitted exclusively on clean training data.",
+    "mechanism": "The impossible assumption in the source is that validation samples share a live gradient channel with training samples during SGD, which is undefined for kernel SVMs and constitutes data leakage. This is replaced by a feasible proxy: hyperparameter selection maximizes the arithmetic mean of training-set cross-validation accuracy and held-out validation accuracy, penalizing solutions that sacrifice one for the other. Centroid anchoring replaces the fictional memory-transfer by computing per-class feature means on clean training data and linearly interpolating each augmented sample toward its class centroid proportionally to dropout rate, keeping gradients label-consistent without accessing test information. Boundary denoising replaces entropy-reversal metaphysics with PCA low-rank reconstruction, a well-defined operation that suppresses noise dimensions for ambiguous samples at inference time.",
+    "assumptions": "Assumes class centroids computed on clean training data are stable enough to regularize corrupted samples; assumes PCA fitted on clean training data captures signal dimensions relevant under corruption; assumes the composite hyperparameter score is a better proxy for generalization than validation accuracy alone. The one impossible assumption replaced: simultaneous shared gradient between train and validation sets during weight updates, which is leakage and undefined for non-parametric SVMs.",
+    "baseline": "RBF-SVM with standard scaler fitted on train, corruption augmentation appended to training set without centroid anchoring, hyperparameters selected by validation accuracy only, no inference-time denoising.",
+    "metric": "Mean classification accuracy averaged across clean test set and two fixed corruption conditions: additive Gaussian noise and random pixel dropout, evaluated once on held-out test set after all fitting decisions are finalized.",
+    "falsification": "Intervention fails if composite hyperparameter scoring does not outperform validation-only scoring on the mean corruption metric; if centroid-anchored augmentation degrades clean accuracy relative to unanchored augmentation; or if PCA boundary denoising at inference time reduces accuracy on corrupted conditions rather than improving it.",
+    "implementation": "Load digits, stratified split 60/20/20 train/val/test. Fit StandardScaler and PCA on train. Compute per-class clean centroids in scaled space. Generate augmented training samples at two severities; shift each toward its class centroid by severity-proportional weight. Grid-search RBF-SVM C and gamma, score each configuration as 0.5\u00d7train-CV-accuracy + 0.5\u00d7val-accuracy. Refit final SVM on train plus augmented data. At test time, identify samples with max decision function below threshold, apply PCA reconstruction, then classify. Report mean accuracy across three test conditions.",
+    "queries": [
+      "centroid regularization augmentation robustness noise corruption support vector machine sklearn digits",
+      "PCA denoising inference time low confidence samples corruption robustness image classification"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

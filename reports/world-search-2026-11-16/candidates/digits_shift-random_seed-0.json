@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-random_seed-0",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "random_seed",
+  "seed_word": "porous",
+  "seed_index": 0,
+  "proposal": {
+    "title": "Fisher-Porosity Augmentation: Concentrate Corruption on Uninformative Pixels",
+    "intervention": "Compute per-class Fisher discriminability (between-class variance divided by within-class variance) for each of the 64 pixels using training data only. Invert and normalize these scores to produce a porosity map per class, where high porosity marks pixels that carry little discriminative signal. During augmentation, scale additive Gaussian noise and dropout masks elementwise by each sample's class-specific porosity map before concatenating augmented copies to the training set. Train a single RBF-SVM on the combined set with StandardScaler fit on original training data only.",
+    "mechanism": "Corrupting uninformative pixels leaves class-separating structure intact while still exposing the classifier to realistic degradation patterns. The SVM decision boundary is shaped primarily by support vectors near class boundaries; augmented samples that preserve discriminative pixels near those boundaries reinforce the correct margin geometry rather than smearing it. Uniform augmentation wastes capacity learning invariances to corruptions of already-informative pixels, which hurts clean accuracy without proportional robustness gain.",
+    "assumptions": "Per-pixel Fisher scores computed from roughly 130 samples per class (digits dataset is balanced) are stable enough to rank discriminative versus background pixels reliably. The RBF-SVM with fixed C=5 and gamma='scale' is close enough to optimal that augmentation quality, not hyperparameter error, dominates performance differences. Corruption severities used at test time are drawn from the same distribution as those used to construct augmented training samples.",
+    "baseline": "RBF-SVM trained on original training data plus uniform augmentation: additive Gaussian noise and dropout applied with constant scalar intensity across all 64 pixels, same noise magnitude and dropout probability as the porosity-weighted version, same StandardScaler, same SVC hyperparameters.",
+    "metric": "Mean accuracy across seven conditions per split: clean images plus three Gaussian noise severities (sigma 1, 3, 5) plus three dropout rates (0.1, 0.3, 0.5), evaluated on the held-out test set after all model and scaler choices are frozen using the validation set.",
+    "falsification": "Replace the porosity map with its complement, augmenting discriminative pixels maximally while protecting background pixels. If the spatial weighting is doing causal work, this inverted condition must score below uniform augmentation. If inverted porosity matches or beats uniform augmentation, the pixel-selectivity mechanism is not responsible for any observed gain and the result is attributable to regularization from sample count alone.",
+    "implementation": "Remove the per-sample porosity array (memory waste); compute fisher[c] once per class and index at augmentation time. Add a guard: if a class has fewer than 15 training samples, substitute the global Fisher map. Keep augmentation deterministic by seeding the generator before the augmentation block. The corrected core loop: for each class c, stack noise scaled by fisher[c] onto X_tr[y_tr==c] and apply dropout mask scaled by fisher[c]; concatenate all classes; fit scaler on X_tr only; fit SVC on concatenated augmented set; evaluate mean accuracy across all seven test conditions.",
+    "queries": [
+      "saliency-guided data augmentation convolutional classifier robustness pixel importance weighting",
+      "Fisher linear discriminant per-feature variance ratio small sample stability high-dimensional"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

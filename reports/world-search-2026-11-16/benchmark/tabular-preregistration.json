@@ -1,0 +1,12 @@
+{
+  "validation_sha256": "010544e68281bdd6a2530ad79fc13fbfb2f231b287554d72b48412c8e0497493",
+  "code_sha256": "9ee29727969f4eb3950c1a5c3fbfa4a5dfa2f36a891fc83f4731b3bed7f19bb9",
+  "frozen_alpha": 0.7,
+  "test_runs": 1,
+  "comparisons": [
+    "native_nan_beta_mask vs native_nan_beta (indicator effect)",
+    "native_nan_beta_mask vs native_nan_fixed_mask (Beta schedule effect)",
+    "soft_alpha0.7 vs median_fixed_aug and native_nan_fixed_mask (modified world composition)"
+  ],
+  "interpretation": "Single exploratory split; no novelty or significance claim; original direct MLP not tested."
+}

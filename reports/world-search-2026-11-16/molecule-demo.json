@@ -1,0 +1,78 @@
+{
+  "molecule": {
+    "type": "molecule",
+    "atoms": [
+      {
+        "type": "atom",
+        "id": "block_dropout",
+        "definition": "Train on digit images with contiguous pixel blocks removed.",
+        "revision": 1,
+        "provenance": [
+          {
+            "kind": "generated_hypothesis",
+            "path": "results/world-search-pilot/candidates/digits_shift-world-3.json",
+            "verified_prior_art": false
+          }
+        ]
+      },
+      {
+        "type": "atom",
+        "id": "kernel_classification",
+        "definition": "Fit separate RBF-SVM classifiers on transformed or augmented training features.",
+        "revision": 1,
+        "provenance": [
+          {
+            "kind": "generated_hypothesis",
+            "path": "results/world-search-pilot/candidates/digits_shift-world-3.json",
+            "verified_prior_art": false
+          }
+        ]
+      },
+      {
+        "type": "atom",
+        "id": "margin_weighting",
+        "definition": "Weight classifier predictions by held-out validation decision margins.",
+        "revision": 1,
+        "provenance": [
+          {
+            "kind": "generated_hypothesis",
+            "path": "results/world-search-pilot/candidates/digits_shift-world-3.json",
+            "verified_prior_art": false
+          }
+        ]
+      }
+    ],
+    "relations": [
+      {
+        "source": "block_dropout",
+        "target": "kernel_classification",
+        "type": "changes_training_distribution"
+      },
+      {
+        "source": "kernel_classification",
+        "target": "margin_weighting",
+        "type": "supplies_predictions_and_margins"
+      }
+    ],
+    "mechanism": "Structured block dropout forces the classifier to learn features robust to contiguous occlusion rather than salt-and-pepper noise alone, better matching realistic corruption patterns. Running three candidate pipelines in parallel on the same stratified split and weighting their test-time predictions by validation decision-function margin exploits the observation that higher-margin classifiers tend to generalize better under distribution shift. The margin weight replaces the fictional backward causality: instead of retroactively rewriting training, the winning configuration's margin score simply scales its contribution to the ensemble vote. No temporal paradox is required; the mechanism is a post-hoc weighted combination.",
+    "assumptions": [
+      "Impossible assumption replaced: backward causality, where a future result modifies past initialization, is physically impossible. It is replaced by prospective parallel evaluation followed by margin-weighted ensembling, which is entirely feasible within the time budget. Lateral memory across simultaneous strands is replaced by ordinary sequential result logging. Strand-death margin amplification is replaced by proportional margin-based vote weighting derived from validation decision-function scores."
+    ],
+    "falsifiable_prediction": "If structured block dropout augmentation does not outperform random pixel dropout on the corrupted test conditions, or if margin-weighted ensembling does not improve over the single best individual pipeline selected by validation accuracy alone, the intervention fails. Ablation: replacing margin weights with uniform weights should degrade mean corrupted accuracy if margin weighting is doing real work.",
+    "status": "combination",
+    "provenance": [
+      {
+        "kind": "generated_hypothesis",
+        "path": "results/world-search-pilot/candidates/digits_shift-world-3.json",
+        "verified_prior_art": false
+      }
+    ],
+    "scientific_novelty_claim": false,
+    "id": "mol_4e78cf96846bc7b9ef0e4b2e5383723c"
+  },
+  "promotion": {
+    "promoted": false,
+    "reason": "promotion evidence missing: validation, independent_heldout_positive, ablation, prior_art_review"
+  },
+  "construction": "Explicit researcher-authored decomposition of one generated candidate; not automatic semantic discovery."
+}

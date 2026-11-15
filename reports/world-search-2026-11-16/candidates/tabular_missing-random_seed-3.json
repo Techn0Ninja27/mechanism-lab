@@ -1,0 +1,12 @@
+{
+  "id": "tabular_missing-random_seed-3",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "random_seed",
+  "seed_word": "braided",
+  "seed_index": 3,
+  "status": "failed",
+  "error": "Incomplete/provider refusal: length",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

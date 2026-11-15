@@ -1,0 +1,278 @@
+{
+  "config": {
+    "mode": "final",
+    "selection_file": "results/world-search-benchmark/candidates-validation-v3.json",
+    "seed": 42,
+    "selected_ids": [
+      "digits_shift-direct-3",
+      "digits_shift-random_seed-2",
+      "digits_shift-world-3"
+    ],
+    "test_evaluated": true,
+    "conditions": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.2,
+        0.0
+      ],
+      [
+        0.4,
+        0.0
+      ],
+      [
+        0.6,
+        0.0
+      ],
+      [
+        0.0,
+        0.05
+      ],
+      [
+        0.0,
+        0.15
+      ],
+      [
+        0.0,
+        0.3
+      ],
+      [
+        0.4,
+        0.15
+      ],
+      [
+        0.6,
+        0.3
+      ]
+    ],
+    "explicit_deviations": [
+      "Final mode selects Gaussian sigma from frozen validation results; ensemble weights use validation rows only.",
+      "Candidate 03 uses validation top-1/top-2 SVC decision gaps as margin weights and weighted hard-label votes because scores are not calibrated across pipelines.",
+      "Candidate 02's stated four-condition metric is expanded to the shared nine-condition grid.",
+      "Matched controls: two augmented copies, same Gaussian noise levels and exactly eight dropped pixels per image; geometry alone changes random vs two disjoint2x2 blocks. No PCA. Fixed train set; no refit on validation."
+    ],
+    "candidate_proposals": {
+      "digits_shift-direct-3": {
+        "title": "Gaussian Pre-Smoothing for Corruption-Robust RBF-SVM on 8\u00d78 Digits",
+        "intervention": "Apply a fixed 2D Gaussian blur (\u03c3 tuned on validation from {0.0, 0.4, 0.6, 0.8, 1.0}) to every 8\u00d78 image before StandardScaler and RBF-SVM. The blur is fit-free and applied identically at train, validation, and test time. Augmentation with corrupted copies is added during training only.",
+        "mechanism": "Additive pixel noise and dropout inject high-spatial-frequency variance that inflates RBF kernel distances unpredictably. Gaussian smoothing low-pass filters each image, attenuating pixel-scale perturbations while retaining 2\u20134 pixel stroke structure that carries digit identity at this resolution. After smoothing, StandardScaler normalizes residual variance so gamma='scale' operates on a stable feature distribution. The result is that corrupted and clean versions of the same digit map to closer points in feature space, reducing intra-class kernel distance variance without discarding discriminative structure.",
+        "assumptions": "Corruptions are predominantly high-spatial-frequency relative to digit strokes. At 8\u00d78 resolution, digit strokes span roughly 2\u20134 pixels, so \u03c3\u22640.8 attenuates noise without merging strokes. If dominant corruptions were low-frequency (global brightness shift) or \u03c3 exceeded ~1.0, clean accuracy would degrade as strokes merge, invalidating the mechanism.",
+        "baseline": "StandardScaler plus RBF-SVM (C=10, gamma='scale') with corruption augmentation during training and no pre-smoothing (\u03c3=0). This is the direct comparison: same pipeline, same augmentation, only smoothing absent.",
+        "metric": "Mean classification accuracy averaged across six conditions evaluated on the held-out validation set during tuning, then once on the test set: clean data, noise_std=0.3, noise_std=0.6, dropout_p=0.1, dropout_p=0.3, and combined noise_std=0.3 plus dropout_p=0.2. Single final test evaluation after \u03c3 is selected.",
+        "falsification": "If \u03c3=0 matches or exceeds all \u03c3>0 on the six-condition validation average, the high-frequency noise mechanism is falsified and smoothing provides no causal benefit. Additionally, if clean-only accuracy at optimal \u03c3 drops more than two percentage points below \u03c3=0, over-smoothing has destroyed discriminative structure, also falsifying the claim of a beneficial operating range.",
+        "implementation": "Load digits, create stratified 60/20/20 train/val/test split with fixed random state. For each \u03c3 in {0.0, 0.4, 0.6, 0.8, 1.0}: reshape each train image to 8\u00d78, apply gaussian_filter, ravel; fit StandardScaler on smoothed train features; augment train set with corrupted copies (noise and dropout); fit SVC(kernel='rbf', C=10, gamma='scale'); evaluate six-condition mean accuracy on smoothed validation set. Select \u03c3 maximizing validation mean. Refit on train plus validation with chosen \u03c3, evaluate once on test. Total runtime under two minutes on Apple Silicon.",
+        "queries": [
+          "low-pass filtering preprocessing robustness kernel SVM image noise classification",
+          "input smoothing corruption robustness small image classifiers spatial frequency"
+        ]
+      },
+      "digits_shift-random_seed-2": {
+        "title": "Severity-Swept Augmentation for Corruption-Robust Digit Classification",
+        "intervention": "Construct an augmented training set by applying additive Gaussian noise and random pixel dropout at K discrete severity levels drawn from a sinusoidal sweep across [0,1], then train a single RBF-SVM on the concatenation of clean plus all augmented copies. Scaler is fit once on clean training pixels only; all augmented copies are transformed under that fixed scaler before concatenation.",
+        "mechanism": "A uniform severity grid over-represents mid-range corruptions relative to the extremes when the corruption function is nonlinear in severity. The sinusoidal schedule spends equal arc-length at low, mid, and high severities, ensuring the SVM margin is shaped by support-vector candidates from the full corruption spectrum. This should reduce accuracy degradation at high-severity test conditions without sacrificing clean accuracy.",
+        "assumptions": "The corruption function is sufficiently nonlinear in severity that uniform sampling creates an imbalanced effective distribution of corrupted feature vectors. The RBF-SVM has enough capacity to absorb the expanded training set within the time budget. Augmented copies generated from pre-scaler pixel space and then scaled are representative of test-time corrupted inputs, which are also scaled under the same fixed scaler.",
+        "baseline": "Same pipeline with uniform severity schedule: phases replaced by K equally spaced values in [0,1], producing identical total sample count. All other hyperparameters, seeds, and evaluation corruptions are held fixed.",
+        "metric": "Mean classification accuracy across four fixed test conditions: clean, low-severity, medium-severity, and high-severity corruption, evaluated on a held-out stratified test split never seen during fitting or augmentation design.",
+        "falsification": "Replace the sinusoidal schedule with a constant mid-severity schedule (all K phases set to 0.5). If the sinusoidal sweep provides no benefit, mean test accuracy will be statistically indistinguishable from or better than the swept version. This requires changing one line and re-running, completing well within two minutes. A further check: set K=1 (single augmentation pass at mid-severity) to confirm that any gain from the sweep is not simply explained by increased training set size.",
+        "implementation": "import numpy as np\nfrom sklearn.datasets import load_digits\nfrom sklearn.model_selection import StratifiedShuffleSplit\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.svm import SVC\nfrom sklearn.metrics import accuracy_score\n\ndigits = load_digits()\nX, y = digits.data / 16.0, digits.target\n\nsss = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)\ntv_idx, test_idx = next(sss.split(X, y))\nsss2 = StratifiedShuffleSplit(n_splits=1, test_size=0.25, random_state=42)\ntrain_idx, val_idx = next(sss2.split(X[tv_idx], y[tv_idx]))\ntrain_idx = tv_idx[train_idx]\n\nX_tr, y_tr = X[train_idx], y[train_idx]\nX_te, y_te = X[test_idx], y[test_idx]\n\nscaler = StandardScaler().fit(X_tr)\nX_tr_s = scaler.transform(X_tr)\nX_te_s = scaler.transform(X_te)\n\ndef corrupt(X, sigma, p, rng):\n    out = X + rng.normal(0, sigma, X.shape)\n    out[rng.random(X.shape) < p] = 0.0\n    return np.clip(out, 0, 1)\n\nK = 8\nphases = [0.5*(1 + np.sin(2*np.pi*i/K)) for i in range(K)]  # swap to [0.5]*K for ablation\nrng_aug = np.random.default_rng(0)\nparts, labels = [X_tr_s], [y_tr]\nfor s in phases:\n    parts.append(scaler.transform(corrupt(X_tr, 0.5*s, 0.15*s, rng_aug)))\n    labels.append(y_tr)\nX_aug, y_aug = np.vstack(parts), np.concatenate(labels)\n\nsvm = SVC(kernel='rbf', C=10, gamma='scale').fit(X_aug, y_aug)\n\nrng_te = np.random.default_rng(99)\nfor sig, p, name in [(0,0,'clean'),(0.2,0.05,'low'),(0.4,0.10,'med'),(0.6,0.15,'high')]:\n    Xc = scaler.transform(corrupt(X_te, sig, p, rng_te)) if sig > 0 else X_te_s\n    print(f\"{name}: {accuracy_score(y_te, svm.predict(Xc)):.3f}\")",
+        "queries": [
+          "data augmentation severity curriculum support vector machine generalization corrupted inputs",
+          "augmentation distribution mismatch test corruption robustness image classification empirical"
+        ]
+      },
+      "digits_shift-world-3": {
+        "title": "Structured-Block Dropout Augmentation with Margin-Weighted Ensemble Selection for Robust Digit Classification",
+        "intervention": "Replace random independent pixel dropout with structured 2\u00d72 block dropout during augmentation, and select the final preprocessing pipeline via a small parallel search across three candidate configurations evaluated on a shared validation set, using the best-performing configuration's validation margin as a soft weight when ensembling predictions at test time.",
+        "mechanism": "Structured block dropout forces the classifier to learn features robust to contiguous occlusion rather than salt-and-pepper noise alone, better matching realistic corruption patterns. Running three candidate pipelines in parallel on the same stratified split and weighting their test-time predictions by validation decision-function margin exploits the observation that higher-margin classifiers tend to generalize better under distribution shift. The margin weight replaces the fictional backward causality: instead of retroactively rewriting training, the winning configuration's margin score simply scales its contribution to the ensemble vote. No temporal paradox is required; the mechanism is a post-hoc weighted combination.",
+        "assumptions": "Impossible assumption replaced: backward causality, where a future result modifies past initialization, is physically impossible. It is replaced by prospective parallel evaluation followed by margin-weighted ensembling, which is entirely feasible within the time budget. Lateral memory across simultaneous strands is replaced by ordinary sequential result logging. Strand-death margin amplification is replaced by proportional margin-based vote weighting derived from validation decision-function scores.",
+        "baseline": "StandardScaler followed by RBF-SVM with independent pixel dropout augmentation at fixed severities, no ensembling, hyperparameters set by a single cross-validation pass on the training fold.",
+        "metric": "Mean accuracy averaged across the clean test set and two fixed corruption conditions: additive Gaussian pixel noise and structured block dropout, evaluated once on the held-out test split.",
+        "falsification": "If structured block dropout augmentation does not outperform random pixel dropout on the corrupted test conditions, or if margin-weighted ensembling does not improve over the single best individual pipeline selected by validation accuracy alone, the intervention fails. Ablation: replacing margin weights with uniform weights should degrade mean corrupted accuracy if margin weighting is doing real work.",
+        "implementation": "Load digits, perform fixed stratified 60/20/20 train/validation/test split. Fit three pipelines on train only: StandardScaler+RBF-SVM with pixel dropout, PCA(32)+RBF-SVM with block dropout, MinMaxScaler+RBF-SVM with mixed augmentation. Augment training data by appending corrupted copies. Evaluate each pipeline on validation set, extract decision-function margin magnitude as weight. At test time, compute weighted sum of decision scores across pipelines, take argmax. Compare mean clean+corrupted accuracy against single-pipeline baseline.",
+        "queries": [
+          "structured occlusion augmentation versus random dropout robustness SVM image classification",
+          "margin-weighted classifier ensemble decision function confidence aggregation"
+        ]
+      }
+    }
+  },
+  "split_hashes": {
+    "train": "084d563267b2a5130bd0c92132dff17e2e595a7249f388f977a87fee4826a139",
+    "validation": "f3f6ae49e08d64ee3f30cef686c21a60cb85d8de740dd9943845edebdf28bc5a",
+    "test": "4d69d2ac40c5fdbf29c2c85a3972b0eb8dd854c5a98767abe8cf82eb43bd9e2b"
+  },
+  "results": {
+    "direct": [
+      {
+        "variant": "gaussian_sigma_0.0",
+        "mean_accuracy": 0.7364197530864198,
+        "conditions": [
+          0.9722222222222222,
+          0.9222222222222223,
+          0.7055555555555556,
+          0.3277777777777778,
+          0.9666666666666667,
+          0.9333333333333333,
+          0.8694444444444445,
+          0.6111111111111112,
+          0.3194444444444444
+        ]
+      }
+    ],
+    "random_seed": [
+      {
+        "variant": "sinusoidal",
+        "mean_accuracy": 0.6530864197530863,
+        "conditions": [
+          0.9416666666666667,
+          0.8472222222222222,
+          0.46944444444444444,
+          0.2222222222222222,
+          0.9333333333333333,
+          0.8972222222222223,
+          0.85,
+          0.4722222222222222,
+          0.24444444444444444
+        ],
+        "n_train": 9702
+      },
+      {
+        "variant": "uniform",
+        "mean_accuracy": 0.6540123456790123,
+        "conditions": [
+          0.9361111111111111,
+          0.8611111111111112,
+          0.4722222222222222,
+          0.26944444444444443,
+          0.9333333333333333,
+          0.9,
+          0.8333333333333334,
+          0.44166666666666665,
+          0.2388888888888889
+        ],
+        "n_train": 9702
+      },
+      {
+        "variant": "constant_mid",
+        "mean_accuracy": 0.6592592592592593,
+        "conditions": [
+          0.9361111111111111,
+          0.8611111111111112,
+          0.5,
+          0.21944444444444444,
+          0.9305555555555556,
+          0.8861111111111111,
+          0.85,
+          0.475,
+          0.275
+        ],
+        "n_train": 9702
+      },
+      {
+        "variant": "single_mid",
+        "mean_accuracy": 0.5555555555555556,
+        "conditions": [
+          0.9388888888888889,
+          0.5638888888888889,
+          0.28055555555555556,
+          0.1388888888888889,
+          0.9194444444444444,
+          0.8888888888888888,
+          0.8444444444444444,
+          0.24444444444444444,
+          0.18055555555555555
+        ],
+        "n_train": 2156
+      }
+    ],
+    "world": {
+      "individual": [
+        {
+          "variant": "random_dropout",
+          "mean_accuracy": 0.7364197530864198,
+          "conditions": [
+            0.9722222222222222,
+            0.9222222222222223,
+            0.7055555555555556,
+            0.3277777777777778,
+            0.9666666666666667,
+            0.9333333333333333,
+            0.8694444444444445,
+            0.6111111111111112,
+            0.3194444444444444
+          ]
+        },
+        {
+          "variant": "block_dropout",
+          "mean_accuracy": 0.7354938271604937,
+          "conditions": [
+            0.9805555555555555,
+            0.9305555555555556,
+            0.7111111111111111,
+            0.3527777777777778,
+            0.9611111111111111,
+            0.9277777777777778,
+            0.8416666666666667,
+            0.575,
+            0.3388888888888889
+          ]
+        },
+        {
+          "variant": "mixed",
+          "mean_accuracy": 0.7262345679012345,
+          "conditions": [
+            0.9777777777777777,
+            0.9277777777777778,
+            0.6916666666666667,
+            0.2972222222222222,
+            0.9638888888888889,
+            0.9277777777777778,
+            0.85,
+            0.5861111111111111,
+            0.3138888888888889
+          ]
+        }
+      ],
+      "ensemble": [
+        {
+          "variant": "margin_weighted_label_vote",
+          "mean_accuracy": 0.7342592592592592,
+          "conditions": [
+            0.9777777777777777,
+            0.9277777777777778,
+            0.7138888888888889,
+            0.32222222222222224,
+            0.9666666666666667,
+            0.9277777777777778,
+            0.8527777777777777,
+            0.5972222222222222,
+            0.32222222222222224
+          ],
+          "weights": [
+            0.32747888414200127,
+            0.33289665485109005,
+            0.33962446100690863
+          ]
+        },
+        {
+          "variant": "uniform_label_vote",
+          "mean_accuracy": 0.7345679012345679,
+          "conditions": [
+            0.9777777777777777,
+            0.9277777777777778,
+            0.7083333333333334,
+            0.325,
+            0.9666666666666667,
+            0.9277777777777778,
+            0.8555555555555555,
+            0.5972222222222222,
+            0.325
+          ]
+        }
+      ]
+    }
+  },
+  "elapsed_seconds": 11.627262875001179
+}

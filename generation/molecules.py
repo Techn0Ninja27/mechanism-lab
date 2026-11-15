@@ -178,4 +178,3 @@ def promote(molecule: Mapping[str, Any], evidence: Mapping[str, Any]) -> dict[st
              "scientific_novelty_claim": False}
     macro["id"] = "macro_" + _digest({k: v for k, v in macro.items() if k != "id"})[:32]
     return macro
-

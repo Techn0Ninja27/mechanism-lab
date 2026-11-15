@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-direct-1",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "direct",
+  "seed_word": "mirrored",
+  "seed_index": 1,
+  "proposal": {
+    "title": "Blur-First Standardization with Matched Augmentation for Corruption-Robust Digit Classification",
+    "intervention": "Apply Gaussian smoothing (\u03c3=0.8) to every sample before StandardScaler fitting and transformation, then augment training data with noise and dropout copies at matched severity. The scaler is fit exclusively on smoothed clean training images. At inference, the identical blur-then-scale pipeline is applied regardless of corruption condition.",
+    "mechanism": "Additive pixel noise has a broad frequency spectrum while digit strokes concentrate energy in low-to-mid spatial frequencies. Blurring before standardization attenuates the high-frequency noise component, reducing inter-class RBF kernel distance inflation caused by corruption. Dropout pixels receive partial imputation from spatial neighbors via the blur kernel. Standardizing the already-smoothed distribution then normalizes a geometrically coherent feature space rather than a noise-contaminated one. Augmentation shifts the SVM decision boundary toward corrupted samples, complementing the distance-repair effect of smoothing.",
+    "assumptions": "Digit stroke information lives in lower spatial frequencies than the corruption signal. Blur neighborhood size (3x3 effective support at \u03c3=0.8) is sufficient to impute isolated dropped pixels but not contiguous missing regions. The scaler fitted on clean smoothed training images transfers adequately to smoothed corrupted test images because smoothing compresses the corrupted distribution toward the clean one.",
+    "baseline": "Standardized RBF-SVM (C=10, gamma=scale) trained on clean data only, with StandardScaler fit on raw training pixels and no smoothing applied at any stage.",
+    "metric": "Mean classification accuracy averaged across five fixed conditions: clean, low noise, high noise, low dropout, high dropout, evaluated once on the held-out test set after all hyperparameter decisions are finalized on the validation set.",
+    "falsification": "Run four variants on the validation set: baseline, blur-only, augmentation-only, and both combined. If augmentation-only matches or exceeds blur-only on the high-noise condition, the distance-repair causal claim is falsified and boundary shift is the dominant mechanism. If blur-only degrades clean accuracy relative to baseline, \u03c3 is too large and stroke merging dominates. Both outcomes are observable within two minutes of compute.",
+    "implementation": "Load digits, perform fixed stratified 60/20/20 train/validation/test split with a single random seed. Define smooth() to reshape each sample to 8x8, apply gaussian_filter, and flatten. Fit StandardScaler on smooth(X_train). Augment training set by concatenating two additional copies: one with clipped Gaussian pixel noise (\u03c3=0.15\u00d716) and one with binomial dropout (retention 0.85), both generated with fixed seeds. Preprocess all splits with smooth then scaler.transform. Train SVC(kernel=rbf, C=10, gamma=scale). Evaluate on five precomputed test corruption arrays using the same pipeline. Log per-condition and mean accuracy. Total wall time under three minutes on four CPU cores.",
+    "queries": [
+      "Gaussian smoothing as preprocessing for SVM robustness to image noise frequency spectrum",
+      "data augmentation versus input denoising for classifier robustness under pixel corruption"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

@@ -1,0 +1,3062 @@
+[
+  {
+    "file": "calls/digits_shift-random_seed-0-0.json",
+    "status": "complete",
+    "request_hash": "db7e1038e70ef068cda048d748414b72db92814af41b8326eb76c1dc1b8e045c",
+    "reserved_usd": 0.019323,
+    "timestamp": 1794777485.2919612,
+    "usage": {
+      "prompt_tokens": 180,
+      "completion_tokens": 633,
+      "total_tokens": 813,
+      "cost": 0.00993465,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.010035,
+        "upstream_inference_prompt_cost": 0.00054,
+        "upstream_inference_completions_cost": 0.009495
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777485-bx81rG6eZjRfP1UbtxK7",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-1-2.json",
+    "status": "complete",
+    "request_hash": "e17c2a17b2303667e00f3424308fd094bbc369d1dbc15855db46c5c6d3ae035b",
+    "reserved_usd": 0.03846,
+    "timestamp": 1794777520.01555,
+    "usage": {
+      "prompt_tokens": 1050,
+      "completion_tokens": 787,
+      "total_tokens": 1837,
+      "cost": 0.01480545,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014955,
+        "upstream_inference_prompt_cost": 0.00315,
+        "upstream_inference_completions_cost": 0.011805
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777520-XDljTHUCcPYVeiSuA5h8",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-2-2.json",
+    "status": "complete",
+    "request_hash": "b4fe5254973fb1f912217f85734236a1a969d6e18b1ae186ff98804a842550e1",
+    "reserved_usd": 0.039582000000000006,
+    "timestamp": 1794777479.539364,
+    "usage": {
+      "prompt_tokens": 1612,
+      "completion_tokens": 767,
+      "total_tokens": 2379,
+      "cost": 0.01617759,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.016341,
+        "upstream_inference_prompt_cost": 0.004836,
+        "upstream_inference_completions_cost": 0.011505
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777479-r6sV6MsTNmejL6Uvblzd",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-0-0.json",
+    "status": "complete",
+    "request_hash": "839d33beff2d6fee5653e23d540305583f73715fdd88109c29838ec3cd14f37c",
+    "reserved_usd": 0.019755,
+    "timestamp": 1794777605.946934,
+    "usage": {
+      "prompt_tokens": 210,
+      "completion_tokens": 546,
+      "total_tokens": 756,
+      "cost": 0.0087318,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00882,
+        "upstream_inference_prompt_cost": 0.00063,
+        "upstream_inference_completions_cost": 0.00819
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777606-6n9cRfLsLdmPX9MyiC20",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-3-2.json",
+    "status": "complete",
+    "request_hash": "62b9d461c0d00407aa89d517f494f8bbeeb90dbf6729e42a6ef727a2e006db18",
+    "reserved_usd": 0.039309,
+    "timestamp": 1794777408.389733,
+    "usage": {
+      "prompt_tokens": 1141,
+      "completion_tokens": 701,
+      "total_tokens": 1842,
+      "cost": 0.01379862,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013938,
+        "upstream_inference_prompt_cost": 0.003423,
+        "upstream_inference_completions_cost": 0.010515
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777408-16AiusnxqFDdKcuLfxau",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-0-2.json",
+    "status": "complete",
+    "request_hash": "6206805d4b4a99412b9889082493c97a9bde5eaf2025ad5205726da1552a85cb",
+    "reserved_usd": 0.038628,
+    "timestamp": 1794777682.9505699,
+    "usage": {
+      "prompt_tokens": 1152,
+      "completion_tokens": 788,
+      "total_tokens": 1940,
+      "cost": 0.01512324,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.015276,
+        "upstream_inference_prompt_cost": 0.003456,
+        "upstream_inference_completions_cost": 0.01182
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777683-lNoTSW0qMaNpG0XVITwa",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-2-1.json",
+    "status": "complete",
+    "request_hash": "76218e5e7721cb199f8e0e40b5fca9505d119b9a9a23badea4d7ebb11f67d57a",
+    "reserved_usd": 0.034455,
+    "timestamp": 1794777332.7597692,
+    "usage": {
+      "prompt_tokens": 786,
+      "completion_tokens": 1170,
+      "total_tokens": 1956,
+      "cost": 0.01970892,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.019908,
+        "upstream_inference_prompt_cost": 0.002358,
+        "upstream_inference_completions_cost": 0.01755
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777332-LrRjVcijhikpTekbTWo2",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-2-1.json",
+    "status": "complete",
+    "request_hash": "40526158c91f02e87101f34375ca62b134c9ceadfd26c0c91240d3e541bc4a67",
+    "reserved_usd": 0.03504,
+    "timestamp": 1794777558.699778,
+    "usage": {
+      "prompt_tokens": 744,
+      "completion_tokens": 777,
+      "total_tokens": 1521,
+      "cost": 0.01374813,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013887,
+        "upstream_inference_prompt_cost": 0.002232,
+        "upstream_inference_completions_cost": 0.011655
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777558-6gRgIG8ITz2FKT8YFQaS",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-2-0.json",
+    "status": "complete",
+    "request_hash": "1b02d0c6cb3d9a4037ed5e3093f0eb8915237bee3300914cf89fac761d0b4b3e",
+    "reserved_usd": 0.019752,
+    "timestamp": 1794777543.320686,
+    "usage": {
+      "prompt_tokens": 210,
+      "completion_tokens": 536,
+      "total_tokens": 746,
+      "cost": 0.0085833,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00867,
+        "upstream_inference_prompt_cost": 0.00063,
+        "upstream_inference_completions_cost": 0.00804
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777543-FkyMCGwhYK7uC7HFvOrL",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-2-2.json",
+    "status": "complete",
+    "request_hash": "6d581b288b06b1c703406318b2eb57beea1108ce3bc07a5632b7e3a2efb11409",
+    "reserved_usd": 0.03912,
+    "timestamp": 1794777412.562023,
+    "usage": {
+      "prompt_tokens": 1283,
+      "completion_tokens": 661,
+      "total_tokens": 1944,
+      "cost": 0.01362636,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013764,
+        "upstream_inference_prompt_cost": 0.003849,
+        "upstream_inference_completions_cost": 0.009915
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777412-mlvb4P3OkgzbQ20GFhWf",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-1-2.json",
+    "status": "complete",
+    "request_hash": "c8956a08b2fc890232b46ebf4d6df0b31bc9dbff53c2488f0db8bfc5793618e9",
+    "reserved_usd": 0.039558,
+    "timestamp": 1794777573.4752262,
+    "usage": {
+      "prompt_tokens": 1101,
+      "completion_tokens": 832,
+      "total_tokens": 1933,
+      "cost": 0.01562517,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.015783,
+        "upstream_inference_prompt_cost": 0.003303,
+        "upstream_inference_completions_cost": 0.01248
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777573-W1ciWmVwg9aINM0yEtYB",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-0-2.json",
+    "status": "complete",
+    "request_hash": "01b342fdbabe81598b60d1c24005b2e56a8284f1ac999820c3e25c21422eaef9",
+    "reserved_usd": 0.040047,
+    "timestamp": 1794777536.378474,
+    "usage": {
+      "prompt_tokens": 1657,
+      "completion_tokens": 799,
+      "total_tokens": 2456,
+      "cost": 0.01678644,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.016956,
+        "upstream_inference_prompt_cost": 0.004971,
+        "upstream_inference_completions_cost": 0.011985
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777536-EZSYOIpefRXgeYkKFdLl",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-2-0.json",
+    "status": "complete",
+    "request_hash": "5e8cced79b351cb231ba4ebd123fae81f18413a092aa9100228786642fe62ba1",
+    "reserved_usd": 0.01932,
+    "timestamp": 1794777316.284267,
+    "usage": {
+      "prompt_tokens": 180,
+      "completion_tokens": 608,
+      "total_tokens": 788,
+      "cost": 0.0095634,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00966,
+        "upstream_inference_prompt_cost": 0.00054,
+        "upstream_inference_completions_cost": 0.00912
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777316-UiSK4LZYmmYnl0DpT177",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-0-1.json",
+    "status": "failed",
+    "request_hash": "88ff6dcc66857c2765afb821d60d8b2cdd1a4d789e9dc3b8429a2478dcca23ab",
+    "reserved_usd": 0.034275,
+    "timestamp": 1794777620.262773,
+    "usage": {
+      "prompt_tokens": 754,
+      "completion_tokens": 1536,
+      "total_tokens": 2290,
+      "cost": 0.02504898,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.025302,
+        "upstream_inference_prompt_cost": 0.002262,
+        "upstream_inference_completions_cost": 0.02304
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777620-889vO38tpeubJv66aVA5",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "length",
+    "error": "ValueError: Incomplete/provider refusal: length"
+  },
+  {
+    "file": "calls/digits_shift-random_seed-0-1.json",
+    "status": "complete",
+    "request_hash": "6b28f14e6c56e2e94372425b8f00cc930f709b6fb6fa8d093a7bf530d5084780",
+    "reserved_usd": 0.033912,
+    "timestamp": 1794777501.348586,
+    "usage": {
+      "prompt_tokens": 811,
+      "completion_tokens": 1293,
+      "total_tokens": 2104,
+      "cost": 0.02160972,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.021828,
+        "upstream_inference_prompt_cost": 0.002433,
+        "upstream_inference_completions_cost": 0.019395
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777501-mVyGqMyf9WIYHkVXzh5H",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-1-2.json",
+    "status": "complete",
+    "request_hash": "4e0c143a97b17c23cbb127f923e7e0cfb7162119d07d0a37cbff339d8268994d",
+    "reserved_usd": 0.040719000000000005,
+    "timestamp": 1794777355.206123,
+    "usage": {
+      "prompt_tokens": 1581,
+      "completion_tokens": 1348,
+      "total_tokens": 2929,
+      "cost": 0.02471337,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.024963,
+        "upstream_inference_prompt_cost": 0.004743,
+        "upstream_inference_completions_cost": 0.02022
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777355-9614PXuSsTyORSh6x4Cl",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-1-0.json",
+    "status": "complete",
+    "request_hash": "26ba35e1ed4057ec6e1f8362a7fa360fff014ef7df2317761dfba21da80d4c4c",
+    "reserved_usd": 0.017802000000000002,
+    "timestamp": 1794777554.675529,
+    "usage": {
+      "prompt_tokens": 70,
+      "completion_tokens": 499,
+      "total_tokens": 569,
+      "cost": 0.00761805,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007695,
+        "upstream_inference_prompt_cost": 0.00021,
+        "upstream_inference_completions_cost": 0.007485
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777554-SgI4AevU5SdKCvUozRmu",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-2-0.json",
+    "status": "complete",
+    "request_hash": "bfd33086bac92ff34b8c173fa1f39145df6c5ca23eec6b8021a874554a7a78b9",
+    "reserved_usd": 0.017793,
+    "timestamp": 1794777594.727745,
+    "usage": {
+      "prompt_tokens": 69,
+      "completion_tokens": 500,
+      "total_tokens": 569,
+      "cost": 0.00762993,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007707,
+        "upstream_inference_prompt_cost": 0.000207,
+        "upstream_inference_completions_cost": 0.0075
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777595-OisEtwlo00waxBBfdsp5",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-0-0.json",
+    "status": "complete",
+    "request_hash": "19d800e012929b9d0f189386eb2fa5c40b84855ac3abb5cb54b305309f4c3fc1",
+    "reserved_usd": 0.019653,
+    "timestamp": 1794777682.819808,
+    "usage": {
+      "prompt_tokens": 206,
+      "completion_tokens": 552,
+      "total_tokens": 758,
+      "cost": 0.00880902,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.008898,
+        "upstream_inference_prompt_cost": 0.000618,
+        "upstream_inference_completions_cost": 0.00828
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777682-WCJmXwtRerR4Z56J6tig",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-1-2.json",
+    "status": "complete",
+    "request_hash": "559ecc0e1dab4e1916c9df98f0808bd43842ea57810bc718513ddec1f6789ba6",
+    "reserved_usd": 0.03939,
+    "timestamp": 1794777466.417892,
+    "usage": {
+      "prompt_tokens": 1466,
+      "completion_tokens": 900,
+      "total_tokens": 2366,
+      "cost": 0.01771902,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.017898,
+        "upstream_inference_prompt_cost": 0.004398,
+        "upstream_inference_completions_cost": 0.0135
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777466-9jwDHetByZRmCsRTzvir",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-3-0.json",
+    "status": "complete",
+    "request_hash": "4b4bb2cb2205bdc20ea3ed90acdbf76edaa500e66a2560b2f09773d81e9975b8",
+    "reserved_usd": 0.019221000000000002,
+    "timestamp": 1794777316.284524,
+    "usage": {
+      "prompt_tokens": 176,
+      "completion_tokens": 649,
+      "total_tokens": 825,
+      "cost": 0.01016037,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.010263,
+        "upstream_inference_prompt_cost": 0.000528,
+        "upstream_inference_completions_cost": 0.009735
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777316-fUbOYzy9aZYZ8WyGAUje",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-0-1.json",
+    "status": "complete",
+    "request_hash": "a620b3ea354ccf21447ff988f69f85f652d272a560a3f5bbdde319811a122c27",
+    "reserved_usd": 0.033945,
+    "timestamp": 1794777715.4807308,
+    "usage": {
+      "prompt_tokens": 704,
+      "completion_tokens": 794,
+      "total_tokens": 1498,
+      "cost": 0.01388178,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014022,
+        "upstream_inference_prompt_cost": 0.002112,
+        "upstream_inference_completions_cost": 0.01191
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777715-7CwcRXBh0boW9at6X7Ii",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-3-1.json",
+    "status": "complete",
+    "request_hash": "20c2ed2b6be492caf63325ef8c14964479de355e5fade3d2eca92800e13ec28b",
+    "reserved_usd": 0.034188,
+    "timestamp": 1794777445.2700028,
+    "usage": {
+      "prompt_tokens": 719,
+      "completion_tokens": 745,
+      "total_tokens": 1464,
+      "cost": 0.01319868,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013332,
+        "upstream_inference_prompt_cost": 0.002157,
+        "upstream_inference_completions_cost": 0.011175
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777445-JNy8aBR2M0aJvMSHjbJI",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-2-1.json",
+    "status": "complete",
+    "request_hash": "16a564aa0db5ea86e2c78c177d32626a46d7a469740ff76cb1d65a6dbdd6a85f",
+    "reserved_usd": 0.034911,
+    "timestamp": 1794777608.2164228,
+    "usage": {
+      "prompt_tokens": 750,
+      "completion_tokens": 797,
+      "total_tokens": 1547,
+      "cost": 0.01406295,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014205,
+        "upstream_inference_prompt_cost": 0.00225,
+        "upstream_inference_completions_cost": 0.011955
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777608-hQvKd4H6wXLIdRZSaSMo",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-1-1.json",
+    "status": "complete",
+    "request_hash": "1f74e8b696b5c3a86d086e61fffdd51c51f555d4d79166ebb54ccc768bb166ce",
+    "reserved_usd": 0.034227,
+    "timestamp": 1794777392.0293581,
+    "usage": {
+      "prompt_tokens": 765,
+      "completion_tokens": 1511,
+      "total_tokens": 2276,
+      "cost": 0.0247104,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.02496,
+        "upstream_inference_prompt_cost": 0.002295,
+        "upstream_inference_completions_cost": 0.022665
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777392-LrWnpj2F8cldq3J00tmU",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-1-0.json",
+    "status": "complete",
+    "request_hash": "4b4bb2cb2205bdc20ea3ed90acdbf76edaa500e66a2560b2f09773d81e9975b8",
+    "reserved_usd": 0.019221000000000002,
+    "timestamp": 1794777376.208287,
+    "usage": {
+      "prompt_tokens": 176,
+      "completion_tokens": 587,
+      "total_tokens": 763,
+      "cost": 0.00923967,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.009333,
+        "upstream_inference_prompt_cost": 0.000528,
+        "upstream_inference_completions_cost": 0.008805
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777376-BbkmerhrFpOJJo23lUj1",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-3-2.json",
+    "status": "complete",
+    "request_hash": "1c9f0ea7c9aeb16c3659ae1aebeef04e0492ea1cf0443feaa713bf265d3fb43b",
+    "reserved_usd": 0.039396,
+    "timestamp": 1794777676.433192,
+    "usage": {
+      "prompt_tokens": 1496,
+      "completion_tokens": 732,
+      "total_tokens": 2228,
+      "cost": 0.01531332,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.015468,
+        "upstream_inference_prompt_cost": 0.004488,
+        "upstream_inference_completions_cost": 0.01098
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777676-AjMBQhgOn0zZMkSh0RhH",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-2-0.json",
+    "status": "complete",
+    "request_hash": "19d800e012929b9d0f189386eb2fa5c40b84855ac3abb5cb54b305309f4c3fc1",
+    "reserved_usd": 0.019653,
+    "timestamp": 1794777593.4632719,
+    "usage": {
+      "prompt_tokens": 206,
+      "completion_tokens": 542,
+      "total_tokens": 748,
+      "cost": 0.00866052,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.008748,
+        "upstream_inference_prompt_cost": 0.000618,
+        "upstream_inference_completions_cost": 0.00813
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777593-P2xbjsESz1IimC0INeEr",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-0-0.json",
+    "status": "complete",
+    "request_hash": "8d3849d2dd0f2fec510da233e6a22478322aa9421f29b359f964d853be29eb99",
+    "reserved_usd": 0.017796,
+    "timestamp": 1794777701.069996,
+    "usage": {
+      "prompt_tokens": 69,
+      "completion_tokens": 512,
+      "total_tokens": 581,
+      "cost": 0.00780813,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007887,
+        "upstream_inference_prompt_cost": 0.000207,
+        "upstream_inference_completions_cost": 0.00768
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777701-TGt6AHaDFjD3yszj0Qof",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-3-0.json",
+    "status": "complete",
+    "request_hash": "dd9817bf58b84f4f73971bd1966a10ef49739b050a1e0a17236b6f4bff978190",
+    "reserved_usd": 0.017799000000000002,
+    "timestamp": 1794777430.436131,
+    "usage": {
+      "prompt_tokens": 69,
+      "completion_tokens": 497,
+      "total_tokens": 566,
+      "cost": 0.00758538,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007662,
+        "upstream_inference_prompt_cost": 0.000207,
+        "upstream_inference_completions_cost": 0.007455
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777430-QaBIXdKFi1sZCg1FnkJ3",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-3-1.json",
+    "status": "complete",
+    "request_hash": "99de447f192130830fe4436244501cc431394cd432a5296ddfab04f2ee56a199",
+    "reserved_usd": 0.034863000000000005,
+    "timestamp": 1794777333.764386,
+    "usage": {
+      "prompt_tokens": 827,
+      "completion_tokens": 1006,
+      "total_tokens": 1833,
+      "cost": 0.01739529,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.017571,
+        "upstream_inference_prompt_cost": 0.002481,
+        "upstream_inference_completions_cost": 0.01509
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777334-SebBkKaJ1KKAQmWVa3zK",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-0-1.json",
+    "status": "complete",
+    "request_hash": "8a7384ae905ae78acb3d8dc7e785ae9c17a6624ed7ad98e094069055aabb5685",
+    "reserved_usd": 0.035073,
+    "timestamp": 1794777698.6890712,
+    "usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 836,
+      "total_tokens": 1596,
+      "cost": 0.0146718,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.01482,
+        "upstream_inference_prompt_cost": 0.00228,
+        "upstream_inference_completions_cost": 0.01254
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777698-QirRcX2zPWbmXZwuvJZD",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-1-1.json",
+    "status": "complete",
+    "request_hash": "3f6fd6789cf40e7a7d6e205cd7d0c39d05efe71f7f51986c55b07ffbf1d16866",
+    "reserved_usd": 0.034305,
+    "timestamp": 1794777568.8761659,
+    "usage": {
+      "prompt_tokens": 721,
+      "completion_tokens": 744,
+      "total_tokens": 1465,
+      "cost": 0.01318977,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013323,
+        "upstream_inference_prompt_cost": 0.002163,
+        "upstream_inference_completions_cost": 0.01116
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777569-DZG2dsONakzHGlEi0oyQ",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-2-1.json",
+    "status": "complete",
+    "request_hash": "b8047e1c74138e54e3476741976cd04e2e1aba5212988a6772c7bad9efe6123e",
+    "reserved_usd": 0.034209,
+    "timestamp": 1794777609.357098,
+    "usage": {
+      "prompt_tokens": 692,
+      "completion_tokens": 831,
+      "total_tokens": 1523,
+      "cost": 0.01439559,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014541,
+        "upstream_inference_prompt_cost": 0.002076,
+        "upstream_inference_completions_cost": 0.012465
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777609-4ilOjDmDBlHR86ZclUmS",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-3-1.json",
+    "status": "complete",
+    "request_hash": "aef3d1d7f37d270dba0c5013c9efa1a49640cea7e361ab51c5573eb89f9697db",
+    "reserved_usd": 0.03363,
+    "timestamp": 1794777656.128918,
+    "usage": {
+      "prompt_tokens": 759,
+      "completion_tokens": 1211,
+      "total_tokens": 1970,
+      "cost": 0.02023758,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.020442,
+        "upstream_inference_prompt_cost": 0.002277,
+        "upstream_inference_completions_cost": 0.018165
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777656-NlVOWIJ8faEOJx4dvzK0",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-3-1.json",
+    "status": "failed",
+    "request_hash": "170aa0df0c89a1c7d64a554a5047dc9198e5e6f81da687228efcc50381770f7d",
+    "reserved_usd": 0.034608,
+    "timestamp": 1794777660.117026,
+    "usage": {
+      "prompt_tokens": 772,
+      "completion_tokens": 1536,
+      "total_tokens": 2308,
+      "cost": 0.02510244,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.025356,
+        "upstream_inference_prompt_cost": 0.002316,
+        "upstream_inference_completions_cost": 0.02304
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777660-9CVngE7BzvQ8zRQJmVZV",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "length",
+    "error": "ValueError: Incomplete/provider refusal: length"
+  },
+  {
+    "file": "calls/digits_shift-direct-3-2.json",
+    "status": "complete",
+    "request_hash": "6151b2e4ac94aee78206253350d3866f173d4eb0e35f2befe9f1aa45357d2da4",
+    "reserved_usd": 0.038130000000000004,
+    "timestamp": 1794777355.732061,
+    "usage": {
+      "prompt_tokens": 1291,
+      "completion_tokens": 833,
+      "total_tokens": 2124,
+      "cost": 0.01620432,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.016368,
+        "upstream_inference_prompt_cost": 0.003873,
+        "upstream_inference_completions_cost": 0.012495
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777355-6vbDm1EBKWoXWdzU8eEj",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-1-0.json",
+    "status": "complete",
+    "request_hash": "9db1e9d7a8648f5f053c33b7c40eb67f3cbb013bf54c1de516fa532f0678389a",
+    "reserved_usd": 0.019329,
+    "timestamp": 1794777426.517173,
+    "usage": {
+      "prompt_tokens": 181,
+      "completion_tokens": 562,
+      "total_tokens": 743,
+      "cost": 0.00888327,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.008973,
+        "upstream_inference_prompt_cost": 0.000543,
+        "upstream_inference_completions_cost": 0.00843
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777426-PL8julYEGkea6AB750rX",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-0-2.json",
+    "status": "complete",
+    "request_hash": "3480774e68b9e045d34878b7386881851181592ca506d7618e423498dcf925c3",
+    "reserved_usd": 0.039072,
+    "timestamp": 1794777719.310006,
+    "usage": {
+      "prompt_tokens": 1151,
+      "completion_tokens": 776,
+      "total_tokens": 1927,
+      "cost": 0.01494207,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.015093,
+        "upstream_inference_prompt_cost": 0.003453,
+        "upstream_inference_completions_cost": 0.01164
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777719-V3mBVIZODkPhpXoGro0d",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-2-2.json",
+    "status": "complete",
+    "request_hash": "785c37c66452dfebbb8c8476664dcc2d61404e8ebbbc7634cace29edb395163e",
+    "reserved_usd": 0.039006,
+    "timestamp": 1794777631.221279,
+    "usage": {
+      "prompt_tokens": 1138,
+      "completion_tokens": 678,
+      "total_tokens": 1816,
+      "cost": 0.01344816,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013584,
+        "upstream_inference_prompt_cost": 0.003414,
+        "upstream_inference_completions_cost": 0.01017
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777631-2o3SlfjHui3mAjor8u4W",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-1-2.json",
+    "status": "complete",
+    "request_hash": "6ab8da1ad37c2cb5f135462030ae5b3a310d680e479ead119844babae58e28d6",
+    "reserved_usd": 0.039429000000000006,
+    "timestamp": 1794777589.764065,
+    "usage": {
+      "prompt_tokens": 1081,
+      "completion_tokens": 643,
+      "total_tokens": 1724,
+      "cost": 0.01275912,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.012888,
+        "upstream_inference_prompt_cost": 0.003243,
+        "upstream_inference_completions_cost": 0.009645
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777589-D3hktoeVgkbuRXbs20ik",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-1-0.json",
+    "status": "complete",
+    "request_hash": "4aa093d0f98ed1cfb08ca69fa2c5ad1a50df99c46f66b5285f8b5c3f5e86f941",
+    "reserved_usd": 0.019761,
+    "timestamp": 1794777316.283961,
+    "usage": {
+      "prompt_tokens": 211,
+      "completion_tokens": 560,
+      "total_tokens": 771,
+      "cost": 0.00894267,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.009033,
+        "upstream_inference_prompt_cost": 0.000633,
+        "upstream_inference_completions_cost": 0.0084
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777316-YWSnp52WkjjFxVLTR2hm",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-1-1.json",
+    "status": "complete",
+    "request_hash": "36d1b67643618cc8719da9a5c4a271ddcd7678018f81a0da7a0326978ac5dc31",
+    "reserved_usd": 0.034164,
+    "timestamp": 1794777331.535559,
+    "usage": {
+      "prompt_tokens": 768,
+      "completion_tokens": 1266,
+      "total_tokens": 2034,
+      "cost": 0.02108106,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.021294,
+        "upstream_inference_prompt_cost": 0.002304,
+        "upstream_inference_completions_cost": 0.01899
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777331-rZwmH4JntqIy0kt9bwJS",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-1-1.json",
+    "status": "complete",
+    "request_hash": "a182dbadc306726239499f280e219264878e7e64a5533ded3df4a2c2a2642227",
+    "reserved_usd": 0.033597,
+    "timestamp": 1794777442.709994,
+    "usage": {
+      "prompt_tokens": 740,
+      "completion_tokens": 1181,
+      "total_tokens": 1921,
+      "cost": 0.01973565,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.019935,
+        "upstream_inference_prompt_cost": 0.00222,
+        "upstream_inference_completions_cost": 0.017715
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777442-Rk2MonKlQvdz8119ir7a",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-3-2.json",
+    "status": "complete",
+    "request_hash": "6872f5ad9ca0ffb767fe3b53aee844b4fc62f558aa27a4fd47c28f223554ca40",
+    "reserved_usd": 0.039438,
+    "timestamp": 1794777465.5947242,
+    "usage": {
+      "prompt_tokens": 1082,
+      "completion_tokens": 797,
+      "total_tokens": 1879,
+      "cost": 0.01504899,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.015201,
+        "upstream_inference_prompt_cost": 0.003246,
+        "upstream_inference_completions_cost": 0.011955
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777465-CMGvV9D8JwCpueDwrXRx",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-0-2.json",
+    "status": "complete",
+    "request_hash": "4a3af288c5d9fafd57504b5e4e0562e2968f2bf330f7acaa1105d102c09bd2f7",
+    "reserved_usd": 0.038826,
+    "timestamp": 1794777736.107481,
+    "usage": {
+      "prompt_tokens": 1101,
+      "completion_tokens": 758,
+      "total_tokens": 1859,
+      "cost": 0.01452627,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014673,
+        "upstream_inference_prompt_cost": 0.003303,
+        "upstream_inference_completions_cost": 0.01137
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777736-riN1gFGLDnJFNaSK9KQQ",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-3-0.json",
+    "status": "complete",
+    "request_hash": "a27cfb0d9c9847a56b669167fc1271b978126a7dfe035a16db2dadac85ec5293",
+    "reserved_usd": 0.019758,
+    "timestamp": 1794777644.682507,
+    "usage": {
+      "prompt_tokens": 210,
+      "completion_tokens": 564,
+      "total_tokens": 774,
+      "cost": 0.0089991,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00909,
+        "upstream_inference_prompt_cost": 0.00063,
+        "upstream_inference_completions_cost": 0.00846
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777644-VZGmb8VdFuquVRAxYN6B",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-2-2.json",
+    "status": "complete",
+    "request_hash": "d791a9a2627cc679b27c48655b2270e627b6792a6feb328017d347bf225ab5f0",
+    "reserved_usd": 0.039012000000000005,
+    "timestamp": 1794777627.468972,
+    "usage": {
+      "prompt_tokens": 1112,
+      "completion_tokens": 735,
+      "total_tokens": 1847,
+      "cost": 0.01421739,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014361,
+        "upstream_inference_prompt_cost": 0.003336,
+        "upstream_inference_completions_cost": 0.011025
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777627-fFkdSDrQ3U2fH5njSX3I",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-3-0.json",
+    "status": "complete",
+    "request_hash": "3c6ec5b608228b65f967d92da528906f83dd5b9fb84247afafd976c51712dbfd",
+    "reserved_usd": 0.019326,
+    "timestamp": 1794777641.960856,
+    "usage": {
+      "prompt_tokens": 180,
+      "completion_tokens": 581,
+      "total_tokens": 761,
+      "cost": 0.00916245,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.009255,
+        "upstream_inference_prompt_cost": 0.00054,
+        "upstream_inference_completions_cost": 0.008715
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777642-3NO6cHIpBKd1ukZMCW3E",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-1-2.json",
+    "status": "complete",
+    "request_hash": "9edc9d09e00c5050c2041f6d591e17007a6ca6b7ab6b22b3d4892eadf81e7f5c",
+    "reserved_usd": 0.04263,
+    "timestamp": 1794777420.560269,
+    "usage": {
+      "prompt_tokens": 1796,
+      "completion_tokens": 763,
+      "total_tokens": 2559,
+      "cost": 0.01666467,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.016833,
+        "upstream_inference_prompt_cost": 0.005388,
+        "upstream_inference_completions_cost": 0.011445
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777420-UVREsjdkF8HuZmBvLKDN",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-1-1.json",
+    "status": "complete",
+    "request_hash": "6600f5bbcddf4b608b25e44c588bcb3d88f7122ee1292a4cf9aa0eee628bbb85",
+    "reserved_usd": 0.034065,
+    "timestamp": 1794777552.5659242,
+    "usage": {
+      "prompt_tokens": 691,
+      "completion_tokens": 794,
+      "total_tokens": 1485,
+      "cost": 0.01384317,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013983,
+        "upstream_inference_prompt_cost": 0.002073,
+        "upstream_inference_completions_cost": 0.01191
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777552-7lv37mWIXimamJN9AilP",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-2-1.json",
+    "status": "complete",
+    "request_hash": "540f568e6f64a3bd7cffa54da79b039985b1ea0b9c8574f4404f9fc0becab7c5",
+    "reserved_usd": 0.034461000000000006,
+    "timestamp": 1794777392.866991,
+    "usage": {
+      "prompt_tokens": 736,
+      "completion_tokens": 946,
+      "total_tokens": 1682,
+      "cost": 0.01623402,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.016398,
+        "upstream_inference_prompt_cost": 0.002208,
+        "upstream_inference_completions_cost": 0.01419
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777392-gkblNeKLY59BKBwfwUC8",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-0-1.json",
+    "status": "complete",
+    "request_hash": "189094a16a3baa0c8939bf859a5c4cc12dc4378902ca983290588381f2a97947",
+    "reserved_usd": 0.034308000000000005,
+    "timestamp": 1794777513.108598,
+    "usage": {
+      "prompt_tokens": 765,
+      "completion_tokens": 1372,
+      "total_tokens": 2137,
+      "cost": 0.02264625,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.022875,
+        "upstream_inference_prompt_cost": 0.002295,
+        "upstream_inference_completions_cost": 0.02058
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777513-u7Whv1s5nLP7hXZtMm6d",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-3-1.json",
+    "status": "failed",
+    "request_hash": "f32bb6d7946b2647db99b443cdfa2f4313e24e7c0192c10d5446dea7cc5c31b0",
+    "reserved_usd": 0.035268,
+    "timestamp": 1794777708.494555,
+    "usage": {
+      "prompt_tokens": 734,
+      "completion_tokens": 1536,
+      "total_tokens": 2270,
+      "cost": 0.02498958,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.025242,
+        "upstream_inference_prompt_cost": 0.002202,
+        "upstream_inference_completions_cost": 0.02304
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777708-SiaOM7bJU0W1FVPXCYPh",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "length",
+    "error": "ValueError: Incomplete/provider refusal: length"
+  },
+  {
+    "file": "calls/tabular_missing-world-0-0.json",
+    "status": "complete",
+    "request_hash": "8d3849d2dd0f2fec510da233e6a22478322aa9421f29b359f964d853be29eb99",
+    "reserved_usd": 0.017796,
+    "timestamp": 1794777648.5346718,
+    "usage": {
+      "prompt_tokens": 69,
+      "completion_tokens": 498,
+      "total_tokens": 567,
+      "cost": 0.00760023,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007677,
+        "upstream_inference_prompt_cost": 0.000207,
+        "upstream_inference_completions_cost": 0.00747
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777648-ZK6OOsGXk356CK3AsVhb",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-3-0.json",
+    "status": "complete",
+    "request_hash": "dd9817bf58b84f4f73971bd1966a10ef49739b050a1e0a17236b6f4bff978190",
+    "reserved_usd": 0.017799000000000002,
+    "timestamp": 1794777373.3872252,
+    "usage": {
+      "prompt_tokens": 69,
+      "completion_tokens": 492,
+      "total_tokens": 561,
+      "cost": 0.00751113,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007587,
+        "upstream_inference_prompt_cost": 0.000207,
+        "upstream_inference_completions_cost": 0.00738
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777373-M97Yazmny0RTJmW7jHAp",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-2-0.json",
+    "status": "complete",
+    "request_hash": "4b4bb2cb2205bdc20ea3ed90acdbf76edaa500e66a2560b2f09773d81e9975b8",
+    "reserved_usd": 0.019221000000000002,
+    "timestamp": 1794777439.678517,
+    "usage": {
+      "prompt_tokens": 176,
+      "completion_tokens": 609,
+      "total_tokens": 785,
+      "cost": 0.00956637,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.009663,
+        "upstream_inference_prompt_cost": 0.000528,
+        "upstream_inference_completions_cost": 0.009135
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777439-WXU8hvqXEP8O1yPxQYqi",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-1-0.json",
+    "status": "complete",
+    "request_hash": "19d800e012929b9d0f189386eb2fa5c40b84855ac3abb5cb54b305309f4c3fc1",
+    "reserved_usd": 0.019653,
+    "timestamp": 1794777486.178699,
+    "usage": {
+      "prompt_tokens": 206,
+      "completion_tokens": 521,
+      "total_tokens": 727,
+      "cost": 0.00834867,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.008433,
+        "upstream_inference_prompt_cost": 0.000618,
+        "upstream_inference_completions_cost": 0.007815
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777486-L5f1ENypPKuOqScMnCxq",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-0-2.json",
+    "status": "complete",
+    "request_hash": "a7b00bb59e64af88601097e6a181ff1d4cdeb291c38594cb1b185ff6bbe3da51",
+    "reserved_usd": 0.039249000000000006,
+    "timestamp": 1794777522.341058,
+    "usage": {
+      "prompt_tokens": 1578,
+      "completion_tokens": 799,
+      "total_tokens": 2377,
+      "cost": 0.01655181,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.016719,
+        "upstream_inference_prompt_cost": 0.004734,
+        "upstream_inference_completions_cost": 0.011985
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777522-iNsxqJGhWAKpNKd3Rol4",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-1-1.json",
+    "status": "complete",
+    "request_hash": "486051e41799a373b2c723b0e310e8aa83d06b94000e86e14a56ed847e9ddb11",
+    "reserved_usd": 0.034971,
+    "timestamp": 1794777500.3560162,
+    "usage": {
+      "prompt_tokens": 729,
+      "completion_tokens": 735,
+      "total_tokens": 1464,
+      "cost": 0.01307988,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013212,
+        "upstream_inference_prompt_cost": 0.002187,
+        "upstream_inference_completions_cost": 0.011025
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777500-meydCShazYIFUIZwhqLX",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-2-1.json",
+    "status": "complete",
+    "request_hash": "89c4e4ba677e6ec74bb3abe3e8f721b5aac8f16febf380db2d6596665af6b436",
+    "reserved_usd": 0.034431,
+    "timestamp": 1794777455.756732,
+    "usage": {
+      "prompt_tokens": 787,
+      "completion_tokens": 1327,
+      "total_tokens": 2114,
+      "cost": 0.02204334,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.022266,
+        "upstream_inference_prompt_cost": 0.002361,
+        "upstream_inference_completions_cost": 0.019905
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777455-vGuNZaqwqgGeMSC5ECBw",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-0-1.json",
+    "status": "complete",
+    "request_hash": "a77ef248b91241848e381bca506fd0c6b9b4454338f226462cfa3e358d5c87db",
+    "reserved_usd": 0.034515000000000004,
+    "timestamp": 1794777662.648541,
+    "usage": {
+      "prompt_tokens": 720,
+      "completion_tokens": 815,
+      "total_tokens": 1535,
+      "cost": 0.01424115,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014385,
+        "upstream_inference_prompt_cost": 0.00216,
+        "upstream_inference_completions_cost": 0.012225
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777662-8DWYbsTG7x2jnJiiz249",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-3-1.json",
+    "status": "complete",
+    "request_hash": "a672e6b90088e490cc7d1db85ea09fb080f69c51dd8b5606d50139852a8b42b8",
+    "reserved_usd": 0.033849000000000004,
+    "timestamp": 1794777386.9599712,
+    "usage": {
+      "prompt_tokens": 684,
+      "completion_tokens": 834,
+      "total_tokens": 1518,
+      "cost": 0.01441638,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.014562,
+        "upstream_inference_prompt_cost": 0.002052,
+        "upstream_inference_completions_cost": 0.01251
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777387-fWsL1BMFdWmef94cP84n",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-random_seed-2-2.json",
+    "status": "complete",
+    "request_hash": "8ce145e52c20f81f67576db675268e05741cf51956f89f814943999889833b5c",
+    "reserved_usd": 0.038685,
+    "timestamp": 1794777353.8505652,
+    "usage": {
+      "prompt_tokens": 1455,
+      "completion_tokens": 1305,
+      "total_tokens": 2760,
+      "cost": 0.0237006,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.02394,
+        "upstream_inference_prompt_cost": 0.004365,
+        "upstream_inference_completions_cost": 0.019575
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777353-IXBGrdBAJu5FQxAthXPQ",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-direct-3-0.json",
+    "status": "complete",
+    "request_hash": "19d800e012929b9d0f189386eb2fa5c40b84855ac3abb5cb54b305309f4c3fc1",
+    "reserved_usd": 0.019653,
+    "timestamp": 1794777692.9969301,
+    "usage": {
+      "prompt_tokens": 206,
+      "completion_tokens": 526,
+      "total_tokens": 732,
+      "cost": 0.00842292,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.008508,
+        "upstream_inference_prompt_cost": 0.000618,
+        "upstream_inference_completions_cost": 0.00789
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777693-nHecCZBFlnH5WbbTeHit",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-direct-0-0.json",
+    "status": "complete",
+    "request_hash": "4b4bb2cb2205bdc20ea3ed90acdbf76edaa500e66a2560b2f09773d81e9975b8",
+    "reserved_usd": 0.019221000000000002,
+    "timestamp": 1794777496.560736,
+    "usage": {
+      "prompt_tokens": 176,
+      "completion_tokens": 587,
+      "total_tokens": 763,
+      "cost": 0.00923967,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.009333,
+        "upstream_inference_prompt_cost": 0.000528,
+        "upstream_inference_completions_cost": 0.008805
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777496-tUEzoYpAnE4lBWDqd83k",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/digits_shift-world-1-0.json",
+    "status": "complete",
+    "request_hash": "26ba35e1ed4057ec6e1f8362a7fa360fff014ef7df2317761dfba21da80d4c4c",
+    "reserved_usd": 0.017802000000000002,
+    "timestamp": 1794777537.640115,
+    "usage": {
+      "prompt_tokens": 70,
+      "completion_tokens": 499,
+      "total_tokens": 569,
+      "cost": 0.00761805,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007695,
+        "upstream_inference_prompt_cost": 0.00021,
+        "upstream_inference_completions_cost": 0.007485
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777537-qCQdry537z4BxaYyFWSr",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-world-2-0.json",
+    "status": "complete",
+    "request_hash": "bfd33086bac92ff34b8c173fa1f39145df6c5ca23eec6b8021a874554a7a78b9",
+    "reserved_usd": 0.017793,
+    "timestamp": 1794777377.667548,
+    "usage": {
+      "prompt_tokens": 69,
+      "completion_tokens": 514,
+      "total_tokens": 583,
+      "cost": 0.00783783,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.007917,
+        "upstream_inference_prompt_cost": 0.000207,
+        "upstream_inference_completions_cost": 0.00771
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777377-BNs1RX23Fk6DxsQls1hm",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "calls/tabular_missing-random_seed-2-2.json",
+    "status": "complete",
+    "request_hash": "6eeb80271166945c8202f0c0ca2d9671f7fa397cc8c6cad3e23fec19a4039807",
+    "reserved_usd": 0.038652000000000006,
+    "timestamp": 1794777577.737737,
+    "usage": {
+      "prompt_tokens": 1092,
+      "completion_tokens": 705,
+      "total_tokens": 1797,
+      "cost": 0.01371249,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.013851,
+        "upstream_inference_prompt_cost": 0.003276,
+        "upstream_inference_completions_cost": 0.010575
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777577-jnLCVFDAf5RyP4349H74",
+    "resolved_model": "anthropic/claude-sonnet-4.6",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-random_seed-0-0.json",
+    "status": "complete",
+    "request_hash": "c791f20882026eebe1c1ab4ca85fed5dc48cdda413d838a562ae605bd29d972a",
+    "reserved_usd": 0.00520942,
+    "timestamp": 1794777882.496255,
+    "usage": {
+      "prompt_tokens": 3397,
+      "completion_tokens": 5096,
+      "total_tokens": 8493,
+      "cost": 0.002264145048,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0022870152,
+        "upstream_inference_prompt_cost": 0.0007092936,
+        "upstream_inference_completions_cost": 0.0015777216
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 4137,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777882-U5Th9UdKwsDHsLaYPerg",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-random_seed-2-0.json",
+    "status": "complete",
+    "request_hash": "1196389124c2b0702f03cf93957072df05f048dda6772a9f962202734ac6829d",
+    "reserved_usd": 0.00494448,
+    "timestamp": 1794778129.136048,
+    "usage": {
+      "prompt_tokens": 3123,
+      "completion_tokens": 4683,
+      "total_tokens": 7806,
+      "cost": 0.002080919808,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0021019392,
+        "upstream_inference_prompt_cost": 0.0006520824,
+        "upstream_inference_completions_cost": 0.0014498568
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3861,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778129-EILEE9vsHnUxxhUPNUni",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-random_seed-2-0.json",
+    "status": "complete",
+    "request_hash": "6b76c05a2272712f2d53753998d5ae11f10062a32cd771837a1db5bc6eaf8736",
+    "reserved_usd": 0.00396558,
+    "timestamp": 1794777627.291339,
+    "usage": {
+      "prompt_tokens": 2671,
+      "completion_tokens": 4456,
+      "total_tokens": 7127,
+      "cost": 0.001917909576,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0019372824,
+        "upstream_inference_prompt_cost": 0.0005577048,
+        "upstream_inference_completions_cost": 0.0013795776
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3691,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777627-K1rPnhvq8vTwnTxSddpa",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-world-1-0.json",
+    "status": "complete",
+    "request_hash": "d3d128bd39d6d1c4c3e6da41057affc773997504f7953bbff36dfcf3d7e45204",
+    "reserved_usd": 0.005712780000000001,
+    "timestamp": 1794778198.688239,
+    "usage": {
+      "prompt_tokens": 3950,
+      "completion_tokens": 4807,
+      "total_tokens": 8757,
+      "cost": 0.002289877128,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0023130072,
+        "upstream_inference_prompt_cost": 0.00082476,
+        "upstream_inference_completions_cost": 0.0014882472
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3907,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778198-hYpMTVyxTAstMtdgpQJL",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-world-2-0.json",
+    "status": "complete",
+    "request_hash": "d1585b26879ee36174beeba7da0a34127ecc7dcc103b5a83d89c6e9a653a48b5",
+    "reserved_usd": 0.0044848,
+    "timestamp": 1794778001.4686751,
+    "usage": {
+      "prompt_tokens": 2812,
+      "completion_tokens": 5023,
+      "total_tokens": 7835,
+      "cost": 0.002120843736,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0021422664,
+        "upstream_inference_prompt_cost": 0.0005871456,
+        "upstream_inference_completions_cost": 0.0015551208
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 4345,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778001-EZ0QsTPYmDpuhxctRaMy",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-direct-0-0.json",
+    "status": "complete",
+    "request_hash": "a9540192e8f7be9c399d5cb39e4ce0f8b775db169526f182968f79213159a48e",
+    "reserved_usd": 0.0054062400000000005,
+    "timestamp": 1794778021.676699,
+    "usage": {
+      "prompt_tokens": 3713,
+      "completion_tokens": 3564,
+      "total_tokens": 7277,
+      "cost": 0.001859901912,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0018786888,
+        "upstream_inference_prompt_cost": 0.0007752744,
+        "upstream_inference_completions_cost": 0.0011034144
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2820,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778021-bFfdnpday84LLSM66Hhz",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-direct-3-0.json",
+    "status": "complete",
+    "request_hash": "fddbb1d469d3d39bbcdfe023ad32dfa56e103523b94bce120f8be0d33a615dcf",
+    "reserved_usd": 0.00555392,
+    "timestamp": 1794777574.554463,
+    "usage": {
+      "prompt_tokens": 3886,
+      "completion_tokens": 4242,
+      "total_tokens": 8128,
+      "cost": 0.0021034728,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00212472,
+        "upstream_inference_prompt_cost": 0.0008113968,
+        "upstream_inference_completions_cost": 0.0013133232
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3485,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777574-qDvn60eGYL71sAKCnaaC",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-direct-1-0.json",
+    "status": "complete",
+    "request_hash": "1e8de3228c5183973f40e94cbb9d2297648d09331a777d0e5c2e143be36d8d6a",
+    "reserved_usd": 0.00473882,
+    "timestamp": 1794777523.319374,
+    "usage": {
+      "prompt_tokens": 3146,
+      "completion_tokens": 4733,
+      "total_tokens": 7879,
+      "cost": 0.002100999384,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0021222216,
+        "upstream_inference_prompt_cost": 0.0006568848,
+        "upstream_inference_completions_cost": 0.0014653368
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3999,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777523-0zDoxafomYBJuKLUqMzw",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-direct-2-0.json",
+    "status": "complete",
+    "request_hash": "1e1516aed7edb13c6ed4be559fe380367d1709ab66bbac82899c2279fd883d1b",
+    "reserved_usd": 0.00464002,
+    "timestamp": 1794778078.225117,
+    "usage": {
+      "prompt_tokens": 2915,
+      "completion_tokens": 8335,
+      "total_tokens": 11250,
+      "cost": 0.00315727632,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.003189168,
+        "upstream_inference_prompt_cost": 0.000608652,
+        "upstream_inference_completions_cost": 0.002580516
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 7416,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778078-YUm7u8mWQT0M0uhd0kcA",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-world-0-0.json",
+    "status": "complete",
+    "request_hash": "03fbeba952c2c78692fd3c729339657a4e6d13123d6dd35a107548e38ddddc50",
+    "reserved_usd": 0.00405372,
+    "timestamp": 1794777959.696337,
+    "usage": {
+      "prompt_tokens": 2512,
+      "completion_tokens": 2771,
+      "total_tokens": 5283,
+      "cost": 0.001368583128,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0013824072,
+        "upstream_inference_prompt_cost": 0.0005245056,
+        "upstream_inference_completions_cost": 0.0008579016
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1814,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777959-3anGwr0xyFn1UX0beTwj",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-world-3-0.json",
+    "status": "complete",
+    "request_hash": "fa10184835d35146317e8e08fd006734b320f8f968b315c5e57d95e826adf351",
+    "reserved_usd": 0.0058745,
+    "timestamp": 1794777753.323301,
+    "usage": {
+      "prompt_tokens": 3878,
+      "completion_tokens": 6522,
+      "total_tokens": 10400,
+      "cost": 0.002800648224,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0028289376,
+        "upstream_inference_prompt_cost": 0.0008097264,
+        "upstream_inference_completions_cost": 0.0020192112
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 5615,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777753-tymN7Ln1gvBYZtNEkAmV",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-random_seed-1-0.json",
+    "status": "complete",
+    "request_hash": "0da1bcb764f4d5709524bb952d575585b9f4d2a0fb9d734c07c35d1199028aea",
+    "reserved_usd": 0.0050555,
+    "timestamp": 1794777594.3247519,
+    "usage": {
+      "prompt_tokens": 3438,
+      "completion_tokens": 2663,
+      "total_tokens": 6101,
+      "cost": 0.001526896008,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0015423192,
+        "upstream_inference_prompt_cost": 0.0007178544,
+        "upstream_inference_completions_cost": 0.0008244648
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2227,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777594-9EPsiJINakDzvVy5NpqH",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-random_seed-1-0.json",
+    "status": "complete",
+    "request_hash": "c0478c1cfade5050c2c139fe3e90b9c4c979fbe216ca463af6df3e5042fc0808",
+    "reserved_usd": 0.00383974,
+    "timestamp": 1794777693.038838,
+    "usage": {
+      "prompt_tokens": 2546,
+      "completion_tokens": 3703,
+      "total_tokens": 6249,
+      "cost": 0.001661273064,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0016780536,
+        "upstream_inference_prompt_cost": 0.0005316048,
+        "upstream_inference_completions_cost": 0.0011464488
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2880,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777693-vyuXlN7dvFDFwRCiR5Sb",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-random_seed-3-0.json",
+    "status": "complete",
+    "request_hash": "a092979b91661b615ffc4ee1a1a604197c22df5619a4ea6d0aba5717dff1f9f9",
+    "reserved_usd": 0.00548034,
+    "timestamp": 1794777941.233035,
+    "usage": {
+      "prompt_tokens": 3694,
+      "completion_tokens": 4643,
+      "total_tokens": 8337,
+      "cost": 0.0021866922,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00220878,
+        "upstream_inference_prompt_cost": 0.0007713072,
+        "upstream_inference_completions_cost": 0.0014374728
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3794,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777941-3bdpTvvJ0qi5WVkvGxpi",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-world-0-0.json",
+    "status": "complete",
+    "request_hash": "5e7a3ab6c1b24f31f644adc7cac82742f99b734130913d76c2826d7d0bd43d2a",
+    "reserved_usd": 0.0056574,
+    "timestamp": 1794778193.60932,
+    "usage": {
+      "prompt_tokens": 3677,
+      "completion_tokens": 4628,
+      "total_tokens": 8305,
+      "cost": 0.002178580536,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0022005864,
+        "upstream_inference_prompt_cost": 0.0007677576,
+        "upstream_inference_completions_cost": 0.0014328288
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3815,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778193-OEH2SadvA3pcsvMikk16",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-world-3-0.json",
+    "status": "complete",
+    "request_hash": "9e97688d42dd8606503ecde2e5ef6a628ac4edfc06446f66638a1fd830c9a313",
+    "reserved_usd": 0.00501806,
+    "timestamp": 1794777632.76216,
+    "usage": {
+      "prompt_tokens": 3212,
+      "completion_tokens": 4219,
+      "total_tokens": 7431,
+      "cost": 0.00195709932,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.001976868,
+        "upstream_inference_prompt_cost": 0.0006706656,
+        "upstream_inference_completions_cost": 0.0013062024
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3529,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777632-qU80ecS0ROBJ4iZyoMsm",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-direct-2-0.json",
+    "status": "complete",
+    "request_hash": "09ff1553034b38ea19125025f6cd1b53182e6d64347fcadaf535c2f878a9abca",
+    "reserved_usd": 0.00702968,
+    "timestamp": 1794777523.456387,
+    "usage": {
+      "prompt_tokens": 4700,
+      "completion_tokens": 3309,
+      "total_tokens": 8009,
+      "cost": 0.001985768136,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0020058264,
+        "upstream_inference_prompt_cost": 0.00098136,
+        "upstream_inference_completions_cost": 0.0010244664
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2353,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777523-l3khPGEp0PUCMvoHe66l",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-direct-1-0.json",
+    "status": "complete",
+    "request_hash": "161661a58be7006c6544e4d068305bd268c5af30fac9ccbdd4d9ee0149010f7b",
+    "reserved_usd": 0.0060947200000000005,
+    "timestamp": 1794778057.474824,
+    "usage": {
+      "prompt_tokens": 4395,
+      "completion_tokens": 4720,
+      "total_tokens": 9115,
+      "cost": 0.00235519812,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.002378988,
+        "upstream_inference_prompt_cost": 0.000917676,
+        "upstream_inference_completions_cost": 0.001461312
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3833,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794778057-TewBym4EjbBjdVAkCTgy",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-direct-0-0.json",
+    "status": "complete",
+    "request_hash": "d022e2ddb434c68475e4e9dd221103356aed3f5afccf9b2df35dd836fc9050ad",
+    "reserved_usd": 0.00518108,
+    "timestamp": 1794777882.48299,
+    "usage": {
+      "prompt_tokens": 3520,
+      "completion_tokens": 4240,
+      "total_tokens": 7760,
+      "cost": 0.0020272032,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00204768,
+        "upstream_inference_prompt_cost": 0.000734976,
+        "upstream_inference_completions_cost": 0.001312704
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3094,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777882-nuNZoh0gL6xmPJoWcM7c",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/digits_shift-world-1-0.json",
+    "status": "complete",
+    "request_hash": "331833d8beeb7d1bc867cb1aaaf5af9f38fe713a7f24bfdded63c5b1ff405bbf",
+    "reserved_usd": 0.0036957,
+    "timestamp": 1794777992.968236,
+    "usage": {
+      "prompt_tokens": 2143,
+      "completion_tokens": 2139,
+      "total_tokens": 4282,
+      "cost": 0.001098595872,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0011096928,
+        "upstream_inference_prompt_cost": 0.0004474584,
+        "upstream_inference_completions_cost": 0.0006622344
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1318,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777993-FRyTadVvv1AOBq9P8uhm",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  },
+  {
+    "file": "evaluation/calls/tabular_missing-world-2-0.json",
+    "status": "complete",
+    "request_hash": "dd632f092fd86c3d0ac1d89cefcc3bb6aebbb0a40b1c405fb67d99e38b1b25b2",
+    "reserved_usd": 0.00565168,
+    "timestamp": 1794777699.8106391,
+    "usage": {
+      "prompt_tokens": 3738,
+      "completion_tokens": 5418,
+      "total_tokens": 9156,
+      "cost": 0.002433328128,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0024579072,
+        "upstream_inference_prompt_cost": 0.0007804944,
+        "upstream_inference_completions_cost": 0.0016774128
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 4573,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794777699-maafIl8jA5OKL4jMzlYX",
+    "resolved_model": "deepseek/deepseek-v3.2",
+    "finish_reason": "stop",
+    "error": null
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "generation": {
+    "calls": 69,
+    "prompt_tokens": 48978,
+    "completion_tokens": 55874,
+    "upstream_cost_usd": 0.985044,
+    "reserved_usd": 2.105808
+  },
+  "review": {
+    "calls": 21,
+    "prompt_tokens": 71066,
+    "completion_tokens": 93914,
+    "upstream_cost_usd": 0.0439143552,
+    "reserved_usd": 0.10728818000000001
+  }
+}

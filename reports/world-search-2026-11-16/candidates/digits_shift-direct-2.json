@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-direct-2",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "direct",
+  "seed_word": "tidal",
+  "seed_index": 2,
+  "proposal": {
+    "title": "Corruption-Envelope Standardization for Robust RBF-SVM on Digits",
+    "intervention": "Replace StandardScaler's per-pixel denominator \u03c3_clean_i with an analytically derived envelope \u03c3_env_i = sqrt(\u03c3_clean_i\u00b2 + \u03b7\u00b2 + p(1\u2212p)\u00b7\u03bc_i\u00b2), computed from train statistics and known corruption parameters only. Fit this scaler on train data, apply identically to all splits. Combine with two augmented corrupted copies of the training set appended before fitting the SVM.",
+    "mechanism": "Background pixels in digits have near-zero clean variance, so standard scaling divides by values close to zero and catastrophically amplifies additive noise there. The envelope denominator absorbs expected corruption variance analytically: Gaussian noise contributes a constant \u03b7\u00b2 per pixel, while dropout contributes p(1\u2212p)\u00b7\u03bc_i\u00b2, which is pixel-dependent and correctly larger for high-intensity stroke pixels. This keeps RBF distances well-conditioned across corruption severities without requiring corrupted samples at fit time. Augmentation then captures residual non-Gaussian higher-order corruption effects the analytic term cannot fully account for.",
+    "assumptions": "Corruptions are additive Gaussian noise plus independent pixel dropout applied to [0,1]-normalized inputs. Corruption parameters \u03b7 and p are known at preprocessing time. Train pixel intensities are representative enough that \u03bc_i and \u03c3_clean_i estimated from train generalize to val and test. The SVM gamma='scale' recomputes from already-scaled features, which partially interacts with the envelope; this is mitigated by the envelope already normalizing variance, but manual gamma tuning would be cleaner.",
+    "baseline": "StandardScaler fit on clean train data combined with identical augmentation and RBF-SVM with C=10, gamma='scale'. This isolates whether the envelope denominator adds value beyond augmentation volume alone.",
+    "metric": "Mean classification accuracy averaged across four fixed corruption severities (\u03b7=p \u2208 {0.0, 0.1, 0.3, 0.5}) evaluated once on the held-out test set after all preprocessing and hyperparameters are finalized on validation.",
+    "falsification": "Run envelope scaler without augmentation versus standard scaler with augmentation. If envelope-only corrupted accuracy exceeds augmentation-only at \u03b7=p=0.3, the geometric normalization carries the causal load. If augmentation-only matches or exceeds envelope-only, the scaler modification adds no independent value and the intervention reduces to ordinary data augmentation.",
+    "implementation": "Normalize raw pixels to [0,1]. Compute \u03bc_i and \u03c3_clean_i from train. Set \u03c3_env_i = sqrt(\u03c3_clean_i\u00b2 + \u03b7\u00b2 + p(1\u2212p)\u00b7\u03bc_i\u00b2) + 1e-8. Scale all splits by (X \u2212 \u03bc)/\u03c3_env. Append two independently seeded corrupted copies of train before SVC fit. Evaluate mean accuracy over the four severity levels on test only.",
+    "queries": [
+      "input normalization robustness additive noise variance stabilization SVM kernel methods",
+      "analytic variance estimation preprocessing corruption robustness image classification"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

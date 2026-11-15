@@ -1,0 +1,374 @@
+[
+  {
+    "id": "digits_shift-random_seed-3",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No supplied record directly covers quarter-circle joint noise-dropout augmentation for RBF-SVM on digits, but the evidence is insufficient to establish novelty because related dropout-SVM and corruption-robustness augmentation records overlap the proposal's components.",
+    "distinct_mechanism": "",
+    "missing_searches": [
+      "\"arc\" OR \"quarter-circle\" OR \"angular\" corruption augmentation \"noise\" \"dropout\" SVM",
+      "\"joint corruption\" augmentation \"additive Gaussian noise\" \"pixel dropout\" \"RBF-SVM\"",
+      "\"corruption budget\" augmentation \"sigma\" \"dropout\" \"SVM\" image classification",
+      "dropout training support vector machine \"gaussian noise\" image robustness",
+      "MNIST robustness augmentation noise dropout \"SVM\" \"StandardScaler\""
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-random_seed-1",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No supplied source supports the claimed delta of per-feature Beta(0.5,2)-MCAR dropout copies plus explicit mask indicator columns for HistGradientBoosting deployment-shift robustness.",
+    "distinct_mechanism": "The proposal\u2019s mechanism is training HistGradientBoosting on artificial MCAR-corrupted copies with appended observedness indicator columns so that absence status becomes an explicit feature alongside native NaN surrogate splits; the supplied abstracts do not specify this training-time missingness interface.",
+    "missing_searches": [
+      "missing data augmentation mask indicator columns gradient boosted trees MCAR",
+      "HistGradientBoostingClassifier missing values surrogate splits mask features covariate shift",
+      "explicit missingness indicators versus native NaN handling gradient boosting classification",
+      "Beta dropout augmentation missingness robustness tabular classification",
+      "training-time artificial MCAR corruption deployment shift robustness average precision"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-direct-1",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No supported delta: the supplied records do not directly cover missingness-mask prototype routing with per-cluster isotonic recalibration, so novelty cannot be established from this evidence alone.",
+    "distinct_mechanism": "Conditioning recalibration on missingness-mask prototypes via Hamming-distance assignment and per-cluster isotonic mapping, rather than modifying architecture or using generic MoE/threshold calibration.",
+    "missing_searches": [
+      "isotonic regression calibration by missingness pattern clusters",
+      "missingness mask k-means Hamming distance probability calibration",
+      "per-cluster recalibration under MCAR tabular classification",
+      "prototype routing calibration missing data regimes",
+      "post-hoc calibration conditioned on missingness indicators",
+      "mixture of experts isotonic recalibration tabular missingness"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-direct-1",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No supported delta: the supplied abstracts do not directly cover blur-before-scaling with matched noise/dropout augmentation for corrupted-digit RBF-SVM classification, and they are insufficient to establish novelty.",
+    "distinct_mechanism": "",
+    "missing_searches": [
+      "Gaussian smoothing before StandardScaler for SVM digit classification",
+      "blur preprocessing corruption robustness RBF-SVM",
+      "matched severity augmentation noise dropout image classification SVM",
+      "scikit-learn digits corruption robustness preprocessing augmentation",
+      "RBF kernel distance inflation noise smoothing image classification",
+      "blur then scale pipeline corrupted MNIST digits SVM"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-world-1",
+    "valid": true,
+    "decision": "incremental",
+    "claimed_delta": "The potentially new contribution is the exact combination of a train-only auxiliary reconstruction head, Beta(2,1)-skewed feature masking to oversample high-missingness patterns, and appended binary missingness indicators for supervised tabular classification evaluated under clean and missingness stress conditions, which no supplied abstract directly covers.",
+    "distinct_mechanism": "The proposed causal interface is joint supervised classification plus auxiliary reconstruction of randomly masked feature values during training, with explicit missing-indicator inputs and reconstruction head discarded at inference; supplied sources instead use reconstruction or masking for imputation, pretraining, or feature reconstruction without an explicit missingness-stress classification objective.",
+    "missing_searches": [
+      "auxiliary reconstruction loss tabular classifier missing data robustness",
+      "masked feature reconstruction during supervised classification missingness indicator",
+      "train only reconstruction head discarded inference missingness stress average precision",
+      "Beta distribution feature masking augmentation missingness classifier",
+      "HistGradientBoosting missingness indicator reconstruction auxiliary loss"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-world-1",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "The only potentially new delta would be the exact RBF-SVM-specific composite scoring, centroid-anchored augmentation, and low-margin test-time PCA reconstruction, but no supplied abstract supports this exact combination.",
+    "distinct_mechanism": "The proposal changes the RBF-SVM pipeline by combining composite train/validation hyperparameter selection, class-centroid-anchored corruption augmentation in scaled feature space, and PCA reconstruction only for low-margin test samples; the supplied evidence does not establish this exact causal interface.",
+    "missing_searches": [
+      "\"support vector machine\" \"PCA\" \"denoising\" \"test time\" \"noise\" \"augmentation\"",
+      "\"RBF-SVM\" \"centroid\" \"augmentation\" \"corruption\" \"robustness\"",
+      "\"PCA reconstruction\" \"low confidence\" \"SVM\" \"margin\" \"image classification\"",
+      "\"composite\" \"training accuracy\" \"validation accuracy\" \"hyperparameter\" \"SVM\" \"robustness\"",
+      "\"dropout\" \"Gaussian noise\" \"digits\" \"SVM\" \"augmentation\" \"PCA\""
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-world-2",
+    "valid": true,
+    "decision": "plausibly_distinct",
+    "claimed_delta": "No supplied record directly covers the exact contribution; the proposed new element would be arithmetic per-pixel inverse-variance weighting before PCA for SVM digit classification under multiple corruption severities.",
+    "distinct_mechanism": "Computes per-pixel instability weights from clean-versus-corrupted variance on training samples, applies inverse-variance element-wise scaling before PCA, and evaluates whether the resulting subspace tightens clean and corrupted digit representations for an SVM.",
+    "missing_searches": [
+      "weighted PCA before classification feature weighting noise robustness image",
+      "corruption-aware PCA dimensionality reduction digit recognition",
+      "inverse variance feature scaling before PCA SVM augmentation",
+      "robust feature weighting under image noise dropout before PCA",
+      "per-pixel variance weighting before PCA support vector machine"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-world-2",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No precise novelty delta is supported because the supplied records neither cover nor exclude explicit per-feature missingness-mask columns before imputation.",
+    "distinct_mechanism": "The proposal's causal interface is adding one binary missingness indicator column per original feature before imputation and training a gradient-boosting classifier to use the mask distribution; supplied abstracts describe missingness-aware scaling, importance-weighted imputation under distribution shift, or evaluation of missingness shift rather than this exact mask-column augmentation.",
+    "missing_searches": [
+      "missingness indicator columns before imputation gradient boosting",
+      "binary missing mask features tabular classification covariate shift",
+      "informative missingness missing not at random indicator features average precision",
+      "random zero-out feature mask augmentation deployment missingness",
+      "missingness shift robust tabular classifier mask append",
+      "missing data indicator features HistGradientBoostingClassifier"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-direct-2",
+    "valid": true,
+    "decision": "plausibly_distinct",
+    "claimed_delta": "No supplied source directly supports the claimed central delta: an analytically derived per-pixel corruption-envelope denominator for StandardScaler, computed from clean train means/variances and known Gaussian-noise/dropout parameters, applied before RBF-SVM on corrupted digit images.",
+    "distinct_mechanism": "The proposed causal interface is a deterministic per-feature variance floor for StandardScaler, sigma_env_i = sqrt(sigma_clean_i^2 + eta^2 + p(1-p)mu_i^2), derived from known additive Gaussian noise and independent pixel dropout and fitted only on clean train statistics before RBF-SVM, rather than learning statistics from corrupted data, augmenting adversarially, or adapting kernel bandwidths.",
+    "missing_searches": [
+      "corruption-aware feature scaling variance floor StandardScaler additive noise dropout",
+      "analytic preprocessing variance envelope Gaussian noise Bernoulli dropout image classification",
+      "robust RBF-SVM MNIST corruption scaling dropout noise",
+      "pixel-wise variance stabilization corrupted digit SVM kernel",
+      "known corruption parameter preprocessing robustness additive noise dropout",
+      "covariate shift adaptation preprocessing statistics corrupted images SVM"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-direct-2",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "The supplied records do not establish a supported novelty delta for missingness-mask-conditioned calibration-error prediction and base-rate shrinkage; the closest evidence covers only general post-hoc calibration under synthetic feature shift or reliability evaluation beyond accuracy.",
+    "distinct_mechanism": "The proposal's causal interface is a validation-only logistic reliability regressor from the binary missingness mask plus pairwise mask interactions to absolute calibration error, followed by inference-time shrinkage of raw probabilities toward the training base rate in proportion to predicted error; no supplied abstract describes this mask-to-calibration-error shrinkage loop.",
+    "missing_searches": [
+      "missingness-aware post-hoc calibration for tabular classification",
+      "confidence shrinkage toward prior using missing-data pattern reliability estimation",
+      "mask-conditioned calibration error prediction logistic regression pairwise interactions",
+      "calibration under random feature dropout missingness stress HistGradientBoostingClassifier",
+      "reliability regression on missing indicators for probability calibration",
+      "out-of-distribution calibration under missing features rather than Gaussian covariate shift",
+      "post-hoc calibration for high missingness average precision Brier score tabular"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-random_seed-2",
+    "valid": true,
+    "decision": "incremental",
+    "claimed_delta": "The only supported delta is a specific anchor-conditioned ridge reconstruction pipeline evaluated by average precision under a predefined missingness stress, whereas the supplied evidence already establishes distribution-shift-aware missing-data imputation as a general contribution.",
+    "distinct_mechanism": "The proposal's causal interface differs from the closest evidence by using training-split missingness-rate anchor selection and per-volatile-feature ridge reconstruction from observed anchor values before a HistGradientBoostingClassifier, rather than importance-weighted correction of imputation risk under MAR or federated masked autoencoding.",
+    "missing_searches": [
+      "regression imputation using stable predictors or anchor features under missingness shift",
+      "ridge regression imputation for tabular classification with missing values",
+      "multiple imputation by chained equations or feature-based imputation under covariate shift",
+      "deployment missingness distribution shift in tabular machine learning",
+      "HistGradientBoostingClassifier missing value handling compared with imputation methods",
+      "average precision evaluation for imputation under distribution shift in imbalanced tabular classification"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-random_seed-0",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No novelty delta is supported by the supplied abstracts: the closest records cover saliency-guided augmentation and Fisher discriminant analysis, but none directly describes class-specific per-pixel Fisher porosity maps used to weight Gaussian-noise and dropout augmentation for RBF-SVM robustness.",
+    "distinct_mechanism": "Class-specific per-pixel Fisher discriminability scores are inverted and normalized into a porosity map that elementwise scales additive Gaussian noise and dropout augmentation before training a single RBF-SVM.",
+    "missing_searches": [
+      "saliency-guided data augmentation pixel importance weighting corruption noise dropout",
+      "Fisher discriminant feature importance data augmentation",
+      "class-wise per-pixel variance ratio augmentation robustness",
+      "SVM robustness augmentation spatial weighting noise dropout",
+      "porosity map augmentation uninformative pixels",
+      "corruption intensity weighting discriminative pixels classifier",
+      "small-sample stability Fisher scores per-pixel augmentation",
+      "full text of W4414408711 to determine whether saliency-guided augmentation already includes Fisher-style pixel weighting or corruption scaling"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-world-0",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "None is supported by the supplied evidence, because no record describes training-only cross-corruption per-pixel variance weights, collapsed-pixel zeroing, or corruption-restricted augmentation for RBF-SVM digit classification.",
+    "distinct_mechanism": "The proposal's causal interface is computing per-pixel cross-corruption variance from synthetically corrupted training images only, converting it into inverse-variance feature weights, zeroing pixels whose corrupted mean falls outside [2,14], multiplying features by these weights before StandardScaler and RBF-SVM, and restricting augmentation to non-collapsed pixels.",
+    "missing_searches": [
+      "training-only per-pixel variance weighting corrupted images SVM robust classification",
+      "inverse noise variance feature weighting before RBF-SVM image classification",
+      "collapsed pixel zeroing mean drift robust digit recognition",
+      "corruption-restricted data augmentation non-collapsed pixels support vector machine",
+      "cross-corruption variance pixel reliability MNIST additive noise dropout SVM"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-world-0",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "The claimed delta is a validation-fitted alpha-blended mean imputation that leaves a missingness-proportional value shift while appending the raw missingness mask to HistGradientBoosting, but no supplied abstract directly supports this exact combination as new.",
+    "distinct_mechanism": "The proposal\u2019s distinct interface is a deterministic scalar alpha blending missing entries toward the training column mean plus appended binary missingness indicators, whereas the supplied abstracts describe generative imputation, uncertainty or fuzzy confidence, graph-guided re-imputation, or comparative imputation without stating this exact formula and mask concatenation.",
+    "missing_searches": [
+      "missingness indicator imputation gradient boosting tabular classification",
+      "mask-weighted imputation missing data",
+      "soft imputation missing indicator features",
+      "append missingness mask classification covariate shift",
+      "alpha blend column mean missing values",
+      "missing not at random imputation confidence feature engineering"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-direct-0",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "The claimed delta is learning per-feature missing-value scalars end-to-end under randomized missingness augmentation with explicit mask conditioning to minimize classification loss; the supplied abstracts do not support this as covered or as novel.",
+    "distinct_mechanism": "Jointly optimizing per-feature missing-value placeholders by classification loss while randomizing observed missingness and feeding a binary mask, rather than training an imputer to reconstruct values or using fixed imputation.",
+    "missing_searches": [
+      "learnable missing value parameters classification loss neural network",
+      "end-to-end imputation missingness mask supervised learning",
+      "trainable placeholder values missing data augmentation",
+      "joint optimization imputation values and classifier loss",
+      "missingness indicator features neural network tabular classification",
+      "missing data augmentation deployment shift average precision"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-direct-0",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No supplied record supports the claimed contribution as established prior art or coverage, because none reports a fixed gradient-plus-block-mean feature representation for corruption-robust RBF-SVM digit classification.",
+    "distinct_mechanism": "The proposal\u2019s causal interface is an explicit fixed feature map consisting of 56 horizontal differences, 56 vertical differences, and 16 two-by-two block means fed to a standardized RBF-SVM, whereas the supplied evidence uses learned CNN wavelet decomposition, noise-map CNN augmentation, MLP perturbation evaluation, deep out-of-distribution augmentation, or channel-level ModDrop rather than this handcrafted pixel-gradient/block-mean representation.",
+    "missing_searches": [
+      "gradient feature representation RBF-SVM handwritten digits Gaussian noise dropout robustness",
+      "pixel difference block mean feature extraction corruption robustness digit recognition",
+      "horizontal vertical finite difference features SVM image classification noise cancellation",
+      "2x2 block means plus edge features handwritten digit recognition robustness",
+      "unseen corruption severity generalization differential features augmentation SVM digits",
+      "dropout adjacent pixel probability feature robustness image classification"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-random_seed-2",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No delta is supported by the supplied evidence because none of the records describes sinusoidal severity-swept augmentation of Gaussian-noise and dropout corruptions for training an RBF-SVM.",
+    "distinct_mechanism": "The proposal changes the empirical severity distribution of augmented training feature vectors before SVM margin estimation, whereas the cited evidence changes normalization/activation statistics or addresses semisupervised unlabeled-data mismatch.",
+    "missing_searches": [
+      "sinusoidal severity sweep augmentation corruption robustness",
+      "equal arc-length corruption severity sampling support vector machine",
+      "data augmentation severity distribution Gaussian noise pixel dropout SVM digit classification",
+      "curriculum augmentation corruption levels support vector machine test distribution shift",
+      "augmentation distribution matching corrupted test conditions mean accuracy",
+      "RBF-SVM corruption robustness noise dropout augmentation severity"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-random_seed-1",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "No novelty or coverage is supported from the supplied evidence because no abstract describes appending a horizontal-flip symmetry scalar to pixel features for corruption-robust digit SVM classification.",
+    "distinct_mechanism": "",
+    "missing_searches": [
+      "horizontal flip symmetry feature augmentation SVM corrupted handwritten digits",
+      "mirror symmetry scalar feature appended to pixel features RBF-SVM noise robustness",
+      "flip difference feature digit classification additive noise pixel dropout",
+      "symmetry invariant feature augmentation corruption robust digit SVM",
+      "geometric invariant scalar feature pixel features corruption robust kernel classification"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-direct-3",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "The proposal's possible delta is adding a fixed Gaussian pre-smoothing step before StandardScaler and RBF-SVM on 8x8 digit images under pixel noise and dropout, but the supplied abstracts do not directly cover or establish novelty for that exact intervention.",
+    "distinct_mechanism": "The proposal posits that fixed Gaussian low-pass filtering of 8x8 images before StandardScaler reduces high-spatial-frequency perturbation variance and stabilizes RBF kernel distances, whereas the supplied records rely on learned denoisers, CNN/ResNet feature regularization, kernel design, or benchmarks.",
+    "missing_searches": [
+      "Gaussian blur preprocessing for SVM or kernel classification on MNIST or small digit images",
+      "fixed low-pass filtering before RBF-SVM for image noise or dropout robustness",
+      "sigma-tuned Gaussian smoothing StandardScaler SVM corrupted MNIST digits",
+      "common corruptions robustness for classical machine learning classifiers on small images",
+      "high-spatial-frequency noise attenuation and RBF kernel distance variance in image classification"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "tabular_missing-world-3",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "The supplied evidence does not support a novelty delta because no source directly tests a three-phase missingness-rate curriculum with mutual-information-weighted mask indicators for tabular deployment-shift robustness.",
+    "distinct_mechanism": "",
+    "missing_searches": [
+      "tabular missingness augmentation curriculum learning deployment shift",
+      "mutual information weighted missing indicator features classification",
+      "missing data mask indicators gradient boosting distribution shift",
+      "training-only missingness injection robustness average precision",
+      "frozen median imputation deployment missingness rates tabular classification"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  },
+  {
+    "id": "digits_shift-world-3",
+    "valid": true,
+    "decision": "insufficient_evidence",
+    "claimed_delta": "None is supported by the supplied records because no abstract directly covers structured 2\u00d72 block dropout augmentation plus validation-margin-weighted SVM ensemble selection for digit classification.",
+    "distinct_mechanism": "The proposed causal interface is structured 2\u00d72 block dropout during augmentation and post-hoc scaling of each pipeline's test-time decision scores by its validation decision-function margin; the supplied records do not establish this mechanism.",
+    "missing_searches": [
+      "structured occlusion augmentation versus random dropout robustness SVM image classification",
+      "block dropout augmentation contiguous occlusion training robust digit classification",
+      "margin-weighted classifier ensemble decision function confidence aggregation",
+      "validation decision function margin ensemble weighting support vector machine",
+      "ensemble selection by validation margin versus accuracy under corrupted image test",
+      "random pixel dropout versus block dropout augmentation for SVM digit classification"
+    ],
+    "human_adjudicated": false,
+    "train_eligible": false,
+    "error": null
+  }
+]

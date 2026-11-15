@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-direct-2",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "direct",
+  "seed_word": "tidal",
+  "seed_index": 2,
+  "proposal": {
+    "title": "Missingness-Mask Confidence Shrinkage",
+    "intervention": "Train a HistGradientBoostingClassifier with random feature dropout augmentation and median imputation. On the validation set, apply a fixed missingness stress pattern, record raw predicted probabilities, and compute per-sample absolute calibration error against true labels. Fit a logistic regression mapping only the 20-dimensional binary missingness mask (plus 190 pairwise interaction terms) to that calibration error. At inference, shrink each raw probability toward the training base rate proportionally to the predicted calibration error: adjusted = base_rate + (raw - base_rate) * (1 - predicted_error). No test labels or raw features enter the reliability regressor at any stage.",
+    "mechanism": "When informative features are jointly absent at deployment, the primary classifier produces overconfident scores because training dropout rarely removes the same combination simultaneously. The reliability regressor detects which mask patterns correlate with high error on validation and dampens confidence for those patterns, pulling predictions toward the prior rather than committing to a wrong extreme. This reduces expected Brier score loss under high missingness without retraining the primary model.",
+    "assumptions": "Missingness patterns at deployment are structurally similar to the stress patterns defined during validation. The mask alone carries sufficient signal about expected calibration error; raw feature values add negligible additional information about trustworthiness. Class balance is stable enough that the training base rate is a reasonable shrinkage target.",
+    "baseline": "HistGradientBoostingClassifier trained with missingness augmentation and median imputation, evaluated without any post-hoc shrinkage step, on the same fixed stratified splits.",
+    "metric": "Average precision averaged across the clean test set and two predefined missingness stress conditions (30% and 60% random feature dropout applied at inference only), using the fixed test split.",
+    "falsification": "On the 60% dropout stress test set, compute the standard deviation of adjusted probabilities among misclassified samples and compare to the same quantity for raw probabilities. If the adjusted standard deviation is not lower, the reliability regressor is not capturing calibration geometry and the mechanism is broken. Additionally, if average precision on the clean test set drops more than two percentage points versus baseline, shrinkage is harming well-conditioned inputs and the fallback threshold should activate.",
+    "implementation": "Generate data with make_classification(n_samples=5000, n_features=20, n_informative=5, n_redundant=5, weights=[0.8,0.2], random_state=42). Stratified split 60/20/20 train/validation/test. Fit median imputer and primary classifier on train only. On validation, apply deterministic dropout masks, collect raw probas and calibration errors, fit logistic regression on mask plus pairwise products. At test time, compute adjusted probas using the shrinkage formula. Base rate fixed from training labels. Total wall time under five minutes on Apple Silicon.",
+    "queries": [
+      "calibration under covariate shift missing features tabular classification post-hoc correction",
+      "confidence shrinkage toward prior missingness pattern reliability estimation logistic regression"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

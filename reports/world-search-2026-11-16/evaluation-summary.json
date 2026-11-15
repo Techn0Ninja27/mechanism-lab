@@ -1,0 +1,71 @@
+{
+  "records": 24,
+  "valid_records": 21,
+  "missing_or_invalid": [
+    {
+      "index": "15",
+      "arm": "direct",
+      "error": "record needs an idea or proposal object"
+    },
+    {
+      "index": "16",
+      "arm": "random_seed",
+      "error": "record needs an idea or proposal object"
+    },
+    {
+      "index": "19",
+      "arm": "random_seed",
+      "error": "record needs an idea or proposal object"
+    }
+  ],
+  "arms": {
+    "direct": {
+      "records": 7,
+      "unique_exact_mechanisms": 7,
+      "exact_duplicate_cases": 0,
+      "exact_duplicate_rate": 0.0
+    },
+    "random_seed": {
+      "records": 6,
+      "unique_exact_mechanisms": 6,
+      "exact_duplicate_cases": 0,
+      "exact_duplicate_rate": 0.0
+    },
+    "world": {
+      "records": 8,
+      "unique_exact_mechanisms": 8,
+      "exact_duplicate_cases": 0,
+      "exact_duplicate_rate": 0.0
+    }
+  },
+  "pooled": {
+    "records": 21,
+    "unique_exact_mechanisms": 21,
+    "exact_duplicate_cases": 0,
+    "exact_duplicate_rate": 0.0
+  },
+  "cross_arm_exact_overlap": {
+    "direct__random_seed": {
+      "shared_unique_mechanisms": 0,
+      "left_cases": 0,
+      "right_cases": 0
+    },
+    "direct__world": {
+      "shared_unique_mechanisms": 0,
+      "left_cases": 0,
+      "right_cases": 0
+    },
+    "random_seed__world": {
+      "shared_unique_mechanisms": 0,
+      "left_cases": 0,
+      "right_cases": 0
+    }
+  },
+  "review_decisions": {
+    "incremental": 2,
+    "insufficient_evidence": 17,
+    "plausibly_distinct": 2
+  },
+  "interpretation": "Exact duplicate rates are descriptive string diagnostics, not semantic novelty or external prior-art evidence.",
+  "review_validation_failures": 0
+}

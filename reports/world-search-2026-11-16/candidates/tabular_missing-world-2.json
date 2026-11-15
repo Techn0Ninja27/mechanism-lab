@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-world-2",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "world",
+  "seed_word": "tidal",
+  "seed_index": 2,
+  "proposal": {
+    "title": "Missingness-Mask Feature Augmentation for Covariate-Shift Robustness",
+    "intervention": "During training, randomly zero out feature values at a rate approximating expected deployment missingness, then concatenate a binary indicator column for each original feature (1 = observed missing, 0 = present) to the input matrix before imputation. At inference, apply the same mask-append step using missingness patterns actually observed in deployment data, imputing with statistics frozen from training. The model therefore receives two parallel signals: imputed values and an explicit binary map of where those values were absent.",
+    "mechanism": "The fictional source invokes the physically false claim that sound travels faster than light underwater to justify the mask preceding the value. The operative mechanism being extracted is simply that an explicit binary indicator of missingness is a distinct, learnable feature that carries information about the data-generating process, independent of the imputed value placed at that position. This is entirely feasible: the impossible assumption (acoustic-optical speed ordering underwater) is replaced by the empirically grounded assumption that missingness is not missing completely at random but carries systematic signal about deployment context, patient state, sensor failure, or data pipeline behavior. No physical law is needed; the mask column is just an additional input dimension.",
+    "assumptions": "Missingness at deployment is not purely random; its pattern correlates with class probability or with informative features. The impossible assumption replaced is the fictional acoustic-precedes-visual physical law, substituted with the statistical assumption that the missingness mechanism is informative (missing not at random or missing at random conditional on observed covariates). If missingness is truly MCAR and independent of all features and labels, mask columns add noise rather than signal.",
+    "baseline": "Median imputation alone applied to the original 20 features, trained on clean training data, evaluated under induced deployment missingness.",
+    "metric": "Average precision on held-out validation and test sets under both clean and high-missingness stress conditions, averaged across conditions.",
+    "falsification": "If appending mask columns does not improve average precision over median imputation alone under elevated deployment missingness, the informative-missingness assumption fails for this dataset. If performance degrades relative to baseline, the intervention is harmful and should be abandoned.",
+    "implementation": "Generate dataset with stated parameters and fixed seed. Freeze training-set column medians. For training batches, apply random dropout at deployment-approximate rate, append 20 binary mask columns, impute with frozen medians. Train HistGradientBoostingClassifier on 40-column matrix. At validation and test time, apply observed or simulated deployment missingness, append mask columns, impute with same frozen medians. No test labels used during any transformation step.",
+    "queries": [
+      "missing indicator binary features imputation classification covariate shift tabular",
+      "missingness not at random indicator augmentation gradient boosting predictive performance"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

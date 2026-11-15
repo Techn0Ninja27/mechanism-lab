@@ -1,0 +1,7 @@
+{
+  "validation_sha256": "2313a019e2156cd046cb020e0a856d20a7b2cfa2e5c4e6723d372e56c7e9f545",
+  "code_sha256": "2287517354dd93f94cad8490f8e11116f0aa6c36b04afa7079895d972c150a4d",
+  "selection": "Gaussian sigma=0 selected by validation; sinusoidal vsuniform plusconstantcontrols; block/random/mixed and frozen-validation-margin weighted vsuniformvote; no final retuning",
+  "success_rule": "A proposed intervention must improve mean test accuracy over its matched simpler control; clean accuracy decrease above2percentagepoints is failure. One split exploratory, not statistical proof or method ranking.",
+  "final_runs": 1
+}

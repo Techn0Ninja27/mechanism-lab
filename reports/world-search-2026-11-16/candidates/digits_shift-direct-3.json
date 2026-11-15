@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-direct-3",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "direct",
+  "seed_word": "braided",
+  "seed_index": 3,
+  "proposal": {
+    "title": "Gaussian Pre-Smoothing for Corruption-Robust RBF-SVM on 8\u00d78 Digits",
+    "intervention": "Apply a fixed 2D Gaussian blur (\u03c3 tuned on validation from {0.0, 0.4, 0.6, 0.8, 1.0}) to every 8\u00d78 image before StandardScaler and RBF-SVM. The blur is fit-free and applied identically at train, validation, and test time. Augmentation with corrupted copies is added during training only.",
+    "mechanism": "Additive pixel noise and dropout inject high-spatial-frequency variance that inflates RBF kernel distances unpredictably. Gaussian smoothing low-pass filters each image, attenuating pixel-scale perturbations while retaining 2\u20134 pixel stroke structure that carries digit identity at this resolution. After smoothing, StandardScaler normalizes residual variance so gamma='scale' operates on a stable feature distribution. The result is that corrupted and clean versions of the same digit map to closer points in feature space, reducing intra-class kernel distance variance without discarding discriminative structure.",
+    "assumptions": "Corruptions are predominantly high-spatial-frequency relative to digit strokes. At 8\u00d78 resolution, digit strokes span roughly 2\u20134 pixels, so \u03c3\u22640.8 attenuates noise without merging strokes. If dominant corruptions were low-frequency (global brightness shift) or \u03c3 exceeded ~1.0, clean accuracy would degrade as strokes merge, invalidating the mechanism.",
+    "baseline": "StandardScaler plus RBF-SVM (C=10, gamma='scale') with corruption augmentation during training and no pre-smoothing (\u03c3=0). This is the direct comparison: same pipeline, same augmentation, only smoothing absent.",
+    "metric": "Mean classification accuracy averaged across six conditions evaluated on the held-out validation set during tuning, then once on the test set: clean data, noise_std=0.3, noise_std=0.6, dropout_p=0.1, dropout_p=0.3, and combined noise_std=0.3 plus dropout_p=0.2. Single final test evaluation after \u03c3 is selected.",
+    "falsification": "If \u03c3=0 matches or exceeds all \u03c3>0 on the six-condition validation average, the high-frequency noise mechanism is falsified and smoothing provides no causal benefit. Additionally, if clean-only accuracy at optimal \u03c3 drops more than two percentage points below \u03c3=0, over-smoothing has destroyed discriminative structure, also falsifying the claim of a beneficial operating range.",
+    "implementation": "Load digits, create stratified 60/20/20 train/val/test split with fixed random state. For each \u03c3 in {0.0, 0.4, 0.6, 0.8, 1.0}: reshape each train image to 8\u00d78, apply gaussian_filter, ravel; fit StandardScaler on smoothed train features; augment train set with corrupted copies (noise and dropout); fit SVC(kernel='rbf', C=10, gamma='scale'); evaluate six-condition mean accuracy on smoothed validation set. Select \u03c3 maximizing validation mean. Refit on train plus validation with chosen \u03c3, evaluate once on test. Total runtime under two minutes on Apple Silicon.",
+    "queries": [
+      "low-pass filtering preprocessing robustness kernel SVM image noise classification",
+      "input smoothing corruption robustness small image classifiers spatial frequency"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}
