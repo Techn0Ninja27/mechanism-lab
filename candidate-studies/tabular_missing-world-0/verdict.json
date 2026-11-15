@@ -1,0 +1,24 @@
+{
+  "candidate_id": "tabular_missing-world-0",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [137, 271, 389],
+  "primary_metric": "average precision averaged equally over clean, MCAR 10%, 30%, and 50% test conditions",
+  "mean_candidate": 0.7875491957073754,
+  "mean_control": 0.7845865313207147,
+  "paired_deltas": [
+    {"seed": 137, "alpha": 1.0, "candidate": 0.7196420102228419, "control": 0.7246715904622144, "delta": -0.0050295802393725},
+    {"seed": 271, "alpha": 0.0, "candidate": 0.8483293348395577, "control": 0.8417267112365313, "delta": 0.006602623603026436},
+    {"seed": 389, "alpha": 1.0, "candidate": 0.7946762420597266, "control": 0.7873612933194931, "delta": 0.007314948740233529}
+  ],
+  "prior_art_status": "The append-indicator component is established missing-indicator imputation; HistGradientBoosting has native NaN routing. No distinct relationship beyond a scalar choice of replacement value was established.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Only three synthetic dataset seeds; exploratory pilot, not statistical evidence.",
+    "The explicitly mandated common benchmark protocol uses MCAR 10/30/50%, while the proposal described MCAR 20/40% plus informative-feature block missingness; that proposed metric was not used.",
+    "Training remained complete and received no missingness augmentation, as required; consequently appended mask columns are constant during fitting and cannot convey learned mask effects.",
+    "Formula and prose conflict: equation implemented literally; alpha=0 imputes zero and alpha=1 imputes the training mean.",
+    "Inference timing was recorded; separate per-arm training timing was not instrumented. Whole-run times were about 4 seconds per mode across all seeds and arms."
+  ]
+}

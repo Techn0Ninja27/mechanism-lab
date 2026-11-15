@@ -1,0 +1,12 @@
+{
+  "cutoff": "2026-11-16",
+  "records": 16346,
+  "openai_metadata_records": 15,
+  "provenance_counts": {
+    "arxiv_api": 299,
+    "local_sqlite": 16047
+  },
+  "query_count": 12,
+  "source_hash": "2a4707f3577e10de2818489f0ed7164ba6a76c5176c5d5e53760dc8bd8b9939e",
+  "openai_sources": "docs/corpus-expansion/OPENAI_SOURCES.json"
+}

@@ -1,0 +1,762 @@
+{
+  "config": {
+    "mode": "final",
+    "seeds": [
+      137,
+      271,
+      389
+    ],
+    "train_augmentations": [
+      [
+        "noise",
+        0.2
+      ],
+      [
+        "noise",
+        0.4
+      ],
+      [
+        "dropout",
+        0.15
+      ],
+      [
+        "dropout",
+        0.3
+      ]
+    ],
+    "eval_conditions": [
+      [
+        "clean",
+        0,
+        0
+      ],
+      [
+        "noise.2",
+        0.2,
+        0
+      ],
+      [
+        "noise.4",
+        0.4,
+        0
+      ],
+      [
+        "noise.6",
+        0.6,
+        0
+      ],
+      [
+        "drop.05",
+        0,
+        0.05
+      ],
+      [
+        "drop.15",
+        0,
+        0.15
+      ],
+      [
+        "drop.30",
+        0,
+        0.3
+      ],
+      [
+        "joint.4.15",
+        0.4,
+        0.15
+      ],
+      [
+        "joint.6.30",
+        0.6,
+        0.3
+      ]
+    ],
+    "train_only_scaler": true,
+    "split": "stratified 60/20/20",
+    "features": "raw 64 or 56 horizontal differences + 56 vertical differences + 16 non-overlap 2x2 means",
+    "cpu_threads": 1,
+    "sklearn": "1.7.2"
+  },
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "fit_seconds": {
+    "137:full": 0.4088433750002878,
+    "137:raw": 0.2533845409998321,
+    "137:gradients": 0.4388486660027411,
+    "137:means": 0.16037487499852432,
+    "271:full": 0.4601316250009404,
+    "271:raw": 0.2802569579980627,
+    "271:gradients": 0.42959295800028485,
+    "271:means": 0.15481450000152108,
+    "389:full": 0.44156116700105486,
+    "389:raw": 0.28083012499701,
+    "389:gradients": 0.42675954199876287,
+    "389:means": 0.17025037499843165
+  },
+  "results": [
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "clean",
+      "accuracy": 0.9861111111111112
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "noise.2",
+      "accuracy": 0.9583333333333334
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "noise.4",
+      "accuracy": 0.7611111111111111
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "noise.6",
+      "accuracy": 0.525
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "drop.05",
+      "accuracy": 0.9833333333333333
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "drop.15",
+      "accuracy": 0.9527777777777777
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "drop.30",
+      "accuracy": 0.8888888888888888
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "joint.4.15",
+      "accuracy": 0.6
+    },
+    {
+      "seed": 137,
+      "method": "full",
+      "condition": "joint.6.30",
+      "accuracy": 0.4111111111111111
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "clean",
+      "accuracy": 0.9833333333333333
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "noise.2",
+      "accuracy": 0.9694444444444444
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "noise.4",
+      "accuracy": 0.7722222222222223
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "noise.6",
+      "accuracy": 0.5083333333333333
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "drop.05",
+      "accuracy": 0.9833333333333333
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "drop.15",
+      "accuracy": 0.9555555555555556
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "drop.30",
+      "accuracy": 0.8916666666666667
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "joint.4.15",
+      "accuracy": 0.6194444444444445
+    },
+    {
+      "seed": 137,
+      "method": "raw",
+      "condition": "joint.6.30",
+      "accuracy": 0.4111111111111111
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "clean",
+      "accuracy": 0.9805555555555555
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "noise.2",
+      "accuracy": 0.9555555555555556
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "noise.4",
+      "accuracy": 0.7527777777777778
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "noise.6",
+      "accuracy": 0.49166666666666664
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "drop.05",
+      "accuracy": 0.975
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "drop.15",
+      "accuracy": 0.9416666666666667
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "drop.30",
+      "accuracy": 0.8777777777777778
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "joint.4.15",
+      "accuracy": 0.575
+    },
+    {
+      "seed": 137,
+      "method": "gradients",
+      "condition": "joint.6.30",
+      "accuracy": 0.36666666666666664
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "clean",
+      "accuracy": 0.9583333333333334
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "noise.2",
+      "accuracy": 0.825
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "noise.4",
+      "accuracy": 0.5777777777777777
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "noise.6",
+      "accuracy": 0.3416666666666667
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "drop.05",
+      "accuracy": 0.9222222222222223
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "drop.15",
+      "accuracy": 0.8833333333333333
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "drop.30",
+      "accuracy": 0.7361111111111112
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "joint.4.15",
+      "accuracy": 0.45555555555555555
+    },
+    {
+      "seed": 137,
+      "method": "means",
+      "condition": "joint.6.30",
+      "accuracy": 0.2777777777777778
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "clean",
+      "accuracy": 0.9888888888888889
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "noise.2",
+      "accuracy": 0.9583333333333334
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "noise.4",
+      "accuracy": 0.7888888888888889
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "noise.6",
+      "accuracy": 0.5222222222222223
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "drop.05",
+      "accuracy": 0.9777777777777777
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "drop.15",
+      "accuracy": 0.9611111111111111
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "drop.30",
+      "accuracy": 0.8722222222222222
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "joint.4.15",
+      "accuracy": 0.6861111111111111
+    },
+    {
+      "seed": 271,
+      "method": "full",
+      "condition": "joint.6.30",
+      "accuracy": 0.39166666666666666
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "clean",
+      "accuracy": 0.9916666666666667
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "noise.2",
+      "accuracy": 0.9527777777777777
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "noise.4",
+      "accuracy": 0.8111111111111111
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "noise.6",
+      "accuracy": 0.48055555555555557
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "drop.05",
+      "accuracy": 0.9805555555555555
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "drop.15",
+      "accuracy": 0.9527777777777777
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "drop.30",
+      "accuracy": 0.8722222222222222
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "joint.4.15",
+      "accuracy": 0.7138888888888889
+    },
+    {
+      "seed": 271,
+      "method": "raw",
+      "condition": "joint.6.30",
+      "accuracy": 0.4027777777777778
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "clean",
+      "accuracy": 0.9888888888888889
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "noise.2",
+      "accuracy": 0.9638888888888889
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "noise.4",
+      "accuracy": 0.7611111111111111
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "noise.6",
+      "accuracy": 0.4722222222222222
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "drop.05",
+      "accuracy": 0.9694444444444444
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "drop.15",
+      "accuracy": 0.9555555555555556
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "drop.30",
+      "accuracy": 0.8638888888888889
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "joint.4.15",
+      "accuracy": 0.6666666666666666
+    },
+    {
+      "seed": 271,
+      "method": "gradients",
+      "condition": "joint.6.30",
+      "accuracy": 0.35555555555555557
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "clean",
+      "accuracy": 0.9444444444444444
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "noise.2",
+      "accuracy": 0.8
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "noise.4",
+      "accuracy": 0.5944444444444444
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "noise.6",
+      "accuracy": 0.39444444444444443
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "drop.05",
+      "accuracy": 0.9055555555555556
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "drop.15",
+      "accuracy": 0.8388888888888889
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "drop.30",
+      "accuracy": 0.7222222222222222
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "joint.4.15",
+      "accuracy": 0.43333333333333335
+    },
+    {
+      "seed": 271,
+      "method": "means",
+      "condition": "joint.6.30",
+      "accuracy": 0.2916666666666667
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "clean",
+      "accuracy": 0.9944444444444445
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "noise.2",
+      "accuracy": 0.9583333333333334
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "noise.4",
+      "accuracy": 0.8388888888888889
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "noise.6",
+      "accuracy": 0.48333333333333334
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "drop.05",
+      "accuracy": 0.9888888888888889
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "drop.15",
+      "accuracy": 0.9555555555555556
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "drop.30",
+      "accuracy": 0.8638888888888889
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "joint.4.15",
+      "accuracy": 0.7138888888888889
+    },
+    {
+      "seed": 389,
+      "method": "full",
+      "condition": "joint.6.30",
+      "accuracy": 0.34444444444444444
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "clean",
+      "accuracy": 0.9944444444444445
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "noise.2",
+      "accuracy": 0.9666666666666667
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "noise.4",
+      "accuracy": 0.8361111111111111
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "noise.6",
+      "accuracy": 0.45555555555555555
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "drop.05",
+      "accuracy": 0.9805555555555555
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "drop.15",
+      "accuracy": 0.9527777777777777
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "drop.30",
+      "accuracy": 0.8638888888888889
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "joint.4.15",
+      "accuracy": 0.7166666666666667
+    },
+    {
+      "seed": 389,
+      "method": "raw",
+      "condition": "joint.6.30",
+      "accuracy": 0.3638888888888889
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "clean",
+      "accuracy": 0.9944444444444445
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "noise.2",
+      "accuracy": 0.9472222222222222
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "noise.4",
+      "accuracy": 0.7944444444444444
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "noise.6",
+      "accuracy": 0.4722222222222222
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "drop.05",
+      "accuracy": 0.9833333333333333
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "drop.15",
+      "accuracy": 0.9361111111111111
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "drop.30",
+      "accuracy": 0.8694444444444445
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "joint.4.15",
+      "accuracy": 0.6583333333333333
+    },
+    {
+      "seed": 389,
+      "method": "gradients",
+      "condition": "joint.6.30",
+      "accuracy": 0.3333333333333333
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "clean",
+      "accuracy": 0.9305555555555556
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "noise.2",
+      "accuracy": 0.8472222222222222
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "noise.4",
+      "accuracy": 0.6027777777777777
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "noise.6",
+      "accuracy": 0.35555555555555557
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "drop.05",
+      "accuracy": 0.925
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "drop.15",
+      "accuracy": 0.8444444444444444
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "drop.30",
+      "accuracy": 0.7444444444444445
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "joint.4.15",
+      "accuracy": 0.5222222222222223
+    },
+    {
+      "seed": 389,
+      "method": "means",
+      "condition": "joint.6.30",
+      "accuracy": 0.29444444444444445
+    }
+  ],
+  "elapsed_seconds": 9.352590082999086
+}

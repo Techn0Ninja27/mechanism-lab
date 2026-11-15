@@ -1,0 +1,15 @@
+{
+  "candidate_id": "digits_shift-random_seed-1",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [137, 271, 389],
+  "primary_metric": "mean accuracy over 9 fixed held-out corruption conditions",
+  "mean_candidate": 0.805864,
+  "mean_control": 0.805041,
+  "paired_deltas": {"by_seed_candidate_minus_control": [0.000309, 0.001852, 0.000309], "mean_candidate_minus_control": 0.000823, "by_seed_candidate_minus_permutation": [0.002778, -0.000926, 0.0], "mean_candidate_minus_permutation": 0.000617},
+  "validation_rule_passed": false,
+  "prior_art_status": "Core ingredients (symmetry-derived image features, augmentation for invariance, kernel methods incorporating invariances) are established; exact single exp(-gamma*flip-distance) appended scalar for this corruption benchmark was not found in the searched primary literature. Novelty remains unestablished.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": ["Three small exploratory splits; no inferential claim.", "The proposal ambiguously stated whether sigma=0.5 is normalized; implemented literally on normalized [0,1] pixels, producing substantial clipping.", "Validation means: control [0.770969,0.793253,0.804395], flip [0.771278,0.792634,0.801300], permutation [0.771588,0.794491,0.802538]; the preregistered rule fails because flip beats control in only one seed and fails to beat permutation.", "Held-out results are descriptive and do not override the failed validation rule.", "The fixed random permutation is one draw per seed, so the feature ablation itself has sampling variability."]
+}

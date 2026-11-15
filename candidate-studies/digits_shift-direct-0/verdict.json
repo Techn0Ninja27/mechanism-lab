@@ -1,0 +1,14 @@
+{
+  "candidate_id": "digits_shift-direct-0",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [137, 271, 389],
+  "primary_metric": "mean accuracy across nine clean/noise/dropout/joint conditions, averaged across seeds",
+  "mean_candidate": 0.7909465020576132,
+  "mean_control": 0.7919753086419753,
+  "paired_deltas": [-0.003086419753086318, -0.0012345679012345743, 0.0012345679012344633],
+  "prior_art_status": "Gradient features and spatial pooling are established handwriting-recognition/image-processing methods; no distinct relationship is established here. The claimed noise/dropout cancellation mechanism is mathematically incorrect under the proposal's stated independent corruption model.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": ["Only three seeds on sklearn load_digits; exploratory pilot, no significance claim.", "Proposal's original 80/20 split and five metric conditions were replaced by the repository's predeclared stratified 60/20/20 fixture and nine corruption conditions.", "Four augmentation variants were operationalized as noise .2/.4 and dropout .15/.30; the proposal did not specify exact augmentation levels.", "Inference time was not separately instrumented in this run; total training fits took about 0.15-0.46 s per seed/method.", "Independent additive pixel noise increases difference-channel variance by factor 2; single-endpoint dropout affects a difference with probability 2p(1-p), not p^2."]
+}

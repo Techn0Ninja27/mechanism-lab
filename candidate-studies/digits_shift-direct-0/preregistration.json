@@ -1,0 +1,58 @@
+{
+  "registered_before_final": true,
+  "candidate_id": "digits_shift-direct-0",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "per-seed mean accuracy over clean, noise .2/.4/.6, dropout .05/.15/.30, and joint (.4,.15)/(.6,.30) on held-out test split; then mean across seeds",
+  "candidate": "full 128D (56 horizontal + 56 vertical differences + 16 2x2 means), four fixed train corruption variants, StandardScaler on augmented training features, RBF SVC C=10 gamma=scale",
+  "control": "raw normalized 64D pixels with identical augmentation, scaler fitting rule, SVC and splits",
+  "ablations": [
+    "gradient-only 112D with same augmentation",
+    "block-mean-only 16D with same augmentation"
+  ],
+  "hyperparameters": {
+    "augmentation": [
+      [
+        "noise",
+        0.2
+      ],
+      [
+        "noise",
+        0.4
+      ],
+      [
+        "dropout",
+        0.15
+      ],
+      [
+        "dropout",
+        0.3
+      ]
+    ],
+    "C": 10,
+    "gamma": "scale",
+    "kernel": "rbf"
+  },
+  "pass_rule": "exploratory support only if mean paired test delta full-minus-raw exceeds +0.005 and full wins on at least 2/3 individual seeds; otherwise no_gain. This is not a significance test.",
+  "source_sha256": "d2e827a45e23790ec51b7ade7fe58f73a04f9ef310bb4be7c6267683037b0ae9",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  }
+}

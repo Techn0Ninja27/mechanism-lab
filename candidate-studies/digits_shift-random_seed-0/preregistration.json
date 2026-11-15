@@ -1,0 +1,74 @@
+{
+  "candidate_id": "digits_shift-random_seed-0",
+  "date": "2026-11-16",
+  "primary_metric": "mean accuracy across 9 conditions (clean; noise fractions 0.2,0.4,0.6 with Gaussian sigma fraction*16; dropout 0.05,0.15,0.30; joint (0.4,0.15),(0.6,0.30)), averaged within each seed",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "control": "uniform Gaussian-noise and dropout augmentation; same split, deterministic corruption draws, two added views per original, scaler and SVC; C=5, RBF gamma=scale",
+  "candidate": "class-conditional one-vs-rest pixel Fisher ratio; inverse normalized scores as porosity map; map-weighted Gaussian noise (per-image RMS normalized) and dropout Bernoulli probabilities (capped at 1); two augmented views per sample",
+  "ablations": [
+    "clean SVC",
+    "uniform corruption augmentation",
+    "complement/inverted porosity map"
+  ],
+  "hyperparameters_frozen": {
+    "svc": {
+      "C": 5,
+      "kernel": "rbf",
+      "gamma": "scale"
+    },
+    "augmentation_views": 2,
+    "noise_severities": [
+      0.2,
+      0.4,
+      0.6
+    ],
+    "dropout_probabilities": [
+      0.05,
+      0.15,
+      0.3
+    ],
+    "severities_sampled_uniformly": true,
+    "preprocessing": "StandardScaler fit on original training rows only",
+    "fisher": "per-class one-vs-rest (mean difference squared)/(class variance + rest variance + 1e-6), inverse with 1e-3 stabilizer, normalized mean 1",
+    "dropout_probability_capping": "min(p*normalized_porosity,1.0)"
+  },
+  "pass_fail_rule": "Pilot support only if mean paired candidate-minus-uniform delta > 0.01 and candidate wins at least 2 of 3 seeds; otherwise no_gain if mean delta <=0, inconclusive for positive but subthreshold/mixed evidence. Falsification is supported if complemented map is not worse than uniform.",
+  "validation_observed_means": {
+    "137:clean": 0.46115753636645007,
+    "137:uniform": 0.5369854534199938,
+    "137:porosity": 0.5506035283194057,
+    "137:complement": 0.4469204580625194,
+    "271:clean": 0.4620860414732281,
+    "271:uniform": 0.536366450015475,
+    "271:porosity": 0.5289384091612503,
+    "271:complement": 0.4623955431754875,
+    "389:clean": 0.46363354998452494,
+    "389:uniform": 0.5858867223769731,
+    "389:porosity": 0.5787681832250077,
+    "389:complement": 0.4515629835964098
+  },
+  "validation_used_for_choice": "No tuning; choices fixed from proposal and benchmark protocol before validation.",
+  "source_sha256": "27923218d00c528f86a5564b9fcdfd0610d41e06bac4c0d3609c22f0e38483d0",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "final_output_policy": "One final-mode invocation; refuse overwrite unless --allow-rerun explicitly supplied."
+}

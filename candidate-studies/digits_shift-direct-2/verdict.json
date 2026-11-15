@@ -1,0 +1,131 @@
+{
+  "candidate_id": "digits_shift-direct-2",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy across nine fixed corruption conditions",
+  "mean_candidate": 0.4440329218106996,
+  "mean_control": 0.5794238683127572,
+  "paired_deltas": [
+    -0.1271604938271605,
+    -0.12376543209876545,
+    -0.1552469135802469
+  ],
+  "validation_mean_candidate": 0.4395955844423811,
+  "validation_mean_control": 0.5633962653461261,
+  "validation_paired_deltas": [
+    -0.12163416898792934,
+    -0.10863509749303613,
+    -0.14113277623026937
+  ],
+  "prior_art_status": "known constituent techniques and nearby approaches found; exact formula novelty unestablished",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Only three seeds on sklearn digits; exploratory pilot, not significance evidence.",
+    "Per-condition envelope assumes the corruption parameters are known and requires fitting/selecting a condition-specific model.",
+    "Proposal formula omits dropout attenuation of clean variance; expression tested as proposed.",
+    "Synthetic Gaussian noise is clipped to [0,1]; distribution deviates from ideal unbounded Gaussian."
+  ],
+  "ablation_validation_means": {
+    "envelope_noaug": 0.7375425564840606,
+    "envelope_drop_noise": 0.09873104302073661,
+    "envelope_drop_dropout": 0.4402145878468999
+  },
+  "runtimes_seconds_by_seed_method": [
+    {
+      "seed": 137,
+      "method": "standard_aug",
+      "train_seconds": 0.26625754099950427,
+      "inference_seconds": 0.44488204200024484
+    },
+    {
+      "seed": 137,
+      "method": "envelope_aug",
+      "train_seconds": 2.2340917930014257,
+      "inference_seconds": 0.39469295699746
+    },
+    {
+      "seed": 137,
+      "method": "envelope_noaug",
+      "train_seconds": 0.13816229100120836,
+      "inference_seconds": 0.09139178999612341
+    },
+    {
+      "seed": 137,
+      "method": "envelope_drop_noise",
+      "train_seconds": 3.6200791239898535,
+      "inference_seconds": 0.5233362929975556
+    },
+    {
+      "seed": 137,
+      "method": "envelope_drop_dropout",
+      "train_seconds": 2.1640415839938214,
+      "inference_seconds": 0.3772346679979819
+    },
+    {
+      "seed": 271,
+      "method": "standard_aug",
+      "train_seconds": 0.25510612499783747,
+      "inference_seconds": 0.4443533749981725
+    },
+    {
+      "seed": 271,
+      "method": "envelope_aug",
+      "train_seconds": 2.327589917000296,
+      "inference_seconds": 0.40583241800777614
+    },
+    {
+      "seed": 271,
+      "method": "envelope_noaug",
+      "train_seconds": 0.14451608400122495,
+      "inference_seconds": 0.09652820799965411
+    },
+    {
+      "seed": 271,
+      "method": "envelope_drop_noise",
+      "train_seconds": 3.5372205410021706,
+      "inference_seconds": 0.5192037090055237
+    },
+    {
+      "seed": 271,
+      "method": "envelope_drop_dropout",
+      "train_seconds": 2.205985500000679,
+      "inference_seconds": 0.3899157909982023
+    },
+    {
+      "seed": 389,
+      "method": "standard_aug",
+      "train_seconds": 0.23326191600062884,
+      "inference_seconds": 0.43025570800091373
+    },
+    {
+      "seed": 389,
+      "method": "envelope_aug",
+      "train_seconds": 2.2120531239925185,
+      "inference_seconds": 0.379092376006156
+    },
+    {
+      "seed": 389,
+      "method": "envelope_noaug",
+      "train_seconds": 0.13820329200098058,
+      "inference_seconds": 0.09536879200823023
+    },
+    {
+      "seed": 389,
+      "method": "envelope_drop_noise",
+      "train_seconds": 3.4191771670048183,
+      "inference_seconds": 0.49769166499754647
+    },
+    {
+      "seed": 389,
+      "method": "envelope_drop_dropout",
+      "train_seconds": 2.1440464590014017,
+      "inference_seconds": 0.38414516700504464
+    }
+  ]
+}

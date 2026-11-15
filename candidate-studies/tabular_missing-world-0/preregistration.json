@@ -1,0 +1,60 @@
+{
+  "candidate_id": "tabular_missing-world-0",
+  "date": "2026-11-16",
+  "protocol": "validation then frozen held-out final; all three validation seeds completed before final",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "dataset": {
+    "generator": "sklearn.datasets.make_classification",
+    "n_samples": 5000,
+    "n_features": 20,
+    "n_informative": 5,
+    "n_redundant": 5,
+    "weights": [
+      0.8,
+      0.2
+    ],
+    "class_sep": 1.0,
+    "random_state_each_seed": true,
+    "split": "stratified 60/20/20; split seed and second-stage seed+1"
+  },
+  "metric": "Mean average precision across clean, MCAR 10%, 30%, 50%; equal weight to conditions and seeds",
+  "corruptions": "Per seed and condition, one fixed MCAR mask reused by every arm; seed+50000+int(rate*1000)",
+  "candidate_formula": "c=v*(1-m)+alpha*m*mu; alpha in [0,.3,.7,1], training means only; append raw mask",
+  "selection": "Per-seed alpha maximizes validation mean AP; ties select smaller alpha",
+  "control": "median imputation fitted on training rows + HistGradientBoostingClassifier, max_iter=120, no mask features",
+  "ablations": [
+    "mean imputation + appended mask (no blend)",
+    "literal equation at each alpha"
+  ],
+  "capacity": "HistGradientBoostingClassifier max_iter=120, same random_state per seed, clean 3000-row train split for all arms",
+  "training_augmentation": false,
+  "falsification": "Candidate held-out mean paired difference versus median control <=0, or simple mean+mask control matches/exceeds candidate; any selected endpoint alpha is noted as collapse",
+  "held_out": "No test prediction or score before validation.json is written; each split evaluated once; refuse overwrite unless --allow-rerun",
+  "source_sha256": "fe8589af45da70021212d6f1bf50fecc8bbd38addc0c2d8da476aa3d48905f40",
+  "split_index_sha256": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "prior_art_urls": [
+    "https://arxiv.org/abs/2211.09259",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC7868046/",
+    "https://scikit-learn.org/stable/modules/ensemble.html"
+  ]
+}

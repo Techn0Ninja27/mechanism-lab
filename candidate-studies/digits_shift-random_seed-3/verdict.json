@@ -1,0 +1,31 @@
+{
+  "candidate_id": "digits_shift-random_seed-3",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy over nine specified clean/noise/dropout/joint conditions, then mean over seeds",
+  "mean_candidate": 0.5908436213991769,
+  "mean_control": 0.6106995884773663,
+  "paired_deltas": [
+    -0.014197530864197505,
+    -0.02253086419753092,
+    -0.022839506172839474
+  ],
+  "prior_art_status": "corruption augmentation and mixed augmentation distributions are established prior art; exact arc relationship not verified as novel",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Small sklearn digits synthetic-corruption pilot.",
+    "Test corruption severity extends beyond the proposal beta=0.25 assumption.",
+    "Constant radius in (sigma,p) is not constant realized pixelwise L2 corruption energy.",
+    "Exploratory pilot; no external generalization or significance claim."
+  ],
+  "validation_mean_candidate": 0.5900134117404312,
+  "validation_mean_control": 0.600639636851336,
+  "mixed_condition_mean_arc": 0.2662037037037037,
+  "mixed_condition_mean_noise_axis": 0.32037037037037036
+}

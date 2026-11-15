@@ -1,0 +1,61 @@
+{
+  "candidate_id": "tabular_missing-direct-1",
+  "locked_before_heldout": true,
+  "source_sha256": "30f2fdcd005d997556bedb96ed9197d6c51db52953cdebe2da9bff5ff1e671e2",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "dataset": "make_classification 5000x20,5 informative,5 redundant,weights 0.8/0.2; seed-specific 60/20/20 stratified split",
+  "primary_metric": "mean test AP over clean, 10%, 30%, 50% MCAR",
+  "control": "same HGB architecture/training half A, no calibration",
+  "candidate": "KMeans(8) on specified clean-only train-half-A missing masks, per occupied cluster isotonic on heldout train-half-B predictions; nearest Hamming routing. Single occupied cluster expected from proposal as written.",
+  "hyperparameters": {
+    "imputer": "median fit on train half A",
+    "hgb_max_iter": 120,
+    "hgb_random_state": "dataset seed",
+    "kmeans_n_clusters": 8,
+    "kmeans_n_init": 10,
+    "isotonic_out_of_bounds": "clip",
+    "calibration_positive_minimum": 10,
+    "threads": 1
+  },
+  "validation_splits": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "validation_result_summary": {
+    "unique_prototypes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "candidate_minus_control_validation_mean": -0.04329487222356618,
+    "predeclared_falsification": "falsified if mean gain flat or negative across all missingness levels; support requires >=+0.01 at 50% and within +/-0.005 at 0%",
+    "validation_used_for_tuning": false
+  },
+  "known_design_consequence": "Training mask vectors are all zero because proposal specifies clean training and no missingness augmentation. Eight prototypes cannot be realized; inferred route collapses to a single global isotonic map. This is treated as invalid mechanism, with held-out run as diagnostic of the collapsed variant only."
+}

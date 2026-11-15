@@ -1,0 +1,28 @@
+{
+  "candidate_id": "digits_shift-direct-3",
+  "status": "supported_pilot",
+  "faithful_implementation": false,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy over 9 conditions",
+  "mean_candidate": 0.801440329218107,
+  "mean_control": 0.7911522633744856,
+  "paired_deltas": [
+    0.011111111111111072,
+    0.010185185185185297,
+    0.009567901234567966
+  ],
+  "prior_art_status": "known components; exact combination not established; novelty_established=false",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Held-out model fit used train split only; proposal specified refit on train plus validation.",
+    "Only three seeds and one small dataset; exploratory pilot, no significance claim.",
+    "Augmentation rates were implementation choices because proposal omitted them.",
+    "Required protocol corruption grid differs from proposal original six conditions.",
+    "Results support only smoothing within the fixed augmentation pipeline; no-augmentation ablation is weak."
+  ]
+}

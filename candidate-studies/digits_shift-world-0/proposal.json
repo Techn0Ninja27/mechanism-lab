@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-world-0",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "world",
+  "seed_word": "porous",
+  "seed_index": 0,
+  "proposal": {
+    "title": "Corruption-Variance Pixel Weighting for Robust Digit Classification",
+    "intervention": "Before StandardScaler and RBF-SVM fitting, compute per-pixel reliability weights from training data alone. For each of the 64 pixels, generate K=10 corrupted copies per training image at each target severity using additive Gaussian noise and random dropout. Compute cross-corruption variance per pixel. Assign weight W[i] = 1/(1 + variance[i]). Additionally flag pixels whose mean value under corruption falls outside [2,14] in the 0-16 range as collapsed, setting W[i]=0. Multiply raw features elementwise by W before scaling. Augmentation during training restricts synthetic samples to perturbing only non-collapsed pixels.",
+    "mechanism": "Pixels that fluctuate widely under corruption carry low signal-to-noise ratio and should contribute less to the SVM kernel computation. Down-weighting them concentrates the RBF kernel distance metric on stable pixels, reducing corruption-induced distortion of decision boundaries. Zeroing collapsed pixels removes features whose mean has drifted to extremes, where the corruption response is nonlinear and uninformative. Restricting augmentation to reliable pixels prevents the model from fitting corruption artifacts in already-unreliable dimensions.",
+    "assumptions": "The impossible fictional assumption is that materials physically conduct or block emotion based on saturation density, which has no real-world analog. This is replaced by the measurable statistical assumption that per-pixel cross-corruption variance on training data is a valid proxy for pixel reliability under test-time corruptions of the same type and severity. This is feasible: variance is computed solely from training images and their synthetically corrupted copies, with no label leakage and no external data.",
+    "baseline": "StandardScaler fitted on clean training data followed by RBF-SVM with grid-searched C and gamma, augmented with corrupted copies of all 64 pixels at the same severities, evaluated on clean, noise, and dropout test sets.",
+    "metric": "Mean accuracy averaged across clean, additive-noise, and dropout test conditions using the fixed stratified split.",
+    "falsification": "The intervention fails if weighted features yield no significant accuracy gain over the unweighted baseline across corruption conditions, or if collapsed-pixel zeroing specifically harms clean-set accuracy rather than helping it, or if variance computed on training data fails to correlate with per-pixel test-time instability.",
+    "implementation": "Load digits, stratified split 70/15/15. On training set generate K=10 corrupted copies per image per severity. Compute per-pixel variance and mean across corrupted pool. Build W vector. Multiply train, validation, test features by W. Fit StandardScaler on weighted train features. Grid search RBF-SVM over C in [0.1,1,10,100] and gamma in [0.001,0.01,0.1,scale]. Evaluate on three test conditions. Ablations: remove zeroing, remove variance weighting, augment all pixels. Total runtime estimated under two minutes on Apple Silicon.",
+    "queries": [
+      "input feature weighting by noise variance for support vector machine robustness image classification",
+      "per-feature reliability estimation from corrupted training data preprocessing neural network SVM"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-world-3",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "world",
+  "seed_word": "braided",
+  "seed_index": 3,
+  "proposal": {
+    "title": "Asymmetric Missingness Curriculum with Weighted Mask Indicators for Deployment-Shift Robustness",
+    "intervention": "During training only, apply a three-phase missingness curriculum: phase one trains on clean data, phase two injects missingness at observed training rates, phase three injects missingness at elevated deployment rates. Append binary mask indicator columns for each feature. Weight mask indicator columns by each feature's mutual information with the target, amplifying indicators for informative features and down-weighting those for redundant ones. Impute missing values using medians frozen from the training set exclusively.",
+    "mechanism": "The fictional mechanism ('memory flows upstream', 'mass repels red light') is replaced by a tractable distributional-shift argument: a model trained only on low-missingness data treats high-missingness deployment inputs as out-of-distribution. Progressive curriculum exposure closes the covariate gap by ensuring the model sees deployment-rate missingness before evaluation. Mask indicators convert an implicit absence into an explicit, learnable feature. Mutual-information-based weighting ensures that absence of a predictive feature carries proportionally more signal than absence of a redundant one. The frozen training-median imputation is the real-world substitute for the fictional 'braid-fiber quantile sketch': a statistic computed once on training data and applied identically at inference, preventing leakage.",
+    "assumptions": "The impossible assumption replaced: 'future states are remembered more clearly than past states' (reverse causality) is replaced by the feasible assumption that deployment missingness rates are estimable in advance from domain knowledge or pilot data, allowing deliberate augmentation. A second assumption is that mutual information estimated on training data is a reliable proxy for mask-indicator importance. If deployment missingness patterns are entirely unknown or non-stationary, the curriculum target rate cannot be set and the intervention degrades to generic augmentation.",
+    "baseline": "Median imputation on training features plus HistGradientBoostingClassifier with no missingness augmentation and no mask indicators, trained on the same stratified split.",
+    "metric": "Average precision averaged across a clean held-out test condition and two predefined stress conditions (moderate and high missingness rates), computed on the fixed test split.",
+    "falsification": "The intervention fails if weighted mask indicators plus curriculum augmentation do not improve average-precision over the baseline under stress conditions on the fixed test set, or if the mutual-information weighting of mask columns performs no better than uniform weighting, suggesting the amplification step adds no value.",
+    "implementation": "Generate data with sklearn.make_classification (5000 rows, 20 features, 5 informative, 5 redundant, 80/20 balance, fixed seed). Stratified split into train/validation/test. Compute training medians and per-feature mutual information on train only. Build a pipeline: (1) three-phase curriculum masking applied only during training epochs via a custom transformer, (2) median imputation with frozen values, (3) concatenate 20 binary mask columns weighted by normalized mutual information, (4) HistGradientBoostingClassifier. Select curriculum deployment-phase missingness rate by maximizing validation average precision across stress conditions. Evaluate on test set under clean and stress conditions. Total wall time target under 5 minutes on Apple Silicon.",
+    "queries": [
+      "missing data augmentation covariate shift tabular classification mask indicator features",
+      "curriculum learning distribution shift robustness imputation strategy gradient boosting"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

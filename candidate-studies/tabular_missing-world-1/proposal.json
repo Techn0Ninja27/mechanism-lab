@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-world-1",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "world",
+  "seed_word": "mirrored",
+  "seed_index": 1,
+  "proposal": {
+    "title": "Reconstruction-Regularized Missingness-Aware Classification via Auxiliary Autoencoding",
+    "intervention": "Augment a gradient-boosted or neural classifier with a train-only auxiliary reconstruction head. During training, randomly mask features using a Beta(2,1)-skewed distribution to oversample high-missingness conditions. The model jointly minimizes classification loss and MSE reconstruction loss on masked values. The reconstruction head is discarded at inference. A binary missingness indicator vector is appended to the feature matrix at all stages so the classifier can distinguish absence from zero.",
+    "mechanism": "The reconstruction objective forces the shared representation layer to encode informative structure about which features are absent and what their likely values are. This prevents the model from treating missingness as neutral noise. When deployment missingness exceeds training missingness, the model has already learned latent patterns associated with high-absence configurations, because the Beta(2,1) augmentation deliberately overrepresents them during training. The appended mask vector preserves the absence pattern as an explicit input signal, preventing conflation of zero-valued and missing entries.",
+    "assumptions": "The impossible assumption in the source is the Symmetry of Action metaphysical law, which has no empirical content. This is replaced by a standard regularization assumption: auxiliary objectives that require reconstruction of masked inputs encourage representations that capture feature dependencies and missingness structure, analogous to denoising autoencoders and masked self-supervised learning. This assumption is empirically testable and has precedent in representation learning literature, though no novelty claim is made here for this specific tabular setting.",
+    "baseline": "Median imputation applied train-only, with missingness indicator columns appended, fed into HistGradientBoostingClassifier with no auxiliary loss.",
+    "metric": "Average precision averaged across a clean held-out test set and two predefined missingness stress conditions (moderate and high feature dropout rates), evaluated on the fixed stratified test split.",
+    "falsification": "The intervention fails if auxiliary reconstruction loss does not improve mean average precision over the baseline by a detectable margin on stress conditions, or if training time exceeds five minutes on the target hardware, or if adding the reconstruction head degrades clean-condition performance relative to baseline.",
+    "implementation": "Build a PyTorch two-head network: shared MLP encoder, classification head with BCE loss, reconstruction head with MSE loss on masked positions only. Apply Beta(2,1)-sampled masks per batch during training. Append 20-dimensional binary mask vector to inputs. Drop reconstruction head at inference. Fit on training split only. Evaluate on fixed test split under clean and stress missingness conditions.",
+    "queries": [
+      "denoising autoencoder auxiliary loss tabular classification missing data robustness",
+      "missingness indicator features joint reconstruction classification covariate shift tabular"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

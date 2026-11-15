@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-random_seed-3",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "random_seed",
+  "seed_word": "braided",
+  "seed_index": 3,
+  "proposal": {
+    "title": "Arc-Sampled Joint Corruption Augmentation for RBF-SVM on Digits",
+    "intervention": "Generate augmented training samples by sampling a mixing angle \u03b8 uniformly from [0, \u03c0/2] per sample, then applying additive Gaussian noise with \u03c3 = \u03b2\u00b7cos(\u03b8) and pixel dropout with rate p = \u03b2\u00b7sin(\u03b8), where \u03b2=0.25 is a fixed corruption budget. This constrains every augmented sample to lie on a quarter-circle in (\u03c3, p) space, ensuring the full joint corruption manifold is covered rather than only its axes. Fit a StandardScaler on clean training data only, apply it to augmented training and all evaluation sets, then train an RBF-SVM (C=10, gamma='scale') on the augmented set.",
+    "mechanism": "Ordinary augmentation applies noise and dropout independently or separately, leaving the interior of the joint corruption space underrepresented during training. By enforcing cos\u00b2\u03b8 + sin\u00b2\u03b8 = 1, every augmented sample has identical L2 corruption energy but a different noise-dropout composition. The SVM decision boundary therefore encounters interpolated corruption mixtures during training, which should reduce accuracy degradation on mixed-corruption test conditions without inflating the total augmented set size beyond practical SVM training time.",
+    "assumptions": "Test corruptions remain within the \u03b2 budget. The arc parameterization provides meaningfully denser interior coverage than independent sampling at equivalent sample counts. SVM generalization improves from distributional coverage rather than mere sample count inflation. Clean-only scaler fitting correctly normalizes corrupted inputs because corruption is zero-mean.",
+    "baseline": "Same RBF-SVM (C=10, gamma='scale') trained on augmentation that applies noise and dropout independently at fixed \u03c3=\u03b2 and p=\u03b2, matched for total augmented sample count, with identical scaler and split.",
+    "metric": "Mean classification accuracy averaged across six fixed test conditions: clean, low noise, high noise, low dropout, high dropout, and mixed noise-plus-dropout, all evaluated on the held-out test set.",
+    "falsification": "Train four models with identical augmented sample counts: clean-only resampled, noise-axis-only, dropout-axis-only, and arc-sampled braided. If braided accuracy on the mixed-corruption condition does not exceed both axis-only models, the benefit is attributable to sample count rather than joint-space coverage, falsifying the core mechanism.",
+    "implementation": "Normalize raw pixels to [0,1]. Stratified splits: 15% test, 15% of remainder validation, rest train. Apply braided_augment with n_copies=4 to training data only. Fit StandardScaler on clean training pixels. Transform augmented train, validation, and each corruption-specific test set. Fit SVC(kernel='rbf', C=10, gamma='scale'). Report per-condition and mean accuracy. Total wall time expected under two minutes on Apple Silicon.",
+    "queries": [
+      "data augmentation joint corruption robustness SVM image classification noise dropout",
+      "corruption diversity augmentation generalization gap classifier robustness evaluation"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

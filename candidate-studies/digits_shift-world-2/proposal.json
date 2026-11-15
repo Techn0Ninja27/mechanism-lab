@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-world-2",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "world",
+  "seed_word": "tidal",
+  "seed_index": 2,
+  "proposal": {
+    "title": "Corruption-Variance-Weighted PCA for Robust Digit Classification",
+    "intervention": "Before fitting PCA, compute a per-pixel instability weight by generating multiple corrupted copies of each training image at several noise and dropout severities, then measuring per-pixel variance across clean and corrupted versions of the same sample. Each pixel dimension is rescaled by the reciprocal of this corruption variance before PCA decomposition, so components align with corruption-stable structure. The SVM then trains on both clean and augmented corrupted samples projected into this weighted subspace.",
+    "mechanism": "Standard PCA maximizes total variance, which under corruption is partly noise variance. By down-weighting pixels with high corruption-induced variance before the covariance calculation, the leading components preferentially capture pixel dimensions whose values remain stable across corruption levels, corresponding to edge and curve structure rather than isolated pixel fluctuations. The SVM decision boundary consequently sits in a subspace where clean and corrupted representations of the same digit cluster more tightly, improving generalization to unseen corruption severities.",
+    "assumptions": "The impossible fictional assumption is that a physical resonance medium selectively amplifies stable signal. The real replacement is purely arithmetic: per-pixel inverse-variance rescaling of the data matrix before PCA, which is entirely feasible in scikit-learn using a precomputed diagonal weight vector applied via element-wise multiplication before StandardScaler and PCA. No physical analogue is needed; the mechanism is a deterministic linear transformation fitted only on training data.",
+    "baseline": "Standardized RBF-SVM with ordinary augmentation and uniform-weight PCA of identical dimensionality, identical grid search over C and gamma, identical augmented training samples, differing only in that all pixel weights are set to one before PCA.",
+    "metric": "Mean classification accuracy averaged across clean test set and two fixed corruption conditions, held-out test set evaluated once after all hyperparameter selection on the validation fold.",
+    "falsification": "The intervention fails if corruption-variance weights do not differ meaningfully across pixels, if weighted and unweighted PCA components are nearly identical in direction, or if accuracy on corrupted test conditions is statistically indistinguishable from the uniform-weight baseline across repeated stratified splits.",
+    "implementation": "Load digits, stratified split into train, validation, test. On train, generate five corrupted copies per image at low and high severity. Compute per-pixel variance across clean plus corrupted versions per sample, average over samples. Multiply train features by inverse-variance weights. Fit StandardScaler and PCA with 32 components on weighted train features. Apply same weights and fitted transforms to validation and test. Grid search C and gamma on validation. Refit on train plus validation, evaluate on test. Ablation repeats with weights fixed to one.",
+    "queries": [
+      "feature weighting before PCA for noise robustness in image classification",
+      "corruption-aware dimensionality reduction support vector machine generalization"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

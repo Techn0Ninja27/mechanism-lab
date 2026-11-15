@@ -1,0 +1,49 @@
+{
+  "candidate_id": "tabular_missing-direct-0",
+  "frozen_at": "2026-11-16",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "dataset": "make_classification(5000,20,5 informative,5 redundant,weights .8/.2,class_sep=1.0), per-seed split 60/20/20 stratified",
+  "split_hashes": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "primary_metric": "mean average precision over clean, 10%, 30%, 50% MCAR test conditions, equal weight; paired within-seed candidate minus fixed-median matched MLP",
+  "candidate": "MLP [40,64,32,1], BN/ReLU, dropout .2, Adam 1e-3, batch256; per-row mask rate Uniform[0,.4], missing features replaced by trainable scalars initialized to train medians; mask concatenated; BCE; max80 epochs, early stop validation AP patience10",
+  "primary_control": "same architecture, initialization, data, augmentation masks and validation stopping; fill scalars frozen at train medians",
+  "additional_controls": [
+    "median-impute HistGradientBoostingClassifier max_iter120",
+    "no mask input",
+    "no missingness augmentation"
+  ],
+  "pass_rule": "candidate paired mean delta >= +0.01 AP versus fixed-median MLP and positive delta on at least 2 of 3 seeds; validation-selected architecture and optimizer frozen",
+  "validation_means": {
+    "learned": 0.88871,
+    "fixed": 0.889848,
+    "no_mask": 0.8707,
+    "no_augmentation": 0.792615,
+    "median_hgb": 0.798996
+  },
+  "source_sha256": {
+    "experiment.py": "23875d3b322400f56cd5f8cf54949845f46976bd774e2e3d1c88fa5f32801285",
+    "prepare.py": "febf5a4f750736cf13ad4891db6118403bc8436880c403e2ffea3b12f763c32f",
+    "score_hgb_final.py": "abbee5579e1e6bee29420596ddea6b4981766f055d5111d4042acd7e8aa17bb8"
+  },
+  "held_out_policy": "No test metrics may be computed/read until this file is written. Each test split is evaluated once; no tuning afterward."
+}

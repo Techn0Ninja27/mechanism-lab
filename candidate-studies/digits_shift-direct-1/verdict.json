@@ -1,0 +1,188 @@
+{
+  "candidate_id": "digits_shift-direct-1",
+  "status": "supported_pilot",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "Mean accuracy over 9 clean/noise/dropout/joint conditions, averaged across 3 seeds",
+  "mean_candidate": 0.6491769547325102,
+  "mean_control": 0.47016460905349794,
+  "paired_deltas": {
+    "137": 0.18148148148148147,
+    "271": 0.17932098765432097,
+    "389": 0.1762345679012346
+  },
+  "per_seed_means": {
+    "baseline": {
+      "137": 0.46944444444444444,
+      "271": 0.47160493827160493,
+      "389": 0.46944444444444444
+    },
+    "blur_only": {
+      "137": 0.5277777777777778,
+      "271": 0.5429012345679012,
+      "389": 0.5382716049382716
+    },
+    "augmentation_only": {
+      "137": 0.5259259259259259,
+      "271": 0.5425925925925926,
+      "389": 0.5589506172839506
+    },
+    "blur_plus_augmentation": {
+      "137": 0.6509259259259259,
+      "271": 0.6509259259259259,
+      "389": 0.645679012345679
+    }
+  },
+  "per_condition_mean_accuracy": {
+    "clean": {
+      "baseline": 0.9879629629629629,
+      "blur_only": 0.9907407407407408,
+      "augmentation_only": 0.9759259259259259,
+      "blur_plus_augmentation": 0.9861111111111112
+    },
+    "noise_0.2": {
+      "baseline": 0.11203703703703703,
+      "blur_only": 0.6138888888888888,
+      "augmentation_only": 0.45925925925925926,
+      "blur_plus_augmentation": 0.8277777777777777
+    },
+    "noise_0.4": {
+      "baseline": 0.10185185185185185,
+      "blur_only": 0.1824074074074074,
+      "augmentation_only": 0.20555555555555555,
+      "blur_plus_augmentation": 0.45925925925925926
+    },
+    "noise_0.6": {
+      "baseline": 0.1,
+      "blur_only": 0.11203703703703703,
+      "augmentation_only": 0.13240740740740742,
+      "blur_plus_augmentation": 0.21203703703703705
+    },
+    "dropout_0.05": {
+      "baseline": 0.9787037037037036,
+      "blur_only": 0.9675925925925926,
+      "augmentation_only": 0.9657407407407408,
+      "blur_plus_augmentation": 0.9657407407407408
+    },
+    "dropout_0.15": {
+      "baseline": 0.9296296296296297,
+      "blur_only": 0.9018518518518519,
+      "augmentation_only": 0.9296296296296296,
+      "blur_plus_augmentation": 0.9194444444444444
+    },
+    "dropout_0.30": {
+      "baseline": 0.8194444444444444,
+      "blur_only": 0.7333333333333333,
+      "augmentation_only": 0.8555555555555556,
+      "blur_plus_augmentation": 0.8092592592592593
+    },
+    "joint_0.4_0.15": {
+      "baseline": 0.10092592592592593,
+      "blur_only": 0.19537037037037036,
+      "augmentation_only": 0.20277777777777778,
+      "blur_plus_augmentation": 0.437037037037037
+    },
+    "joint_0.6_0.30": {
+      "baseline": 0.10092592592592593,
+      "blur_only": 0.12962962962962962,
+      "augmentation_only": 0.15555555555555556,
+      "blur_plus_augmentation": 0.22592592592592592
+    }
+  },
+  "validation_mean_by_variant": {
+    "baseline": 0.4631177138140926,
+    "blur_only": 0.5245022180955329,
+    "augmentation_only": 0.5298669142680285,
+    "blur_plus_augmentation": 0.6400495202723615
+  },
+  "prior_art_status": "Blur filtering and corruption augmentation are established; no evidence found that this precise blur-before-scaling plus matched augmentation pipeline is novel. Novelty is unestablished.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Tiny sklearn digits dataset and synthetic corruption only; exploratory pilot, no inferential significance claim.",
+    "Noise corruption is severe enough that baseline accuracy at noise 0.6 is near chance.",
+    "Blur-alone is inferior to augmentation-alone at noise_0.6 and markedly harms dropout_0.30; the proposed causal explanation is not supported as stated.",
+    "Combined arm improves aggregate mean, but gains are uneven across corruption types.",
+    "Initial non-faithful test execution retained as results_invalid_v1.json and excluded from findings."
+  ],
+  "runtime": [
+    {
+      "seed": 137,
+      "variant": "baseline",
+      "train_seconds": 0.013627666998218047,
+      "inference_seconds_all_conditions": 0.08161991700035287
+    },
+    {
+      "seed": 137,
+      "variant": "blur_only",
+      "train_seconds": 0.013082833000225946,
+      "inference_seconds_all_conditions": 0.0778187070027343
+    },
+    {
+      "seed": 137,
+      "variant": "augmentation_only",
+      "train_seconds": 0.1714204999989306,
+      "inference_seconds_all_conditions": 0.29152016699299566
+    },
+    {
+      "seed": 137,
+      "variant": "blur_plus_augmentation",
+      "train_seconds": 0.13837266699920292,
+      "inference_seconds_all_conditions": 0.2928829579941521
+    },
+    {
+      "seed": 271,
+      "variant": "baseline",
+      "train_seconds": 0.014097084000241011,
+      "inference_seconds_all_conditions": 0.08400533500025631
+    },
+    {
+      "seed": 271,
+      "variant": "blur_only",
+      "train_seconds": 0.011696041001414414,
+      "inference_seconds_all_conditions": 0.07526146000236622
+    },
+    {
+      "seed": 271,
+      "variant": "augmentation_only",
+      "train_seconds": 0.19889083299858612,
+      "inference_seconds_all_conditions": 0.3165752900058578
+    },
+    {
+      "seed": 271,
+      "variant": "blur_plus_augmentation",
+      "train_seconds": 0.13854437500049244,
+      "inference_seconds_all_conditions": 0.29933654100750573
+    },
+    {
+      "seed": 389,
+      "variant": "baseline",
+      "train_seconds": 0.013892292001401074,
+      "inference_seconds_all_conditions": 0.08546495700647938
+    },
+    {
+      "seed": 389,
+      "variant": "blur_only",
+      "train_seconds": 0.012160207999841077,
+      "inference_seconds_all_conditions": 0.07844233200376038
+    },
+    {
+      "seed": 389,
+      "variant": "augmentation_only",
+      "train_seconds": 0.16167487499842537,
+      "inference_seconds_all_conditions": 0.2924961240059929
+    },
+    {
+      "seed": 389,
+      "variant": "blur_plus_augmentation",
+      "train_seconds": 0.14295558400044683,
+      "inference_seconds_all_conditions": 0.29059308499927283
+    }
+  ],
+  "source_sha256": "8441c79925a0aef964e58539b211a8582ad6fa9fa9335523eb56a43283ed9a38",
+  "heldout_evaluated_once_corrected_protocol": true
+}

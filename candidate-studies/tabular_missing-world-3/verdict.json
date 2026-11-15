@@ -1,0 +1,30 @@
+{
+  "candidate_id": "tabular_missing-world-3",
+  "status": "supported_pilot",
+  "faithful_implementation": false,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "Mean average precision over clean, 10%, 30%, and 50% MCAR test conditions; average within seed then across seeds",
+  "mean_candidate": 0.838824,
+  "mean_control": 0.772019,
+  "paired_deltas": [
+    0.035668,
+    0.061334,
+    0.103415
+  ],
+  "mean_uniform_mask_ablation": 0.839447,
+  "mean_no_intermediate_phase_ablation": 0.829489,
+  "prior_art_status": "Core components and the missingness-shift problem have close prior art: median imputation plus mask features (2022 benchmark) and MI-based robustness conditions for unseen missingness shifts (MIRRAMS, 2025). Novelty not established.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "HistGradientBoosting cannot validly warm-start across changing datasets; implementation uses cumulative phase strata in a single final fit, not sequential optimization curriculum.",
+    "Synthetic MCAR feature deletion only; no MAR/MNAR, naturally occurring data, or unknown shift patterns.",
+    "Only three seeds and one generated dataset family; exploratory pilot, not a significance claim.",
+    "MI weighting did not outperform uniform mask weights, so that mechanism is unsupported in this study.",
+    "Preregistration file was recorded after the final evaluation process completed, though before held-out metrics were inspected; this is exploratory rather than strict preregistration."
+  ]
+}

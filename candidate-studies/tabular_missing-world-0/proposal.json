@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-world-0",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "world",
+  "seed_word": "porous",
+  "seed_index": 0,
+  "proposal": {
+    "title": "Mask-Weighted Soft Imputation with Appended Missingness Features for Covariate-Shift Robustness",
+    "intervention": "Replace standard median imputation with a convex blend of the observed value and the training-set column mean, where the blend weight is the missingness indicator scaled by a scalar coefficient alpha fitted on held-out average precision. Append the raw binary missingness mask as additional input columns. Alpha is selected by grid search over [0.0, 0.3, 0.7, 1.0] on the average of clean and stress-condition average precision scores computed on the validation fold only.",
+    "mechanism": "The fictional law of proximity contamination asserts that a value in contact with its own absence becomes a hybrid third entity. The real-world transfer is a soft imputation formula: c_i = v_i*(1-m_i) + alpha*m_i*mu_i, where mu_i is the training column mean. When alpha=0 this is median/mean imputation with the mask discarded; when alpha=1 it is mean imputation with the mask preserved but the value slot carries no trace of its missingness origin. Intermediate alpha values encode a graded signal: the imputed value is shifted away from the training mean by a fraction proportional to the blending coefficient, while the appended mask column tells the model which entries were imputed. The model therefore receives a continuous representation of imputation confidence rather than a binary present/absent split, which is the operative mechanism extracted from the fictional source.",
+    "assumptions": "The impossible assumption replaced is that objects physically exchange properties through proximity. The real replacement is a parametric linear interpolation: absence influences the imputed value's magnitude in proportion to a tunable scalar, which is estimable from data. This is feasible because the formula is closed-form, differentiable, and fit entirely on training and validation data without touching test labels.",
+    "baseline": "Median imputation followed by HistGradientBoostingClassifier with no mask features appended and no alpha blending.",
+    "metric": "Average precision averaged across the clean validation set and three predefined missingness stress conditions: MCAR 20 percent, MCAR 40 percent, and block-missing on the five informative features.",
+    "falsification": "The intervention fails if the alpha grid search selects 0.0 or 1.0 on every random seed, collapsing to standard imputation; or if appending mask columns alone without blending matches or exceeds performance, indicating the blending formula contributes nothing beyond mask disclosure.",
+    "implementation": "Generate data with sklearn.make_classification (5000 rows, 20 features, 5 informative, 5 redundant, weights 0.8/0.2, random_state=42). Stratified split 60/20/20. Compute training column means on train fold only. For each candidate alpha, apply c_i formula to train and validation, append 20 mask columns, train HistGradientBoostingClassifier, evaluate stress-averaged average precision on validation. Select best alpha, refit on train, evaluate on test. Total runtime expected under 5 CPU minutes on Apple Silicon.",
+    "queries": [
+      "soft imputation missing data indicator features gradient boosting tabular classification covariate shift",
+      "missing value encoding blended imputation mask concatenation predictive performance under missing not at random"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

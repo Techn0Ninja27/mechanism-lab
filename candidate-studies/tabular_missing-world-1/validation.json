@@ -1,0 +1,351 @@
+{
+  "mode": "validation",
+  "primary_metric": "mean average precision over missing rates 0,0.1,0.3,0.5",
+  "results": [
+    {
+      "seed": 137,
+      "method": "recon_beta",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.8782722647147224
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.8548564488016842
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8182365181480437
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.7086669096908854
+        }
+      ],
+      "mean_ap": 0.8150080353388339
+    },
+    {
+      "seed": 137,
+      "method": "no_recon_beta",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.8802532335408955
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.856490916790247
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8156392956194648
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.7002768830643087
+        }
+      ],
+      "mean_ap": 0.8131650822537291
+    },
+    {
+      "seed": 137,
+      "method": "recon_uniform",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.8812578029313408
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.8527644811338033
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8190986636705162
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.706467757491065
+        }
+      ],
+      "mean_ap": 0.8148971763066813
+    },
+    {
+      "seed": 137,
+      "method": "recon_no_mask",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.8733094263831468
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.847987856988945
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.7975356352501362
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.6913663745661808
+        }
+      ],
+      "mean_ap": 0.8025498232971021
+    },
+    {
+      "seed": 137,
+      "method": "median_hgb",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.8978110061150293
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.8597801865375913
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.7685359121697185
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.6226200343776643
+        }
+      ],
+      "mean_ap": 0.7871867848000008
+    },
+    {
+      "seed": 271,
+      "method": "recon_beta",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9516554838797839
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9442993549639193
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8966292012876453
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.8144506445126983
+        }
+      ],
+      "mean_ap": 0.9017586711610117
+    },
+    {
+      "seed": 271,
+      "method": "no_recon_beta",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9505431379238748
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9412584513530307
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8923081685192812
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.8059680767572943
+        }
+      ],
+      "mean_ap": 0.8975194586383702
+    },
+    {
+      "seed": 271,
+      "method": "recon_uniform",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9575724935752421
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9470311856896284
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8933095639597145
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.8123225984909971
+        }
+      ],
+      "mean_ap": 0.9025589604288955
+    },
+    {
+      "seed": 271,
+      "method": "recon_no_mask",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9473180567793924
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.939117827650485
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8711920540769365
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.7798514315862478
+        }
+      ],
+      "mean_ap": 0.8843698425232654
+    },
+    {
+      "seed": 271,
+      "method": "median_hgb",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9577547061948902
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9320552630508857
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8306769373262226
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.6742795612496716
+        }
+      ],
+      "mean_ap": 0.8486916169554175
+    },
+    {
+      "seed": 389,
+      "method": "recon_beta",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9503465905601413
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9453746348654206
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8968082869645797
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.8272416471058824
+        }
+      ],
+      "mean_ap": 0.904942789874006
+    },
+    {
+      "seed": 389,
+      "method": "no_recon_beta",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9525166745889597
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9496401787310919
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8995001118219199
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.8224723090455637
+        }
+      ],
+      "mean_ap": 0.9060323185468838
+    },
+    {
+      "seed": 389,
+      "method": "recon_uniform",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9565848948556617
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9511868637960401
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.9016870962874649
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.8241002679723097
+        }
+      ],
+      "mean_ap": 0.9083897807278691
+    },
+    {
+      "seed": 389,
+      "method": "recon_no_mask",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9559924765696166
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.938262702428104
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.8611813159710123
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.7747211291323902
+        }
+      ],
+      "mean_ap": 0.8825394060252807
+    },
+    {
+      "seed": 389,
+      "method": "median_hgb",
+      "conditions": [
+        {
+          "missing": 0.0,
+          "average_precision": 0.9707917260604921
+        },
+        {
+          "missing": 0.1,
+          "average_precision": 0.9162846936065017
+        },
+        {
+          "missing": 0.3,
+          "average_precision": 0.7264929336988347
+        },
+        {
+          "missing": 0.5,
+          "average_precision": 0.5827815631612869
+        }
+      ],
+      "mean_ap": 0.7990877291317788
+    }
+  ]
+}

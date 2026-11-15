@@ -1,0 +1,131 @@
+{
+  "candidate_id": "digits_shift-world-1",
+  "status": "supported_pilot",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "Mean accuracy over nine fixed test conditions",
+  "mean_candidate": 0.7916666666666666,
+  "mean_control": 0.48055555555555557,
+  "paired_deltas": [
+    0.30586419753086425,
+    0.3135802469135803,
+    0.31388888888888883
+  ],
+  "per_seed_primary": {
+    "137": {
+      "control": 0.48518518518518516,
+      "composite_only": 0.48518518518518516,
+      "anchor_only": 0.4833333333333333,
+      "pca_only": 0.7941358024691358,
+      "full": 0.7910493827160494
+    },
+    "271": {
+      "control": 0.46820987654320984,
+      "composite_only": 0.46820987654320984,
+      "anchor_only": 0.4731481481481482,
+      "pca_only": 0.7833333333333333,
+      "full": 0.7817901234567901
+    },
+    "389": {
+      "control": 0.48827160493827165,
+      "composite_only": 0.48827160493827165,
+      "anchor_only": 0.48456790123456783,
+      "pca_only": 0.808641975308642,
+      "full": 0.8021604938271605
+    }
+  },
+  "ablation_means": {
+    "control": 0.48055555555555557,
+    "composite_only": 0.48055555555555557,
+    "anchor_only": 0.4803497942386831,
+    "pca_only": 0.7953703703703704,
+    "full": 0.7916666666666666
+  },
+  "prior_art_status": "Core components (PCA denoising, test-time PCA filtering, centroid/prototype use, validation-based model selection) are established; no novelty claim is supported for this combination. Exact overlap of this simple confidence-gated raw-pixel PCA + centroid-pull augmentation + composite selection rule was not established by this limited search.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Exploratory digits-only pilot with three stratified splits; no inference about external datasets or statistical significance.",
+    "The composite selection score made the same choices as validation-only scoring and yielded identical primary metrics.",
+    "Centroid anchoring did not improve aggregate accuracy; the gain is attributable to PCA reconstruction.",
+    "The proposal did not specify augmentation severities; used the shared benchmark convention of one sigma=.15 noise and one dropout=.15 view.",
+    "PCA trigger uses maximum one-vs-rest-transformed SVC decision value as a confidence proxy; it is not a calibrated probability.",
+    "scikit-learn PCA emitted divide-by-zero/overflow/invalid matmul RuntimeWarnings during reconstruction, although reconstructed outputs and saved metrics were finite; investigate before extending the method.",
+    "An initial larger-grid, six-severity-augmentation validation attempt was interrupted after exceeding the initial compute budget; it produced no reportable variant metrics and did not access held-out test data."
+  ],
+  "runtime_seconds": {
+    "final_total": 28.837276709000434,
+    "per_seed": {
+      "137": {
+        "control": {
+          "training_and_selection_seconds": 1.870380042000761,
+          "inference_seconds": 0.26555787500183214
+        },
+        "composite_only": {
+          "training_and_selection_seconds": 1.6220390000016778,
+          "inference_seconds": 0.26395079100257135
+        },
+        "anchor_only": {
+          "training_and_selection_seconds": 1.343564791000972,
+          "inference_seconds": 0.20684545800031628
+        },
+        "pca_only": {
+          "training_and_selection_seconds": 1.596365749999677,
+          "inference_seconds": 0.560217541999009
+        },
+        "full": {
+          "training_and_selection_seconds": 1.3416515840035572,
+          "inference_seconds": 0.44795116699970094
+        }
+      },
+      "271": {
+        "control": {
+          "training_and_selection_seconds": 1.980294667002454,
+          "inference_seconds": 0.254166124999756
+        },
+        "composite_only": {
+          "training_and_selection_seconds": 1.6875752079977246,
+          "inference_seconds": 0.2518787919980241
+        },
+        "anchor_only": {
+          "training_and_selection_seconds": 1.3823172080010409,
+          "inference_seconds": 0.22840799999903538
+        },
+        "pca_only": {
+          "training_and_selection_seconds": 1.637048374999722,
+          "inference_seconds": 0.5332750829984434
+        },
+        "full": {
+          "training_and_selection_seconds": 1.4084641250010463,
+          "inference_seconds": 0.4515378750002128
+        }
+      },
+      "389": {
+        "control": {
+          "training_and_selection_seconds": 1.883490416999848,
+          "inference_seconds": 0.25668237499849056
+        },
+        "composite_only": {
+          "training_and_selection_seconds": 1.5800373329984723,
+          "inference_seconds": 0.2659706670019659
+        },
+        "anchor_only": {
+          "training_and_selection_seconds": 1.327648083002714,
+          "inference_seconds": 0.22119362499870476
+        },
+        "pca_only": {
+          "training_and_selection_seconds": 1.5942487909996998,
+          "inference_seconds": 0.557528999997885
+        },
+        "full": {
+          "training_and_selection_seconds": 1.3449954169991543,
+          "inference_seconds": 0.4593665829997917
+        }
+      }
+    }
+  }
+}

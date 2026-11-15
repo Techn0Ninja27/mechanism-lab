@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-random_seed-2",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "random_seed",
+  "seed_word": "tidal",
+  "seed_index": 2,
+  "proposal": {
+    "title": "Anchor-Conditioned Ridge Reconstruction for Deployment Missingness Shift",
+    "intervention": "Identify stable anchor features (those missing in fewer than 20% of stress-condition training rows) using only training-split missingness masks. For each volatile feature, fit a Ridge regressor on anchor columns using complete training rows. At inference, replace missing volatile values with ridge predictions from observed anchors rather than global medians. Pass reconstructed features into HistGradientBoostingClassifier, which retains native NaN handling as a fallback only.",
+    "mechanism": "Median imputation inserts a constant that ignores the local sample context. When anchors correlate with volatile features, ridge reconstruction uses the observed anchor values to produce a sample-specific estimate, reducing imputation error and preserving covariate structure that carries discriminative signal. The classifier receives less degraded inputs under stress, improving ranking of the minority class.",
+    "assumptions": "Anchor features must be genuinely less missing at deployment than volatile features, matching the predefined stress specification. Anchors must carry meaningful linear predictive signal for volatile features; if reconstruction R-squared on held-out training rows is near zero, injected noise exceeds median error and the method provides no benefit. Training and deployment joint distributions must be similar enough that ridge coefficients fitted on training data remain approximately valid.",
+    "baseline": "Median imputation fitted on training split only, followed by the same HistGradientBoostingClassifier with identical hyperparameters and random state, evaluated on the same fixed stratified test split.",
+    "metric": "Average precision score averaged across one clean condition and one predefined stress missingness condition applied to the test set. Both conditions are evaluated without access to test labels during development.",
+    "falsification": "The intervention is falsified if anchor-conditioned reconstruction average precision under stress does not exceed median imputation average precision under stress, or if mean per-volatile-feature reconstruction R-squared on clean test rows is below 0.10, indicating the mechanism is not operating. If R-squared is high but average precision does not improve, the downstream classifier already handles imputation noise adequately and the intervention is unnecessary.",
+    "implementation": "Generate data with sklearn.make_classification(n_samples=5000, n_features=20, n_informative=5, n_redundant=5, weights=[0.8,0.2], random_state=42). Stratified split 60/20/20 train/validation/test. Apply predefined stress mask to training indices to compute per-feature missingness rates; designate anchors below 20% threshold. Fit Ridge per volatile feature on anchor columns of complete training rows. Build a custom sklearn transformer wrapping this logic. Chain transformer then HistGradientBoostingClassifier in a Pipeline. Fit only on training split. Evaluate average precision on clean and stressed test sets. Total runtime target under two minutes.",
+    "queries": [
+      "missing data imputation using auxiliary feature reconstruction under covariate shift tabular classification",
+      "stable feature selection for imputation under deployment missingness distribution shift"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

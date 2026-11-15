@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-direct-0",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "direct",
+  "seed_word": "porous",
+  "seed_index": 0,
+  "proposal": {
+    "title": "Gradient-Plus-Block-Mean Feature Representation for Corruption-Robust Digit Classification",
+    "intervention": "Replace raw 64-pixel inputs with 128-dimensional differential features: 56 horizontal pixel differences, 56 vertical pixel differences, and 16 non-overlapping 2\u00d72 block means. Train a standardized RBF-SVM on these features extracted from both clean and four augmented corrupted copies of the training set. Scaler fits on augmented training features only.",
+    "mechanism": "Additive noise adds a shared offset to neighboring pixels; taking their difference cancels correlated noise components, reducing effective noise variance in gradient channels. Dropout zeros isolated pixels, but corrupts a gradient only when both adjacent pixels drop simultaneously, occurring with probability p\u00b2 rather than p, structurally lowering the corruption rate in feature space. Block means average four pixels, suppressing independent noise variance by a factor of four while retaining low-frequency shape identity. Augmentation additionally exposes the SVM decision boundary to seen severity levels, while the structural properties of differential features provide partial generalization to unseen severities.",
+    "assumptions": "Noise is spatially uncorrelated across pixels, so neighbor differences genuinely cancel shared additive components. Digit identity is recoverable from local edge structure plus coarse spatial density, meaning gradients and block means jointly preserve sufficient discriminative information. Dropout probability stays below 0.5, keeping the probability of simultaneous adjacent dropout meaningfully lower than single-pixel dropout.",
+    "baseline": "Standardized RBF-SVM trained on raw normalized pixels augmented with identical corrupted copies at the same four severities, using the same fixed stratified split and identical hyperparameters (C=10, gamma=scale).",
+    "metric": "Mean classification accuracy averaged across five fixed evaluation conditions: clean, Gaussian noise at \u03c3=0.3, \u03c3=0.6, dropout at p=0.2, and p=0.4, all evaluated on the held-out test set with a fixed random seed.",
+    "falsification": "Train a representation-only model (differential features, no augmentation) and an augmentation-only model (raw pixels, with augmentation) on seen severities. Evaluate both at an unseen severity (\u03c3=1.0 noise, p=0.5 dropout). If the augmentation-only model matches the representation-only model at unseen severities, the differential features provide no structural generalization beyond data volume. If the representation-only model degrades less, the geometric noise-cancellation hypothesis is supported independently of augmentation.",
+    "implementation": "Load sklearn digits, normalize pixels to [0,1], apply one fixed stratified 80/20 train-test split then a 75/25 train/validation split within the training portion. Compute horizontal differences (n\u00d756), vertical differences (n\u00d756), and 2\u00d72 block means (n\u00d716) from reshaped 8\u00d78 images; concatenate to form 128-dimensional vectors. Augment training features with four corrupted variants. Fit StandardScaler on augmented training features only. Fit SVC(kernel=rbf, C=10, gamma=scale). At evaluation, apply the same feature extraction to corrupted test images before scoring. Full pipeline runs well under five minutes on a standard laptop.",
+    "queries": [
+      "gradient feature representations noise robustness support vector machine image classification",
+      "spatial averaging block features corruption invariance handwritten digit recognition"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

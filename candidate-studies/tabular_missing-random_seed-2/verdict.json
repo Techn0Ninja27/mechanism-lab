@@ -1,0 +1,35 @@
+{
+  "candidate_id": "tabular_missing-random_seed-2",
+  "status": "invalid_mechanism",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "average precision mean over clean, 10%, 30%, 50% MCAR",
+  "mean_candidate": 0.8080333549502221,
+  "mean_control": 0.7873436446109598,
+  "paired_deltas": [
+    0.0,
+    0.010449245438690746,
+    0.009484950300398531,
+    0.04061688185617829,
+    0.0,
+    -0.0011800794002515547,
+    0.01614725960598895,
+    0.013237988801921063,
+    0.0,
+    0.0214242760114719,
+    0.06735169397137664,
+    0.07074430748537319
+  ],
+  "prior_art_status": "regression-based feature imputation is established (MICE/FCS; sklearn IterativeImputer); no exact anchor-threshold variant located, novelty unestablished",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Uniform MCAR fixture has no stable-anchor/volatile-feature structure: at 10% every column is an anchor and there are no volatile features; at 30% and 50% all columns are volatile and there are no anchors.",
+    "No Ridge model is fit and no test entry is reconstructed in any stress condition. Thus measured AP difference is native-NaN HistGradientBoosting versus median-imputed HistGradientBoosting, not anchor-conditioned reconstruction.",
+    "Three synthetic seeds only; exploratory, not significance evidence or external validation."
+  ]
+}

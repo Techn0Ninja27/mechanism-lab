@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-direct-1",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "direct",
+  "seed_word": "mirrored",
+  "seed_index": 1,
+  "proposal": {
+    "title": "Missingness-Pattern Prototype Routing with Per-Cluster Isotonic Recalibration",
+    "intervention": "Train a base HistGradientBoostingClassifier on 40 features (20 original + 20 binary missingness indicators) with median imputation. Cluster training-set missingness masks into 8 prototypes via k-means on binary vectors. For each prototype cluster, train a separate isotonic regression recalibrator mapping base model raw probabilities to calibrated scores, fitted on a held-out within-training fold to prevent overfitting. At inference, assign each example to its nearest prototype by Hamming distance and apply that prototype's recalibrator to produce the final score. Merge any cluster with fewer than 10 positive examples into its nearest neighbor before fitting recalibrators.",
+    "mechanism": "A model trained under low missingness learns a score-to-probability mapping calibrated for that observability regime. When deployment missingness increases, imputed inputs shift the feature distribution, causing systematic miscalibration that varies by missingness pattern rather than uniformly. Per-prototype recalibrators correct the output mapping conditioned on each distinct missing-data regime, leaving the base model's discriminative structure intact while adjusting probability estimates toward the true conditional distribution for each pattern.",
+    "assumptions": "Deployment missingness patterns cluster meaningfully and overlap with training-observed patterns. Training data contains sufficient examples of each missingness regime to fit reliable isotonic recalibrators. The base model's rank ordering of examples within each cluster is preserved under missingness shift, so recalibration improves calibration without destroying discrimination.",
+    "baseline": "Median imputation plus HistGradientBoostingClassifier with appended missingness indicators, no recalibration routing. Trained and evaluated on the same synthetic dataset with identical fixed stratified splits.",
+    "metric": "Average precision averaged across clean (0% missing) and two predefined stress conditions (20% and 40% MCAR feature dropout), evaluated on the held-out test set only after all development decisions are finalized.",
+    "falsification": "The intervention is falsified if average precision improvement over baseline is flat or negative across all three missingness rates. It is supported if improvement is monotonically increasing with missingness rate, specifically at least +0.01 AP at 40% missing and within \u00b10.005 AP at 0% missing. A uniform improvement across all conditions would instead implicate general calibration benefit rather than the routing mechanism specifically.",
+    "implementation": "Generate data with sklearn.make_classification (n=5000, n_features=20, n_informative=5, n_redundant=5, weights=[0.8,0.2], random_state=42). Split 60/20/20 train/validation/test with stratification. Fit median imputer on train only. Append missingness indicators. Train base model on train set. Split train set into two halves: fit k-means clusters on missingness masks from half-one; collect base model probability outputs on half-two and fit per-cluster isotonic regressors using half-two labels. At test time, compute Hamming distance to cluster centroids, route, recalibrate. Full pipeline runs under 2 minutes on Apple Silicon.",
+    "queries": [
+      "probability calibration under covariate shift missing data tabular classification",
+      "mixture of experts routing calibration deployment distribution shift"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

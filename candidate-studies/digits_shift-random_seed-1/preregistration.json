@@ -1,0 +1,19 @@
+{
+  "candidate_id": "digits_shift-random_seed-1",
+  "registered_before_validation": true,
+  "hypothesis": "Appending the proposal's single horizontal flip symmetry score improves mean accuracy over raw pixel features on the fixed corruption grid, and the benefit is larger than replacing flip with an equally sized fixed random-permutation score.",
+  "primary_metric": "mean accuracy across clean, noise 0.2/0.4/0.6, dropout 0.05/0.15/0.30, and joint (0.4,0.15)/(0.6,0.30), for each seed; report candidate minus control paired by seed.",
+  "seeds": [137, 271, 389],
+  "split": "sklearn.load_digits; stratified 60/20/20; train_test_split test_size=.4 then .5, random_state=seed and seed+1; indices sorted.",
+  "frozen_hyperparameters": {"pixel_scale": "divide intensities by 16", "augmentation_copies": 3, "augmentation_noise_sigma_normalized": 0.5, "augmentation_dropout": 0.1, "symmetry_gamma": "1/(64*variance of augmented training pixels)", "scaler": "StandardScaler fit only on augmented training features", "classifier": "SVC(kernel='rbf', C=10, gamma='scale')", "permutation_ablation": "one fixed seed-specific permutation of 64 pixel coordinates"},
+  "control": "same train split, augmentation draws, scaler, and SVC on 64 pixels only",
+  "ablations": ["flip scalar replaced with fixed random-permutation scalar", "no added scalar control"],
+  "pass_rule": "Exploratory pilot supports the proposed causal mechanism only if flip beats control on validation mean in at least 2/3 seeds, mean paired delta is positive, and flip also beats permutation on validation mean. Otherwise report no_gain or inconclusive; held-out results are descriptive and cannot change this rule.",
+  "source_code_sha256": "8c6edb7c6d4654db6578151450dcfa77712f5806a669a1df91fad75cca26465f",
+  "split_hashes": {
+    "137": {"train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639", "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84", "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"},
+    "271": {"train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170", "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e", "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"},
+    "389": {"train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda", "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853", "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"}
+  },
+  "limitations": ["Fixed 8x8 digit benchmark; three seeds are an exploratory pilot, not evidence of external novelty.", "Proposal text did not define pixel normalization unambiguously; implementation follows its normalized-pixel feature description and protocol corruption grid."]
+}

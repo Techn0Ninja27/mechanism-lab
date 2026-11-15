@@ -1,0 +1,125 @@
+{
+  "candidate_id": "digits_shift-world-3",
+  "timestamp_utc": "2026-11-16",
+  "source_sha256": "3fef9c617f6d9d882ac8ce028b4d0bc717a308118c9871200f2ee9653be6e37d",
+  "validation_split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "split": "stratified 60/20/20; train_test_split rest with seed+1",
+  "preprocessing": "train-only; pixel values retained in [0,16]; no test use in validation",
+  "conditions": [
+    {
+      "noise": 0.0,
+      "dropout": 0.0
+    },
+    {
+      "noise": 0.0,
+      "dropout": 0.05
+    },
+    {
+      "noise": 0.0,
+      "dropout": 0.15
+    },
+    {
+      "noise": 0.0,
+      "dropout": 0.3
+    },
+    {
+      "noise": 0.2,
+      "dropout": 0.0
+    },
+    {
+      "noise": 0.4,
+      "dropout": 0.0
+    },
+    {
+      "noise": 0.6,
+      "dropout": 0.0
+    },
+    {
+      "noise": 0.4,
+      "dropout": 0.15
+    },
+    {
+      "noise": 0.6,
+      "dropout": 0.3
+    }
+  ],
+  "control": "StandardScaler+RBF SVC with ordinary two-copy noise/dropout augmentation; same train examples, fit/eval splits, corruption draws",
+  "candidate": "margin-weighted raw OVR decision scores for StandardScaler+RBF pixel aug, PCA32+RBF block aug, MinMaxScaler+RBF mixed aug; weights are validation mean max absolute decision score per classifier normalized to sum one",
+  "ablations": [
+    "uniform average of same three decision score arrays",
+    "validation-accuracy-selected single pipeline",
+    "block pipeline versus pixel/control"
+  ],
+  "primary_metric": "mean accuracy over 9 conditions (clean, three noise, three dropout, two joint); equal condition weight",
+  "pass_rule": "mean candidate margin-weighted ensemble exceeds ordinary augmentation control by >=0.01 absolute, and margin weighting is not worse than uniform averaging; block effect reported separately and is not sufficient alone to pass full intervention",
+  "runtime_limit": "about 120 CPU seconds total for actual study; one CPU thread",
+  "validation_summary": {
+    "137": {
+      "mean": {
+        "pixel": 0.5923862581244196,
+        "block": 0.7997523986381926,
+        "mixed": 0.7455896007428041,
+        "control": 0.5923862581244196
+      },
+      "weights": {
+        "pixel": 0.3327481919367281,
+        "block": 0.3337077116827346,
+        "mixed": 0.33354409638053734
+      },
+      "selected_by_val_accuracy": "block",
+      "weighted_ensemble_mean": 0.72330547818013
+    },
+    "271": {
+      "mean": {
+        "pixel": 0.5905292479108635,
+        "block": 0.8096564531104921,
+        "mixed": 0.7520891364902507,
+        "control": 0.5905292479108635
+      },
+      "weights": {
+        "pixel": 0.33269259748158353,
+        "block": 0.33412662677955035,
+        "mixed": 0.3331807757388661
+      },
+      "selected_by_val_accuracy": "block",
+      "weighted_ensemble_mean": 0.734447539461467
+    },
+    "389": {
+      "mean": {
+        "pixel": 0.6019808108944599,
+        "block": 0.8152274837511606,
+        "mixed": 0.7635406994738472,
+        "control": 0.6019808108944599
+      },
+      "weights": {
+        "pixel": 0.3332792491871855,
+        "block": 0.3337638547640208,
+        "mixed": 0.33295689604879364
+      },
+      "selected_by_val_accuracy": "block",
+      "weighted_ensemble_mean": 0.7279480037140205
+    }
+  },
+  "locked_before_final": true
+}

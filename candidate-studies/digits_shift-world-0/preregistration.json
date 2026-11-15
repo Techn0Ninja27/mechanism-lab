@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-16",
+  "candidate_id": "digits_shift-world-0",
+  "primary_metric": "mean accuracy across clean, noise(.2,.4,.6), dropout(.05,.15,.30), and joint(.4,.15),(.6,.30) conditions",
+  "primary_comparison": "candidate minus ordinary all-pixel corruption augmentation control, paired by seed; fixed selected C=10, gamma=0.01",
+  "hyperparameters_selected_on_validation": {
+    "C": 10,
+    "gamma": 0.01,
+    "selection": "highest mean validation accuracy across the three seeds for the control among the preregistered grid; no held-out tuning"
+  },
+  "control": "same augmented pool count and noise/dropout draws, all pixels augmented, no variance weights or collapsed mask",
+  "ablations": [
+    "variance_weight_only",
+    "collapsed_mask_only"
+  ],
+  "pass_rule": "support only if candidate mean held-out paired delta > 0 and positive in at least 2 of 3 seeds; otherwise no_gain/inconclusive; exploratory only, no significance claim",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "source_sha256": "c9abdb5952a08f78697f4d81af49afd1fb690c1e43aaa34280fcd574cc89d7e8",
+  "validation_complete_before_heldout": true,
+  "known_implementation_issue": "StandardScaler after per-feature multiplication cancels all nonzero scalar feature weights exactly; candidate therefore differs from control only through collapsed-feature masking and augmentation restriction. This is faithful to the stated order and is a central mechanism falsification."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "tabular_missing-direct-0",
+  "problem_id": "tabular_missing",
+  "problem": "Improve a tabular binary classifier when deployment features become missing more often than training features. Use a reproducible synthetic sklearn.make_classification dataset (5000 rows,20 features,5 informative,5 redundant, class balance80/20), a fixed stratified train/validation/test split, and train-only transformations. Predictors may see missingness masks but never test labels during development. Compare median imputation plus HistGradientBoostingClassifier and missingness augmentation. Optimize held-out average precision across clean and predefined missingness stress conditions under 5 CPU minutes on an Apple Silicon laptop. Propose a distinct implementable intervention, not just tuning or ensembling named algorithms. No claim of external novelty without evidence.",
+  "arm": "direct",
+  "seed_word": "porous",
+  "seed_index": 0,
+  "proposal": {
+    "title": "Learned Missing-Value Scalars with Missingness Augmentation for Deployment Shift",
+    "intervention": "Train a single PyTorch MLP where missing feature positions are filled by a trainable parameter vector (shape 20, initialized to training medians) updated via backpropagation alongside all other weights. During each training batch, randomly zero out features per sample with probability drawn from Uniform(0, 0.4), appending a 20-dimensional binary missingness mask as additional input. Loss is standard binary cross-entropy with no entropy penalty term, which is removed as unnecessary given the mask input already encodes uncertainty implicitly through the network weights.",
+    "mechanism": "Median imputation fixes substitution values to a statistic that minimizes reconstruction error, not classification loss. When a feature median lies near a decision boundary, imputing to that median maximally disrupts the classifier. Backpropagating through the substitution operation allows the scalar for each feature to drift to whichever value minimizes classification loss under the observed missingness distribution. Simultaneously feeding the missingness mask as input allows the network to learn decision-boundary adjustments conditioned on which features are absent, rather than pretending absent features were observed at their substitute value.",
+    "assumptions": "Missingness during deployment is missing-at-random or missing-completely-at-random across the 20 features. The Uniform(0, 0.4) augmentation range brackets the deployment missingness rate. The five informative features are not structurally always-observed; if they are never masked during training, learned scalars for those features receive no gradient signal under missingness and revert to initialization.",
+    "baseline": "Median imputation followed by HistGradientBoostingClassifier trained on clean data, evaluated on both clean held-out test data and a predefined stress set where features are dropped at 0.3 probability per sample.",
+    "metric": "Average precision on held-out test set, averaged equally across the clean condition and the predefined missingness stress condition, computed once after all development decisions are finalized.",
+    "falsification": "Freeze all MLP weights and retrain only the learned scalar vector on the validation set under high missingness. If average precision improves meaningfully, joint training failed to find optimal substitution values and the core causal claim is false. Separately, replace learned scalars with fixed training medians while keeping mask inputs and augmentation; if AP is unchanged, the scalars contribute nothing beyond median imputation.",
+    "implementation": "Generate data with sklearn.make_classification(n_samples=5000, n_features=20, n_informative=5, n_redundant=5, weights=[0.8,0.2], random_state=42). Stratified split 60/20/20 train/validation/test. Fit median imputer on train only. Initialize missing_val parameter to train medians. MLP layers: [40 input (20 features + 20 mask), 64, 32, 1], BatchNorm and dropout 0.2. Train with Adam lr=1e-3, batch size 256, early stopping on validation average precision, total wall time under 5 minutes on Apple Silicon.",
+    "queries": [
+      "trainable imputation missing data neural network classification loss backpropagation tabular",
+      "missing data augmentation training distribution shift binary classification average precision"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

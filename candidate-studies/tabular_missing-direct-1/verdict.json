@@ -1,0 +1,39 @@
+{
+  "candidate_id": "tabular_missing-direct-1",
+  "status": "invalid_mechanism",
+  "faithful_implementation": false,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "average precision averaged over clean, 10%, 30%, 50% MCAR held-out test conditions",
+  "mean_candidate": 0.7464597880743453,
+  "mean_control": 0.7858306520029137,
+  "paired_deltas": [
+    -0.019723933536332394,
+    -0.023734007862209472,
+    -0.029583845463336256,
+    -0.029755294908084484,
+    -0.007956208065029169,
+    -0.007440068684118395,
+    -0.02000516236141836,
+    -0.0365590965040451,
+    -0.008482783814714123,
+    -0.041095930632802924,
+    -0.1196974201661477,
+    -0.12841661514458258
+  ],
+  "mean_paired_delta": -0.039370863928568416,
+  "prior_art_status": "Known component overlap: pattern-specific prediction models for missingness patterns; standard held-out isotonic calibration; calibration under covariate shift. No claim made about novelty of a distinct relationship because the proposed relation cannot be instantiated from the stated clean-only training procedure.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Proposal supplies no missingness-corrupted training masks or target-regime calibration data; all KMeans inputs are identical all-zero vectors.",
+    "The held-out diagnostic tests only the resulting single global isotonic calibrator, which is not the stated 8-prototype intervention.",
+    "The synthetic dataset and three seeds do not support claims of external validity.",
+    "Isotonic ties can change average precision; AP is not a calibration metric."
+  ],
+  "validation_complete_before_final": true,
+  "warnings": "scikit-learn KMeans reported one distinct cluster rather than eight; held-out test was run once after preregistration."
+}

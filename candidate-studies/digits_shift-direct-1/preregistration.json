@@ -1,0 +1,133 @@
+{
+  "candidate_id": "digits_shift-direct-1",
+  "created_before_corrected_final_evaluation": true,
+  "proposal_parameters": {
+    "blur_sigma": 0.8,
+    "augmentation_noise_sd_pixels": 2.4,
+    "augmentation_dropout_probability": 0.15,
+    "augmentation_copies": 2,
+    "classifier": "RBF SVC C=10 gamma=scale",
+    "scaler": "StandardScaler fit on clean training images only; raw for baseline, blurred for blur arms"
+  },
+  "arms": [
+    "baseline",
+    "blur_only",
+    "augmentation_only",
+    "blur_plus_augmentation"
+  ],
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy across 9 conditions per seed, averaged over seeds",
+  "conditions": [
+    {
+      "name": "clean",
+      "noise": 0.0,
+      "dropout": 0.0
+    },
+    {
+      "name": "noise_0.2",
+      "noise": 0.2,
+      "dropout": 0.0
+    },
+    {
+      "name": "noise_0.4",
+      "noise": 0.4,
+      "dropout": 0.0
+    },
+    {
+      "name": "noise_0.6",
+      "noise": 0.6,
+      "dropout": 0.0
+    },
+    {
+      "name": "dropout_0.05",
+      "noise": 0.0,
+      "dropout": 0.05
+    },
+    {
+      "name": "dropout_0.15",
+      "noise": 0.0,
+      "dropout": 0.15
+    },
+    {
+      "name": "dropout_0.30",
+      "noise": 0.0,
+      "dropout": 0.3
+    },
+    {
+      "name": "joint_0.4_0.15",
+      "noise": 0.4,
+      "dropout": 0.15
+    },
+    {
+      "name": "joint_0.6_0.30",
+      "noise": 0.6,
+      "dropout": 0.3
+    }
+  ],
+  "control": "baseline",
+  "candidate_arm": "blur_plus_augmentation",
+  "pass_rule": "Pilot benefit if combined arm beats baseline mean by at least 0.02 and clean accuracy mean is no more than 0.02 below baseline; blur causal mechanism judged separately: falsified if augmentation_only matches or exceeds blur_only on noise_0.6 mean. Exploratory, no significance claim.",
+  "hyperparameter_selection": "No tuning; proposal values fixed before validation.",
+  "validation_summary": {
+    "mean_by_variant": {
+      "baseline": 0.4631177138140926,
+      "blur_only": 0.5245022180955329,
+      "augmentation_only": 0.5298669142680285,
+      "blur_plus_augmentation": 0.6400495202723615
+    },
+    "noise_0.6_mean_by_variant": {
+      "baseline": 0.10027855153203342,
+      "blur_only": 0.10770659238625813,
+      "augmentation_only": 0.14113277623026926,
+      "blur_plus_augmentation": 0.1977715877437326
+    },
+    "clean_mean_by_variant": {
+      "baseline": 0.9823584029712163,
+      "blur_only": 0.9795728876508821,
+      "augmentation_only": 0.9647168059424327,
+      "blur_plus_augmentation": 0.9749303621169916
+    }
+  },
+  "validation_complete_for_all_seeds_before_corrected_final": true,
+  "first_run_note": "An initial held-out execution used a scaler fit after augmentation and is invalid; its artifact is retained as results_invalid_v1.json, not used for conclusions. Corrected protocol executed independently after this preregistration.",
+  "source_sha256": "8441c79925a0aef964e58539b211a8582ad6fa9fa9335523eb56a43283ed9a38",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "prior_art": [
+    {
+      "citation": "Rusak et al. 2020, A simple way to make neural networks robust against diverse image corruptions",
+      "url": "https://arxiv.org/abs/2001.06057",
+      "relevance": "Noise augmentation is established for corruption robustness."
+    },
+    {
+      "citation": "Saikia et al. ICCV 2021, Improving Robustness Against Common Corruptions With Frequency Biased Models",
+      "url": "https://openaccess.thecvf.com/content/ICCV2021/papers/Saikia_Improving_Robustness_Against_Common_Corruptions_With_Frequency_Biased_Models_ICCV_2021_paper.pdf",
+      "relevance": "Blur/noise augmentation has frequency-specific robustness effects and clean accuracy tradeoffs."
+    },
+    {
+      "citation": "Lopes et al. 2021, On Interaction Between Augmentations and Corruptions in Natural Corruption Robustness",
+      "url": "https://arxiv.org/abs/2102.11273",
+      "relevance": "Robustness depends on similarity between training augmentations and test corruptions."
+    }
+  ],
+  "novelty_established": false
+}

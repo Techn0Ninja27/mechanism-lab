@@ -1,0 +1,25 @@
+{
+  "id": "digits_shift-random_seed-1",
+  "problem_id": "digits_shift",
+  "problem": "Improve a small classifier on sklearn.load_digits (1797 handwritten8x8 digit images) under label-preserving corruptions: additive pixel noise and random pixel dropout. Use fixed stratified train/validation/test split, fit preprocessing on train only, reserve test for final evaluation, and compare a standardized RBF-SVM plus ordinary corruption augmentation. Optimize mean accuracy across clean and fixed corruption severities under 5 CPU minutes on an Apple Silicon laptop, no pretrained models or external data. Propose a distinct implementable intervention and ablation; do not merely list known techniques or claim external novelty.",
+  "arm": "random_seed",
+  "seed_word": "mirrored",
+  "seed_index": 1,
+  "proposal": {
+    "title": "Horizontal-Flip Symmetry Score Appended to Pixel Features for Corruption-Robust Digit SVM",
+    "intervention": "Compute a single scalar symmetry feature per image: sym_score = exp(-\u03b3_sym \u00b7 ||x - x_flip||\u00b2), where x_flip is the horizontal mirror of the 8\u00d78 image. Append this to the 64 normalized pixel values, giving a 65-dimensional input. Fit a StandardScaler and RBF-SVM on augmented training data only (3 corrupted copies per clean sample via additive Gaussian noise \u03c3=0.5 and 10% pixel dropout). \u03b3_sym = 1/(64\u00b7var(X_train)) mirrors the standard RBF scale heuristic. Use fixed stratified 65/15/20 train/val/test split; scaler fit on train augment only; test set touched once.",
+    "mechanism": "Additive noise and dropout perturb pixels independently, so the difference ||x - x_flip|| grows roughly proportional to corruption magnitude, depressing sym_score. Clean images have stable, digit-specific asymmetry profiles. Appending sym_score gives the RBF kernel a consistent low-dimensional axis separating clean from corrupted feature-space regions, reducing the chance that corrupted test samples land in wrong-class decision zones without requiring the kernel to discover this structure purely from pixel distances.",
+    "assumptions": "Digit images have stable horizontal asymmetry under identity-preserving transformations. This breaks for nearly symmetric digits (0, 1, 8), where sym_score is high regardless of corruption severity. The mechanism also degrades when noise is large enough to saturate sym_score near zero for all samples, eliminating discrimination. The causal story requires that structural flip-difference\u2014not merely an extra feature dimension\u2014drives any accuracy gain.",
+    "baseline": "StandardScaler on raw 64 pixel features plus identical augmentation and RBF-SVM (C=10, gamma='scale'), no symmetry feature appended. Same split, same random seed, same augmentation multiplier.",
+    "metric": "Mean classification accuracy averaged across three conditions evaluated on the held-out test set: clean images, moderate corruption (\u03c3=0.5, drop=0.10), severe corruption (\u03c3=1.0, drop=0.20). Single scalar summary for comparison.",
+    "falsification": "Replace sym_score with rand_score = exp(-\u03b3_sym \u00b7 ||x - x_perm||\u00b2) where x_perm is a fixed random pixel permutation of x, preserving the extra-dimension effect but destroying flip-structural meaning. If val accuracy improvement survives this substitution, the gain is attributable to dimensionality expansion rather than symmetry encoding, falsifying the causal claim. Runs under 30 seconds.",
+    "implementation": "import numpy as np; from sklearn.datasets import load_digits; from sklearn.svm import SVC; from sklearn.preprocessing import StandardScaler; from sklearn.model_selection import StratifiedShuffleSplit. Load digits, normalize /16. Split stratified 80/20 train+val/test, then 85/15 train/val within train+val. Define flip8x8 reshaping x to (n,8,8), reversing axis=2. Augment train set 3x with corrupt(). Compute sym_score on augmented train, hstack to pixels. Fit scaler on augmented train features. Transform val and test (clean and two corruption levels) using same scaler with sym_score appended. Fit SVC(kernel='rbf',C=10,gamma='scale'). Evaluate mean accuracy across three test conditions.",
+    "queries": [
+      "feature augmentation symmetry invariance SVM robustness image noise corruption",
+      "handwritten digit classification corruption robustness kernel methods pixel statistics"
+    ]
+  },
+  "status": "complete",
+  "human_adjudicated": false,
+  "train_eligible": false
+}

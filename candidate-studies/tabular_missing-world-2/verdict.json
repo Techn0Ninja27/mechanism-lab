@@ -1,0 +1,36 @@
+{
+  "candidate_id": "tabular_missing-world-2",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "macro average precision over MCAR rates 0,.1,.3,.5; mean over seeds",
+  "mean_candidate": 0.8378881350070088,
+  "mean_control": 0.78199350838501,
+  "mean_matched_ablation": 0.8339686317231687,
+  "paired_deltas_vs_control": [
+    0.03457021235081248,
+    0.04821701648291177,
+    0.08489665103227184
+  ],
+  "paired_deltas_vs_value_only_augmentation": [
+    0.002539138543815267,
+    0.004691048778710849,
+    0.004528322528994044
+  ],
+  "mean_delta_vs_value_only_augmentation": 0.003919503283840053,
+  "validation_mean_candidate": 0.8646539974204407,
+  "validation_mean_matched_ablation": 0.8635195869165871,
+  "prior_art_status": "core missingness indicators and mask-aware tree handling are established; no novelty established",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Synthetic evaluation is MCAR, while proposal premise assumes informative missingness.",
+    "Corrected final is exploratory because held-out results from a superseded unfaithful implementation were seen first; correction was to match proposal semantics, with no score-driven tuning.",
+    "Only three random seeds; descriptive pilot, no significance claim.",
+    "Preregistered minimum +0.01 AP gain over matched value-only augmentation was not met."
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "candidate_id": "digits_shift-direct-3",
+  "frozen_before_final": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "selected_validation_sigmas": [
+    {
+      "seed": 137,
+      "selected_sigma": 0.4,
+      "validation_mean_accuracy": 0.7824203033116682
+    },
+    {
+      "seed": 271,
+      "selected_sigma": 0.4,
+      "validation_mean_accuracy": 0.8034664190653049
+    },
+    {
+      "seed": 389,
+      "selected_sigma": 0.4,
+      "validation_mean_accuracy": 0.8006809037449706
+    }
+  ],
+  "control": "same train-only corruption augmentation, sigma=0 Gaussian pre-smoothing, StandardScaler+RBF-SVC C=10 gamma=scale",
+  "primary_metric": "mean accuracy over 9 conditions",
+  "conditions": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.2,
+      0.0
+    ],
+    [
+      0.4,
+      0.0
+    ],
+    [
+      0.6,
+      0.0
+    ],
+    [
+      0.0,
+      0.05
+    ],
+    [
+      0.0,
+      0.15
+    ],
+    [
+      0.0,
+      0.3
+    ],
+    [
+      0.4,
+      0.15
+    ],
+    [
+      0.6,
+      0.3
+    ]
+  ],
+  "ablation": "no corruption augmentation at selected validation sigma",
+  "selection_rule": "independently select sigma maximizing augmented validation mean accuracy for each seed; ties favor smaller sigma",
+  "pass_rule": "mean paired test gain > 0.01 absolute and each seed gain > 0, with clean-condition accuracy loss at chosen sigma versus control no worse than 0.02 absolute",
+  "falsification_rule": "control validation matches/exceeds every positive sigma, or selected-sigma clean accuracy loses >0.02 vs control; held-out pilot additionally fails if pass_rule not met",
+  "source_sha256": "5d2a8bd5d4fc90863960e61cf28080a7eb022dad805564f03f5371c0c76c71ae",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "validation_sha256": "acbc0087047abc5c4eb539b3d7370ae18f4c9d0c0327137cd79d29f8bba490d0",
+  "notes": "Validation completed for all three seeds before any final/test metrics were computed."
+}

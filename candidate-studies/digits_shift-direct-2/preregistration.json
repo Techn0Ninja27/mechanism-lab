@@ -1,0 +1,121 @@
+{
+  "candidate_id": "digits_shift-direct-2",
+  "frozen_at": "2026-11-16",
+  "primary_metric": "mean accuracy over the nine fixed clean/noise/dropout/joint conditions; arithmetic mean within seed then across seeds",
+  "primary_candidate": "envelope_aug",
+  "primary_control": "standard_aug",
+  "control_definition": "same training split, two fixed independently corrupted copies (one Gaussian noise std .4, one dropout p=.15), RBF SVC C=10 gamma=scale; only scaler differs",
+  "formula": "sqrt(var_clean + eta^2 + p*(1-p)*mu^2), with eta and p matching each evaluation condition; variance/mean fitted on training images only; epsilon floor 1e-8",
+  "conditions": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.2,
+      0.0
+    ],
+    [
+      0.4,
+      0.0
+    ],
+    [
+      0.6,
+      0.0
+    ],
+    [
+      0.0,
+      0.05
+    ],
+    [
+      0.0,
+      0.15
+    ],
+    [
+      0.0,
+      0.3
+    ],
+    [
+      0.4,
+      0.15
+    ],
+    [
+      0.6,
+      0.3
+    ]
+  ],
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "augmentation": [
+    [
+      0.4,
+      0.0
+    ],
+    [
+      0.0,
+      0.15
+    ]
+  ],
+  "hyperparameters": {
+    "C": 10,
+    "gamma": "scale",
+    "kernel": "rbf",
+    "augmentation_copies": 2,
+    "augmentation_noise_std_normalized": 0.4,
+    "augmentation_dropout_probability": 0.15
+  },
+  "validation_means_by_seed": {
+    "standard_aug": [
+      0.5518415351284431,
+      0.5530795419374805,
+      0.5852677189724544
+    ],
+    "envelope_aug": [
+      0.4302073661405138,
+      0.4444444444444444,
+      0.44413494274218507
+    ],
+    "envelope_noaug": [
+      0.7195914577530177,
+      0.7369235530795419,
+      0.7561126586196224
+    ],
+    "envelope_drop_noise": [
+      0.0971835345094398,
+      0.10120705663881152,
+      0.09780253791395851
+    ],
+    "envelope_drop_dropout": [
+      0.4295883627359951,
+      0.4450634478489632,
+      0.44599195295574123
+    ]
+  },
+  "validation_mean_candidate": 0.4395955844423811,
+  "validation_mean_control": 0.5633962653461261,
+  "decision_rule": "Proceed to frozen final evaluation regardless of validation outcome. A candidate pilot passes only if candidate mean exceeds control mean by >=0.01 and all three paired deltas are positive. No test-driven tuning.",
+  "validation_decision": "fail_to_pass_pilot; candidate below control on all three validation seeds",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "source_sha256": "cbab63673c6c2da76e885cf147c11dc4f251f8d4a8639a0690484b8ebeae3b7f",
+  "test_accessed_before_freeze": false,
+  "known_deviation": "Candidate proposal describes an approximate variance envelope; for dropout, the exact unconditional variance also attenuates clean variance by (1-p), and noise followed by dropout would attenuate additive variance. Proposed expression tested as written."
+}

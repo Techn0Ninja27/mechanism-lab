@@ -1,0 +1,269 @@
+{
+  "candidate_id": "tabular_missing-random_seed-1",
+  "date": "2026-11-16",
+  "mode": "frozen exploratory pilot preregistration",
+  "data_and_splits": "make_classification(5000,20,5 informative,5 redundant, weights .8/.2); stratified 60/20/20; validation/test each from remaining 40%, random_state seed then seed+1",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "split_hashes": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "source_code_sha256": "e1e780933ee639a15f3ecbdf5e53ac9f68d6c8de56ba1febe6d3dc36834ffc5f",
+  "primary_candidate": "mirror_mask",
+  "primary_control": "median_hgb",
+  "secondary_control": "native_hgb",
+  "fixed_hyperparameters": {
+    "HistGradientBoostingClassifier": {
+      "max_iter": 300,
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 31,
+      "random_state": 42
+    },
+    "copies": 5,
+    "corrupted_copies": 4,
+    "per_feature_mask_rate": "independent Beta(0.5, 2) draw per corrupted copy",
+    "mask_columns": 20,
+    "metric": "mean AP across clean, 10%, 30%, 50% MCAR"
+  },
+  "ablation_methods": [
+    "mirror_no_mask",
+    "mask_only",
+    "native_hgb"
+  ],
+  "validation_summary_before_test": {
+    "median_hgb": {
+      "mean_over_seed_condition_pairs": 0.8016934567114617,
+      "seed_means": {
+        "137": 0.7568221665732463,
+        "271": 0.8551801933467157,
+        "389": 0.7930780102144233
+      },
+      "conditions": {
+        "0": {
+          "mean_across_seeds": 0.9408164954075567,
+          "per_seed": [
+            0.8915570738535064,
+            0.9590567112538253,
+            0.9718357011153386
+          ]
+        },
+        "0.1": {
+          "mean_across_seeds": 0.8951605174697632,
+          "per_seed": [
+            0.8521657598101859,
+            0.9251616205731763,
+            0.9081541720259273
+          ]
+        },
+        "0.3": {
+          "mean_across_seeds": 0.7721936418153575,
+          "per_seed": [
+            0.7208595565966476,
+            0.8349039649355494,
+            0.7608174039138756
+          ]
+        },
+        "0.5": {
+          "mean_across_seeds": 0.5986031721531696,
+          "per_seed": [
+            0.5627062760326454,
+            0.7015984766243119,
+            0.5315047638025515
+          ]
+        }
+      }
+    },
+    "native_hgb": {
+      "mean_over_seed_condition_pairs": 0.823907568200384,
+      "seed_means": {
+        "137": 0.7704057556912483,
+        "271": 0.8636991852385747,
+        "389": 0.8376177636713291
+      },
+      "conditions": {
+        "0": {
+          "mean_across_seeds": 0.9408164954075567,
+          "per_seed": [
+            0.8915570738535064,
+            0.9590567112538253,
+            0.9718357011153386
+          ]
+        },
+        "0.1": {
+          "mean_across_seeds": 0.9063829038156409,
+          "per_seed": [
+            0.8492176429675393,
+            0.9304649179361228,
+            0.9394661505432605
+          ]
+        },
+        "0.3": {
+          "mean_across_seeds": 0.8040769113566603,
+          "per_seed": [
+            0.7435487431267656,
+            0.8417068698399574,
+            0.8269751211032578
+          ]
+        },
+        "0.5": {
+          "mean_across_seeds": 0.6443539622216784,
+          "per_seed": [
+            0.597299562817182,
+            0.7235682419243934,
+            0.6121940819234597
+          ]
+        }
+      }
+    },
+    "mirror_mask": {
+      "mean_over_seed_condition_pairs": 0.8801402915064477,
+      "seed_means": {
+        "137": 0.797426256937958,
+        "271": 0.9259224009111375,
+        "389": 0.9170722166702475
+      },
+      "conditions": {
+        "0": {
+          "mean_across_seeds": 0.9350726359743663,
+          "per_seed": [
+            0.8729552551350421,
+            0.9610627622403896,
+            0.9711998905476673
+          ]
+        },
+        "0.1": {
+          "mean_across_seeds": 0.9257551719703575,
+          "per_seed": [
+            0.855199390370684,
+            0.9551958316549432,
+            0.9668702938854452
+          ]
+        },
+        "0.3": {
+          "mean_across_seeds": 0.8871260599195773,
+          "per_seed": [
+            0.7947158005362132,
+            0.9339273430437688,
+            0.9327350361787499
+          ]
+        },
+        "0.5": {
+          "mean_across_seeds": 0.7726072981614897,
+          "per_seed": [
+            0.6668345817098925,
+            0.8535036667054486,
+            0.7974836460691277
+          ]
+        }
+      }
+    },
+    "mirror_no_mask": {
+      "mean_over_seed_condition_pairs": 0.8801402915064477,
+      "seed_means": {
+        "137": 0.797426256937958,
+        "271": 0.9259224009111375,
+        "389": 0.9170722166702475
+      },
+      "conditions": {
+        "0": {
+          "mean_across_seeds": 0.9350726359743663,
+          "per_seed": [
+            0.8729552551350421,
+            0.9610627622403896,
+            0.9711998905476673
+          ]
+        },
+        "0.1": {
+          "mean_across_seeds": 0.9257551719703575,
+          "per_seed": [
+            0.855199390370684,
+            0.9551958316549432,
+            0.9668702938854452
+          ]
+        },
+        "0.3": {
+          "mean_across_seeds": 0.8871260599195773,
+          "per_seed": [
+            0.7947158005362132,
+            0.9339273430437688,
+            0.9327350361787499
+          ]
+        },
+        "0.5": {
+          "mean_across_seeds": 0.7726072981614897,
+          "per_seed": [
+            0.6668345817098925,
+            0.8535036667054486,
+            0.7974836460691277
+          ]
+        }
+      }
+    },
+    "mask_only": {
+      "mean_over_seed_condition_pairs": 0.2049992263633431,
+      "seed_means": {
+        "137": 0.21297067686313934,
+        "271": 0.20268778495073878,
+        "389": 0.1993392172761512
+      },
+      "conditions": {
+        "0": {
+          "mean_across_seeds": 0.203,
+          "per_seed": [
+            0.204,
+            0.203,
+            0.202
+          ]
+        },
+        "0.1": {
+          "mean_across_seeds": 0.19986669443695348,
+          "per_seed": [
+            0.20441700160126727,
+            0.20179481047127476,
+            0.19338827123831845
+          ]
+        },
+        "0.3": {
+          "mean_across_seeds": 0.2067277756560388,
+          "per_seed": [
+            0.20841640533903763,
+            0.2011046252487405,
+            0.2106622963803383
+          ]
+        },
+        "0.5": {
+          "mean_across_seeds": 0.21040243536038014,
+          "per_seed": [
+            0.23504930051225248,
+            0.20485170408293985,
+            0.19130630148594807
+          ]
+        }
+      }
+    }
+  },
+  "validation_mask_permutation": {
+    "137": 0.0,
+    "271": 0.0,
+    "389": 0.0
+  },
+  "decision_rule": "supported_pilot only if equal-weight mean paired AP delta (mirror_mask minus median_hgb) is positive and the mean paired delta at 50% MCAR is at least +0.02. Report explicit-mask pathway as unsupported if mask permutation yields zero/nonpositive AP drop on at least two seeds. No post-test tuning; exploratory replication, not significance or novelty proof.",
+  "held_out_policy": "Run final once after this file is written; do not modify experiment code or decision rule based on held-out results."
+}

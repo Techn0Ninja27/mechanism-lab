@@ -1,0 +1,130 @@
+{
+  "candidate_id": "digits_shift-world-2",
+  "created_utc_date": "2026-11-16",
+  "source_sha256": "b6f7309ab4ae3ff61e6810088a906eab547a40accbff003e510b35a64b8fc235",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "hyperparameter_grid": [
+    [
+      1.0,
+      "scale"
+    ],
+    [
+      10.0,
+      "scale"
+    ],
+    [
+      100.0,
+      "scale"
+    ],
+    [
+      10.0,
+      0.01
+    ],
+    [
+      10.0,
+      0.1
+    ]
+  ],
+  "chosen_hyperparameters_from_validation": {
+    "137": {
+      "weighted": {
+        "C": 10.0,
+        "gamma": 0.01
+      },
+      "uniform": {
+        "C": 10.0,
+        "gamma": 0.01
+      },
+      "weighted_no_standardize": {
+        "C": 10.0,
+        "gamma": "scale"
+      }
+    },
+    "271": {
+      "weighted": {
+        "C": 1.0,
+        "gamma": "scale"
+      },
+      "uniform": {
+        "C": 1.0,
+        "gamma": "scale"
+      },
+      "weighted_no_standardize": {
+        "C": 1.0,
+        "gamma": "scale"
+      }
+    },
+    "389": {
+      "weighted": {
+        "C": 10.0,
+        "gamma": "scale"
+      },
+      "uniform": {
+        "C": 10.0,
+        "gamma": "scale"
+      },
+      "weighted_no_standardize": {
+        "C": 1.0,
+        "gamma": "scale"
+      }
+    }
+  },
+  "primary_metric": "mean accuracy across 9 protocol conditions per seed; compare corruption-variance-weighted PCA against matched uniform PCA + identical augmentation",
+  "conditions": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.2,
+      0.0
+    ],
+    [
+      0.4,
+      0.0
+    ],
+    [
+      0.6,
+      0.0
+    ],
+    [
+      0.0,
+      0.05
+    ],
+    [
+      0.0,
+      0.15
+    ],
+    [
+      0.0,
+      0.3
+    ],
+    [
+      0.4,
+      0.15
+    ],
+    [
+      0.6,
+      0.3
+    ]
+  ],
+  "pass_rule": "Across 3 held-out seeds, weighted method must exceed uniform baseline mean by >= 0.01 absolute and have positive paired mean delta; all failures retained.",
+  "heldout_policy": "test evaluated once after all validation; no tuning after results.json exists",
+  "ablation": "same pipeline with uniform weights, plus weighted PCA without StandardScaler"
+}

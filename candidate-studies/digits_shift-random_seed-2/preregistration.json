@@ -1,0 +1,100 @@
+{
+  "candidate_id": "digits_shift-random_seed-2",
+  "registered_before_final_evaluation": true,
+  "source_sha256": "54c7c33ba787da763336cd0636204c90028c8b35d83c0381543deaa74774175d",
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "chosen_hyperparameters": {
+    "scaler": "StandardScaler fitted on clean training pixels only",
+    "classifier": "sklearn SVC RBF, C=10, gamma=scale",
+    "augmentation_copies": 8,
+    "candidate_severities": "0.5*(1+sin(2*pi*i/8)), i=0..7",
+    "candidate_noise_std_raw": "0.5*severity*16",
+    "candidate_dropout": "0.15*severity",
+    "control": "same model and augmentation count with severities linspace(0,1,8)",
+    "ablation": "constant_mid (8 copies at .5); single_mid (1 copy at .5)"
+  },
+  "primary_metric": "mean accuracy over 9 held-out corruption conditions: clean, noise .2/.4/.6, dropout .05/.15/.30, joint (.4,.15),(.6,.30)",
+  "pass_fail_rule": "pilot support only if candidate mean paired delta vs uniform control is >= +0.005 absolute and candidate wins on >=2/3 seeds; otherwise no_gain. Validation does not change the registered method or threshold.",
+  "validation_summary": {},
+  "validation_complete_before_final": true,
+  "deviations_from_proposal": "Use repo-mandated 60/20/20 splits with seeds 137,271,389 and nine benchmark corruption conditions; proposal sketch used a different 80/20 split and four conditions. Corruption sigma is applied in raw pixel units consistently with benchmark convention.",
+  "validation_aggregates": {
+    "swept": [
+      {
+        "seed": 137,
+        "mean_accuracy": 0.6273599504797276
+      },
+      {
+        "seed": 271,
+        "mean_accuracy": 0.6505725781491799
+      },
+      {
+        "seed": 389,
+        "mean_accuracy": 0.6728567007118539
+      }
+    ],
+    "uniform": [
+      {
+        "seed": 137,
+        "mean_accuracy": 0.634478489631693
+      },
+      {
+        "seed": 271,
+        "mean_accuracy": 0.6490250696378831
+      },
+      {
+        "seed": 389,
+        "mean_accuracy": 0.6740947075208913
+      }
+    ],
+    "constant_mid": [
+      {
+        "seed": 137,
+        "mean_accuracy": 0.6375735066542866
+      },
+      {
+        "seed": 271,
+        "mean_accuracy": 0.6539770968740329
+      },
+      {
+        "seed": 389,
+        "mean_accuracy": 0.6861652739090065
+      }
+    ],
+    "single_mid": [
+      {
+        "seed": 137,
+        "mean_accuracy": 0.5369854534199938
+      },
+      {
+        "seed": 271,
+        "mean_accuracy": 0.5462705044877746
+      },
+      {
+        "seed": 389,
+        "mean_accuracy": 0.5831012070566388
+      }
+    ]
+  }
+}

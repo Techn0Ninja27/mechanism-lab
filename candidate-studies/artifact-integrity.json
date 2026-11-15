@@ -1,0 +1,287 @@
+[
+  {
+    "id": "digits_shift-direct-0",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "d2e827a45e23790ec51b7ade7fe58f73a04f9ef310bb4be7c6267683037b0ae9",
+        "actual": "d2e827a45e23790ec51b7ade7fe58f73a04f9ef310bb4be7c6267683037b0ae9",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-direct-1",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "8441c79925a0aef964e58539b211a8582ad6fa9fa9335523eb56a43283ed9a38",
+        "actual": "8441c79925a0aef964e58539b211a8582ad6fa9fa9335523eb56a43283ed9a38",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-direct-2",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "cbab63673c6c2da76e885cf147c11dc4f251f8d4a8639a0690484b8ebeae3b7f",
+        "actual": "cbab63673c6c2da76e885cf147c11dc4f251f8d4a8639a0690484b8ebeae3b7f",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-direct-3",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "5d2a8bd5d4fc90863960e61cf28080a7eb022dad805564f03f5371c0c76c71ae",
+        "actual": "5d2a8bd5d4fc90863960e61cf28080a7eb022dad805564f03f5371c0c76c71ae",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-random_seed-0",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "27923218d00c528f86a5564b9fcdfd0610d41e06bac4c0d3609c22f0e38483d0",
+        "actual": "27923218d00c528f86a5564b9fcdfd0610d41e06bac4c0d3609c22f0e38483d0",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-random_seed-1",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "8c6edb7c6d4654db6578151450dcfa77712f5806a669a1df91fad75cca26465f",
+        "actual": "8c6edb7c6d4654db6578151450dcfa77712f5806a669a1df91fad75cca26465f",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-random_seed-2",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "54c7c33ba787da763336cd0636204c90028c8b35d83c0381543deaa74774175d",
+        "actual": "54c7c33ba787da763336cd0636204c90028c8b35d83c0381543deaa74774175d",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-random_seed-3",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "33a0c90b35265bc0800944ee02f590581d0c396bbc45c67b1e7f3a05d650797b",
+        "actual": "33a0c90b35265bc0800944ee02f590581d0c396bbc45c67b1e7f3a05d650797b",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-world-0",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "c9abdb5952a08f78697f4d81af49afd1fb690c1e43aaa34280fcd574cc89d7e8",
+        "actual": "c9abdb5952a08f78697f4d81af49afd1fb690c1e43aaa34280fcd574cc89d7e8",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-world-1",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "86bb015acdd6b6d4784f99f0b5ef6f70ab4f268b812112ecf70505cbcb5803eb",
+        "actual": "86bb015acdd6b6d4784f99f0b5ef6f70ab4f268b812112ecf70505cbcb5803eb",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-world-2",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "b6f7309ab4ae3ff61e6810088a906eab547a40accbff003e510b35a64b8fc235",
+        "actual": "b6f7309ab4ae3ff61e6810088a906eab547a40accbff003e510b35a64b8fc235",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "digits_shift-world-3",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "3fef9c617f6d9d882ac8ce028b4d0bc717a308118c9871200f2ee9653be6e37d",
+        "actual": "3fef9c617f6d9d882ac8ce028b4d0bc717a308118c9871200f2ee9653be6e37d",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-direct-0",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "23875d3b322400f56cd5f8cf54949845f46976bd774e2e3d1c88fa5f32801285",
+        "actual": "23875d3b322400f56cd5f8cf54949845f46976bd774e2e3d1c88fa5f32801285",
+        "matches": true
+      },
+      {
+        "file": "prepare.py",
+        "expected": "febf5a4f750736cf13ad4891db6118403bc8436880c403e2ffea3b12f763c32f",
+        "actual": "febf5a4f750736cf13ad4891db6118403bc8436880c403e2ffea3b12f763c32f",
+        "matches": true
+      },
+      {
+        "file": "score_hgb_final.py",
+        "expected": "abbee5579e1e6bee29420596ddea6b4981766f055d5111d4042acd7e8aa17bb8",
+        "actual": "abbee5579e1e6bee29420596ddea6b4981766f055d5111d4042acd7e8aa17bb8",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-direct-1",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "30f2fdcd005d997556bedb96ed9197d6c51db52953cdebe2da9bff5ff1e671e2",
+        "actual": "30f2fdcd005d997556bedb96ed9197d6c51db52953cdebe2da9bff5ff1e671e2",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-direct-2",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "4910e83679f8dc065b11675784e6ae76c1ffda96533d91db503aa34174c4f7aa",
+        "actual": "4910e83679f8dc065b11675784e6ae76c1ffda96533d91db503aa34174c4f7aa",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-random_seed-1",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "e1e780933ee639a15f3ecbdf5e53ac9f68d6c8de56ba1febe6d3dc36834ffc5f",
+        "actual": "e1e780933ee639a15f3ecbdf5e53ac9f68d6c8de56ba1febe6d3dc36834ffc5f",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-random_seed-2",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "3bc769930dc901c8705c174fd90aa3d87fe5bac55dd5dffd614c63e60215956a",
+        "actual": "3bc769930dc901c8705c174fd90aa3d87fe5bac55dd5dffd614c63e60215956a",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-world-0",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "fe8589af45da70021212d6f1bf50fecc8bbd38addc0c2d8da476aa3d48905f40",
+        "actual": "fe8589af45da70021212d6f1bf50fecc8bbd38addc0c2d8da476aa3d48905f40",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-world-1",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "51d478a1261c37b9f6a6d4becced77a5d93c90e2c33db9e780d0debc53841725",
+        "actual": "51d478a1261c37b9f6a6d4becced77a5d93c90e2c33db9e780d0debc53841725",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-world-2",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "06fc7a5517a480b9208a78bce98570998145e00369ceb44ad78348cfe2b27ce1",
+        "actual": "06fc7a5517a480b9208a78bce98570998145e00369ceb44ad78348cfe2b27ce1",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  },
+  {
+    "id": "tabular_missing-world-3",
+    "complete": true,
+    "hash_checks": [
+      {
+        "file": "experiment.py",
+        "expected": "2decba97e238da725bbf599e1f63ee4894743e7c446c71aabe5f7256b7d04461",
+        "actual": "2decba97e238da725bbf599e1f63ee4894743e7c446c71aabe5f7256b7d04461",
+        "matches": true
+      }
+    ],
+    "hashes_match": true
+  }
+]

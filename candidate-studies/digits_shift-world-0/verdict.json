@@ -1,0 +1,27 @@
+{
+  "candidate_id": "digits_shift-world-0",
+  "status": "supported_pilot",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy over clean, noise .2/.4/.6, dropout .05/.15/.30, and joint (.4,.15)/(.6,.30)",
+  "mean_candidate": 0.8186111111111112,
+  "mean_control": 0.7140740740740741,
+  "paired_deltas": [
+    0.10305555555555568,
+    0.11583333333333334,
+    0.09472222222222237
+  ],
+  "prior_art_status": "overlapping established prior art for SVM metric scaling and feature selection; no exact match located in bounded search; novelty not established",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "StandardScaler after multiplication cancels all nonzero per-pixel variance weights exactly; observed difference comes from collapsed-pixel masking.",
+    "Candidate exactly matches collapsed_mask_only; variance_weight_only exactly matches control.",
+    "Only three fixed sklearn digits splits and specified synthetic corruptions; exploratory pilot, not evidence of significance or external generalization.",
+    "A diagonal feature-weighting concept and zero-weight feature selection predate this proposal."
+  ]
+}

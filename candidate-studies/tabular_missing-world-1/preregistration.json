@@ -1,0 +1,34 @@
+{
+  "candidate_id": "tabular_missing-world-1",
+  "created": "2026-11-16",
+  "protocol": "Three seeds (137,271,389); 5000x20 make_classification, stratified 60/20/20; transformations fit on train only; identical per-seed MCAR test masks across all methods. Validation completed before any held-out metrics.",
+  "source_sha256": "51d478a1261c37b9f6a6d4becced77a5d93c90e2c33db9e780d0debc53841725",
+  "split_index_sha256": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "primary_metric": "mean AP across clean, 10%, 30%, 50% MCAR held-out rows",
+  "candidate": "recon_beta: MLP with explicit mask input, masked-value MSE auxiliary loss weight 0.2, per-row p=0.5*Beta(2,1), 30 epochs, Adam lr=.002, weight_decay=1e-4, batch 128, widths 64/32",
+  "primary_control": "same MLP and augmentation but reconstruction loss removed (no_recon_beta)",
+  "additional_controls": [
+    "median train-median imputation + indicator HGB max_iter=120",
+    "same aux loss with uniform p~U[0,0.5]",
+    "same aux loss without explicit mask input"
+  ],
+  "decision_rule": "supported pilot only if candidate mean held-out AP exceeds no_recon_beta by >=0.005 and no clean-condition AP loss >0.01; otherwise no_gain if paired mean delta <=0, inconclusive if positive delta below threshold. This is a pilot threshold, not statistical significance.",
+  "validation_tuning": "No parameter tuning; fixed settings from proposal translated to runnable MLP.",
+  "heldout_policy": "One final run per seed; no tuning or rerun after reading held-out scores."
+}

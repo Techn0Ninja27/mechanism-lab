@@ -1,0 +1,28 @@
+{
+  "candidate_id": "digits_shift-random_seed-0",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy across 9 prespecified conditions, averaged within split",
+  "mean_candidate": 0.5647119341563787,
+  "mean_control": 0.5655349794238683,
+  "paired_deltas": {
+    "137": 0.007407407407407418,
+    "271": -0.00864197530864197,
+    "389": -0.0012345679012345512
+  },
+  "prior_art_status": "Adjacent feature/saliency-guided augmentation and Fisher weighting prior art found; exact combination unresolved; novelty not established.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "3 seeds, one small digits dataset",
+    "synthetic severe corruptions",
+    "no statistical inference or external dataset",
+    "dropout probability clipping changes realized deletion rates",
+    "inference runtime was not separately instrumented"
+  ]
+}

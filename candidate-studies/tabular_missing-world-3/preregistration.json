@@ -1,0 +1,52 @@
+{
+  "candidate_id": "tabular_missing-world-3",
+  "date": "2026-11-16",
+  "status": "frozen_before_test_score_inspection",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "dataset": "sklearn.make_classification: n=5000, features=20, informative=5, redundant=5, weights=[0.8,0.2], class_sep=1.0, random_state=seed",
+  "split": "stratified 60/20/20; first split random_state=seed, second split random_state=seed+1",
+  "split_hashes": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "primary_metric": "mean average precision over held-out clean, MCAR 10%, 30%, and 50% conditions; average conditions within seed then seeds equally",
+  "control": "median-imputed HistGradientBoostingClassifier, 100 iterations, 15 leaves, min_samples_leaf=20, L2=1; no mask columns or augmentation",
+  "candidate": "same HGB capacity, median frozen from training; cumulative clean + 10% + 30% train-only masked copies; mask columns scaled by training-only mutual information divided by its mean",
+  "chosen_hyperparameters": {
+    "elevated_curriculum_rate": 0.3,
+    "observed_phase_rate": 0.1,
+    "iterations": 100,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 20,
+    "l2_regularization": 1.0,
+    "early_stopping": false,
+    "mask_weight": "normalized training mutual information"
+  },
+  "validation_selection": "30% selected by highest weighted-candidate mean AP over all seeds and validation conditions; validation means 30%=0.8640261, 50%=0.8640781, a negligible difference; 30% frozen as the deployment-rate setting after effectively tied score",
+  "ablations": [
+    "uniform mask-column weights",
+    "elevated-rate augmentation without the 10% curriculum phase"
+  ],
+  "pass_rule": "supported_pilot only if candidate mean AP exceeds control and paired mean difference is positive in all three seeds; otherwise no_gain or inconclusive depending on failures/variance",
+  "corruption": "same deterministic MCAR mask seed for all methods within each seed and condition; rates 0, .10, .30, .50",
+  "source_sha256": "2decba97e238da725bbf599e1f63ee4894743e7c446c71aabe5f7256b7d04461",
+  "limitations": "HistGradientBoosting does not support safe incremental fitting across changing datasets; phases are cumulative augmentation strata in the final fit, not sequential optimizer updates. Synthetic MCAR only.",
+  "procedural_deviation": "The configuration and decision rule were fixed after validation and before final execution, but a path error caused the preregistration JSON to be written after the final command had executed. Final metrics were not inspected until after the JSON was written. This is not a strict preregistration-before-execution; treat the test as exploratory."
+}

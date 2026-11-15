@@ -1,0 +1,62 @@
+{
+  "candidate_id": "digits_shift-world-1",
+  "registered_after_validation_before_final": true,
+  "source_code_sha256": "86bb015acdd6b6d4784f99f0b5ef6f70ab4f268b812112ecf70505cbcb5803eb",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "split_hashes": {
+    "137": {
+      "train": "fe2df831c820e462a4387256eafd8771ed9ce9def235b8942deb4d508882d639",
+      "validation": "923598853ccc9055351344ca9b0189ca06c7695afac7b9b4b65124ec0a0dda84",
+      "test": "ac5d0a4ba3f16918effd0384acbd5852bfb70e59bfee09c95986ea943a7a062a"
+    },
+    "271": {
+      "train": "14052882932d1a251225f350411e2eac63879235e54423f96ed7b0e10e184170",
+      "validation": "f4917530eebbc893d703147f907ce892a366f3bcf07450461e031e6867ef070e",
+      "test": "519fd9e37498116768b7892f42da924649c7e3727a697ee4f462489be529643a"
+    },
+    "389": {
+      "train": "dff80505447443c4b634b1fdf52a3c17c321eddd73734e082bf7e726840abdda",
+      "validation": "daaccdd91edebcbea00a1fac684c8fed3c8868417a62485d6d56460fbe74a853",
+      "test": "d9dbd5830c666e425f93fccba732d23e59335295ab646c5398eb35236418f971"
+    }
+  },
+  "dataset": "sklearn.load_digits; stratified 60/20/20 with split seed s, then validation/test split seed s+1; preprocessing scaler fit on train only",
+  "primary_metric": "per-seed mean accuracy over 9 deterministic test corruption conditions: clean; noise sigma .2/.4/.6 times intensity 16; dropout .05/.15/.30; joint (.4,.15),(.6,.30); report equal-weight condition average then average over three seeds",
+  "conditions_seed": "s+20000+int(noise*1000)+int(dropout*10000); clipping to [0,16]; exact same condition arrays for all arms",
+  "control": "StandardScaler(train only) + RBF SVC; train on clean train plus two unanchored augmentation views (Gaussian noise .15*16 and pixel dropout .15); C/gamma selected by validation accuracy",
+  "candidate": "Same model and fixed augmentation views; each augmentation pulled toward clean standardized train class centroid with alpha=severity/max_severity; hyperparameter score=(3-fold stratified clean-train CV accuracy + held-out validation accuracy)/2; at inference, only samples below validation-derived 20th percentile max decision margin are reconstructed from top 32 PCA components fit on clean train images; then classify.",
+  "hyperparameter_grid": {
+    "C": [
+      1.0,
+      10.0
+    ],
+    "gamma": [
+      0.01,
+      0.1,
+      "scale"
+    ],
+    "kernel": "rbf"
+  },
+  "ablations": [
+    "composite_only: composite hyperparameter score only",
+    "anchor_only: centroid pull only",
+    "pca_only: low-margin PCA reconstruction only",
+    "full: all three; primary candidate"
+  ],
+  "fixed_pca": {
+    "components": 32,
+    "trigger": "validation 20th percentile of maximum SVC decision value; fixed per seed"
+  },
+  "pass_fail_rule": "Primary full arm is supported_pilot only if its mean primary metric exceeds control across three seeds and the mean paired gain is positive; otherwise no_gain. Also report each ablation without post-hoc promotion. No significance claim or novelty claim.",
+  "test_policy": "No test score read before this preregistration. Final mode is run once per seed; no hyperparameter or threshold changes afterward.",
+  "known_deviations": [
+    "Proposal says two augmentation severities but does not specify their values; use benchmark-matched clean + one noise-0.15 view + one dropout-0.15 view (3x training rows).",
+    "Proposal describes thresholded PCA denoising and a validation/CV composite proxy; no live validation gradient is implemented.",
+    "Task fixture defines nine conditions; this overrides proposal metric shorthand referring to two corruption conditions."
+  ],
+  "validation_elapsed_seconds": 28.855384999998932
+}

@@ -1,0 +1,22 @@
+{
+  "registered_utc_date": "2026-11-16",
+  "candidate_id": "tabular_missing-direct-2",
+  "mode_separation": "All three validation seeds completed before held-out scores were read. Final mode evaluates test indices once; no tuning follows.",
+  "seeds": [137, 271, 389],
+  "dataset": {"generator": "sklearn.make_classification", "n_samples": 5000, "n_features": 20, "n_informative": 5, "n_redundant": 5, "weights": [0.8, 0.2], "class_sep": 1.0, "generator_seed": "per listed seed"},
+  "split": "Stratified 60/20/20; first train_test_split test_size=.40, random_state=seed; second split rest with test_size=.50, random_state=seed+1.",
+  "primary_metric": "Mean average precision over clean, 10%, 30%, and 50% MCAR test feature dropout, same seeded mask draw for candidate/control per seed and condition.",
+  "candidate": "Median-impute + HistGradientBoostingClassifier(max_iter=120, random_state=seed) trained on original train rows plus one 20%-MCAR corrupted copy; fit soft-label logistic mean model on validation errors at 30% and 60% MCAR using 20 mask indicators and 190 pairwise interactions; shrink p toward training prior by predicted absolute error.",
+  "soft_label_note": "The proposal's logistic-regression target is continuous absolute error in [0,1]. It is fit as fractional Bernoulli logistic regression with mean cross-entropy, L2=1, coefficients bounded [-20,20]. This preserves the stated logistic conditional-mean mapping; sklearn LogisticRegression's hard-label API cannot express this target directly.",
+  "control": "Same augmented HGB, data, split and corruption draws with no shrinkage (raw probability).",
+  "ablations": ["same soft-logistic shrinkage without pairwise mask interactions", "unshrunk raw scores as primary control"],
+  "falsification_secondary": "At 50% dropout, adjusted probability standard deviation among misclassified samples is not lower than raw; record this even though average precision is primary.",
+  "pass_rule": "Pilot support requires positive mean paired AP delta across seeds and no seed clean AP loss >0.02. Negative/zero mean is no_gain; large seed disagreement without clear mean direction is inconclusive.",
+  "hyperparameters_frozen": {"augmentation_dropout": 0.20, "hgb_max_iter": 120, "calibration_levels": [0.30, 0.60], "calibration_l2": 1.0, "calibration_coefficient_bounds": [-20, 20]},
+  "source_sha256": "4910e83679f8dc065b11675784e6ae76c1ffda96533d91db503aa34174c4f7aa",
+  "validation_split_hashes": {
+    "137": {"train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e", "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b", "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"},
+    "271": {"train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d", "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2", "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"},
+    "389": {"train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd", "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906", "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"}
+  }
+}

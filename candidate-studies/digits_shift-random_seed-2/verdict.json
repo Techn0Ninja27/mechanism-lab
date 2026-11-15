@@ -1,0 +1,27 @@
+{
+  "candidate_id": "digits_shift-random_seed-2",
+  "status": "no_gain",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy over 9 prescribed clean/noise/dropout/joint test conditions",
+  "mean_candidate": 0.6575102880658436,
+  "mean_control": 0.6617283950617284,
+  "paired_deltas": [
+    -0.00030864197530866555,
+    -0.0018518518518519933,
+    -0.01049382716049374
+  ],
+  "prior_art_status": "Known components include magnitude-controlled/random augmentation and corruption-robust augmentation mixtures; no external novelty established for this exact finite sinusoidal severity grid.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Only three fixed seeds on sklearn digits and synthetic corruptions.",
+    "Proposal sketch split and four-condition metric were replaced by the repository-mandated split and nine-condition metric.",
+    "Sinusoidal schedule repeats severities and the claimed nonlinear severity mechanism is not reflected in the linear noise/dropout parameterization.",
+    "Exploratory pilot; no significance claim."
+  ]
+}

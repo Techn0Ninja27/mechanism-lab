@@ -1,0 +1,170 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Primary-source packet for replacing the pilot's MCAR-only missingness task with heterogeneous mask-distribution shift and mechanism-aware prediction.",
+  "scope_warning": "The records below are literature evidence, not endorsements. Abstract excerpts are short verbatim spans; inspect the full paper before making claims.",
+  "sources": [
+    {
+      "title": "Robust prediction under missingness shifts",
+      "arxiv_id": "2406.16484",
+      "primary_url": "https://arxiv.org/abs/2406.16484",
+      "publication_date": "2024-06-24",
+      "mechanism": "Training and deployment may have different missingness mechanisms. The paper studies ignorable shifts, where missingness depends only on observed data, versus non-ignorable shifts.",
+      "assumptions": [
+        "The complete-data and label distribution can remain invariant under an ignorable mask shift.",
+        "The target missingness mechanism may not be known."
+      ],
+      "failure_mode": "Under non-ignorable shifts, the Bayes predictor can change; exploiting informative missingness can then fail. Source performance is not a reliable selection criterion under deployment shift.",
+      "abstract_span": "the reasons why a covariate goes missing can change once a model is deployed",
+      "role_in_packet": "Core challenge definition and mask-shift test design."
+    },
+    {
+      "title": "StableMiss+: Prediction with Incomplete Data Under Agnostic Mask Distribution Shift",
+      "arxiv_id": null,
+      "primary_url": "https://jhc.sjtu.edu.cn/~bjiang/papers/Zhu_ICASSP2024_StableMiss%2B.pdf",
+      "publication_date": "2024-04 (ICASSP 2024)",
+      "mechanism": "Preserves correlations among feature values while removing correlations among masks and between features and masks, using weighting under agnostic mask shifts.",
+      "assumptions": [
+        "The complete-feature/label joint distribution is invariant.",
+        "The mask distribution can shift without being observed during training.",
+        "The weighting assumptions differ depending on whether masks depend on observed feature values."
+      ],
+      "failure_mode": "Removing feature correlations as well as mask correlations can discard predictive structure; preserving them is the proposed correction. The method does not solve arbitrary non-ignorable shifts.",
+      "abstract_span": "the joint distribution of complete feature and label is invariant, but the mask distribution may shift agnostically",
+      "role_in_packet": "Chinese primary source and a concrete stable-versus-informative missingness molecule."
+    },
+    {
+      "title": "What's a good imputation to predict with missing values?",
+      "arxiv_id": "2106.00311",
+      "primary_url": "https://arxiv.org/abs/2106.00311",
+      "publication_date": "2021-06-01 (NeurIPS 2021)",
+      "mechanism": "Jointly learn imputation and regression with a NeuMiss-style network rather than optimizing imputation accuracy first and prediction second.",
+      "assumptions": [
+        "Prediction, rather than unbiased parameter inference, is the target.",
+        "The model can represent links across observed and unobserved variables and missingness patterns."
+      ],
+      "failure_mode": "A two-step pipeline can be statistically or computationally mismatched; perfect imputation is not required for asymptotic prediction. Finite-sample performance depends on the architecture and data regime.",
+      "abstract_span": "we suggest that it is easier to learn imputation and regression jointly",
+      "role_in_packet": "Baseline for a genuine imputation-prediction molecule; prevents rebranding joint learning as new."
+    },
+    {
+      "title": "Prediction with Missing Data: Target Probabilities and Missingness Mechanisms",
+      "arxiv_id": "2603.17599",
+      "primary_url": "https://arxiv.org/abs/2603.17599",
+      "publication_date": "2026-03-18",
+      "mechanism": "Separates two predictive targets: whether the missingness indicator is used as signal, and whether it is not. This clarifies when pattern submodels or unconditional imputation can be optimal under non-MAR mechanisms.",
+      "assumptions": [
+        "The deployment target must specify whether the observation indicator is part of the prediction target.",
+        "Consistency conditions can be weaker than MAR for some targets."
+      ],
+      "failure_mode": "Choosing the wrong target or treating development, validation, and deployment missingness as identical can produce misleading model selection.",
+      "abstract_span": "a distinction between two prediction targets, defined according to whether or not the indicator of observation of the predictors is",
+      "role_in_packet": "Formal label for the target-definition confound in mask-aware prediction.",
+      "excerpt_truncated": true
+    },
+    {
+      "title": "Nearly Optimal Bayesian Inference for Structural Missingness",
+      "arxiv_id": "2601.18500",
+      "primary_url": "https://arxiv.org/abs/2601.18500",
+      "publication_date": "2026-01-26",
+      "mechanism": "Separate an in-model posterior over missing values from label prediction and integrate posterior uncertainty instead of using one plug-in imputation.",
+      "assumptions": [
+        "Structural missingness can be represented by a structural causal model prior.",
+        "Posterior uncertainty is estimable from the observed data and missingness structure."
+      ],
+      "failure_mode": "Single-value imputation can lock in uncertainty and produce overconfident decisions; MNAR values may come from a shifted distribution. Results depend on the SCM prior and benchmark regime.",
+      "abstract_span": "plug-in imputation, a single fill-in can lock in uncertainty and yield overconfident, biased decisions",
+      "role_in_packet": "Candidate molecule: mechanism model -> posterior predictive integration -> calibrated decision."
+    },
+    {
+      "title": "Domain Adaptation Under MNAR Missingness",
+      "arxiv_id": "2504.00322",
+      "primary_url": "https://arxiv.org/abs/2504.00322",
+      "publication_date": "2025-04-01",
+      "mechanism": "Reduces domain adaptation under MNAR missingness shift to an imputation problem, with an extension for simultaneous MNAR and covariate shifts.",
+      "assumptions": [
+        "The MNAR source and target mechanisms satisfy the paper's reduction assumptions.",
+        "The available EHR covariates provide enough structure for the imputation step."
+      ],
+      "failure_mode": "Standard covariate-shift importance weighting is not directly applicable under MNAR; simultaneous mask and covariate shift is harder than either alone.",
+      "abstract_span": "the common covariate shift solutions, including importance weighting, are not directly applicable",
+      "role_in_packet": "A direct prior-art check for any proposed missingness-shift adaptation."
+    },
+    {
+      "title": "Exploiting the Data Gap: Utilizing Non-ignorable Missingness to Manipulate Model Learning",
+      "arxiv_id": "2409.04407",
+      "primary_url": "https://arxiv.org/abs/2409.04407",
+      "publication_date": "2024-09-06",
+      "mechanism": "Treat missingness as an adversarially engineered mechanism and formulate its design as bilevel optimization against complete-case, mean-imputation, and regression-imputation learners.",
+      "assumptions": [
+        "The attacker can influence which entries are missing.",
+        "The learner uses one of the modeled remediation strategies."
+      ],
+      "failure_mode": "The missingness mechanism is not generally identifiable; attacks can change statistical conclusions with moderate missingness, so mask robustness should include adversarial mechanism tests.",
+      "abstract_span": "Learning the underlying missingness mechanism from the data is not possible in general",
+      "role_in_packet": "Adversarial negative case and security-oriented stress test."
+    },
+    {
+      "title": "Discretizing Continuous Time Series for Imputation with Masked Diffusion Training",
+      "arxiv_id": "2608.19119",
+      "primary_url": "https://arxiv.org/abs/2608.19119",
+      "publication_date": "2026-08-19",
+      "mechanism": "Use an explicit MASK token structurally distinct from valid observations and train masked diffusion to predict original values, with stochastic discretization for continuous time series.",
+      "assumptions": [
+        "Temporal structure and ordinal discretization preserve useful signal.",
+        "The masking process used for training is informative for deployment scenarios."
+      ],
+      "failure_mode": "A train-time masking distribution can mismatch real temporal missingness; the method is specific to time series and should not be transferred to tabular data without a mechanism audit.",
+      "abstract_span": "The MASK token is structurally orthogonal to valid observations",
+      "role_in_packet": "Masked-self-supervision prior art and a temporal extension of the molecule ledger."
+    },
+    {
+      "title": "XGBoost: A Scalable Tree Boosting System",
+      "arxiv_id": "1603.02754",
+      "primary_url": "https://arxiv.org/abs/1603.02754",
+      "publication_date": "2016-08-05",
+      "mechanism": "Tree boosting learns a default direction for missing values at each split, allowing prediction without a separate imputer.",
+      "assumptions": [
+        "A learned default direction is adequate for the missingness patterns encountered at deployment.",
+        "The tree ensemble can preserve useful missingness signal without explicit mask modeling."
+      ],
+      "failure_mode": "A default direction learned under one missingness distribution may be wrong under a changed mask mechanism; tree-native handling is therefore a baseline, not a solution to mechanism shift.",
+      "abstract_span": "A sparsity-aware split finding algorithm is proposed to handle sparse data",
+      "role_in_packet": "Tree-native baseline for all tabular experiments."
+    },
+    {
+      "title": "How Far Are We from Predicting Missing Modalities with Foundation Models?",
+      "arxiv_id": "2506.03530",
+      "primary_url": "https://arxiv.org/abs/2506.03530",
+      "publication_date": "2025-06-04",
+      "mechanism": "Uses an agentic miner/verifier loop to mine cross-modal information, invoke a generator, and refine missing-modality predictions.",
+      "assumptions": [
+        "Observed modalities contain enough information to generate a useful missing modality.",
+        "A verifier can identify and refine bad generations."
+      ],
+      "failure_mode": "Missing modality prediction is not ordinary scalar imputation; generated high-level semantics can look plausible while being wrong, and the agentic verifier adds a new judge dependency.",
+      "abstract_span": "our agentic framework ensures the quality of generated modalities via an autonomous self-refinement mechanism",
+      "role_in_packet": "Bridge from tabular missingness to agentic molecule generation; use only as a bounded prior-art source."
+    }
+  ],
+  "new_experiment_target": {
+    "problem": "Prediction under heterogeneous missingness-mechanism shift",
+    "train": "Generate complete-data labels, then train under MCAR and MAR masks with fixed seeds.",
+    "validation": "Select hyperparameters on unseen mask rates but known mechanism families.",
+    "test": "Evaluate on a held-out mechanism family: MNAR, block/structural masks, and an agnostic mask mixture. Keep complete features and labels fixed so only the mask mechanism changes.",
+    "baselines": [
+      "XGBoost/HistGradientBoosting native missing handling",
+      "median/mean imputation",
+      "imputation plus indicators",
+      "NeuMiss-style joint predictor where feasible",
+      "StableMiss/StableMiss+ conceptual decorrelation baseline"
+    ],
+    "candidate_molecules": [
+      "mask mechanism -> feature/mask decorrelation -> predictor",
+      "mask mechanism -> posterior predictive integration -> calibrated decision",
+      "mask-aware joint imputation -> prediction",
+      "structural mask token -> temporal or modality predictor"
+    ],
+    "kill_rule": "Reject a molecule if its gain disappears on a held-out mechanism family, if component removal does not reduce the predicted effect, or if it only wins under MCAR while losing under MAR/MNAR shift.",
+    "provenance": "Every mask generator gets a named mechanism, seed, formula, and hash. No proposal is treated as a new atom until prior-art review, independent held-out transfer, and ablation pass."
+  }
+}

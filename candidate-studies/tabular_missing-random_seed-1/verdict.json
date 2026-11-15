@@ -1,0 +1,45 @@
+{
+  "candidate_id": "tabular_missing-random_seed-1",
+  "status": "supported_pilot",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean average precision across clean, 10%, 30%, and 50% MCAR, equal weight; per-seed paired comparison",
+  "mean_candidate": 0.8594614269242082,
+  "mean_control": 0.7868726074703734,
+  "paired_deltas": {
+    "137": 0.03286367639388099,
+    "271": 0.0774789083962717,
+    "389": 0.1074238735713523
+  },
+  "mean_paired_delta": 0.072588819453835,
+  "mean_paired_delta_at_50pct_mcar": 0.1614340869173552,
+  "paired_deltas_at_50pct_mcar": {
+    "137": 0.0905726398418999,
+    "271": 0.16819706919336086,
+    "389": 0.22553255171680486
+  },
+  "native_hgb_mean": 0.8108754010300929,
+  "mean_candidate_vs_native_hgb_delta": 0.048586025894115314,
+  "mirror_no_mask_mean": 0.8594614269242082,
+  "mask_only_mean": 0.205955967448714,
+  "mask_permutation_ap_drop_at_50pct": {
+    "137": 0.0,
+    "271": 0.0,
+    "389": 0.0
+  },
+  "explicit_mask_component_supported": false,
+  "prior_art_status": "Established prior art covers explicit missingness indicators, prediction under mask-distribution shift, synthetic additional missingness in a different gradient-correction setting, and HGB native NaN routing. No exact match for this recipe identified; novelty not established.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Only three synthetic seeds and one generator; exploratory pilot, no statistical significance claim.",
+    "Explicit indicator columns were redundant with native HGB missing-value routing: no-mask ablation matched all recorded scores and mask permutation changed AP by 0.",
+    "Held-out result favors the augmentation package in this setting; generalization to real datasets and other missingness mechanisms is untested.",
+    "Per-feature Beta rates make copy-level feature missingness propensities heterogeneous, even though each cell is sampled independently conditional on those rates."
+  ],
+  "decision_rule": "Preregistered rule passed: positive mean paired AP delta versus median-HGB and at least +0.02 mean paired AP delta at 50% MCAR. The mask-channel diagnostic fails."
+}

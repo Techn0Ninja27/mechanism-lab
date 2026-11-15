@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-16",
+  "scope": "all 21 saved candidate studies; no reruns",
+  "assigned": 21,
+  "verdict_files": 21,
+  "artifact_integrity": "candidate-studies/artifact-integrity.json reports all source hashes matching",
+  "novelty_established": false,
+  "cohort": {
+    "clean_negative": [
+      "digits_shift-direct-0", "digits_shift-direct-2",
+      "digits_shift-random_seed-0", "digits_shift-random_seed-1",
+      "digits_shift-random_seed-2", "digits_shift-random_seed-3",
+      "tabular_missing-world-0"
+    ],
+    "provisional_or_compromised": [
+      "digits_shift-direct-1", "digits_shift-direct-3",
+      "digits_shift-world-0", "digits_shift-world-1",
+      "digits_shift-world-3", "tabular_missing-direct-2",
+      "tabular_missing-random_seed-1", "tabular_missing-world-2",
+      "tabular_missing-world-3"
+    ],
+    "invalid_mechanism": [
+      "digits_shift-world-2", "tabular_missing-direct-1",
+      "tabular_missing-random_seed-2"
+    ],
+    "inconclusive": [
+      "tabular_missing-direct-0", "tabular_missing-world-1"
+    ]
+  },
+  "high_risk_positive_labels": {
+    "digits_shift-world-0": "variance weighting canceled by StandardScaler; equals mask-only",
+    "digits_shift-direct-1": "augmentation dominates; blur-alone loses on dropout",
+    "digits_shift-direct-3": "held-out fit deviates from train-plus-validation proposal",
+    "digits_shift-world-1": "composite score makes same choices as validation-only scoring",
+    "digits_shift-world-3": "weak control, PCA/augmentation confound, numerical warnings",
+    "tabular_missing-random_seed-1": "mask columns redundant with native HGB routing",
+    "tabular_missing-world-3": "post-hoc preregistration, weak control, MI weighting unsupported",
+    "tabular_missing-direct-2": "near-null +0.00022 AP mean",
+    "tabular_missing-world-2": "corrected final exploratory after superseded held-out result"
+  },
+  "invalid_reason": {
+    "digits_shift-world-2": "standardization cancels weighting; exact control match",
+    "tabular_missing-direct-1": "all-zero training masks collapse eight-way k-means routing",
+    "tabular_missing-random_seed-2": "MCAR fixture has no anchor/volatile structure; Ridge reconstruction not run"
+  },
+  "policy": "Do not promote a molecule or train on judge labels unless the claimed relation beats the strongest component-matched control, survives independent data/seeds, and receives human prior-art adjudication."
+}

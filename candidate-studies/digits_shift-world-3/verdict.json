@@ -1,0 +1,34 @@
+{
+  "candidate_id": "digits_shift-world-3",
+  "status": "supported_pilot",
+  "faithful_implementation": false,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy across 9 fixed corruption conditions",
+  "mean_candidate": 0.7333333333333334,
+  "mean_control": 0.6000000000000001,
+  "paired_deltas": {
+    "margin_ensemble_vs_control": 0.1333333333333333,
+    "margin_ensemble_vs_uniform": 0.00010288065843622185,
+    "margin_ensemble_vs_validation_selected_single": -0.07849794238683128
+  },
+  "prior_art_status": "core mechanisms have clear prior art (Cutout/occlusion augmentation and validation-weighted model ensembles); exact combination not exhaustively searched; novelty not established",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "PCA warnings during evaluation: divide-by-zero, overflow, and invalid-value matmul warnings; metrics completed but require numerical follow-up.",
+    "Block augmentation is coupled to PCA while pixel augmentation uses StandardScaler, so augmentation geometry is not isolated.",
+    "Raw margins are scale-sensitive and produced essentially uniform weights; margin weighting had negligible effect versus uniform averaging.",
+    "Only three seeds, one small digits dataset, and synthetic corruption distributions.",
+    "Baseline SVC hyperparameters were fixed defaults rather than selected by the proposal\u2019s stated training-fold cross-validation."
+  ],
+  "preregistration_pass_rule": "candidate gain >= .01 over control and not worse than uniform ensemble",
+  "pass_rule_met": true,
+  "runtime_seconds": {
+    "validation": 6.923463625000295,
+    "final": 13.21276399999988
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "candidate_id": "tabular_missing-random_seed-2",
+  "date": "2026-11-16",
+  "status": "frozen_before_heldout",
+  "proposal_hyperparameters": {
+    "anchor_missing_rate_lt": 0.2,
+    "ridge_alpha": 1.0,
+    "classifier": "HistGradientBoostingClassifier(max_iter=120,max_leaf_nodes=31,l2_regularization=0.0)",
+    "random_state_per_seed": true
+  },
+  "control": "training-only median imputation + identical HGB",
+  "mechanism_ablation": "anchor-Ridge candidate with unavailable reconstruction falls through to HGB native NaN handling; identical to native-NaN HGB ablation",
+  "metric": "mean average precision across clean, MCAR 10%, 30%, 50%; paired by seed and condition",
+  "pass_rule": "candidate mean AP over all conditions exceeds median control and mean stressed AP exceeds control; mechanism additionally requires at least one reconstructed test entry at 30% or 50% and mean reconstruction R2 >= 0.10",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "source_sha256": "3bc769930dc901c8705c174fd90aa3d87fe5bac55dd5dffd614c63e60215956a",
+  "split_hashes": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "validation_completed_before_any_heldout_score": true,
+  "validation_observation_used_for_choices": "No hyperparameter changes; protocol and fixed alpha/threshold retained as proposed."
+}

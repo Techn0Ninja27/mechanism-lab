@@ -1,0 +1,20 @@
+{
+  "candidate_id": "tabular_missing-direct-2",
+  "status": "supported_pilot",
+  "faithful_implementation": true,
+  "seeds": [137, 271, 389],
+  "primary_metric": "mean AP over clean, 10%, 30%, 50% MCAR dropout",
+  "mean_candidate": 0.8468671548238074,
+  "mean_control": 0.8466448424366685,
+  "paired_deltas": {"137": -0.0005403019570466849, "271": 0.0006213223607383078, "389": 0.0005859167577251245, "mean": 0.0002223123871389158},
+  "prior_art_status": "Related missingness-shift adaptation and covariate-shift calibration are established; this focused search did not establish the exact proposal combination as new. Novelty remains unverified.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "This is a three-seed synthetic pilot; the AP increase is very small and not evidence of statistical significance or external validity.",
+    "The proposal describes a continuous absolute-error target for logistic regression. The faithful operationalization is fractional Bernoulli logistic loss; hard-label sklearn LogisticRegression cannot directly fit it.",
+    "Random MCAR masks are not structured real-world missingness; only mask frequencies at 30% and 60% were used to train the reliability model.",
+    "Average Brier score was marginally worse overall (0.064518 vs 0.064486), despite lower error-subset probability spread at 50% missingness in every seed.",
+    "The synthetic class prior is stable and the shrinkage target is the training prevalence, as assumed in the proposal."
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "mode": "validation",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "levels": [
+    0.0,
+    0.1,
+    0.3,
+    0.5
+  ],
+  "runs": [
+    {
+      "seed": 137,
+      "split_hashes": {
+        "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+        "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+        "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+      },
+      "train_hash": "6397a3190cdd3e94a8c5bbf5e02c552e429910724b6dc0d469ce2c8a81a1fcdb",
+      "fit_seconds": 0.2025218330018106,
+      "base_rate": 0.20333333333333334,
+      "validation": [
+        {
+          "level": 0.0,
+          "raw_ap": 0.8886876274061865,
+          "shrunk_ap": 0.8886876274061865,
+          "raw_brier": 0.058503578372205295,
+          "shrunk_brier": 0.060541502243555055,
+          "mean_est_error": 0.15637116786836408,
+          "mask_design_rank": 1
+        },
+        {
+          "level": 0.1,
+          "raw_ap": 0.864805841245579,
+          "shrunk_ap": 0.8668253900588268,
+          "raw_brier": 0.06417361319796587,
+          "shrunk_brier": 0.06640120827889963,
+          "mean_est_error": 0.15780879312239865,
+          "mask_design_rank": 211
+        },
+        {
+          "level": 0.3,
+          "raw_ap": 0.7866543934025909,
+          "shrunk_ap": 0.7867786152171067,
+          "raw_brier": 0.08623962541208434,
+          "shrunk_brier": 0.0869401320752659,
+          "mean_est_error": 0.16447392553310483,
+          "mask_design_rank": 211
+        },
+        {
+          "level": 0.5,
+          "raw_ap": 0.7158089720733871,
+          "shrunk_ap": 0.7149820143406175,
+          "raw_brier": 0.10089937364574485,
+          "shrunk_brier": 0.10232238454765838,
+          "mean_est_error": 0.17768107371988545,
+          "mask_design_rank": 211
+        }
+      ],
+      "ablation": [
+        {
+          "level": 0.0,
+          "full_ap": 0.8886876274061865,
+          "no_interactions_ap": 0.8886876274061865
+        },
+        {
+          "level": 0.1,
+          "full_ap": 0.8668253900588268,
+          "no_interactions_ap": 0.8660193972538796
+        },
+        {
+          "level": 0.3,
+          "full_ap": 0.7867786152171067,
+          "no_interactions_ap": 0.7867327436614534
+        },
+        {
+          "level": 0.5,
+          "full_ap": 0.7149820143406175,
+          "no_interactions_ap": 0.7155793446935578
+        }
+      ],
+      "calibration_optimizer": {
+        "converged": true,
+        "l2": 1.0,
+        "calibration_levels": [
+          0.3,
+          0.6
+        ]
+      }
+    },
+    {
+      "seed": 271,
+      "split_hashes": {
+        "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+        "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+        "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+      },
+      "train_hash": "ddb0dd575dbb2059b0363aacc16c73d11827e51d703f8efe2f618c60a11619cf",
+      "fit_seconds": 0.21063437500197324,
+      "base_rate": 0.20233333333333334,
+      "validation": [
+        {
+          "level": 0.0,
+          "raw_ap": 0.9654890947886806,
+          "shrunk_ap": 0.9654890947886806,
+          "raw_brier": 0.027725450448353648,
+          "shrunk_brier": 0.027581506008531848,
+          "mean_est_error": 0.08689037204829447,
+          "mask_design_rank": 1
+        },
+        {
+          "level": 0.1,
+          "raw_ap": 0.9520673987395885,
+          "shrunk_ap": 0.9475537014014375,
+          "raw_brier": 0.03201818740134175,
+          "shrunk_brier": 0.03198092139034914,
+          "mean_est_error": 0.08803006236857157,
+          "mask_design_rank": 211
+        },
+        {
+          "level": 0.3,
+          "raw_ap": 0.9089348055378063,
+          "shrunk_ap": 0.9076880237077914,
+          "raw_brier": 0.05331803836316773,
+          "shrunk_brier": 0.05281163113857767,
+          "mean_est_error": 0.09446298165445075,
+          "mask_design_rank": 211
+        },
+        {
+          "level": 0.5,
+          "raw_ap": 0.8520029204462668,
+          "shrunk_ap": 0.8519523484897377,
+          "raw_brier": 0.07084663843028442,
+          "shrunk_brier": 0.07001880430795066,
+          "mean_est_error": 0.10648449450259263,
+          "mask_design_rank": 211
+        }
+      ],
+      "ablation": [
+        {
+          "level": 0.0,
+          "full_ap": 0.9654890947886806,
+          "no_interactions_ap": 0.9654890947886806
+        },
+        {
+          "level": 0.1,
+          "full_ap": 0.9475537014014375,
+          "no_interactions_ap": 0.9462773756359251
+        },
+        {
+          "level": 0.3,
+          "full_ap": 0.9076880237077914,
+          "no_interactions_ap": 0.9086030954767369
+        },
+        {
+          "level": 0.5,
+          "full_ap": 0.8519523484897377,
+          "no_interactions_ap": 0.8524170573256621
+        }
+      ],
+      "calibration_optimizer": {
+        "converged": true,
+        "l2": 1.0,
+        "calibration_levels": [
+          0.3,
+          0.6
+        ]
+      }
+    },
+    {
+      "seed": 389,
+      "split_hashes": {
+        "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+        "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+        "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+      },
+      "train_hash": "c54a55145905e16824161829433927d4764b247f4cc0215e52c47c9053b3551c",
+      "fit_seconds": 0.2007048749983369,
+      "base_rate": 0.20266666666666666,
+      "validation": [
+        {
+          "level": 0.0,
+          "raw_ap": 0.9694194353874943,
+          "shrunk_ap": 0.9694194353874943,
+          "raw_brier": 0.023820196261547594,
+          "shrunk_brier": 0.02564212386489002,
+          "mean_est_error": 0.10391192704582551,
+          "mask_design_rank": 1
+        },
+        {
+          "level": 0.1,
+          "raw_ap": 0.9499503397764444,
+          "shrunk_ap": 0.9500883737638027,
+          "raw_brier": 0.034168409299362365,
+          "shrunk_brier": 0.035727020623109715,
+          "mean_est_error": 0.1057432744369435,
+          "mask_design_rank": 211
+        },
+        {
+          "level": 0.3,
+          "raw_ap": 0.9033642696559688,
+          "shrunk_ap": 0.9039119527451314,
+          "raw_brier": 0.05295234329706749,
+          "shrunk_brier": 0.05409972062570236,
+          "mean_est_error": 0.11499007561227398,
+          "mask_design_rank": 211
+        },
+        {
+          "level": 0.5,
+          "raw_ap": 0.8162540415900549,
+          "shrunk_ap": 0.8160517030486668,
+          "raw_brier": 0.077454707913524,
+          "shrunk_brier": 0.07892687625710136,
+          "mean_est_error": 0.1337365843198949,
+          "mask_design_rank": 211
+        }
+      ],
+      "ablation": [
+        {
+          "level": 0.0,
+          "full_ap": 0.9694194353874943,
+          "no_interactions_ap": 0.9694194353874943
+        },
+        {
+          "level": 0.1,
+          "full_ap": 0.9500883737638027,
+          "no_interactions_ap": 0.949973388269638
+        },
+        {
+          "level": 0.3,
+          "full_ap": 0.9039119527451314,
+          "no_interactions_ap": 0.9035113876671995
+        },
+        {
+          "level": 0.5,
+          "full_ap": 0.8160517030486668,
+          "no_interactions_ap": 0.8162311826776462
+        }
+      ],
+      "calibration_optimizer": {
+        "converged": true,
+        "l2": 1.0,
+        "calibration_levels": [
+          0.3,
+          0.6
+        ]
+      }
+    }
+  ],
+  "elapsed_seconds": 0.9267170410021208
+}

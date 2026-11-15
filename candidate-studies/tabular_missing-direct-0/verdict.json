@@ -1,0 +1,32 @@
+{
+  "candidate_id": "tabular_missing-direct-0",
+  "status": "inconclusive",
+  "faithful_implementation": false,
+  "seeds": [137, 271, 389],
+  "primary_metric": "Mean average precision across clean, 10%, 30%, and 50% MCAR conditions; equal weight by condition",
+  "mean_candidate": 0.8731160323,
+  "mean_control": 0.8730507851,
+  "paired_deltas": {
+    "137": -0.0060845199,
+    "271": 0.0106160116,
+    "389": -0.0043357502,
+    "mean": 0.0000652472
+  },
+  "validation_paired_deltas": {
+    "137": -0.0084301478,
+    "271": 0.0077897905,
+    "389": -0.0027728343,
+    "mean": -0.0011377305
+  },
+  "prior_art_status": "Close prior art exists for joint supervised imputation, mask-aware prediction, and missingness augmentation. Exact scalar parameterization not exhaustively searched; novelty is unestablished.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Training augmentation masks were not replayed identically between the learned-scalar and fixed-median arms.",
+    "Early stopping used clean validation AP instead of the preregistered average across four missingness conditions.",
+    "Held-out scores are exploratory; no post-result rerun was made.",
+    "Only synthetic MCAR data and three seeds were studied.",
+    "Inference runtime was not recorded separately.",
+    "The small observed mean gain (+0.00007 AP) is below the preregistered +0.01 pass threshold and only one seed has a positive paired difference."
+  ]
+}

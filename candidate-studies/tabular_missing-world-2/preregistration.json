@@ -1,0 +1,47 @@
+{
+  "created_utc_date": "2026-11-16",
+  "candidate_id": "tabular_missing-world-2",
+  "source_sha256": "06fc7a5517a480b9208a78bce98570998145e00369ceb44ad78348cfe2b27ce1",
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "split_hashes": {
+    "137": {
+      "train": "e94b38d2e388bb28947f2662b2f5fe6d629b20c6e3021ef556b1c2144c21f14e",
+      "validation": "40c82450325c87f9fd5b568651cc2f06763e7732c4cf6566643c87ea0a80ad9b",
+      "test": "56039d26d25ac44d9294d06b6be05573a4e4b83c86fc6fe24b6a9f5a32f726c3"
+    },
+    "271": {
+      "train": "b6f010eb9fb55df683f2103e80066a6174f811e393db6e34a1a62e887faa941d",
+      "validation": "d167be7a3e0bd2b41957b23c77c0499088d7db57be9193cc14efda6feeb548b2",
+      "test": "8bf5b1528726b3b102d965174a99953f1038808d79d40e632aadd5929f362341"
+    },
+    "389": {
+      "train": "706f4f6fe5f3e789ac03df72d3b73119372c3036f2234b4a99783fd7df8bbbbd",
+      "validation": "c2738085503731f28bb83324b683a2b8a4a3810213717ffb78bc2e9fe8636906",
+      "test": "64f3db0ef44da8da56ce0941eebdc28d01f0373c0d046f623460cbf84adb94ad"
+    }
+  },
+  "dataset": "sklearn make_classification(5000 rows,20 features,5 informative,5 redundant,weights=[0.8,0.2],class_sep=1.0,random_state=seed)",
+  "split": "stratified 60/20/20; train_test_split random_state=seed then seed+1; sorted indices",
+  "primary_metric": "unweighted macro-average precision across conditions missing_rate=[0,.1,.3,.5] per seed; then mean across three seeds",
+  "control": "median imputation fitted on clean training rows + HistGradientBoostingClassifier(max_iter=120,max_leaf_nodes=31,learning_rate=.1,random_state=seed), trained on clean train rows",
+  "mechanism_ablation": "same HGB and train-only median; compare candidate (all training rows masked at rate .20, plus 20 mask features) to augmentation_value_only (same masked rows, no mask columns). Secondary ablation uses mask columns but no training-time masking.",
+  "chosen_hyperparameters": {
+    "augmentation_rate": 0.2,
+    "model": "HistGradientBoostingClassifier",
+    "max_iter": 120,
+    "max_leaf_nodes": 31,
+    "learning_rate": 0.1,
+    "l2_regularization": 0.0,
+    "threads": 1
+  },
+  "corruption": "MCAR; identical evaluation mask draws across methods per seed/rate; RNG=seed+100000+int(rate*1000). Training mask RNG=seed+8000.",
+  "pass_fail_rule": "Supported pilot only if candidate macro AP exceeds both clean median-impute control and value-only mask augmentation by >=0.01, candidate beats value-only augmentation on >=2/3 seed-level macro means, and mean clean AP is no more than .01 below value-only augmentation. Otherwise no_gain. No held-out tuning.",
+  "validation_complete_before_corrected_final": true,
+  "validation_artifact_sha256": "9c75ac3d53136f3560eacc6b5cd95580d8bb8b1debb7d6b0f0dc0fbd1205423a",
+  "deviation": "A first implementation mistakenly duplicated clean and masked training rows and was used to inspect held-out scores. It was archived as results-superseded-unfaithful.json, corrected based on a faithful reading of the proposal (mask all training rows), and not used to choose hyperparameters. Corrected held-out result is exploratory due this prior test exposure.",
+  "limitations": "Synthetic MCAR evaluation does not instantiate informative/MNAR assumption; this cannot establish utility under informative missingness."
+}

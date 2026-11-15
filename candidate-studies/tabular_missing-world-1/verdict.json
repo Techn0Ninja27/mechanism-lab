@@ -1,0 +1,21 @@
+{
+  "candidate_id": "tabular_missing-world-1",
+  "status": "inconclusive",
+  "faithful_implementation": true,
+  "seeds": [137, 271, 389],
+  "primary_metric": "Mean average precision across clean, 10%, 30%, and 50% MCAR test conditions",
+  "mean_candidate": 0.841534,
+  "mean_control": 0.838100,
+  "paired_deltas": {"137": 0.005114, "271": 0.006282, "389": -0.001095, "mean": 0.003434},
+  "prior_art_status": "close_and_mechanistically_direct_precedent_found; novelty not established",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "Three synthetic-data seeds only; exploratory pilot, not evidence of statistical significance or external validity.",
+    "The primary preregistered improvement threshold was +0.005 mean AP; observed improvement was +0.003434.",
+    "Uniform corruption severity matched or exceeded Beta(2,1) on held-out aggregate AP, so the proposed severity schedule was not supported.",
+    "The DFCN primary study already uses joint classification and masked-input reconstruction regularization under random masking; this proposal is not novel as a mechanism.",
+    "Candidate training times were recorded; HGB training and inference timings were not instrumented in this run.",
+    "The experiment script's final mode writes fixed artifact paths and does not require an explicit overwrite flag; preserve the frozen results.json and do not rerun final without an explicit copy/overwrite policy."
+  ]
+}

@@ -1,4 +1,21 @@
-# The Alien Space of Science
+# Mechanism Lab
+
+A research workbench for proposing mechanisms, representing their composition, and testing them against prior work and executable baselines.
+
+This remains a fork of **The Alien Space of Science**. The authors already operate [Lacuna](https://lacuna.tiptreesystems.com), the production research map and proposal system described in the original README below. We use their work as a foundation; we do not claim to have built their method or production corpus.
+
+Our extensions focus on evidence-grounded evaluation, typed atom/molecule composition, provenance checks, and reproducible candidate studies. Current pilot results include failures and small exploratory gains, not established scientific discoveries.
+
+- [World-search pilot and results](reports/world-search-2026-11-16/README.md)
+- [Full candidate studies](candidate-studies/manifest.json)
+- [Molecule representation and evidence gates](docs/world-search/MOLECULES.md)
+- [Runbook](docs/world-search/README.md)
+- [Fork changes](FORK.md)
+- [Released-artifact provenance audit](PROVENANCE.md)
+
+## Original upstream project
+
+### The Alien Space of Science
 
 Code and data for **[The Alien Space of Science: Sampling Coherent but Cognitively Unavailable Research Directions](https://arxiv.org/abs/2603.01092)**.
 

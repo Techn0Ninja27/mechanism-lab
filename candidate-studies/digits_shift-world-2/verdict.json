@@ -1,0 +1,49 @@
+{
+  "candidate_id": "digits_shift-world-2",
+  "status": "invalid_mechanism",
+  "faithful_implementation": true,
+  "seeds": [
+    137,
+    271,
+    389
+  ],
+  "primary_metric": "mean accuracy across clean and 8 fixed corruption conditions",
+  "mean_candidate": 0.8069958847736625,
+  "mean_control": 0.8069958847736625,
+  "paired_deltas": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "per_seed_means": {
+    "137": {
+      "weighted": 0.8018518518518518,
+      "uniform": 0.8018518518518518,
+      "weighted_no_standardize": 0.816358024691358
+    },
+    "271": {
+      "weighted": 0.8132716049382717,
+      "uniform": 0.8132716049382717,
+      "weighted_no_standardize": 0.8209876543209877
+    },
+    "389": {
+      "weighted": 0.8058641975308642,
+      "uniform": 0.8058641975308642,
+      "weighted_no_standardize": 0.8123456790123457
+    }
+  },
+  "prior_art_status": "Related weighted/noise-aware PCA and image data augmentation are established; exact proposal appears to combine known components. External novelty not established.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "limitations": [
+    "The prescribed inverse-variance multiplication is canceled by following per-feature StandardScaler (empirically identical predictions to uniform control).",
+    "No-standardization ablation is a different pipeline and does not validate the originally specified candidate.",
+    "Only three fixed stratified splits and synthetic pixel corruptions; exploratory pilot, not significance evidence.",
+    "Runtime recorded as whole-run wall time (validation 20.52 s; final 22.11 s); training and inference were not separately instrumented.",
+    "All runs used one CPU thread; warning output during PCA projection was retained in run logs, with results still produced."
+  ],
+  "validation_elapsed_seconds": 20.521996041999955,
+  "final_elapsed_seconds": 22.113389334001113,
+  "ablation_mean": 0.8165637860082304,
+  "source_sha256": "b6f7309ab4ae3ff61e6810088a906eab547a40accbff003e510b35a64b8fc235"
+}

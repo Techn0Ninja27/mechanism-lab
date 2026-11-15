@@ -1,0 +1,111 @@
+{
+  "source_run": "world-search-pilot",
+  "count": 21,
+  "candidates": [
+    {
+      "id": "digits_shift-direct-0",
+      "title": "Gradient-Plus-Block-Mean Feature Representation for Corruption-Robust Digit Classification",
+      "directory": "candidate-studies/digits_shift-direct-0"
+    },
+    {
+      "id": "digits_shift-direct-1",
+      "title": "Blur-First Standardization with Matched Augmentation for Corruption-Robust Digit Classification",
+      "directory": "candidate-studies/digits_shift-direct-1"
+    },
+    {
+      "id": "digits_shift-direct-2",
+      "title": "Corruption-Envelope Standardization for Robust RBF-SVM on Digits",
+      "directory": "candidate-studies/digits_shift-direct-2"
+    },
+    {
+      "id": "digits_shift-direct-3",
+      "title": "Gaussian Pre-Smoothing for Corruption-Robust RBF-SVM on 8\u00d78 Digits",
+      "directory": "candidate-studies/digits_shift-direct-3"
+    },
+    {
+      "id": "digits_shift-random_seed-0",
+      "title": "Fisher-Porosity Augmentation: Concentrate Corruption on Uninformative Pixels",
+      "directory": "candidate-studies/digits_shift-random_seed-0"
+    },
+    {
+      "id": "digits_shift-random_seed-1",
+      "title": "Horizontal-Flip Symmetry Score Appended to Pixel Features for Corruption-Robust Digit SVM",
+      "directory": "candidate-studies/digits_shift-random_seed-1"
+    },
+    {
+      "id": "digits_shift-random_seed-2",
+      "title": "Severity-Swept Augmentation for Corruption-Robust Digit Classification",
+      "directory": "candidate-studies/digits_shift-random_seed-2"
+    },
+    {
+      "id": "digits_shift-random_seed-3",
+      "title": "Arc-Sampled Joint Corruption Augmentation for RBF-SVM on Digits",
+      "directory": "candidate-studies/digits_shift-random_seed-3"
+    },
+    {
+      "id": "digits_shift-world-0",
+      "title": "Corruption-Variance Pixel Weighting for Robust Digit Classification",
+      "directory": "candidate-studies/digits_shift-world-0"
+    },
+    {
+      "id": "digits_shift-world-1",
+      "title": "Validation-Regularized PCA-Denoised RBF-SVM with Centroid-Anchored Corruption Augmentation",
+      "directory": "candidate-studies/digits_shift-world-1"
+    },
+    {
+      "id": "digits_shift-world-2",
+      "title": "Corruption-Variance-Weighted PCA for Robust Digit Classification",
+      "directory": "candidate-studies/digits_shift-world-2"
+    },
+    {
+      "id": "digits_shift-world-3",
+      "title": "Structured-Block Dropout Augmentation with Margin-Weighted Ensemble Selection for Robust Digit Classification",
+      "directory": "candidate-studies/digits_shift-world-3"
+    },
+    {
+      "id": "tabular_missing-direct-0",
+      "title": "Learned Missing-Value Scalars with Missingness Augmentation for Deployment Shift",
+      "directory": "candidate-studies/tabular_missing-direct-0"
+    },
+    {
+      "id": "tabular_missing-direct-1",
+      "title": "Missingness-Pattern Prototype Routing with Per-Cluster Isotonic Recalibration",
+      "directory": "candidate-studies/tabular_missing-direct-1"
+    },
+    {
+      "id": "tabular_missing-direct-2",
+      "title": "Missingness-Mask Confidence Shrinkage",
+      "directory": "candidate-studies/tabular_missing-direct-2"
+    },
+    {
+      "id": "tabular_missing-random_seed-1",
+      "title": "Mirrored Missingness Augmentation with Explicit Mask Columns for Deployment Shift",
+      "directory": "candidate-studies/tabular_missing-random_seed-1"
+    },
+    {
+      "id": "tabular_missing-random_seed-2",
+      "title": "Anchor-Conditioned Ridge Reconstruction for Deployment Missingness Shift",
+      "directory": "candidate-studies/tabular_missing-random_seed-2"
+    },
+    {
+      "id": "tabular_missing-world-0",
+      "title": "Mask-Weighted Soft Imputation with Appended Missingness Features for Covariate-Shift Robustness",
+      "directory": "candidate-studies/tabular_missing-world-0"
+    },
+    {
+      "id": "tabular_missing-world-1",
+      "title": "Reconstruction-Regularized Missingness-Aware Classification via Auxiliary Autoencoding",
+      "directory": "candidate-studies/tabular_missing-world-1"
+    },
+    {
+      "id": "tabular_missing-world-2",
+      "title": "Missingness-Mask Feature Augmentation for Covariate-Shift Robustness",
+      "directory": "candidate-studies/tabular_missing-world-2"
+    },
+    {
+      "id": "tabular_missing-world-3",
+      "title": "Asymmetric Missingness Curriculum with Weighted Mask Indicators for Deployment-Shift Robustness",
+      "directory": "candidate-studies/tabular_missing-world-3"
+    }
+  ]
+}
