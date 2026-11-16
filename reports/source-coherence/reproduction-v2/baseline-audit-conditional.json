@@ -1,0 +1,23 @@
+{
+  "protocol": "baseline-only; no model retraining; train-fit alpha=1; exact val/test RNG rows",
+  "run_manifest_sha256": "3f8c9710177751795ec4a41a4732dbede944484db6263d380ab9accb4a1cc362",
+  "audit_script_sha256": "6cb87e9111f3a1b8d3bc396b962e1b80c431c96d67c05cde3af1b227a2585208",
+  "clusters_sha256": "99b157f1baedba7908fca0236fb7dca23b3a49da44054ada305035036aa27013",
+  "train_sets": 3152,
+  "val_sets": 675,
+  "test_sets": 676,
+  "validation": {
+    "unigram_nll": 4.365037169490666,
+    "permutation_symmetric_conditional_pair_nll": 4.709739294320441,
+    "pair_alpha": 1.0,
+    "conditional_probability_max_sum_error": 1.1102230246251565e-16,
+    "tokens_scored": 2338
+  },
+  "test": {
+    "unigram_nll": 4.318623822259427,
+    "permutation_symmetric_conditional_pair_nll": 4.662451109854124,
+    "pair_alpha": 1.0,
+    "conditional_probability_max_sum_error": 1.1102230246251565e-16,
+    "tokens_scored": 2327
+  }
+}

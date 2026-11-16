@@ -27,7 +27,7 @@ scientific discoveries.
 | **Learn which implementation to choose** | A pairwise utility ranker improved validation selection, then **lost to the fixed baseline on all three unseen families**. Held-out regret: **0.09412 vs 0.02238**, lower is better. Not promoted. | [Held-out report](reports/utility-ranker/README.md) |
 | **Reconstruct implementations from literature** | Six implementations generated from abstracts, atoms, or molecules produced **no gain against strong controls**. | [Reconstruction studies](reconstruction-studies/README.md) |
 | **Ground proposals in code and prior work** | Three audited proposals exposed a normalization failure, overlap with known methods, and an incorrect fixed point. No demonstrated novelty. | [Grounded research reports](reports/improvement-2026-11-16/README.md) |
-| **Repair scorer source consistency** | A small coherence model trained on original assignments beat its unigram baseline: test NLL **3.9868 vs 4.3186**. Availability alignment remains unresolved; exact training-source recovery is incomplete. | [Scorer report and provenance limits](reports/source-coherence/README.md) |
+| **Repair scorer source consistency** | A small coherence model trained on original assignments beat its unigram baseline: test NLL **3.9868 vs 4.3186**. An archived-source repeat reproduced the metrics exactly. Availability alignment remains unresolved. | [Scorer report and provenance limits](reports/source-coherence/README.md) |
 
 The compression result is a useful combination of **known** techniques on a
 small synthetic benchmark. It is not a new codec, a comparison against optimized

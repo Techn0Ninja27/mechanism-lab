@@ -1,0 +1,8 @@
+{
+  "selected_step": 175,
+  "selected_val_nll": 4.035401291272088,
+  "test_evaluation": "not yet run",
+  "checkpoint_sha256": "cf2606f92fee99e7d50d0455a82b7a3ab22453195d632c3ab44743841680ee8e",
+  "mapping_sha256": "8732272dfd6d0f2ca89d3ccb2af7247c8bd3abe00715e77100d6f9f6251bdf45",
+  "run_start_sha256": "229b492d16d6d5842c266da053afd3bcac6ac3a2f0ff9ca323cf9039c139dbe9"
+}

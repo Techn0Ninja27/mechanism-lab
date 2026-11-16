@@ -1,0 +1,12 @@
+{
+  "matches_previous_run": {
+    "best_step": true,
+    "selected_val_nll": true,
+    "test_nll_once_after_selection": true,
+    "validation_history": true
+  },
+  "checkpoint_sha256": "cf2606f92fee99e7d50d0455a82b7a3ab22453195d632c3ab44743841680ee8e",
+  "source_snapshot_verified": true,
+  "independent_replication": false,
+  "fresh_holdout": false
+}

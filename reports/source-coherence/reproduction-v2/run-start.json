@@ -1,0 +1,20 @@
+{
+  "source_hashes": {
+    "scripts/train_source_coherence.py": "ff75317c0623821d27d5e1effe16555819c3be4eb90706e03c1e2f5ea25e1121",
+    "generation/model.py": "7b354892728df38c49760ffb659e88a194bbafc45cd9cde3a3f06c27736b199d",
+    "generation/token_mapping.py": "e624f4bb0973b939f2fa8decea192758d070739ee33f56166f1e5f78ebcf7bee"
+  },
+  "clusters_sha256": "99b157f1baedba7908fca0236fb7dca23b3a49da44054ada305035036aa27013",
+  "seed": 42,
+  "max_steps": 400,
+  "eval_every": 25,
+  "batch_size": 64,
+  "device": "cpu",
+  "threads": 2,
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "numpy": "2.5.4"
+  },
+  "scope": "Reproducibility rerun on an exposed split; not a fresh generalization test."
+}

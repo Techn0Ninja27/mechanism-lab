@@ -61,9 +61,32 @@ class SourceCoherenceTests(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 main(["--output", str(out), "--max-steps", "1"])
 
-    def test_future_checkpoint_packages_its_mapping(self):
-        source = (ROOT / "scripts/train_source_coherence.py").read_text()
-        self.assertIn('(ckpt / "token_mapping.json").write_text(mapping_json)', source)
+    def test_baseline_audit_rejects_changed_cluster_source(self):
+        from scripts.audit_source_coherence_baselines import main as audit
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "manifest.json").write_text('{"clusters_sha256":"wrong"}')
+            clusters = root / "clusters.json"; clusters.write_text('{}')
+            with self.assertRaisesRegex(ValueError, "Cluster source"):
+                audit(["--run", str(root), "--clusters", str(clusters)])
+            self.assertFalse((root / "baseline-audit-conditional.json").exists())
+
+    def test_training_archives_sources_and_loads_its_own_checkpoint(self):
+        from generation.scoring import load_model
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d); clusters = root / "clusters.json"
+            atoms = [(0,1), (0,2), (0,3), (1,2), (1,3), (2,3), (0,1,2), (0,1,3), (0,2,3), (1,2,3)]
+            clusters.write_text(json.dumps({"clusters": {str(i): {} for i in range(4)},
+                "atom_assignments": [{"cluster": c, "paper_id": str(i), "text": str(c)} for i, row in enumerate(atoms) for c in row]}))
+            out = root / "run"
+            main(["--clusters", str(clusters), "--output", str(out), "--max-steps", "1", "--batch-size", "2"])
+            manifest = json.loads((out / "manifest.json").read_text())
+            for name, digest in manifest["source_hashes"].items():
+                self.assertEqual(hashlib.sha256((out / "source_snapshot" / name).read_bytes()).hexdigest(), digest)
+            frozen = json.loads((out / "freeze.json").read_text())
+            self.assertEqual(hashlib.sha256((out / "checkpoint/model.pt").read_bytes()).hexdigest(), frozen["checkpoint_sha256"])
+            model, mapping = load_model(out / "checkpoint")
+            self.assertEqual(mapping.compute_vocab_size(), 5)
 
 
 if __name__ == "__main__":

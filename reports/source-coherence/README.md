@@ -6,6 +6,15 @@ co-occurrence check only: it is not a scientific-novelty result, temporal
 forecast, or repaired full Alien ranker. Availability was not retrained or
 combined with this run.
 
+## Reproducibility update — 2026-11-16
+
+A [new run with source archived before execution](reproduction-v2/README.md)
+reproduced the entire validation history and final metrics exactly. Its source
+snapshots, environment, checkpoint hashes, and corrected baseline receipt are
+published. This repeat uses the same exposed split; it adds reproducibility
+evidence, not fresh generalization evidence. The v1 provenance limitations
+below remain part of the historical record.
+
 ## Frozen run
 
 - Seed 42; grouped canonical-set split: 3,152 train / 675 validation / 676 test.

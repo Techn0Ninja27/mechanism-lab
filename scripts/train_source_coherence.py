@@ -5,7 +5,7 @@ The output is deliberately a source-lineage artifact, not a scientific quality
 claim.  Canonical paper atom sets are split as sets (70/15/15), and the test
 set is evaluated exactly once after selecting the checkpoint on validation NLL.
 """
-import argparse, hashlib, json, random, sys
+import argparse, hashlib, json, random, sys, platform
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -115,6 +115,26 @@ def main(argv=None):
     if args.max_steps < 1 or args.eval_every < 1: p.error("steps must be positive")
     if args.output.exists() and any(args.output.iterdir()):
         p.error(f"refusing non-empty output directory: {args.output}")
+    args.output.mkdir(parents=True, exist_ok=True)
+    # Capture exact implementation bytes before training, never reconstruct later.
+    snapshots = args.output / "source_snapshot"
+    files = [Path(__file__).resolve(), ROOT / "generation/model.py", ROOT / "generation/token_mapping.py"]
+    source_hashes = {}
+    for source in files:
+        relative = source.relative_to(ROOT)
+        archived = snapshots / relative
+        archived.parent.mkdir(parents=True, exist_ok=True)
+        with archived.open("xb") as f:
+            f.write(source.read_bytes())
+        source_hashes[relative.as_posix()] = sha256(archived)
+    start_record = {
+        "source_hashes": source_hashes, "clusters_sha256": sha256(args.clusters),
+        "seed": args.seed, "max_steps": args.max_steps, "eval_every": args.eval_every,
+        "batch_size": args.batch_size, "device": "cpu", "threads": 2,
+        "environment": {"python": platform.python_version(), "torch": torch.__version__, "numpy": np.__version__},
+        "scope": "Reproducibility rerun on an exposed split; not a fresh generalization test.",
+    }
+    (args.output / "run-start.json").write_text(json.dumps(start_record, indent=2))
     torch.set_num_threads(2); torch.manual_seed(args.seed)
     data, papers, sets, units = load_original(args.clusters)
     train, val, test = split_sets(sets, args.seed)
@@ -157,7 +177,10 @@ def main(argv=None):
     # never accidentally pair this checkpoint with a different vocabulary.
     (ckpt / "token_mapping.json").write_text(mapping_json)
     (args.output / "freeze.json").write_text(json.dumps({"selected_step": int(best["step"]),
-        "selected_val_nll": float(best["val_nll"]), "test_evaluation": "not yet run"}, indent=2))
+        "selected_val_nll": float(best["val_nll"]), "test_evaluation": "not yet run",
+        "checkpoint_sha256": sha256(ckpt / "model.pt"),
+        "mapping_sha256": sha256(ckpt / "token_mapping.json"),
+        "run_start_sha256": sha256(args.output / "run-start.json")}, indent=2))
     # The checkpoint and selection record are durable before the single test pass.
     test_nll = nll(model, test_rows, mapping.eos_token_id)
     train_rows_for_base = [mapping.cluster_ids_to_token_ids(s) for s in train]
@@ -167,7 +190,9 @@ def main(argv=None):
         for u in sorted(units, key=lambda x: (x["paper_id"], x["cluster"], x["text_sha256"])):
             f.write(json.dumps(u, sort_keys=True) + "\n")
     manifest = {"protocol": "original assignments; grouped canonical sets; 70/15/15; non-temporal; no availability repair",
-                "script_sha256": sha256(Path(__file__)),
+                "script_sha256": source_hashes["scripts/train_source_coherence.py"],
+                "source_hashes": source_hashes,
+                "run_start_sha256": sha256(args.output / "run-start.json"),
                 "seed": args.seed, "clusters_sha256": sha256(args.clusters),
                 "assignment_join": {"mapped_papers": len(papers), "source_units": len(units),
                                     "canonical_sets": len(sets), "source_units_sha256": sha256(unit_path)},
@@ -183,6 +208,9 @@ def main(argv=None):
                "test_nll_once_after_selection": float(test_nll),
                "unigram_val_nll": uni, "pair_frequency_val_nll": pair,
                "checkpoint": str(ckpt)}
+    # A changed source or input invalidates this run rather than silently updating provenance.
+    if any(sha256(ROOT / name) != digest for name, digest in source_hashes.items()) or sha256(args.clusters) != start_record["clusters_sha256"]:
+        raise RuntimeError("Source/input changed during training; preserve this run as invalid")
     (args.output / "summary.json").write_text(json.dumps(summary, indent=2))
     print(json.dumps({k: summary[k] for k in ["best_step", "selected_val_nll", "test_nll_once_after_selection", "unigram_val_nll", "pair_frequency_val_nll"]}, indent=2))
 

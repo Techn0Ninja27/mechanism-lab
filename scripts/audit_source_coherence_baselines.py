@@ -49,9 +49,12 @@ def scores(train_sets, rows, mapping):
 
 def main(argv=None):
     p = argparse.ArgumentParser(); p.add_argument("--run", type=Path, default=ROOT / "results/source-coherence-v1")
+    p.add_argument("--clusters", type=Path, default=ROOT / "papers/clusters.json")
     args = p.parse_args(argv)
     manifest = json.loads((args.run / "manifest.json").read_text())
-    data, _, _, _ = load_original(ROOT / "papers/clusters.json")
+    if sha256(args.clusters) != manifest.get("clusters_sha256"):
+        raise ValueError("Cluster source does not match the frozen training manifest")
+    data, _, _, _ = load_original(args.clusters)
     mapping = mapping_for(data)
     train = [tuple(x) for x in manifest["splits"]["train_sets"]]
     val = [tuple(x) for x in manifest["splits"]["val_sets"]]
@@ -61,6 +64,8 @@ def main(argv=None):
     test_rows = [encode(s, mapping, rng) for s in test]
     out = {"protocol": "baseline-only; no model retraining; train-fit alpha=1; exact val/test RNG rows",
            "run_manifest_sha256": sha256(args.run / "manifest.json"),
+           "audit_script_sha256": sha256(Path(__file__)),
+           "clusters_sha256": sha256(args.clusters),
            "train_sets": len(train), "val_sets": len(val), "test_sets": len(test),
            "validation": scores(train, val_rows, mapping),
            "test": scores(train, test_rows, mapping)}
