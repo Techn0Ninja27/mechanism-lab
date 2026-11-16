@@ -1,0 +1,54 @@
+[
+  {
+    "id": "protobuf-encoding",
+    "title": "Protocol Buffers Encoding Guide",
+    "url": "https://protobuf.dev/programming-guides/encoding/",
+    "type": "official specification/documentation",
+    "operators": ["ZigZag signed-to-unsigned", "ULEB128/base-128 varint", "packed homogeneous values"],
+    "assumptions_or_limits": ["unsigned 64-bit varints use 1-10 bytes", "plain int64 negatives consume 10 bytes", "framing/count is outside the scalar varint operator"],
+    "license_note": "Official documentation; no code license inferred from this page",
+    "overlap": "Establishes signed mapping and varint atoms; does not establish telemetry block selection"
+  },
+  {
+    "id": "parquet-encodings",
+    "title": "Apache Parquet File Format: Encodings",
+    "url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+    "alternate_url": "https://github.com/apache/parquet-format/blob/master/Encodings.md",
+    "type": "official open format specification",
+    "operators": ["DELTA_BINARY_PACKED", "RLE/bit-packing hybrid", "ULEB128 and ZigZag headers", "block bit packing"],
+    "assumptions_or_limits": ["delta encoding supports INT32/INT64", "bit-packed runs are multiples of 8 values", "current run length range is 1..2^31-1", "RLE value width is byte-rounded"],
+    "license_note": "Apache Parquet format repository is Apache-2.0; verify repository headers before copying code",
+    "overlap": "Directly defeats novelty claims for adaptive RLE-vs-bit-pack run selection and delta+packing"
+  },
+  {
+    "id": "gorilla",
+    "title": "Gorilla: A Fast, Scalable, In-Memory Time Series Database",
+    "url": "https://www.vldb.org/pvldb/vol8/p1816-teller.pdf",
+    "type": "primary conference paper",
+    "operators": ["timestamp delta-of-delta", "small signed prefix codes", "value XOR with leading/trailing-zero window reuse"],
+    "assumptions_or_limits": ["timestamp/value pairs are compressed per series", "full-resolution floating-point value path is XOR-specific", "regular timestamps make delta-of-delta zero common"],
+    "license_note": "Publisher paper; no permissive implementation license inferred",
+    "overlap": "Delta-of-delta and stateful block framing are established; XOR value coding is not a signed-integer residual codec"
+  },
+  {
+    "id": "sprintz",
+    "title": "Sprintz: Time Series Compression for the Internet of Things",
+    "url": "https://arxiv.org/abs/1808.02515",
+    "code_url": "https://github.com/dblalock/sprintz",
+    "type": "primary paper plus reference implementation",
+    "operators": ["online delta/FIRE prediction", "8-sample block residual widths", "bit packing", "zero-error block RLE", "optional Huffman"],
+    "assumptions_or_limits": ["multivariate integer time series", "predictor state is serial", "paper reports poor behavior on sparse/discrete AMPD gas/water traces", "published speed depends on implementation/SIMD and layout"],
+    "license_note": "Reference repository displays Apache-2.0; paper is ACM publisher-copyrighted",
+    "overlap": "Strong direct prior art for online prediction plus block packing and zero-block RLE"
+  },
+  {
+    "id": "stream-vbyte",
+    "title": "Stream VByte: Faster Byte-Oriented Integer Compression",
+    "url": "https://arxiv.org/abs/1709.08990",
+    "type": "primary paper",
+    "operators": ["control-byte byte-length coding", "separate control and payload streams", "optional differential coding", "SIMD shuffle decode"],
+    "assumptions_or_limits": ["unsigned byte-oriented integers", "published throughput assumes SIMD-capable hardware", "paper reports about 0.5-2 extra bits/int versus VByte in tested data"],
+    "license_note": "Scholarly paper; no permissive implementation license inferred",
+    "overlap": "Useful scalar/SIMD byte-varint baseline; not a size-optimal bit-packing method"
+  }
+]

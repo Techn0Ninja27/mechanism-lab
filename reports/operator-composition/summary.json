@@ -1,0 +1,33 @@
+{
+  "candidate": "for.lzma",
+  "frozen_control": "delta.block_for.zlib",
+  "validation": {
+    "candidate": "for.lzma",
+    "control": "delta.block_for.zlib",
+    "candidate_bytes_per_sample": 1.4273274739583333,
+    "control_bytes_per_sample": 1.5011393229166667,
+    "candidate_to_control_ratio": 0.9508294481188333,
+    "status": "supported_pilot"
+  },
+  "final": {
+    "candidate": "for.lzma",
+    "control": "delta.block_for.zlib",
+    "candidate_bytes_per_sample": 1.968017578125,
+    "control_bytes_per_sample": 2.5982259114583335,
+    "candidate_to_control_ratio": 0.7574466752278636,
+    "status": "supported_pilot"
+  },
+  "candidate_count": 115,
+  "source_hashes": {
+    "operator-studies/integer-composition/experiment.py": "83c0f3ecd24375ba0066aea831401fcfec20e8419f17e147cc831136728603c1",
+    "operator-studies/integer-composition/fixture.py": "e53343134d443116b00ce05c69f6aa573188cdc2c8a033351a5568b646960030",
+    "operator-studies/integer-composition/plan.json": "29765270c042b4ba56cc92d634f6a195c87c7adf7593663b7555b99f165664df",
+    "generation/operator_composition.py": "2237d6a99b5fe29fe3361dbfbf612abdc24c9446815e3be6056b849a0ff15310",
+    "generation/integer_codecs.py": "66f3419d86bee6cfbe62f712c5595d78f5cb90828f0e5b39f946b686c87366b0",
+    "generation/molecules.py": "bf3672d865812b0d7b33b798122f2b8f0147a263c2e7b1e39a879944c5dc9630"
+  },
+  "validation_rows": 702,
+  "final_rows": 36,
+  "lossless": true,
+  "novelty_established": false
+}

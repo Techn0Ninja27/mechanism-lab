@@ -1,29 +1,89 @@
 # Mechanism Lab
 
-A research workbench for proposing mechanisms, representing their composition, and testing them against prior work and executable baselines.
+**Turn research concepts into mechanisms you can actually test.**
 
-This remains a fork of **The Alien Space of Science**. The authors already operate [Lacuna](https://lacuna.tiptreesystems.com), the production research map and proposal system described in the original README below. We use their work as a foundation; we do not claim to have built their method or production corpus.
+Mechanism Lab explores a concrete question: can we break existing methods into
+reusable parts, compose those parts into candidate implementations, and find
+combinations that improve a measurable outcome?
 
-Our extensions focus on evidence-grounded evaluation, typed atom/molecule composition, provenance checks, and reproducible candidate studies. Current pilot results include failures and small exploratory gains, not established scientific discoveries.
+The workbench connects source-grounded proposals, typed **atoms and molecules**,
+prior-art retrieval, executable experiments, and evidence-aware ranking. A
+molecule records how operators connect—not just which concepts occur together.
+A promising proposal still has to survive a baseline and a reproducible test.
 
-- [Source-grounded generation, review, and bounded app execution](docs/GROUNDED_RESEARCH.md)
-- [Shared study ledger](docs/RESEARCH_LEDGER.md)
-- [Literature atomization and reconstructed implementations](reconstruction-studies/README.md)
-- [World-search pilot and results](reports/world-search-2026-11-16/README.md)
-- [Full candidate studies](candidate-studies/README.md)
-- [Molecule representation and evidence gates](docs/world-search/MOLECULES.md)
-- [Runbook](docs/world-search/README.md)
-- [Fork changes](FORK.md)
-- [Released-artifact provenance audit](PROVENANCE.md)
+This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
+The upstream authors created the sampling method and operate
+[Lacuna](https://lacuna.tiptreesystems.com). Their work is credited below; these
+extensions and results are specific to this fork.
 
-## Original upstream project
+## Results, including what failed
 
-### The Alien Space of Science
+Results recorded **2026-11-16**. These are engineering pilots, not established
+scientific discoveries.
 
-## Local research app
+| Experiment | What happened | Evidence |
+|---|---|---|
+| **Compose executable compression operators** | Searching 115 compatible chains selected frame-of-reference packing + LZMA. On three shifted synthetic streams it used **24.25% fewer bytes** than the control frozen during validation, with exact round trips. | [Protocol, results, and limitations](operator-studies/integer-composition/README.md) |
+| **Learn which implementation to choose** | A pairwise utility ranker improved validation selection, then **lost to the fixed baseline on all three unseen families**. Held-out regret: **0.09412 vs 0.02238**, lower is better. Not promoted. | [Held-out report](reports/utility-ranker/README.md) |
+| **Reconstruct implementations from literature** | Six implementations generated from abstracts, atoms, or molecules produced **no gain against strong controls**. | [Reconstruction studies](reconstruction-studies/README.md) |
+| **Ground proposals in code and prior work** | Three audited proposals exposed a normalization failure, overlap with known methods, and an incorrect fixed point. No demonstrated novelty. | [Grounded research reports](reports/improvement-2026-11-16/README.md) |
+| **Repair scorer source consistency** | A small coherence model trained on original assignments beat its unigram baseline: test NLL **3.9868 vs 4.3186**. Availability alignment remains unresolved; exact training-source recovery is incomplete. | [Scorer report and provenance limits](reports/source-coherence/README.md) |
 
-Start `./workbench/start.sh --open` to organize documents and folders, run the sampler, inspect source evidence, and save reviews. The document workspace works with Python alone. [App guide](workbench/README.md) · [Where files go](workbench/docs/FOLDERS.md) · [Engine setup](workbench/docs/ENGINE_SETUP.md).
+The compression result is a useful combination of **known** techniques on a
+small synthetic benchmark. It is not a new codec, a comparison against optimized
+production codecs, or a result from highest-beta Alien sampling. The learned
+utility ranker's failure shows that successful search does not automatically
+teach a model to choose well on new tasks.
 
+## What works today
+
+- **Source-grounded generation:** bounded evidence packets, quoted source spans,
+  prior-art retrieval, method-lineage checks, and cost-accounted API calls.
+- **Atoms → molecules → executable chains:** typed operator interfaces,
+  implementation hashes, bounded enumeration, and exact round-trip checks.
+- **Separate ranking criteria:** novelty evidence, feasibility, and
+  task-conditioned usefulness; incomparable tasks stay incomparable and
+  exploration is explicit. This is a ranking scaffold, not a validated general
+  novelty or usefulness predictor.
+- **Reproducible studies:** frozen protocols, seeded inputs, strong controls,
+  preserved negative results, and linked result artifacts.
+- **Local webapp:** document workspace, study ledger, operator library, and
+  bounded local checks. Generated reviews remain model judgments, not proof.
+
+## Try the workbench
+
+```sh
+./workbench/start.sh --open
+```
+
+The document workspace works with Python alone. Engine features have additional
+dependencies; see [engine setup](workbench/docs/ENGINE_SETUP.md).
+The local integer round-trip checker requires no model key or paid API call.
+Paid generation requires a configured provider key and explicit bounded execution.
+
+[App guide](workbench/README.md) · [Where files go](workbench/docs/FOLDERS.md)
+
+## Read or reproduce the experiments
+
+- [Compression composition: protocol, frozen results, rerun commands](operator-studies/integer-composition/README.md)
+- [Utility ranking: validation success and held-out failure](reports/utility-ranker/README.md)
+- [Typed operator engine and primary sources](docs/operator-composition/ENGINE.md)
+- [Dual-ranker contract](docs/ranking/DUAL_RANKER.md)
+- [Source-grounded generation](docs/GROUNDED_RESEARCH.md)
+- [World-search pilot](reports/world-search-2026-11-16/README.md) and [candidate studies](candidate-studies/README.md)
+- [Shared evidence ledger](docs/RESEARCH_LEDGER.md)
+- [Fork changes](FORK.md) and [released-artifact provenance audit](PROVENANCE.md)
+
+Next research questions are whether composition gains survive real datasets,
+stronger codec baselines, and independent replication; whether utility ranking
+can generalize to fresh task families; and whether adding evidence-backed
+primitives improves search. None is established by the current results.
+
+## Upstream project and usage
+
+The following describes the original Alien workflow. Released scorer lineage
+limitations are documented in [PROVENANCE.md](PROVENANCE.md); a high beta score
+is not evidence of novelty, feasibility, or utility.
 
 Code and data for **[The Alien Space of Science: Sampling Coherent but Cognitively Unavailable Research Directions](https://arxiv.org/abs/2603.01092)**.
 

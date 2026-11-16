@@ -1,0 +1,213 @@
+{
+  "schema_version": "utility-ranker-plan.v1",
+  "question": "Can cheap raw-stream and chain-structure features rank executable lossless integer compression chains well enough to reduce task-level selection regret on unseen stream families?",
+  "status": "preregistered_train_validation_only_until_parent_approval",
+  "scope": "compression utility ranking only; no novelty, general usefulness, or research-agent claim",
+  "existing_code": [
+    "generation/operator_composition.py",
+    "operator-studies/integer-composition/fixture.py",
+    "operator-studies/integer-composition/experiment.py"
+  ],
+  "unit": "one fresh raw signed-int64 stream per task; one row per task x candidate chain",
+  "candidate_count": 20,
+  "task_counts": {
+    "train": 120,
+    "validation": 60,
+    "heldout": 60,
+    "rows_per_split": {
+      "train": 2400,
+      "validation": 1200,
+      "heldout": 1200
+    }
+  },
+  "stream_length": 4096,
+  "seed_policy": {
+    "base": 20000,
+    "train_range": [
+      20000,
+      20119
+    ],
+    "validation_range": [
+      20200,
+      20259
+    ],
+    "heldout_range": [
+      20300,
+      20359
+    ],
+    "disjoint": true,
+    "task_seed_is_not_a_feature": true
+  },
+  "families": {
+    "train": [
+      "walk",
+      "runs",
+      "periodic",
+      "uniform"
+    ],
+    "validation": [
+      "clipped_noise",
+      "modular_ramp",
+      "alternating_burst"
+    ],
+    "heldout": [
+      "piecewise_jump",
+      "regime_switch",
+      "bitwidth_extremes"
+    ]
+  },
+  "family_assignment": "deterministic balanced assignment within each split; family labels are generator metadata only and are never supplied to the model",
+  "stream_group_policy": "Each task has a unique stream_group formed from the generator family and hidden parameter-regime bucket. A group and all near-duplicate parameter settings belong to exactly one split; assert no group or seed overlap across train/validation/heldout.",
+  "heldout_guard": "Do not generate/read heldout streams or labels, and do not use exposed integer-composition final/results files, until parent explicitly authorizes final evaluation.",
+  "task_generation": {
+    "parameters": "Each family has at least four hidden parameter regimes; parameters are derived from task seed and are not features. Keep one complete stream in one split.",
+    "required_fresh_generators": {
+      "train": {
+        "walk": "bounded random walk with drift/jump variants",
+        "runs": "stationary and bursty repeated-value runs",
+        "periodic": "periodic waveform with sparse spikes",
+        "uniform": "broad uniform signed values"
+      },
+      "validation": {
+        "clipped_noise": "clipped gaussian-like noise with varying center and scale",
+        "modular_ramp": "modular ramps with varying periods and offsets",
+        "alternating_burst": "alternating burst and noise blocks"
+      },
+      "heldout": {
+        "piecewise_jump": "piecewise smooth segments with abrupt jumps",
+        "regime_switch": "latent regimes switching run/periodic/random behavior",
+        "bitwidth_extremes": "near-zero, narrow low-bit, and signed high-bit extremes"
+      }
+    },
+    "no_reuse": "Do not reuse known-chain validation/final rows, exposed results, or any stream/chunk already used by integer-composition study."
+  },
+  "features": {
+    "raw_stream_only": [
+      "length",
+      "min",
+      "max",
+      "range",
+      "mean",
+      "std",
+      "variance",
+      "median_abs",
+      "mean_abs_first_difference",
+      "std_first_difference",
+      "zero_first_difference_rate",
+      "mean_run_length",
+      "max_run_length",
+      "run_count",
+      "sampled_symbol_entropy",
+      "sampled_delta_entropy",
+      "fraction_values_fit_8_16_32_64_signed_bits",
+      "fraction_zero",
+      "fraction_nonnegative"
+    ],
+    "chain_structure_only": [
+      "depth",
+      "operator_one_hot_and_counts",
+      "contains_delta",
+      "contains_zigzag",
+      "contains_varint",
+      "contains_block_codec",
+      "contains_general_compressor",
+      "declared_input_output_type"
+    ],
+    "forbidden": [
+      "task_seed",
+      "family_name",
+      "stream_group_id",
+      "compressed_size",
+      "compressed_entropy",
+      "winner_oracle_label",
+      "roundtrip_result_as_feature",
+      "any_heldout_or_final_measurement"
+    ],
+    "normalization": "Magnitude statistics use signedlog1p; proportions andentropy untransformed. Rawfeature x operatorcount interactions support task-conditioned linear ranking. StandardScaler fits train only forlinear models. No outcome feature."
+  },
+  "label": {
+    "raw_baseline": "fixed raw signed-64 little-endian encoding with the common 9-byte header",
+    "bytes_total": "exact output length including common header and all method-specific framing",
+    "bytes_per_sample": "bytes_total / stream_length",
+    "gain": "(bytes_raw - bytes_candidate) / bytes_raw",
+    "eligibility": "candidate contributes a target only if decode(encode(stream)) exactly equals stream; invalid/non-lossless candidates are masked, never assigned a favorable numeric gain",
+    "no_novelty_label": true
+  },
+  "models": [
+    "standardized ridge regression",
+    "small random forest or ExtraTrees",
+    "within-task pairwise logistic ranker"
+  ],
+  "selection": "Fit on train only; select model/hyperparameters on validation only; freeze once before heldout. Select the highest predicted eligible gain per task, with raw fallback when no predicted gain is positive.",
+  "baselines": [
+    "raw fixed fallback",
+    "fixed best-train chain by mean valid gain",
+    "uniform random valid chain",
+    "per-task oracle best valid chain"
+  ],
+  "metrics": {
+    "primary": "mean heldout selection regret = gain(oracle) - gain(selected), lower is better",
+    "secondary": [
+      "mean heldout gain",
+      "top-1 oracle-chain rate",
+      "fraction tasks beating raw",
+      "regret versus fixed-best-train",
+      "regret versus random",
+      "per-family means",
+      "task-bootstrap 95% confidence intervals"
+    ],
+    "must_report": [
+      "train",
+      "validation",
+      "heldout",
+      "all candidate invalid counts",
+      "roundtrip failures",
+      "bytes/sample"
+    ]
+  },
+  "success_rule": "On heldout, model regret is lower than fixed-best-train and random, and relative gain direction is stable in each heldout family; otherwise report negative/inconclusive. No claim of novelty follows.",
+  "reproducibility": {
+    "fixed_seeds": true,
+    "max_tasks": 240,
+    "cpu_cheap": true,
+    "single_command": "to be supplied by parent implementation",
+    "manifest": [
+      "code hash",
+      "dependency versions",
+      "split counts",
+      "feature names",
+      "seed ranges",
+      "row hashes",
+      "model configuration"
+    ]
+  },
+  "known_exclusions": [
+    "No final/heldout generation before explicit parent approval",
+    "No reading or reuse of prior exposed final/results data",
+    "No diversity beta or other unavailable invalidity adjustment",
+    "No hyperparameter tuning on heldout rows"
+  ],
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "model_configs": {
+    "ridge_alpha": [
+      1,
+      100
+    ],
+    "extratrees": {
+      "trees": 96,
+      "depth": 12,
+      "leaf": [
+        3,
+        8
+      ],
+      "seed": 21001
+    },
+    "pairwise_logistic": {
+      "C": 1,
+      "max_iter": 500,
+      "pairs_per_task": 30,
+      "seed": 21003
+    }
+  }
+}

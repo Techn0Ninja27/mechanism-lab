@@ -1,0 +1,74 @@
+{
+  "schema_version": "integer-composition-plan.v1",
+  "question": "Can a lossless compression chain that first composes typed integer atoms (delta/zigzag/varint, optionally followed by a general compressor) reduce bytes per signed-int64 telemetry sample without sacrificing decoding correctness or practical latency?",
+  "status": "preregistered_development_validation_only_until_parent_approval",
+  "unit": "one raw stream of 4096 signed int64 values; three independent seeded streams per split are mixed compositions of the four source families, not four separate task replicates; all framing, scheme identifiers, lengths, and block metadata count toward compressed bytes",
+  "fixture": {
+    "path": "operator-studies/integer-composition/fixture.py",
+    "api": "load(mode, seed, allow_final=False) -> tuple[int, ...]",
+    "development_seeds": [
+      19011,
+      19013,
+      19017
+    ],
+    "validation_seeds": [
+      19111,
+      19113,
+      19117
+    ],
+    "final_seeds": [
+      19311,
+      19313,
+      19317
+    ],
+    "development_validation_families": [
+      "linear_smooth_randomwalk",
+      "bursty_stationaryruns",
+      "periodic_plus_spikes",
+      "broad_uniform"
+    ],
+    "final_shift": [
+      "piecewise_mixedblocks",
+      "drift_resets",
+      "geometric_jump_regimes",
+      "alternating_run_random"
+    ],
+    "final_guard": "final requires explicit allow_final=True and is not generated/read before parent approval",
+    "labels": "none returned to methods; methods receive only the input stream"
+  },
+  "chains": [
+    "rawsigned64",
+    "zlib(raw signed64 little-endian)",
+    "lzma(raw signed64 little-endian)",
+    "delta1+zigzag+varint",
+    "delta1+zigzag+varint+zlib",
+    "delta1+zigzag+varint+lzma",
+    "delta2+zigzag+varint+zlib",
+    "constant-block packing (lossless; block framing and fallback payload counted)",
+    "deterministic adaptive block codec (lossless; all selector and block framing counted)"
+  ],
+  "common_header": "Every method pays the identical 9-byte header: magic 2 bytes, version 1 byte, method id 2 bytes, element count 4 bytes. Method-specific framing is additional.",
+  "selection": "Enumerated search over this known-composition method library only; this is not a scientific novelty claim. Select at most one chain using validation only; no final access, labels, family identifiers, or per-final tuning. The selected chain must be lossless, beat the strongest validation baseline among rawsigned64, zlib(raw), lzma(raw), delta1/2+zigzag-varint+zlib, constant-block packing, and deterministic adaptive block codec by at least 1% mean validation bytes/sample, and be stable across all three validation seeds. Otherwise retain rawsigned64 as the operational fallback.",
+  "metrics": [
+    "bytes_per_sample_including_all_framing",
+    "lossless_round_trip",
+    "encode_latency",
+    "decode_latency"
+  ],
+  "latency_protocol": "same CPU process and input for every chain; report descriptive wall-clock medians/IQR over repeated runs, with warmup and no claims of hardware independence",
+  "primary_metric": "mean bytes_per_sample on validation, with per-seed and per-stream-family breakdowns",
+  "falsification": "Reject the composition claim if no chain clears the 1% reduction over the strongest known validation baseline, if the apparent winner is not stable across validation seeds, if it is not lossless, or if the frozen winner fails the preregistered mean final threshold of at least 1% reduction versus that same strongest known baseline.",
+  "reproducibility": "Pinned standard-library-only fixture; parent benchmark runner owns implementation, timing, and result files. No benchmark results are included here.",
+  "novelty_established": false,
+  "human_adjudicated": false,
+  "enumeration": {
+    "max_depth": 4,
+    "max_candidates": 4096,
+    "actual_count_pending_library_freeze": true,
+    "input_type": "signed_ints",
+    "output_type": "bytes",
+    "no_repeated_operators": true,
+    "selection_scope": "All compatible chains through registered hand-curated known operators; no claim of learned Alien scorer validity."
+  },
+  "timing_note": "One warmup then three timed roundtrips; median and min/max recorded, no hardware-independent throughput claim."
+}

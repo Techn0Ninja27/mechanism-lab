@@ -71,3 +71,7 @@ On this one-seed experiment at beta 0.7/top30, the autoregressive pool had 18 co
 - See DATASET_ROADMAP.md for a source-backed dataset plan and REGULARIZATION.md for the small-model pilot and its reproduction caveat.
 
 Source assignment provenance must be validated before interpreting scorer IDs or presenting canonical descriptions as evidence-grounded. Numeric-ID agreement alone is insufficient across clustering artifacts.
+
+## Executable composition and ranking results — 2026-11-16
+
+The typed operator registry now supports bounded composition and local round-trip checks in the workbench. A 115-chain compression search produced a small positive synthetic result; a separately trained utility ranker failed its unseen-family evaluation and is not promoted. See the [results overview](README.md#results-including-what-failed), [utility report](reports/utility-ranker/README.md), and [scorer provenance limits](reports/source-coherence/README.md). The three-axis ranking scaffold separates novelty evidence, feasibility, and comparable task-specific utility.

@@ -48,3 +48,7 @@ node --check experiments/alien-science/webapp/static/app.js
 ```
 
 From the fork, substitute `workbench` for `experiments/alien-science/webapp`. Tests use temporary project storage and do not call paid services. Local runtime data is excluded from Git.
+
+## Operator library and local checks
+
+The Operator Library displays known typed operators and compatible chains from the engine catalog, with source references. Its local checker accepts bounded integer inputs and verifies an exact encode/decode round trip using registered operators. It makes no model/API calls. A passing check demonstrates that input round trip only; it does not establish novelty or general correctness. See the engine repository README for frozen benchmark results and the negative utility-ranker result.

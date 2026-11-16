@@ -1,0 +1,1469 @@
+{
+  "schema_version": "operator-library.v1",
+  "scope": "Hand-curated known mechanisms; executable type-compatible chains. Sampled tests are not universal correctness, scientific novelty, or macro-atom promotion.",
+  "operators": [
+    {
+      "id": "delta",
+      "content_id": "op_11c87bb7c16d42e422b000e38bfd4098",
+      "input_type": "signed_ints",
+      "output_type": "signed_ints",
+      "source_url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "delta2",
+      "content_id": "op_acb7a17ea9dce8dfd20b79f0c7c9ad28",
+      "input_type": "signed_ints",
+      "output_type": "signed_ints",
+      "source_url": "https://www.vldb.org/pvldb/vol8/p1816-teller.pdf",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "zigzag",
+      "content_id": "op_31edde9185370fbe199d6d6a92734faf",
+      "input_type": "signed_ints",
+      "output_type": "unsigned_ints",
+      "source_url": "https://protobuf.dev/programming-guides/encoding/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "varint",
+      "content_id": "op_6e746de9c2d233c8614a99189b554925",
+      "input_type": "unsigned_ints",
+      "output_type": "bytes",
+      "source_url": "https://protobuf.dev/programming-guides/encoding/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "rle",
+      "content_id": "op_41c64d7db3a03d9d833732cb8fc414e2",
+      "input_type": "unsigned_ints",
+      "output_type": "bytes",
+      "source_url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "bitpack",
+      "content_id": "op_0003a36e593d98ab6a31c3b90db41f11",
+      "input_type": "unsigned_ints",
+      "output_type": "bytes",
+      "source_url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "blockpack",
+      "content_id": "op_4e063dcb984cb82dd3246dd9981e89d2",
+      "input_type": "unsigned_ints",
+      "output_type": "bytes",
+      "source_url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "for",
+      "content_id": "op_e5183939a795f690bf868947d92a4024",
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "source_url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "block_for",
+      "content_id": "op_cfde418957bb538348bf12877d87ee1a",
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "source_url": "https://parquet.apache.org/docs/file-format/data-pages/encodings/",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "raw64",
+      "content_id": "op_29eb7714be5faed1995e0880e08a9331",
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "source_url": "https://docs.python.org/3/library/struct.html",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "zlib",
+      "content_id": "op_1118884c95acd4f928776b9a56bd1a08",
+      "input_type": "bytes",
+      "output_type": "bytes",
+      "source_url": "https://docs.python.org/3/library/zlib.html",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    },
+    {
+      "id": "lzma",
+      "content_id": "op_d231937d31022b49b2d9a563c2dddc34",
+      "input_type": "bytes",
+      "output_type": "bytes",
+      "source_url": "https://docs.python.org/3/library/lzma.html",
+      "assumptions": [
+        "Input and decoded sequences bounded to one million values; encoded unsigned scalars at most 128 bits.",
+        "raw64 additionally requires signed64 range; type compatibility does not prove numeric preconditions."
+      ],
+      "contract_status": "untested",
+      "recorded_checks": "unit boundary cases and study roundtrips; no universal certificate"
+    }
+  ],
+  "chains": [
+    {
+      "id": "chain_d24877476a2ceadf3ee29f128aa5eb5a",
+      "operator_ids": [
+        "block_for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_be584843379080e561ca27671bfb8192"
+    },
+    {
+      "id": "chain_c49e452e90a7d17bc1e5a1d5f499b454",
+      "operator_ids": [
+        "block_for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_9605ea35cbfd60312022a5d362db7e9c"
+    },
+    {
+      "id": "chain_1878d9ba75d272c7aeb74187008c326f",
+      "operator_ids": [
+        "block_for",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_efef3e6af0d59076641be6f01578c93e"
+    },
+    {
+      "id": "chain_4010789f2ace47974b3788970e239a08",
+      "operator_ids": [
+        "block_for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_9203d93c022a0ce25e61e51303267393"
+    },
+    {
+      "id": "chain_f456614928a0ec7ea85e608b8d89e1cf",
+      "operator_ids": [
+        "block_for",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ef70c692087f4ab51d28adc1f19b8282"
+    },
+    {
+      "id": "chain_2bcb19768e1548463abc79cf0c91a097",
+      "operator_ids": [
+        "delta",
+        "block_for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_9bdd19c47e8e1ded43c10424057a4f7e"
+    },
+    {
+      "id": "chain_2c05101c461475681bb56510fbd792e1",
+      "operator_ids": [
+        "delta",
+        "block_for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_6d039a6b2cc1a49f55ef146f0f2da5b7"
+    },
+    {
+      "id": "chain_7c293289a8a87b54d2556757aa3f879c",
+      "operator_ids": [
+        "delta",
+        "block_for",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_6b21ca1887fdfb460d145b6bfaa26870"
+    },
+    {
+      "id": "chain_410b9f9febc8963a3c2903cd9e9056ba",
+      "operator_ids": [
+        "delta",
+        "block_for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_6b8e8bd619b604cb734987f5f44b4f80"
+    },
+    {
+      "id": "chain_c155e0e1f24cf648e1805b71fa7f47c3",
+      "operator_ids": [
+        "delta",
+        "block_for",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_3b74b952723f3d6ae400c011289419b6"
+    },
+    {
+      "id": "chain_c49e081e0def037b9409ba54b2d78cc0",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "block_for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_f7d1c8fbfd08093d622171c7115357c4"
+    },
+    {
+      "id": "chain_0956d6e4e2ca8663fdbddb3cc90fac06",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "block_for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_7ed2d41a5d01a8f8edecefea2ef5a9ab"
+    },
+    {
+      "id": "chain_fcc4ae5442060463b38f23457b096b30",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "block_for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_e3772ce04587f2db8536236d94202617"
+    },
+    {
+      "id": "chain_20e04a8684ef6014fc7b1d9fd95f73f6",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_8d872653323fbd80994946783641cb67"
+    },
+    {
+      "id": "chain_f22faa742fa0337bf1452c11c26a706d",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_4d38e0d791da0bf48491319883b24fe1"
+    },
+    {
+      "id": "chain_9e801bd50941abe0a0372a774277c88e",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_8ea5f63b522a38b7d57cdf7437e007be"
+    },
+    {
+      "id": "chain_38ba8e12d8748d5de72d0ce16f9b5b12",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "raw64"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_807fd4ee338760dbb23e38088da09561"
+    },
+    {
+      "id": "chain_916b6cb658929e6fe5df3060456cb747",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "raw64",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_f19e078301b02361d25608993f19d19c"
+    },
+    {
+      "id": "chain_90ece84af1d4b0e22948ee8e450cce24",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "raw64",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_43da138c2c251bbdad09e0078abcddf8"
+    },
+    {
+      "id": "chain_606572192b6455a01252a6d8a8ca992b",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "zigzag",
+        "bitpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_c5edbdc07059ed2993308491313d9c16"
+    },
+    {
+      "id": "chain_8f6a63642521c8e1ae8a098289f13b4d",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "zigzag",
+        "blockpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_b7f358fe67fed29ed91a1703dc501d5e"
+    },
+    {
+      "id": "chain_d3f2f0d087d8080884c8e20b45525322",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "zigzag",
+        "rle"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_206d37dfd5ce7b1fca3db9b985c16ebf"
+    },
+    {
+      "id": "chain_70fb11b30d80ac394e5c449e5a2df363",
+      "operator_ids": [
+        "delta",
+        "delta2",
+        "zigzag",
+        "varint"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_20eb76eb7f1854a81ce520ebb737519f"
+    },
+    {
+      "id": "chain_ea3b218a2e1817d7b0c04a14a39d5c8c",
+      "operator_ids": [
+        "delta",
+        "for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_4b5701018b4e85c9ce770a4c39e555ee"
+    },
+    {
+      "id": "chain_b2c12a803888349969d311e12c3ff557",
+      "operator_ids": [
+        "delta",
+        "for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_1be9bd47dc330955cf7e0f48d8fed40e"
+    },
+    {
+      "id": "chain_59ff50b977cd396046109377642b8799",
+      "operator_ids": [
+        "delta",
+        "for",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_0caa3494433d8d9eb6e202c1faeb1ca5"
+    },
+    {
+      "id": "chain_ddeed6b1270615a156de8c146cb30019",
+      "operator_ids": [
+        "delta",
+        "for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ce6cbaae5d2971b3b21e613fe8433808"
+    },
+    {
+      "id": "chain_8408819f5375441ac51307b1602f5627",
+      "operator_ids": [
+        "delta",
+        "for",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_3ac24bb4ecbc6ef5cacc2c95eddfbb88"
+    },
+    {
+      "id": "chain_8c3d2e35773871e5924daf7c48c3cf64",
+      "operator_ids": [
+        "delta",
+        "raw64"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_1eb07b5b41f4a5089dad7372977cce3a"
+    },
+    {
+      "id": "chain_88a5e36039c37d03d0bde8666bf16697",
+      "operator_ids": [
+        "delta",
+        "raw64",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_8535db1b1a052c01f3a0185c34636044"
+    },
+    {
+      "id": "chain_8c4db268f2dcba3928efc91751081f29",
+      "operator_ids": [
+        "delta",
+        "raw64",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_a8d09a35ce3bdb4d4ae3045f37b0f65e"
+    },
+    {
+      "id": "chain_7333bb55b56352a1480c55c83108b8fe",
+      "operator_ids": [
+        "delta",
+        "raw64",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_cee85744eb2bd0a2eb124329539b42c5"
+    },
+    {
+      "id": "chain_0f5bc1c0daea259b1ca81b047fea400b",
+      "operator_ids": [
+        "delta",
+        "raw64",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_5a113fcd76ae03f3e52bb5691dc0e91f"
+    },
+    {
+      "id": "chain_acebd21e4041ecbbb606946da759ee4c",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "bitpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_d7721d45fc1b5f952e3e2f7292c44f91"
+    },
+    {
+      "id": "chain_aa119470f17dce49b1cb9c8cbd4ee9e5",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "bitpack",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_25ffb067f3a49cb155367907f739b170"
+    },
+    {
+      "id": "chain_d764ee5b1f732e7c0b89ed40eb0eb8ec",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "bitpack",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_bf629d5041bfcdb1579980293bb08487"
+    },
+    {
+      "id": "chain_b6f76c15e0253f5a3ea53e12814b7033",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "blockpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_1a6d374fe392307828a51de447448e5c"
+    },
+    {
+      "id": "chain_eb88efbdce045a780b0a5db46dbe73a5",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "blockpack",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_3e46d350c888ff86b6ae8515938e0aac"
+    },
+    {
+      "id": "chain_6c348fa5cbda90a48932fd889e4a8777",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "blockpack",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_68afacaa7d6101464e4d45d19c08ed8f"
+    },
+    {
+      "id": "chain_8db8af119372e95b7706d0c11a079f4e",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "rle"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_8999224007892ea22ea364d7cdec57e6"
+    },
+    {
+      "id": "chain_794f1315abd1c891a231039d4326f97c",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "rle",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_963f26ef79ab928ee2771667ea548694"
+    },
+    {
+      "id": "chain_32c3dd13268c67bebdf3a106a233918e",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "rle",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_d8085a4f71dbf4ee99c6312514ae18ff"
+    },
+    {
+      "id": "chain_d51da61e84c43f863cd4999d29f5248e",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "varint"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_0d147c576a10e79fe94a3d1cd11462c0"
+    },
+    {
+      "id": "chain_2fa9a01009f1ad201822ee5b4947df82",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "varint",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_7a701beda8c5b95dae5324f87b2d7444"
+    },
+    {
+      "id": "chain_66e589de37940164346d5b15fcb3a5c7",
+      "operator_ids": [
+        "delta",
+        "zigzag",
+        "varint",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_85c54a0f7377634c3b56cbce16d18704"
+    },
+    {
+      "id": "chain_e0385062d6bfca6efc25548e450f5407",
+      "operator_ids": [
+        "delta2",
+        "block_for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_99704b9935df1b93c76f8d06ce1e992d"
+    },
+    {
+      "id": "chain_f2bc6d16b0f38bc89215357dc28ff895",
+      "operator_ids": [
+        "delta2",
+        "block_for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_40790364a25692c07ac9c5ae9f94f2f2"
+    },
+    {
+      "id": "chain_09f11576acda03b42c40154b3b104fb4",
+      "operator_ids": [
+        "delta2",
+        "block_for",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_39c9457432bb0deb98a9ed9aa478e9a3"
+    },
+    {
+      "id": "chain_fea9247485e0fb07321e964f28bf5b5b",
+      "operator_ids": [
+        "delta2",
+        "block_for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_2e6a1b8900d31ed824a1d5ce9991a615"
+    },
+    {
+      "id": "chain_ffbb9b71bd91d2a2c790e7cc6a8c58d2",
+      "operator_ids": [
+        "delta2",
+        "block_for",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ceda41278e17f09507ac4fcd4451c17d"
+    },
+    {
+      "id": "chain_03b2a0c07158249c44dffbef2b98b782",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "block_for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_17754e7c7768acad374d22385c3d7a28"
+    },
+    {
+      "id": "chain_2e6190b6eead051b5a4ff6126de06a50",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "block_for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_30aad7e64bf44c2ae307d77a6915d156"
+    },
+    {
+      "id": "chain_896853db71be99a6df4a17b583c56f8e",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "block_for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_a8264e0412829a4a2255bc993d01ae89"
+    },
+    {
+      "id": "chain_7576519222d37011de19654006722156",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_4f7d9f74ecca2cc0b9d5ec1648e9d9e0"
+    },
+    {
+      "id": "chain_170d9af2440de553cdc4c51f44658fca",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_2b9afc8516fc73e4a1ac1148bf24c6e7"
+    },
+    {
+      "id": "chain_9f928176e9eacfe98a9242887c5a52af",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_621dcdfa6dd9a5f2d705b256938fd212"
+    },
+    {
+      "id": "chain_8990ded712b87bfef1c37e3cc25d9eac",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "raw64"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_8fbb0b5d112d71022ae516c16b82eb89"
+    },
+    {
+      "id": "chain_da89cf2162b26b9ebae5451be1ef6d65",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "raw64",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_88513194b1e8e8830946f4e657104f68"
+    },
+    {
+      "id": "chain_04014e01c1f238ae9dbb794e0493940e",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "raw64",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_467c06a1f9bb3ffd78111a916b920bbf"
+    },
+    {
+      "id": "chain_f882275883ada0b0455e7fecce5a66e1",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "zigzag",
+        "bitpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_e20783f1dfbe0e95491e4784c08e922e"
+    },
+    {
+      "id": "chain_fa5d989f22595c50aba734da328ccb2b",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "zigzag",
+        "blockpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_2f1fb2e5420efeacc706424e9a0aeadf"
+    },
+    {
+      "id": "chain_0c527dd84bb1ce8e3f351a09f58a695b",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "zigzag",
+        "rle"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_20191d3982ec07ebeec934a1efa80a4d"
+    },
+    {
+      "id": "chain_9bfa485590399fc5a1a08ec3f619c5a8",
+      "operator_ids": [
+        "delta2",
+        "delta",
+        "zigzag",
+        "varint"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_b9edc3ed5c52620663d7990dbafcab51"
+    },
+    {
+      "id": "chain_230e4079c7de1a24876d109e5d043510",
+      "operator_ids": [
+        "delta2",
+        "for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_6560c533f26213e39968b69ddc972fed"
+    },
+    {
+      "id": "chain_653ecd56ead3f822f404686ed5f2d18c",
+      "operator_ids": [
+        "delta2",
+        "for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_3d9bc0b3c52c48364d77fd806b6ad41e"
+    },
+    {
+      "id": "chain_4623b4802e7c4076b16f2602ec7a71fb",
+      "operator_ids": [
+        "delta2",
+        "for",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ab40c6f111ed3120b03d288701d547b3"
+    },
+    {
+      "id": "chain_c2651cb09bf176f12666708c063cfcae",
+      "operator_ids": [
+        "delta2",
+        "for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_772bcec71a75e2dffa78567185456739"
+    },
+    {
+      "id": "chain_0fada97f3aee98143b1628215543078b",
+      "operator_ids": [
+        "delta2",
+        "for",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_2dce86567a7f233b5da2a569767a7afc"
+    },
+    {
+      "id": "chain_6fc6b9ed3bacf01c817e8036314d9fd7",
+      "operator_ids": [
+        "delta2",
+        "raw64"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ad33f2590ff89c7930658376af83b2b1"
+    },
+    {
+      "id": "chain_b7380ea95ed78ffbaba8c62c2b865ce7",
+      "operator_ids": [
+        "delta2",
+        "raw64",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_474680db819e299f096822ab9cd4bf7b"
+    },
+    {
+      "id": "chain_9da0496e85a45eaed4368ca72fef9234",
+      "operator_ids": [
+        "delta2",
+        "raw64",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_b2ff7fe7b2835225cd3203e23153d18b"
+    },
+    {
+      "id": "chain_eb92aad2bee9621df551c9e777d4866a",
+      "operator_ids": [
+        "delta2",
+        "raw64",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ec4671893926d97ac51fb8e447d2fbd4"
+    },
+    {
+      "id": "chain_a62dcb3b41dac56c6d2149b808d73747",
+      "operator_ids": [
+        "delta2",
+        "raw64",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_35d52723662a07b11948b2fef99eb906"
+    },
+    {
+      "id": "chain_0249b7eeaab9d38ff18f8229b86dc829",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "bitpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_353c74251866ec2b03ec74a480e4ad4a"
+    },
+    {
+      "id": "chain_af9426dc67e6e211e96f8b7d5e07dfe8",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "bitpack",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_310a6b282ecae8c07fcd1c487aa7bebd"
+    },
+    {
+      "id": "chain_bb5ff973453ab65e7fea80c35c86cc1e",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "bitpack",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_523532326dcd6f3367d9fa9cac739d3a"
+    },
+    {
+      "id": "chain_429d098e6dba4e03b850d44372423012",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "blockpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_b4b1270c40cc5f211beb4129d117f860"
+    },
+    {
+      "id": "chain_b7e828baf0e02084f66ae0a6cfe1c8a4",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "blockpack",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_9d8eec69a67f21cef856522b7ee3dcd8"
+    },
+    {
+      "id": "chain_4a0d2c79b7efbd3ef4836f0c8ab001ae",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "blockpack",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_f3f3ada5fb6c7661d4a8ddd5e7f8cbf5"
+    },
+    {
+      "id": "chain_1f6f3f5a060a9435869419173b7ce194",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "rle"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_fd83bb7c715f18cc847c328166459b1c"
+    },
+    {
+      "id": "chain_c88e590b4b578d2b2592d018b4aa46b7",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "rle",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_3ef81f2e870f6a2211687b3ae125cf66"
+    },
+    {
+      "id": "chain_6c03c3e6499e8a045d853bf05095ba93",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "rle",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_f2e1cd561c45617ede49830379a15017"
+    },
+    {
+      "id": "chain_c0f6f66696d29db1564e572ddb08d89f",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "varint"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_c068c9158ec38811e5e658f04578276a"
+    },
+    {
+      "id": "chain_be2f1178dff53da6e6d72a61e3384bcd",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "varint",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_b34c77678fe1d0764a945d120d56e0c9"
+    },
+    {
+      "id": "chain_0a19784c71ec0082bb525b2123a71924",
+      "operator_ids": [
+        "delta2",
+        "zigzag",
+        "varint",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_dc2748710e85906ff90b3b9197524d49"
+    },
+    {
+      "id": "chain_e7b4f559d5bc43d829b2a96258b74f3d",
+      "operator_ids": [
+        "for"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_55b0f3c2b263613e163f757bfd66eb8a"
+    },
+    {
+      "id": "chain_e43365581c0b00eeb08852f56c45fe6f",
+      "operator_ids": [
+        "for",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_87bf1cf4f7396bde88123aff992acff0"
+    },
+    {
+      "id": "chain_7c95a663aabe2248ab33d9e58725e370",
+      "operator_ids": [
+        "for",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_16591878686e5ceddfe75c1a7b87fc9d"
+    },
+    {
+      "id": "chain_83f973c3b3afe389e06963f65818796c",
+      "operator_ids": [
+        "for",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_3ae20a718a53afcd820887f1a4f116e7"
+    },
+    {
+      "id": "chain_efa72eeb01bcd3be8fc6fc186429288e",
+      "operator_ids": [
+        "for",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_bf4bccd57ad18002a93eeb8edc266c87"
+    },
+    {
+      "id": "chain_b5860d56dcd4c60dd0b7949bb33b8416",
+      "operator_ids": [
+        "raw64"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_adba98644e3e7a68bbb437502f5c63be"
+    },
+    {
+      "id": "chain_18297e1f769fae9ef13223f540cad675",
+      "operator_ids": [
+        "raw64",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_879e82ffe63885aaa1374ce739205aa3"
+    },
+    {
+      "id": "chain_4ed1f57719aded7804e29c2d1dadf258",
+      "operator_ids": [
+        "raw64",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ca9150eefb55759f43dcc7630e120827"
+    },
+    {
+      "id": "chain_8620e034b822dcdeb88b4ea720338797",
+      "operator_ids": [
+        "raw64",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_2395a8b87ea8b9a8ad9a0784cf202df2"
+    },
+    {
+      "id": "chain_d048fb316d8ccf0845d5861335efef1b",
+      "operator_ids": [
+        "raw64",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_7779c0d65ce0b6c38e5c8a8e7532feb6"
+    },
+    {
+      "id": "chain_5d004f6ff57b5da4584a9e76a3b19074",
+      "operator_ids": [
+        "zigzag",
+        "bitpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_4a6985a9d1e9e7cde4005abfd4f20e09"
+    },
+    {
+      "id": "chain_6f544590d112e9f711697bbea573fa1c",
+      "operator_ids": [
+        "zigzag",
+        "bitpack",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_584e509770c5c48b00ec3fc70f099fb1"
+    },
+    {
+      "id": "chain_131d960446973bc71a48d6f9c48ee6ba",
+      "operator_ids": [
+        "zigzag",
+        "bitpack",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_f7121e21841f3abda6d5946bcd80d0b9"
+    },
+    {
+      "id": "chain_bbe0a81185d019a5c8b6137f1be97fbe",
+      "operator_ids": [
+        "zigzag",
+        "bitpack",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_1df0d7e366dad9eda8066a54bcddb992"
+    },
+    {
+      "id": "chain_e5a9f4703ca7ddd662deb5e019f92bb1",
+      "operator_ids": [
+        "zigzag",
+        "bitpack",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_1c75ed67960315c44bac83e065c148c7"
+    },
+    {
+      "id": "chain_b7788f3701e0044fb163e02b4f219202",
+      "operator_ids": [
+        "zigzag",
+        "blockpack"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_b43466b89aafe32d2bc57165cb41fc8d"
+    },
+    {
+      "id": "chain_7d34ffeff608a2775ba9f911e409134a",
+      "operator_ids": [
+        "zigzag",
+        "blockpack",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_7d629e25558ea1df81079ae2b053b424"
+    },
+    {
+      "id": "chain_92131a57ac02b2279118e462feaf5274",
+      "operator_ids": [
+        "zigzag",
+        "blockpack",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_d9eea7c2b75fabf3924cdd07f1935687"
+    },
+    {
+      "id": "chain_f622e2669f7edb6b4fcc97a195a7d936",
+      "operator_ids": [
+        "zigzag",
+        "blockpack",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_9f2cdf6d1fb808b05aec6bf780e9c6d6"
+    },
+    {
+      "id": "chain_ad17783068b125efc2a9440f0223a0d8",
+      "operator_ids": [
+        "zigzag",
+        "blockpack",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_a2d1af2a52aa430d206f48846e9cd1af"
+    },
+    {
+      "id": "chain_538937f044d3afb852d423573ca5c85c",
+      "operator_ids": [
+        "zigzag",
+        "rle"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_41bee2c32486dada0e9905d0b194ec98"
+    },
+    {
+      "id": "chain_c2acf7d03d0113e70fdd918f7a187f28",
+      "operator_ids": [
+        "zigzag",
+        "rle",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_620c4b1bafef658da460811d565b75e1"
+    },
+    {
+      "id": "chain_18aa0db9be8d2a3feece8b083f6576fd",
+      "operator_ids": [
+        "zigzag",
+        "rle",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_a6b172e8d5afb2282de67d264ed010d1"
+    },
+    {
+      "id": "chain_f9da162c80861ad667183c70ba27bbd0",
+      "operator_ids": [
+        "zigzag",
+        "rle",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_712bf68dd1a7094e0885444a5bd35a92"
+    },
+    {
+      "id": "chain_48391c8aad43600937d04965a66833e8",
+      "operator_ids": [
+        "zigzag",
+        "rle",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_bfe4177d3af399c761d97bb975f5830d"
+    },
+    {
+      "id": "chain_432fa76ab72ca462ce86ba0e31d68bd8",
+      "operator_ids": [
+        "zigzag",
+        "varint"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_78eb1d51fccb2b75cbc491cc7b199dae"
+    },
+    {
+      "id": "chain_7ac3c0ccf3e65cf4537ecdff203a095b",
+      "operator_ids": [
+        "zigzag",
+        "varint",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_ae280dca4a3c2beacf53833735689e4a"
+    },
+    {
+      "id": "chain_e176062ab52f2b4cf36873492cde20cf",
+      "operator_ids": [
+        "zigzag",
+        "varint",
+        "lzma",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_eb5eabf1314804416e1a04395c5d5288"
+    },
+    {
+      "id": "chain_f14548ba03e5f3c1bf1160b8c07838e9",
+      "operator_ids": [
+        "zigzag",
+        "varint",
+        "zlib"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_8a092b905739aec3200b16b854a248dd"
+    },
+    {
+      "id": "chain_a33aecfa9aa1a82a68f1f3c40d93fafd",
+      "operator_ids": [
+        "zigzag",
+        "varint",
+        "zlib",
+        "lzma"
+      ],
+      "input_type": "signed_ints",
+      "output_type": "bytes",
+      "molecule_id": "mol_1c2c7d46b71c920d941557496bf0363a"
+    }
+  ],
+  "study": {
+    "report_path": "operator-studies/integer-composition/README.md",
+    "status": "supported_small_synthetic_pilot_known_composition"
+  },
+  "scientific_novelty_claim": false,
+  "macro_atom_promoted": false
+}

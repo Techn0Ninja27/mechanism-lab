@@ -1,0 +1,869 @@
+{
+  "status": "complete",
+  "source_hashes": {
+    "operator-studies/integer-composition/experiment.py": "83c0f3ecd24375ba0066aea831401fcfec20e8419f17e147cc831136728603c1",
+    "operator-studies/integer-composition/fixture.py": "e53343134d443116b00ce05c69f6aa573188cdc2c8a033351a5568b646960030",
+    "operator-studies/integer-composition/plan.json": "29765270c042b4ba56cc92d634f6a195c87c7adf7593663b7555b99f165664df",
+    "generation/operator_composition.py": "2237d6a99b5fe29fe3361dbfbf612abdc24c9446815e3be6056b849a0ff15310",
+    "generation/integer_codecs.py": "66f3419d86bee6cfbe62f712c5595d78f5cb90828f0e5b39f946b686c87366b0",
+    "generation/molecules.py": "bf3672d865812b0d7b33b798122f2b8f0147a263c2e7b1e39a879944c5dc9630"
+  },
+  "mode": "final",
+  "rows": [
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "block_for",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 13778,
+      "bytes_per_sample": 3.36376953125,
+      "payload_sha256": "2d7eada613b7cbb26a27f184742e07bddd7d46a6f89206f5e578e44e3832e559",
+      "lossless": true,
+      "encode_seconds_median": 0.0010913750011241063,
+      "decode_seconds_median": 0.0009805000008782372,
+      "encode_seconds_range": [
+        0.0010898330001509748,
+        0.0010980000006384216
+      ],
+      "decode_seconds_range": [
+        0.0009449169956496917,
+        0.001043500000378117
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "delta.block_for",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 14163,
+      "bytes_per_sample": 3.457763671875,
+      "payload_sha256": "d557e28b86d3c7961dd86f62f7477ffb8395c0fc568950924b3238972687d607",
+      "lossless": true,
+      "encode_seconds_median": 0.0014345000017783605,
+      "decode_seconds_median": 0.0012916249979753047,
+      "encode_seconds_range": [
+        0.0014291670013335533,
+        0.0014616249973187223
+      ],
+      "decode_seconds_range": [
+        0.0012855419990955852,
+        0.0012927499992656521
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "delta.block_for.zlib",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 10075,
+      "bytes_per_sample": 2.459716796875,
+      "payload_sha256": "eb6fa11c7e4ad2fd48e2cd08436b2c2f95a1e4a37ba422adb079af90093d3661",
+      "lossless": true,
+      "encode_seconds_median": 0.001692042002105154,
+      "decode_seconds_median": 0.0012781659970642067,
+      "encode_seconds_range": [
+        0.0014926670046406798,
+        0.0017433749962947331
+      ],
+      "decode_seconds_range": [
+        0.00122870799532393,
+        0.0014449579975917004
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "delta.zigzag.varint",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 10011,
+      "bytes_per_sample": 2.444091796875,
+      "payload_sha256": "e22db217e76930afe4b50318a87c05592807556732d5869b2186652854666b51",
+      "lossless": true,
+      "encode_seconds_median": 0.0011113750006188639,
+      "decode_seconds_median": 0.0012932909958180971,
+      "encode_seconds_range": [
+        0.00110675000178162,
+        0.0011153329978697002
+      ],
+      "decode_seconds_range": [
+        0.0012848339974880219,
+        0.0013008749956497923
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "delta.zigzag.varint.zlib",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 8553,
+      "bytes_per_sample": 2.088134765625,
+      "payload_sha256": "161f1020191c26f8a5f09912df4843f0418f5c45c43f4b496a745ffb59113c58",
+      "lossless": true,
+      "encode_seconds_median": 0.0013518339983420447,
+      "decode_seconds_median": 0.0015860829953453504,
+      "encode_seconds_range": [
+        0.0012136250006733462,
+        0.0017034170014085248
+      ],
+      "decode_seconds_range": [
+        0.0014237089999369346,
+        0.001979207998374477
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "delta2.zigzag.varint.zlib",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 9273,
+      "bytes_per_sample": 2.263916015625,
+      "payload_sha256": "8aee74ae1a46aca9115d6fd4cd6c27acdb38bd30fd36eb3b583ec70ee9b551d9",
+      "lossless": true,
+      "encode_seconds_median": 0.0013271249990793876,
+      "decode_seconds_median": 0.0013928330008639023,
+      "encode_seconds_range": [
+        0.0013132500025676563,
+        0.0013304159947438166
+      ],
+      "decode_seconds_range": [
+        0.0013582500032498501,
+        0.0013984159959363751
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "for.lzma",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 7925,
+      "bytes_per_sample": 1.934814453125,
+      "payload_sha256": "b75a6241e21fc367889477a62612a92c775495c3caa8f86048cda6e571321dd1",
+      "lossless": true,
+      "encode_seconds_median": 0.001969249999092426,
+      "decode_seconds_median": 0.001257374999113381,
+      "encode_seconds_range": [
+        0.0019481249983073212,
+        0.002027374997851439
+      ],
+      "decode_seconds_range": [
+        0.0012503749967436306,
+        0.0012587090022861958
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "known_adaptive_blocks",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 9888,
+      "bytes_per_sample": 2.4140625,
+      "payload_sha256": "551fc313f3dd0df6023d1cb8a7c2bde4b1d9ad3bf82cf124e6aa4d1a0b53d794",
+      "lossless": true,
+      "encode_seconds_median": 0.007986832999449689,
+      "decode_seconds_median": 0.0012875000029453076,
+      "encode_seconds_range": [
+        0.007978916000865865,
+        0.008107749999908265
+      ],
+      "decode_seconds_range": [
+        0.0012619999979506247,
+        0.001297374998102896
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "known_constant_blocks",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 32941,
+      "bytes_per_sample": 8.042236328125,
+      "payload_sha256": "9cf47b9e9be74a31887652347c9c7e2a72839a8f5574a7d50b911b59cbea679f",
+      "lossless": true,
+      "encode_seconds_median": 0.0004434160000528209,
+      "decode_seconds_median": 0.0002026250003837049,
+      "encode_seconds_range": [
+        0.0004367500005173497,
+        0.0004592499972204678
+      ],
+      "decode_seconds_range": [
+        0.00019600000086938962,
+        0.00021258299966575578
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "raw64",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 32777,
+      "bytes_per_sample": 8.002197265625,
+      "payload_sha256": "7e4e5158c4fa0139423cd18b1b369fd6cb09f96e1513cbf21f035b8cce2a17ee",
+      "lossless": true,
+      "encode_seconds_median": 0.0003495420023682527,
+      "decode_seconds_median": 0.0001650830017752014,
+      "encode_seconds_range": [
+        0.0003473329998087138,
+        0.00035075000050710514
+      ],
+      "decode_seconds_range": [
+        0.00015583400090690702,
+        0.0001675409948802553
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "raw64.lzma",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 8565,
+      "bytes_per_sample": 2.091064453125,
+      "payload_sha256": "c29d166f1150e256946dc5da02022c6adf379476d80c026013e0201028195a59",
+      "lossless": true,
+      "encode_seconds_median": 0.002962333004688844,
+      "decode_seconds_median": 0.0004649580005207099,
+      "encode_seconds_range": [
+        0.002893832999689039,
+        0.0029855419998057187
+      ],
+      "decode_seconds_range": [
+        0.0004614169956767,
+        0.00047420799819519743
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19311,
+      "method": "raw64.zlib",
+      "input_sha256": "2fc2ec144e4004116ff035aaad6fa956ae5d60bd68e0ad3ea8229a024be50aa7",
+      "bytes": 10918,
+      "bytes_per_sample": 2.66552734375,
+      "payload_sha256": "48955cf055dd6af04c3520c7bb1913179bd4537e06bbaf7bb31c655edd395f2b",
+      "lossless": true,
+      "encode_seconds_median": 0.001205125001433771,
+      "decode_seconds_median": 0.00018733300385065377,
+      "encode_seconds_range": [
+        0.001171541000076104,
+        0.0012262079981155694
+      ],
+      "decode_seconds_range": [
+        0.00018420800188323483,
+        0.0001899999988381751
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "block_for",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 15440,
+      "bytes_per_sample": 3.76953125,
+      "payload_sha256": "61759b576e5fc39c8aa583bc609b0b9a1c3f43273ecaa89bfe0fb5352d46f6a2",
+      "lossless": true,
+      "encode_seconds_median": 0.0011022499966202304,
+      "decode_seconds_median": 0.000994000001810491,
+      "encode_seconds_range": [
+        0.0011007919965777546,
+        0.0011071249973610975
+      ],
+      "decode_seconds_range": [
+        0.0009937499999068677,
+        0.0010206249935436063
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "delta.block_for",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 16049,
+      "bytes_per_sample": 3.918212890625,
+      "payload_sha256": "819f03e0ea8805d85028cdfcef275f593aa6bd2b465ec96219425e058c811958",
+      "lossless": true,
+      "encode_seconds_median": 0.0019091670037596487,
+      "decode_seconds_median": 0.0016887919991859235,
+      "encode_seconds_range": [
+        0.0016861249969224446,
+        0.0019195409986423329
+      ],
+      "decode_seconds_range": [
+        0.0016858750022947788,
+        0.0018324170014238916
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "delta.block_for.zlib",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 11424,
+      "bytes_per_sample": 2.7890625,
+      "payload_sha256": "983672c6fe6940878bac904649d8671ba66f9a623a4131d97b6b3a84d14db9d0",
+      "lossless": true,
+      "encode_seconds_median": 0.0016901249982765876,
+      "decode_seconds_median": 0.001436124999599997,
+      "encode_seconds_range": [
+        0.0016651249970891513,
+        0.0017448340004193597
+      ],
+      "decode_seconds_range": [
+        0.0014322499991976656,
+        0.0014389160060090944
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "delta.zigzag.varint",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 10931,
+      "bytes_per_sample": 2.668701171875,
+      "payload_sha256": "026b4a6c8f31c2684081d12ce120899a4773870b2663caaa8c8f72881526e2c2",
+      "lossless": true,
+      "encode_seconds_median": 0.001141875000030268,
+      "decode_seconds_median": 0.0013428750025923364,
+      "encode_seconds_range": [
+        0.0011392910018912517,
+        0.0011451250029494986
+      ],
+      "decode_seconds_range": [
+        0.001335458000539802,
+        0.0013600419988506474
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "delta.zigzag.varint.zlib",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 9365,
+      "bytes_per_sample": 2.286376953125,
+      "payload_sha256": "b0a872c7c9124b10cb7f14a60e49e5ff9eab0c6332ac2467e20ec284cf863b96",
+      "lossless": true,
+      "encode_seconds_median": 0.0012348329983069561,
+      "decode_seconds_median": 0.0013587089997599833,
+      "encode_seconds_range": [
+        0.0012332500045886263,
+        0.001243416998477187
+      ],
+      "decode_seconds_range": [
+        0.001347959005215671,
+        0.0014139170016278513
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "delta2.zigzag.varint.zlib",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 10198,
+      "bytes_per_sample": 2.48974609375,
+      "payload_sha256": "39668b84c1d83aead8942f5b494c06e6621035ec3bafde42523bf00083977d51",
+      "lossless": true,
+      "encode_seconds_median": 0.0014061250039958395,
+      "decode_seconds_median": 0.001495292002800852,
+      "encode_seconds_range": [
+        0.001389250006468501,
+        0.0014724169959663413
+      ],
+      "decode_seconds_range": [
+        0.0014713330019731075,
+        0.0015257499981089495
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "for.lzma",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 8645,
+      "bytes_per_sample": 2.110595703125,
+      "payload_sha256": "3fcbc1c541b8cdf8ff4ea02aa02bf8f6ad1c0a95f500effd2aa8c962ba98d23d",
+      "lossless": true,
+      "encode_seconds_median": 0.0019312919976073317,
+      "decode_seconds_median": 0.0013194580023991875,
+      "encode_seconds_range": [
+        0.0019034169963560998,
+        0.0019887919988832437
+      ],
+      "decode_seconds_range": [
+        0.0013135420012986287,
+        0.0013287089968798682
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "known_adaptive_blocks",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 10654,
+      "bytes_per_sample": 2.60107421875,
+      "payload_sha256": "6febf20716da284e9222309090dd72761ae72430c7ca59679895423daf7dd59e",
+      "lossless": true,
+      "encode_seconds_median": 0.008695416996488348,
+      "decode_seconds_median": 0.0013238340034149587,
+      "encode_seconds_range": [
+        0.008662874999572523,
+        0.008780832999036647
+      ],
+      "decode_seconds_range": [
+        0.0013208339951233938,
+        0.0013240420012152754
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "known_constant_blocks",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 32941,
+      "bytes_per_sample": 8.042236328125,
+      "payload_sha256": "ee9b95ad8384bd15fd3f507c4ffaf107647cc048a952e22259c28c2da5606432",
+      "lossless": true,
+      "encode_seconds_median": 0.00046533400018233806,
+      "decode_seconds_median": 0.00021537500288104638,
+      "encode_seconds_range": [
+        0.0004569160009850748,
+        0.0004779579976457171
+      ],
+      "decode_seconds_range": [
+        0.00020320800103945658,
+        0.00024375000066356733
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "raw64",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 32777,
+      "bytes_per_sample": 8.002197265625,
+      "payload_sha256": "202526326818fba853e0a22c18de41061951c2125912aa1d66818074016c2c09",
+      "lossless": true,
+      "encode_seconds_median": 0.00037024999619461596,
+      "decode_seconds_median": 0.00017620900325709954,
+      "encode_seconds_range": [
+        0.0003649159989436157,
+        0.0003725830028997734
+      ],
+      "decode_seconds_range": [
+        0.00016508399858139455,
+        0.00018187499517807737
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "raw64.lzma",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 9461,
+      "bytes_per_sample": 2.309814453125,
+      "payload_sha256": "3ca8fa037d432d54db0a9ecdc1d80f5f917e400b7a2f656d35e255c1749dc134",
+      "lossless": true,
+      "encode_seconds_median": 0.0029643750021932647,
+      "decode_seconds_median": 0.0005436670035123825,
+      "encode_seconds_range": [
+        0.002870374999474734,
+        0.003104541996435728
+      ],
+      "decode_seconds_range": [
+        0.0005279589968267828,
+        0.0006143339996924624
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19313,
+      "method": "raw64.zlib",
+      "input_sha256": "b089ffda3502f3d4929f076fa16e39fdc16ee8de070aa087a96dc152aafa1fa4",
+      "bytes": 11724,
+      "bytes_per_sample": 2.8623046875,
+      "payload_sha256": "b3ed1d5049d32feda2abe649c3c2df0633979ce81335244a67c100ef51972c6d",
+      "lossless": true,
+      "encode_seconds_median": 0.0013139169968781061,
+      "decode_seconds_median": 0.00020745900110341609,
+      "encode_seconds_range": [
+        0.0012978750019101426,
+        0.0013487499963957816
+      ],
+      "decode_seconds_range": [
+        0.00020120800036238506,
+        0.0002090840062010102
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "block_for",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 14132,
+      "bytes_per_sample": 3.4501953125,
+      "payload_sha256": "b84588737460ee6312099cca235a33c140f225651c4c3c11dea6686936a37de7",
+      "lossless": true,
+      "encode_seconds_median": 0.0010982079984387383,
+      "decode_seconds_median": 0.0009788750030566007,
+      "encode_seconds_range": [
+        0.0010968749993480742,
+        0.0011010829985025339
+      ],
+      "decode_seconds_range": [
+        0.0009614580048946664,
+        0.0009809170005610213
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "delta.block_for",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 14741,
+      "bytes_per_sample": 3.598876953125,
+      "payload_sha256": "23515adc288aedc217385e10d1d4167680e0be811149e4a053dfbfce48601fe0",
+      "lossless": true,
+      "encode_seconds_median": 0.001443790999474004,
+      "decode_seconds_median": 0.0012960829990333878,
+      "encode_seconds_range": [
+        0.0014340830020955764,
+        0.0015057500058901496
+      ],
+      "decode_seconds_range": [
+        0.0012904579998576082,
+        0.0013032500064582564
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "delta.block_for.zlib",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 10428,
+      "bytes_per_sample": 2.5458984375,
+      "payload_sha256": "cbc4ec1b3e90b57b81a718cd0573daed38719edda6309640ffe574aa7888d3f8",
+      "lossless": true,
+      "encode_seconds_median": 0.001541749996249564,
+      "decode_seconds_median": 0.0013102079974487424,
+      "encode_seconds_range": [
+        0.0015401249984279275,
+        0.0015594169963151217
+      ],
+      "decode_seconds_range": [
+        0.0012987500012968667,
+        0.0013229579999460839
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "delta.zigzag.varint",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 9735,
+      "bytes_per_sample": 2.376708984375,
+      "payload_sha256": "a83b80be7e890f318553fc7e6ef47320fd5c8995b09943e796ffa7c1fac3531b",
+      "lossless": true,
+      "encode_seconds_median": 0.0010760829973150976,
+      "decode_seconds_median": 0.0012529169980552979,
+      "encode_seconds_range": [
+        0.001073583000106737,
+        0.0010829580060089938
+      ],
+      "decode_seconds_range": [
+        0.0012381670021568425,
+        0.0013118749993736856
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "delta.zigzag.varint.zlib",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 8270,
+      "bytes_per_sample": 2.01904296875,
+      "payload_sha256": "123bb5932c7671fe9eb2872a7d3572d3c1857f8fcbcfbb5e29567d8c77375dcc",
+      "lossless": true,
+      "encode_seconds_median": 0.0012002079965895973,
+      "decode_seconds_median": 0.0012822920034523122,
+      "encode_seconds_range": [
+        0.001183166001283098,
+        0.0012031670048600063
+      ],
+      "decode_seconds_range": [
+        0.00127841599896783,
+        0.001288332998228725
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "delta2.zigzag.varint.zlib",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 8950,
+      "bytes_per_sample": 2.18505859375,
+      "payload_sha256": "a8425dce3d857bb3f032cd6095f95a333cf479a4abe181da7471706e0ce0aaa6",
+      "lossless": true,
+      "encode_seconds_median": 0.0013122920063324273,
+      "decode_seconds_median": 0.0013825839996570721,
+      "encode_seconds_range": [
+        0.0013074579983367585,
+        0.001316084002610296
+      ],
+      "decode_seconds_range": [
+        0.0013742090013693087,
+        0.001388875003613066
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "for.lzma",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 7613,
+      "bytes_per_sample": 1.858642578125,
+      "payload_sha256": "a829229c7b61476ac33c3d755d04d1d38724cbc1ee49f9da3478f2f6df81a9c1",
+      "lossless": true,
+      "encode_seconds_median": 0.002090000001771841,
+      "decode_seconds_median": 0.0012884999960078858,
+      "encode_seconds_range": [
+        0.002022708002186846,
+        0.002120707998983562
+      ],
+      "decode_seconds_range": [
+        0.0012459170029615052,
+        0.001293749999604188
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "known_adaptive_blocks",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 9618,
+      "bytes_per_sample": 2.34814453125,
+      "payload_sha256": "f24ed8e7fcc6f3efdd49f814e22f4d1d7e1cd1a47d77503a9694153b2c88dff7",
+      "lossless": true,
+      "encode_seconds_median": 0.007968334000906907,
+      "decode_seconds_median": 0.001269915999728255,
+      "encode_seconds_range": [
+        0.007898957999714185,
+        0.00832641700253589
+      ],
+      "decode_seconds_range": [
+        0.0012507909996202216,
+        0.0013054170049144886
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "known_constant_blocks",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 32941,
+      "bytes_per_sample": 8.042236328125,
+      "payload_sha256": "d57c3d546d57495b7172d489959d7e5881a99e20f482f28db19bab9ac6bf7670",
+      "lossless": true,
+      "encode_seconds_median": 0.0004522500021266751,
+      "decode_seconds_median": 0.00020337499881861731,
+      "encode_seconds_range": [
+        0.0004481670039240271,
+        0.00047495800390606746
+      ],
+      "decode_seconds_range": [
+        0.00019099999917671084,
+        0.0002037090016528964
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "raw64",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 32777,
+      "bytes_per_sample": 8.002197265625,
+      "payload_sha256": "48652a62d80f003a5797c95d2d4995dca17c1b2c1f79caafc04de5c510446a18",
+      "lossless": true,
+      "encode_seconds_median": 0.00036004199500894174,
+      "decode_seconds_median": 0.00016537500050617382,
+      "encode_seconds_range": [
+        0.0003600000054575503,
+        0.00036779199581360444
+      ],
+      "decode_seconds_range": [
+        0.00015129199891816825,
+        0.00016562500240979716
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "raw64.lzma",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 8357,
+      "bytes_per_sample": 2.040283203125,
+      "payload_sha256": "0d7c5df4d0bdd0a81ac9a1eda5b00f77b9d414bcbe98e9abd36676b574d682f2",
+      "lossless": true,
+      "encode_seconds_median": 0.0031490420005866326,
+      "decode_seconds_median": 0.0004628329988918267,
+      "encode_seconds_range": [
+        0.0031131659998209216,
+        0.003226290995371528
+      ],
+      "decode_seconds_range": [
+        0.00046141700295265764,
+        0.0004919580023852177
+      ]
+    },
+    {
+      "split": "final",
+      "seed": 19317,
+      "method": "raw64.zlib",
+      "input_sha256": "9416d6b31f08b17a6837c554dd19411c6bef660260056c0682de56afcb4238f7",
+      "bytes": 10615,
+      "bytes_per_sample": 2.591552734375,
+      "payload_sha256": "9a4a27380862c04dc78a0da35f6ab0d052ac6dc44a816c380961fcc0733e919e",
+      "lossless": true,
+      "encode_seconds_median": 0.0011623750033322722,
+      "decode_seconds_median": 0.00018716700287768617,
+      "encode_seconds_range": [
+        0.0011322079953970388,
+        0.0011912499976460822
+      ],
+      "decode_seconds_range": [
+        0.00018304100376553833,
+        0.00019449999672360718
+      ]
+    }
+  ],
+  "errors": [],
+  "environment": {
+    "python": "3.12.14",
+    "platform": "macOS-27.2.1-arm64-arm-64bit",
+    "zlib_runtime": "1.2.12"
+  },
+  "common_header_bytes": 9,
+  "catalog": [
+    "block_for",
+    "block_for.lzma",
+    "block_for.lzma.zlib",
+    "block_for.zlib",
+    "block_for.zlib.lzma",
+    "delta.block_for",
+    "delta.block_for.lzma",
+    "delta.block_for.lzma.zlib",
+    "delta.block_for.zlib",
+    "delta.block_for.zlib.lzma",
+    "delta.delta2.block_for",
+    "delta.delta2.block_for.lzma",
+    "delta.delta2.block_for.zlib",
+    "delta.delta2.for",
+    "delta.delta2.for.lzma",
+    "delta.delta2.for.zlib",
+    "delta.delta2.raw64",
+    "delta.delta2.raw64.lzma",
+    "delta.delta2.raw64.zlib",
+    "delta.delta2.zigzag.bitpack",
+    "delta.delta2.zigzag.blockpack",
+    "delta.delta2.zigzag.rle",
+    "delta.delta2.zigzag.varint",
+    "delta.for",
+    "delta.for.lzma",
+    "delta.for.lzma.zlib",
+    "delta.for.zlib",
+    "delta.for.zlib.lzma",
+    "delta.raw64",
+    "delta.raw64.lzma",
+    "delta.raw64.lzma.zlib",
+    "delta.raw64.zlib",
+    "delta.raw64.zlib.lzma",
+    "delta.zigzag.bitpack",
+    "delta.zigzag.bitpack.lzma",
+    "delta.zigzag.bitpack.zlib",
+    "delta.zigzag.blockpack",
+    "delta.zigzag.blockpack.lzma",
+    "delta.zigzag.blockpack.zlib",
+    "delta.zigzag.rle",
+    "delta.zigzag.rle.lzma",
+    "delta.zigzag.rle.zlib",
+    "delta.zigzag.varint",
+    "delta.zigzag.varint.lzma",
+    "delta.zigzag.varint.zlib",
+    "delta2.block_for",
+    "delta2.block_for.lzma",
+    "delta2.block_for.lzma.zlib",
+    "delta2.block_for.zlib",
+    "delta2.block_for.zlib.lzma",
+    "delta2.delta.block_for",
+    "delta2.delta.block_for.lzma",
+    "delta2.delta.block_for.zlib",
+    "delta2.delta.for",
+    "delta2.delta.for.lzma",
+    "delta2.delta.for.zlib",
+    "delta2.delta.raw64",
+    "delta2.delta.raw64.lzma",
+    "delta2.delta.raw64.zlib",
+    "delta2.delta.zigzag.bitpack",
+    "delta2.delta.zigzag.blockpack",
+    "delta2.delta.zigzag.rle",
+    "delta2.delta.zigzag.varint",
+    "delta2.for",
+    "delta2.for.lzma",
+    "delta2.for.lzma.zlib",
+    "delta2.for.zlib",
+    "delta2.for.zlib.lzma",
+    "delta2.raw64",
+    "delta2.raw64.lzma",
+    "delta2.raw64.lzma.zlib",
+    "delta2.raw64.zlib",
+    "delta2.raw64.zlib.lzma",
+    "delta2.zigzag.bitpack",
+    "delta2.zigzag.bitpack.lzma",
+    "delta2.zigzag.bitpack.zlib",
+    "delta2.zigzag.blockpack",
+    "delta2.zigzag.blockpack.lzma",
+    "delta2.zigzag.blockpack.zlib",
+    "delta2.zigzag.rle",
+    "delta2.zigzag.rle.lzma",
+    "delta2.zigzag.rle.zlib",
+    "delta2.zigzag.varint",
+    "delta2.zigzag.varint.lzma",
+    "delta2.zigzag.varint.zlib",
+    "for",
+    "for.lzma",
+    "for.lzma.zlib",
+    "for.zlib",
+    "for.zlib.lzma",
+    "raw64",
+    "raw64.lzma",
+    "raw64.lzma.zlib",
+    "raw64.zlib",
+    "raw64.zlib.lzma",
+    "zigzag.bitpack",
+    "zigzag.bitpack.lzma",
+    "zigzag.bitpack.lzma.zlib",
+    "zigzag.bitpack.zlib",
+    "zigzag.bitpack.zlib.lzma",
+    "zigzag.blockpack",
+    "zigzag.blockpack.lzma",
+    "zigzag.blockpack.lzma.zlib",
+    "zigzag.blockpack.zlib",
+    "zigzag.blockpack.zlib.lzma",
+    "zigzag.rle",
+    "zigzag.rle.lzma",
+    "zigzag.rle.lzma.zlib",
+    "zigzag.rle.zlib",
+    "zigzag.rle.zlib.lzma",
+    "zigzag.varint",
+    "zigzag.varint.lzma",
+    "zigzag.varint.lzma.zlib",
+    "zigzag.varint.zlib",
+    "zigzag.varint.zlib.lzma",
+    "known_adaptive_blocks",
+    "known_constant_blocks"
+  ],
+  "novelty_established": false,
+  "summary": {
+    "candidate": "for.lzma",
+    "control": "delta.block_for.zlib",
+    "candidate_bytes_per_sample": 1.968017578125,
+    "control_bytes_per_sample": 2.5982259114583335,
+    "candidate_to_control_ratio": 0.7574466752278636,
+    "status": "supported_pilot"
+  }
+}

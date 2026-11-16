@@ -1,5 +1,5 @@
 'use strict';
-const S = {view:'overview', projects:[], project:null, docs:[], runs:[], jobs:[], studies:[], generated:[], lastSourcePack:null, packSelected:new Set(), run:'proposals-v2', candidates:[], selected:null, offset:0, total:0};
+const S = {view:'overview', projects:[], project:null, docs:[], runs:[], jobs:[], studies:[], generated:[], operators:null, lastSourcePack:null, packSelected:new Set(), run:'proposals-v2', candidates:[], selected:null, offset:0, total:0};
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let candidateRequest = 0;
@@ -36,8 +36,20 @@ function modal(title, content) {
 function go(view) {
   S.view=view;document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('hidden',x.id!==`screen-${view}`));
   document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.view===view));
-  $('#page-title').textContent={overview:'Overview',documents:'Documents',runs:'Engine runs',candidates:'Candidates',studies:'Implemented studies',generated:'Generated research',reviews:'Reviews',setup:'Setup & folders'}[view];
-  ({documents:documents,runs:refreshRuns,candidates:candidates,studies:studies,generated:generatedResearch,reviews:reviews,setup:setup,overview:documents}[view] || (()=>{}))().catch(fail);
+  $('#page-title').textContent={overview:'Overview',documents:'Documents',runs:'Engine runs',candidates:'Candidates',operators:'Operator library',studies:'Implemented studies',generated:'Generated research',reviews:'Reviews',setup:'Setup & folders'}[view];
+  ({documents:documents,runs:refreshRuns,candidates:candidates,operators:operatorLibrary,studies:studies,generated:generatedResearch,reviews:reviews,setup:setup,overview:documents}[view] || (()=>{}))().catch(fail);
+}
+function ensureOperatorSurface() {
+  if (!$('[data-view="operators"]')) {
+    const setupNav=$('[data-view="setup"]'); const button=document.createElement('button');
+    button.className='nav'; button.dataset.view='operators'; button.textContent='Operator library ';
+    setupNav?.before(button);
+  }
+  if (!$('#screen-operators')) {
+    const section=document.createElement('section'); section.className='screen hidden'; section.id='screen-operators';
+    section.innerHTML='<div class="screen-head"><div><h1>Operator library</h1><p>Hand-curated, source-grounded operators and their typed chains. This registry is descriptive only: scientific novelty is not established here.</p></div></div><div class="validity"><span class="validity-icon">i</span><div><b>Read-only composition registry</b><p>No macro-atom promotion, execution, or novelty claim is inferred from these records.</p></div></div><article class="run-card"><h2>Local reversible-chain check</h2><p>Run a bounded lossless check on signed 64-bit integers. This stays local and does not establish a full study or novelty.</p><label>Operator IDs<input id="operator-check-ids" value="for,lzma" aria-label="Operator IDs"></label><label>Values <span class="muted">(JSON array)</span><textarea id="operator-check-values" rows="3" aria-label="Integer values">[1, 2, 3]</textarea></label><button class="button primary" data-action="operator-check">Check lossless chain (local)</button><div id="operator-check-result" class="muted" aria-live="polite"></div></article><div id="operator-library" class="stack"></div>';
+    $('.content')?.append(section);
+  }
 }
 function renderProjects() {
   $('#project-select').innerHTML=S.projects.length?S.projects.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join(''):'<option value="">No projects yet</option>';
@@ -47,12 +59,25 @@ function renderProjects() {
 }
 async function load() {
   try {
-    const [summary,projects,runs,studyData,generatedData]=await Promise.all([api('/api/summary'),api('/api/projects'),api('/api/runs'),api('/api/studies'),api('/api/generated-research')]);
-    S.projects=projects.items;S.runs=runs.runs;S.studies=studyData.items;S.generated=generatedData.items;
+    ensureOperatorSurface();
+    const [summary,projects,runs,studyData,generatedData,operatorData]=await Promise.all([api('/api/summary'),api('/api/projects'),api('/api/runs'),api('/api/studies'),api('/api/generated-research'),api('/api/operator-library')]);
+    S.projects=projects.items;S.runs=runs.runs;S.studies=studyData.items;S.generated=generatedData.items;S.operators=operatorData;
     S.project=S.projects.find(p=>p.id===(S.project?.id || localStorage.getItem('alien-project'))) || S.projects[0] || null;
     $('#metrics').innerHTML=[['Selected candidates (v2)',summary.counts?.candidates],['Completed drafts (v2)',summary.counts?.proposals],['Repaired source atoms',summary.counts?.source_units_repaired],['Ranking validity',summary.provenance?.status]].map(([label,value])=>`<div class="metric"><small>${esc(label)}</small><b>${esc(value ?? '—')}</b></div>`).join('');
     renderProjects();populateRuns();await documents();if(S.view==='runs')await refreshRuns();
   } catch(error){fail(error);}
+}
+function sourceLink(url) {
+  const text=esc(url||'not recorded');
+  return typeof url==='string' && /^https:\/\//.test(url) ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${text}</a>` : text;
+}
+async function operatorLibrary() {
+  const data=await api('/api/operator-library'); S.operators=data;
+  const operators=data.operators||[], chains=data.chains||[], target=$('#operator-library'); if(!target)return;
+  const byId=new Map(operators.map(item=>[item.id,item]));
+  const opCards=operators.map(item=>`<article class="run-card"><h2>${esc(item.id||'Unnamed operator')} <small>${esc(item.content_id||'')}</small></h2><p><b>${esc(item.input_type||'unknown')}</b> → <b>${esc(item.output_type||'unknown')}</b> · contract: ${esc(item.contract_status||'not recorded')}</p><p>${(Array.isArray(item.assumptions)?item.assumptions:[]).map(x=>esc(x)).join(' · ')||'No assumptions recorded.'}</p><p class="muted">Source: ${sourceLink(item.source_url)}</p></article>`).join('');
+  const chainRows=chains.map(chain=>`<article class="run-card"><h2>${esc(chain.id||'Unnamed chain')} <small>${esc(chain.molecule_id||'')}</small></h2><p class="pipeline"><span>${esc(chain.input_type||'unknown')}</span> ${(chain.operator_ids||[]).map((id,i)=>`${i?' → ':''}<b>${esc(byId.get(id)?.id||id)}</b>`).join('')} → <span>${esc(chain.output_type||'unknown')}</span></p><p class="muted">${(chain.operator_ids||[]).length} operator${(chain.operator_ids||[]).length===1?'':'s'} · typed boundaries shown from catalog metadata</p></article>`).join('');
+  target.innerHTML=`<p class="library-boundary">${esc(data.scope||'Catalog scope not recorded')} · ${operators.length} operators · ${chains.length} chains · novelty established: no</p>${opCards?`<h2>Operators</h2>${opCards}`:'<p class="muted">No operators are cataloged yet.</p>'}${chainRows?`<h2>Chains</h2>${chainRows}`:''}${data.study?.report_path?`<p class="muted">Study report: <code>${esc(data.study.report_path)}</code> · ${esc(data.study.status||'status not recorded')}</p>`:''}`;
 }
 async function studies() {
   const data=await api('/api/studies'); S.studies=data.items;
@@ -218,6 +243,14 @@ async function click(event) {
       case 'export-project':if(!S.project)throw Error('Create a project to export.');const bundle=await post(`/api/projects/${S.project.id}/export`,{});modal('Project export ready',`<p>${esc(bundle.path)}</p><a class="button primary" href="${esc(bundle.download_url)}">Download ZIP</a>`);await documents();break;
       case 'open-audit':await openArtifact('provenance-repair-2026-11-16','REPAIR-REPORT.md');break;
       case 'engine-guide':const guide=await api('/api/guide/ENGINE_SETUP.md');modal('Engine installation',`<article class="markdown">${markdown(guide.content)}</article>`);break;
+      case 'operator-check': {
+        const ids=($('#operator-check-ids').value||'').split(',').map(x=>x.trim()).filter(Boolean);
+        let values; try { values=JSON.parse($('#operator-check-values').value); } catch { throw Error('Values must be valid JSON.'); }
+        const result=await post('/api/operator-check',{operator_ids:ids,values});
+        const payload=result.result||{};
+        $('#operator-check-result').innerHTML=`<p><b>Check complete.</b> Payload bytes: ${esc(payload.payload_bytes??payload.input_bytes??'not reported')} · Roundtrip: ${esc(payload.roundtrip??payload.lossless??'not reported')} · Scope: local reversible-chain check only.</p><p><code>Artifact ${esc(result.id)}</code></p>`;
+        break;
+      }
       case 'audit':await job('audit_provenance');break;
       case 'prompt':await job('prompt_export',{run:S.run,candidate_id:S.selected.id});break;
       case 'save-decision':await post('/api/adjudications',{candidate_id:S.selected.id,run:S.run,project_id:S.project?.id,decision:$('#decision').value,notes:$('#decision-notes').value});say('Decision saved');go('reviews');break;

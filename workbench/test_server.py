@@ -131,6 +131,50 @@ class HTTPTests(unittest.TestCase):
     def test_run_traversal_rejected(self):
         self.assertEqual(self.request('/api/candidates?run=../../..')[0], 400)
 
+    def test_operator_library_missing_catalog_is_empty(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            status, data = self.request('/api/operator-library')
+            self.assertEqual(status, 200)
+            self.assertEqual(data['operators'], [])
+            self.assertEqual(data['chains'], [])
+
+    def test_operator_library_is_data_only_and_bounds_report_path(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            catalog = Path(tmp) / 'reports/operator-composition/catalog.json'
+            catalog.parent.mkdir(parents=True)
+            catalog.write_text(json.dumps({
+                'schema_version': 1, 'scope': 'test',
+                'operators': [{'id': 'safe-op', 'content_id': 'c1', 'input_type': 'x', 'output_type': 'y',
+                               'source_url': 'javascript:alert(1)', 'assumptions': ['none'], 'contract_status': 'hand-curated'},
+                              {'id': 'evil-op', 'source_url': 'https://example.test/source'}],
+                'chains': [{'id': 'chain-1', 'operator_ids': ['safe-op'], 'input_type': 'x', 'output_type': 'y', 'molecule_id': 'm1'}],
+                'study': {'report_path': '../escape.md', 'status': 'draft'},
+            }))
+            status, data = self.request('/api/operator-library')
+            self.assertEqual(status, 200)
+            self.assertEqual(data['operators'][0]['source_url'], 'javascript:alert(1)')
+            self.assertEqual(data['chains'][0]['operator_ids'], ['safe-op'])
+            self.assertIsNone(data['study']['report_path'])
+            self.assertNotIn('import', json.dumps(data).lower())
+
+    def test_operator_check_roundtrip_persists_minimal_artifact(self):
+        status, data = self.request('/api/operator-check', {'operator_ids': ['for', 'lzma'], 'values': [1, 2, 3]})
+        self.assertEqual(status, 200)
+        self.assertTrue(data['result']['round_trip'])
+        self.assertEqual(data['result']['input_count'], 3)
+        self.assertEqual(data['result']['scope'].split('.')[0], 'Single supplied-input roundtrip check only')
+        artifact = server.ROOT / 'results/operator-checks' / f"{data['id']}.json"
+        self.assertTrue(artifact.is_file())
+        saved = json.loads(artifact.read_text())
+        self.assertNotIn('values', saved)
+        self.assertEqual(saved['input_sha256'], data['input_sha256'])
+
+    def test_operator_check_rejects_bad_types_and_unknown_ids(self):
+        self.assertEqual(self.request('/api/operator-check', {'operator_ids': ['for'], 'values': [True]})[0], 400)
+        self.assertEqual(self.request('/api/operator-check', {'operator_ids': ['no-such-op'], 'values': [1]})[0], 400)
+        self.assertEqual(self.request('/api/operator-check', {'operator_ids': ['for'], 'values': [1.5]})[0], 400)
+        self.assertEqual(self.request('/api/operator-check', {'operator_ids': ['for'], 'values': [1] * 4097})[0], 400)
+
     def test_paid_decode_blocked_without_process(self):
         status, data = self.request('/api/jobs', {'action': 'decode_paid'})
         self.assertEqual(status, 409)

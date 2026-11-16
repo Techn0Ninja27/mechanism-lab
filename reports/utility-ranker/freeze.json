@@ -1,0 +1,15 @@
+{
+  "source_hashes": {
+    "operator-studies/utility-ranker/experiment.py": "89953c521650e9558377b656acdca734edcdf9a457e2164f19589ae5de3252db",
+    "operator-studies/utility-ranker/fixture.py": "d16350ea4e44256815dc6c5216ba7cb0e6f1ef19edfbae8ba1eed0ab160b8585",
+    "operator-studies/utility-ranker/plan.json": "586d2df7120998a4336ed71f429707c55909b1e95a8d50b24a191049631bb6e5",
+    "generation/utility_ranker.py": "e0133f77ba4bde829ebf393d431665ae6e66f1e3a492ea342ca149350d1c68d6",
+    "generation/integer_codecs.py": "66f3419d86bee6cfbe62f712c5595d78f5cb90828f0e5b39f946b686c87366b0",
+    "generation/operator_composition.py": "2237d6a99b5fe29fe3361dbfbf612abdc24c9446815e3be6056b849a0ff15310"
+  },
+  "model_sha256": "d9f8596bf7fda792f23bfd154d5afa4119f2807b6167aee5a4636c54f0c311f4",
+  "validation_sha256": "eb507cec9aea12a49374232816ab8bbf6ddb1a1915b6b48223b0e0a466858416",
+  "selected_model": "pairwise_logistic",
+  "fixed": 11,
+  "scope": "One heldout evaluation; no final tuning"
+}

@@ -1,0 +1,14 @@
+{
+  "split": "heldout",
+  "features_finite": true,
+  "scaled_finite": true,
+  "scores_finite": true,
+  "einsum_max_abs_difference": 1.4210854715202004e-14,
+  "selected_chain_equal": true,
+  "inference_warnings": [
+    "divide by zero encountered in matmul",
+    "overflow encountered in matmul",
+    "invalid value encountered in matmul"
+  ],
+  "no_retraining": true
+}

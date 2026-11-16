@@ -1,0 +1,18 @@
+{
+  "features_finite": true,
+  "scaled_finite": true,
+  "scores_finite": true,
+  "coefficients_finite": true,
+  "scaled_max_abs": 54.30643914200386,
+  "coefficient_max_abs": 3.2363700775841178,
+  "inference_warnings": [
+    "divide by zero encountered in matmul",
+    "overflow encountered in matmul",
+    "invalid value encountered in matmul"
+  ],
+  "einsum_max_abs_difference": 1.0658141036401503e-14,
+  "selected_chain_equal": true,
+  "optimizer_iterations": [
+    207
+  ]
+}

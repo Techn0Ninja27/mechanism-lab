@@ -63,6 +63,101 @@ def read_json(path: pathlib.Path, default=None):
         return default
 
 
+def _safe_engine_relative(value):
+    """Return an engine-relative artifact path, or None for unsafe values.
+
+    The operator catalog is data-only. In particular, report paths are never
+    imported, opened for execution, or allowed to escape the engine checkout.
+    """
+    if not isinstance(value, str) or not value or pathlib.PurePosixPath(value).is_absolute():
+        return None
+    parts = pathlib.PurePosixPath(value).parts
+    if any(part in {"", ".", ".."} for part in parts):
+        return None
+    target = (ENGINE / pathlib.Path(*parts)).resolve()
+    engine_root = ENGINE.resolve()
+    if target != engine_root and engine_root not in target.parents:
+        return None
+    return "/".join(parts)
+
+
+def operator_library():
+    """Read the hand-curated operator catalog as inert JSON data.
+
+    Missing or malformed catalogs intentionally produce an empty, clearly
+    bounded response. No catalog field is treated as Python/module input.
+    """
+    catalog_path = ENGINE / "reports" / "operator-composition" / "catalog.json"
+    raw = read_json(catalog_path, {})
+    if not isinstance(raw, dict):
+        raw = {}
+    operators = []
+    for item in raw.get("operators", []):
+        if not isinstance(item, dict):
+            continue
+        operators.append({
+            "id": item.get("id"),
+            "content_id": item.get("content_id"),
+            "input_type": item.get("input_type"),
+            "output_type": item.get("output_type"),
+            "source_url": item.get("source_url"),
+            "assumptions": item.get("assumptions", []),
+            "contract_status": item.get("contract_status"),
+        })
+    chains = []
+    for item in raw.get("chains", []):
+        if not isinstance(item, dict):
+            continue
+        chains.append({
+            "id": item.get("id"),
+            "operator_ids": item.get("operator_ids", []),
+            "input_type": item.get("input_type"),
+            "output_type": item.get("output_type"),
+            "molecule_id": item.get("molecule_id"),
+        })
+    study = raw.get("study") if isinstance(raw.get("study"), dict) else {}
+    report_path = _safe_engine_relative(study.get("report_path"))
+    return {
+        "schema_version": raw.get("schema_version"),
+        "scope": raw.get("scope"),
+        "operators": operators,
+        "chains": chains,
+        "study": {"report_path": report_path, "status": study.get("status")},
+    }
+
+
+def run_operator_check(body):
+    """Validate and run one bounded, local operator chain."""
+    if not isinstance(body, dict):
+        raise ValueError("JSON object required")
+    operator_ids = body.get("operator_ids")
+    values = body.get("values")
+    if not isinstance(operator_ids, list) or not 1 <= len(operator_ids) <= 4 or any(not isinstance(x, str) or not x for x in operator_ids):
+        raise ValueError("operator_ids must contain 1-4 known operator IDs")
+    if not isinstance(values, list) or not 1 <= len(values) <= 4096:
+        raise ValueError("values must contain 1-4096 signed 64-bit integers")
+    if any(isinstance(x, bool) or not isinstance(x, int) or x < -(2**63) or x > 2**63 - 1 for x in values):
+        raise ValueError("values must contain only signed 64-bit integers")
+    catalog_ids = {item.get("id") for item in operator_library().get("operators", [])}
+    if any(operator_id not in catalog_ids for operator_id in operator_ids):
+        raise ValueError("unknown operator ID")
+    # Fixed trusted engine import; caller input is data, never a module/path.
+    if str(ENGINE) not in sys.path:
+        sys.path.insert(0, str(ENGINE))
+    from generation.operator_checks import check_chain
+    digest = hashlib.sha256(json.dumps(values, separators=(",", ":")).encode()).hexdigest()
+    with LOCK:
+        result = check_chain(operator_ids, values)
+        if not isinstance(result, dict):
+            raise ValueError("operator check returned invalid JSON")
+        artifact_id = uuid.uuid4().hex
+        artifact_dir = ROOT / "results" / "operator-checks"
+        artifact_dir.mkdir(parents=True, exist_ok=True)
+        record = {"id": artifact_id, "created_at": time.time(), "input_sha256": digest, "result": result}
+        (artifact_dir / f"{artifact_id}.json").write_text(json.dumps(record, indent=2, ensure_ascii=False))
+    return record
+
+
 def public_path(path: pathlib.Path) -> str:
     try:
         return str(path.relative_to(ROOT))
@@ -536,6 +631,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/setup": return self.send_json(setup_info())
         if path == "/api/health": return self.send_json({"ok": True, "service": "alien-science", "root": public_path(ROOT)})
         if path == "/api/summary": return self.send_json(inventory())
+        if path == "/api/operator-library":
+            return self.send_json(operator_library())
         if path == "/api/studies":
             rows = study_rows(); return self.send_json({"items": rows, "total": len(rows), "warning": "Study verdicts are evidence records, not automatic novelty claims."})
         if path == "/api/generated-research":
@@ -625,6 +722,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if not self.mutation_ok(): return self.send_json({"error": "origin rejected"}, 403)
         path = urlparse(self.path).path.rstrip("/")
         if self.project_post(path): return
+        if path == "/api/operator-check":
+            try:
+                record = run_operator_check(self.body())
+            except (ValueError, TypeError, KeyError, ImportError) as exc:
+                return self.send_json({"error": str(exc)}, 400)
+            return self.send_json(record, 200)
         if path == "/api/adjudications":
             body = self.body()
             if not isinstance(body, dict) or not isinstance(body.get("candidate_id"), str) or not isinstance(body.get("decision"), str):
