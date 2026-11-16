@@ -1,0 +1,59 @@
+{
+  "seeds": [
+    18011,
+    18013,
+    18017
+  ],
+  "rows": [
+    {
+      "seed": 18011,
+      "observed_features": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "wrong_iteration_spectral_radius": 0.305485787692607,
+      "wrong_iterate_vs_own_fixed_point": 9.733128536720669e-17,
+      "wrong_fixed_point_vs_inverse": 0.2970983331105547,
+      "wrong_fixed_point_best_global_scale_error": 0.03414081348727108,
+      "correct_jacobi_vs_inverse": 1.2504087191343702e-16,
+      "jacobi_standardization_max_abs_difference": 6.661338147750939e-16,
+      "diagonal_fold_into_weight_max_abs_difference": 1.3877787807814457e-17
+    },
+    {
+      "seed": 18013,
+      "observed_features": [
+        0,
+        1
+      ],
+      "wrong_iteration_spectral_radius": 0.37351879046848074,
+      "wrong_iterate_vs_own_fixed_point": 0.0,
+      "wrong_fixed_point_vs_inverse": 0.4090933037638759,
+      "wrong_fixed_point_best_global_scale_error": 0.05026806905030635,
+      "correct_jacobi_vs_inverse": 3.104315513641075e-16,
+      "jacobi_standardization_max_abs_difference": 2.220446049250313e-16,
+      "diagonal_fold_into_weight_max_abs_difference": 0.0
+    },
+    {
+      "seed": 18017,
+      "observed_features": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "wrong_iteration_spectral_radius": 0.32776619598988455,
+      "wrong_iterate_vs_own_fixed_point": 1.6569832379785465e-17,
+      "wrong_fixed_point_vs_inverse": 0.36861579862693933,
+      "wrong_fixed_point_best_global_scale_error": 0.027363869045605636,
+      "correct_jacobi_vs_inverse": 1.6231460780866752e-16,
+      "jacobi_standardization_max_abs_difference": 3.3306690738754696e-16,
+      "diagonal_fold_into_weight_max_abs_difference": 5.204170427930421e-18
+    }
+  ],
+  "code_sha256": "40f522364f92de3ac04442269e0cea3ac5c990d1a70bd390796f17ce74158ecd",
+  "status": "reject_formula_as_written",
+  "novelty_established": false,
+  "scope": "Algebraic/numerical fixed-point diagnostic, no predictor trained and no utility claim. Fixed diagonal folding is a representational equivalence, not identical training dynamics."
+}

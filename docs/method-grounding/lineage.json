@@ -1,0 +1,31 @@
+{
+  "schema_version": "method-lineage.v1",
+  "sources": [
+    {"id": "neumiss-original", "url": "https://github.com/marineLM/NeuMiss", "commit": "58d54f1815bba847f9f06fe1910c95b754d9578c", "implementation_paths": ["neumannS0_mlp.py"]},
+    {"id": "neumiss-sota", "url": "https://github.com/marineLM/NeuMiss_sota", "commit": "7902b8dbe7114e8dc3010b5e8b132c35806a9d74", "implementation_paths": ["NeuMissBlock.py"]},
+    {"id": "stablemiss", "url": "https://github.com/zyc-sjtu/StableMiss", "commit": "fd02c06ce24b7ae153403bcbe6a477ffc6f76fe2", "implementation_paths": ["reweight_stablemiss.py"]},
+    {"id": "stablemiss-plus", "url": "https://github.com/zyc-sjtu/StableMiss", "commit": "fd02c06ce24b7ae153403bcbe6a477ffc6f76fe2", "implementation_paths": ["reweight_stablemiss+.py"]}
+  ],
+  "relations": [
+    {
+      "id": "neumiss-sharedweights",
+      "older_source": "neumiss-original",
+      "newer_source": "neumiss-sota",
+      "mechanism": "sharedweights",
+      "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+      "supports": ["https://arxiv.org/abs/2106.00311", "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"],
+      "claims": ["NeuMiss_sota records the published shared-weight residual implementation."],
+      "review_status": {"agent_checked": true, "human_adjudicated": false}
+    },
+    {
+      "id": "stablemiss-selectivecorrelation",
+      "older_source": "stablemiss",
+      "newer_source": "stablemiss-plus",
+      "mechanism": "selectivecorrelation",
+      "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+      "supports": ["https://arxiv.org/abs/2305.11197", "https://github.com/zyc-sjtu/StableMiss"],
+      "claims": ["The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."],
+      "review_status": {"agent_checked": true, "human_adjudicated": false}
+    }
+  ]
+}

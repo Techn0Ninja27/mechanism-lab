@@ -285,6 +285,11 @@ def grounded_rows():
                          "baseline": proposal.get("baseline"), "operator_delta": proposal.get("operator_delta"),
                          "matched_control": proposal.get("matched_control"), "evidence": evidence,
                          "experiment": proposal.get("experiment")},
+                     "retrieval_coverage": (data.get("retrieval") or {}).get("coverage"),
+                     "retrieved_source_count": data.get("retrieved_source_count"),
+                     "retrieval_failures": (data.get("retrieval") or {}).get("failures",[]),
+                     "lineage_coverage": (data.get("lineage") or {}).get("coverage"),
+                     "lineage_warnings": (data.get("lineage") or {}).get("warnings",[]),
                      "review": {k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
                      "budget": {"cap_usd": budget.get("cap_usd"), "actual_usd": spent, "active_reserved_usd": reserved},
                      "artifact": public_path(result_path),
@@ -299,6 +304,29 @@ def build_project_source_pack(project_id, body):
     question = str(body.get("question", "")).strip()
     if not question or len(question) > 2000:
         raise ValueError("question must be 1-2000 characters")
+    # Prior-art retrieval is opt-in and bounded.  An absent query list must
+    # never accidentally enable a network search through a truthy flag.
+    raw_queries = body.get("prior_art_queries", [])
+    if raw_queries is None:
+        raw_queries = []
+    if not isinstance(raw_queries, list):
+        raise ValueError("prior_art_queries must be a list")
+    if len(raw_queries) > 3:
+        raise ValueError("at most 3 prior-art queries are allowed")
+    queries = []
+    for query in raw_queries:
+        if not isinstance(query, str):
+            raise ValueError("each prior-art query must be a string")
+        query = query.strip()
+        if not query or len(query) > 200:
+            raise ValueError("each prior-art query must be 1-200 characters")
+        queries.append(query)
+    allow_arxiv = body.get("allow_arxiv", False)
+    if not isinstance(allow_arxiv, bool):
+        raise ValueError("allow_arxiv must be a boolean")
+    if allow_arxiv and not queries:
+        raise ValueError("allow_arxiv requires at least one prior-art query")
+    search_config = {"queries": queries, "allow_arxiv": bool(allow_arxiv and queries)}
     workspace = get_workspace()
     project = workspace.get_project(project_id)
     docs = {d["id"]: d for d in workspace.list_documents(project_id)}
@@ -329,6 +357,8 @@ def build_project_source_pack(project_id, body):
     (output / "source-pack.json").write_text(json.dumps(pack, indent=2, ensure_ascii=False) + "\n")
     question_path = output / "question.txt"
     question_path.write_text(question + "\n", encoding="utf-8")
+    search_config_path = output / "search-config.json"
+    search_config_path.write_text(json.dumps(search_config, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     grounded_script = ENGINE / "scripts" / "grounded_research.py"
     planned_output = output / "execution"
     plan = {"schema_version": "grounded-research-plan.v1", "question": question,
@@ -337,11 +367,14 @@ def build_project_source_pack(project_id, body):
                           "command": [engine_python(), str(grounded_script), "--pack", str(output / "source-pack.json"),
                                       "--question", str(question_path), "--output", str(planned_output)],
                           "script_available": grounded_script.is_file()}}
+    plan["execution"]["command"].extend(["--search-config", str(search_config_path)])
+    plan["search_config"] = search_config
     (output / "grounded-plan.json").write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n")
     return {"run_id": run_id, "project_id": project_id, "source_count": len(selected),
             "source_pack": os.path.relpath(output / "source-pack.json", ROOT.resolve()),
             "plan": os.path.relpath(output / "grounded-plan.json", ROOT.resolve()), "execution_enabled": False,
-            "digest": pack["digest"]}
+            "digest": pack["digest"], "search_config": search_config,
+            "search_config_path": os.path.relpath(search_config_path, ROOT.resolve())}
 
 
 def job_write(job):
@@ -407,7 +440,10 @@ def launch_job(job_id, action, options):
         plan_path = (source_dir / "grounded-plan.json").resolve()
         if any(source_dir not in p.parents for p in (pack_path, question_path, plan_path)):
             raise ValueError("source pack files escape the selected run")
-        if not pack_path.is_file() or not question_path.is_file() or not plan_path.is_file():
+        search_config_path = (source_dir / "search-config.json").resolve()
+        if any(source_dir not in p.parents for p in (pack_path, question_path, plan_path, search_config_path)):
+            raise ValueError("source pack files escape the selected run")
+        if not pack_path.is_file() or not question_path.is_file() or not plan_path.is_file() or not search_config_path.is_file():
             raise ValueError("source pack plan is incomplete")
         if (source_dir / "execution" / "result.json").exists():
             raise ValueError("this source pack already has a completed result; create a new pack")
@@ -425,7 +461,14 @@ def launch_job(job_id, action, options):
             raise ValueError("execution path cannot be a symlink")
         if execution.resolve().parent != source_dir:
             raise ValueError("execution path escapes the selected run")
-        cmd = [engine_python(), str(ENGINE / "scripts/grounded_research.py"), "--pack", str(pack_path), "--question", str(question_path), "--output", str(execution), "--execute"]
+        config = read_json(search_config_path, None)
+        if not isinstance(config, dict) or not isinstance(config.get("queries"), list) or len(config["queries"]) > 3 or not isinstance(config.get("allow_arxiv"), bool):
+            raise ValueError("search config is invalid")
+        if any(not isinstance(q, str) or not q.strip() or len(q.strip()) > 200 for q in config["queries"]):
+            raise ValueError("search config contains an invalid query")
+        if config["allow_arxiv"] and not config["queries"]:
+            raise ValueError("search config cannot enable arXiv without queries")
+        cmd = [engine_python(), str(ENGINE / "scripts/grounded_research.py"), "--pack", str(pack_path), "--question", str(question_path), "--output", str(execution), "--execute", "--search-config", str(search_config_path)]
     else:
         cmd = ["python3", "-c", "import json; from pathlib import Path; print(json.dumps({\"inventory\": True}))"]
     out_dir.mkdir(parents=True, exist_ok=True)

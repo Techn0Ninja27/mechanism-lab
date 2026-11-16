@@ -1,0 +1,243 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "581e6ca4a180767404557e8a634f2352911d54f18df09f4ada5bfb8b228e5682",
+  "status": "reviewed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [
+      "known successor absent for neumiss-sharedweights; do not infer latest or novelty"
+    ],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": true,
+          "newer_present": false,
+          "older_metadata_present": true,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [
+            "https://github.com/marineLM/NeuMiss_sota"
+          ],
+          "missing_baseline_evidence": [
+            "newer_related_version"
+          ],
+          "status": "older_only"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://github.com/marineLM/NeuMiss"
+      ]
+    }
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v2",
+    "query_hash": "b0a30a220a488c3e8e8f61af77f0717ff44a5eb30e2d4552fb30023337559342",
+    "queries": [
+      "NeuMiss"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus",
+      "arxiv_api"
+    ],
+    "failures": [
+      {
+        "provider": "arxiv_api",
+        "query": "NeuMiss",
+        "error_type": "HTTPError",
+        "error": "HTTP Error 429: Unknown Error"
+      }
+    ],
+    "errors": [
+      {
+        "provider": "arxiv_api",
+        "query": "NeuMiss",
+        "error_type": "HTTPError",
+        "error": "HTTP Error 429: Unknown Error"
+      }
+    ],
+    "coverage": [
+      {
+        "query": "NeuMiss",
+        "compiled_query": "\"NeuMiss\"",
+        "provider": "local_corpus",
+        "records": 1,
+        "status": "ok",
+        "retained_records": 1
+      },
+      {
+        "query": "NeuMiss",
+        "compiled_query": "all:\"NeuMiss\"",
+        "provider": "arxiv_api",
+        "records": 0,
+        "status": "error",
+        "retained_records": 0
+      }
+    ],
+    "truncation": {
+      "truncated": false,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "3f892e25754c075b133638b7d5e457e3b6fc39ad061112e84f453876ce6e0a12"
+  },
+  "retrieved_source_count": 1,
+  "proposal": {
+    "title": "Baseline diagnostic before any delta: per-mask truncation error of NeuMiss's masked Neumann recurrence versus a Jacobi-scaled variant at equal matvec count",
+    "hypothesis": "This is stated conditionally because the successor baseline is missing. On fresh Gaussian covariances drawn with the gen_params structure, consider a K-step masked Richardson/Neumann recurrence for (Sigma_obs)^{-1}(x_obs - mu_obs) that uses the oracle Sigma. Adding per-mask diagonal (Jacobi) scaling may reduce the median relative solve error, measured against the exact per-mask solve, by at least 30% at the same K d-by-d matvecs. The pre-training check uses oracle Sigma and involves no learning, so it says nothing yet about learned-network gains.",
+    "baseline": "The repository is marineLM/NeuMiss@58d54f1, file neumannS0_mlp.py, class Neumann.forward. The recovered recurrence, with x zero-imputed, m=1 marking missing entries, and P=diag(1-m), is:\n- h_res = P(x - mu).\n- h_1 = P S0^T-action h_res. Code computes matmul(h, S0)*(1-m) with no residual on the first layer.\n- h_k = P(h_{k-1} W_k) + h_res for k = 2..depth when residual_connection=True.\n- out = diag(m)(h_depth Wc) + x + m*mu.\n- y = out\u00b7beta + b.\nThe weights l_W are UNTIED, one per layer. With mlp_depth=0 the whole model is linear in x for a fixed mask, and polynomial in the mask through repeated products of P. The phase argument is unused, so training and inference run the identical deterministic forward pass. There is no dropout and no uncertainty output, so any residual norm is only a proxy, not uncertainty. The strongest relevant method is NeuMiss_sota, which uses shared weights plus residuals. Its code is NOT supplied, which is a baseline-coverage gap. Simple comparators also exist: ConstantImputedLR (the linear model on [x zero-imputed, M]), EMLR, and BayesPredictor_MCAR_MAR.",
+    "operator_delta": "This is a candidate only and is not adopted. Replace the shared iteration h_k = P W h_{k-1} + h_res with h_k = D_m^{-1}(P W h_{k-1}) + h_res. Here D_m = diag of the observed-block diagonal of (I - W), with identity on missing entries. The contract is: input (h_{k-1}, m, W), output h_k of shape (batch, d), and the per-step cost is one d-by-d matvec plus O(d) elementwise work. This is classical Jacobi preconditioning and overlaps heavily with known spectral and preconditioning prior art.",
+    "evidence": [
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The first layer is masked and has no residual term.",
+        "quote_sha256": "dc65a7a9f1fb12b2643e860c2023f7b542afdd34f263ca98adf69f967352d1ad"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The Neumann weights are untied, one matrix per layer.",
+        "quote_sha256": "4ae1e90611ed1eb962a707be239eacb0fdf0234adcfa19b75e3092f2062e9107"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The final mixing step writes only to missing coordinates and adds the mean-imputed input.",
+        "quote_sha256": "bfb549f244bde0071e6750c4ce46fa88cfc985b37f805c2936af2eda2c8d2c0a"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "A phase argument exists, but the shown forward body never uses it, so train and test passes are identical.",
+        "quote_sha256": "d8c507a01b48f49efd2f131bacc9edb0cc5034509d35cc83db7a6670ada2213a"
+      },
+      {
+        "chunk_id": "neumiss-ground_truth:chunk:0003",
+        "supports": "The Bayes target requires the per-mask observed-block inverse.",
+        "quote_sha256": "a64784ee440a20590ffaf360ac4221a4a1d44a78bcee8a05fd3c1ce15dfa4979"
+      },
+      {
+        "chunk_id": "neumiss-estimators:chunk:0001",
+        "supports": "A raw-mask linear baseline is supplied.",
+        "quote_sha256": "a1484e1b6cca3309444fa23b6e5cef1daba80b5d272c893181d8d40ac79f11f6"
+      }
+    ],
+    "assumptions": [
+      "Inferred: oracle Sigma generated as B B^T + small diagonal has observed-block diagonals that vary enough across masks for Jacobi scaling to matter. This is testable by checking the dispersion of diag(Sigma).",
+      "Inferred: the iteration needs a step-size or normalization choice, such as W = I - Sigma/||Sigma||, for the plain recurrence to converge. This is testable via the spectral radius of P(I - Sigma/c)P.",
+      "Unverified: NeuMiss_sota shares one W across layers and does not already apply mask-dependent normalization. This must be checked against its code before any training study."
+    ],
+    "data_paths": [
+      {
+        "input": "x zero-imputed, mask m",
+        "operation": "h_res = P(x - mu)",
+        "output": "centered observed vector",
+        "possible_leakage": "Mask pattern statistics, such as missing count, also enter the model additively through m*mu."
+      },
+      {
+        "input": "h, m, W",
+        "operation": "Masked matvec repeated K times, with or without D_m^{-1}",
+        "output": "Approximation of Sigma_obs^{-1}(x_obs - mu_obs)",
+        "possible_leakage": "D_m depends only on the mask and W. For a learned W, a gain could reflect mask-count information that a raw-mask linear model on M could partly capture."
+      },
+      {
+        "input": "out, beta",
+        "operation": "Linear readout",
+        "output": "y",
+        "possible_leakage": "Wc and beta can absorb a global rescaling, so a uniform scalar step-size gain would cancel algebraically. Only per-mask, non-uniform scaling is identifiable."
+      }
+    ],
+    "counterexample": "Take Sigma with a constant diagonal, for example an equicorrelated covariance. Then D_m is a scalar multiple of the identity for every mask. The delta reduces to a global rescaling that Wc and beta absorb, so the error reduction is zero.",
+    "matched_control": "Run the same shared-W recurrence with the same K, the same normalization constant c, the same masks, and the same covariances, but with D_m replaced by the identity. Report ConstantImputedLR and the exact per-mask solve alongside it.",
+    "experiment": {
+      "development": "Use new seeds outside any previously reported runs. Set d in {10, 30}, draw prop_latent uniformly from [0.2, 0.9], and use 20 covariances per setting. Use MCAR masks at rates 0.25 and 0.5. Apply oracle Sigma only, with no training, and K in {2, 4, 8} matvecs.",
+      "heldout": "Use a disjoint seed block and a covariance family not in the original code: B B^T with heavy-tailed row scales, giving heterogeneous variances. Use MAR_logistic masks. Do not use any old prediction benchmark or results CSV.",
+      "metric": "Compute the per-sample relative error ||z_K - Sigma_obs^{-1}(x_obs - mu_obs)|| / ||exact solve||. Take the median over samples, then the median over covariances, and report a bootstrap 95% CI across covariances.",
+      "kill_threshold": "Kill if the median error reduction is below 30% at K=4, or if the CI includes zero, on the held-out set. Also kill if the gain disappears after the plain recurrence uses the best scalar c tuned per covariance."
+    },
+    "prior_art_difference": "The overlap is supported. Jacobi and diagonal preconditioning of Neumann/Richardson iterations is classical, and the adaptive-depth and spectral stabilization ideas the task warns about are standard. The lineage report states that the shared-weight residual successor exists, but its code is not supplied. The retrieved abstract (arXiv 2106.00311) identifies adapted NeuMiss work but does not give its algorithm. Any claimed difference here is unverified and makes no novelty claim.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "review": {
+    "decision": "revise",
+    "failure_type": "algebraic_noop",
+    "reason": "The baseline reading matches the supplied code. The weights are untied ('for W in self.l_W[1:self.depth]'), and the first layer is masked with no residual. The mean-imputed term is added back through h0 = x + m*mu. The phase argument is never read inside forward. Matmul(h, W) acts as W^T on column vectors, but this is immaterial for a symmetric oracle Sigma.\n\nThe operator delta has two mechanistic defects.\n\n(1) D_m is not actually mask-dependent. The diagonal of the observed block of (I - W) is just diag(I - W) restricted to observed coordinates. So D_m^{-1} P = P D^{-1} for one fixed diagonal D. In the learned setting, D^{-1} P W h becomes P (D^{-1} W) h, which is a reparameterization of each untied W. That makes it an algebraic no-op for the trained model, not just a global scalar that Wc and beta absorb. The 'possible_leakage' concern about mask-count information also does not arise, because D carries no mask information beyond P.\n\n(2) As written, h_k = D^{-1} P W h_{k-1} + h_res does not have Sigma_obs^{-1} r as its fixed point. Take W = I - Sigma/c. The fixed point is then (I - D^{-1} P (I - Sigma/c) P)^{-1} r. This is not the exact solve unless D = I. Jacobi-preconditioned Richardson instead requires z_{k+1} = z_k + D^{-1}(r - Sigma_obs z_k) = (I - D^{-1} Sigma_obs) z_k + D^{-1} r. Here the residual input is also scaled.\n\nWith that correction, the oracle diagnostic is coherent. It is equivalent to symmetric diagonal rescaling (feature standardization). The gen_params covariance cov = B B^T + diag(U(0.01, 0.1)) has diagonals that vary with the row norms of B, so a nonzero effect is plausible but unproven. The proposal's own counterexample (constant diagonal) is correct: there the effect is zero. Prior-art overlap is conceded, and no novelty is claimed.",
+    "evidence": [
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "Masking is elementwise by (1-m), so any fixed diagonal scaling commutes with P and can be folded into the untied W.",
+        "quote_sha256": "d7daee27f30333e9d90f95daba16b00254cf7986dd3687f3ca028b0ecf23201e"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The weights are untied per layer, which allows each layer to absorb a fixed diagonal rescaling.",
+        "quote_sha256": "4ae1e90611ed1eb962a707be239eacb0fdf0234adcfa19b75e3092f2062e9107"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The residual is the unscaled centered observed vector, which the delta leaves unscaled, causing the wrong fixed point.",
+        "quote_sha256": "1c89273091024d969672b539afc372709ddcb0f24c02ec91becd7c57a91c1e49"
+      },
+      {
+        "chunk_id": "neumiss-ground_truth:chunk:0003",
+        "supports": "Diagonal heterogeneity comes from the row norms of B, so an oracle Jacobi effect is plausible but must be measured.",
+        "quote_sha256": "85b9d2a6587583ed7c8db4b7564756a196595226a901dfeff305ee11b9ebf428"
+      },
+      {
+        "chunk_id": "neumiss-ground_truth:chunk:0003",
+        "supports": "The exact per-mask solve that serves as the error reference is available.",
+        "quote_sha256": "a64784ee440a20590ffaf360ac4221a4a1d44a78bcee8a05fd3c1ce15dfa4979"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The phase argument exists, but the forward body shown never reads it.",
+        "quote_sha256": "d8c507a01b48f49efd2f131bacc9edb0cc5034509d35cc83db7a6670ada2213a"
+      }
+    ],
+    "strongest_counterargument": "The oracle diagnostic is explicitly framed as a no-learning check of truncation error. A correctly written Jacobi-preconditioned recurrence on raw Sigma is a genuinely different iteration from scalar Richardson. It could show a large gain for heterogeneous diagonals. Its fixed-point error is easy to fix, so 'revise' rather than 'reject' fits. The learned-model no-op only matters for later stages, and the proposal already disclaims those.",
+    "required_test": "First, numerically verify the fixed point. Run K = 200 iterations of the proposal's formula and of the corrected form z_{k+1} = z_k + D^{-1}(r - Sigma_obs z_k), and compare each to np.linalg.inv(sigma_obs) r on gen_params covariances. Then, at K in {2, 4, 8}, compare corrected Jacobi Richardson against scalar Richardson with per-covariance optimal c, = 2/(lambda_min + lambda_max) of Sigma_obs. Add a third arm: scalar Richardson on the standardized covariance D^{-1/2} Sigma D^{-1/2}. If this arm matches Jacobi, the effect is just standardization. Use the proposal's held-out heavy-tailed covariance family and MAR masks. Finally, check that in the learned model, replacing W with D^{-1} W yields identical outputs.",
+    "novelty_established": false
+  }
+}

@@ -133,6 +133,72 @@
       "resolved_model": "anthropic/claude-opus-5.5",
       "finish_reason": "stop",
       "run": "grounded-02"
+    },
+    {
+      "status": "complete",
+      "request_hash": "4079f1bc22035baffcb866c89c68e72d2a823a010e973d48786f9ec562eb3bad",
+      "reserved_usd": 0.342264,
+      "timestamp": 1794794466.117407,
+      "usage": {
+        "prompt_tokens": 18576,
+        "completion_tokens": 3958,
+        "total_tokens": 22534,
+        "cost": 0.15192936,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.153464,
+          "upstream_inference_prompt_cost": 0.074304,
+          "upstream_inference_completions_cost": 0.07916
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1122,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794794467-mRo7yrNc0uI8FcWh8tmZ",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "run": "grounded-03"
+    },
+    {
+      "status": "complete",
+      "request_hash": "0dac71d888394f45808284156ad2c2e4b2c097af7b25a8c1cd0bd92651c18b23",
+      "reserved_usd": 0.361136,
+      "timestamp": 1794794508.373163,
+      "usage": {
+        "prompt_tokens": 20651,
+        "completion_tokens": 2736,
+        "total_tokens": 23387,
+        "cost": 0.13595076,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.137324,
+          "upstream_inference_prompt_cost": 0.082604,
+          "upstream_inference_completions_cost": 0.05472
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 884,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794794509-Jc3tKCfEEBp5GL0hbq9T",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "run": "grounded-03"
     }
   ]
 }

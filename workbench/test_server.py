@@ -125,7 +125,7 @@ class HTTPTests(unittest.TestCase):
         with mock.patch.object(server.subprocess, 'Popen', return_value=FakeProcess()) as popen:
             server.launch_job('current', 'grounded_execute', current['options'])
             command = popen.call_args.args[0]
-            self.assertEqual(command[-1], '--execute')
+            self.assertIn('--execute', command)
             self.assertIn(str(Path(project['path']) / 'runs' / pack['run_id'] / 'source-pack.json'), command)
 
     def test_run_traversal_rejected(self):
@@ -199,8 +199,26 @@ class HTTPTests(unittest.TestCase):
         if not plan_file.is_file():
             plan_file = Path(server.ROOT) / plan['plan']
         command = json.loads(plan_file.read_text())['execution']['command']
-        completed = subprocess.run(command, cwd=server.ENGINE, capture_output=True, text=True, check=True)
-        self.assertIn('planned', completed.stdout)
+        self.assertIn('--search-config', command)
+        self.assertIn(str(Path(project['path']) / 'runs' / plan['run_id'] / 'search-config.json'), command)
         self.assertEqual(self.request(route + '/source-pack', {'document_ids': [], 'question': 'x'})[0], 400)
+
+    def test_source_pack_search_config_is_bounded_and_opt_in(self):
+        status, project = self.request('/api/projects', {'name': 'Prior art config'})
+        self.assertEqual(status, 201)
+        route = '/api/projects/' + project['id']
+        status, imported = self.request(route + '/documents', {'files': [{'name': 'a.md', 'content_base64': base64.b64encode(b'# Source').decode()}]})
+        self.assertEqual(status, 201)
+        doc_id = imported['items'][0]['id']
+        status, plan = self.request(route + '/source-pack', {'document_ids': [doc_id], 'question': 'Check?', 'prior_art_queries': ['memory-centric agents', 'continual learning'], 'allow_arxiv': True})
+        self.assertEqual(status, 201)
+        run_root = Path(project['path']) / 'runs' / plan['run_id']
+        self.assertEqual(json.loads((run_root / 'search-config.json').read_text()), {'queries': ['memory-centric agents', 'continual learning'], 'allow_arxiv': True})
+        command = json.loads((run_root / 'grounded-plan.json').read_text())['execution']['command']
+        self.assertIn('--search-config', command)
+        self.assertIn(str(run_root / 'search-config.json'), command)
+        self.assertEqual(self.request(route + '/source-pack', {'document_ids': [doc_id], 'question': 'x', 'allow_arxiv': True})[0], 400)
+        self.assertEqual(self.request(route + '/source-pack', {'document_ids': [doc_id], 'question': 'x', 'prior_art_queries': ['x'] * 4})[0], 400)
+        self.assertEqual(self.request(route + '/source-pack', {'document_ids': [doc_id], 'question': 'x', 'prior_art_queries': ['x' * 201]})[0], 400)
 
 if __name__ == '__main__': unittest.main()

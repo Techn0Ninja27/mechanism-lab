@@ -1,0 +1,21 @@
+{
+  "cutoff": "2026-11-16",
+  "records": 16355,
+  "openai_metadata_records": 15,
+  "provenance_counts": {
+    "arxiv_api": 299,
+    "offline_packet": 9,
+    "local_sqlite": 16047
+  },
+  "query_count": 0,
+  "source_hash": "5122b4dc3a903d79c011ee62cd89ce5ecf296a0f1c6963c34838f59347a9dd90",
+  "openai_sources": "docs/corpus-expansion/OPENAI_SOURCES.json",
+  "packet_sources": [
+    {
+      "path": "results/atomization-study-v1/expanded-papers.json",
+      "sha256": "24b459bf540f1767bfba851489ccdd64477ec7e50eb5339e06de95f7e00e73cb",
+      "records": 32,
+      "future_dropped": 0
+    }
+  ]
+}

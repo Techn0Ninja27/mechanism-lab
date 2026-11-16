@@ -102,3 +102,31 @@ class GroundedResearchTests(unittest.TestCase):
             with patch.object(g, 'Client', side_effect=AssertionError('paid client must not be constructed')):
                 with self.assertRaises(ValueError):
                     g.execute(pack_path, question, output, execute_paid=True)
+
+    def test_network_search_plan_stays_offline(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
+            question=root/'q.txt';question.write_text('What changes?')
+            config=root/'search.json';config.write_text(json.dumps({'queries':['NeuMiss'],'allow_arxiv':True}))
+            with patch.object(g,'retrieve',side_effect=AssertionError('Planning must be offline')), patch.object(g,'Client',side_effect=AssertionError('No paid client')):
+                result=g.execute(pack,question,root/'out',search_config_path=config)
+                self.assertEqual(result['status'],'planned')
+                self.assertTrue(result['config']['search']['allow_arxiv'])
+
+    def test_retrieval_happens_before_paid_client_and_is_reported(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
+            question=root/'q.txt';question.write_text('What changes?')
+            config=root/'search.json';config.write_text(json.dumps({'queries':['NeuMiss'],'allow_arxiv':False}))
+            events=[]
+            def retrieve(*args,**kwargs):
+                events.append('retrieve');return {'records':[],'coverage':[{'status':'ok','records':0}], 'failures':[]}
+            class Client:
+                def __init__(self,*args):events.append('client')
+                def call(self,*args):raise RuntimeError('mock rejection; no network')
+            with patch.object(g,'retrieve',side_effect=retrieve),patch.object(g,'Client',Client):
+                result=g.execute(pack,question,root/'out',True,config)
+            self.assertEqual(events,['retrieve','client'])
+            self.assertEqual(result['retrieved_source_count'],0)
+            self.assertEqual(result['retrieval']['coverage'][0]['records'],0)
+            self.assertEqual(result['status'],'failed')

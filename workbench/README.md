@@ -25,7 +25,7 @@ Open **http://127.0.0.1:8765**. Keep the terminal running. Stop with Ctrl+C. Use
 3. Read source documents and create notes or evidence reviews. PDF originals can be downloaded; PDFs are not automatically parsed, summarized, or embedded.
 4. Open Engine runs to configure an offline run or rerank an existing scored pool. Sampling uses the installed engine corpus, **not the newly imported documents**. Choose the project to keep a run reference alongside your sources.
 5. Inspect candidates, their exact atom descriptions, original source units, saved proposal artifacts, and validity warnings. Record a human decision.
-6. Check selected text documents and use **Build source pack** to create a bounded local evidence pack and an offline grounded-research plan. The plan can start one fixed grounded generation/review run (up to $2, subject to the shared $10 phase cap); it accepts no model, budget, output-path, or arbitrary-command overrides.
+6. Check selected text documents and use **Build source pack** to create a bounded local evidence pack and an offline grounded-research plan. Optional prior-art queries are saved with the run (up to three, 200 characters each). They remain local unless **Search arXiv metadata using these queries** is explicitly checked; without queries, network search is disabled. The plan can start one fixed grounded generation/review run (up to $2, subject to the shared $10 phase cap); it accepts no model, budget, output-path, or arbitrary-command overrides.
 7. Export the project as a ZIP containing source files, notes, reviews, run references, README, and a machine-readable manifest.
 
 See [where documents go](docs/FOLDERS.md), [engine installation](docs/ENGINE_SETUP.md), and [architecture and boundaries](docs/ARCHITECTURE.md).

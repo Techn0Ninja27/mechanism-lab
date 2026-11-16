@@ -12,5 +12,12 @@
     "result_path": "operator-studies/neumiss-polynomial/results-strong-controls.json",
     "report_path": "operator-studies/neumiss-polynomial/README.md",
     "result_sha256": "683ffd32bea6ec3b765f716a49ce70656e80c9a372e5c3bca654352e3a1a732d"
+  },
+  "grounded-03": {
+    "status": "reject_formula_as_written",
+    "summary": "The literal iteration converges to the wrong inverse operator even after global rescaling. Corrected Jacobi is equivalent to standardization in this diagnostic. No predictive or novelty claim.",
+    "result_path": "operator-studies/jacobi-fixed-point/results.json",
+    "report_path": "operator-studies/jacobi-fixed-point/README.md",
+    "result_sha256": "673b00d4521f570aed35420ec4e0d1727fac981d1dc404b3297bf11838c7e20a"
   }
 }

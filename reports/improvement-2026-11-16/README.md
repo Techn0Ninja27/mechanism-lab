@@ -10,7 +10,7 @@ This iteration connects project documents, primary code sources, generated propo
 - Generated research shows machine critiques separately from hash-verified executable operator diagnostics.
 - Pinned official implementation files, rather than only abstracts, now ground this pilot. The source fetcher verifies SHA-256 before use. Public manifests retain provenance without bundling unlicensed source snapshots.
 
-## Two actual generated proposals
+## Initial two generated proposals
 
 **Normalization axis:** the generator proposed changing the random-feature normalization axis in StableMiss. The reviewer identified binary-feature collapse. Direct numerical checks confirmed the collapse and NaNs on constant columns, so the idea was rejected before training. See [proposal/review summary](grounded-01.json) and [executable audit](../../operator-studies/normalization-axis/README.md).
 
@@ -29,3 +29,5 @@ There is no established novel method or predictive improvement from this iterati
 Start the local app with `./workbench/start.sh`. The [workflow guide](../../docs/GROUNDED_RESEARCH.md) covers document selection, paid execution, and boundaries. Fetch pinned source snapshots with `python scripts/fetch_method_sources.py`; operator-study READMEs list their numerical commands.
 
 The ongoing goal remains active. Next iterations should require stronger published controls and method-version coverage before expensive training, and should test additional problem families rather than treating this small missingness pilot as general evidence.
+
+Follow-up: [retrieval and method-version iteration](RETRIEVAL_ITERATION.md) adds a third evaluated proposal. Current cumulative API spend is $0.963008 of the shared $10 cap; the earlier $0.67222 figure above is the initial two-run subtotal.

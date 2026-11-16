@@ -69,7 +69,9 @@ async function generatedResearch() {
     const p=run.proposal||{},r=run.review||{},b=run.budget||{};
     const evidence=(p.evidence||[]).map(e=>`<li><code>${esc(e.chunk_id)}</code> — ${esc(e.supports)}<blockquote>${esc(e.quote)}</blockquote></li>`).join('');
     const op=run.operator_evaluation||{};
-    return `<article class="run-card"><h2>${esc(p.title||run.id)} <small>${esc(run.phase)}/${esc(run.id)}</small></h2><p><b>${esc(run.status)}</b> · machine review only · empirical result: no</p><p><b>Hypothesis:</b> ${esc(p.hypothesis||'not recorded')}</p><p><b>Operator delta:</b> ${esc(p.operator_delta||'not recorded')}</p><p><b>Reviewer:</b> ${esc(r.decision||'not recorded')} · ${esc(r.failure_type||'')}</p><p>${esc(r.reason||'')}</p><p><b>Executable operator check:</b> ${esc(op.status||'unavailable')} · ${op.verified?'result hash verified':'not a verified result'}<br><span class="muted">${esc(op.summary||'Numerical diagnostic only; not a predictive benchmark.')}</span></p><details><summary>Baseline, control, evidence, and budget</summary><p><b>Baseline:</b> ${esc(p.baseline||'')}</p><p><b>Matched control:</b> ${esc(p.matched_control||'')}</p><ul>${evidence}</ul><p>Budget actual ${esc(b.actual_usd)} USD; active reservation ${esc(b.active_reserved_usd)} USD; cap ${esc(b.cap_usd)} USD.</p><p><code>${esc(run.artifact)}</code></p></details></article>`;
+    const coverage=(label,value)=>value==null?'':`<span><b>${label}:</b> ${esc(typeof value==='object'?JSON.stringify(value):value)}</span>`;
+    const coverageText=run.retrieved_source_count==null?'':`${esc(run.retrieved_source_count)} retrieved sources; ${esc((run.retrieval_failures||[]).length)} retrieval errors. ${(run.lineage_warnings||[]).map(esc).join('; ')}`;
+    return `<article class="run-card"><h2>${esc(p.title||run.id)} <small>${esc(run.phase)}/${esc(run.id)}</small></h2><p><b>${esc(run.status)}</b> · machine review only · empirical result: no</p><p><b>Hypothesis:</b> ${esc(p.hypothesis||'not recorded')}</p><p><b>Operator delta:</b> ${esc(p.operator_delta||'not recorded')}</p><p><b>Reviewer:</b> ${esc(r.decision||'not recorded')} · ${esc(r.failure_type||'')}</p><p>${esc(r.reason||'')}</p>${coverageText?`<p class="muted">${coverageText}<br>Coverage is retrieval/lineage accounting only: partial recall, not a novelty determination.</p>`:''}<p><b>Executable operator check:</b> ${esc(op.status||'unavailable')} · ${op.verified?'result hash verified':'not a verified result'}<br><span class="muted">${esc(op.summary||'Numerical diagnostic only; not a predictive benchmark.')}</span></p><details><summary>Baseline, control, evidence, and budget</summary><p><b>Baseline:</b> ${esc(p.baseline||'')}</p><p><b>Matched control:</b> ${esc(p.matched_control||'')}</p><ul>${evidence}</ul><p>Budget actual ${esc(b.actual_usd)} USD; active reservation ${esc(b.active_reserved_usd)} USD; cap ${esc(b.cap_usd)} USD.</p><p><code>${esc(run.artifact)}</code></p>${run.retrieval_coverage?`<pre class="run-log">${esc(JSON.stringify({retrieval:run.retrieval_coverage,lineage:run.lineage_coverage},null,2))}</pre>`:""}</details></article>`;
   }).join('') || '<p class="muted">No completed grounded research runs found.</p>';
 }
 function populateRuns() {
@@ -87,7 +89,7 @@ async function documents() {
 function renderDocs() {
   const query=$('#document-search').value.toLowerCase();
   const docs=S.docs.filter(d=>(d.name+' '+d.relative_path).toLowerCase().includes(query));
-  $('#document-items').innerHTML=docs.map(d=>`<div class="doc-pick"><label><input type="checkbox" data-packdoc="${esc(d.id)}" ${S.packSelected.has(d.id)?'checked':''} ${d.kind==='text'?'':'disabled'}> pack</label><button class="doc-item ${S.doc?.id===d.id?'selected':''}" data-doc="${esc(d.id)}"><b>${esc(d.name)}</b><small>${esc(d.relative_path)}<br>${Number(d.size).toLocaleString()} bytes</small></button></div>`).join('') || `<p class="muted">${S.project?'No documents found. Import files or write a note.':'Create a project to import documents.'}</p>`;
+  $('#document-items').innerHTML=docs.map(d=>`<div class="doc-pick"><label><input type="checkbox" aria-label="Include ${esc(d.name)} in source pack" data-packdoc="${esc(d.id)}" ${S.packSelected.has(d.id)?'checked':''} ${d.kind==='text'&&/\.(md|txt|json|py)$/i.test(d.name)?'':'disabled'}> pack</label><button class="doc-item ${S.doc?.id===d.id?'selected':''}" data-doc="${esc(d.id)}"><b>${esc(d.name)}</b><small>${esc(d.relative_path)}<br>${Number(d.size).toLocaleString()} bytes</small></button></div>`).join('') || `<p class="muted">${S.project?'No documents found. Import files or write a note.':'Create a project to import documents.'}</p>`;
 }
 function renderFolders(folders) {
   const render=folders.map(f=>`<div class="folder-row"><span><b>${esc(f.name)}/</b><small>${esc(f.description)}</small><code class="folder-path">${esc(f.path)}</code></span><span class="folder-count">${f.document_count} files</span></div>`).join('');
@@ -142,10 +144,10 @@ async function job(action,options={}) {
   const result=await post('/api/jobs',{action,options:{...options,project_id:S.project?.id}});
   say(`${action}: ${result.status}`);go('runs');return result;
 }
-async function buildSourcePack(question) {
+async function buildSourcePack(question, priorArtQueries=[], allowArxiv=false) {
   if(!S.project)throw Error('Create a project before building a source pack.');
   const ids=[...S.packSelected]; if(!ids.length)throw Error('Check at least one text document first.');
-  const result=await post(`/api/projects/${S.project.id}/source-pack`,{document_ids:ids,question}); S.lastSourcePack=result;
+  const result=await post(`/api/projects/${S.project.id}/source-pack`,{document_ids:ids,question,prior_art_queries:priorArtQueries,allow_arxiv:allowArxiv}); S.lastSourcePack=result;
   modal('Offline research plan created',`<p>${esc(result.source_count)} selected documents were packed locally.</p><p><code>${esc(result.source_pack)}</code></p><p><code>${esc(result.plan)}</code></p><p class="library-boundary">The plan is source-grounded and bounded. The next action starts one reviewed run capped at $2 and governed by the shared $10 phase budget.</p><p><button class="button primary" data-grounded-run="${esc(result.run_id)}">Generate and review — up to $2/run</button></p>`);
 }
 async function candidates() {
@@ -209,7 +211,7 @@ async function click(event) {
       case 'refresh':await load();go(S.view);break;
       case 'new-project':$('#project-form').reset();$('#project-dialog').showModal();break;
       case 'new-note':if(!S.project)throw Error('Create a project before writing notes.');$('#note-form').reset();$('#note-dialog').showModal();break;
-      case 'source-pack':if(!S.project)throw Error('Create a project before building a source pack.');$('#source-pack-form').reset();$('#source-pack-dialog').showModal();break;
+      case 'source-pack':if(!S.project)throw Error('Create a project before building a source pack.');$('#source-pack-form').reset();ensureSourcePackSearchFields();$('#source-pack-dialog').showModal();break;
       case 'revise-note':$('#note-form').reset();$('#note-form').elements.title.value=S.doc.name.replace(/\.md$/i,'')+' revision '+Date.now();$('#note-form').elements.content.value=S.doc.content;$('#note-form').elements.category.value=S.doc.relative_path.split('/')[0];$('#note-dialog').showModal();break;
       case 'new-run':$('#run-dialog').showModal();break;
       case 'open-import':if(!S.project)throw Error('Create a project before importing.');$('#file-input').click();break;
@@ -242,6 +244,14 @@ for(const kind of ['project','note','run'])$('#'+kind+'-form').onsubmit=async ev
     $('#'+kind+'-dialog').close();
   }catch(error){fail(error);}
 };
-$('#source-pack-form').onsubmit=async event=>{if(event.submitter?.value==='cancel')return;event.preventDefault();try{await buildSourcePack(new FormData(event.target).get('question'));$('#source-pack-dialog').close();}catch(error){fail(error);}};
+function ensureSourcePackSearchFields(){
+  const form=$('#source-pack-form');if(form.elements.prior_art_queries)return;
+  const question=form.elements.question?.closest('label');if(!question)return;
+  const label=document.createElement('label');label.innerHTML='Prior-art queries <span class="muted">(optional, one per line; up to 3)</span><textarea name="prior_art_queries" rows="3" maxlength="600" placeholder="e.g. continual learning memory agents"></textarea>';
+  const check=document.createElement('label');check.className='checkbox-label';check.innerHTML='<input name="allow_arxiv" type="checkbox" value="true"> Search arXiv metadata using these queries';
+  const note=document.createElement('p');note.className='muted';note.textContent='Generation searches the local index using these queries. The checkbox also sends only these query strings to arXiv. Blank queries skip retrieval; building the source pack remains offline.';
+  question.after(label,check,note);
+}
+$('#source-pack-form').onsubmit=async event=>{if(event.submitter?.value==='cancel')return;event.preventDefault();try{const form=new FormData(event.target);const queries=String(form.get('prior_art_queries')||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);await buildSourcePack(form.get('question'),queries,form.get('allow_arxiv')==='true');$('#source-pack-dialog').close();}catch(error){fail(error);}};
 setInterval(()=>{if(S.view==='runs'&&!document.querySelector('dialog[open]'))refreshRuns().catch(fail);},3000);
 load();

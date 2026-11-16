@@ -31,3 +31,13 @@ Run `python scripts/fetch_method_sources.py` to fetch the exact pinned source sn
 The first code-grounded proposal changed a random-feature normalization axis. A reviewer predicted that binary mask features would collapse. A direct numerical audit confirmed the collapse and constant-column NaNs; the idea was rejected before training. A repaired paired sine/cosine representation passes structural tests, but is affine in the raw binary mask. Raw indicators remain the simpler baseline; no new atom is promoted.
 
 The second proposal’s apparent operator advantage disappeared against stronger Richardson and Chebyshev controls. Its matrix-sharing premise also overlapped NeuMiss 2021. Future evidence packs must include method-version lineage and the strongest simple classical control, not only the first implementation encountered.
+
+## Retrieval before generation
+
+Protocol v2 accepts `--search-config FILE` containing `queries` (up to three explicit strings, each at most 200 characters) and `allow_arxiv` (boolean). Planning is always offline. Paid execution first searches the local corpus, and optionally arXiv, before constructing the model client. The same controls are exposed in the app’s source-pack dialog.
+
+The default corpus is the integrated-v2 snapshot when present, otherwise the earlier expanded snapshot. Missing corpus access is recorded as an error, not a successful zero-hit search. Retrieved abstracts receive separate chunk IDs and evidence-level labels; they do not become full method implementations. Query strings are compiled into literal-token searches. Cache files have request-parameter and response-hash checks. Results are balanced across query/provider groups within a fixed limit.
+
+The curated method-lineage registry currently covers only NeuMiss/NeuMiss_sota and StableMiss/StableMiss+. It distinguishes exact pinned implementation files from README or abstract metadata. A known successor’s absence is a coverage warning, not evidence that the original is current or novel. This registry is agent-checked, not human adjudicated, and is not a comprehensive literature graph.
+
+A real protocol-v2 run recorded an arXiv HTTP 429 and continued with one local abstract plus the original code pack and a missing-successor warning. It explicitly recognized the published shared-weight successor. That is one observed case, not a controlled estimate of retrieval’s effect on idea quality. The alternative proposal still failed a numerical fixed-point test.
