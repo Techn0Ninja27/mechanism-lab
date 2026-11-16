@@ -327,6 +327,18 @@ def study_by_id(study_id):
     return next((row for row in study_rows() if row["id"] == study_id), None)
 
 
+def mechanism_summary(value):
+    """Bounded display of model reasoning; never a verification result."""
+    if value is None:
+        return {"status": "not_recorded"}
+    fields = ("assumption_scope", "specialized_operation", "remaining_effect", "simplest_baseline", "distinguishing_test")
+    if (not isinstance(value, dict) or not isinstance(value.get("status"), str)
+            or value["status"] not in {"nontrivial", "redundant", "unresolved"}
+            or any(not isinstance(value.get(k), str) or not value[k].strip() or len(value[k]) > 3000 for k in fields)):
+        return {"status": "invalid"}
+    return {k: value[k] for k in ("status",) + fields}
+
+
 def grounded_rows():
     """Expose completed grounded runs without source payloads or call receipts."""
     rows = []
@@ -425,6 +437,7 @@ def grounded_rows():
                      "pack_hash": data.get("pack_hash"), "proposal": {
                          "title": proposal.get("title"), "hypothesis": proposal.get("hypothesis"),
                          "baseline": proposal.get("baseline"), "operator_delta": proposal.get("operator_delta"),
+                         "mechanism_check": mechanism_summary(proposal.get("mechanism_check")),
                          "matched_control": proposal.get("matched_control"), "evidence": evidence,
                          "experiment": proposal.get("experiment")},
                      "retrieval_coverage": (data.get("retrieval") or {}).get("coverage"),
@@ -432,7 +445,8 @@ def grounded_rows():
                      "retrieval_failures": (data.get("retrieval") or {}).get("failures",[]),
                      "lineage_coverage": (data.get("lineage") or {}).get("coverage"),
                      "lineage_warnings": (data.get("lineage") or {}).get("warnings",[]),
-                     "review": {k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
+                     "review": {**{k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
+                                "mechanism_check": mechanism_summary(review.get("mechanism_check"))},
                      "budget": {"cap_usd": budget.get("cap_usd"), "actual_usd": spent, "active_reserved_usd": reserved},
                      "artifact": public_path(result_path),
                      "factual_audit": factual_audit(result_path),

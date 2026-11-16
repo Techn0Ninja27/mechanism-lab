@@ -12,6 +12,11 @@ from scripts import world_search as w
 from generation.api_budget import BudgetLedger
 from generation.sourcepack import build_source_pack
 
+def mechanism_check():
+    return dict(status='unresolved', assumption_scope='Source is fixed-kernel; target kernel may vary.',
+                specialized_operation='dE/dt = -K(t) E', remaining_effect='Closure of the target is unknown.',
+                simplest_baseline='Direct residual integration', distinguishing_test='Derive the closed target evolution.')
+
 class GroundedResearchTests(unittest.TestCase):
     def _valid_pack(self, root):
         source = root / 'source.md'
@@ -23,7 +28,7 @@ class GroundedResearchTests(unittest.TestCase):
     def test_evidence_and_novelty_fail_closed(self):
         pack = {'chunks': [{'id':'s1:1','text':'The model preserves covariance.'}]}
         p = {k:'x' for k in g.SCHEMA}
-        p.update(decision='investigate', novelty_established=False,
+        p.update(decision='investigate', novelty_established=False, mechanism_check=mechanism_check(),
                  evidence=[{'chunk_id':'s1:1','quote':'preserves covariance','supports':'source operator'}],
                  assumptions=['observed anchors'], data_paths=[{'input':'X','operation':'mask','output':'Xm','possible_leakage':'NaN'}],
                  experiment={k:'specified' for k in ('development','heldout','metric','kill_threshold')})
@@ -32,6 +37,21 @@ class GroundedResearchTests(unittest.TestCase):
         with self.assertRaises(ValueError):g.validate(q,pack)
         q=copy.deepcopy(p);q['novelty_established']=True
         with self.assertRaises(ValueError):g.validate(q,pack)
+
+    def test_mechanism_check_requires_derivation_but_does_not_claim_verification(self):
+        pack = {'chunks':[{'id':'s1','text':'fixed kernel'}]}
+        review = dict(decision='insufficient_evidence', failure_type='insufficient_evidence',
+                      reason='Target closure unresolved', evidence=[dict(chunk_id='s1', quote='fixed kernel', supports='source scope')],
+                      strongest_counterargument='A valid closure may exist', required_test='Derive it',
+                      novelty_established=False, mechanism_check=mechanism_check())
+        self.assertEqual(g.validate(review, pack, review=True)['mechanism_check']['status'], 'unresolved')
+        for field, value in [('specialized_operation', ''), ('remaining_effect', []), ('status', 'verified'),
+                             ('simplest_baseline', 'x' * 3001)]:
+            bad=copy.deepcopy(review); bad['mechanism_check'][field]=value
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                g.validate(bad, pack, review=True)
+        bad=copy.deepcopy(review); del bad['mechanism_check']['assumption_scope']
+        with self.assertRaises(ValueError):g.validate(bad, pack, review=True)
 
     def test_paid_client_uses_global_ledger_and_reuses_receipt(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(w,'key',return_value='test-key'):
@@ -139,11 +159,11 @@ class GroundedResearchTests(unittest.TestCase):
         contracts={'contracts':[{'id':'fixture_contract','inputs':[]}],'scope':'curated declarations only','warnings':[]}
         proposal={k:'specified' for k in g.SCHEMA}
         evidence=[{'chunk_id':'local_experiment:fixture','quote':'fixture scoped failure','supports':'previous local test only'}]
-        proposal.update(decision='revise',novelty_established=False,evidence=evidence,
+        proposal.update(decision='revise',novelty_established=False,evidence=evidence,mechanism_check=mechanism_check(),
                          assumptions=['test assumption'],data_paths=[{k:'specified' for k in ('input','operation','output','possible_leakage')}],
                          experiment={k:'specified' for k in ('development','heldout','metric','kill_threshold')})
         review={k:'specified' for k in g.REVIEW_SCHEMA}
-        review.update(decision='test',failure_type='none_found',evidence=evidence,novelty_established=False)
+        review.update(decision='test',failure_type='none_found',evidence=evidence,novelty_established=False,mechanism_check=mechanism_check())
         prompts=[]
         class Client:
             def __init__(self,*args):pass

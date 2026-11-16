@@ -101,6 +101,8 @@ class HTTPTests(unittest.TestCase):
             run = next(r for r in data['items'] if r['id']=='grounded-01')
             self.assertTrue(run['machine_review_only'])
             self.assertFalse(run['empirical_result'])
+            self.assertEqual(run['proposal']['mechanism_check']['status'], 'not_recorded')
+            self.assertEqual(run['review']['mechanism_check']['status'], 'not_recorded')
             self.assertNotIn('api_key', json.dumps(run).lower())
             self.assertIn(run['operator_evaluation']['status'], {'unavailable', 'unverified'})
 
@@ -237,6 +239,14 @@ class HTTPTests(unittest.TestCase):
             (op/'results.json').write_text('{"changed":true}')
             result=next(x for x in server.grounded_rows() if x['id']=='grounded-01')['operator_evaluation']
             self.assertFalse(result['verified']);self.assertEqual(result['status'],'unverified')
+
+    def test_mechanism_summary_preserves_unknown_and_rejects_invalid_claims(self):
+        self.assertEqual(server.mechanism_summary(None), {'status':'not_recorded'})
+        check={k:'Explicitly unresolved' for k in ('assumption_scope','specialized_operation','remaining_effect','simplest_baseline','distinguishing_test')}
+        check['status']='unresolved'
+        self.assertEqual(server.mechanism_summary(check),check)
+        for bad in ({**check,'status':'verified'}, {**check,'status':[]}, {**check,'remaining_effect':[]}, {**check,'simplest_baseline':'x'*3001}):
+            self.assertEqual(server.mechanism_summary(bad), {'status':'invalid'})
 
     def test_factual_audit_attaches_only_with_matching_result_hash(self):
         import hashlib
