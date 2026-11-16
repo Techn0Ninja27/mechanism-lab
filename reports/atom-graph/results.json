@@ -1,0 +1,209 @@
+{
+  "study": "atom-graph-v1",
+  "status": "complete",
+  "counts": {
+    "source_units": 22150,
+    "papers": 13419,
+    "sets": 4503
+  },
+  "source_hashes": {
+    "papers/clusters.json": "99b157f1baedba7908fca0236fb7dca23b3a49da44054ada305035036aa27013",
+    "operator-studies/atom-graph/plan.json": "1fb7f6a87371e32427fc39adae9c1a49f12433cc18a5096789d4cc89816fcaf6",
+    "operator-studies/atom-graph/experiment.py": "13f93a62b0b2f0c43e91b5602ebdef943d9e55b5d06f798def8f8ab4515cda07",
+    "generation/atom_graph.py": "7efb827d010369c7d4e7bd269aba4f58ddd56cf5932d413327c6d4e32b505212"
+  },
+  "split": {
+    "seed": 73031,
+    "train": 3152,
+    "validation": 675,
+    "test": 676,
+    "train_edge_count": 4070
+  },
+  "validation": {
+    "split": "validation",
+    "train_sets": 3152,
+    "target_sets": 675,
+    "train_edge_count": 4070,
+    "target_unique_edge_count": 1157,
+    "unseen_positive_edge_count": 549,
+    "candidate_count": 33058,
+    "results": {
+      "random_expected": {
+        "positive_count": 549,
+        "candidate_count": 33058,
+        "hits@10": 0,
+        "precision@10": 0.0,
+        "recall@10": 0.0,
+        "hits@50": 0,
+        "precision@50": 0.0,
+        "recall@50": 0.0,
+        "hits@100": 0,
+        "precision@100": 0.0,
+        "recall@100": 0.0,
+        "expected_precision@10": 0.016607175267711296,
+        "expected_precision@50": 0.016607175267711296,
+        "expected_precision@100": 0.016607175267711296
+      },
+      "seeded_random": {
+        "positive_count": 549,
+        "candidate_count": 33058,
+        "hits@10": 0,
+        "precision@10": 0.0,
+        "recall@10": 0.0,
+        "hits@50": 0,
+        "precision@50": 0.0,
+        "recall@50": 0.0,
+        "hits@100": 0,
+        "precision@100": 0.0,
+        "recall@100": 0.0
+      },
+      "common_neighbors": {
+        "positive_count": 549,
+        "candidate_count": 33058,
+        "hits@10": 4,
+        "precision@10": 0.4,
+        "recall@10": 0.007285974499089253,
+        "hits@50": 14,
+        "precision@50": 0.28,
+        "recall@50": 0.025500910746812388,
+        "hits@100": 24,
+        "precision@100": 0.24,
+        "recall@100": 0.04371584699453552
+      },
+      "adamic_adar": {
+        "positive_count": 549,
+        "candidate_count": 33058,
+        "hits@10": 4,
+        "precision@10": 0.4,
+        "recall@10": 0.007285974499089253,
+        "hits@50": 14,
+        "precision@50": 0.28,
+        "recall@50": 0.025500910746812388,
+        "hits@100": 24,
+        "precision@100": 0.24,
+        "recall@100": 0.04371584699453552
+      },
+      "degree_product": {
+        "positive_count": 549,
+        "candidate_count": 33058,
+        "hits@10": 2,
+        "precision@10": 0.2,
+        "recall@10": 0.0036429872495446266,
+        "hits@50": 11,
+        "precision@50": 0.22,
+        "recall@50": 0.020036429872495445,
+        "hits@100": 17,
+        "precision@100": 0.17,
+        "recall@100": 0.030965391621129327
+      },
+      "tfidf_cosine": {
+        "positive_count": 549,
+        "candidate_count": 33058,
+        "hits@10": 1,
+        "precision@10": 0.1,
+        "recall@10": 0.0018214936247723133,
+        "hits@50": 4,
+        "precision@50": 0.08,
+        "recall@50": 0.007285974499089253,
+        "hits@100": 8,
+        "precision@100": 0.08,
+        "recall@100": 0.014571948998178506
+      }
+    }
+  },
+  "test": {
+    "split": "test",
+    "train_sets": 3152,
+    "target_sets": 676,
+    "train_edge_count": 4070,
+    "target_unique_edge_count": 1194,
+    "unseen_positive_edge_count": 617,
+    "candidate_count": 33058,
+    "results": {
+      "random_expected": {
+        "positive_count": 617,
+        "candidate_count": 33058,
+        "hits@10": 0,
+        "precision@10": 0.0,
+        "recall@10": 0.0,
+        "hits@50": 1,
+        "precision@50": 0.02,
+        "recall@50": 0.0016207455429497568,
+        "hits@100": 2,
+        "precision@100": 0.02,
+        "recall@100": 0.0032414910858995136,
+        "expected_precision@10": 0.01866416601125295,
+        "expected_precision@50": 0.01866416601125295,
+        "expected_precision@100": 0.01866416601125295
+      },
+      "seeded_random": {
+        "positive_count": 617,
+        "candidate_count": 33058,
+        "hits@10": 0,
+        "precision@10": 0.0,
+        "recall@10": 0.0,
+        "hits@50": 0,
+        "precision@50": 0.0,
+        "recall@50": 0.0,
+        "hits@100": 1,
+        "precision@100": 0.01,
+        "recall@100": 0.0016207455429497568
+      },
+      "common_neighbors": {
+        "positive_count": 617,
+        "candidate_count": 33058,
+        "hits@10": 4,
+        "precision@10": 0.4,
+        "recall@10": 0.006482982171799027,
+        "hits@50": 13,
+        "precision@50": 0.26,
+        "recall@50": 0.02106969205834684,
+        "hits@100": 21,
+        "precision@100": 0.21,
+        "recall@100": 0.03403565640194489
+      },
+      "adamic_adar": {
+        "positive_count": 617,
+        "candidate_count": 33058,
+        "hits@10": 4,
+        "precision@10": 0.4,
+        "recall@10": 0.006482982171799027,
+        "hits@50": 11,
+        "precision@50": 0.22,
+        "recall@50": 0.017828200972447326,
+        "hits@100": 23,
+        "precision@100": 0.23,
+        "recall@100": 0.03727714748784441
+      },
+      "degree_product": {
+        "positive_count": 617,
+        "candidate_count": 33058,
+        "hits@10": 4,
+        "precision@10": 0.4,
+        "recall@10": 0.006482982171799027,
+        "hits@50": 12,
+        "precision@50": 0.24,
+        "recall@50": 0.019448946515397084,
+        "hits@100": 21,
+        "precision@100": 0.21,
+        "recall@100": 0.03403565640194489
+      },
+      "tfidf_cosine": {
+        "positive_count": 617,
+        "candidate_count": 33058,
+        "hits@10": 2,
+        "precision@10": 0.2,
+        "recall@10": 0.0032414910858995136,
+        "hits@50": 5,
+        "precision@50": 0.1,
+        "recall@50": 0.008103727714748784,
+        "hits@100": 10,
+        "precision@100": 0.1,
+        "recall@100": 0.01620745542949757
+      }
+    }
+  },
+  "interpretation": "Undirected co-occurrence edge recovery only; not causal, useful, novel, or molecule promotion evidence.",
+  "embedding_scope": "TF-IDF over all definition strings; transductive descriptive vocabulary.",
+  "citation_weights": "none; every paper contributes weight one"
+}

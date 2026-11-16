@@ -24,6 +24,7 @@ scientific discoveries.
 | Experiment | What happened | Evidence |
 |---|---|---|
 | **Compose executable compression operators** | Searching 115 compatible chains selected frame-of-reference packing + LZMA. On three shifted synthetic streams it used **24.25% fewer bytes** than the control frozen during validation, with exact round trips. | [Protocol, results, and limitations](operator-studies/integer-composition/README.md) |
+| **Recover atom combinations with graphs** | Adamic–Adar recovered **23/100** withheld pairs, versus **21/100** for degree product and **10/100** for text similarity. This measures co-occurrence recovery, not novelty or usefulness. | [Graph baseline](reports/atom-graph/README.md) |
 | **Learn which implementation to choose** | A pairwise utility ranker improved validation selection, then **lost to the fixed baseline on all three unseen families**. Held-out regret: **0.09412 vs 0.02238**, lower is better. Not promoted. | [Held-out report](reports/utility-ranker/README.md) |
 | **Reconstruct implementations from literature** | Six implementations generated from abstracts, atoms, or molecules produced **no gain against strong controls**. | [Reconstruction studies](reconstruction-studies/README.md) |
 | **Ground proposals in code and prior work** | Three audited proposals exposed a normalization failure, overlap with known methods, and an incorrect fixed point. No demonstrated novelty. | [Grounded research reports](reports/improvement-2026-11-16/README.md) |

@@ -1,0 +1,13 @@
+{
+  "study": "atom-graph-v1",
+  "question": "Do simple graph and definition-similarity scores recover atom pairs that occur in held-out source papers?",
+  "source": "papers/clusters.json original assignments only",
+  "seed": 73031,
+  "split": "grouped canonical atom sets 70/15/15; non-temporal",
+  "methods": ["random_expected", "seeded_random", "common_neighbors", "adamic_adar", "degree_product", "tfidf_cosine"],
+  "ks": [10, 50, 100],
+  "input_structure": "undirected paper-level atom co-occurrence; edge weight is source-paper count",
+  "interpretation": "Edge recovery is a coherence/usefulness diagnostic. It is not causal discovery, semantic novelty, or a molecule promotion test.",
+  "embedding_scope": "TF-IDF over all 273 cluster definition strings; transductive descriptive vocabulary, not a temporal/nonleaky novelty evaluation.",
+  "no_tuning_after_test": true
+}

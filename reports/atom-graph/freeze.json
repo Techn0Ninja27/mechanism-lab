@@ -1,0 +1,26 @@
+{
+  "source_hashes": {
+    "papers/clusters.json": "99b157f1baedba7908fca0236fb7dca23b3a49da44054ada305035036aa27013",
+    "operator-studies/atom-graph/plan.json": "1fb7f6a87371e32427fc39adae9c1a49f12433cc18a5096789d4cc89816fcaf6",
+    "operator-studies/atom-graph/experiment.py": "13f93a62b0b2f0c43e91b5602ebdef943d9e55b5d06f798def8f8ab4515cda07",
+    "generation/atom_graph.py": "7efb827d010369c7d4e7bd269aba4f58ddd56cf5932d413327c6d4e32b505212"
+  },
+  "seed": 73031,
+  "split": [
+    3152,
+    675,
+    676
+  ],
+  "methods": [
+    "common_neighbors",
+    "adamic_adar",
+    "degree_product",
+    "tfidf_cosine"
+  ],
+  "ks": [
+    10,
+    50,
+    100
+  ],
+  "scope": "single frozen descriptive evaluation; no test tuning"
+}
