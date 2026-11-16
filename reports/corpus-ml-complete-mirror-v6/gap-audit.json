@@ -1,0 +1,91 @@
+{
+  "schema": "corpus-systems-gap-audit.v2",
+  "audited_at": "2026-11-17",
+  "corpus": "results/corpus-ml-grounded-v4",
+  "raw_archive": {
+    "path": "results/corpus-sources/secemp9/metadata/train-00000-of-00001.parquet",
+    "dataset": "secemp9/arxiv-complete",
+    "revision": "cee894837962fede5612cccf2a4c7cacf49b4c3a",
+    "sha256": "7f7bea788af318a3f0fed1c446303c725d339c2cb189ede4412aeadd0ab9bf1f",
+    "bytes": 1643927530,
+    "rows": 3148796,
+    "verified_with": "experiments/alien-science/.venv/bin/python + pyarrow",
+    "raw_presence": "verified_for_all_three"
+  },
+  "checks": {
+    "corpus_fields_checked": ["source_id", "canonical_id", "landing_url", "title"],
+    "corpus_result": "all_three_absent_from_corpus_ml_grounded_v4",
+    "full_archive_result": "all_three_present",
+    "full_ml_output": "results/arxiv-all-ml-v1/records.jsonl",
+    "full_ml_output_manifest": "results/arxiv-all-ml-v1/selection-manifest.json",
+    "full_ml_output_result": "all_three_present"
+  },
+  "eligibility": {
+    "selector_cutoff": "2026-11-16",
+    "requirements": "nonempty title and abstract; category maps to ML; first/latest dates <= cutoff",
+    "ml_eligible_total": 605681,
+    "ml_selected_in_all_ml_output": 605681,
+    "all_three_passed": true
+  },
+  "targets": [
+    {
+      "arxiv_id": "arxiv:2308.13466",
+      "short_name": "SAT",
+      "title": "Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction",
+      "categories": "cs.LG",
+      "primary_category": "cs.LG",
+      "published_date": "2023-08-25",
+      "updated_date": "2023-12-10",
+      "raw_present": true,
+      "ml_eligible": true,
+      "in_original_60k_selection": false,
+      "reason_absent_from_original": "ML hash-cap sampling"
+    },
+    {
+      "arxiv_id": "arxiv:2409.14655",
+      "short_name": "FedAIS",
+      "title": "Federated Graph Learning with Adaptive Importance-based Sampling",
+      "categories": "cs.DC cs.CR cs.LG",
+      "primary_category": "cs.DC",
+      "published_date": "2024-09-23",
+      "updated_date": "2024-09-23",
+      "raw_present": true,
+      "ml_eligible": true,
+      "in_original_60k_selection": false,
+      "reason_absent_from_original": "ML hash-cap sampling"
+    },
+    {
+      "arxiv_id": "arxiv:2602.22958",
+      "short_name": "frequency tokenization",
+      "title": "Frequency-Ordered Tokenization for Better Text Compression",
+      "categories": "cs.IT cs.CL math.IT",
+      "primary_category": "cs.IT",
+      "published_date": "2026-02-26",
+      "updated_date": "2026-02-26",
+      "raw_present": true,
+      "ml_eligible": true,
+      "in_original_60k_selection": false,
+      "reason_absent_from_original": "ML hash-cap sampling"
+    }
+  ],
+  "selection_evidence": {
+    "original_manifest": "results/arxiv-selected-100k/selection-manifest.json",
+    "seed": 73031,
+    "original_ml_eligible": 605681,
+    "original_ml_selected": 60000,
+    "selection_rule": "lowest seeded ID hashes within ML category group",
+    "selected_ml_max_hash": 1833732843608725812,
+    "target_hashes": {
+      "2308.13466": 16903086668254482890,
+      "2409.14655": 9910566193455338282,
+      "2602.22958": 3944857437855798100
+    },
+    "target_hash_fractions": {
+      "2308.13466": 0.9163181643716138,
+      "2409.14655": 0.5372528698752836,
+      "2602.22958": 0.21385115021344286
+    },
+    "conclusion": "All three are raw-present, eligible ML records whose seeded hashes exceed the selected-ML cutoff; their absence from corpus-ml-grounded-v4 is selection-cap exclusion, not raw-source absence."
+  },
+  "actionable_finding": "The gap is exactly the predictable consequence of retaining only 60,000 of 605,681 eligible ML records. The all-ML archive output repairs coverage without changing systems/math quotas; alternatively, a known-ID inclusion path can protect high-value prior-art records."
+}

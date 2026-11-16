@@ -2,6 +2,16 @@ import json,tempfile,unittest
 from pathlib import Path
 from generation.corpus_registry import active_corpus
 class CorpusRegistryTests(unittest.TestCase):
+    def test_all_ml_snapshot_requires_completion_marker(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            for name in ('corpus-ml-complete-mirror-v6','corpus-ml-grounded-v4'):
+                p=root/'results'/name;p.mkdir(parents=True);(p/'corpus.sqlite').touch()
+            old=root/'results/corpus-ml-grounded-v4';(old/'bulk-manifest.json').write_text('{"records":10}')
+            self.assertEqual(active_corpus(root)['snapshot'],'corpus-ml-grounded-v4')
+            new=root/'results/corpus-ml-complete-mirror-v6';(new/'bulk-manifest.json').write_text('{"records":20}')
+            self.assertEqual(active_corpus(root)['snapshot'],'corpus-ml-complete-mirror-v6')
+
     def test_incomplete_snapshot_cannot_replace_completed_corpus(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)

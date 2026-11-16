@@ -1,0 +1,44 @@
+{
+  "schema": "corpus-preservation.v1",
+  "script_sha256": "813f341a2e1b79f366a5984f7468472d2b1539cde5fc768570039a27c03889e6",
+  "before": "results/corpus-ml-grounded-v4/corpus.sqlite",
+  "after": "results/corpus-ml-complete-mirror-v6/corpus.sqlite",
+  "counts": {
+    "before_records": 206920,
+    "after_records": 739964,
+    "before_aliases": 209946,
+    "after_aliases": 755406,
+    "fts_records": 739964,
+    "missing_old_sources": 0,
+    "missing_or_changed_aliases": 0,
+    "fts_orphans": 0,
+    "fts_duplicate_sources": 0,
+    "fts_changed_text": 0
+  },
+  "changed_core_fields": {
+    "canonical_id": 0,
+    "title": 0,
+    "abstract": 0,
+    "authors_json": 0,
+    "published_date": 0,
+    "updated_date": 0,
+    "content_sha256": 0,
+    "retrieval_method": 0,
+    "retrieved_at": 0,
+    "evidence_level": 0
+  },
+  "changed_existing_influence_fields": {
+    "citation_count": 0,
+    "field_weighted_citation_impact": 0,
+    "citation_normalized_percentile": 0,
+    "influence_provenance": 0
+  },
+  "openai_auxiliary_byte_identical": true,
+  "sqlite_quick_check": [
+    [
+      "ok"
+    ]
+  ],
+  "passed": true,
+  "scope": "Preserves existing rows, aliases, content and nonmissing influence metadata; new DOI/category metadata may be added. Not corpus correctness, coverage completeness, novelty or usefulness."
+}

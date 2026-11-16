@@ -1,0 +1,31 @@
+{
+  "schema": "arxiv-primary-packet.v1",
+  "date": "2026-11-17",
+  "records": 3,
+  "responses": [
+    {
+      "id": "2409.14655v1",
+      "url": "https://arxiv.org/abs/2409.14655v1",
+      "path": "2409.14655v1.html",
+      "sha256": "1cb7b2aa064ec1eab0cfeca71bc7391912611b235fd4585471800a2f2a4392b5",
+      "bytes": 41705
+    },
+    {
+      "id": "2308.13466v1",
+      "url": "https://arxiv.org/abs/2308.13466v1",
+      "path": "2308.13466v1.html",
+      "sha256": "c09d4dd866fefecc069d5f4f69ac7a254aa8c7679a8a49d7eade4c1916f67793",
+      "bytes": 43274
+    },
+    {
+      "id": "2602.22958v1",
+      "url": "https://arxiv.org/abs/2602.22958v1",
+      "path": "2602.22958v1.html",
+      "sha256": "02d200b32b11f527be5f0dc94d4d9dccae213d30bf5dd5446a248ad923d74487",
+      "bytes": 42007
+    }
+  ],
+  "packet_sha256": "2d285d01163a727b825d79d116d5c8bc6e035b88f249616ab20bfd797ae204ce",
+  "extractor_sha256": "f753a37c201daee89f14a718d7c255574d67588ae263d3e5dcc5bcb25699ea2d",
+  "scope": "Primary abstracts, not full methods or novelty judgments."
+}

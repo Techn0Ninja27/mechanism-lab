@@ -1,0 +1,260 @@
+{
+  "scope": "Three known papers, six exposed queries selected after misses. Not held-out recall, precision, novelty, usefulness or proof of general retrieval improvement.",
+  "cells": [
+    {
+      "snapshot": "before",
+      "corpus_sha256": "065bfdd3b815b79b8571a86c88d771173e0c10935eedbb3244751b8f4234784e",
+      "hits_at_10": 0,
+      "cases": [
+        {
+          "case": "fedais_name",
+          "queries": [
+            "FedAIS"
+          ],
+          "expected": "arxiv:2409.14655",
+          "rank": null,
+          "returned": [],
+          "failures": []
+        },
+        {
+          "case": "fedais_mechanism",
+          "queries": [
+            "federated adaptive importance sampling"
+          ],
+          "expected": "arxiv:2409.14655",
+          "rank": null,
+          "returned": [
+            "arxiv:2501.12592"
+          ],
+          "failures": []
+        },
+        {
+          "case": "sat_name",
+          "queries": [
+            "Staleness Alleviated"
+          ],
+          "expected": "arxiv:2308.13466",
+          "rank": null,
+          "returned": [],
+          "failures": []
+        },
+        {
+          "case": "sat_mechanism",
+          "queries": [
+            "embedding prediction staleness"
+          ],
+          "expected": "arxiv:2308.13466",
+          "rank": null,
+          "returned": [],
+          "failures": []
+        },
+        {
+          "case": "rank_code_name",
+          "queries": [
+            "Frequency Ordered Tokenization"
+          ],
+          "expected": "arxiv:2602.22958",
+          "rank": null,
+          "returned": [
+            "openalex:W7225345957"
+          ],
+          "failures": []
+        },
+        {
+          "case": "rank_code_mechanism",
+          "queries": [
+            "frequency tokenization compression"
+          ],
+          "expected": "arxiv:2602.22958",
+          "rank": null,
+          "returned": [
+            "arxiv:2604.17047"
+          ],
+          "failures": []
+        }
+      ]
+    },
+    {
+      "snapshot": "packet_only",
+      "corpus_sha256": "43e458d38947783fc36c4dd50b6fe87c0fcec8aacb4914a664cc228cbbead2de",
+      "hits_at_10": 6,
+      "cases": [
+        {
+          "case": "fedais_name",
+          "queries": [
+            "FedAIS"
+          ],
+          "expected": "arxiv:2409.14655",
+          "rank": 1,
+          "returned": [
+            "arxiv:2409.14655"
+          ],
+          "failures": []
+        },
+        {
+          "case": "fedais_mechanism",
+          "queries": [
+            "federated adaptive importance sampling"
+          ],
+          "expected": "arxiv:2409.14655",
+          "rank": 1,
+          "returned": [
+            "arxiv:2409.14655",
+            "arxiv:2501.12592"
+          ],
+          "failures": []
+        },
+        {
+          "case": "sat_name",
+          "queries": [
+            "Staleness Alleviated"
+          ],
+          "expected": "arxiv:2308.13466",
+          "rank": 1,
+          "returned": [
+            "arxiv:2308.13466"
+          ],
+          "failures": []
+        },
+        {
+          "case": "sat_mechanism",
+          "queries": [
+            "embedding prediction staleness"
+          ],
+          "expected": "arxiv:2308.13466",
+          "rank": 1,
+          "returned": [
+            "arxiv:2308.13466"
+          ],
+          "failures": []
+        },
+        {
+          "case": "rank_code_name",
+          "queries": [
+            "Frequency Ordered Tokenization"
+          ],
+          "expected": "arxiv:2602.22958",
+          "rank": 1,
+          "returned": [
+            "arxiv:2602.22958",
+            "openalex:W7225345957"
+          ],
+          "failures": []
+        },
+        {
+          "case": "rank_code_mechanism",
+          "queries": [
+            "frequency tokenization compression"
+          ],
+          "expected": "arxiv:2602.22958",
+          "rank": 1,
+          "returned": [
+            "arxiv:2602.22958",
+            "arxiv:2604.17047"
+          ],
+          "failures": []
+        }
+      ]
+    },
+    {
+      "snapshot": "all_ml",
+      "corpus_sha256": "a594fc6f24d14a218f7b9d87622db1d9f304aebf7b74f77e45e3ffab646182ec",
+      "hits_at_10": 6,
+      "cases": [
+        {
+          "case": "fedais_name",
+          "queries": [
+            "FedAIS"
+          ],
+          "expected": "arxiv:2409.14655",
+          "rank": 1,
+          "returned": [
+            "arxiv:2409.14655"
+          ],
+          "failures": []
+        },
+        {
+          "case": "fedais_mechanism",
+          "queries": [
+            "federated adaptive importance sampling"
+          ],
+          "expected": "arxiv:2409.14655",
+          "rank": 1,
+          "returned": [
+            "arxiv:2409.14655",
+            "arxiv:2112.14332",
+            "arxiv:2501.12592",
+            "arxiv:2309.13102"
+          ],
+          "failures": []
+        },
+        {
+          "case": "sat_name",
+          "queries": [
+            "Staleness Alleviated"
+          ],
+          "expected": "arxiv:2308.13466",
+          "rank": 1,
+          "returned": [
+            "arxiv:2308.13466",
+            "arxiv:2206.00054"
+          ],
+          "failures": []
+        },
+        {
+          "case": "sat_mechanism",
+          "queries": [
+            "embedding prediction staleness"
+          ],
+          "expected": "arxiv:2308.13466",
+          "rank": 1,
+          "returned": [
+            "arxiv:2308.13466",
+            "arxiv:2505.02844",
+            "arxiv:2305.12322",
+            "arxiv:2607.15242",
+            "arxiv:2510.09884"
+          ],
+          "failures": []
+        },
+        {
+          "case": "rank_code_name",
+          "queries": [
+            "Frequency Ordered Tokenization"
+          ],
+          "expected": "arxiv:2602.22958",
+          "rank": 1,
+          "returned": [
+            "arxiv:2602.22958",
+            "openalex:W7225345957",
+            "arxiv:2506.10962"
+          ],
+          "failures": []
+        },
+        {
+          "case": "rank_code_mechanism",
+          "queries": [
+            "frequency tokenization compression"
+          ],
+          "expected": "arxiv:2602.22958",
+          "rank": 1,
+          "returned": [
+            "arxiv:2602.22958",
+            "arxiv:2501.09747",
+            "arxiv:2508.04796",
+            "arxiv:2508.15190",
+            "arxiv:2608.18087",
+            "arxiv:2603.19261",
+            "arxiv:2403.03736",
+            "arxiv:2606.19574",
+            "arxiv:2605.30126",
+            "arxiv:2512.21913"
+          ],
+          "failures": []
+        }
+      ]
+    }
+  ],
+  "retriever_sha256": "703a086bf7f1dbd94fbbfd9a842798e76bc80384162d42862bc49198d00ff591",
+  "script_sha256": "014e397b861e76dbb3c9f0d75c34469eec40b13f1d05c47e01ff880e56590f8a"
+}

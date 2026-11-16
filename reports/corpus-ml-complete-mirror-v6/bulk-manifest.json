@@ -1,0 +1,36 @@
+{
+  "schema": "bulk-corpus.v1",
+  "cutoff": "2026-11-16",
+  "records": 739964,
+  "import_script_sha256": "9ef77220c517dbc8654b5885f4c67d98f4a8636da337144366641efdff8ab231",
+  "existing_records": 206923,
+  "bulk_selected": 645681,
+  "bulk_new_records": 533041,
+  "source": {
+    "path": "results/arxiv-all-ml-v1/records.jsonl",
+    "sha256": "5e71adcc6cc0f50b938ebd82f8fe7aa72eb962bf6132ad5a3fd26ea2526f36dd",
+    "lines": 645681,
+    "accepted": 645681,
+    "skipped": 0,
+    "malformed": 0,
+    "selected": 645681,
+    "selected_by_group": {
+      "ml": 605681,
+      "math": 20000,
+      "systems": 20000
+    },
+    "quotas": {
+      "ml": 215227,
+      "systems": 215227,
+      "math": 215227
+    },
+    "seed": 73031
+  },
+  "existing_snapshot": "results/corpus-primary-systems-v5/works.jsonl",
+  "existing_openai_sources": {
+    "path": "results/corpus-primary-systems-v5/openai_sources.jsonl",
+    "sha256": "3eaf3c8d58448d8b3389f9a1b435ee6d1ae1c0dac56baccc99003d674305edd7",
+    "records": 15
+  },
+  "corpus_sha256": "7c67923dce10039da28c47e0cd9416e40ff32504f8a32c0ae5eb6a6ec187ba8a"
+}

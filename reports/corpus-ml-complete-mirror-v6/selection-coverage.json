@@ -1,0 +1,7 @@
+{
+  "selected_records": 645681,
+  "unrepresented_selected_ids": 0,
+  "examples": [],
+  "dangling_aliases": 0,
+  "scope": "Every selected source ID resolves as a work identity or alias; this does not verify bibliographic deduplication correctness."
+}

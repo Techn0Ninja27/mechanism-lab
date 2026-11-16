@@ -14,8 +14,18 @@ def group(categories):
         if cats & allowed or name=='math' and any(c.startswith('math.') for c in cats):return name
     return None
 
+def record(row,g):
+    return {'id':str(row['paper_id']),'title':row['title'],'abstract':row['abstract'],'authors':row['authors'],
+            'categories':row['categories'],'primary_category':row['primary_category'],
+            'published_date':str(row['first_version_date'])[:10],'updated_date':str(row['latest_version_date'])[:10],
+            'doi':row['doi'],'license':row['license'],'url':row['arxiv_abs_url'],
+            'corpus_group':g,'metadata_dataset':DATASET,'metadata_revision':REVISION,
+            'retrieval_method':'arxiv_oai_metadata_mirror','retrieved_at':'2026-11-16'}
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,default=73031);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--input',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--seed',type=int,default=73031)
+    p.add_argument('--all-ml',action='store_true',help='Keep every eligible ML record from the pinned archive; preserve systems/math quotas')
+    a=p.parse_args()
     if a.output.exists():raise FileExistsError('Preserve existing selection')
     h=hashlib.sha256()
     with a.input.open('rb') as f:
@@ -27,33 +37,38 @@ def main():
     missing=set(cols)-set(pf.schema_arrow.names)
     if missing:raise ValueError('Missing columns: '+str(missing))
     heaps={g:[] for g in TARGETS};eligible=collections.Counter();scanned=0
+    year_counts=collections.Counter();n=0;all_ml_count=0
+    if a.all_ml:
+        a.output.mkdir(parents=True)
+        ml_stream=(a.output/'records.jsonl').open('x')
     for batch in pf.iter_batches(batch_size=8192,columns=cols):
         for row in batch.to_pylist():
             scanned+=1;g=group(row['categories'])
             if not g or not row['title'] or not row['abstract']:continue
             if str(row['first_version_date'])[:10]>'2026-11-16' or str(row['latest_version_date'])[:10]>'2026-11-16':continue
             eligible[g]+=1
+            if a.all_ml and g=='ml':
+                item=record(row,g);ml_stream.write(json.dumps(item,ensure_ascii=False)+'\n')
+                year_counts[g+':'+item['published_date'][:4]]+=1;n+=1;all_ml_count+=1
+                continue
             key=int.from_bytes(hashlib.sha256(f"{a.seed}:{row['paper_id']}".encode()).digest()[:8],'big')
             entry=(-key,str(row['paper_id']),row)
             if len(heaps[g])<TARGETS[g]:heapq.heappush(heaps[g],entry)
             elif entry[:2]>heaps[g][0][:2]:heapq.heapreplace(heaps[g],entry)
         if scanned%262144==0:print(json.dumps({'scanned':scanned,'eligible':dict(eligible)}),flush=True)
-    a.output.mkdir(parents=True);year_counts=collections.Counter();n=0
-    with (a.output/'records.jsonl').open('x') as f:
+    if a.all_ml:ml_stream.close()
+    else:a.output.mkdir(parents=True)
+    with (a.output/'records.jsonl').open('a' if a.all_ml else 'x') as f:
         for g in TARGETS:
             for _,aid,row in sorted(heaps[g],key=lambda x:x[1]):
-                item={'id':aid,'title':row['title'],'abstract':row['abstract'],'authors':row['authors'],
-                      'categories':row['categories'],'primary_category':row['primary_category'],
-                      'published_date':str(row['first_version_date'])[:10],'updated_date':str(row['latest_version_date'])[:10],
-                      'doi':row['doi'],'license':row['license'],'url':row['arxiv_abs_url'],
-                      'corpus_group':g,'metadata_dataset':DATASET,'metadata_revision':REVISION,
-                      'retrieval_method':'arxiv_oai_metadata_mirror','retrieved_at':'2026-11-16'}
+                item=record(row,g)
                 year_counts[g+':'+item['published_date'][:4]]+=1;n+=1
                 f.write(json.dumps(item,ensure_ascii=False)+'\n')
     manifest={'dataset':DATASET,'revision':REVISION,'source_sha256':EXPECTED_SHA,'seed':a.seed,'scanned':scanned,
-              'targets':TARGETS,'eligible':dict(eligible),'selected':{g:len(v) for g,v in heaps.items()},
+              'targets':{**TARGETS,**({'ml':None} if a.all_ml else {})},'eligible':dict(eligible),
+              'selected':{g:(all_ml_count if a.all_ml and g=='ml' else len(v)) for g,v in heaps.items()},
               'total_selected':n,'years':dict(sorted(year_counts.items())),
-              'selection':'Lowest seeded ID hashes within ordered ML/systems/math category groups; full metadata scan.',
+              'selection':('Every eligible ML record in archive order; lowest seeded ID hashes for systems/math.' if a.all_ml else 'Lowest seeded ID hashes within ordered ML/systems/math category groups; full metadata scan.'),
               'scope':'Third-party mirror of arXiv OAI metadata harvested 2026-08-30; no citation counts or full texts.',
               'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'records_sha256':hashlib.sha256((a.output/'records.jsonl').read_bytes()).hexdigest()}

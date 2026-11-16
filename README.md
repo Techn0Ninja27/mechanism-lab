@@ -38,12 +38,13 @@ teach a model to choose well on new tasks.
 
 ## Research corpus
 
-The local search corpus now contains **206,920 records**, combining an ML-first
-arXiv selection with OpenAlex metadata. All previous records remain traceable.
+The local search corpus now contains **739,964 records**, combining every
+eligible ML record from the pinned local arXiv mirror with existing systems,
+math, primary-source and OpenAlex coverage. All previous records remain traceable.
 Citation counts are available for 92,876 records and normalized influence
 metrics for 60,237; these are metadata, not usefulness labels.
 [Bulk-corpus coverage](reports/corpus-207k/README.md) and
-[the latest primary-source repair and retrieval audit](reports/corpus-ml-grounded-v4/README.md).
+[the latest ML expansion and preservation/retrieval audit](reports/corpus-ml-complete-mirror-v6/README.md).
 
 A first 24-paper packet produced **60 source-linked candidate atoms** for
 $0.00835. Independent agent review flagged 11 semantic issues and separately

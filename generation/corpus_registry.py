@@ -1,7 +1,7 @@
 """Select a completed local evidence corpus; never select an in-progress harvest."""
 import json
 from pathlib import Path
-SNAPSHOTS=(('corpus-ml-grounded-v4','bulk-manifest.json'),('corpus-openalex-enriched-v3','bulk-manifest.json'),('corpus-arxiv-100k','bulk-manifest.json'),('corpus-integrated-v3','manifest.json'),
+SNAPSHOTS=(('corpus-ml-complete-mirror-v6','bulk-manifest.json'),('corpus-ml-grounded-v4','bulk-manifest.json'),('corpus-openalex-enriched-v3','bulk-manifest.json'),('corpus-arxiv-100k','bulk-manifest.json'),('corpus-integrated-v3','manifest.json'),
            ('corpus-integrated-v2','manifest.json'),('corpus-expanded','manifest.json'))
 def active_corpus(root):
     root=Path(root)

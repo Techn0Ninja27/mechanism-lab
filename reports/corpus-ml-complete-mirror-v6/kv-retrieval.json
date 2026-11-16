@@ -1,0 +1,382 @@
+{
+  "date": "2026-11-16",
+  "expected": [
+    "arxiv:2402.18096",
+    "arxiv:2512.19206",
+    "arxiv:2608.14191",
+    "arxiv:2610.11245"
+  ],
+  "cells": [
+    {
+      "corpus": "before",
+      "query_set": "original",
+      "queries": [
+        "KV cache quantization",
+        "mixed precision cache",
+        "adaptive KV retrieval"
+      ],
+      "corpus_sha256": "065bfdd3b815b79b8571a86c88d771173e0c10935eedbb3244751b8f4234784e",
+      "covered_expected_ids": [
+        "arxiv:2402.18096",
+        "arxiv:2512.19206",
+        "arxiv:2608.14191",
+        "arxiv:2610.11245"
+      ],
+      "hits_at_10": 1,
+      "ranks": {
+        "arxiv:2402.18096": null,
+        "arxiv:2512.19206": 5,
+        "arxiv:2608.14191": null,
+        "arxiv:2610.11245": null
+      },
+      "returned": [
+        {
+          "id": "arxiv:2605.02262",
+          "title": "WindowQuant: Mixed-Precision KV Cache Quantization based on Window-Level Similarity for VLMs Inference Optimization"
+        },
+        {
+          "id": "local:zDwipF6h06",
+          "title": "KVTuner: Sensitivity-Aware Layer-Wise Mixed-Precision KV Cache Quantization for Efficient and Nearly Lossless LLM Inference"
+        },
+        {
+          "id": "arxiv:2508.08256",
+          "title": "FIER: Fine-Grained and Efficient KV Cache Retrieval for Long-context LLM Inference"
+        },
+        {
+          "id": "local:nI6JyFSnyV",
+          "title": "SKVQ: Sliding-window Key and Value Cache Quantization for Large Language Models"
+        },
+        {
+          "id": "arxiv:2512.19206",
+          "title": "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning"
+        },
+        {
+          "id": "arxiv:2605.23200",
+          "title": "Adaptive Mass-Segmented KV Compression for Long-Context Reasoning"
+        },
+        {
+          "id": "local:sbbyCB39HN",
+          "title": "CommVQ: Commutative Vector Quantization for KV Cache Compression"
+        },
+        {
+          "id": "openalex:W7225742888",
+          "title": "Coordinated Mixed-Precision KV Cache Quantization for Efficient LLM-based Multi-agent Systems"
+        },
+        {
+          "id": "openalex:W7225178322",
+          "title": "Fairway: Load-Aware KV Cache Reuse for LLM Prefill Scheduling"
+        },
+        {
+          "id": "local:L057s2Rq8O",
+          "title": "KIVI: A Tuning-Free Asymmetric 2bit Quantization for KV Cache"
+        }
+      ],
+      "coverage": [
+        {
+          "query": "KV cache quantization",
+          "compiled_query": "\"KV\" AND \"cache\" AND \"quantization\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 6
+        },
+        {
+          "query": "mixed precision cache",
+          "compiled_query": "\"mixed\" AND \"precision\" AND \"cache\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 4
+        },
+        {
+          "query": "adaptive KV retrieval",
+          "compiled_query": "\"adaptive\" AND \"KV\" AND \"retrieval\"",
+          "provider": "local_corpus",
+          "records": 6,
+          "status": "ok",
+          "retained_records": 3
+        }
+      ],
+      "failures": []
+    },
+    {
+      "corpus": "before",
+      "query_set": "mechanism_development",
+      "queries": [
+        "query cache precision",
+        "attention cache distortion",
+        "importance cache precision"
+      ],
+      "corpus_sha256": "065bfdd3b815b79b8571a86c88d771173e0c10935eedbb3244751b8f4234784e",
+      "covered_expected_ids": [
+        "arxiv:2402.18096",
+        "arxiv:2512.19206",
+        "arxiv:2608.14191",
+        "arxiv:2610.11245"
+      ],
+      "hits_at_10": 4,
+      "ranks": {
+        "arxiv:2402.18096": 3,
+        "arxiv:2512.19206": 1,
+        "arxiv:2608.14191": 5,
+        "arxiv:2610.11245": 2
+      },
+      "returned": [
+        {
+          "id": "arxiv:2512.19206",
+          "title": "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning"
+        },
+        {
+          "id": "arxiv:2610.11245",
+          "title": "Read What Matters: Query-Adaptive Quantization for KV Caches"
+        },
+        {
+          "id": "arxiv:2402.18096",
+          "title": "No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization"
+        },
+        {
+          "id": "openalex:W7226009396",
+          "title": "Mitigation of Quantum-Safe Metadata Explosion in Open Table Layouts using Agentic Optimization"
+        },
+        {
+          "id": "arxiv:2608.14191",
+          "title": "KV Cache Compression Through the Lens of Transform Coding"
+        },
+        {
+          "id": "openalex:W7225173588",
+          "title": "PagedMoE: Cross-Precision Expert Caching for Token-Level Dynamic Precision in SSD-Resident MoE Inference"
+        },
+        {
+          "id": "local:Mc0eJHZhW5",
+          "title": "Efficient Low Rank Attention for Long-Context Inference in Large Language Models"
+        },
+        {
+          "id": "arxiv:2608.04074",
+          "title": "Spend Bits Where Queries Look: KV Cache Vector Quantization with Attention-Preserving Transforms"
+        },
+        {
+          "id": "openalex:W7224789532",
+          "title": "hersonemmanuel/Phase-Aware-Memory-Performance-Modeling: Release v1.0.0 \u2013 Phase-Aware Performance Modelling of Transformer Inference"
+        },
+        {
+          "id": "openalex:W3006500580",
+          "title": "Exploiting the Use of Similar Past Search Results Through a Dynamic Cache"
+        }
+      ],
+      "coverage": [
+        {
+          "query": "query cache precision",
+          "compiled_query": "\"query\" AND \"cache\" AND \"precision\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 5
+        },
+        {
+          "query": "attention cache distortion",
+          "compiled_query": "\"attention\" AND \"cache\" AND \"distortion\"",
+          "provider": "local_corpus",
+          "records": 8,
+          "status": "ok",
+          "retained_records": 3
+        },
+        {
+          "query": "importance cache precision",
+          "compiled_query": "\"importance\" AND \"cache\" AND \"precision\"",
+          "provider": "local_corpus",
+          "records": 6,
+          "status": "ok",
+          "retained_records": 3
+        }
+      ],
+      "failures": []
+    },
+    {
+      "corpus": "after",
+      "query_set": "original",
+      "queries": [
+        "KV cache quantization",
+        "mixed precision cache",
+        "adaptive KV retrieval"
+      ],
+      "corpus_sha256": "a594fc6f24d14a218f7b9d87622db1d9f304aebf7b74f77e45e3ffab646182ec",
+      "covered_expected_ids": [
+        "arxiv:2402.18096",
+        "arxiv:2512.19206",
+        "arxiv:2608.14191",
+        "arxiv:2610.11245"
+      ],
+      "hits_at_10": 1,
+      "ranks": {
+        "arxiv:2402.18096": null,
+        "arxiv:2512.19206": 8,
+        "arxiv:2608.14191": null,
+        "arxiv:2610.11245": null
+      },
+      "returned": [
+        {
+          "id": "arxiv:2605.02262",
+          "title": "WindowQuant: Mixed-Precision KV Cache Quantization based on Window-Level Similarity for VLMs Inference Optimization"
+        },
+        {
+          "id": "arxiv:2503.23294",
+          "title": "Cocktail: Chunk-Adaptive Mixed-Precision Quantization for Long-Context LLM Inference"
+        },
+        {
+          "id": "arxiv:2605.30519",
+          "title": "OmniMem: Scalable and Adaptive Memory Retrieval for Long Video Generation"
+        },
+        {
+          "id": "arxiv:2503.16257",
+          "title": "Plug-and-Play 1.x-Bit KV Cache Quantization for Video Large Language Models"
+        },
+        {
+          "id": "local:zDwipF6h06",
+          "title": "KVTuner: Sensitivity-Aware Layer-Wise Mixed-Precision KV Cache Quantization for Efficient and Nearly Lossless LLM Inference"
+        },
+        {
+          "id": "arxiv:2508.08256",
+          "title": "FIER: Fine-Grained and Efficient KV Cache Retrieval for Long-context LLM Inference"
+        },
+        {
+          "id": "local:nI6JyFSnyV",
+          "title": "SKVQ: Sliding-window Key and Value Cache Quantization for Large Language Models"
+        },
+        {
+          "id": "arxiv:2512.19206",
+          "title": "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning"
+        },
+        {
+          "id": "arxiv:2511.07278",
+          "title": "StreamKV: Streaming Video Question-Answering with Segment-based KV Cache Retrieval and Compression"
+        },
+        {
+          "id": "arxiv:2405.06219",
+          "title": "SKVQ: Sliding-window Key and Value Cache Quantization for Large Language Models"
+        }
+      ],
+      "coverage": [
+        {
+          "query": "KV cache quantization",
+          "compiled_query": "\"KV\" AND \"cache\" AND \"quantization\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 6
+        },
+        {
+          "query": "mixed precision cache",
+          "compiled_query": "\"mixed\" AND \"precision\" AND \"cache\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 4
+        },
+        {
+          "query": "adaptive KV retrieval",
+          "compiled_query": "\"adaptive\" AND \"KV\" AND \"retrieval\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 3
+        }
+      ],
+      "failures": []
+    },
+    {
+      "corpus": "after",
+      "query_set": "mechanism_development",
+      "queries": [
+        "query cache precision",
+        "attention cache distortion",
+        "importance cache precision"
+      ],
+      "corpus_sha256": "a594fc6f24d14a218f7b9d87622db1d9f304aebf7b74f77e45e3ffab646182ec",
+      "covered_expected_ids": [
+        "arxiv:2402.18096",
+        "arxiv:2512.19206",
+        "arxiv:2608.14191",
+        "arxiv:2610.11245"
+      ],
+      "hits_at_10": 4,
+      "ranks": {
+        "arxiv:2402.18096": 9,
+        "arxiv:2512.19206": 1,
+        "arxiv:2608.14191": 5,
+        "arxiv:2610.11245": 2
+      },
+      "returned": [
+        {
+          "id": "arxiv:2512.19206",
+          "title": "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning"
+        },
+        {
+          "id": "arxiv:2610.11245",
+          "title": "Read What Matters: Query-Adaptive Quantization for KV Caches"
+        },
+        {
+          "id": "arxiv:2506.08018",
+          "title": "KVmix: Gradient-Based Layer Importance-Aware Mixed-Precision Quantization for KV Cache"
+        },
+        {
+          "id": "arxiv:2503.23294",
+          "title": "Cocktail: Chunk-Adaptive Mixed-Precision Quantization for Long-Context LLM Inference"
+        },
+        {
+          "id": "arxiv:2608.14191",
+          "title": "KV Cache Compression Through the Lens of Transform Coding"
+        },
+        {
+          "id": "arxiv:2502.15304",
+          "title": "SVDq: 1.25-bit and 410x Key Cache Compression for LLM Attention"
+        },
+        {
+          "id": "openalex:W7226009396",
+          "title": "Mitigation of Quantum-Safe Metadata Explosion in Open Table Layouts using Agentic Optimization"
+        },
+        {
+          "id": "arxiv:2605.08317",
+          "title": "RDKV: Rate-Distortion Bit Allocation for Joint Eviction and Quantization of the KV Cache"
+        },
+        {
+          "id": "arxiv:2402.18096",
+          "title": "No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization"
+        },
+        {
+          "id": "arxiv:2403.02694",
+          "title": "MeanCache: User-Centric Semantic Caching for LLM Web Services"
+        }
+      ],
+      "coverage": [
+        {
+          "query": "query cache precision",
+          "compiled_query": "\"query\" AND \"cache\" AND \"precision\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 5
+        },
+        {
+          "query": "attention cache distortion",
+          "compiled_query": "\"attention\" AND \"cache\" AND \"distortion\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 3
+        },
+        {
+          "query": "importance cache precision",
+          "compiled_query": "\"importance\" AND \"cache\" AND \"precision\"",
+          "provider": "local_corpus",
+          "records": 10,
+          "status": "ok",
+          "retained_records": 3
+        }
+      ],
+      "failures": []
+    }
+  ],
+  "scope": "Four exposed development sources, selected after a failed proposal review. Mechanism queries were adapted after inspecting results. This is not held-out recall, retrieval precision, novelty, or a ranker improvement.",
+  "retriever_sha256": "703a086bf7f1dbd94fbbfd9a842798e76bc80384162d42862bc49198d00ff591",
+  "script_sha256": "a7e50120dbf6584e02cdf8fc498d97245d2eea6ca152515b9fe9586c1464a1bc"
+}
