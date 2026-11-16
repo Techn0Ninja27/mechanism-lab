@@ -1,0 +1,248 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "16997471287688c26cd714e5cce5e2a949cf1f93b51ca3e91c2e75408650235d",
+  "status": "reviewed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://arxiv.org/abs/2508.08256v2",
+        "https://arxiv.org/abs/2605.02262v1",
+        "https://github.com/SimWangArizona/FIER"
+      ]
+    }
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v3",
+    "query_hash": "00f4b25c3b93871b95fee22100ee215c1d089f476ea0d70cc80e7f28d01104a7",
+    "queries": [
+      "KV cache quantization",
+      "mixed precision cache",
+      "adaptive KV retrieval"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus"
+    ],
+    "failures": [],
+    "errors": [],
+    "coverage": [
+      {
+        "query": "KV cache quantization",
+        "compiled_query": "\"KV\" AND \"cache\" AND \"quantization\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 6
+      },
+      {
+        "query": "mixed precision cache",
+        "compiled_query": "\"mixed\" AND \"precision\" AND \"cache\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 4
+      },
+      {
+        "query": "adaptive KV retrieval",
+        "compiled_query": "\"adaptive\" AND \"KV\" AND \"retrieval\"",
+        "provider": "local_corpus",
+        "records": 5,
+        "status": "ok",
+        "retained_records": 3
+      }
+    ],
+    "truncation": {
+      "truncated": true,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "89d52672461e539cbe4c0f37ddc5edf3aa1ea61614ae2745ea0a465f33611e53"
+  },
+  "retrieved_source_count": 10,
+  "proposal": {
+    "title": "Prefill text-query, 1-bit-key window scoring as a ranking-only replacement for WindowQuant Eq. 8, at fixed per-layer precision counts",
+    "hypothesis": "Hypothesis: at identical per-layer FP16/INT4/INT2 window counts, ranking visual windows by a per-layer score improves fidelity to the FP16 output. The score is the mean, over text-prompt queries and heads, of q\u00b7k\u0303 computed with grouped 1-bit keys. Fidelity is measured as decode-step attention-output cosine to FP16, on offline traces. The claimed improvement is at least 0.01 over WindowQuant's encoder-space Eq. 8 ranking. The method must also stay within 0.005 of an exact-attention window ranking.",
+    "baseline": "The baseline is WindowQuant (arXiv 2605.02262v1, method pages 7\u201312). Windows are scored by Eq. 8, the mean pairwise cosine between text-encoder and visual window embeddings. Each layer gets thresholds from Eqs. 9\u201311, derived from calibration hidden-state similarity s_i and alpha. Windows are assigned FP16 above T_high, INT2 below T_low, and INT4 otherwise. The first visual window is always FP16. Text and output tokens stay FP16. Windows are reordered into contiguous same-bit blocks at prefill and quantized with asymmetric RTN. Decode uses three block matmuls and one softmax. Coverage gaps: no WindowQuant code was supplied. Pages beyond 12 are missing, including the dequantization formulas, the threshold and alpha settings, and the experiments. The rank-preserving variant therefore cannot be checked against an official implementation. One feature of the supplied Algorithm 1 is notable: sim_ij uses E_w and E_t, which do not appear to depend on the layer. If so, the window ranking is identical across layers and only the thresholds vary. FIER (arXiv 2508.08256v2; code pinned at commit e0b3415) is decode-time token retrieval, not quantization. The paper's Algorithm 1 uses 1-bit grouped keys. The pinned code calls quantize_and_pack with bit=2. It also fills past_key from torch.empty in the visible lines, so the source of the key data cannot be verified from this file.",
+    "operator_delta": "Only the window-ranking score is replaced. For each layer, the stored text-prompt queries produced at prefill are scored against visual keys quantized to 1 bit with group size 32. The per-token scores are averaged within each window. Each layer's baseline FP16, INT4 and INT2 window counts are kept fixed, as are the first-window FP16 rule, the reordering and the quantizer; windows fill those counts by rank. No decode-time re-scoring is done, because quantization is irreversible after prefill.",
+    "evidence": [
+      {
+        "chunk_id": "fier:chunk:0008",
+        "quote": "1: Input: Query q, full-precision (K, V), group size g",
+        "supports": "FIER scores a single query against full-precision keys, which are retained."
+      },
+      {
+        "chunk_id": "fier:chunk:0009",
+        "quote": "each group also needs to store a pair",
+        "supports": "1-bit scoring adds metadata bytes for scale and zero per group."
+      },
+      {
+        "chunk_id": "fier-code:chunk:0003",
+        "quote": "past_key, group_size=group_size, bit=2",
+        "supports": "The pinned code uses 2-bit, not the 1-bit described in the paper."
+      },
+      {
+        "chunk_id": "fier-code:chunk:0002",
+        "quote": "past_key = torch.empty(",
+        "supports": "In the visible code, the key tensor used for scoring is uninitialized."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0002",
+        "quote": "we propose to fix the precision of the first visual token window to FP16, regardless",
+        "supports": "The first-window FP16 rule."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0003",
+        "quote": "where \ud835\udefc is a pre-defined hyperparameter that controls the threshold.",
+        "supports": "Layer thresholds depend on alpha (Eqs. 10\u201311)."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0001",
+        "quote": "we only quantize the KV cache of the input visual",
+        "supports": "Modality split: only visual KV is quantized."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0001",
+        "quote": "prompt and only retain the KV cache corresponding to them.",
+        "supports": "The text uses retrieval wording while the method is quantization; this ambiguity must be resolved."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0004",
+        "quote": "during the prefill stage, we first calculate the output token",
+        "supports": "Precision assignment and reordering happen at prefill, after attention."
+      }
+    ],
+    "assumptions": [
+      "Text-prompt queries are available at prefill for every layer; this holds only if the prompt follows the video in the sequence.",
+      "Prompt-query relevance at prefill predicts which windows decode steps will need.",
+      "1-bit window-mean scores preserve the exact-attention window ranking; recall is to be measured.",
+      "Scoring buffers can be freed before decode; the transient peak memory must be measured."
+    ],
+    "data_paths": [
+      {
+        "input": "Per-layer prefill text-token queries and FP16 visual keys",
+        "operation": "1-bit grouped quantization, then q\u00b7k\u0303, then a mean over queries, heads and window tokens",
+        "output": "Per-layer window scores",
+        "possible_leakage": "The prompt also selects the scoring evaluation queries; queries must be held out by task."
+      },
+      {
+        "input": "Window scores and baseline per-layer counts",
+        "operation": "Rank-fill of the FP16, INT4 and INT2 slots",
+        "output": "Precision map with unchanged payload bytes",
+        "possible_leakage": "The counts come from calibration with alpha; that calibration must be frozen before held-out traces are used."
+      },
+      {
+        "input": "Precision map",
+        "operation": "Reorder and quantize",
+        "output": "KV blocks plus an index permutation",
+        "possible_leakage": "Permutation and score metadata bytes must be counted separately."
+      }
+    ],
+    "counterexample": "Hypothesis fails here: the video precedes the prompt, so the prompt queries are causal and do not exist at the time visual KV is quantized. Hypothesis also fails in this case: decode needs windows that the prompt never attends to, such as an open-ended caption. In that case query-aware ranking performs no better than Eq. 8 or the static ranking.",
+    "matched_control": "WindowQuant Eq. 8 ranking with identical per-layer counts, first-window rule, quantizer and reordering. Additional controls: exact prompt-attention ranking as an upper bound, and static recency-based and position-based rankings at equal counts. Component ablation: a 2-bit score, as in the pinned code, versus a 1-bit score.",
+    "experiment": {
+      "development": "Run a CPU-only offline replay of attention traces. Use synthetic traces only to check contracts: byte accounting, count preservation and permutation invariance. Then use freshly dumped traces from one small VLM on a new set of video QA clips.",
+      "heldout": "Use an untouched second VLM family and new video sources dumped after the development set is frozen. No previously exposed fixtures are reused.",
+      "metric": "Report the following on held-out traces, aggregated as a per-clip median with 95% bootstrap confidence intervals: decode-output cosine to FP16, and window top-k recall against exact attention. Report payload bytes, metadata bytes and prefill peak memory separately. Promotion additionally requires a task accuracy gate and a gate on GPU latency including repacking.",
+      "kill_threshold": "Kill if the gain over Eq. 8 is below 0.01 cosine, or the confidence interval includes 0. Also kill if exact attention exceeds 1-bit scoring by more than 0.005, since that leaves no reason to use FIER. Also kill if prefill peak memory rises more than 5%, or scoring latency exceeds 3% of prefill time."
+    },
+    "prior_art_difference": "Supported overlap: WindowQuant already performs prompt-conditioned window precision assignment. FIER already performs quantized-key importance estimation, but at decode time and for retrieval. The proposed difference is per-layer attention-space window ranking at fixed counts. This difference is unverified, and attention-based scoring at prefill may be covered by lineage that was not supplied. FIER's core contribution, per-query recall at decode, does not transfer to irreversible quantization. Novelty is therefore not established.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "review": {
+    "decision": "test",
+    "failure_type": "none_found",
+    "reason": "The bridge is coherent, but its main open question is what the 1-bit approximation adds. (1) Information path: the claimed causal failure mode is misframed. WindowQuant concatenates visual and text tokens and runs prefill over all of them. It then reorders and quantizes only after the prefill output is computed. So every prompt query exists before visual KV is quantized. If the prompt follows the video, those queries attend to visual keys under the causal mask. If the prompt precedes the video, q\u00b7k can still be computed offline, but the score then has no counterpart inside the model's own attention. Prompt position therefore changes what the score means, not whether it can be observed. (2) Baseline delta: as Algorithm 1 is written, Eq. 8 uses encoder embeddings, so its window ranking is independent of the layer. A per-layer attention-space ranking is therefore a real operator change, not an algebraic no-op, even at fixed counts. Count matching is a legitimate way to isolate the ranking. However, the counts come from Eq. 8 scores against thresholds, so they must be computed per clip from the baseline. Counts must not be re-derived from the new scores. (3) Identifiability of the 1-bit component: prefill already computes exact prompt q\u00b7K inside attention. Exact per-window attention mass could be accumulated at essentially no extra cost. FIER's motivation for 1-bit keys was the cost of re-scoring at every decode step, and that motivation is absent here. The 1-bit arm therefore only adds noise relative to the exact arm. The proposal's own kill rule (exact beats 1-bit by more than 0.005) is likely to fire, which leaves the testable claim as attention-space ranking versus Eq. 8. (4) Score definition: a mean of raw q\u00b7k logits is not attention mass. A few high-logit tokens and softmax normalization across heads can reorder windows. Softmax-mass ranking should therefore be a matched variant. (5) Leakage: the final prompt query is effectively the first decode query. Fidelity measured on early decode steps is therefore partly in-sample for the score and should be stratified by decode step. (6) Code evidence: the visible pinned FIER code uses bit=2 and fills past_key from torch.empty. This only shows that the code differs from the paper's 1-bit description. It does not show how FIER behaves in practice.",
+    "evidence": [
+      {
+        "chunk_id": "windowquant:chunk:0006",
+        "quote": "Then the VLM concatenates the visual tokens and text tokens",
+        "supports": "Visual and text tokens are processed together in prefill, so prompt queries exist before quantization."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0004",
+        "quote": "during the prefill stage, we first calculate the output token",
+        "supports": "Quantization and reordering happen after the prefill attention, so the prompt q\u00b7K needed for scoring is already available."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0004",
+        "quote": "they depend only on the current layer index and the hyperparameter",
+        "supports": "Only the thresholds vary by layer; the Eq. 8 similarity input does not depend on the layer."
+      },
+      {
+        "chunk_id": "fier:chunk:0008",
+        "quote": "compute attention scores under",
+        "supports": "FIER's 1-bit evidence concerns Top-k token recall for a single query, not window-mean ranking for precision assignment."
+      },
+      {
+        "chunk_id": "fier-code:chunk:0003",
+        "quote": "bit=2",
+        "supports": "The pinned code's scoring bit-width differs from the 1-bit described in the paper."
+      }
+    ],
+    "strongest_counterargument": "Encoder-space similarity may already track decode needs well, because WindowQuant's thresholds absorb the per-layer sensitivity. Per-layer attention ranking also overfits to the prompt and is fragile for open-ended generation, where decode queries drift from the prompt. In that case the gain over Eq. 8 could fall below 0.01. The 1-bit arm is then justified only if an exact-mass accumulator cannot be fused into the production prefill kernel.",
+    "required_test": "Use offline traces from one small VLM on about 50 held-out clips, recording both prompt-after-video and prompt-before-video orderings. Fix each clip's per-layer FP16/INT4/INT2 counts from Eq. 8 against the thresholds. Compare five rankings at those counts: Eq. 8, exact prompt softmax-mass per layer, exact mean logit, 1-bit g32 mean logit, and a random/position ranking. Report the per-clip median decode-output cosine to FP16, stratified by decode step (excluding step 1) and by task type (QA versus caption), with bootstrap CIs.",
+    "novelty_established": false
+  }
+}

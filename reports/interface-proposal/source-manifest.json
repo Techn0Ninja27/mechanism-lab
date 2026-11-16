@@ -1,0 +1,62 @@
+{
+  "digest": "61c47bd86ae7e73557f123dd6e48b6adfb0800131ea083088e0fa1ce55ffd1bb",
+  "sources": [
+    {
+      "id": "fier",
+      "title": "FIER paper pages1\u20136 (layout-extracted text)",
+      "url": "https://arxiv.org/abs/2508.08256v2",
+      "path": "2508.08256v2.txt",
+      "evidence_level": "full_text",
+      "content_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+      "content_chars": 41254,
+      "included_chars": 41243,
+      "chunk_count": 11,
+      "total_chunk_count": 11,
+      "truncated": false,
+      "omitted_chunks": 0
+    },
+    {
+      "id": "windowquant",
+      "title": "WindowQuant paper pages1\u20136 (layout-extracted text)",
+      "url": "https://arxiv.org/abs/2605.02262v1",
+      "path": "2605.02262v1.txt",
+      "evidence_level": "full_text",
+      "content_sha256": "bda09d86bb0ea90f7f72871d577b6efa409e073c935f72b215b83fb221737da4",
+      "content_chars": 22973,
+      "included_chars": 22967,
+      "chunk_count": 6,
+      "total_chunk_count": 6,
+      "truncated": false,
+      "omitted_chunks": 0
+    },
+    {
+      "id": "fier-code",
+      "title": "Official FIER FierAttention.py pinned implementation",
+      "url": "https://github.com/SimWangArizona/FIER/blob/e0b34153591dd7a55171f09f30abee35b0f08356/fier/models/FierAttention.py",
+      "path": "FierAttention.py",
+      "evidence_level": "official_code",
+      "content_sha256": "406eff6b3210231fbcf02019ae166b9eb31d16c7d02ec17a6d95448caa93aa6c",
+      "content_chars": 11398,
+      "included_chars": 11395,
+      "chunk_count": 3,
+      "total_chunk_count": 3,
+      "truncated": false,
+      "omitted_chunks": 0
+    },
+    {
+      "id": "windowquant-method",
+      "title": "WindowQuant method pages 7\u201312 (layout-extracted text)",
+      "url": "https://arxiv.org/abs/2605.02262v1",
+      "path": "windowquant-method.txt",
+      "evidence_level": "full_text",
+      "content_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+      "content_chars": 20830,
+      "included_chars": 20824,
+      "chunk_count": 6,
+      "total_chunk_count": 6,
+      "truncated": false,
+      "omitted_chunks": 0
+    }
+  ],
+  "limitations": "Partial papers: FIER pages1\u20136, WindowQuant pages1\u201312; one pinned official FIER code file. Not complete implementation verification."
+}

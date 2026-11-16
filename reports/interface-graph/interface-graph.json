@@ -1,0 +1,1375 @@
+{
+  "assumptions": [
+    "different source papers and corpus groups required",
+    "one endpoint is ML and the other is non-ML; target is always a method",
+    "semantic review flags excluded by exact source_id+source_hash+computed statement_sha256",
+    "relevance_only review flags retained",
+    "no novelty, compatibility, or usefulness claim"
+  ],
+  "candidate_pool_size": 424,
+  "candidates": [
+    {
+      "interface_tfidf_cosine": 0.42848103,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-cf7d71e6f10cadb1",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "shift-bit quantized weights within 1% of full-precision accuracy"
+      ],
+      "producer_source": "arxiv:2510.16088",
+      "producer_statement": "On ImageNet with ResNet18, the paper reports that shift-bit weight quantization stays within 1 percent of full-precision accuracy after 15 training epochs.",
+      "producer_url": "https://arxiv.org/abs/2510.16088",
+      "source_refs": {
+        "producer": "ae560f4dfaf8f24739863b17073335adb190b4ed67f3e83557809f9c00f9bc52",
+        "target": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212"
+      },
+      "statement_tfidf_cosine": 0.09164694,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-378799d40777a28f",
+      "target_group": "systems",
+      "target_inputs": [
+        "1-bit quantized keys"
+      ],
+      "target_source": "arxiv:2508.08256",
+      "target_statement": "Fier estimates per-token importance using 1-bit quantized keys to perform fine-grained KV cache retrieval.",
+      "target_url": "https://arxiv.org/abs/2508.08256",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.2837347,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-378799d40777a28f",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "per-token importance estimates",
+        "fine-grained KV cache retrieval"
+      ],
+      "producer_source": "arxiv:2508.08256",
+      "producer_statement": "Fier estimates per-token importance using 1-bit quantized keys to perform fine-grained KV cache retrieval.",
+      "producer_url": "https://arxiv.org/abs/2508.08256",
+      "source_refs": {
+        "producer": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212",
+        "target": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498"
+      },
+      "statement_tfidf_cosine": 0.07365592,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-fd980ed308fc4332",
+      "target_group": "ml",
+      "target_inputs": [
+        "KV cache windows"
+      ],
+      "target_source": "arxiv:2605.02262",
+      "target_statement": "WindowQuant reorders KV cache windows before quantization to avoid hardware inefficiency that mixed-precision quantization would otherwise cause during inference.",
+      "target_url": "https://arxiv.org/abs/2605.02262",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.27676043,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-378799d40777a28f",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "per-token importance estimates",
+        "fine-grained KV cache retrieval"
+      ],
+      "producer_source": "arxiv:2508.08256",
+      "producer_statement": "Fier estimates per-token importance using 1-bit quantized keys to perform fine-grained KV cache retrieval.",
+      "producer_url": "https://arxiv.org/abs/2508.08256",
+      "source_refs": {
+        "producer": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212",
+        "target": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498"
+      },
+      "statement_tfidf_cosine": 0.09501004,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-d91f5abd17c8dd18",
+      "target_group": "ml",
+      "target_inputs": [
+        "KV cache of VLMs",
+        "visual token windows"
+      ],
+      "target_source": "arxiv:2605.02262",
+      "target_statement": "WindowQuant applies window-adaptive mixed-precision quantization to the KV cache of vision-language models.",
+      "target_url": "https://arxiv.org/abs/2605.02262",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.17907728,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-508b0298a5a8c595",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "dual-cache capacity allocation"
+      ],
+      "producer_source": "arxiv:2503.01281",
+      "producer_statement": "DCI allocates cache capacity for both node features and adjacency matrices according to workload patterns observed during a pre-sampling phase.",
+      "producer_url": "https://arxiv.org/abs/2503.01281",
+      "source_refs": {
+        "producer": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697",
+        "target": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498"
+      },
+      "statement_tfidf_cosine": 0.07223189,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-fd980ed308fc4332",
+      "target_group": "ml",
+      "target_inputs": [
+        "KV cache windows"
+      ],
+      "target_source": "arxiv:2605.02262",
+      "target_statement": "WindowQuant reorders KV cache windows before quantization to avoid hardware inefficiency that mixed-precision quantization would otherwise cause during inference.",
+      "target_url": "https://arxiv.org/abs/2605.02262",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.17195687,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-d91f5abd17c8dd18",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "window-level mixed-precision quantized KV cache"
+      ],
+      "producer_source": "arxiv:2605.02262",
+      "producer_statement": "WindowQuant applies window-adaptive mixed-precision quantization to the KV cache of vision-language models.",
+      "producer_url": "https://arxiv.org/abs/2605.02262",
+      "source_refs": {
+        "producer": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498",
+        "target": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212"
+      },
+      "statement_tfidf_cosine": 0.09501004,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-378799d40777a28f",
+      "target_group": "systems",
+      "target_inputs": [
+        "1-bit quantized keys"
+      ],
+      "target_source": "arxiv:2508.08256",
+      "target_statement": "Fier estimates per-token importance using 1-bit quantized keys to perform fine-grained KV cache retrieval.",
+      "target_url": "https://arxiv.org/abs/2508.08256",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.1541202,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-f9e84d6cc530a63c",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "accuracy spread attributed to retrieval vs. write strategy"
+      ],
+      "producer_source": "arxiv:2603.02473",
+      "producer_statement": "On LoCoMo, retrieval method accounts for a much larger accuracy spread (about 20 points) than write strategy (3-8 points) in the reported 3x3 study.",
+      "producer_url": "https://arxiv.org/abs/2603.02473",
+      "source_refs": {
+        "producer": "9dcd705360c98acb598441077063ac884818693d62485687e31821d7f6aff774",
+        "target": "759e41a863d22065d90af198e5c9366514779e135b92f682a2389e1e9b9e2023"
+      },
+      "statement_tfidf_cosine": 0.01003798,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-102a675e54698d88",
+      "target_group": "systems",
+      "target_inputs": [
+        "hybrid parallelism distributed training strategy"
+      ],
+      "target_source": "arxiv:2306.08423",
+      "target_statement": "DistSim is an event-based performance model that analyzes each device's computation and communication activities for hybrid-parallel DNN training at low profiling cost.",
+      "target_url": "https://arxiv.org/abs/2306.08423",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.12513598,
+      "producer_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "producer_atom_id": "atom-91bd44aa9ba3fb36",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "partitioning that reduces communication rounds during distributed sampling"
+      ],
+      "producer_source": "arxiv:2311.17847",
+      "producer_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "producer_url": "https://arxiv.org/abs/2311.17847",
+      "source_refs": {
+        "producer": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+        "target": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc"
+      },
+      "statement_tfidf_cosine": 0.06770605,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-5a401e2a48316e33",
+      "target_group": "ml",
+      "target_inputs": [
+        "FL gradient data",
+        "temporal correlations across rounds",
+        "convolutional kernel structure"
+      ],
+      "target_source": "arxiv:2511.05770",
+      "target_statement": "The proposed EBLC predictor exploits temporal correlations across FL rounds and structural regularities within convolutional kernels to reduce residual entropy.",
+      "target_url": "https://arxiv.org/abs/2511.05770",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.11732015,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-8bed9db9176620e8",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "76.1%-96.2% communication time reduction"
+      ],
+      "producer_source": "arxiv:2511.05770",
+      "producer_statement": "Integrated into the APPFL framework, the compressor reduces end-to-end communication time by 76.1%-96.2% under various constrained-bandwidth scenarios.",
+      "producer_url": "https://arxiv.org/abs/2511.05770",
+      "source_refs": {
+        "producer": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc",
+        "target": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212"
+      },
+      "statement_tfidf_cosine": 0.03452364,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-378799d40777a28f",
+      "target_group": "systems",
+      "target_inputs": [
+        "1-bit quantized keys"
+      ],
+      "target_source": "arxiv:2508.08256",
+      "target_statement": "Fier estimates per-token importance using 1-bit quantized keys to perform fine-grained KV cache retrieval.",
+      "target_url": "https://arxiv.org/abs/2508.08256",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.11334082,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-508b0298a5a8c595",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "dual-cache capacity allocation"
+      ],
+      "producer_source": "arxiv:2503.01281",
+      "producer_statement": "DCI allocates cache capacity for both node features and adjacency matrices according to workload patterns observed during a pre-sampling phase.",
+      "producer_url": "https://arxiv.org/abs/2503.01281",
+      "source_refs": {
+        "producer": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697",
+        "target": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498"
+      },
+      "statement_tfidf_cosine": 0.0408292,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-d91f5abd17c8dd18",
+      "target_group": "ml",
+      "target_inputs": [
+        "KV cache of VLMs",
+        "visual token windows"
+      ],
+      "target_source": "arxiv:2605.02262",
+      "target_statement": "WindowQuant applies window-adaptive mixed-precision quantization to the KV cache of vision-language models.",
+      "target_url": "https://arxiv.org/abs/2605.02262",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.10786814,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-fd7b16df881b8ed4",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "retrieval performance comparison across scenarios"
+      ],
+      "producer_source": "arxiv:2412.15266",
+      "producer_statement": "The paper reports that iterative retrieval consistently outperforms single-step retrieval and reranking across the evaluated scenarios.",
+      "producer_url": "https://arxiv.org/abs/2412.15266",
+      "source_refs": {
+        "producer": "03b5b2f4bde84ebda6dbfb4f0d710303b3bceea470e2c6729b2de8de172dcbe3",
+        "target": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a"
+      },
+      "statement_tfidf_cosine": 0.0,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "target_atom_id": "atom-91bd44aa9ba3fb36",
+      "target_group": "systems",
+      "target_inputs": [
+        "graph partitioned across machines"
+      ],
+      "target_source": "arxiv:2311.17847",
+      "target_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "target_url": "https://arxiv.org/abs/2311.17847",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.08426054,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-1f2b80f72a81b11d",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "task-dependent performance differences across memory structures"
+      ],
+      "producer_source": "arxiv:2412.15266",
+      "producer_statement": "The paper reports that different memory structures (chunks, knowledge triples, atomic facts, summaries) offer distinct advantages that can be tailored to specific tasks.",
+      "producer_url": "https://arxiv.org/abs/2412.15266",
+      "source_refs": {
+        "producer": "03b5b2f4bde84ebda6dbfb4f0d710303b3bceea470e2c6729b2de8de172dcbe3",
+        "target": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a"
+      },
+      "statement_tfidf_cosine": 0.00385881,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "target_atom_id": "atom-91bd44aa9ba3fb36",
+      "target_group": "systems",
+      "target_inputs": [
+        "graph partitioned across machines"
+      ],
+      "target_source": "arxiv:2311.17847",
+      "target_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "target_url": "https://arxiv.org/abs/2311.17847",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.07685515,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-76d8d161ec49a950",
+      "producer_group": "math",
+      "producer_outputs": [
+        "stochastic search direction",
+        "step size selected via Fletcher's augmented Lagrangian"
+      ],
+      "producer_source": "arxiv:2606.28230",
+      "producer_statement": "The paper develops a stochastic first-order method using a decomposed stochastic search direction and Fletcher's augmented Lagrangian as a smooth merit function for step-size selection.",
+      "producer_url": "https://arxiv.org/abs/2606.28230",
+      "source_refs": {
+        "producer": "81d902425d4a6f4b902c90401072282b13ce11e8b00cd4f111ecadf8353c2438",
+        "target": "83cb8e57d05b3b7c34ec3f988154197b4791d08cfa0180fb734f8c6c908c0e41"
+      },
+      "statement_tfidf_cosine": 0.09892914,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Queries and keys are constrained to the unit sphere."
+        }
+      ],
+      "target_atom_id": "atom-32f2e53f659a3dee",
+      "target_group": "ml",
+      "target_inputs": [
+        "spherical Yat-kernel",
+        "Bernstein's theorem"
+      ],
+      "target_source": "arxiv:2602.04915",
+      "target_statement": "Using Bernstein's theorem, the spherical Yat-kernel is expressed as a nonnegative mixture of polynomial-exponential product kernels, yielding a strictly positive random-feature approximation for O(L) attention.",
+      "target_url": "https://arxiv.org/abs/2602.04915",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0130682,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-2a7ec71a8a9b37fe",
+      "producer_group": "math",
+      "producer_outputs": [
+        "convex optimization reformulation of distributionally-robust problems"
+      ],
+      "producer_source": "arxiv:2302.07454",
+      "producer_statement": "The distributionally-robust optimization problems can be cast as tractable convex optimization problems, making them amenable to large-scale stochastic problems.",
+      "producer_url": "https://arxiv.org/abs/2302.07454",
+      "source_refs": {
+        "producer": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+        "target": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e"
+      },
+      "statement_tfidf_cosine": 0.0058531,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-9ee0ed318a540def",
+      "target_group": "ml",
+      "target_inputs": [
+        "pruning order of parameters"
+      ],
+      "target_source": "arxiv:2502.01717",
+      "target_statement": "The pruning order of parameters is used to derive a global score map that enables compression to any target size without re-computation.",
+      "target_url": "https://arxiv.org/abs/2502.01717",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.01267738,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "The graph is distributed across multiple machines and trained on randomly sampled parts each iteration."
+        }
+      ],
+      "producer_atom_id": "atom-52c46388af89055e",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "measured sampling overhead as a significant share of training time"
+      ],
+      "producer_source": "arxiv:2311.17847",
+      "producer_statement": "In a distributed environment, sampling overhead is reported to be a significant component of training time for large-scale graphs.",
+      "producer_url": "https://arxiv.org/abs/2311.17847",
+      "source_refs": {
+        "producer": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+        "target": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e"
+      },
+      "statement_tfidf_cosine": 0.03784986,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-9ee0ed318a540def",
+      "target_group": "ml",
+      "target_inputs": [
+        "pruning order of parameters"
+      ],
+      "target_source": "arxiv:2502.01717",
+      "target_statement": "The pruning order of parameters is used to derive a global score map that enables compression to any target size without re-computation.",
+      "target_url": "https://arxiv.org/abs/2502.01717",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.01176991,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-668cc9544b0b09c9",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "reduced reconstruction error",
+        "iteratively pruned-and-grown sparse weights"
+      ],
+      "producer_source": "local:1ndDmZdT4g",
+      "producer_statement": "DSNT minimizes reconstruction error between dense and sparse LLMs by iteratively pruning and growing weights on top of the sparse model.",
+      "producer_url": "https://openreview.net/forum?id=1ndDmZdT4g",
+      "source_refs": {
+        "producer": "36ee9e849a3130aaf73d51a92ccf8889f9445e5e63be50d6c0f0fec43e55d117",
+        "target": "81d902425d4a6f4b902c90401072282b13ce11e8b00cd4f111ecadf8353c2438"
+      },
+      "statement_tfidf_cosine": 0.00958635,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-76d8d161ec49a950",
+      "target_group": "math",
+      "target_inputs": [
+        "stochastic first-order approximations of objective and constraint functions"
+      ],
+      "target_source": "arxiv:2606.28230",
+      "target_statement": "The paper develops a stochastic first-order method using a decomposed stochastic search direction and Fletcher's augmented Lagrangian as a smooth merit function for step-size selection.",
+      "target_url": "https://arxiv.org/abs/2606.28230",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.01173494,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "TMATROM is used to compute the T-matrix approximations"
+        }
+      ],
+      "producer_atom_id": "atom-d7574b7c1cc21e15",
+      "producer_group": "math",
+      "producer_outputs": [
+        "numerical approximation of T-matrices",
+        "framework for scattering by polygonal obstacles"
+      ],
+      "producer_source": "arxiv:2601.07704",
+      "producer_statement": "The package relies on the TMATROM package to numerically approximate T-matrices and provides a framework for handling scattering by polygonal obstacles.",
+      "producer_url": "https://arxiv.org/abs/2601.07704",
+      "source_refs": {
+        "producer": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c",
+        "target": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e"
+      },
+      "statement_tfidf_cosine": 0.01203463,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-9ee0ed318a540def",
+      "target_group": "ml",
+      "target_inputs": [
+        "pruning order of parameters"
+      ],
+      "target_source": "arxiv:2502.01717",
+      "target_statement": "The pruning order of parameters is used to derive a global score map that enables compression to any target size without re-computation.",
+      "target_url": "https://arxiv.org/abs/2502.01717",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.01164982,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-ca542650cbb7599e",
+      "producer_group": "math",
+      "producer_outputs": [
+        "numerical solution of multiple scattering problems via a MATLAB package"
+      ],
+      "producer_source": "arxiv:2601.07704",
+      "producer_statement": "The paper presents a MATLAB package that couples Trefftz Discontinuous Galerkin methods for Helmholtz scattering with the T-matrix method to solve multiple scattering problems.",
+      "producer_url": "https://arxiv.org/abs/2601.07704",
+      "source_refs": {
+        "producer": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c",
+        "target": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e"
+      },
+      "statement_tfidf_cosine": 0.01601218,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-9ee0ed318a540def",
+      "target_group": "ml",
+      "target_inputs": [
+        "pruning order of parameters"
+      ],
+      "target_source": "arxiv:2502.01717",
+      "target_statement": "The pruning order of parameters is used to derive a global score map that enables compression to any target size without re-computation.",
+      "target_url": "https://arxiv.org/abs/2502.01717",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.00985301,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-2a7ec71a8a9b37fe",
+      "producer_group": "math",
+      "producer_outputs": [
+        "convex optimization reformulation of distributionally-robust problems"
+      ],
+      "producer_source": "arxiv:2302.07454",
+      "producer_statement": "The distributionally-robust optimization problems can be cast as tractable convex optimization problems, making them amenable to large-scale stochastic problems.",
+      "producer_url": "https://arxiv.org/abs/2302.07454",
+      "source_refs": {
+        "producer": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+        "target": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498"
+      },
+      "statement_tfidf_cosine": 0.00392629,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-d91f5abd17c8dd18",
+      "target_group": "ml",
+      "target_inputs": [
+        "KV cache of VLMs",
+        "visual token windows"
+      ],
+      "target_source": "arxiv:2605.02262",
+      "target_statement": "WindowQuant applies window-adaptive mixed-precision quantization to the KV cache of vision-language models.",
+      "target_url": "https://arxiv.org/abs/2605.02262",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.00955835,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "The graph is distributed across multiple machines and trained on randomly sampled parts each iteration."
+        }
+      ],
+      "producer_atom_id": "atom-52c46388af89055e",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "measured sampling overhead as a significant share of training time"
+      ],
+      "producer_source": "arxiv:2311.17847",
+      "producer_statement": "In a distributed environment, sampling overhead is reported to be a significant component of training time for large-scale graphs.",
+      "producer_url": "https://arxiv.org/abs/2311.17847",
+      "source_refs": {
+        "producer": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+        "target": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498"
+      },
+      "statement_tfidf_cosine": 0.00988021,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-d91f5abd17c8dd18",
+      "target_group": "ml",
+      "target_inputs": [
+        "KV cache of VLMs",
+        "visual token windows"
+      ],
+      "target_source": "arxiv:2605.02262",
+      "target_statement": "WindowQuant applies window-adaptive mixed-precision quantization to the KV cache of vision-language models.",
+      "target_url": "https://arxiv.org/abs/2605.02262",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.00952016,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-07b98b2463203506",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "continual learning formulation of VOS",
+        "CLVOS23 dataset"
+      ],
+      "producer_source": "arxiv:2304.04259",
+      "producer_statement": "The paper formulates online semi-supervised video object segmentation as a continual learning problem and provides a public dataset, CLVOS23, focused on continual learning.",
+      "producer_url": "https://arxiv.org/abs/2304.04259",
+      "source_refs": {
+        "producer": "ecc3cd7ae1c992105e86ab2c9c9254452c5f56503f747f20e344ac51db831e98",
+        "target": "81d902425d4a6f4b902c90401072282b13ce11e8b00cd4f111ecadf8353c2438"
+      },
+      "statement_tfidf_cosine": 0.049403,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-76d8d161ec49a950",
+      "target_group": "math",
+      "target_inputs": [
+        "stochastic first-order approximations of objective and constraint functions"
+      ],
+      "target_source": "arxiv:2606.28230",
+      "target_statement": "The paper develops a stochastic first-order method using a decomposed stochastic search direction and Fletcher's augmented Lagrangian as a smooth merit function for step-size selection.",
+      "target_url": "https://arxiv.org/abs/2606.28230",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    }
+  ],
+  "limit": 20,
+  "rejections": {
+    "missing_or_ambiguous_rejections": 0,
+    "semantic_rejections": 11
+  },
+  "seed": 73031,
+  "seeded_random_shortlist": [
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-a001ff35adca60c2",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "batch time prediction with <4% error"
+      ],
+      "producer_source": "arxiv:2306.08423",
+      "producer_statement": "DistSim is reported to predict distributed training batch time with under 4% error across various hybrid strategy settings.",
+      "producer_url": "https://arxiv.org/abs/2306.08423",
+      "source_refs": {
+        "producer": "759e41a863d22065d90af198e5c9366514779e135b92f682a2389e1e9b9e2023",
+        "target": "36ee9e849a3130aaf73d51a92ccf8889f9445e5e63be50d6c0f0fec43e55d117"
+      },
+      "statement_tfidf_cosine": 0.02582605,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-4a3b70a6ae62dbbf",
+      "target_group": "ml",
+      "target_inputs": [
+        "sparse LLMs"
+      ],
+      "target_source": "local:1ndDmZdT4g",
+      "target_statement": "The paper introduces DSNT, a training-free fine-tuning approach that slightly updates sparse LLMs without backpropagation and without weight updates.",
+      "target_url": "https://openreview.net/forum?id=1ndDmZdT4g",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "f is an operator monotone function (the abstract states the result concerns operator monotone f)"
+        }
+      ],
+      "producer_atom_id": "atom-c7132179ba14147a",
+      "producer_group": "math",
+      "producer_outputs": [
+        "near-optimal low-rank approximation f(\u00c2) to f(A)"
+      ],
+      "producer_source": "arxiv:2311.14023",
+      "producer_statement": "If a Nystr\u00f6m approximation \u00c2 is near-optimal low-rank for A, then f(\u00c2) is a near-optimal low-rank approximation to f(A), regardless of how \u00c2 was computed.",
+      "producer_url": "https://arxiv.org/abs/2311.14023",
+      "source_refs": {
+        "producer": "fa4e5a069def5ffb5132d8a65e1e45d19d2a65c4d854f423cdad47aad20ef320",
+        "target": "36ee9e849a3130aaf73d51a92ccf8889f9445e5e63be50d6c0f0fec43e55d117"
+      },
+      "statement_tfidf_cosine": 0.01205463,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-4a3b70a6ae62dbbf",
+      "target_group": "ml",
+      "target_inputs": [
+        "sparse LLMs"
+      ],
+      "target_source": "local:1ndDmZdT4g",
+      "target_statement": "The paper introduces DSNT, a training-free fine-tuning approach that slightly updates sparse LLMs without backpropagation and without weight updates.",
+      "target_url": "https://openreview.net/forum?id=1ndDmZdT4g",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-fd980ed308fc4332",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "reordered windows with hardware-efficient computation"
+      ],
+      "producer_source": "arxiv:2605.02262",
+      "producer_statement": "WindowQuant reorders KV cache windows before quantization to avoid hardware inefficiency that mixed-precision quantization would otherwise cause during inference.",
+      "producer_url": "https://arxiv.org/abs/2605.02262",
+      "source_refs": {
+        "producer": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498",
+        "target": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212"
+      },
+      "statement_tfidf_cosine": 0.07365592,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-378799d40777a28f",
+      "target_group": "systems",
+      "target_inputs": [
+        "1-bit quantized keys"
+      ],
+      "target_source": "arxiv:2508.08256",
+      "target_statement": "Fier estimates per-token importance using 1-bit quantized keys to perform fine-grained KV cache retrieval.",
+      "target_url": "https://arxiv.org/abs/2508.08256",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Encoder, critic, and actor modules follow distinct learning paradigms, so uniform dynamic training across them may be suboptimal."
+        }
+      ],
+      "producer_atom_id": "atom-94089996260830c2",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "module-specific benefits",
+        "complementary scalability gains"
+      ],
+      "producer_source": "arxiv:2510.12096",
+      "producer_statement": "The paper reports that dynamic sparse training strategies provide module-specific benefits that complement the scalability foundation established by architectural improvements.",
+      "producer_url": "https://arxiv.org/abs/2510.12096",
+      "source_refs": {
+        "producer": "aeef2934589c22601a490ac79ec18201493384749ab8fd9cbb2105f8bc0718a2",
+        "target": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c"
+      },
+      "statement_tfidf_cosine": 0.0231713,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "TMATROM is used to compute the T-matrix approximations"
+        }
+      ],
+      "target_atom_id": "atom-d7574b7c1cc21e15",
+      "target_group": "math",
+      "target_inputs": [
+        "polygonal obstacles",
+        "T-matrices"
+      ],
+      "target_source": "arxiv:2601.07704",
+      "target_statement": "The package relies on the TMATROM package to numerically approximate T-matrices and provides a framework for handling scattering by polygonal obstacles.",
+      "target_url": "https://arxiv.org/abs/2601.07704",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "f is an operator monotone function (the abstract states the result concerns operator monotone f)"
+        }
+      ],
+      "producer_atom_id": "atom-c7132179ba14147a",
+      "producer_group": "math",
+      "producer_outputs": [
+        "near-optimal low-rank approximation f(\u00c2) to f(A)"
+      ],
+      "producer_source": "arxiv:2311.14023",
+      "producer_statement": "If a Nystr\u00f6m approximation \u00c2 is near-optimal low-rank for A, then f(\u00c2) is a near-optimal low-rank approximation to f(A), regardless of how \u00c2 was computed.",
+      "producer_url": "https://arxiv.org/abs/2311.14023",
+      "source_refs": {
+        "producer": "fa4e5a069def5ffb5132d8a65e1e45d19d2a65c4d854f423cdad47aad20ef320",
+        "target": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e"
+      },
+      "statement_tfidf_cosine": 0.03726817,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-9ee0ed318a540def",
+      "target_group": "ml",
+      "target_inputs": [
+        "pruning order of parameters"
+      ],
+      "target_source": "arxiv:2502.01717",
+      "target_statement": "The pruning order of parameters is used to derive a global score map that enables compression to any target size without re-computation.",
+      "target_url": "https://arxiv.org/abs/2502.01717",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-04960d886a1afe68",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "observation that memory-constrained settings dominate"
+      ],
+      "producer_source": "arxiv:2311.11908",
+      "producer_statement": "A survey of recent continual learning papers from four major machine learning conferences finds that memory-constrained settings dominate the field.",
+      "producer_url": "https://arxiv.org/abs/2311.11908",
+      "source_refs": {
+        "producer": "cfde9090a48e4c04ace98ac2c363805554a44bcd81a358e44a41db2d8e1820c0",
+        "target": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c"
+      },
+      "statement_tfidf_cosine": 0.00988347,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-ca542650cbb7599e",
+      "target_group": "math",
+      "target_inputs": [
+        "multiple scattering problem data for Helmholtz scattering"
+      ],
+      "target_source": "arxiv:2601.07704",
+      "target_statement": "The paper presents a MATLAB package that couples Trefftz Discontinuous Galerkin methods for Helmholtz scattering with the T-matrix method to solve multiple scattering problems.",
+      "target_url": "https://arxiv.org/abs/2601.07704",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "The graph is distributed across multiple machines and trained on randomly sampled parts each iteration."
+        }
+      ],
+      "producer_atom_id": "atom-52c46388af89055e",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "measured sampling overhead as a significant share of training time"
+      ],
+      "producer_source": "arxiv:2311.17847",
+      "producer_statement": "In a distributed environment, sampling overhead is reported to be a significant component of training time for large-scale graphs.",
+      "producer_url": "https://arxiv.org/abs/2311.17847",
+      "source_refs": {
+        "producer": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+        "target": "ecc3cd7ae1c992105e86ab2c9c9254452c5f56503f747f20e344ac51db831e98"
+      },
+      "statement_tfidf_cosine": 0.02789851,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-182d289ee75c903e",
+      "target_group": "ml",
+      "target_inputs": [
+        "LWL online VOS baseline"
+      ],
+      "target_source": "arxiv:2304.04259",
+      "target_statement": "The paper applies a regularization-based continual learning approach to the LWL online VOS baseline and establishes a CLVOS23 baseline.",
+      "target_url": "https://arxiv.org/abs/2304.04259",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-2a7ec71a8a9b37fe",
+      "producer_group": "math",
+      "producer_outputs": [
+        "convex optimization reformulation of distributionally-robust problems"
+      ],
+      "producer_source": "arxiv:2302.07454",
+      "producer_statement": "The distributionally-robust optimization problems can be cast as tractable convex optimization problems, making them amenable to large-scale stochastic problems.",
+      "producer_url": "https://arxiv.org/abs/2302.07454",
+      "source_refs": {
+        "producer": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+        "target": "167850703b947eb718c03174dfc0d7d83aae8084d2752f678ee9ae9f0559890c"
+      },
+      "statement_tfidf_cosine": 0.01239459,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-13d5cbcc9744b255",
+      "target_group": "ml",
+      "target_inputs": [
+        "input-derived query",
+        "cached key-value experts from current sequence"
+      ],
+      "target_source": "arxiv:2512.09723",
+      "target_statement": "MoLKV structures each expert as a key-value pair and generates context-aware expert outputs by letting an input-derived query interact with cached key-value experts from the current sequence.",
+      "target_url": "https://arxiv.org/abs/2512.09723",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-e36e6ab6f3cba57a",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "comparable or better accuracy at zero LLM-call cost"
+      ],
+      "producer_source": "arxiv:2603.02473",
+      "producer_statement": "The paper reports that raw chunked storage, which requires no LLM calls, matches or outperforms lossy write strategies that use LLM processing.",
+      "producer_url": "https://arxiv.org/abs/2603.02473",
+      "source_refs": {
+        "producer": "9dcd705360c98acb598441077063ac884818693d62485687e31821d7f6aff774",
+        "target": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a"
+      },
+      "statement_tfidf_cosine": 0.0,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "target_atom_id": "atom-91bd44aa9ba3fb36",
+      "target_group": "systems",
+      "target_inputs": [
+        "graph partitioned across machines"
+      ],
+      "target_source": "arxiv:2311.17847",
+      "target_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "target_url": "https://arxiv.org/abs/2311.17847",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Lipschitz continuity of second-order derivatives of the objective and constraint functions"
+        }
+      ],
+      "producer_atom_id": "atom-996d8277d815ce3c",
+      "producer_group": "math",
+      "producer_outputs": [
+        "stochastic \u03b5-KKT point",
+        "expected oracle complexity O(\u03b5^{-3})"
+      ],
+      "producer_source": "arxiv:2606.28230",
+      "producer_statement": "Under Lipschitz continuity of the second-order derivatives of the objective and constraints, the algorithm attains a stochastic \u03b5-KKT point with expected total oracle complexity O(\u03b5^{-3}) in stochastic gradient and constraint evaluations.",
+      "producer_url": "https://arxiv.org/abs/2606.28230",
+      "source_refs": {
+        "producer": "81d902425d4a6f4b902c90401072282b13ce11e8b00cd4f111ecadf8353c2438",
+        "target": "167850703b947eb718c03174dfc0d7d83aae8084d2752f678ee9ae9f0559890c"
+      },
+      "statement_tfidf_cosine": 0.01625625,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-13d5cbcc9744b255",
+      "target_group": "ml",
+      "target_inputs": [
+        "input-derived query",
+        "cached key-value experts from current sequence"
+      ],
+      "target_source": "arxiv:2512.09723",
+      "target_statement": "MoLKV structures each expert as a key-value pair and generates context-aware expert outputs by letting an input-derived query interact with cached key-value experts from the current sequence.",
+      "target_url": "https://arxiv.org/abs/2512.09723",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-75b720c0d0cd07da",
+      "producer_group": "math",
+      "producer_outputs": [
+        "asymptotically consistent distributionally-robust solutions"
+      ],
+      "producer_source": "arxiv:2302.07454",
+      "producer_statement": "With the prescribed ambiguity set, solutions of the distributionally-robust optimizations converge to solutions of the original stochastic programs as the number of data samples grows to infinity.",
+      "producer_url": "https://arxiv.org/abs/2302.07454",
+      "source_refs": {
+        "producer": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+        "target": "35e6d023bd243444d93ef3c6b629e0877188ac5261dd0726efd3cac2baccd565"
+      },
+      "statement_tfidf_cosine": 0.00965608,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Non-probabilistic experts can be calibrated to produce conditional class probabilities."
+        }
+      ],
+      "target_atom_id": "atom-523df0fbc25fba00",
+      "target_group": "ml",
+      "target_inputs": [
+        "feature space data",
+        "benchmark datasets"
+      ],
+      "target_source": "arxiv:2608.24195",
+      "target_statement": "The method extends the Mixture of Decision Trees framework by using heterogeneous expert families (decision trees, linear SVMs, and quadratic discriminant analysis) under a shared probabilistic gating mechanism.",
+      "target_url": "https://arxiv.org/abs/2608.24195",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-75b720c0d0cd07da",
+      "producer_group": "math",
+      "producer_outputs": [
+        "asymptotically consistent distributionally-robust solutions"
+      ],
+      "producer_source": "arxiv:2302.07454",
+      "producer_statement": "With the prescribed ambiguity set, solutions of the distributionally-robust optimizations converge to solutions of the original stochastic programs as the number of data samples grows to infinity.",
+      "producer_url": "https://arxiv.org/abs/2302.07454",
+      "source_refs": {
+        "producer": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+        "target": "ecc3cd7ae1c992105e86ab2c9c9254452c5f56503f747f20e344ac51db831e98"
+      },
+      "statement_tfidf_cosine": 0.00991564,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-182d289ee75c903e",
+      "target_group": "ml",
+      "target_inputs": [
+        "LWL online VOS baseline"
+      ],
+      "target_source": "arxiv:2304.04259",
+      "target_statement": "The paper applies a regularization-based continual learning approach to the LWL online VOS baseline and establishes a CLVOS23 baseline.",
+      "target_url": "https://arxiv.org/abs/2304.04259",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Attention is not always sparse as commonly assumed."
+        }
+      ],
+      "producer_atom_id": "atom-480be0110e71a405",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "quality degradation of TopK attention on certain tasks"
+      ],
+      "producer_source": "local:ALzTQUgW8a",
+      "producer_statement": "The paper reports that TopK attention suffers quality degradation on certain downstream tasks because attention is not always as sparse as expected.",
+      "producer_url": "https://openreview.net/forum?id=ALzTQUgW8a",
+      "source_refs": {
+        "producer": "95c9a550a234b74d15afcf50267bb703c65222c6e80da315a689861fc39e0bc7",
+        "target": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697"
+      },
+      "statement_tfidf_cosine": 0.0,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-508b0298a5a8c595",
+      "target_group": "systems",
+      "target_inputs": [
+        "node features",
+        "adjacency matrices",
+        "pre-sampling workload patterns"
+      ],
+      "target_source": "arxiv:2503.01281",
+      "target_statement": "DCI allocates cache capacity for both node features and adjacency matrices according to workload patterns observed during a pre-sampling phase.",
+      "target_url": "https://arxiv.org/abs/2503.01281",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-c6baa10480c72a7a",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "adaptive expert specialization",
+        "competitive predictive performance"
+      ],
+      "producer_source": "arxiv:2608.24195",
+      "producer_statement": "Experiments on synthetic and real-world benchmarks report that the framework specializes experts to local data geometry and achieves predictive performance competitive with homogeneous MoDT and Random Forests.",
+      "producer_url": "https://arxiv.org/abs/2608.24195",
+      "source_refs": {
+        "producer": "35e6d023bd243444d93ef3c6b629e0877188ac5261dd0726efd3cac2baccd565",
+        "target": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697"
+      },
+      "statement_tfidf_cosine": 0.01633121,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-508b0298a5a8c595",
+      "target_group": "systems",
+      "target_inputs": [
+        "node features",
+        "adjacency matrices",
+        "pre-sampling workload patterns"
+      ],
+      "target_source": "arxiv:2503.01281",
+      "target_statement": "DCI allocates cache capacity for both node features and adjacency matrices according to workload patterns observed during a pre-sampling phase.",
+      "target_url": "https://arxiv.org/abs/2503.01281",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-5a401e2a48316e33",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "reduced residual entropy"
+      ],
+      "producer_source": "arxiv:2511.05770",
+      "producer_statement": "The proposed EBLC predictor exploits temporal correlations across FL rounds and structural regularities within convolutional kernels to reduce residual entropy.",
+      "producer_url": "https://arxiv.org/abs/2511.05770",
+      "source_refs": {
+        "producer": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc",
+        "target": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a"
+      },
+      "statement_tfidf_cosine": 0.06770605,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "target_atom_id": "atom-91bd44aa9ba3fb36",
+      "target_group": "systems",
+      "target_inputs": [
+        "graph partitioned across machines"
+      ],
+      "target_source": "arxiv:2311.17847",
+      "target_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "target_url": "https://arxiv.org/abs/2311.17847",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [],
+      "producer_atom_id": "atom-ae78157c01e7b29c",
+      "producer_group": "ml",
+      "producer_outputs": [
+        "Dice score gains over source model"
+      ],
+      "producer_source": "arxiv:2310.11766",
+      "producer_statement": "Reported Dice score improvements over the source-domain model are 6.27% on RIM-ONE-r3 and 0.96% on Drishti GS for fundus image segmentation.",
+      "producer_url": "https://arxiv.org/abs/2310.11766",
+      "source_refs": {
+        "producer": "3a5eb11a4a530117b3bb6e39e77fe1f9f34f44d36a5e615ffd6a97c8fc44e4ca",
+        "target": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a"
+      },
+      "statement_tfidf_cosine": 0.0,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "target_atom_id": "atom-91bd44aa9ba3fb36",
+      "target_group": "systems",
+      "target_inputs": [
+        "graph partitioned across machines"
+      ],
+      "target_source": "arxiv:2311.17847",
+      "target_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "target_url": "https://arxiv.org/abs/2311.17847",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "inferred",
+          "text": "Sampling requires communication across partitions when the graph is distributed."
+        }
+      ],
+      "producer_atom_id": "atom-91bd44aa9ba3fb36",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "partitioning that reduces communication rounds during distributed sampling"
+      ],
+      "producer_source": "arxiv:2311.17847",
+      "producer_statement": "FastSample proposes a graph partitioning method intended to eliminate most communication rounds in distributed sampling.",
+      "producer_url": "https://arxiv.org/abs/2311.17847",
+      "source_refs": {
+        "producer": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+        "target": "35e6d023bd243444d93ef3c6b629e0877188ac5261dd0726efd3cac2baccd565"
+      },
+      "statement_tfidf_cosine": 0.03012152,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Non-probabilistic experts can be calibrated to produce conditional class probabilities."
+        }
+      ],
+      "target_atom_id": "atom-523df0fbc25fba00",
+      "target_group": "ml",
+      "target_inputs": [
+        "feature space data",
+        "benchmark datasets"
+      ],
+      "target_source": "arxiv:2608.24195",
+      "target_statement": "The method extends the Mixture of Decision Trees framework by using heterogeneous expert families (decision trees, linear SVMs, and quadratic discriminant analysis) under a shared probabilistic gating mechanism.",
+      "target_url": "https://arxiv.org/abs/2608.24195",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "The graph is distributed across multiple machines and trained on randomly sampled parts each iteration."
+        }
+      ],
+      "producer_atom_id": "atom-52c46388af89055e",
+      "producer_group": "systems",
+      "producer_outputs": [
+        "measured sampling overhead as a significant share of training time"
+      ],
+      "producer_source": "arxiv:2311.17847",
+      "producer_statement": "In a distributed environment, sampling overhead is reported to be a significant component of training time for large-scale graphs.",
+      "producer_url": "https://arxiv.org/abs/2311.17847",
+      "source_refs": {
+        "producer": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+        "target": "3a5eb11a4a530117b3bb6e39e77fe1f9f34f44d36a5e615ffd6a97c8fc44e4ca"
+      },
+      "statement_tfidf_cosine": 0.05231003,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Source domain data is not accessible during adaptation."
+        }
+      ],
+      "target_atom_id": "atom-e9f2971cf2446c18",
+      "target_group": "ml",
+      "target_inputs": [
+        "source-domain model",
+        "unlabeled target-domain test images"
+      ],
+      "target_source": "arxiv:2310.11766",
+      "target_statement": "The paper proposes a source-free test-time domain adaptation method for medical image segmentation that enforces consistency of local boundary predictions and global prototype representations.",
+      "target_url": "https://arxiv.org/abs/2310.11766",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "f is an operator monotone function (the abstract states the result concerns operator monotone f)"
+        }
+      ],
+      "producer_atom_id": "atom-c7132179ba14147a",
+      "producer_group": "math",
+      "producer_outputs": [
+        "near-optimal low-rank approximation f(\u00c2) to f(A)"
+      ],
+      "producer_source": "arxiv:2311.14023",
+      "producer_statement": "If a Nystr\u00f6m approximation \u00c2 is near-optimal low-rank for A, then f(\u00c2) is a near-optimal low-rank approximation to f(A), regardless of how \u00c2 was computed.",
+      "producer_url": "https://arxiv.org/abs/2311.14023",
+      "source_refs": {
+        "producer": "fa4e5a069def5ffb5132d8a65e1e45d19d2a65c4d854f423cdad47aad20ef320",
+        "target": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc"
+      },
+      "statement_tfidf_cosine": 0.00222984,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [],
+      "target_atom_id": "atom-5a401e2a48316e33",
+      "target_group": "ml",
+      "target_inputs": [
+        "FL gradient data",
+        "temporal correlations across rounds",
+        "convolutional kernel structure"
+      ],
+      "target_source": "arxiv:2511.05770",
+      "target_statement": "The proposed EBLC predictor exploits temporal correlations across FL rounds and structural regularities within convolutional kernels to reduce residual entropy.",
+      "target_url": "https://arxiv.org/abs/2511.05770",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    },
+    {
+      "interface_tfidf_cosine": 0.0,
+      "producer_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "TMATROM is used to compute the T-matrix approximations"
+        }
+      ],
+      "producer_atom_id": "atom-d7574b7c1cc21e15",
+      "producer_group": "math",
+      "producer_outputs": [
+        "numerical approximation of T-matrices",
+        "framework for scattering by polygonal obstacles"
+      ],
+      "producer_source": "arxiv:2601.07704",
+      "producer_statement": "The package relies on the TMATROM package to numerically approximate T-matrices and provides a framework for handling scattering by polygonal obstacles.",
+      "producer_url": "https://arxiv.org/abs/2601.07704",
+      "source_refs": {
+        "producer": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c",
+        "target": "83cb8e57d05b3b7c34ec3f988154197b4791d08cfa0180fb734f8c6c908c0e41"
+      },
+      "statement_tfidf_cosine": 0.018947,
+      "status": "textual proposal heuristic; not a typed proof or molecule promotion",
+      "target_assumptions": [
+        {
+          "basis": "explicit",
+          "text": "Queries and keys are constrained to the unit sphere."
+        }
+      ],
+      "target_atom_id": "atom-32f2e53f659a3dee",
+      "target_group": "ml",
+      "target_inputs": [
+        "spherical Yat-kernel",
+        "Bernstein's theorem"
+      ],
+      "target_source": "arxiv:2602.04915",
+      "target_statement": "Using Bernstein's theorem, the spherical Yat-kernel is expressed as a nonnegative mixture of polynomial-exponential product kernels, yielding a strictly positive random-feature approximation for O(L) attention.",
+      "target_url": "https://arxiv.org/abs/2602.04915",
+      "unresolved_compatibility": [
+        "type, scale, training/inference, and runtime assumptions are unverified"
+      ]
+    }
+  ]
+}

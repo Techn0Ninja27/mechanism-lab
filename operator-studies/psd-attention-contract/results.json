@@ -1,0 +1,130 @@
+{
+  "scope": "Known mathematical contract diagnostic, not a novelty or learned-attention performance result.",
+  "construction": "RBF Gram A; f(t)=t; top4 eigenspace Q; optimal rank4 Nystrom approximation.",
+  "rows": [
+    {
+      "seed": 88031,
+      "bandwidth": 0.3,
+      "rank": 4,
+      "original_entry_min": 2.3816077686805845e-55,
+      "approx_entry_min": -0.08027598341767866,
+      "approx_eigenvalue_min": -2.421050989320193e-16,
+      "min_row_sum": 6.522950982245991e-10,
+      "negative_entries": 172,
+      "negative_normalized_weights": 195,
+      "frobenius_error": 4.443799291449572,
+      "optimal_frobenius_error": 4.443799291449572
+    },
+    {
+      "seed": 88031,
+      "bandwidth": 1.0,
+      "rank": 4,
+      "original_entry_min": 1.2131606676720299e-05,
+      "approx_entry_min": -0.2067627599526815,
+      "approx_eigenvalue_min": -6.743909713627636e-16,
+      "min_row_sum": 0.42689532894418647,
+      "negative_entries": 136,
+      "negative_normalized_weights": 136,
+      "frobenius_error": 3.408061569688278,
+      "optimal_frobenius_error": 3.408061569688278
+    },
+    {
+      "seed": 88031,
+      "bandwidth": 3.0,
+      "rank": 4,
+      "original_entry_min": 0.2842946600731539,
+      "approx_entry_min": 0.2208151303509699,
+      "approx_eigenvalue_min": -1.1068450319954745e-15,
+      "min_row_sum": 13.243951208724045,
+      "negative_entries": 0,
+      "negative_normalized_weights": 0,
+      "frobenius_error": 0.899996228068951,
+      "optimal_frobenius_error": 0.8999962280689505
+    },
+    {
+      "seed": 88033,
+      "bandwidth": 0.3,
+      "rank": 4,
+      "original_entry_min": 1.4927770720503142e-64,
+      "approx_entry_min": -0.0013133968263003984,
+      "approx_eigenvalue_min": -2.284829015602945e-16,
+      "min_row_sum": 1.1330060425187555e-14,
+      "negative_entries": 134,
+      "negative_normalized_weights": 170,
+      "frobenius_error": 4.321598100589283,
+      "optimal_frobenius_error": 4.321598100589283
+    },
+    {
+      "seed": 88033,
+      "bandwidth": 1.0,
+      "rank": 4,
+      "original_entry_min": 1.8016048654663126e-06,
+      "approx_entry_min": -0.26923931330335976,
+      "approx_eigenvalue_min": -9.32789180014955e-16,
+      "min_row_sum": 0.3415221724136662,
+      "negative_entries": 144,
+      "negative_normalized_weights": 144,
+      "frobenius_error": 3.2327546402459233,
+      "optimal_frobenius_error": 3.2327546402459237
+    },
+    {
+      "seed": 88033,
+      "bandwidth": 3.0,
+      "rank": 4,
+      "original_entry_min": 0.23000641535583347,
+      "approx_entry_min": 0.14374003843986616,
+      "approx_eigenvalue_min": -3.5500263217970844e-15,
+      "min_row_sum": 12.077490387026948,
+      "negative_entries": 0,
+      "negative_normalized_weights": 0,
+      "frobenius_error": 0.8639041847365092,
+      "optimal_frobenius_error": 0.8639041847365089
+    },
+    {
+      "seed": 88037,
+      "bandwidth": 0.3,
+      "rank": 4,
+      "original_entry_min": 7.912126356339222e-54,
+      "approx_entry_min": -0.028891134243669365,
+      "approx_eigenvalue_min": -3.8399702599334723e-16,
+      "min_row_sum": -0.00010392586138485325,
+      "negative_entries": 190,
+      "negative_normalized_weights": 207,
+      "frobenius_error": 4.396388370724146,
+      "optimal_frobenius_error": 4.396388370724146
+    },
+    {
+      "seed": 88037,
+      "bandwidth": 1.0,
+      "rank": 4,
+      "original_entry_min": 1.6628244024666187e-05,
+      "approx_entry_min": -0.12067306652120174,
+      "approx_eigenvalue_min": -8.170787767801927e-16,
+      "min_row_sum": 0.6581436301997365,
+      "negative_entries": 132,
+      "negative_normalized_weights": 132,
+      "frobenius_error": 3.28850944866843,
+      "optimal_frobenius_error": 3.2885094486684303
+    },
+    {
+      "seed": 88037,
+      "bandwidth": 3.0,
+      "rank": 4,
+      "original_entry_min": 0.294430591973447,
+      "approx_entry_min": 0.23054505147334883,
+      "approx_eigenvalue_min": -3.721883241943752e-15,
+      "min_row_sum": 12.899357436262932,
+      "negative_entries": 0,
+      "negative_normalized_weights": 0,
+      "frobenius_error": 0.8660664926010814,
+      "optimal_frobenius_error": 0.8660664926010814
+    }
+  ],
+  "cases_with_negative_entries": 6,
+  "cases": 9,
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.2.6"
+  },
+  "source_sha256": "9c96ba9cc69ffc309cde57076a18525b8df661fd786157e7e94b0a23d5248bee"
+}

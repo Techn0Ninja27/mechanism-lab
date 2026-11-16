@@ -1,0 +1,105 @@
+{
+  "phase_cap_usd": 10,
+  "calls": [
+    {
+      "run": "v1",
+      "stage": "proposal-0",
+      "status": "complete",
+      "request_hash": "7bfda308586affc1cee54a08cbf725e6f77a48f9365c6f16905c94ffbb0af66b",
+      "usage": {
+        "prompt_tokens": 35482,
+        "completion_tokens": 2855,
+        "total_tokens": 38337,
+        "cost": 0.19703772,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.199028,
+          "upstream_inference_prompt_cost": 0.141928,
+          "upstream_inference_completions_cost": 0.0571
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 401,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794805754-ffqKth9SZkcgbqD6031t",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop"
+    },
+    {
+      "run": "v2",
+      "stage": "proposal-0",
+      "status": "complete",
+      "request_hash": "9cbc16c9b6b62cb147727ba0a0b6d72c087eecece689590900a822b26201e57c",
+      "usage": {
+        "prompt_tokens": 45410,
+        "completion_tokens": 4367,
+        "total_tokens": 49777,
+        "cost": 0.2662902,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.26898,
+          "upstream_inference_prompt_cost": 0.18164,
+          "upstream_inference_completions_cost": 0.08734
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1423,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794805856-SVDVVBPXDfweGYjtw7HU",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop"
+    },
+    {
+      "run": "v2",
+      "stage": "review-1",
+      "status": "complete",
+      "request_hash": "5483ff2c7413cbec9342c2a27bf93944b930b6b11b69e445c444d8d07de10a86",
+      "usage": {
+        "prompt_tokens": 47501,
+        "completion_tokens": 2782,
+        "total_tokens": 50283,
+        "cost": 0.24318756,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.245644,
+          "upstream_inference_prompt_cost": 0.190004,
+          "upstream_inference_completions_cost": 0.05564
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1178,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794805900-e4BtMgsaelcYmqmdOdeq",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop"
+    }
+  ],
+  "phase_budget_accounted_usd": 1.6850121,
+  "accounting_note": "Shared ledger conservatively records upstream inference cost including any BYOK amount. OpenRouter usage.cost may be lower; both fields are preserved.",
+  "these_calls_usage_cost_usd": 0.70651548,
+  "these_calls_budget_accounted_usd": 0.713652
+}

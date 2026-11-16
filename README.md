@@ -45,9 +45,18 @@ metrics for 60,237; these are metadata, not usefulness labels.
 [Coverage, verification, and reproduction](reports/corpus-207k/README.md).
 
 A first 24-paper packet produced **60 source-linked candidate atoms** for
-$0.00835. Independent agent review flagged 12 semantic issues and separately
-tagged 9 transfer-oriented results. [Extraction and review](reports/ml-graph-atoms/README.md).
+$0.00835. Independent agent review flagged 11 semantic issues and separately
+tagged 10 transfer-oriented results. [Extraction and review](reports/ml-graph-atoms/README.md).
 The full corpus has not been atomized or used to retrain the scorers.
+
+The first [interface graph](reports/interface-graph/README.md) retains 49 atoms
+and proposes 20 pairs from 424 eligible directed pairs. Its selected
+[FIER → WindowQuant proposal](reports/interface-proposal/README.md) passed an
+Opus proposal/review run but remains an ablation candidate: broader prior-art
+checks found substantial overlap, and no VLM quality or speed gain has been
+demonstrated. A separate [PSD attention contract diagnostic](operator-studies/psd-attention-contract/README.md)
+illustrates why mathematical approximation guarantees alone do not establish
+attention compatibility.
 
 ## What works today
 

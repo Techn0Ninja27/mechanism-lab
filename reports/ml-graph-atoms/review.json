@@ -9,10 +9,10 @@
   "calibration": "Automated/agent review against the supplied abstract spans and papers.json; flags are triage findings, not human adjudication. Pass means no material issue found, not independently verified truth.",
   "counts": {
     "reviewed": 60,
-    "semantic_flags": 12,
+    "semantic_flags": 11,
     "semantic_major": 0,
-    "semantic_minor": 12,
-    "relevance_only": 9,
+    "semantic_minor": 11,
+    "relevance_only": 10,
     "clean": 39
   },
   "atoms": [
@@ -938,5 +938,6 @@
     "count": 0,
     "note": "All seven valid batch-2 recoveries were reviewed above. The separate invalid-quote atom arxiv:2510.12096 batch-2 atom_index 1 remains rejected and was not reviewed."
   },
-  "reference_verification": "All60source/statementhashpairs verified; extraction_location is zero-based saved-response batch and atom index."
+  "reference_verification": "All60source/statementhashpairs verified; extraction_location is zero-based saved-response batch and atom index.",
+  "count_correction": "Aggregates recomputed from60entry flags:39none11semantic10relevance_only; judgments unchanged."
 }

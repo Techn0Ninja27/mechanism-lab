@@ -19,5 +19,12 @@
     "result_path": "operator-studies/jacobi-fixed-point/results.json",
     "report_path": "operator-studies/jacobi-fixed-point/README.md",
     "result_sha256": "673b00d4521f570aed35420ec4e0d1727fac981d1dc404b3297bf11838c7e20a"
+  },
+  "grounded-interface-v2": {
+    "status": "synthetic_contracts_passed_only",
+    "summary": "Three synthetic cases preserve precision counts and K/V/mask permutation invariance. Quantizer and invalid-input checks pass; exact independent rerun agrees. No VLM quality, latency or novelty result. Broad query-aware mixed precision overlaps existing work; real traces and stronger prior-art comparison remain required.",
+    "result_path": "operator-studies/window-rank-contract/results-v3.json",
+    "report_path": "operator-studies/window-rank-contract/README.md",
+    "result_sha256": "687a66a6550160bfc49db650e82ae6931d7497db3e4c5e1e852f774e1e8cf0a2"
   }
 }

@@ -19,7 +19,7 @@ no new API calls and did not edit quotes to make them pass. Span checking
 normalizes whitespace and case; it does not establish semantic entailment.
 
 An independent agent reviewed all 60 accepted atoms. The calibrated report has
-**39 clean entries, 12 minor semantic flags, and 9 relevance-only tags**. These
+**39 clean entries, 11 minor semantic flags, and 10 relevance-only tags**. These
 are machine triage labels, not human approval. Mathematical and systems results
 remain legitimate transfer candidates even when their source has no ML
 experiment. One named-entity mismatch is ambiguous in the source itself and
