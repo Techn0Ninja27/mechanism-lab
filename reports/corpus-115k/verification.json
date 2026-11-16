@@ -1,0 +1,55 @@
+{
+  "records": 115077,
+  "fts_records": 115077,
+  "sqlite_quick_check": "ok",
+  "preserved_old_canonical_ids": 16357,
+  "net_added": 98720,
+  "sqlite_sha256": "bbfcb95d2f5e057be5e6c60a55cdbff6465e0b81206466097f45c4503660b351",
+  "sample_queries": [
+    "distributed training",
+    "stochastic optimization",
+    "spectral graph"
+  ],
+  "retrieval_coverage": [
+    {
+      "query": "distributed training",
+      "compiled_query": "\"distributed\" AND \"training\"",
+      "provider": "local_corpus",
+      "records": 12,
+      "status": "ok",
+      "retained_records": 4
+    },
+    {
+      "query": "stochastic optimization",
+      "compiled_query": "\"stochastic\" AND \"optimization\"",
+      "provider": "local_corpus",
+      "records": 12,
+      "status": "ok",
+      "retained_records": 4
+    },
+    {
+      "query": "spectral graph",
+      "compiled_query": "\"spectral\" AND \"graph\"",
+      "provider": "local_corpus",
+      "records": 12,
+      "status": "ok",
+      "retained_records": 4
+    }
+  ],
+  "retrieved_ids": [
+    "arxiv:1904.01631",
+    "arxiv:1508.00882",
+    "arxiv:2404.04559",
+    "arxiv:2103.07974",
+    "arxiv:1910.13516",
+    "arxiv:2008.07633",
+    "arxiv:2311.17847",
+    "arxiv:1507.06970",
+    "arxiv:2204.05823",
+    "arxiv:2404.02300",
+    "arxiv:1907.01453",
+    "arxiv:1512.06325"
+  ],
+  "new_atomization_performed": false,
+  "new_scorer_training_performed": false
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "mechanism-lab.openalex-plan.v1",
+  "retrieval_date": "2026-11-16",
+  "endpoint": "https://api.openalex.org/works",
+  "pagination_mode": "cursor",
+  "selection": "has_abstract:true and explicit OpenAlex topic IDs; publication windows are inclusive",
+  "targets": {"machine_learning": 60000, "systems": 20000, "mathematics": 20000},
+  "max_records": 100000,
+  "max_requests": 700,
+  "per_page": 200,
+  "year_windows": [
+    ["2000-01-01", "2009-12-31"],
+    ["2010-01-01", "2019-12-31"],
+    ["2020-01-01", "2026-11-16"]
+  ],
+  "topics": {
+    "machine_learning": [
+      {"id": "T12072", "label": "Machine Learning and Algorithms", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T12535", "label": "Machine Learning and Data Classification", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T11689", "label": "Adversarial Robustness in Machine Learning", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T11714", "label": "Multimodal Machine Learning Applications", "verified_subfield": "Computer Vision and Pattern Recognition"},
+      {"id": "T12026", "label": "Explainable Artificial Intelligence", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T10181", "label": "Natural Language Processing Techniques", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T10462", "label": "Reinforcement Learning in Robotics", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T11273", "label": "Advanced Graph Neural Networks", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T10320", "label": "Neural Networks and Applications", "verified_subfield": "Artificial Intelligence"},
+      {"id": "T11307", "label": "Domain Adaptation and Few-Shot Learning", "verified_subfield": "Artificial Intelligence"}
+    ],
+    "systems": [
+      {"id": "T10772", "label": "Distributed systems and fault tolerance", "verified_subfield": "Computer Networks and Communications"},
+      {"id": "T10715", "label": "Distributed and Parallel Computing Systems", "verified_subfield": "Hardware and Architecture"},
+      {"id": "T10317", "label": "Advanced Database Systems and Queries", "verified_subfield": "Information Systems"},
+      {"id": "T10054", "label": "Parallel Computing and Optimization Techniques", "verified_subfield": "Hardware and Architecture"},
+      {"id": "T11424", "label": "Security and Verification in Computing", "verified_subfield": "Computer Networks and Communications"}
+    ],
+    "mathematics": [
+      {"id": "T12709", "label": "Optimization and Mathematical Programming", "verified_subfield": "Management Science and Operations Research"},
+      {"id": "T13500", "label": "Probability and Statistical Research", "verified_subfield": "Statistics and Probability"},
+      {"id": "T10374", "label": "Advanced Graph Theory Research", "verified_subfield": "Computational Theory and Mathematics"},
+      {"id": "T11245", "label": "Advanced Numerical Analysis Techniques", "verified_subfield": "Numerical Analysis"},
+      {"id": "T11152", "label": "Stochastic processes and statistical mechanics", "verified_subfield": "Mathematical Physics"}
+    ]
+  },
+  "caveats": [
+    "OpenAlex topics are machine-assigned and are retrieval strata, not ground-truth field labels.",
+    "Citation count and FWCI are retained as separate metadata; they are not a quality label.",
+    "The public API budget and rate limits can change. A 429 stops and preserves the cursor.",
+    "This plan expands metadata and abstracts only. Atomization and full-text retrieval are separate stages."
+  ]
+}

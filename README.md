@@ -36,6 +36,14 @@ production codecs, or a result from highest-beta Alien sampling. The learned
 utility ranker's failure shows that successful search does not automatically
 teach a model to choose well on new tasks.
 
+## Research corpus
+
+The local search corpus now contains **115,077 works**. The latest addition
+selected **60k ML, 20k systems, and 20k mathematics papers** from a pinned arXiv
+metadata snapshot, preserving all previous records after deduplication.
+These are searchable metadata and abstracts; they have not all been atomized
+or used to retrain the scorers. [Coverage, verification, and reproduction](reports/corpus-115k/README.md).
+
 ## What works today
 
 - **Source-grounded generation:** bounded evidence packets, quoted source spans,

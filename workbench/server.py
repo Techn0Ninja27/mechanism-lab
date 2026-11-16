@@ -271,11 +271,14 @@ def adjudications():
 
 
 def inventory():
+    if str(ENGINE) not in sys.path: sys.path.insert(0, str(ENGINE))
+    from generation.corpus_registry import active_corpus
+    corpus = active_corpus(ENGINE)
     props = list((RESULTS / "proposals-v2").glob("*/proposal.md")) if (RESULTS / "proposals-v2").exists() else []
     evidence = list((RESULTS / "proposals-v2" / "retrieval").glob("*-evidence.json")) if (RESULTS / "proposals-v2" / "retrieval").exists() else []
     return {"runs": runs(), "counts": {"proposals": len(props), "evidence_sets": len(evidence), "candidates": len(candidate_rows()),
             "source_units_repaired": len((read_json(RESULTS / "provenance-repair-2026-11-16" / "selected-evidence.repaired.json", {}) or {}).get("atoms", {}))},
-            "provenance": provenance()}
+            "provenance": provenance(), "corpus": ({k: v for k, v in corpus.items() if k != "path"} if corpus else None)}
 
 
 def _study_root():
