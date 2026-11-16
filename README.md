@@ -53,9 +53,10 @@ The full corpus has not been atomized or used to retrain the scorers.
 The first [interface graph](reports/interface-graph/README.md) retains 49 atoms
 and proposes 20 pairs from 424 eligible directed pairs. Its selected
 [FIER → WindowQuant proposal](reports/interface-proposal/README.md) passed an
-Opus proposal/review run but remains an ablation candidate: broader prior-art
-checks found substantial overlap, and no VLM quality or speed gain has been
-demonstrated. A separate [PSD attention contract diagnostic](operator-studies/psd-attention-contract/README.md)
+Opus proposal/review run. Its [real-trace ablation](operator-studies/trace-window-ablation/README.md)
+found no fidelity advantage for 1-bit ranking against exact-attention controls
+on two exposed images. That scoped negative now enters future proposal context;
+no VLM task-quality, speed or novelty gain has been demonstrated. A separate [PSD attention contract diagnostic](operator-studies/psd-attention-contract/README.md)
 illustrates why mathematical approximation guarantees alone do not establish
 attention compatibility.
 

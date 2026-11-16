@@ -130,3 +130,40 @@ class GroundedResearchTests(unittest.TestCase):
             self.assertEqual(result['retrieved_source_count'],0)
             self.assertEqual(result['retrieval']['coverage'][0]['records'],0)
             self.assertEqual(result['status'],'failed')
+
+    def test_local_feedback_is_citable_and_remains_scoped(self):
+        record={'id':'fixture','tested_change':'fixture scoped failure','verdict':'no_support',
+                'scope':'two exposed development cases','limitations':['not a quality result'],
+                'result_sha256':'a'*64,'report_path':'operator-studies/fixture/README.md'}
+        feedback={'records':[record],'scope':'partial curated feedback','warnings':[]}
+        proposal={k:'specified' for k in g.SCHEMA}
+        evidence=[{'chunk_id':'local_experiment:fixture','quote':'fixture scoped failure','supports':'previous local test only'}]
+        proposal.update(decision='revise',novelty_established=False,evidence=evidence,
+                         assumptions=['test assumption'],data_paths=[{k:'specified' for k in ('input','operation','output','possible_leakage')}],
+                         experiment={k:'specified' for k in ('development','heldout','metric','kill_threshold')})
+        review={k:'specified' for k in g.REVIEW_SCHEMA}
+        review.update(decision='test',failure_type='none_found',evidence=evidence,novelty_established=False)
+        prompts=[]
+        class Client:
+            def __init__(self,*args):pass
+            def call(self,identifier,stage,prompt):
+                prompts.append(prompt);return json.dumps(proposal if stage==0 else review)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
+            question=root/'q.txt';question.write_text('Test a distinct change.')
+            with patch.object(g,'inspect_feedback',return_value=feedback),patch.object(g,'Client',Client):
+                result=g.execute(pack,question,root/'run',True)
+            self.assertEqual(result['status'],'reviewed')
+            self.assertEqual(result['experiment_feedback'],feedback)
+            self.assertTrue(all('fixture scoped failure' in prompt for prompt in prompts))
+            self.assertIn('not a ban on the source pair',prompts[0])
+            self.assertFalse(result['train_eligible'])
+
+    def test_changed_feedback_blocks_paid_execution_of_saved_plan(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
+            question=root/'q.txt';question.write_text('Test one change.')
+            with patch.object(g,'inspect_feedback',return_value={'records':[],'scope':'first','warnings':[]}):
+                g.execute(pack,question,root/'run')
+            with patch.object(g,'inspect_feedback',return_value={'records':[],'scope':'changed','warnings':[]}),patch.object(g,'Client',side_effect=AssertionError('No paid call')):
+                with self.assertRaises(ValueError):g.execute(pack,question,root/'run',True)

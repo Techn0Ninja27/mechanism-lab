@@ -1,0 +1,27 @@
+{
+  "schema_version": "experiment-feedback.v1",
+  "records": [
+    {
+      "id": "fier-windowquant-onebit-trace-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2508.08256",
+        "https://arxiv.org/abs/2605.02262"
+      ],
+      "tested_change": "Replace an aligned-input cosine proxy with 1-bit grouped-key mean-logit ranking of visual token chunks, at fixed per-layer resident precision counts. Relative L2 attention-output errors: one-bit 0.02518 vs exact softmax mass 0.01510 on candy; 0.02229 vs 0.01510 on statue. One-bit failed the frozen fidelity gate.",
+      "verdict": "no_support_for_one_bit_in_exposed_pilot",
+      "scope": "Two already-exposed SmolVLM-256M still images; 30 layers and decoder steps 1\u20133. Eight chunks of eight visual tokens with fixed counts: two FP16, three INT4, three INT2; first chunk FP16. Generic affine KV quantization.",
+      "limitations": [
+        "Not a WindowQuant or FIER replication; aligned-input embeddings and token chunks are proxies.",
+        "Not held-out data, video clips, end-to-end generation or propagated error evaluation.",
+        "Scoring uses 32-token key groups; resident KV uses 8-token groups. These are distinct surrogate operators.",
+        "No measured GPU memory traffic, speed or transient overhead; an efficiency-versus-fidelity tradeoff remains untested.",
+        "No scientific novelty or general infeasibility claim. The whole source pair is not rejected."
+      ],
+      "report_path": "operator-studies/trace-window-ablation/README.md",
+      "result_path": "operator-studies/trace-window-ablation/result.json",
+      "result_sha256": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5",
+      "train_eligible": false,
+      "novelty_established": false
+    }
+  ]
+}

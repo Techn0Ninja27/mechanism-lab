@@ -91,3 +91,10 @@ Real-model follow-up: [SmolVLM MPS attention capture](../../operator-studies/smo
 now supplies Q/K/V and attention tensors from two exposed development images.
 Independent NumPy replay verifies extraction consistency. This is not yet an
 evaluation of the proposed precision-ranking intervention.
+
+Completed intervention: the [fixed-budget trace ablation](../../operator-studies/trace-window-ablation/README.md)
+found no support for the 1-bit ranking against stronger controls on the two
+exposed images. Its scoped negative result is now available to future grounded
+proposal runs through the local experiment-feedback registry. The original
+proposal/reviewer outputs remain immutable, and the entire source pair is not
+rejected by this narrow result.

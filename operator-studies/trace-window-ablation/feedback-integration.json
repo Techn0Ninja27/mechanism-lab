@@ -1,0 +1,11 @@
+{
+  "status": "offline_feedback_plan_verified",
+  "matched_ids": [
+    "fier-windowquant-onebit-trace-v1"
+  ],
+  "warnings": [],
+  "protocol_version": 3,
+  "experiment_feedback_hash": "5e20c3f52a7b748f563aa42675a2999803a7bc87e21c72f44a4b6072978dd96b",
+  "registry_hash": "dfd96ba30cf375b67d7357b80c81c29c48ad19d0f851cd149980ce7517ca0d40",
+  "paid_calls": 0
+}

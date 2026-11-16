@@ -21,10 +21,10 @@
     "result_sha256": "673b00d4521f570aed35420ec4e0d1727fac981d1dc404b3297bf11838c7e20a"
   },
   "grounded-interface-v2": {
-    "status": "real_model_trace_extraction_verified_only",
-    "summary": "Corrected SmolVLM-256M MPS capture covers two exposed images and four decoder steps. Independent NumPy Q/K replay agrees within 2.23e-6 prefill and 5.69e-7 decode. Prior synthetic composition contracts also pass. This verifies extraction only; the proposed ranking/quantization intervention, task quality, latency and novelty remain untested.",
-    "result_path": "operator-studies/smolvlm-trace/replay.json",
-    "report_path": "operator-studies/smolvlm-trace/README.md",
-    "result_sha256": "a31c78c987d270b998b1e17442b5826ddcbdd64e87f8cb4b1347b61401aa02b5"
+    "status": "no_support_in_exposed_trace_pilot",
+    "summary": "At identical resident precision counts, 1-bit mean-logit ranking had higher local attention-output error than exact prompt-attention mass on both exposed SmolVLM images (0.02518 vs 0.01510; 0.02229 vs 0.01510). Fixed-budget development gate failed. Generic visual-token chunk surrogate, not a WindowQuant/FIER replication. No end-to-end quality, speed or novelty claim.",
+    "result_path": "operator-studies/trace-window-ablation/result.json",
+    "report_path": "operator-studies/trace-window-ablation/README.md",
+    "result_sha256": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5"
   }
 }

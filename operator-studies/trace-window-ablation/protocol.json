@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-16",
+  "scope": "Exposed two-image development attention-operator pilot. Not WindowQuant/FIER replication, held-out evaluation, end-to-end generation, speed or novelty result.",
+  "source_manifest_sha256": "7cd19be2cd47edc00aed2127fd7e4689e4258fb5a8ea24062eba3cb73990a4e2",
+  "source_cases": [
+    {
+      "image": "candy",
+      "npz": "candy.npz",
+      "npz_sha256": "5b5a2aab8b5827cbbe2ab7bae65566c97684f33a98987eb51aa835d901ea3ddc"
+    },
+    {
+      "image": "statue",
+      "npz": "statue.npz",
+      "npz_sha256": "da1052a0f8aeec0307473cee065c5cd6fd43bf9165cc041ac88f5a4977e6aa16"
+    }
+  ],
+  "window_tokens": 8,
+  "window_count": 8,
+  "counts": {
+    "fp16": 2,
+    "int4": 3,
+    "int2": 3
+  },
+  "first_window_fp16": true,
+  "ranking_arms": [
+    "embedding_cosine_proxy",
+    "exact_softmax_mass",
+    "exact_mean_logit",
+    "one_bit_mean_logit",
+    "two_bit_mean_logit",
+    "recency",
+    "random_73031",
+    "random_73033",
+    "random_73037",
+    "position",
+    "interleaved"
+  ],
+  "scoring_key_group_tokens": 32,
+  "quantization": "Generic affine min/max per visual window, KV head and channel. Float32 min/scale metadata; 2 or 4 bits; FP16 roundtrip for high windows. Both K and V use identical grouping. Not a paper-exact codec.",
+  "nonvisual_cache": "Original float32, including teacher-forced generated KV; identical across arms.",
+  "metrics": [
+    "relative L2 of pre-o_proj attention output flattened across heads per layer",
+    "cosine of pre-o_proj output flattened across heads per layer"
+  ],
+  "aggregation": "Mean across layers and decoder steps1\u20133 per image; report all steps separately. Two images are not an inferential sample. No CI/p-value.",
+  "random_seeds": [
+    73031,
+    73033,
+    73037
+  ],
+  "gate": "Advance one-bit scoring only if per-image mean relative L2 is at least 5 percent below every nonrandom deterministic control (embedding, exact mass, exact logit, recency, position, interleaved) for BOTH images and cosine does not decrease relative to those controls. Failure means no support in this exposed pilot, not universal falsification. Two-bit is a component comparator, also reported.",
+  "leakage_controls": [
+    "Only prompt embeddings/Q/K/prefill attention used for rankings.",
+    "Decode attention/output used only for evaluation.",
+    "No fitting, hyperparameter search or count adaptation on these traces.",
+    "Native future Q/K/V fixed, so this does not capture error accumulation."
+  ],
+  "known_limitations": [
+    "Still-image token chunks are not temporal video windows.",
+    "Fixed precision counts are not WindowQuant calibration thresholds.",
+    "Embedding score uses captured aligned LLM input features as a proxy.",
+    "Model ranfloat32; nativeFP32 and a visualFP16control mustbothbereported.",
+    "Transient scorer memory and kernel costs not measured."
+  ],
+  "prompt_query_definition": "Uses captured prompt_text_positions: non-special text token IDs after the visual span. This may include ordinary chat-template text as well as the user question; no generated tokens."
+}
