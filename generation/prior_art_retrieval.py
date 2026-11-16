@@ -20,7 +20,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Callable, Iterable, Mapping
 
-SCHEMA_VERSION = "prior-art-retrieval-v2"
+SCHEMA_VERSION = "prior-art-retrieval-v3"
 ARXIV_ENDPOINT = "https://export.arxiv.org/api/query"
 ARXIV_NS = {"a": "http://www.w3.org/2005/Atom"}
 
@@ -204,13 +204,21 @@ def retrieve_prior_art(queries: Iterable[str], corpus_db: str | Path, *, limit: 
             coverage.append({"query": q, "compiled_query": _arxiv_query(q), "provider": "arxiv_api", "records": len(records) - before,
                              "status": "error" if any(x["provider"] == "arxiv_api" and x["query"] == q for x in failures) else "ok"})
     all_rows = list(records.values())
-    if allow_arxiv and limit > 1:
-        buckets = [[r for r in all_rows if r.get("source") == "local_corpus"], [r for r in all_rows if r.get("source") == "arxiv_api"]]
-        ordered = []
-        while any(buckets):
-            for bucket in buckets:
-                if bucket: ordered.append(bucket.pop(0))
-        all_rows = ordered
+    # Interleave query/provider buckets so broad early queries cannot consume
+    # the entire retained evidence budget. Preserve rank within each bucket.
+    providers = ["local_corpus"] + (["arxiv_api"] if allow_arxiv else [])
+    buckets = [[r for r in all_rows if q in r.get("matched_queries", []) and r.get("source") == provider]
+               for q in qs for provider in providers]
+    ordered, seen = [], set()
+    while any(buckets):
+        for bucket in buckets:
+            while bucket:
+                row = bucket.pop(0)
+                identity = row.get("canonical_id") or row["source_id"]
+                if identity not in seen:
+                    seen.add(identity); ordered.append(row)
+                    break
+    all_rows = ordered
     retained = all_rows[:limit]
     for item in coverage:
         item["retained_records"] = sum(1 for r in retained if item["query"] in r.get("matched_queries", []) and r.get("source") == item["provider"])

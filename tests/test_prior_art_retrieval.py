@@ -54,6 +54,19 @@ class PriorArtTests(unittest.TestCase):
             result = retrieve_prior_art(["memory"], db, cutoff="2024-12-31", limit=1)
             self.assertEqual(result["records"][0]["source_id"], "local:1")
 
+    def test_later_specific_query_retains_a_slot(self):
+        with tempfile.TemporaryDirectory() as d:
+            db = Path(d) / "c.sqlite"; self.db(db)
+            with sqlite3.connect(db) as c:
+                for i in range(6):
+                    sid = f"broad:{i}"
+                    c.execute("INSERT INTO works VALUES (?,?,?,?,?,?,?,?,?,?)", (sid,sid,"Learning",f"Learning method {i}","2024-01-01","","https://example.test/"+sid,"","hash","abstract_only"))
+                    c.execute("INSERT INTO works_fts VALUES (?,?,?)", (sid,"Learning",f"Learning method {i}"))
+            result = retrieve_prior_art(["learning", "memory"], db, limit=2)
+            self.assertEqual(len(result["records"]), 2)
+            self.assertIn("local:1", [r["source_id"] for r in result["records"]])
+            self.assertEqual([r["retained_records"] for r in result["coverage"]], [1,1])
+
     def test_legacy_arxiv_category_and_alias_dedup(self):
         legacy = b'''<feed xmlns="http://www.w3.org/2005/Atom"><entry><id>https://arxiv.org/abs/quant-ph/0001001v3</id><title>Memory agents</title><summary>Memory retrieval</summary><published>2020-01-01</published><updated>2020-01-01</updated></entry></feed>'''
         row = _parse_arxiv(legacy, "memory")[0]

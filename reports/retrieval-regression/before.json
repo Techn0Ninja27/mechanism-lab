@@ -1,0 +1,119 @@
+{
+  "scope": "Eight hand-selected known-source regression cases; exposed development cases, no general recall or novelty claim.",
+  "corpus_sha256": "7aced21dbcfb5ebe0c0954c1aa0eafb52ec430fe1f4a8d63423f5c1d67bab96d",
+  "retriever_sha256": "25741a56de1dcc00f832441dd6cfd8857cb9b6356508637ba9a8a13deb11a53d",
+  "cases": [
+    {
+      "case": "neumiss-name",
+      "queries": [
+        "NeuMiss"
+      ],
+      "expected": "arxiv:2007.01627",
+      "present_in_corpus": false,
+      "rank": null,
+      "returned": [
+        "arxiv:2106.00311"
+      ],
+      "failures": []
+    },
+    {
+      "case": "neumiss-mechanism",
+      "queries": [
+        "Neumann missingness"
+      ],
+      "expected": "arxiv:2007.01627",
+      "present_in_corpus": false,
+      "rank": null,
+      "returned": [],
+      "failures": []
+    },
+    {
+      "case": "stablemiss-name",
+      "queries": [
+        "StableMiss"
+      ],
+      "expected": "arxiv:2305.11197",
+      "present_in_corpus": false,
+      "rank": null,
+      "returned": [],
+      "failures": []
+    },
+    {
+      "case": "stablemiss-mechanism",
+      "queries": [
+        "agnostic mask distribution shift"
+      ],
+      "expected": "arxiv:2305.11197",
+      "present_in_corpus": false,
+      "rank": null,
+      "returned": [],
+      "failures": []
+    },
+    {
+      "case": "imputation-title",
+      "queries": [
+        "good imputation predict missing values"
+      ],
+      "expected": "arxiv:2106.00311",
+      "present_in_corpus": true,
+      "rank": 1,
+      "returned": [
+        "arxiv:2106.00311"
+      ],
+      "failures": []
+    },
+    {
+      "case": "imputation-second-query",
+      "queries": [
+        "learning",
+        "good imputation predict missing values"
+      ],
+      "expected": "arxiv:2106.00311",
+      "present_in_corpus": true,
+      "rank": null,
+      "returned": [
+        "local:BNAvYSCrLD",
+        "local:conf/naacl/ShinLAKKKCLPHS22",
+        "local:Y4L8GQXZZO",
+        "local:zjG9GRG462",
+        "arxiv:2204.10830"
+      ],
+      "failures": []
+    },
+    {
+      "case": "robust-title",
+      "queries": [
+        "robust prediction missingness shifts"
+      ],
+      "expected": "arxiv:2406.16484",
+      "present_in_corpus": true,
+      "rank": 1,
+      "returned": [
+        "arxiv:2406.16484",
+        "arxiv:2507.08280"
+      ],
+      "failures": []
+    },
+    {
+      "case": "robust-second-query",
+      "queries": [
+        "learning",
+        "robust prediction missingness shifts"
+      ],
+      "expected": "arxiv:2406.16484",
+      "present_in_corpus": true,
+      "rank": null,
+      "returned": [
+        "local:BNAvYSCrLD",
+        "local:conf/naacl/ShinLAKKKCLPHS22",
+        "local:Y4L8GQXZZO",
+        "local:zjG9GRG462",
+        "arxiv:2204.10830"
+      ],
+      "failures": []
+    }
+  ],
+  "hits_at_5": 2,
+  "case_count": 8,
+  "corpus_covered_cases": 4
+}

@@ -144,7 +144,7 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
     lineage_path = ROOT/'docs/method-grounding/lineage.json'
     lineage_registry = json.loads(lineage_path.read_text())
     lineage = inspect_pack(pack, lineage_registry)
-    corpus = ROOT/'results/corpus-integrated-v2/corpus.sqlite'
+    corpus = ROOT/'results/corpus-integrated-v3/corpus.sqlite'
     if not corpus.exists(): corpus = ROOT/'results/corpus-expanded/corpus.sqlite'
     output.mkdir(parents=True, exist_ok=True)
     config = {'model': 'anthropic/claude-opus-5.5', 'reasoning': {'effort': 'low'},

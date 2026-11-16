@@ -1,0 +1,23 @@
+{
+  "before": 16355,
+  "after": 16357,
+  "removed": [],
+  "added": [
+    "arxiv:2007.01627",
+    "arxiv:2305.11197"
+  ],
+  "receipts": [
+    {
+      "id": "2007.01627v4",
+      "url": "https://arxiv.org/abs/2007.01627v4",
+      "response_sha256": "deee399301fed03c143a6a8d7295f061eedfeedbb6cd9d495d7fd94cae71bf25",
+      "bytes": 44641
+    },
+    {
+      "id": "2305.11197v1",
+      "url": "https://arxiv.org/abs/2305.11197v1",
+      "response_sha256": "34409586007c3c1e079b3596ca0514c536b6bac4dcd24a513556cc632afbba55",
+      "bytes": 42431
+    }
+  ]
+}
