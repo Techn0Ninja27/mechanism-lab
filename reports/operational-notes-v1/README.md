@@ -54,6 +54,11 @@ queries and hashes. Deterministic packet selection reproduced byte-identically.
 
 ## Reproduce
 
+The subsequent [full-method triage](full-method-triage.md) records explicit
+graphon assumptions and an algebraically redundant low-rank composition.
+Its [structured disposition](full-method-triage.json) is scoped to that mapping;
+it is not a training label or evidence that all such combinations fail.
+
 From the engine root, with the existing corpus and previous packet available:
 
 ```sh

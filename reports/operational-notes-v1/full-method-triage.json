@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-17",
+  "reviewer": "root_agent",
+  "evidence_scope": "selected full-method sections and analytic specialization; no empirical experiment",
+  "source_ids": ["2510.17515", "2506.15259"],
+  "candidate_origin": "root_agent exploratory mapping, not an author claim",
+  "candidate": "Randomized splitting DLRA for fixed-NTK squared-loss residual covariance",
+  "assumptions": [
+    "Finite fixed symmetric positive-semidefinite kernel K",
+    "Squared-error gradient flow with normalization absorbed into K",
+    "Residual matrix E; covariance X = E E^T"
+  ],
+  "specialization": {
+    "residual_flow": "dE/dt = -K E",
+    "covariance_flow": "dX/dt = -K X - X K^T",
+    "splitting_linear_operator": "A = -K",
+    "splitting_nonlinear_term": "F(t,X) = 0",
+    "baseline": "Propagate residual factors using the matrix-exponential action"
+  },
+  "disposition": "do_not_benchmark_redundant_nonlinear_stage_for_this_mapping",
+  "reconsider_if": [
+    "A different target derives a nonzero term or time-varying operator",
+    "The target evolution and approximation assumptions are explicit",
+    "A practical advantage over a matched existing solver is testable"
+  ],
+  "source_scope_correction": {
+    "source_id": "2510.17515",
+    "location": "sections 4.1–4.2 and 8",
+    "finding": "Constant positive retained fraction is explicit; fixed-degree masks are outside scope, not a discovered contradiction"
+  },
+  "prior_art": [
+    "https://proceedings.mlr.press/v206/yang23b.html",
+    "https://arxiv.org/abs/1806.07572"
+  ],
+  "ready_for_composition": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "performance_measured": false,
+  "limitations": "Does not reject arbitrary graphon/low-rank combinations; no learned ranker integration; exposed development example only"
+}
