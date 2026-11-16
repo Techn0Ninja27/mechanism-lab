@@ -1,0 +1,32 @@
+{
+  "schema": "bulk-corpus.v1",
+  "cutoff": "2026-11-16",
+  "records": 206920,
+  "import_script_sha256": "9ef77220c517dbc8654b5885f4c67d98f4a8636da337144366641efdff8ab231",
+  "existing_records": 206917,
+  "bulk_selected": 4,
+  "bulk_new_records": 3,
+  "source": {
+    "path": "results/kv-primary-packet-v1/records.jsonl",
+    "sha256": "a4f9de1a659f8bb8f5371eacc59540d34a588a4033fe35c88ddcdbe1a8fdb58b",
+    "lines": 4,
+    "accepted": 4,
+    "skipped": 0,
+    "malformed": 0,
+    "selected": 4,
+    "selected_by_group": {
+      "ml": 4
+    },
+    "quotas": {
+      "ml": 4
+    },
+    "seed": 73031
+  },
+  "existing_snapshot": "results/corpus-openalex-enriched-v3/works.jsonl",
+  "existing_openai_sources": {
+    "path": "results/corpus-openalex-enriched-v3/openai_sources.jsonl",
+    "sha256": "3eaf3c8d58448d8b3389f9a1b435ee6d1ae1c0dac56baccc99003d674305edd7",
+    "records": 15
+  },
+  "corpus_sha256": "211ed45fc1e132e4478e5985969223ee0db23bde1f1665824dac351fa9f1f1d8"
+}

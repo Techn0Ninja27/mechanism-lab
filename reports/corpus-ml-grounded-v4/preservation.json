@@ -1,0 +1,28 @@
+{
+  "old_records": 206917,
+  "new_records": 206920,
+  "added_ids": [
+    "arxiv:2512.19206",
+    "arxiv:2608.14191",
+    "arxiv:2610.11245"
+  ],
+  "old_ids_preserved": true,
+  "old_aliases_preserved": 209939,
+  "fts_rows": 206920,
+  "openai_metadata_byte_identical": true,
+  "influence_known_counts_unchanged": true,
+  "old_content_authors_dates_and_influence_observations_preserved": true,
+  "compared_fields": [
+    "title",
+    "abstract",
+    "authors",
+    "content_sha256",
+    "published_date",
+    "updated_date",
+    "influence_provenance",
+    "citation_count",
+    "field_weighted_citation_impact",
+    "citation_normalized_percentile"
+  ],
+  "comparison_note": "Missing influence_provenance and an empty list represent no observations. MiKV gains its v1 alias, arxiv_id, primary metadata source hash and empty observation list; no prior observations change."
+}

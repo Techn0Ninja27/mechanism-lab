@@ -1,0 +1,38 @@
+{
+  "schema": "arxiv-primary-packet.v1",
+  "date": "2026-11-16",
+  "records": 4,
+  "responses": [
+    {
+      "id": "2512.19206v1",
+      "url": "https://arxiv.org/abs/2512.19206v1",
+      "path": "2512.19206v1.html",
+      "sha256": "77c6e05f95d6f90ba8b3019d719fee7d0d51dfc28b53b3cb881873191d10b258",
+      "bytes": 42064
+    },
+    {
+      "id": "2610.11245v1",
+      "url": "https://arxiv.org/abs/2610.11245v1",
+      "path": "2610.11245v1.html",
+      "sha256": "fb5d9475bec2d476a3aeda5555b13e165446031e437df129520be53673852888",
+      "bytes": 43367
+    },
+    {
+      "id": "2608.14191v1",
+      "url": "https://arxiv.org/abs/2608.14191v1",
+      "path": "2608.14191v1.html",
+      "sha256": "efb4bbb312bd3ba1411afefea0017d234709c3b3ee55166404b39611fbe6a166",
+      "bytes": 41667
+    },
+    {
+      "id": "2402.18096v1",
+      "url": "https://arxiv.org/abs/2402.18096v1",
+      "path": "2402.18096v1.html",
+      "sha256": "6a4aa388d2944f594f778764bfe3cf72e9bdd0ec19430e396d2a0a918815648e",
+      "bytes": 43713
+    }
+  ],
+  "packet_sha256": "a4f9de1a659f8bb8f5371eacc59540d34a588a4033fe35c88ddcdbe1a8fdb58b",
+  "extractor_sha256": "f753a37c201daee89f14a718d7c255574d67588ae263d3e5dcc5bcb25699ea2d",
+  "scope": "Primary abstracts, not full methods or novelty judgments."
+}

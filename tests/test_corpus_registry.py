@@ -22,3 +22,15 @@ class CorpusRegistryTests(unittest.TestCase):
 
     def test_missing_corpus_stays_unavailable(self):
         with tempfile.TemporaryDirectory() as d:self.assertIsNone(active_corpus(d))
+
+    def test_grounded_snapshot_only_replaces_completed_predecessor_after_marker(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            for name in ('corpus-ml-grounded-v4','corpus-openalex-enriched-v3'):
+                p=root/'results'/name;p.mkdir(parents=True);(p/'corpus.sqlite').touch()
+            old=root/'results/corpus-openalex-enriched-v3'
+            (old/'bulk-manifest.json').write_text('{"records":206917}')
+            self.assertEqual(active_corpus(root)['snapshot'],'corpus-openalex-enriched-v3')
+            new=root/'results/corpus-ml-grounded-v4'
+            (new/'bulk-manifest.json').write_text('{"records":206920}')
+            self.assertEqual(active_corpus(root)['snapshot'],'corpus-ml-grounded-v4')

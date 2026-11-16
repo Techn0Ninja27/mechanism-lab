@@ -1,0 +1,104 @@
+{
+  "schema": "kv-window-ranking-prior-art.v2",
+  "audited_date": "2026-11-16",
+  "proposal": {
+    "artifact": "reports/interface-proposal/proposal-and-review.json",
+    "scope": "Per-layer prompt-query/key window ranking for a VLM, with WindowQuant per-clip counts frozen before alternative ranking",
+    "novelty_established": false
+  },
+  "sources": [
+    {
+      "id": "mixkvq",
+      "title": "MixKVQ: Query-Aware Mixed-Precision KV Cache Quantization for Long-Context Reasoning",
+      "url": "https://arxiv.org/abs/2512.19206",
+      "primary_html": "https://arxiv.org/html/2512.19206v1",
+      "read_scope": "Full HTML method: Sections 3.2, 4.1, 4.2; Eqs. 4-8; Appendix D; Appendix F.",
+      "mechanism": "Query magnitude multiplied by key quantization sensitivity ranks key channels for BF16/UINT4/UINT2; values use per-token 2-bit quantization and statistics update periodically.",
+      "overlap": "broad_exact",
+      "difference": "Channel-level LLM allocation versus proposed VLM visual-window, per-layer fixed-count ranking.",
+      "short_source_span": "a key channel's intrinsic quantization difficulty and its relevance to the query"
+    },
+    {
+      "id": "readkv",
+      "title": "Read What Matters: Query-Adaptive Quantization for KV Caches",
+      "url": "https://arxiv.org/abs/2610.11245",
+      "primary_html": "https://arxiv.org/html/2610.11245v1",
+      "read_scope": "Full HTML method: Sections 3-3.2 (query-adaptive reader), Appendix B.2-B.3 (attention-guided precision and query access), Tables 2-3.",
+      "mechanism": "A progressive stored code supports query-selected key prefixes followed by attention-selected value prefixes under separate retained and fetched bit budgets.",
+      "overlap": "broad_exact",
+      "difference": "Query-time progressive reading from an unchanged cache versus prefill-time resident window precision assignment.",
+      "short_source_span": "the query selects key prefixes in the first batch"
+    },
+    {
+      "id": "aatc",
+      "title": "KV Cache Compression Through the Lens of Transform Coding",
+      "url": "https://arxiv.org/abs/2608.14191",
+      "primary_html": "https://arxiv.org/html/2608.14191v1",
+      "read_scope": "Full HTML method: Sections II-B, IV and V-V-A; Table I; Eqs. 6-7; Appendix method references.",
+      "mechanism": "Whitening/SVD transforms and reverse water-filling allocate bits using attention-aware distortion from calibration statistics.",
+      "overlap": "broad_exact",
+      "difference": "Per-token transformed channel allocation from calibration versus prompt-conditioned VLM window ranking.",
+      "short_source_span": "allocate bits over a calibration set to minimize attention-aware distortion"
+    },
+    {
+      "id": "mikv",
+      "title": "No Token Left Behind: Reliable KV Cache Compression via Importance-Aware Mixed Precision Quantization",
+      "url": "https://arxiv.org/abs/2402.18096",
+      "primary_html": "https://arxiv.org/html/2402.18096v1",
+      "read_scope": "Full HTML method: Sections 3.1-3.2; Eqs. 1-4; Table 2; prefill outlier-balancing discussion.",
+      "mechanism": "Important KV pairs stay high precision while less important pairs remain low precision; a query/key outlier-aware prefill balancer reduces low-bit error.",
+      "overlap": "broad_exact",
+      "difference": "Token/pair importance and outlier balancing versus proposed window-level ranking.",
+      "short_source_span": "retaining a minimal amount of information through the process of low-precision quantization"
+    },
+    {
+      "id": "nova-kv",
+      "title": "Spend Bits Where Queries Look: KV Cache Vector Quantization with Attention-Preserving Transforms",
+      "url": "https://arxiv.org/abs/2608.04074",
+      "primary_html": "https://arxiv.org/html/2608.04074v1",
+      "read_scope": "Full HTML method: Sections 3-4; Eqs. 3-5; Sections 5 and Appendix B; Theorem 2 on fixed-rate grouping.",
+      "mechanism": "NOVA-KV derives calibration-based key/value transforms from attention-product distortion and applies fixed-width vector quantization with equal-volume grouping.",
+      "overlap": "broad_exact",
+      "difference": "Attention-product distortion and fixed-rate VQ alter the representation/quantizer, whereas the proposal changes only prefill window ranking and freezes WindowQuant counts.",
+      "short_source_span": "we formulate KV cache compression as a transform coding problem in which distortion is set to be the attention product error"
+    },
+    {
+      "id": "windowquant",
+      "title": "WindowQuant: Mixed-Precision KV Cache Quantization based on Window-Level Similarity for VLMs Inference Optimization",
+      "url": "https://arxiv.org/abs/2605.02262",
+      "primary_html": "https://arxiv.org/html/2605.02262v1",
+      "read_scope": "Full HTML/paper extract checked: Sections 3.1-3.3; Eqs. 8-11; Algorithm 1-2; first-window FP16 and reorder path.",
+      "mechanism": "Visual-window/text-prompt similarity assigns window precision and same-bit windows are reordered for inference.",
+      "overlap": "direct_baseline",
+      "difference": "The proposed experiment changes only the window ranking while freezing baseline counts and other operations.",
+      "short_source_span": "window-adaptive mixed-precision KV cache quantization"
+    },
+    {
+      "id": "fier",
+      "title": "FIER: Fine-Grained and Efficient KV Cache Retrieval for Long-context LLM Inference",
+      "url": "https://arxiv.org/abs/2508.08256",
+      "primary_html": "https://arxiv.org/html/2508.08256v2",
+      "read_scope": "Full HTML/paper extract checked: method algorithm and grouped quantized-key scoring; official implementation was separately pinned in the proposal source pack.",
+      "mechanism": "Query-dependent quantized-key scoring selects important cache tokens for retrieval at decode time.",
+      "overlap": "adjacent",
+      "difference": "Decode retrieval of tokens versus prefill assignment of resident precision to VLM windows.",
+      "short_source_span": "dynamic reassessment of token importance at each decoding step"
+    }
+  ],
+  "decision": {
+    "broad_claim": "reject_as_novel",
+    "narrow_ablation": "worth_a_cheap_trace_test",
+    "conditions": [
+      "equal per-layer byte counts fixed from WindowQuant",
+      "exact softmax-mass and exact-logit controls",
+      "1-bit and 2-bit score arms plus random/position controls",
+      "prompt order and decode-step stratification",
+      "task quality, transfer traces and measured overhead"
+    ]
+  },
+  "limitations": [
+    "This is an abstract/HTML-method audit, not a reproduction of all implementations.",
+    "Absence of an exact-match paper in this audit is not evidence of novelty.",
+    "Reported results are source claims and are not independently verified here."
+  ]
+}

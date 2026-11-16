@@ -81,3 +81,8 @@ The next empirical gate requires real prompt/decode traces, excluding the first
 decode step from the main comparison, frozen development choices, and untouched
 transfer clips/model. Task quality and measured GPU latency are later gates.
 No model weights were downloaded and no GPU benchmark has been run for this proposal.
+
+Follow-up: the [primary-source corpus repair](../corpus-ml-grounded-v4/README.md)
+adds the three missing works. A [full-method audit](../../docs/method-grounding/kv-window-ranking-prior-art.md)
+now distinguishes overlapping mechanisms from the narrow proposed ablation.
+The original paid outputs above remain unchanged.
