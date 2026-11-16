@@ -1,0 +1,744 @@
+{
+  "schema": "citation-neighborhood.v1",
+  "seed": "W4409983225",
+  "limit_per_edge_type": 40,
+  "scope": "Current bounded provider metadata; not historical, exhaustive, novelty or usefulness evidence.",
+  "selection": "References and related IDs sorted lexically; citing works newest first.",
+  "coverage": {
+    "reference_ids": 29,
+    "related_ids": 10,
+    "citing_total": 9,
+    "citing_retained": 9,
+    "unresolved_selected_ids": []
+  },
+  "edges": [
+    {
+      "source": "W4409983225",
+      "target": "W2299115575",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2519887557",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2624431344",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2799069271",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2807021761",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2945827377",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2961295589",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2963241486",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2963581908",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2964571482",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W2970697704",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3021975806",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3022029227",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3035617116",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3037699692",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3080555959",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3112277895",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3141797743",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3159953606",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3164865299",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3166813066",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3206504463",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3209603044",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W3214512668",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4206401350",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4221158657",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4288070868",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4302008959",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4391884321",
+      "type": "cites"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4302008959",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4320339604",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4385763851",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4396628137",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4403346234",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4407013152",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4414458968",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4416355083",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W4416582755",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4409983225",
+      "target": "W7160826828",
+      "type": "provider_related"
+    },
+    {
+      "source": "W4416355083",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W7201865905",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W7165640461",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W7202119577",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W4416016076",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W4406093563",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W4404106063",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W4404106066",
+      "target": "W4409983225",
+      "type": "cites"
+    },
+    {
+      "source": "W4387559542",
+      "target": "W4409983225",
+      "type": "cites"
+    }
+  ],
+  "receipts": [
+    {
+      "url": "https://api.openalex.org/works/W4409983225?select=id%2Ctitle%2Cdoi%2Cpublication_date%2Cabstract_inverted_index%2Creferenced_works%2Crelated_works",
+      "sha256": "555ddee14c7b3f2c3c9c6ab762b4aaad4ffb2d82fff518451ac18ff621646683",
+      "bytes": 4274,
+      "retrieved_at": "2026-11-16T23:06:56.946686+00:00",
+      "provider_reported_cost_usd": null
+    },
+    {
+      "url": "https://api.openalex.org/works?filter=openalex%3AW2299115575%7CW2519887557%7CW2624431344%7CW2799069271%7CW2807021761%7CW2945827377%7CW2961295589%7CW2963241486%7CW2963581908%7CW2964571482%7CW2970697704%7CW3021975806%7CW3022029227%7CW3035617116%7CW3037699692%7CW3080555959%7CW3112277895%7CW3141797743%7CW3159953606%7CW3164865299%7CW3166813066%7CW3206504463%7CW3209603044%7CW3214512668%7CW4206401350%7CW4221158657%7CW4288070868%7CW4302008959%7CW4320339604%7CW4385763851%7CW4391884321%7CW4396628137%7CW4403346234%7CW4407013152%7CW4414458968%7CW4416355083%7CW4416582755%7CW7160826828&per_page=100&select=id%2Ctitle%2Cdoi%2Cpublication_date%2Cabstract_inverted_index%2Creferenced_works%2Crelated_works",
+      "sha256": "4d4e48cbcdca833c4dfefebcfa55e8931c35680815dd7cd126dd094de4ad730a",
+      "bytes": 187197,
+      "retrieved_at": "2026-11-16T23:06:58.655162+00:00",
+      "provider_reported_cost_usd": 0.0001
+    },
+    {
+      "url": "https://api.openalex.org/works?filter=cites%3AW4409983225&per_page=40&sort=publication_date%3Adesc&select=id%2Ctitle%2Cdoi%2Cpublication_date%2Cabstract_inverted_index%2Creferenced_works%2Crelated_works",
+      "sha256": "32fbeda57efead10402e8d62cd44a6b0e7f5d6729a0a1127b2227e8c5b5358fa",
+      "bytes": 57880,
+      "retrieved_at": "2026-11-16T23:07:00.164055+00:00",
+      "provider_reported_cost_usd": 0.0001
+    }
+  ],
+  "novelty_established": false,
+  "records": [
+    {
+      "id": "W2299115575",
+      "title": "Discriminative Embeddings of Latent Variable Models for Structured Data",
+      "doi": "https://doi.org/10.48550/arxiv.1603.05629",
+      "publication_date": "2016-03-17",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "c7495af57382681df175a3a4351e4c94efc6b2bd6cc69a8d811324c1c830ea4d",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2519887557",
+      "title": "Semi-Supervised Classification with Graph Convolutional Networks",
+      "doi": "https://doi.org/10.48550/arxiv.1609.02907",
+      "publication_date": "2016-09-09",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "6d80c18a00aa7c722fcba227593d9e9353a334da7903088f47dfe3721644b822",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2624431344",
+      "title": "Inductive Representation Learning on Large Graphs",
+      "doi": "https://doi.org/10.48550/arxiv.1706.02216",
+      "publication_date": "2017-06-07",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "008dd8346b94f63f0f95f3ce9918760fbfec27b4e714e77ad64f7748424c73aa",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2799069271",
+      "title": "Decoupled Parallel Backpropagation with Convergence Guarantee",
+      "doi": "https://doi.org/10.48550/arxiv.1804.10574",
+      "publication_date": "2018-04-27",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "434a1bf1258d383bfa69be5bcca3fe88bfb28c34378d10950ad816ad975b2aaa",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2807021761",
+      "title": "Graph Convolutional Neural Networks for Web-Scale Recommender Systems",
+      "doi": "https://doi.org/10.1145/3219819.3219890",
+      "publication_date": "2018-07-19",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "085865bca5e6de55ceec0c45f92c0f31f1bd85423e056ad663f01c022edc2388",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2945827377",
+      "title": "Cluster-GCN: An Efficient Algorithm for Training Deep and Large Graph Convolutional Networks",
+      "doi": "https://doi.org/10.1145/3292500.3330925",
+      "publication_date": "2019-07-25",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "fba0abc3509e5603be9b261ea4c2a8183d6b94c432e7fc8850f9e5eb1cb6def9",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2961295589",
+      "title": "GraphSAINT: Graph Sampling Based Inductive Learning Method",
+      "doi": "https://doi.org/10.48550/arxiv.1907.04931",
+      "publication_date": "2019-07-10",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "750c41865792566614d0d04ffcecce294a19fe5fd661ddf19b8220a2b271a8a8",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2963241486",
+      "title": "GCN-GAN: A Non-linear Temporal Link Prediction Model for Weighted Dynamic Networks",
+      "doi": "https://doi.org/10.1109/infocom.2019.8737631",
+      "publication_date": "2019-04-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "964d30696005819f9c36f7c679e69c674b559c568bef6db7ddaf49bc53ca1c11",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2963581908",
+      "title": "Stochastic Training of Graph Convolutional Networks with Variance Reduction",
+      "doi": null,
+      "publication_date": "2018-07-03",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "f74250ff9670699efee45fe220b23ec130f636b445d04b94760ccafc684b033d",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2964571482",
+      "title": "AliGraph: A Comprehensive Graph Neural Network Platform",
+      "doi": "https://doi.org/10.1145/3292500.3340404",
+      "publication_date": "2019-07-25",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "be217215a486c7944960ce48bce33a51f94e3fc60467f36397ba9ea5475d6b82",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W2970697704",
+      "title": "Meta-Learning with Implicit Gradients",
+      "doi": "https://doi.org/10.48550/arxiv.1909.04630",
+      "publication_date": "2019-09-10",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "8f419e643ec6884180fb97677774bcce8e169b92b5ef32bd1f39adccb8c1fb4b",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3021975806",
+      "title": "Open Graph Benchmark: Datasets for Machine Learning on Graphs",
+      "doi": "https://doi.org/10.48550/arxiv.2005.00687",
+      "publication_date": "2020-05-02",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "0d322b83ccae6552f89fc10fc32381d35e37ee72fbf1d76bf38e0f5fe6041ae4",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3022029227",
+      "title": "Reducing Communication in Graph Neural Network Training",
+      "doi": "https://doi.org/10.1109/sc41405.2020.00074",
+      "publication_date": "2020-11-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "b7d6f7c0ebf6c3224666e1bad6e705355c9e79a8b8cd0f42eded7da55ef2f0f4",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3035617116",
+      "title": "On the Acceleration of Deep Learning Model Parallelism With Staleness",
+      "doi": "https://doi.org/10.1109/cvpr42600.2020.00216",
+      "publication_date": "2020-06-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "4ec848d9384587dec9f30bfae16951ca7a7a6a39f9a41f9eacd9178ec35d235b",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3037699692",
+      "title": "Improving the Accuracy, Scalability, and Performance of Graph Neural Networks with Roc",
+      "doi": null,
+      "publication_date": "2020-03-15",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3080555959",
+      "title": "Deep Graph Library: A Graph-Centric, Highly-Performant Package for Graph Neural Networks",
+      "doi": "https://doi.org/10.48550/arxiv.1909.01315",
+      "publication_date": "2019-09-03",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "b9957012868e1e2cac1ddf877813680ab67c45bde476449dcaddce5531bbec77",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3112277895",
+      "title": "Distributed Training of Graph Convolutional Networks using Subgraph Approximation",
+      "doi": "https://doi.org/10.48550/arxiv.2012.04930",
+      "publication_date": "2020-12-09",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "ffbf09ee693b9524e7c2853b7ed67d78f214e87bcf9ea75d439be4daff46398d",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3141797743",
+      "title": "A Survey on Multi-Task Learning",
+      "doi": "https://doi.org/10.1109/tkde.2021.3070203",
+      "publication_date": "2021-03-31",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "e87bd504e8bf22054664f257d2d9fafd507282e724c5f64ad02805b4f4ec26dc",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3159953606",
+      "title": "DistDGL: Distributed Graph Neural Network Training for Billion-Scale Graphs",
+      "doi": "https://doi.org/10.1109/ia351965.2020.00011",
+      "publication_date": "2020-11-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "4b64d94bbad94fdb0ba52eea6594a1f9a9c782e72ace8f1286ca59c87289c569",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3164865299",
+      "title": "Dorylus: Affordable, Scalable, and Accurate GNN Training with Distributed CPU Servers and Serverless Threads",
+      "doi": "https://doi.org/10.48550/arxiv.2105.11118",
+      "publication_date": "2021-05-24",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "08ee0956cb4c242217ff814de47590d10ee450588ccfbe2d31e168cd7ef599a1",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3166813066",
+      "title": "GNNAutoScale: Scalable and Expressive Graph Neural Networks via Historical Embeddings",
+      "doi": "https://doi.org/10.48550/arxiv.2106.05609",
+      "publication_date": "2021-06-10",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "f5a8edf723a5bb06fd9322cc02d38b213631d07d9306ff54b46e86546a16e0fb",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3206504463",
+      "title": "DistGNN: scalable distributed training for large-scale graph neural networks",
+      "doi": "https://doi.org/10.1145/3458817.3480856",
+      "publication_date": "2021-10-21",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "72ebb044b3fd90c7a718faebd23275deb9653598f422b62f764240ff0500b4a2",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3209603044",
+      "title": "On the Importance of Sampling in Training GCNs: Tighter Analysis and Variance Reduction",
+      "doi": "https://doi.org/10.48550/arxiv.2103.02696",
+      "publication_date": "2021-03-03",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "78b992626de3b3d9f44b6b4ed3aa52b89ab5516c2861f6d196d0225467e0b621",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W3214512668",
+      "title": "Learn Locally, Correct Globally: A Distributed Algorithm for Training Graph Neural Networks",
+      "doi": "https://doi.org/10.48550/arxiv.2111.08202",
+      "publication_date": "2021-11-16",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "742c337dab64067c0ee6b33da6ea2dcfc6611d919c1ed4761371d6326aec8f09",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4206401350",
+      "title": "Graph Neural Networks",
+      "doi": "https://doi.org/10.1007/978-981-16-6054-2_3",
+      "publication_date": "2022-01-03",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4221158657",
+      "title": "PipeGCN: Efficient Full-Graph Training of Graph Convolutional Networks with Pipelined Feature Communication",
+      "doi": "https://doi.org/10.48550/arxiv.2203.10428",
+      "publication_date": "2022-03-20",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "4fd62a4aa2dffbd96d50fec977b430c9f737c0144f26c5c62c6d5927afc5e0e2",
+      "exact_normalized_title_in_local_top20": true
+    },
+    {
+      "id": "W4288070868",
+      "title": "Sancus: s t a le n ess-aware c omm u nication-avoiding full-graph decentralized training in large-scale graph neural networks",
+      "doi": "https://doi.org/10.14778/3538598.3538614",
+      "publication_date": "2022-05-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "dbad04ecc5825d73df50cce522812dffeffe499384f58fa35d7ba0ddbc398eb9",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4302008959",
+      "title": "Distributed Graph Neural Network Training with Periodic Stale Representation Synchronization",
+      "doi": "https://doi.org/10.48550/arxiv.2206.00057",
+      "publication_date": "2022-05-31",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "227129680b1aa150fe3a89252b5f06647593b005b0f40c5f8026228491f2d0f5",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4320339604",
+      "title": "DistGNN-MB: Distributed Large-Scale Graph Neural Network Training on x86 via Minibatch Sampling",
+      "doi": "https://doi.org/10.48550/arxiv.2211.06385",
+      "publication_date": "2022-11-11",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "5124961d54c0d7a7ee0c8be4816bd7b7ea6289cd6b013ccf9c495d6a2a2b7e33",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4385763851",
+      "title": "Sancus: Staleness-Aware Communication-Avoiding Full-Graph Decentralized Training in Large-Scale Graph Neural Networks (Extended Abstract)",
+      "doi": "https://doi.org/10.24963/ijcai.2023/724",
+      "publication_date": "2023-08-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "6fd1ac7888623339b89065fe0bbd4eea739b461cbad104aefb87827988ba02e1",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4387559542",
+      "title": "Beyond Text: A Deep Dive into Large Language Models' Ability on Understanding Graph Data",
+      "doi": "https://doi.org/10.48550/arxiv.2310.04944",
+      "publication_date": "2023-10-07",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "ff5c22d5351414c471873117a8a8652fb57199d8015b6bdfbf7ee17506d5b42e",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4391884321",
+      "title": "Distributed Graph Neural Network Training: A Survey",
+      "doi": "https://doi.org/10.1145/3648358",
+      "publication_date": "2024-02-16",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "946b7e47e02a3566767cba08836651025913d90a7886c9a8795c4db2318bfcd5",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4396628137",
+      "title": "FreshGNN: Reducing Memory Access via Stable Historical Embeddings for Graph Neural Network Training",
+      "doi": "https://doi.org/10.14778/3648160.3648184",
+      "publication_date": "2024-02-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "185516df7be036eadd8736786ec05b01988c24e747fe41c9cfc6aa085d4c32b3",
+      "exact_normalized_title_in_local_top20": true
+    },
+    {
+      "id": "W4403346234",
+      "title": "Haste Makes Waste: A Simple Approach for Scaling Graph Neural Networks",
+      "doi": "https://doi.org/10.48550/arxiv.2410.05416",
+      "publication_date": "2024-10-07",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "1d181a49a99161aad4e4a59a913b29c09af905c71129fd1106a0d8151a1ab782",
+      "exact_normalized_title_in_local_top20": true
+    },
+    {
+      "id": "W4404106063",
+      "title": "Proceedings of the 1st ACM SIGSPATIAL International Workshop on Geospatial Anomaly Detection",
+      "doi": "https://doi.org/10.1145/3681765",
+      "publication_date": "2024-10-29",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "ba3e6583160dffde00e0e21d0192356c6dc9c5b200c87e0169b6d057d4d27793",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4404106066",
+      "title": "Large Language Models for Spatial Trajectory Patterns Mining",
+      "doi": "https://doi.org/10.1145/3681765.3698467",
+      "publication_date": "2024-10-29",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "0a616075e87c1646dd29c0315ace00607969bd2c0f0d2805dec028f49b5bdd85",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4406093563",
+      "title": "MixGCN: Scalable GCN Training by Mixture of Parallelism and Mixture of Accelerators",
+      "doi": "https://doi.org/10.48550/arxiv.2501.01951",
+      "publication_date": "2025-01-03",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "fef521f709bc2220a74c7afe1ecd301dd818685715a8baa36dc32b3c2057dd14",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4407013152",
+      "title": "From Sancus to Sancus $$^q$$: staleness and quantization-aware full-graph decentralized training in graph neural networks",
+      "doi": "https://doi.org/10.1007/s00778-024-00897-2",
+      "publication_date": "2025-01-31",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "6fae6eec01423874a2fd2371667738c45f02850743874b462bb031dc4c876096",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4409983225",
+      "title": "Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction",
+      "doi": "https://doi.org/10.1137/1.9781611978520.62",
+      "publication_date": "2025-01-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "47a5a3b2e045e5467874526e2729ea4a7960deb620e19bfa2234e292bcbab2a5",
+      "exact_normalized_title_in_local_top20": true
+    },
+    {
+      "id": "W4414458968",
+      "title": "Efficient Distributed Graph Neural Network Training With Source Chunking and Moving Aggregation",
+      "doi": "https://doi.org/10.1109/tkde.2025.3613787",
+      "publication_date": "2025-09-24",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "b05349b2106f0ddc04b24a6f8b42bccfe3b3733123450cf422d5a297bc34e299",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4416016076",
+      "title": "LCHGNN: Towards Distributed Hypergraph Neural Network Training Based on Communication Graphs with Lightweight Communication Optimization",
+      "doi": "https://doi.org/10.1145/3746252.3761229",
+      "publication_date": "2025-11-07",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "3847cb057fa72a696864df99d0e1b77364fef5533e55caf4f10d86319c021d49",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W4416355083",
+      "title": "VISAGNN: Versatile Staleness-Aware Efficient Training on Large-Scale Graphs",
+      "doi": "https://doi.org/10.1137/1.9781611979329.13",
+      "publication_date": "2026-10-31",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "7b8e0b6bfb2143acfe42f34aee1a684b23d9f3704515e41b03523bc433d8ed3b",
+      "exact_normalized_title_in_local_top20": true
+    },
+    {
+      "id": "W4416582755",
+      "title": "GLPilot: Efficient Distributed GNN Training With Learnable Embeddings",
+      "doi": "https://doi.org/10.1109/tpds.2025.3636057",
+      "publication_date": "2025-11-24",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "0f8ce618e3d5a382b810516665b9565531eb4e9f39b673fdb4f409fea8ff3dee",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W7160826828",
+      "title": "Sift: Channel-Wise Historical Embedding for High Efficiency Distributed Graph Neural Network Training with Accuracy Guarantee",
+      "doi": "https://doi.org/10.1145/3809161",
+      "publication_date": "2026-05-11",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "881020d953575a6777374394a024da2f773bd750691db86645990baae2d5ca4a",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W7165640461",
+      "title": "FeLoG: Scalable and Efficient Distributed Graph Embedding with Feedback Loop Mechanism",
+      "doi": "https://doi.org/10.14778/3828612.3828633",
+      "publication_date": "2026-06-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "f00cd3142148e6d45657493e0a26e2cfba9b52706b7965996228461db50dd8ab",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W7201865905",
+      "title": "Efficient Distributed Mini-Batch GNN Training With Decentralized Batch Processing",
+      "doi": "https://doi.org/10.1109/tkde.2026.3721629",
+      "publication_date": "2026-08-07",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "026b5b623a74bfa531229347a1e589c6f9b71e4cf459a465c75350a1ee9ceb6d",
+      "exact_normalized_title_in_local_top20": false
+    },
+    {
+      "id": "W7202119577",
+      "title": "SNI-GNN: SmartNIC-Assisted Full-Graph GNN Training with In-Network Embedding Prediction",
+      "doi": "https://doi.org/10.1109/icde65706.2026.00139",
+      "publication_date": "2026-05-01",
+      "evidence_level": "abstract_or_metadata_only",
+      "abstract_sha256": "7869f21f503d243433dbe3f7de793cb1704e1de274d52ed416598b9a951a8271",
+      "exact_normalized_title_in_local_top20": false
+    }
+  ],
+  "comparison": {
+    "queries": [
+      "embedding prediction staleness",
+      "historical embedding graph",
+      "staleness graph training"
+    ],
+    "local_limit": 20,
+    "neighborhood_records": 47,
+    "local_records": 20,
+    "scope": "Exploratory unequal-budget inspection; not held-out recall or precision. Exact normalized title matching can miss versions/aliases. Leads selected after inspecting results.",
+    "local_titles": [
+      "Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction",
+      "Learning Large Graph Property Prediction via Graph Segment Training",
+      "VISAGNN: Versatile Staleness-Aware Efficient Training on Large-Scale Graphs",
+      "Feature Staleness Aware Incremental Learning for CTR Prediction",
+      "Matched Excess-Outranker Regularization for Candidate-Set Interference in Continual Knowledge Graph Embedding",
+      "MSPipe: Efficient Temporal GNN Training via Staleness-Aware Pipeline",
+      "Mutable Low-Rank Sketches for Retrain-Free Recommendation",
+      "Bridge-Adaptive Continual Knowledge Graph Embedding with Topology-Aware Negative Sampling",
+      "Haste Makes Waste: A Simple Approach for Scaling Graph Neural Networks",
+      "TAWRMAC: A Novel Dynamic Graph Representation Learning Method",
+      "Dynamic Graph Link Prediction by Semantic Evolution",
+      "Boosting Distributed Full-graph GNN Training with Asynchronous One-bit Communication",
+      "Dynamic Graph World Modelling: Learning Future Dynamics from Temporal Context",
+      "NeutronOrch: Rethinking Sample-based GNN Training under CPU-GPU Heterogeneous Environments",
+      "Trajectory Prediction for Autonomous Driving using Agent-Interaction Graph Embedding",
+      "PipeGCN: Efficient Full-Graph Training of Graph Convolutional Networks with Pipelined Feature Communication",
+      "Multi-Relation Aware Temporal Interaction Network Embedding",
+      "FreshGNN: Reducing Memory Access via Stable Historical Embeddings for Graph Neural Network Training",
+      "WaveGAS: Waveform Relaxation for Scaling Graph Neural Networks",
+      "GreenGNN: Energy-Aware Windowed Communication Optimization for Distributed GNN Training"
+    ]
+  },
+  "verification": {
+    "offline_replay_byte_identical": true,
+    "neighborhood_sha256": "a5c381dc363c1ae88c607c5fc1e61053a0bac81742478ceca00fcf6d44bc9293",
+    "module_sha256": "b684ef55fd1c20c8df87f4cec492f59982931c9c97e3cc33ef1dbef59cb47dc1",
+    "seed_resolution": "Manually matched exact title to local arxiv:2308.13466; OpenAlex uses the 2025 conference DOI, local arXiv is the 2023 preprint. No automatic fuzzy identity merge."
+  }
+}
