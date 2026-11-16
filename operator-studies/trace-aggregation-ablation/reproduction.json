@@ -1,0 +1,5 @@
+{
+  "same_code_reproduction_byte_identical": true,
+  "result_sha256": "7772338551dc009f714e396711deaf75f829bbcd538133370b54f7e83b209fa0",
+  "scope": "Same-machine deterministic replay, not external replication."
+}

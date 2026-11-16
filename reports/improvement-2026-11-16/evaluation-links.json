@@ -26,5 +26,12 @@
     "result_path": "operator-studies/trace-window-ablation/result.json",
     "report_path": "operator-studies/trace-window-ablation/README.md",
     "result_sha256": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5"
+  },
+  "grounded-contract-v1": {
+    "status": "exploratory_aggregation_no_strong_control_gain",
+    "summary": "One-bit max lowers relative L2 slightly on two exposed images but remains worse than exact attention mass; cosine worsens slightly on candy. Original controls reproduce exactly. This is local teacher-forced replay, not an end-to-end task or speed result.",
+    "result_path": "operator-studies/trace-aggregation-ablation/result.json",
+    "report_path": "operator-studies/trace-aggregation-ablation/README.md",
+    "result_sha256": "7772338551dc009f714e396711deaf75f829bbcd538133370b54f7e83b209fa0"
   }
 }

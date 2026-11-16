@@ -65,6 +65,9 @@ judgments. The diversity-constrained selector remains experimental.
 A [source-contract pilot](reports/interface-contracts/README.md) now supplies
 required inputs, intermediate-output exposure and representation constraints
 to grounded proposals. Its two curated substeps are not a general type system.
+A [fresh contract-aware run](reports/contract-generation-v1/README.md) still made
+factual review errors. These are audited separately in the workbench; a max-score
+follow-up did not beat the stronger attention control.
 
 ## What works today
 

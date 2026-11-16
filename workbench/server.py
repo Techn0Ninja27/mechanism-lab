@@ -20,6 +20,7 @@ import sys
 import shutil
 import zipfile
 import pathlib
+import re
 import signal
 import subprocess
 import threading
@@ -331,6 +332,48 @@ def grounded_rows():
     rows = []
     links = read_json(ENGINE / "reports" / "improvement-2026-11-16" / "evaluation-links.json", {}) or {}
 
+    def factual_audit(result_path):
+        """Read an optional hash-bound post-run audit as untrusted commentary."""
+        sidecar = result_path.with_name("factual-audit.json")
+        base = {"status": "unavailable", "verified": False, "findings": [],
+                "summary": "No post-run factual audit has been linked."}
+        try:
+            if not sidecar.is_file() or sidecar.is_symlink():
+                return base
+            if sidecar.stat().st_size > 100_000:
+                return {**base, "status": "invalid", "summary": "Factual audit exceeds the size limit."}
+            with sidecar.open("rb") as stream:
+                payload = stream.read(100_001)
+            if len(payload) > 100_000:
+                return {**base, "status": "invalid", "summary": "Factual audit exceeds the size limit."}
+            record = json.loads(payload)
+            if not isinstance(record, dict) or set(record) != {"source_result_sha256", "scope", "findings"}:
+                return {**base, "status": "invalid", "summary": "Factual audit schema is invalid."}
+            scope = record["scope"]
+            findings = record["findings"]
+            if (not isinstance(scope, str) or not scope.strip() or len(scope) > 1000 or
+                    not isinstance(findings, list) or len(findings) > 10):
+                return {**base, "status": "invalid", "summary": "Factual audit fields are invalid."}
+            if (not isinstance(record["source_result_sha256"], str) or
+                    not re.fullmatch(r"[0-9a-f]{64}", record["source_result_sha256"])):
+                return {**base, "status": "invalid", "summary": "Factual audit result hash is invalid."}
+            checked = []
+            for finding in findings:
+                if (not isinstance(finding, dict) or set(finding) != {"claim", "assessment", "evidence"} or
+                        not isinstance(finding["claim"], str) or not finding["claim"].strip() or len(finding["claim"]) > 1000 or
+                        not isinstance(finding["assessment"], str) or not finding["assessment"].strip() or len(finding["assessment"]) > 2000 or
+                        not isinstance(finding["evidence"], str) or not finding["evidence"].strip() or len(finding["evidence"]) > 1000):
+                    return {**base, "status": "invalid", "summary": "Factual audit finding fields are invalid."}
+                checked.append({k: finding[k] for k in ("claim", "assessment", "evidence")})
+            actual = hashlib.sha256(result_path.read_bytes()).hexdigest()
+            if actual != record["source_result_sha256"]:
+                return {**base, "status": "mismatch", "summary": "Factual audit does not match the saved result."}
+            return {"status": "attached", "verified": True, "scope": scope, "findings": checked,
+                    "source_result_sha256": actual,
+                    "summary": "Machine-assisted post-run factual audit; not scientific validation."}
+        except (OSError, ValueError, TypeError, json.JSONDecodeError):
+            return {**base, "status": "invalid", "summary": "Factual audit could not be read."}
+
     def operator_check(run_id):
         record = links.get(run_id) if isinstance(links, dict) else None
         if not isinstance(record, dict):
@@ -392,6 +435,7 @@ def grounded_rows():
                      "review": {k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
                      "budget": {"cap_usd": budget.get("cap_usd"), "actual_usd": spent, "active_reserved_usd": reserved},
                      "artifact": public_path(result_path),
+                     "factual_audit": factual_audit(result_path),
                      "operator_evaluation": operator_check(result_path.parent.name) if phase == "improvement-phase-2026-11-16" else {"status":"unavailable","verified":False,"summary":"No operator check linked for this run."}})
     return rows
 

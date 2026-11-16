@@ -52,3 +52,8 @@ From the fork, substitute `workbench` for `experiments/alien-science/webapp`. Te
 ## Operator library and local checks
 
 The Operator Library displays known typed operators and compatible chains from the engine catalog, with source references. Its local checker accepts bounded integer inputs and verifies an exact encode/decode round trip using registered operators. It makes no model/API calls. A passing check demonstrates that input round trip only; it does not establish novelty or general correctness. See the engine repository README for frozen benchmark results and the negative utility-ranker result.
+
+Generated research can display a separate machine-assisted factual audit from
+a hash-bound `factual-audit.json` sidecar. The audit is commentary against saved
+evidence, not scientific validation. Missing, malformed, oversized or mismatched
+audits cannot display accepted findings. Original model outputs remain intact.

@@ -39,3 +39,11 @@ to execute a paid plan after feedback changes. An offline plan using the actual
 FIER/WindowQuant source pack matched the saved pilot record without warnings.
 No paid generation was used to validate this integration. Its effect on future
 proposal quality remains to be measured.
+
+2026-11-17 update: a real generation/review run confused ranking inputs with
+evaluation inputs, proposed an already-tested two-bit arm, and inferred equal
+measurements from rounded summaries. The feedback now explicitly records
+prefill-only selection, already-tested arms, more precise values and the fact
+that exact attention mass is not a theoretical fidelity ceiling. The max-
+aggregation follow-up is a second scoped record. These corrections do not
+establish that future reviews are reliable; see the post-run factual audit.

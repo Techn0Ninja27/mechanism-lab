@@ -1,0 +1,70 @@
+{
+  "calls": [
+    {
+      "stage": "proposal-0",
+      "status": "complete",
+      "request_hash": "1f327b3f68a7a6ddb30288c28d9d55b95276e327ed6647727572e3811fee0834",
+      "usage": {
+        "prompt_tokens": 47960,
+        "completion_tokens": 2707,
+        "total_tokens": 50667,
+        "cost": 0.2435202,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.24598,
+          "upstream_inference_prompt_cost": 0.19184,
+          "upstream_inference_completions_cost": 0.05414
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 464,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794811905-Jc8AfflxJ5dYzzQXgUH8",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop"
+    },
+    {
+      "stage": "review-1",
+      "status": "complete",
+      "request_hash": "7e1c24969759999542f0fd33ce99762943931a5ae394b56610701db91aba3328",
+      "usage": {
+        "prompt_tokens": 49429,
+        "completion_tokens": 1956,
+        "total_tokens": 51385,
+        "cost": 0.23446764,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.236836,
+          "upstream_inference_prompt_cost": 0.197716,
+          "upstream_inference_completions_cost": 0.03912
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 638,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794811936-b2GDIeXo46RWTpS2yV6O",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop"
+    }
+  ],
+  "phase_budget_accounted_usd": 2.1678281,
+  "run_budget_accounted_usd": 0.482816,
+  "run_usage_cost_usd": 0.47798784,
+  "phase_cap_usd": 10
+}

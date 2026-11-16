@@ -1,0 +1,477 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "16997471287688c26cd714e5cce5e2a949cf1f93b51ca3e91c2e75408650235d",
+  "status": "reviewed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://arxiv.org/abs/2508.08256v2",
+        "https://arxiv.org/abs/2605.02262v1",
+        "https://github.com/SimWangArizona/FIER"
+      ]
+    }
+  },
+  "experiment_feedback": {
+    "schema_version": "experiment-feedback-report.v1",
+    "scope": "partial curated experiment feedback; artifact integrity does not establish scientific validity, usefulness, feasibility, or novelty",
+    "records": [
+      {
+        "id": "fier-windowquant-onebit-trace-v1",
+        "source_urls": [
+          "https://arxiv.org/abs/2508.08256",
+          "https://arxiv.org/abs/2605.02262"
+        ],
+        "tested_change": "Replace an aligned-input cosine proxy with 1-bit grouped-key mean-logit ranking of visual token chunks, at fixed per-layer resident precision counts. Relative L2 attention-output errors: one-bit 0.02518 vs exact softmax mass 0.01510 on candy; 0.02229 vs 0.01510 on statue. One-bit failed the frozen fidelity gate.",
+        "verdict": "no_support_for_one_bit_in_exposed_pilot",
+        "scope": "Two already-exposed SmolVLM-256M still images; 30 layers and decoder steps 1\u20133. Eight chunks of eight visual tokens with fixed counts: two FP16, three INT4, three INT2; first chunk FP16. Generic affine KV quantization.",
+        "limitations": [
+          "Not a WindowQuant or FIER replication; aligned-input embeddings and token chunks are proxies.",
+          "Not held-out data, video clips, end-to-end generation or propagated error evaluation.",
+          "Scoring uses 32-token key groups; resident KV uses 8-token groups. These are distinct surrogate operators.",
+          "No measured GPU memory traffic, speed or transient overhead; an efficiency-versus-fidelity tradeoff remains untested.",
+          "No scientific novelty or general infeasibility claim. The whole source pair is not rejected."
+        ],
+        "report_path": "operator-studies/trace-window-ablation/README.md",
+        "result_path": "operator-studies/trace-window-ablation/result.json",
+        "result_sha256": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5",
+        "train_eligible": false,
+        "novelty_established": false,
+        "normalized_source_ids": [
+          "arxiv:2508.08256",
+          "arxiv:2605.02262"
+        ],
+        "artifact_sha256_verified": true
+      }
+    ],
+    "warnings": [],
+    "matched_count": 1,
+    "registry_sha256": "a37f3e06dc1289a35e9c417a57e2ad9995780012c66c47cb165c00cbe961909a"
+  },
+  "source_contracts": {
+    "scope": "Partial curated source declarations; not executable compatibility, novelty or correctness proofs.",
+    "contracts": [
+      {
+        "id": "fier_importance_substep",
+        "source_id": "fier",
+        "interpretation": "curated_not_formally_verified",
+        "evidence": [
+          {
+            "id": "score",
+            "chunk_id": "fier:chunk:0009",
+            "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+            "quote": "s\u0303 = q \u00b7 K\u0303\u22a4"
+          },
+          {
+            "id": "reconstruct",
+            "chunk_id": "fier:chunk:0009",
+            "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+            "quote": "K\u0303 = KQ \u2299 sK + zK"
+          },
+          {
+            "id": "select",
+            "chunk_id": "fier:chunk:0009",
+            "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+            "quote": "Sq = Top-k(s\u0303)"
+          },
+          {
+            "id": "grouping",
+            "chunk_id": "fier:chunk:0008",
+            "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+            "quote": "groups of size g along each channel"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "query",
+            "artifact": "query_tensor",
+            "representation": "full_precision_dense",
+            "granularity": "query",
+            "phase": null,
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "query_key_dimension_match"
+            ],
+            "evidence_ids": [
+              "score"
+            ]
+          },
+          {
+            "id": "key_codes",
+            "artifact": "quantized_key_codes",
+            "representation": "binary_codes",
+            "granularity": "token_channel",
+            "phase": null,
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "matching_scale_offset_layout",
+              "group_size_and_channel_layout_known"
+            ],
+            "evidence_ids": [
+              "reconstruct",
+              "grouping"
+            ]
+          },
+          {
+            "id": "scale_offset",
+            "artifact": "quantizer_metadata",
+            "representation": "groupwise_scale_offset_tensors",
+            "granularity": "sequence_group_channel",
+            "phase": null,
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "matching_scale_offset_layout",
+              "group_size_and_channel_layout_known"
+            ],
+            "evidence_ids": [
+              "reconstruct",
+              "grouping"
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "importance",
+            "artifact": "token_scores",
+            "representation": "approximate_qk_scores",
+            "granularity": "token",
+            "phase": null,
+            "role": "artifact",
+            "exposure": "intermediate",
+            "conditions": [
+              "query_conditioned"
+            ],
+            "evidence_ids": [
+              "score"
+            ]
+          },
+          {
+            "id": "selected_indices",
+            "artifact": "token_indices",
+            "representation": "index_vector",
+            "granularity": "token",
+            "phase": null,
+            "role": "artifact",
+            "exposure": "intermediate",
+            "conditions": [],
+            "evidence_ids": [
+              "select"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "windowquant_partition_substep",
+        "source_id": "windowquant-method",
+        "interpretation": "curated_not_formally_verified",
+        "evidence": [
+          {
+            "id": "cache",
+            "chunk_id": "windowquant-method:chunk:0005",
+            "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+            "quote": "K, V cache of the visual tokens"
+          },
+          {
+            "id": "scores",
+            "chunk_id": "windowquant-method:chunk:0005",
+            "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+            "quote": "s: the similarity score list"
+          },
+          {
+            "id": "thresholds",
+            "chunk_id": "windowquant-method:chunk:0005",
+            "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+            "quote": "T_low, T_high"
+          },
+          {
+            "id": "phase",
+            "chunk_id": "windowquant-method:chunk:0004",
+            "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+            "quote": "we first calculate the output token"
+          },
+          {
+            "id": "layer_thresholds",
+            "chunk_id": "windowquant-method:chunk:0004",
+            "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+            "quote": "current layer index"
+          }
+        ],
+        "inputs": [
+          {
+            "id": "cache",
+            "artifact": "kv_cache_pair",
+            "representation": "full_precision_dense",
+            "granularity": "visual_window",
+            "phase": "after_prefill_attention_before_decode",
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "aligned_key_value_positions",
+              "window_membership_available"
+            ],
+            "evidence_ids": [
+              "cache",
+              "phase"
+            ]
+          },
+          {
+            "id": "similarities",
+            "artifact": "window_scores",
+            "representation": "encoder_cosine_similarity",
+            "granularity": "visual_window",
+            "phase": "after_prefill_attention_before_decode",
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "visual_text_alignment"
+            ],
+            "evidence_ids": [
+              "scores",
+              "phase"
+            ]
+          },
+          {
+            "id": "thresholds",
+            "artifact": "precision_thresholds",
+            "representation": "per_layer_scalar_pair",
+            "granularity": "layer",
+            "phase": "after_prefill_attention_before_decode",
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [],
+            "evidence_ids": [
+              "thresholds",
+              "phase",
+              "layer_thresholds"
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "grouped_cache",
+            "artifact": "kv_cache_pair",
+            "representation": "bitwidth_grouped_blocks",
+            "granularity": "visual_window",
+            "phase": "after_prefill_attention_before_decode",
+            "role": "artifact",
+            "exposure": "intermediate",
+            "conditions": [
+              "aligned_key_value_positions"
+            ],
+            "evidence_ids": [
+              "cache",
+              "scores",
+              "thresholds"
+            ]
+          }
+        ]
+      }
+    ],
+    "warnings": [],
+    "matched_count": 2
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v3",
+    "query_hash": "759809ec8fac23a841507ee200177328e8ada3b943c1dd8f3ff29b70e87e4e76",
+    "queries": [
+      "query cache precision",
+      "attention cache distortion",
+      "importance cache precision"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus"
+    ],
+    "failures": [],
+    "errors": [],
+    "coverage": [
+      {
+        "query": "query cache precision",
+        "compiled_query": "\"query\" AND \"cache\" AND \"precision\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 5
+      },
+      {
+        "query": "attention cache distortion",
+        "compiled_query": "\"attention\" AND \"cache\" AND \"distortion\"",
+        "provider": "local_corpus",
+        "records": 8,
+        "status": "ok",
+        "retained_records": 3
+      },
+      {
+        "query": "importance cache precision",
+        "compiled_query": "\"importance\" AND \"cache\" AND \"precision\"",
+        "provider": "local_corpus",
+        "records": 6,
+        "status": "ok",
+        "retained_records": 3
+      }
+    ],
+    "truncation": {
+      "truncated": true,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "5dfbfcfc4a8742aac3dc8a54bb7cc55f567709859ee163dbf7ef677fa22259d4"
+  },
+  "retrieved_source_count": 10,
+  "proposal": {
+    "title": "Rejection: no distinct, justified next operator test for the FIER/WindowQuant window-precision pairing after the exposed one-bit ranking failure",
+    "hypothesis": "No new hypothesis is advanced. The one candidate examined below is rejected: replacing the 1-bit grouped-key window scorer with the 2-bit scorer used in the pinned FIER code would lower relative L2 decode-step attention-output error at fixed per-layer window precision counts. The reasons are given in prior_art_difference and decision.",
+    "baseline": "Strongest supplied controls: (1) WindowQuant window partitioning (windowquant-method Algorithm 1 and Algorithm 2), with text\u2013visual encoder cosine scores, per-layer T_low/T_high thresholds, the first window fixed at FP16, and reordered FP16/INT4/INT2 blocks; (2) the local exact-softmax-mass window ranking from local_experiment:fier-windowquant-onebit-trace-v1, with relative L2 of 0.01510 on both images; (3) FIER Algorithm 1 token Top-k from q\u00b7K\u0303\u1d40 with channel-wise groups of g=32. The official FierAttention.py at commit e0b3415 calls quantize_and_pack with bit=2 and group_size=32, not 1 bit. Static, random and query-aware mixed-precision controls (MixKVQ, ReadKV, MiKV) are known from abstracts only.",
+    "operator_delta": "Candidate only, rejected: change the window-scoring quantizer bit-width from 1 to 2, matching the pinned FIER code, inside the scoring path of the tested local operator. Nothing else would change.",
+    "evidence": [
+      {
+        "chunk_id": "fier:chunk:0009",
+        "quote": "Sq = Top-k(s\u0303)",
+        "supports": "FIER's output is a token-index selection used for sparse exact attention. It is not a per-window bit-width assignment, so using it for windows requires an adapter."
+      },
+      {
+        "chunk_id": "fier:chunk:0008",
+        "quote": "groups of size g along each channel",
+        "supports": "FIER groups along each channel. This differs from the 8-token resident grouping used in the local pilot."
+      },
+      {
+        "chunk_id": "fier-code:chunk:0003",
+        "quote": "past_key, group_size=group_size, bit=2",
+        "supports": "The pinned official code scores with 2-bit keys, which diverges from the paper's 1-bit description."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0004",
+        "quote": "we first calculate the output token",
+        "supports": "Full prefill attention runs before window quantization, so exact attention mass is plausibly observable at that phase. Its extraction cost is not measured."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0005",
+        "quote": "s: the similarity score list",
+        "supports": "WindowQuant's required partition input is a precomputed per-window score list."
+      }
+    ],
+    "assumptions": [
+      "The exact-softmax-mass control remains observable at the after_prefill_attention_before_decode phase. Its transient memory and time cost is unmeasured and is not free.",
+      "Any key-derived scorer approximates exact attention mass. It therefore cannot exceed that control on fidelity and could only be justified by efficiency, which CPU replay cannot measure.",
+      "Window membership for temporal video windows differs from still-image token chunks. No video fixture was supplied."
+    ],
+    "data_paths": [
+      {
+        "input": "Prefill keys K for visual tokens, plus the decode query q",
+        "operation": "2-bit channel-grouped quantization (g=32), then q\u00b7K\u0303\u1d40, then a per-window mean",
+        "output": "Window score list substituted for the encoder cosine scores",
+        "possible_leakage": "Access to the original full-precision cache during scoring; the first decode-step query is reused as a prefill-time proxy; the intermediate token scores are exposed. Scoring groups (32 tokens along channel) differ from the resident 8-token groups, so the two quantizers cannot cancel each other's errors."
+      },
+      {
+        "input": "Window scores plus fixed counts (2 FP16 / 3 INT4 / 3 INT2, first window FP16)",
+        "operation": "Rank-based assignment replacing T_low/T_high thresholds",
+        "output": "Bit-width-grouped KV blocks",
+        "possible_leakage": "Fixed counts remove the threshold function, so the result is not WindowQuant itself. Under a pure reorder, block order cancels algebraically (O\u2032=O), so only the assignment matters."
+      }
+    ],
+    "counterexample": "Assigning bit-widths at the window level averages token scores within each window. If the high-mass tokens are scattered across windows, as FIER's sparsity observation suggests, any scorer at any bit-width produces near-uniform window scores. Ranking then tracks noise, and both 1-bit and 2-bit scorers tie the random control.",
+    "matched_control": "The identical pipeline with exact softmax mass as the window score, using the same counts, resident quantizer and steps. The 1-bit scorer is retained as a secondary arm.",
+    "experiment": {
+      "development": "Not run. Only the two exposed SmolVLM still images are available, and they are development fixtures only.",
+      "heldout": "None available. This would require unexposed multi-frame video clips with temporal windows, which were not supplied. The old fixtures must not be reused.",
+      "metric": "Relative L2 attention-output error averaged over 30 layers and decode steps 1\u20133; also the gap to exact-mass and random controls.",
+      "kill_threshold": "Not applicable because the proposal is rejected. Any revival would be killed if the 2-bit scorer failed to close at least half the 1-bit-versus-exact gap, roughly \u22640.0202 given an exact-mass value of 0.0151. Even passing would not justify the method without measured GPU traffic."
+    },
+    "prior_art_difference": "Local experiment: 1-bit grouped-key mean-logit window ranking failed against exact mass (0.02518 vs 0.01510 on candy; 0.02229 vs 0.01510 on statue), on exposed stills with surrogate operators. The candidate changes only the scoring bit-width to match the FIER code, so it is essentially a retest of the same fidelity claim, which the task disallows. Query-aware mixed precision already covers query-conditioned bit allocation per the abstracts: MixKVQ for key channels, ReadKV for per-query prefix reads, MiKV for importance-based precision. Their algorithms are not verified here. The fidelity ceiling is exact attention, which is already available at prefill, so any benefit would have to be speed. The CPU replay cannot measure speed, and GPU speedups must not be inferred from it. This is not a ban on the source pair and not a proof of general infeasibility.",
+    "decision": "reject",
+    "novelty_established": false
+  },
+  "review": {
+    "decision": "reject",
+    "failure_type": "weak_control",
+    "reason": "The rejection holds, but partly for reasons other than those the proposal states.\n\n(1) The candidate operator delta is only a scorer bit-width change from 1 to 2 bits. It leaves untouched the step that most plausibly caused the pilot failure: averaging token logits into per-window means. FIER's premise is that important tokens are sparse and scattered, so a more precise q\u00b7K\u0303\u1d40 still feeds an averaging step that can wash out sparse high-mass tokens. That makes the change a parameter retest, not a distinct mechanism.\n\n(2) The matched control has a temporal information-path problem the proposal does not fully resolve. WindowQuant fixes bit-widths at prefill, after computing the output token and before decode. The exact-softmax-mass control and both key scorers are conditioned on decode queries from steps 1\u20133, which do not exist at quantization time. Both arms share this leak, so the comparison is internally matched. It is not a deployable control, however, and the claim that exact mass is 'already available at prefill' is supported only for prefill or text queries, not decode queries.\n\n(3) The premise that a key-derived scorer 'cannot exceed' exact mass on fidelity is unproven. Exact attention mass is not the L2-optimal precision allocator, because output error also depends on value quantization error and on the INT2 vs INT4 sensitivity of each window. A noisier scorer could tie or beat it by chance. The supporting rationale is therefore weaker than stated, although it does not rescue the 2-bit candidate.\n\n(4) The exact-mass value is identical on two different images (0.01510 on both). This should be audited as a possible logging or control bug before it is used as a ceiling.\n\n(5) Efficiency, the only stated justification for a cheaper scorer, cannot be measured on CPU. Reject this specific delta. Any revision should change the aggregation step (max or top-mass per window) or use prefill-observable queries, not the bit-width.",
+    "evidence": [
+      {
+        "chunk_id": "fier-code:chunk:0003",
+        "quote": "past_key, group_size=group_size, bit=2",
+        "supports": "The pinned code scores with 2-bit keys, so the candidate is only a bit-width alignment."
+      },
+      {
+        "chunk_id": "fier:chunk:0009",
+        "quote": "Sq = Top-k(s\u0303)",
+        "supports": "FIER's scorer output is used for token-level Top-k selection, not window averaging."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0004",
+        "quote": "during the prefill stage, we first calculate the output token",
+        "supports": "Precision is fixed at prefill, before any decode queries exist, so decode-query-based controls are not deployable at that phase."
+      },
+      {
+        "chunk_id": "windowquant-method:chunk:0005",
+        "quote": "s: the similarity score list",
+        "supports": "The partition input is a per-window score list computed before decode."
+      }
+    ],
+    "strongest_counterargument": "Moving from 1 to 2 bits is cheap and matches the official code. FIER's paper reports minimal impact on Top-k ranking only for token-level selection, so the pilot failure could stem from 1-bit noise specifically. A single rerun on the existing fixtures would settle this and costs little, which arguably favors 'test' over 'reject'. In addition, the exact-mass ceiling argument is not rigorous.",
+    "required_test": "On the same two exposed fixtures, as a development-only diagnostic, run four arms: 1-bit mean, 2-bit mean, 1-bit max-per-window, and exact mass. Re-verify that the exact-mass error genuinely equals 0.01510 on both images. Also add a random-assignment arm and a prefill-text-query exact-mass arm. If max-aggregation closes the gap and 2-bit mean does not, aggregation rather than bit-width is the failure point.",
+    "novelty_established": false
+  }
+}

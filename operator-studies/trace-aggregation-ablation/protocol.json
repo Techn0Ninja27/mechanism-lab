@@ -1,0 +1,18 @@
+{
+  "date": "2026-11-17",
+  "scope": "Posthoc exploratory follow-up on two exposed development images. Not held-out evaluation or novelty evidence.",
+  "hypothesis": "The reviewer suggested that averaging token logits causes the weak one-bit ranking. Test whether replacing token means by per-query/per-head window maxima reduces local attention-output error.",
+  "new_arms": [
+    "one_bit_max",
+    "two_bit_max",
+    "exact_max"
+  ],
+  "aggregation": "For every prefill text query and query head, take max of raw QK logits over eight tokens per window, then average those maxima across queries and heads.",
+  "unchanged": "Same frozen replay engine, prefilling inputs, 2 FP16/3 INT4/3 INT2 window counts, first window FP16, resident quantizer and teacher-forced decode evaluation.",
+  "selection_inputs": "Prefill Q/K only. Decode inputs are evaluation only.",
+  "metric": "Mean relative L2 across layers and decode steps1\u20133 per image. Also report cosine and all per-step/layer rows for new arms.",
+  "decision_rule": "One-bit max improves on one-bit mean only if error is lower on BOTH images; separately compare exact softmax mass and every deterministic control. Never interpret this development comparison as proof of usefulness or novelty.",
+  "replay_code_sha256": "4c32b9befa66a53d37f37affbe6e6c7e2a79e093c67cd39cff0b3e468c1e2e9d",
+  "baseline_result_sha256": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5",
+  "trace_manifest_sha256": "7cd19be2cd47edc00aed2127fd7e4689e4258fb5a8ea24062eba3cb73990a4e2"
+}

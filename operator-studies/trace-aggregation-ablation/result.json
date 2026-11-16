@@ -1,0 +1,7346 @@
+{
+  "date": "2026-11-17",
+  "freeze": {
+    "driver_sha256": "9f8429d97c14927ab301a4127f852843622b6954ee5585f7d7b5fb1a7e7f412a",
+    "protocol_sha256": "a8fce27acc285d02526f60f539609a2cf9ac68c670e026b660d281c85f34a973",
+    "replay_code_sha256": "4c32b9befa66a53d37f37affbe6e6c7e2a79e093c67cd39cff0b3e468c1e2e9d",
+    "baseline_result_sha256": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5",
+    "trace_manifest_sha256": "7cd19be2cd47edc00aed2127fd7e4689e4258fb5a8ea24062eba3cb73990a4e2"
+  },
+  "cases": [
+    {
+      "image": "candy",
+      "primary_summary": {
+        "embedding_cosine_proxy": {
+          "relative_l2": 0.03284942541250897,
+          "cosine": 0.9986514609386491
+        },
+        "exact_softmax_mass": {
+          "relative_l2": 0.015103760370299358,
+          "cosine": 0.9997521483393744
+        },
+        "recency": {
+          "relative_l2": 0.016304545718486593,
+          "cosine": 0.9997167170358706
+        },
+        "position": {
+          "relative_l2": 0.03713111963337063,
+          "cosine": 0.9986377649949072
+        },
+        "interleaved": {
+          "relative_l2": 0.0270868590465067,
+          "cosine": 0.9990100477436973
+        },
+        "exact_mean_logit": {
+          "relative_l2": 0.01971942793576747,
+          "cosine": 0.9995337798965187
+        },
+        "one_bit_mean_logit": {
+          "relative_l2": 0.02517767560729072,
+          "cosine": 0.9992563491365818
+        },
+        "two_bit_mean_logit": {
+          "relative_l2": 0.018037899615949114,
+          "cosine": 0.9996293298455571
+        },
+        "random_73031": {
+          "relative_l2": 0.02820964480125303,
+          "cosine": 0.9992112658876671
+        },
+        "random_73033": {
+          "relative_l2": 0.030784630136318287,
+          "cosine": 0.998932425072794
+        },
+        "random_73037": {
+          "relative_l2": 0.026567901726464508,
+          "cosine": 0.999277377225698
+        },
+        "one_bit_max": {
+          "relative_l2": 0.02491678564678733,
+          "cosine": 0.9992398016243581
+        },
+        "two_bit_max": {
+          "relative_l2": 0.01792056514554086,
+          "cosine": 0.9996366145774174
+        },
+        "exact_max": {
+          "relative_l2": 0.020690598997216935,
+          "cosine": 0.9993914301892121
+        },
+        "visual_fp16": {
+          "relative_l2": 7.655516353549533e-05,
+          "cosine": 0.9999999949925442
+        }
+      },
+      "rows": [
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 0,
+          "relative_l2": 0.004061571846081363,
+          "cosine": 0.9999921139806514
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 0,
+          "relative_l2": 0.004061571846081363,
+          "cosine": 0.9999921139806514
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 0,
+          "relative_l2": 0.004061571846081363,
+          "cosine": 0.9999921139806514
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 1,
+          "relative_l2": 0.004239201810502804,
+          "cosine": 0.9999918072285359
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 1,
+          "relative_l2": 0.004239201810502804,
+          "cosine": 0.9999918072285359
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 1,
+          "relative_l2": 0.004239201810502804,
+          "cosine": 0.9999918072285359
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 2,
+          "relative_l2": 0.0056613702795206685,
+          "cosine": 0.9999851068514823
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 2,
+          "relative_l2": 0.0056613702795206685,
+          "cosine": 0.9999851068514823
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 2,
+          "relative_l2": 0.0056613702795206685,
+          "cosine": 0.9999851068514823
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 3,
+          "relative_l2": 0.002632593265219557,
+          "cosine": 0.9999968182064064
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 3,
+          "relative_l2": 0.002632593265219557,
+          "cosine": 0.9999968182064064
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 3,
+          "relative_l2": 0.002632593265219557,
+          "cosine": 0.9999968182064064
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 0,
+          "relative_l2": 0.007510732222511665,
+          "cosine": 0.9999718842665498
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 0,
+          "relative_l2": 0.0064318972333959725,
+          "cosine": 0.9999794794108131
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 0,
+          "relative_l2": 0.0064318972333959725,
+          "cosine": 0.9999794794108131
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 1,
+          "relative_l2": 0.0020528170035653947,
+          "cosine": 0.9999980474641879
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 1,
+          "relative_l2": 0.0012354459361289297,
+          "cosine": 0.9999992373133653
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 1,
+          "relative_l2": 0.0012354459361289297,
+          "cosine": 0.9999992373133653
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 2,
+          "relative_l2": 0.0029159733168122857,
+          "cosine": 0.9999957493608465
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 2,
+          "relative_l2": 0.0029404269878812507,
+          "cosine": 0.9999956886534676
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 2,
+          "relative_l2": 0.0029404269878812507,
+          "cosine": 0.9999956886534676
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 3,
+          "relative_l2": 0.0040345056168378055,
+          "cosine": 0.999991947243457
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 3,
+          "relative_l2": 0.0037482520179571164,
+          "cosine": 0.9999929779215974
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 3,
+          "relative_l2": 0.0037482520179571164,
+          "cosine": 0.9999929779215974
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 0,
+          "relative_l2": 0.0014363594630149206,
+          "cosine": 0.9999989717202286
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 0,
+          "relative_l2": 0.0011182399744150172,
+          "cosine": 0.9999993807145784
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 0,
+          "relative_l2": 0.0011182399744150172,
+          "cosine": 0.9999993807145784
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 1,
+          "relative_l2": 0.0018834724249504223,
+          "cosine": 0.9999982653826971
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 1,
+          "relative_l2": 0.0013950592582537564,
+          "cosine": 0.9999990590660267
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 1,
+          "relative_l2": 0.0013950592582537564,
+          "cosine": 0.9999990590660267
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 2,
+          "relative_l2": 0.001124997762944857,
+          "cosine": 0.9999993958310148
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 2,
+          "relative_l2": 0.0007894715304607633,
+          "cosine": 0.9999997059273745
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 2,
+          "relative_l2": 0.0007894715304607633,
+          "cosine": 0.9999997059273745
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 3,
+          "relative_l2": 0.005818346239543438,
+          "cosine": 0.9999832173436599
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 3,
+          "relative_l2": 0.005438966727288306,
+          "cosine": 0.9999853194063836
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 3,
+          "relative_l2": 0.005438966727288306,
+          "cosine": 0.9999853194063836
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 0,
+          "relative_l2": 0.0034972358100323307,
+          "cosine": 0.9999938935995965
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 0,
+          "relative_l2": 0.0034972358100323307,
+          "cosine": 0.9999938935995965
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 0,
+          "relative_l2": 0.0034972358100323307,
+          "cosine": 0.9999938935995965
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 1,
+          "relative_l2": 0.005947844387878132,
+          "cosine": 0.9999823834737874
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 1,
+          "relative_l2": 0.005947844387878132,
+          "cosine": 0.9999823834737874
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 1,
+          "relative_l2": 0.005947844387878132,
+          "cosine": 0.9999823834737874
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 2,
+          "relative_l2": 0.006444232998742151,
+          "cosine": 0.9999794181452409
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 2,
+          "relative_l2": 0.006444232998742151,
+          "cosine": 0.9999794181452409
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 2,
+          "relative_l2": 0.006444232998742151,
+          "cosine": 0.9999794181452409
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 3,
+          "relative_l2": 0.005563920434118296,
+          "cosine": 0.9999845754910476
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 3,
+          "relative_l2": 0.005563920434118296,
+          "cosine": 0.9999845754910476
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 3,
+          "relative_l2": 0.005563920434118296,
+          "cosine": 0.9999845754910476
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 0,
+          "relative_l2": 0.0029633763263605044,
+          "cosine": 0.9999961632162241
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 0,
+          "relative_l2": 0.003617772793820693,
+          "cosine": 0.9999934889248645
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 0,
+          "relative_l2": 0.0029633763263605044,
+          "cosine": 0.9999961632162241
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 1,
+          "relative_l2": 0.004002672529955304,
+          "cosine": 0.9999927710540216
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 1,
+          "relative_l2": 0.006473098507929379,
+          "cosine": 0.9999793887601917
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 1,
+          "relative_l2": 0.004002672529955304,
+          "cosine": 0.9999927710540216
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 2,
+          "relative_l2": 0.0057142877243821525,
+          "cosine": 0.9999839003734241
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 2,
+          "relative_l2": 0.006664961414083304,
+          "cosine": 0.9999779144218031
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 2,
+          "relative_l2": 0.0057142877243821525,
+          "cosine": 0.9999839003734241
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 3,
+          "relative_l2": 0.04275945946721767,
+          "cosine": 0.9990859449432309
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 3,
+          "relative_l2": 0.024775370912836464,
+          "cosine": 0.9996930463925846
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 3,
+          "relative_l2": 0.04275945946721767,
+          "cosine": 0.9990859449432309
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 0,
+          "relative_l2": 0.00405850566931223,
+          "cosine": 0.999991948258839
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 0,
+          "relative_l2": 0.0019649722374366816,
+          "cosine": 0.9999982731486432
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 0,
+          "relative_l2": 0.0019649722374366816,
+          "cosine": 0.9999982731486432
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 1,
+          "relative_l2": 0.003974079443936654,
+          "cosine": 0.9999921357576327
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 1,
+          "relative_l2": 0.0018642173240452982,
+          "cosine": 0.9999982705362268
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 1,
+          "relative_l2": 0.0018642173240452982,
+          "cosine": 0.9999982705362268
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 2,
+          "relative_l2": 0.014283607333420647,
+          "cosine": 0.9998980107711145
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 2,
+          "relative_l2": 0.004647091856533554,
+          "cosine": 0.9999893566608904
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 2,
+          "relative_l2": 0.004647091856533554,
+          "cosine": 0.9999893566608904
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 3,
+          "relative_l2": 0.01706682911412865,
+          "cosine": 0.9998551206984604
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 3,
+          "relative_l2": 0.008569407362893557,
+          "cosine": 0.9999637499528612
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 3,
+          "relative_l2": 0.008569407362893557,
+          "cosine": 0.9999637499528612
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 0,
+          "relative_l2": 0.001986361716181119,
+          "cosine": 0.9999980604051538
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 0,
+          "relative_l2": 0.0015335501242097337,
+          "cosine": 0.9999988365682104
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 0,
+          "relative_l2": 0.0015335501242097337,
+          "cosine": 0.9999988365682104
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 1,
+          "relative_l2": 0.001595622640910538,
+          "cosine": 0.9999987586777783
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 1,
+          "relative_l2": 0.0015170187036236704,
+          "cosine": 0.9999988622625459
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 1,
+          "relative_l2": 0.0015170187036236704,
+          "cosine": 0.9999988622625459
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 2,
+          "relative_l2": 0.0023377116617560854,
+          "cosine": 0.9999972676931087
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 2,
+          "relative_l2": 0.0020272169549943363,
+          "cosine": 0.9999979552252788
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 2,
+          "relative_l2": 0.0020272169549943363,
+          "cosine": 0.9999979552252788
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 3,
+          "relative_l2": 0.003725683197190151,
+          "cosine": 0.999993059626216
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 3,
+          "relative_l2": 0.0029419519650758794,
+          "cosine": 0.9999956736800855
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 3,
+          "relative_l2": 0.0029419519650758794,
+          "cosine": 0.9999956736800855
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 0,
+          "relative_l2": 0.00428312380882942,
+          "cosine": 0.9999908347740485
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 0,
+          "relative_l2": 0.00428312380882942,
+          "cosine": 0.9999908347740485
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 0,
+          "relative_l2": 0.004218273140651764,
+          "cosine": 0.9999911031553577
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 1,
+          "relative_l2": 0.0022563662447268678,
+          "cosine": 0.9999974758779496
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 1,
+          "relative_l2": 0.0022563662447268678,
+          "cosine": 0.9999974758779496
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 1,
+          "relative_l2": 0.0023430860168768748,
+          "cosine": 0.9999972614126215
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 2,
+          "relative_l2": 0.002800503152831574,
+          "cosine": 0.9999960960371563
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 2,
+          "relative_l2": 0.002800503152831574,
+          "cosine": 0.9999960960371563
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 2,
+          "relative_l2": 0.002657988557736376,
+          "cosine": 0.9999964823796161
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 3,
+          "relative_l2": 0.004243680640674323,
+          "cosine": 0.9999910020872746
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 3,
+          "relative_l2": 0.004243680640674323,
+          "cosine": 0.9999910020872746
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 3,
+          "relative_l2": 0.003779805523457561,
+          "cosine": 0.9999929122195872
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 0,
+          "relative_l2": 0.0835120733506928,
+          "cosine": 0.9968316519076368
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 0,
+          "relative_l2": 0.014438393640421397,
+          "cosine": 0.9999014894108359
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 0,
+          "relative_l2": 0.013307940613878555,
+          "cosine": 0.999913693154799
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 1,
+          "relative_l2": 0.047124002460380995,
+          "cosine": 0.9989458087978432
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 1,
+          "relative_l2": 0.024024441810637065,
+          "cosine": 0.9997138620770243
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 1,
+          "relative_l2": 0.025222264600951148,
+          "cosine": 0.9996902826849521
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 2,
+          "relative_l2": 0.06204479543429492,
+          "cosine": 0.9982663529713863
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 2,
+          "relative_l2": 0.027919463004225282,
+          "cosine": 0.999610177313278
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 2,
+          "relative_l2": 0.03018974068009473,
+          "cosine": 0.9995491724594092
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 3,
+          "relative_l2": 0.0220347821438428,
+          "cosine": 0.9997583927918761
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 3,
+          "relative_l2": 0.02717138415792075,
+          "cosine": 0.9996308712109995
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 3,
+          "relative_l2": 0.027493169609067815,
+          "cosine": 0.9996309770934042
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 0,
+          "relative_l2": 0.012684273369010336,
+          "cosine": 0.999919766106464
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 0,
+          "relative_l2": 0.00471956172914082,
+          "cosine": 0.9999888734448075
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 0,
+          "relative_l2": 0.00471956172914082,
+          "cosine": 0.9999888734448075
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 1,
+          "relative_l2": 0.007526652765186627,
+          "cosine": 0.9999734477342687
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 1,
+          "relative_l2": 0.00393867080344196,
+          "cosine": 0.9999924471828744
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 1,
+          "relative_l2": 0.00393867080344196,
+          "cosine": 0.9999924471828744
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 2,
+          "relative_l2": 0.007941526766080119,
+          "cosine": 0.999968497823687
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 2,
+          "relative_l2": 0.005607213601813289,
+          "cosine": 0.999984364845621
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 2,
+          "relative_l2": 0.005607213601813289,
+          "cosine": 0.999984364845621
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 3,
+          "relative_l2": 0.018245970423027617,
+          "cosine": 0.9998345774127262
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 3,
+          "relative_l2": 0.009508864133065195,
+          "cosine": 0.9999548240419189
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 3,
+          "relative_l2": 0.009508864133065195,
+          "cosine": 0.9999548240419189
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 0,
+          "relative_l2": 0.0013857641231260756,
+          "cosine": 0.9999990421671426
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 0,
+          "relative_l2": 0.001378402089643364,
+          "cosine": 0.9999990583091666
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 0,
+          "relative_l2": 0.001076680675927831,
+          "cosine": 0.9999994368758623
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 1,
+          "relative_l2": 0.0008328358682608394,
+          "cosine": 0.9999996629973301
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 1,
+          "relative_l2": 0.00059004523641078,
+          "cosine": 0.9999998259290549
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 1,
+          "relative_l2": 0.0008057872885892261,
+          "cosine": 0.9999996776645097
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 2,
+          "relative_l2": 0.0025991584297283534,
+          "cosine": 0.9999966325518355
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 2,
+          "relative_l2": 0.001857159008338611,
+          "cosine": 0.9999982755973933
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 2,
+          "relative_l2": 0.0028589799151529744,
+          "cosine": 0.999995913136277
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 3,
+          "relative_l2": 0.007195965020665158,
+          "cosine": 0.9999743642428756
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 3,
+          "relative_l2": 0.00606173350253002,
+          "cosine": 0.9999817731787402
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 3,
+          "relative_l2": 0.0066609093617143195,
+          "cosine": 0.9999782226940631
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 0,
+          "relative_l2": 0.0012842537896762792,
+          "cosine": 0.9999991908985328
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 0,
+          "relative_l2": 0.0014201088947269251,
+          "cosine": 0.9999990120053791
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 0,
+          "relative_l2": 0.0014201088947269251,
+          "cosine": 0.9999990120053791
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 1,
+          "relative_l2": 0.00264624228871353,
+          "cosine": 0.9999965939397841
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 1,
+          "relative_l2": 0.005303661843753264,
+          "cosine": 0.9999866905422783
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 1,
+          "relative_l2": 0.005303661843753264,
+          "cosine": 0.9999866905422783
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 2,
+          "relative_l2": 0.0024637564426544002,
+          "cosine": 0.9999970598155671
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 2,
+          "relative_l2": 0.005614906678830438,
+          "cosine": 0.9999869058606757
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 2,
+          "relative_l2": 0.005614906678830438,
+          "cosine": 0.9999869058606757
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 3,
+          "relative_l2": 0.0016490086870855503,
+          "cosine": 0.9999986583240107
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 3,
+          "relative_l2": 0.004793700312226124,
+          "cosine": 0.999989282931995
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 3,
+          "relative_l2": 0.004793700312226124,
+          "cosine": 0.999989282931995
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 0,
+          "relative_l2": 0.00265073233743379,
+          "cosine": 0.9999967971552449
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 0,
+          "relative_l2": 0.0014142621955811198,
+          "cosine": 0.9999990030641415
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 0,
+          "relative_l2": 0.0014142621955811198,
+          "cosine": 0.9999990030641415
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 1,
+          "relative_l2": 0.0019908802601977405,
+          "cosine": 0.9999982106054973
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 1,
+          "relative_l2": 0.001047971171170052,
+          "cosine": 0.9999994538559589
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 1,
+          "relative_l2": 0.001047971171170052,
+          "cosine": 0.9999994538559589
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 2,
+          "relative_l2": 0.003990057977594783,
+          "cosine": 0.9999924321627143
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 2,
+          "relative_l2": 0.0026381279023431226,
+          "cosine": 0.9999965732201882
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 2,
+          "relative_l2": 0.0026381279023431226,
+          "cosine": 0.9999965732201882
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 3,
+          "relative_l2": 0.0038491085825259667,
+          "cosine": 0.9999926406450401
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 3,
+          "relative_l2": 0.0017293035601317714,
+          "cosine": 0.9999985069257008
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 3,
+          "relative_l2": 0.0017293035601317714,
+          "cosine": 0.9999985069257008
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 0,
+          "relative_l2": 0.0022038383561919406,
+          "cosine": 0.9999975725530952
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 0,
+          "relative_l2": 0.0022038383561919406,
+          "cosine": 0.9999975725530952
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 0,
+          "relative_l2": 0.003183402295606028,
+          "cosine": 0.9999949331573492
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 1,
+          "relative_l2": 0.0038834330779415733,
+          "cosine": 0.9999924615131556
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 1,
+          "relative_l2": 0.0038834330779415733,
+          "cosine": 0.9999924615131556
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 1,
+          "relative_l2": 0.004287457139241791,
+          "cosine": 0.9999908143136897
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 2,
+          "relative_l2": 0.0035604244446902408,
+          "cosine": 0.9999936645947517
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 2,
+          "relative_l2": 0.0035604244446902408,
+          "cosine": 0.9999936645947517
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 2,
+          "relative_l2": 0.003949150825886207,
+          "cosine": 0.9999922058480437
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 3,
+          "relative_l2": 0.004035147740436812,
+          "cosine": 0.9999922243256246
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 3,
+          "relative_l2": 0.004035147740436812,
+          "cosine": 0.9999922243256246
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 3,
+          "relative_l2": 0.003587560451646596,
+          "cosine": 0.9999940342342277
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 0,
+          "relative_l2": 0.02483367822154243,
+          "cosine": 0.9997011758683114
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 0,
+          "relative_l2": 0.02276407051095054,
+          "cosine": 0.999743908138531
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 0,
+          "relative_l2": 0.02276407051095054,
+          "cosine": 0.999743908138531
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 1,
+          "relative_l2": 0.07121013723521304,
+          "cosine": 0.99783813486414
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 1,
+          "relative_l2": 0.06545359070565232,
+          "cosine": 0.998082265990343
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 1,
+          "relative_l2": 0.06545359070565232,
+          "cosine": 0.998082265990343
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 2,
+          "relative_l2": 0.040503736171814166,
+          "cosine": 0.9992254124110455
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 2,
+          "relative_l2": 0.045140646243115416,
+          "cosine": 0.998999354855889
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 2,
+          "relative_l2": 0.045140646243115416,
+          "cosine": 0.998999354855889
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 3,
+          "relative_l2": 0.022099173437281506,
+          "cosine": 0.9997591782779542
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 3,
+          "relative_l2": 0.01748478377896026,
+          "cosine": 0.9998485645846096
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 3,
+          "relative_l2": 0.01748478377896026,
+          "cosine": 0.9998485645846096
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 0,
+          "relative_l2": 0.019167429592084038,
+          "cosine": 0.9998165226251696
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 0,
+          "relative_l2": 0.019167429592084038,
+          "cosine": 0.9998165226251696
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 0,
+          "relative_l2": 0.02194895986856536,
+          "cosine": 0.9997594724120076
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 1,
+          "relative_l2": 0.029893462985423128,
+          "cosine": 0.9995546316066495
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 1,
+          "relative_l2": 0.029893462985423128,
+          "cosine": 0.9995546316066495
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 1,
+          "relative_l2": 0.041957865701138526,
+          "cosine": 0.9991229002419568
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 2,
+          "relative_l2": 0.04190225974795914,
+          "cosine": 0.9991217179311793
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 2,
+          "relative_l2": 0.04190225974795914,
+          "cosine": 0.9991217179311793
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 2,
+          "relative_l2": 0.04483871999730968,
+          "cosine": 0.9989942695987867
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 3,
+          "relative_l2": 0.02522541082045592,
+          "cosine": 0.9996868106004152
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 3,
+          "relative_l2": 0.02522541082045592,
+          "cosine": 0.9996868106004152
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 3,
+          "relative_l2": 0.026375435251488333,
+          "cosine": 0.9996579748361738
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 0,
+          "relative_l2": 0.005767538503983302,
+          "cosine": 0.9999837827423642
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 0,
+          "relative_l2": 0.003938583373166459,
+          "cosine": 0.9999926237274005
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 0,
+          "relative_l2": 0.003938583373166459,
+          "cosine": 0.9999926237274005
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 1,
+          "relative_l2": 0.026363958792559584,
+          "cosine": 0.9996653219002799
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 1,
+          "relative_l2": 0.005091017325268943,
+          "cosine": 0.9999876831458797
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 1,
+          "relative_l2": 0.005091017325268943,
+          "cosine": 0.9999876831458797
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 2,
+          "relative_l2": 0.033048393209748846,
+          "cosine": 0.9994675581806741
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 2,
+          "relative_l2": 0.005513658414744948,
+          "cosine": 0.9999850228405174
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 2,
+          "relative_l2": 0.005513658414744948,
+          "cosine": 0.9999850228405174
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 3,
+          "relative_l2": 0.0031650246292593805,
+          "cosine": 0.9999950914838627
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 3,
+          "relative_l2": 0.0023051892834762533,
+          "cosine": 0.9999973710558657
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 3,
+          "relative_l2": 0.0023051892834762533,
+          "cosine": 0.9999973710558657
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 0,
+          "relative_l2": 0.006115474960747964,
+          "cosine": 0.9999813127916445
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 0,
+          "relative_l2": 0.007729151668675596,
+          "cosine": 0.9999701334640749
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 0,
+          "relative_l2": 0.007729151668675596,
+          "cosine": 0.9999701334640749
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 1,
+          "relative_l2": 0.004802983007868413,
+          "cosine": 0.999988475499833
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 1,
+          "relative_l2": 0.006651251585560171,
+          "cosine": 0.999977947237707
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 1,
+          "relative_l2": 0.006651251585560171,
+          "cosine": 0.999977947237707
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 2,
+          "relative_l2": 0.009130448167463372,
+          "cosine": 0.9999584685775357
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 2,
+          "relative_l2": 0.012488531672781631,
+          "cosine": 0.9999224049007571
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 2,
+          "relative_l2": 0.012488531672781631,
+          "cosine": 0.9999224049007571
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 3,
+          "relative_l2": 0.02631953948228219,
+          "cosine": 0.9996539862895549
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 3,
+          "relative_l2": 0.03286171480939521,
+          "cosine": 0.9994607683049054
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 3,
+          "relative_l2": 0.03286171480939521,
+          "cosine": 0.9994607683049054
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 0,
+          "relative_l2": 0.013442891137190702,
+          "cosine": 0.9999096506827045
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 0,
+          "relative_l2": 0.017725127500064768,
+          "cosine": 0.9998443999256931
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 0,
+          "relative_l2": 0.017860989223328717,
+          "cosine": 0.999841269240717
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 1,
+          "relative_l2": 0.01193236941102144,
+          "cosine": 0.9999288949829653
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 1,
+          "relative_l2": 0.010491411070985605,
+          "cosine": 0.9999449815647738
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 1,
+          "relative_l2": 0.010667817892271204,
+          "cosine": 0.9999431252344886
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 2,
+          "relative_l2": 0.010052462428386406,
+          "cosine": 0.9999495463039795
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 2,
+          "relative_l2": 0.011147379198533569,
+          "cosine": 0.9999379346632338
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 2,
+          "relative_l2": 0.01143361020112903,
+          "cosine": 0.9999346675728642
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 3,
+          "relative_l2": 0.0405137377690118,
+          "cosine": 0.9991842213916367
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 3,
+          "relative_l2": 0.04940214332866669,
+          "cosine": 0.9987985681065809
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 3,
+          "relative_l2": 0.049156781827995745,
+          "cosine": 0.9988108543529354
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 0,
+          "relative_l2": 0.008539497277174344,
+          "cosine": 0.9999635824658278
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 0,
+          "relative_l2": 0.008166585937975314,
+          "cosine": 0.9999667214560696
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 0,
+          "relative_l2": 0.008166585937975314,
+          "cosine": 0.9999667214560696
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 1,
+          "relative_l2": 0.011098536577924173,
+          "cosine": 0.9999384632918445
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 1,
+          "relative_l2": 0.004322387610768801,
+          "cosine": 0.9999907677550192
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 1,
+          "relative_l2": 0.004322387610768801,
+          "cosine": 0.9999907677550192
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 2,
+          "relative_l2": 0.009348290528756818,
+          "cosine": 0.9999566777646834
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 2,
+          "relative_l2": 0.004930163438670648,
+          "cosine": 0.9999878478954186
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 2,
+          "relative_l2": 0.004930163438670648,
+          "cosine": 0.9999878478954186
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 3,
+          "relative_l2": 0.004903535395284737,
+          "cosine": 0.9999880047801543
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 3,
+          "relative_l2": 0.002021075766448751,
+          "cosine": 0.9999979663264987
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 3,
+          "relative_l2": 0.002021075766448751,
+          "cosine": 0.9999979663264987
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 0,
+          "relative_l2": 0.014085623298714208,
+          "cosine": 0.9999008496307773
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 0,
+          "relative_l2": 0.014325021719939443,
+          "cosine": 0.9998974539343467
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 0,
+          "relative_l2": 0.006021791877679831,
+          "cosine": 0.9999819317147186
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 1,
+          "relative_l2": 0.01499181490556927,
+          "cosine": 0.9998879116340695
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 1,
+          "relative_l2": 0.01428895608970036,
+          "cosine": 0.9998980584655284
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 1,
+          "relative_l2": 0.008100952162068336,
+          "cosine": 0.9999672020134713
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 2,
+          "relative_l2": 0.034105905962840063,
+          "cosine": 0.9994244154048162
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 2,
+          "relative_l2": 0.032608737170986855,
+          "cosine": 0.9994710328727744
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 2,
+          "relative_l2": 0.02028346851693346,
+          "cosine": 0.9997948972809463
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 3,
+          "relative_l2": 0.03760406160410604,
+          "cosine": 0.9992953705185954
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 3,
+          "relative_l2": 0.03609439477326152,
+          "cosine": 0.9993527731313292
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 3,
+          "relative_l2": 0.0307324340717099,
+          "cosine": 0.9995343053948773
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 0,
+          "relative_l2": 0.026067833466388742,
+          "cosine": 0.9996603672727976
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 0,
+          "relative_l2": 0.026067833466388742,
+          "cosine": 0.9996603672727976
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 0,
+          "relative_l2": 0.01500266835554264,
+          "cosine": 0.999887453689046
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 1,
+          "relative_l2": 0.0800656002444189,
+          "cosine": 0.9968403963390161
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 1,
+          "relative_l2": 0.0800656002444189,
+          "cosine": 0.9968403963390161
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 1,
+          "relative_l2": 0.02241486275297698,
+          "cosine": 0.9997488664333732
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 2,
+          "relative_l2": 0.035614483661222766,
+          "cosine": 0.9993713279005042
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 2,
+          "relative_l2": 0.035614483661222766,
+          "cosine": 0.9993713279005042
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 2,
+          "relative_l2": 0.02927970525445374,
+          "cosine": 0.9995712713070621
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 3,
+          "relative_l2": 0.009642506354128036,
+          "cosine": 0.9999536313060781
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 3,
+          "relative_l2": 0.009642506354128036,
+          "cosine": 0.9999536313060781
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 3,
+          "relative_l2": 0.008472749045104401,
+          "cosine": 0.9999641056665154
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 0,
+          "relative_l2": 0.012171962572286994,
+          "cosine": 0.9999262828289198
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 0,
+          "relative_l2": 0.017675853384125435,
+          "cosine": 0.9998438735639518
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 0,
+          "relative_l2": 0.017675853384125435,
+          "cosine": 0.9998438735639518
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 1,
+          "relative_l2": 0.018412793640479912,
+          "cosine": 0.9998309652884011
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 1,
+          "relative_l2": 0.021369658613683208,
+          "cosine": 0.9997756016093186
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 1,
+          "relative_l2": 0.021369658613683208,
+          "cosine": 0.9997756016093186
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 2,
+          "relative_l2": 0.04056810591707136,
+          "cosine": 0.9991907996334042
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 2,
+          "relative_l2": 0.016463946524094025,
+          "cosine": 0.9998666516585938
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 2,
+          "relative_l2": 0.016463946524094025,
+          "cosine": 0.9998666516585938
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 3,
+          "relative_l2": 0.02960734805416144,
+          "cosine": 0.9995663494995127
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 3,
+          "relative_l2": 0.019363463926375838,
+          "cosine": 0.999813440198215
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 3,
+          "relative_l2": 0.019363463926375838,
+          "cosine": 0.999813440198215
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 0,
+          "relative_l2": 0.07706419199713606,
+          "cosine": 0.9970598497704277
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 0,
+          "relative_l2": 0.08182542823216832,
+          "cosine": 0.9970559772941376
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 0,
+          "relative_l2": 0.10441277821951615,
+          "cosine": 0.9948707581693462
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 1,
+          "relative_l2": 0.06774291091695613,
+          "cosine": 0.9977187490360793
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 1,
+          "relative_l2": 0.023871572395212495,
+          "cosine": 0.9997171460424581
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 1,
+          "relative_l2": 0.06146281377483352,
+          "cosine": 0.9981607772687794
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 2,
+          "relative_l2": 0.06837909680052107,
+          "cosine": 0.9976831597536295
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 2,
+          "relative_l2": 0.03222351450325041,
+          "cosine": 0.9994992946085867
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 2,
+          "relative_l2": 0.06971879381659402,
+          "cosine": 0.9976137093311438
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 3,
+          "relative_l2": 0.12892781231386297,
+          "cosine": 0.9918182750634555
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 3,
+          "relative_l2": 0.019286768120786217,
+          "cosine": 0.9998178152034909
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 3,
+          "relative_l2": 0.12920931500237953,
+          "cosine": 0.991767567658853
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 0,
+          "relative_l2": 0.017159080724438967,
+          "cosine": 0.999852799935634
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 0,
+          "relative_l2": 0.017159080724438967,
+          "cosine": 0.999852799935634
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 0,
+          "relative_l2": 0.017159080724438967,
+          "cosine": 0.999852799935634
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 1,
+          "relative_l2": 0.0761353654933757,
+          "cosine": 0.9971909692698896
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 1,
+          "relative_l2": 0.0761353654933757,
+          "cosine": 0.9971909692698896
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 1,
+          "relative_l2": 0.0761353654933757,
+          "cosine": 0.9971909692698896
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 2,
+          "relative_l2": 0.08944431296622318,
+          "cosine": 0.9960973885983668
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 2,
+          "relative_l2": 0.08944431296622318,
+          "cosine": 0.9960973885983668
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 2,
+          "relative_l2": 0.08944431296622318,
+          "cosine": 0.9960973885983668
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 3,
+          "relative_l2": 0.01989741799983096,
+          "cosine": 0.9998028652702036
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 3,
+          "relative_l2": 0.01989741799983096,
+          "cosine": 0.9998028652702036
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 3,
+          "relative_l2": 0.01989741799983096,
+          "cosine": 0.9998028652702036
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 0,
+          "relative_l2": 0.013525574739300864,
+          "cosine": 0.9999085545942134
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 0,
+          "relative_l2": 0.013174221307448122,
+          "cosine": 0.9999132646962056
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 0,
+          "relative_l2": 0.013174221307448122,
+          "cosine": 0.9999132646962056
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 1,
+          "relative_l2": 0.0257418801373523,
+          "cosine": 0.9996686926566739
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 1,
+          "relative_l2": 0.02324566918104732,
+          "cosine": 0.9997323292564081
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 1,
+          "relative_l2": 0.02324566918104732,
+          "cosine": 0.9997323292564081
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 2,
+          "relative_l2": 0.060162972534010636,
+          "cosine": 0.9981910693244378
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 2,
+          "relative_l2": 0.05851845546836068,
+          "cosine": 0.9983260940100541
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 2,
+          "relative_l2": 0.05851845546836068,
+          "cosine": 0.9983260940100541
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 3,
+          "relative_l2": 0.01866607653922345,
+          "cosine": 0.9998268398961194
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 3,
+          "relative_l2": 0.017754062497866437,
+          "cosine": 0.9998435719852349
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 3,
+          "relative_l2": 0.017754062497866437,
+          "cosine": 0.9998435719852349
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 0,
+          "relative_l2": 0.0022450561362565755,
+          "cosine": 0.999997482013165
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 0,
+          "relative_l2": 0.002006271252231026,
+          "cosine": 0.9999979893315721
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 0,
+          "relative_l2": 0.0023205804295510233,
+          "cosine": 0.999997309174167
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 1,
+          "relative_l2": 0.046371174285263335,
+          "cosine": 0.9989433558036999
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 1,
+          "relative_l2": 0.04175567606299939,
+          "cosine": 0.9991377981849742
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 1,
+          "relative_l2": 0.04611752681645556,
+          "cosine": 0.9989545170620595
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 2,
+          "relative_l2": 0.21863148750510883,
+          "cosine": 0.9823089376073365
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 2,
+          "relative_l2": 0.10781744314336926,
+          "cosine": 0.9950867527815394
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 2,
+          "relative_l2": 0.2186133551876959,
+          "cosine": 0.9822806994976554
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 3,
+          "relative_l2": 0.01223711701410371,
+          "cosine": 0.9999252005467396
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 3,
+          "relative_l2": 0.01030968893974242,
+          "cosine": 0.9999468543426664
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 3,
+          "relative_l2": 0.012113141153654035,
+          "cosine": 0.9999267067672625
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 0,
+          "relative_l2": 0.005225891462201655,
+          "cosine": 0.9999863634590784
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 0,
+          "relative_l2": 0.0037235897668404143,
+          "cosine": 0.9999930697548033
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 0,
+          "relative_l2": 0.0037235897668404143,
+          "cosine": 0.9999930697548033
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 1,
+          "relative_l2": 0.011734646489788326,
+          "cosine": 0.9999311670810221
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 1,
+          "relative_l2": 0.010479689617775352,
+          "cosine": 0.9999451381959744
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 1,
+          "relative_l2": 0.010479689617775352,
+          "cosine": 0.9999451381959744
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 2,
+          "relative_l2": 0.007830765589392767,
+          "cosine": 0.9999693472550922
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 2,
+          "relative_l2": 0.006849528859477263,
+          "cosine": 0.9999766298819139
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 2,
+          "relative_l2": 0.006849528859477263,
+          "cosine": 0.9999766298819139
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 3,
+          "relative_l2": 0.020353730264151507,
+          "cosine": 0.999794436872633
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 3,
+          "relative_l2": 0.019959597384700434,
+          "cosine": 0.9998018709015087
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 3,
+          "relative_l2": 0.019959597384700434,
+          "cosine": 0.9998018709015087
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 0,
+          "relative_l2": 0.012105647984685984,
+          "cosine": 0.999926729612189
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 0,
+          "relative_l2": 0.01165902303428628,
+          "cosine": 0.9999321577138056
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 0,
+          "relative_l2": 0.01165902303428628,
+          "cosine": 0.9999321577138056
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 1,
+          "relative_l2": 0.025538848856380216,
+          "cosine": 0.9996757955213189
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 1,
+          "relative_l2": 0.018555348258627924,
+          "cosine": 0.9998279092421074
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 1,
+          "relative_l2": 0.018555348258627924,
+          "cosine": 0.9998279092421074
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 2,
+          "relative_l2": 0.018154960391668293,
+          "cosine": 0.999848484681383
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 2,
+          "relative_l2": 0.03463348043731849,
+          "cosine": 0.9994030612571123
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 2,
+          "relative_l2": 0.03463348043731849,
+          "cosine": 0.9994030612571123
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 3,
+          "relative_l2": 0.02850349706614018,
+          "cosine": 0.9995949786998781
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 3,
+          "relative_l2": 0.046568340640744256,
+          "cosine": 0.9989291428933812
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 3,
+          "relative_l2": 0.046568340640744256,
+          "cosine": 0.9989291428933812
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 0,
+          "relative_l2": 0.009263284245794869,
+          "cosine": 0.9999574024765668
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 0,
+          "relative_l2": 0.006925445328788951,
+          "cosine": 0.9999760263659163
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 0,
+          "relative_l2": 0.006925445328788951,
+          "cosine": 0.9999760263659163
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 1,
+          "relative_l2": 0.06660130586176795,
+          "cosine": 0.99793421093664
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 1,
+          "relative_l2": 0.024579238793037247,
+          "cosine": 0.9996980564427297
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 1,
+          "relative_l2": 0.024579238793037247,
+          "cosine": 0.9996980564427297
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 2,
+          "relative_l2": 0.05633260233431104,
+          "cosine": 0.9984922310551633
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 2,
+          "relative_l2": 0.021400672517106218,
+          "cosine": 0.999771094396829
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 2,
+          "relative_l2": 0.021400672517106218,
+          "cosine": 0.999771094396829
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 3,
+          "relative_l2": 0.09630311920464056,
+          "cosine": 0.995604268729972
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 3,
+          "relative_l2": 0.017623872008980305,
+          "cosine": 0.999844931627724
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 3,
+          "relative_l2": 0.017623872008980305,
+          "cosine": 0.999844931627724
+        }
+      ],
+      "assignments": {
+        "0": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "1": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "2": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "3": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "4": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "5": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "6": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "7": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "8": {
+          "one_bit_max": [
+            16,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16,
+            2
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "9": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "10": {
+          "one_bit_max": [
+            16,
+            4,
+            2,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "11": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "12": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "13": {
+          "one_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "14": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "15": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "16": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "17": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "18": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "19": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "20": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "21": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "22": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "23": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16,
+            2
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16,
+            4
+          ]
+        },
+        "24": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            16,
+            4
+          ]
+        },
+        "25": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "26": {
+          "one_bit_max": [
+            16,
+            4,
+            16,
+            2,
+            2,
+            2,
+            4,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "27": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "28": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "29": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        }
+      },
+      "cache_accounting": [
+        {
+          "arm": "embedding_cosine_proxy",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "exact_softmax_mass",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "recency",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "position",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "interleaved",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "exact_mean_logit",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "one_bit_mean_logit",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "two_bit_mean_logit",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "random_73031",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "random_73033",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "random_73037",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "one_bit_max",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "two_bit_max",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "exact_max",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "visual_fp16",
+          "visual_payload_bytes": 49152,
+          "quantizer_metadata_bytes": 0,
+          "permutation_bytes": 0,
+          "visual_persistent_bytes": 49152
+        }
+      ],
+      "memory_scope": {
+        "native_fp32_visual_bytes": 98304,
+        "unchanged_nonvisual_prefill_bytes": 27648,
+        "unchanged_bytes_per_generated_token": 1536,
+        "scope": "Analytical packed storage; packing not implemented. Not allocated NumPy memory or measured GPU memory. Allocator padding, kernel workspace, scoring and dequantization transient buffers excluded."
+      },
+      "scope": "Teacher-forced local attention replay; no propagated model errors.",
+      "one_bit_max_beats_one_bit_mean": true
+    },
+    {
+      "image": "statue",
+      "primary_summary": {
+        "embedding_cosine_proxy": {
+          "relative_l2": 0.018484097236731365,
+          "cosine": 0.9996166380226869
+        },
+        "exact_softmax_mass": {
+          "relative_l2": 0.015100667088659073,
+          "cosine": 0.9996671114791634
+        },
+        "recency": {
+          "relative_l2": 0.01889508068444038,
+          "cosine": 0.9995337405678625
+        },
+        "position": {
+          "relative_l2": 0.01917661609404233,
+          "cosine": 0.999590203916006
+        },
+        "interleaved": {
+          "relative_l2": 0.014616507732575437,
+          "cosine": 0.9997013750666881
+        },
+        "exact_mean_logit": {
+          "relative_l2": 0.02173376274548445,
+          "cosine": 0.9991588331423453
+        },
+        "one_bit_mean_logit": {
+          "relative_l2": 0.022285657871530064,
+          "cosine": 0.9991286079596841
+        },
+        "two_bit_mean_logit": {
+          "relative_l2": 0.02194745805394658,
+          "cosine": 0.9991489711271739
+        },
+        "random_73031": {
+          "relative_l2": 0.02065144351507714,
+          "cosine": 0.9994973839169039
+        },
+        "random_73033": {
+          "relative_l2": 0.023020280594906545,
+          "cosine": 0.9992406237454067
+        },
+        "random_73037": {
+          "relative_l2": 0.022190551014675885,
+          "cosine": 0.9993023188947474
+        },
+        "one_bit_max": {
+          "relative_l2": 0.021124099555245517,
+          "cosine": 0.9991304742115148
+        },
+        "two_bit_max": {
+          "relative_l2": 0.018568253999763827,
+          "cosine": 0.9992768328914609
+        },
+        "exact_max": {
+          "relative_l2": 0.01802124260700424,
+          "cosine": 0.9994373481941248
+        },
+        "visual_fp16": {
+          "relative_l2": 5.906180697720055e-05,
+          "cosine": 0.9999999959476944
+        }
+      },
+      "rows": [
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 0,
+          "relative_l2": 0.004251359783075285,
+          "cosine": 0.999991022715046
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 0,
+          "relative_l2": 0.004121113511622281,
+          "cosine": 0.9999915505684659
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 0,
+          "relative_l2": 0.004121113511622281,
+          "cosine": 0.9999915505684659
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 1,
+          "relative_l2": 0.0020531771529589673,
+          "cosine": 0.9999979000560256
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 1,
+          "relative_l2": 0.0018842152013949125,
+          "cosine": 0.9999982248900384
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 1,
+          "relative_l2": 0.0018842152013949125,
+          "cosine": 0.9999982248900384
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 2,
+          "relative_l2": 0.0034074661098915148,
+          "cosine": 0.9999942465580905
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 2,
+          "relative_l2": 0.003653152279570303,
+          "cosine": 0.9999934065780635
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 2,
+          "relative_l2": 0.003653152279570303,
+          "cosine": 0.9999934065780635
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 0,
+          "step": 3,
+          "relative_l2": 0.0069101878070903615,
+          "cosine": 0.9999763762196817
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 0,
+          "step": 3,
+          "relative_l2": 0.004661013539275288,
+          "cosine": 0.9999891440881036
+        },
+        {
+          "arm": "exact_max",
+          "layer": 0,
+          "step": 3,
+          "relative_l2": 0.004661013539275288,
+          "cosine": 0.9999891440881036
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 0,
+          "relative_l2": 0.005020003175886631,
+          "cosine": 0.9999874290301056
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 0,
+          "relative_l2": 0.00478088258740831,
+          "cosine": 0.9999886058283809
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 0,
+          "relative_l2": 0.00478088258740831,
+          "cosine": 0.9999886058283809
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 1,
+          "relative_l2": 0.0016958156063689902,
+          "cosine": 0.9999985854104677
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 1,
+          "relative_l2": 0.0020402328780573836,
+          "cosine": 0.9999979489833686
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 1,
+          "relative_l2": 0.0020402328780573836,
+          "cosine": 0.9999979489833686
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 2,
+          "relative_l2": 0.00234005492416832,
+          "cosine": 0.9999972648282124
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 2,
+          "relative_l2": 0.003938401345562401,
+          "cosine": 0.9999922592804027
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 2,
+          "relative_l2": 0.003938401345562401,
+          "cosine": 0.9999922592804027
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 1,
+          "step": 3,
+          "relative_l2": 0.0033407746938503265,
+          "cosine": 0.9999944704866082
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 1,
+          "step": 3,
+          "relative_l2": 0.005705717326582377,
+          "cosine": 0.9999837254150211
+        },
+        {
+          "arm": "exact_max",
+          "layer": 1,
+          "step": 3,
+          "relative_l2": 0.005705717326582377,
+          "cosine": 0.9999837254150211
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 0,
+          "relative_l2": 0.0012217802202050614,
+          "cosine": 0.9999993236744198
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 0,
+          "relative_l2": 0.0014708082816317688,
+          "cosine": 0.9999990585922067
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 0,
+          "relative_l2": 0.001068276065712624,
+          "cosine": 0.9999994735111164
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 1,
+          "relative_l2": 0.0016163076853508193,
+          "cosine": 0.999998706122322
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 1,
+          "relative_l2": 0.0024477182741427478,
+          "cosine": 0.9999970684060483
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 1,
+          "relative_l2": 0.0021500289470955435,
+          "cosine": 0.9999977193030226
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 2,
+          "relative_l2": 0.0012231985981649208,
+          "cosine": 0.9999992895071429
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 2,
+          "relative_l2": 0.0013744528937003483,
+          "cosine": 0.9999991026100583
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 2,
+          "relative_l2": 0.0012916731001918788,
+          "cosine": 0.9999991971907752
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 2,
+          "step": 3,
+          "relative_l2": 0.0015995102731150021,
+          "cosine": 0.9999989738499249
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 2,
+          "step": 3,
+          "relative_l2": 0.002587902660244522,
+          "cosine": 0.9999975704849644
+        },
+        {
+          "arm": "exact_max",
+          "layer": 2,
+          "step": 3,
+          "relative_l2": 0.0026783339912643763,
+          "cosine": 0.9999973811449175
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 0,
+          "relative_l2": 0.0016248333752226954,
+          "cosine": 0.9999987028099487
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 0,
+          "relative_l2": 0.0017488434806463811,
+          "cosine": 0.9999985093229555
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 0,
+          "relative_l2": 0.0016410820458941876,
+          "cosine": 0.9999986799966956
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 1,
+          "relative_l2": 0.0015376101601572414,
+          "cosine": 0.9999988621720719
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 1,
+          "relative_l2": 0.0015561346370533736,
+          "cosine": 0.9999988520351517
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 1,
+          "relative_l2": 0.0012048537712065243,
+          "cosine": 0.99999929725971
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 2,
+          "relative_l2": 0.000938251749501867,
+          "cosine": 0.9999996626108314
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 2,
+          "relative_l2": 0.0008836342582245931,
+          "cosine": 0.999999666337439
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 2,
+          "relative_l2": 0.0008630790762183234,
+          "cosine": 0.9999996672923689
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 3,
+          "step": 3,
+          "relative_l2": 0.0012497307642302705,
+          "cosine": 0.9999992678987474
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 3,
+          "step": 3,
+          "relative_l2": 0.0011105337622518046,
+          "cosine": 0.9999994222248397
+        },
+        {
+          "arm": "exact_max",
+          "layer": 3,
+          "step": 3,
+          "relative_l2": 0.0013218644625592904,
+          "cosine": 0.9999992133195199
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 0,
+          "relative_l2": 0.0037681745884795502,
+          "cosine": 0.999992906601943
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 0,
+          "relative_l2": 0.003716262682535914,
+          "cosine": 0.9999931061615418
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 0,
+          "relative_l2": 0.003716262682535914,
+          "cosine": 0.9999931061615418
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 1,
+          "relative_l2": 0.0030336186319732815,
+          "cosine": 0.9999954806588491
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 1,
+          "relative_l2": 0.0025713051355724646,
+          "cosine": 0.9999968013919401
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 1,
+          "relative_l2": 0.0025713051355724646,
+          "cosine": 0.9999968013919401
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 2,
+          "relative_l2": 0.000701631367315181,
+          "cosine": 0.999999755602146
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 2,
+          "relative_l2": 0.0006519360974724076,
+          "cosine": 0.9999997876967628
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 2,
+          "relative_l2": 0.0006519360974724076,
+          "cosine": 0.9999997876967628
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 4,
+          "step": 3,
+          "relative_l2": 0.0015989296250944307,
+          "cosine": 0.9999987254941568
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 4,
+          "step": 3,
+          "relative_l2": 0.0015313929197118571,
+          "cosine": 0.9999988325299267
+        },
+        {
+          "arm": "exact_max",
+          "layer": 4,
+          "step": 3,
+          "relative_l2": 0.0015313929197118571,
+          "cosine": 0.9999988325299267
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 0,
+          "relative_l2": 0.005656912603614421,
+          "cosine": 0.9999844249651407
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 0,
+          "relative_l2": 0.005495498815034786,
+          "cosine": 0.9999854131180986
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 0,
+          "relative_l2": 0.005572615736192019,
+          "cosine": 0.9999844729006963
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 1,
+          "relative_l2": 0.005140253702477773,
+          "cosine": 0.9999873513387016
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 1,
+          "relative_l2": 0.004639845856323531,
+          "cosine": 0.9999900646160824
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 1,
+          "relative_l2": 0.004768382127775457,
+          "cosine": 0.9999886325608737
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 2,
+          "relative_l2": 0.0031141006961665977,
+          "cosine": 0.9999952762517713
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 2,
+          "relative_l2": 0.002847533539055075,
+          "cosine": 0.9999961130526683
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 2,
+          "relative_l2": 0.002500589358263854,
+          "cosine": 0.999996879721469
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 5,
+          "step": 3,
+          "relative_l2": 0.005390848311974631,
+          "cosine": 0.9999858176206722
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 5,
+          "step": 3,
+          "relative_l2": 0.005434339824680954,
+          "cosine": 0.9999856598767517
+        },
+        {
+          "arm": "exact_max",
+          "layer": 5,
+          "step": 3,
+          "relative_l2": 0.007940318545828842,
+          "cosine": 0.9999684915623815
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 0,
+          "relative_l2": 0.001763855314177277,
+          "cosine": 0.9999984607562374
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 0,
+          "relative_l2": 0.0029473902157031895,
+          "cosine": 0.9999957119098474
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 0,
+          "relative_l2": 0.001763855314177277,
+          "cosine": 0.9999984607562374
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 1,
+          "relative_l2": 0.0012071005471749085,
+          "cosine": 0.999999280070927
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 1,
+          "relative_l2": 0.0012205422478230052,
+          "cosine": 0.9999992611507622
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 1,
+          "relative_l2": 0.0012071005471749085,
+          "cosine": 0.999999280070927
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 2,
+          "relative_l2": 0.0015753032211173177,
+          "cosine": 0.9999987594916857
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 2,
+          "relative_l2": 0.001797813254406701,
+          "cosine": 0.9999983882166938
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 2,
+          "relative_l2": 0.0015753032211173177,
+          "cosine": 0.9999987594916857
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 6,
+          "step": 3,
+          "relative_l2": 0.002499107830052807,
+          "cosine": 0.9999968985888567
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 6,
+          "step": 3,
+          "relative_l2": 0.002227338078993526,
+          "cosine": 0.9999975196736475
+        },
+        {
+          "arm": "exact_max",
+          "layer": 6,
+          "step": 3,
+          "relative_l2": 0.002499107830052807,
+          "cosine": 0.9999968985888567
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 0,
+          "relative_l2": 0.002903924133225732,
+          "cosine": 0.9999957863084746
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 0,
+          "relative_l2": 0.0028209939219351063,
+          "cosine": 0.9999960268006665
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 0,
+          "relative_l2": 0.0028209939219351063,
+          "cosine": 0.9999960268006665
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 1,
+          "relative_l2": 0.0012745709025948875,
+          "cosine": 0.999999188831043
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 1,
+          "relative_l2": 0.0011056741500750013,
+          "cosine": 0.9999993930039177
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 1,
+          "relative_l2": 0.0011056741500750013,
+          "cosine": 0.9999993930039177
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 2,
+          "relative_l2": 0.0009596014885312416,
+          "cosine": 0.999999540654735
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 2,
+          "relative_l2": 0.00086536112797969,
+          "cosine": 0.9999996259613616
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 2,
+          "relative_l2": 0.00086536112797969,
+          "cosine": 0.9999996259613616
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 7,
+          "step": 3,
+          "relative_l2": 0.0015605771478332223,
+          "cosine": 0.9999987824301223
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 7,
+          "step": 3,
+          "relative_l2": 0.0021881337857264016,
+          "cosine": 0.9999976091003027
+        },
+        {
+          "arm": "exact_max",
+          "layer": 7,
+          "step": 3,
+          "relative_l2": 0.0021881337857264016,
+          "cosine": 0.9999976091003027
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 0,
+          "relative_l2": 0.017060040729993037,
+          "cosine": 0.9998552234341941
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 0,
+          "relative_l2": 0.017060040729993037,
+          "cosine": 0.9998552234341941
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 0,
+          "relative_l2": 0.017060040729993037,
+          "cosine": 0.9998552234341941
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 1,
+          "relative_l2": 0.005172062342342099,
+          "cosine": 0.9999873962618214
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 1,
+          "relative_l2": 0.005172062342342099,
+          "cosine": 0.9999873962618214
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 1,
+          "relative_l2": 0.005172062342342099,
+          "cosine": 0.9999873962618214
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 2,
+          "relative_l2": 0.006146543089484395,
+          "cosine": 0.999981436793598
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 2,
+          "relative_l2": 0.006146543089484395,
+          "cosine": 0.999981436793598
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 2,
+          "relative_l2": 0.006146543089484395,
+          "cosine": 0.999981436793598
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 8,
+          "step": 3,
+          "relative_l2": 0.0036826930605732165,
+          "cosine": 0.999993526946254
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 8,
+          "step": 3,
+          "relative_l2": 0.0036826930605732165,
+          "cosine": 0.999993526946254
+        },
+        {
+          "arm": "exact_max",
+          "layer": 8,
+          "step": 3,
+          "relative_l2": 0.0036826930605732165,
+          "cosine": 0.999993526946254
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 0,
+          "relative_l2": 0.003103034878227529,
+          "cosine": 0.9999952245509068
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 0,
+          "relative_l2": 0.003103034878227529,
+          "cosine": 0.9999952245509068
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 0,
+          "relative_l2": 0.003103034878227529,
+          "cosine": 0.9999952245509068
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 1,
+          "relative_l2": 0.0027812464651764367,
+          "cosine": 0.9999961427670876
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 1,
+          "relative_l2": 0.0027812464651764367,
+          "cosine": 0.9999961427670876
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 1,
+          "relative_l2": 0.0027812464651764367,
+          "cosine": 0.9999961427670876
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 2,
+          "relative_l2": 0.0010098303756603986,
+          "cosine": 0.9999994902056755
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 2,
+          "relative_l2": 0.0010098303756603986,
+          "cosine": 0.9999994902056755
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 2,
+          "relative_l2": 0.0010098303756603986,
+          "cosine": 0.9999994902056755
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 9,
+          "step": 3,
+          "relative_l2": 0.001832001450176276,
+          "cosine": 0.9999983240525977
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 9,
+          "step": 3,
+          "relative_l2": 0.001832001450176276,
+          "cosine": 0.9999983240525977
+        },
+        {
+          "arm": "exact_max",
+          "layer": 9,
+          "step": 3,
+          "relative_l2": 0.001832001450176276,
+          "cosine": 0.9999983240525977
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 0,
+          "relative_l2": 0.0025663405696661683,
+          "cosine": 0.9999969068391424
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 0,
+          "relative_l2": 0.002900896354616387,
+          "cosine": 0.9999959861028324
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 0,
+          "relative_l2": 0.0026438581184229904,
+          "cosine": 0.9999967619640613
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 1,
+          "relative_l2": 0.0029463922821086805,
+          "cosine": 0.9999959747242649
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 1,
+          "relative_l2": 0.003723848910731046,
+          "cosine": 0.9999933279950023
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 1,
+          "relative_l2": 0.00293295075730847,
+          "cosine": 0.9999960271950644
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 2,
+          "relative_l2": 0.0010381409621180704,
+          "cosine": 0.9999994661025726
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 2,
+          "relative_l2": 0.0013514026981024535,
+          "cosine": 0.9999991025689186
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 2,
+          "relative_l2": 0.0011301123969774379,
+          "cosine": 0.9999993730015405
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 10,
+          "step": 3,
+          "relative_l2": 0.002092412423030023,
+          "cosine": 0.9999978127597905
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 10,
+          "step": 3,
+          "relative_l2": 0.0024804196901409984,
+          "cosine": 0.9999969278223624
+        },
+        {
+          "arm": "exact_max",
+          "layer": 10,
+          "step": 3,
+          "relative_l2": 0.002528224509347947,
+          "cosine": 0.9999968041661298
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 0,
+          "relative_l2": 0.0027257728650197277,
+          "cosine": 0.9999964149813625
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 0,
+          "relative_l2": 0.0037964797495594208,
+          "cosine": 0.9999941857044482
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 0,
+          "relative_l2": 0.0021136958098579295,
+          "cosine": 0.9999977674579064
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 1,
+          "relative_l2": 0.003532298370518957,
+          "cosine": 0.9999939461537004
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 1,
+          "relative_l2": 0.012007942022238375,
+          "cosine": 0.999930319072428
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 1,
+          "relative_l2": 0.002702687398312346,
+          "cosine": 0.9999963874409371
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 2,
+          "relative_l2": 0.0012625962409606977,
+          "cosine": 0.9999992327902543
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 2,
+          "relative_l2": 0.001920579670480957,
+          "cosine": 0.999998159670075
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 2,
+          "relative_l2": 0.0019519575170965243,
+          "cosine": 0.9999981026854154
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 11,
+          "step": 3,
+          "relative_l2": 0.003135451501845971,
+          "cosine": 0.9999958228076806
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 11,
+          "step": 3,
+          "relative_l2": 0.0027365046294938094,
+          "cosine": 0.9999965072007633
+        },
+        {
+          "arm": "exact_max",
+          "layer": 11,
+          "step": 3,
+          "relative_l2": 0.002528531661387514,
+          "cosine": 0.9999971518660807
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 0,
+          "relative_l2": 0.004376994316951977,
+          "cosine": 0.9999905238955318
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 0,
+          "relative_l2": 0.004376994316951977,
+          "cosine": 0.9999905238955318
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 0,
+          "relative_l2": 0.004376994316951977,
+          "cosine": 0.9999905238955318
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 1,
+          "relative_l2": 0.0054393201287325915,
+          "cosine": 0.9999852495802362
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 1,
+          "relative_l2": 0.0054393201287325915,
+          "cosine": 0.9999852495802362
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 1,
+          "relative_l2": 0.0054393201287325915,
+          "cosine": 0.9999852495802362
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 2,
+          "relative_l2": 0.004812224805995332,
+          "cosine": 0.9999886969429956
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 2,
+          "relative_l2": 0.004812224805995332,
+          "cosine": 0.9999886969429956
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 2,
+          "relative_l2": 0.004812224805995332,
+          "cosine": 0.9999886969429956
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 12,
+          "step": 3,
+          "relative_l2": 0.016004152430517112,
+          "cosine": 0.999871933997823
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 12,
+          "step": 3,
+          "relative_l2": 0.016004152430517112,
+          "cosine": 0.999871933997823
+        },
+        {
+          "arm": "exact_max",
+          "layer": 12,
+          "step": 3,
+          "relative_l2": 0.016004152430517112,
+          "cosine": 0.999871933997823
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 0,
+          "relative_l2": 0.005299580014745414,
+          "cosine": 0.9999860260027505
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 0,
+          "relative_l2": 0.005299580014745414,
+          "cosine": 0.9999860260027505
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 0,
+          "relative_l2": 0.005299580014745414,
+          "cosine": 0.9999860260027505
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 1,
+          "relative_l2": 0.002866390030662701,
+          "cosine": 0.9999958920661146
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 1,
+          "relative_l2": 0.002866390030662701,
+          "cosine": 0.9999958920661146
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 1,
+          "relative_l2": 0.002866390030662701,
+          "cosine": 0.9999958920661146
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 2,
+          "relative_l2": 0.0022439210312709557,
+          "cosine": 0.9999974872446867
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 2,
+          "relative_l2": 0.0022439210312709557,
+          "cosine": 0.9999974872446867
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 2,
+          "relative_l2": 0.0022439210312709557,
+          "cosine": 0.9999974872446867
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 13,
+          "step": 3,
+          "relative_l2": 0.02187444622101129,
+          "cosine": 0.9997617907963359
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 13,
+          "step": 3,
+          "relative_l2": 0.02187444622101129,
+          "cosine": 0.9997617907963359
+        },
+        {
+          "arm": "exact_max",
+          "layer": 13,
+          "step": 3,
+          "relative_l2": 0.02187444622101129,
+          "cosine": 0.9997617907963359
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 0,
+          "relative_l2": 0.011603976723779977,
+          "cosine": 0.9999330453280693
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 0,
+          "relative_l2": 0.011603976723779977,
+          "cosine": 0.9999330453280693
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 0,
+          "relative_l2": 0.014709065081265797,
+          "cosine": 0.9998927271325078
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 1,
+          "relative_l2": 0.014995175554965405,
+          "cosine": 0.9998879943885238
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 1,
+          "relative_l2": 0.014995175554965405,
+          "cosine": 0.9998879943885238
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 1,
+          "relative_l2": 0.015814821903053007,
+          "cosine": 0.9998755260627727
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 2,
+          "relative_l2": 0.00605111519454749,
+          "cosine": 0.9999817525806503
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 2,
+          "relative_l2": 0.00605111519454749,
+          "cosine": 0.9999817525806503
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 2,
+          "relative_l2": 0.007554418508113896,
+          "cosine": 0.9999716364554031
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 14,
+          "step": 3,
+          "relative_l2": 0.010590198929418627,
+          "cosine": 0.9999442413462406
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 14,
+          "step": 3,
+          "relative_l2": 0.010590198929418627,
+          "cosine": 0.9999442413462406
+        },
+        {
+          "arm": "exact_max",
+          "layer": 14,
+          "step": 3,
+          "relative_l2": 0.015809564984083525,
+          "cosine": 0.9998768796038773
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 0,
+          "relative_l2": 0.03222180112854762,
+          "cosine": 0.9994819402825166
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 0,
+          "relative_l2": 0.020815982777618716,
+          "cosine": 0.9997834266664147
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 0,
+          "relative_l2": 0.024499609642072723,
+          "cosine": 0.9997064430225928
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 1,
+          "relative_l2": 0.026822324943346805,
+          "cosine": 0.9996476600475603
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 1,
+          "relative_l2": 0.006217856588996128,
+          "cosine": 0.9999806938863092
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 1,
+          "relative_l2": 0.026202387218723547,
+          "cosine": 0.9996658197814823
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 2,
+          "relative_l2": 0.036760922337622556,
+          "cosine": 0.9993369864892171
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 2,
+          "relative_l2": 0.009597545534608266,
+          "cosine": 0.9999539675362494
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 2,
+          "relative_l2": 0.03518243776554256,
+          "cosine": 0.9993958768957671
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 15,
+          "step": 3,
+          "relative_l2": 0.04802191834171283,
+          "cosine": 0.9988476423867515
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 15,
+          "step": 3,
+          "relative_l2": 0.037652953833595466,
+          "cosine": 0.9992912384796386
+        },
+        {
+          "arm": "exact_max",
+          "layer": 15,
+          "step": 3,
+          "relative_l2": 0.03876200668474654,
+          "cosine": 0.9992494487868245
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 0,
+          "relative_l2": 0.016035597294387537,
+          "cosine": 0.9998714222456567
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 0,
+          "relative_l2": 0.016035597294387537,
+          "cosine": 0.9998714222456567
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 0,
+          "relative_l2": 0.013335602374267704,
+          "cosine": 0.9999111099942818
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 1,
+          "relative_l2": 0.004181359091040875,
+          "cosine": 0.9999912643088251
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 1,
+          "relative_l2": 0.004181359091040875,
+          "cosine": 0.9999912643088251
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 1,
+          "relative_l2": 0.0029824751961442593,
+          "cosine": 0.9999955590498891
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 2,
+          "relative_l2": 0.010593493652806936,
+          "cosine": 0.9999438989109873
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 2,
+          "relative_l2": 0.010593493652806936,
+          "cosine": 0.9999438989109873
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 2,
+          "relative_l2": 0.012242541114818614,
+          "cosine": 0.9999250959189506
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 16,
+          "step": 3,
+          "relative_l2": 0.013334540297139619,
+          "cosine": 0.9999111359088093
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 16,
+          "step": 3,
+          "relative_l2": 0.013334540297139619,
+          "cosine": 0.9999111359088093
+        },
+        {
+          "arm": "exact_max",
+          "layer": 16,
+          "step": 3,
+          "relative_l2": 0.027477568072025307,
+          "cosine": 0.9996231043475716
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 0,
+          "relative_l2": 0.027300895303408387,
+          "cosine": 0.999627261094565
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 0,
+          "relative_l2": 0.020182915472045888,
+          "cosine": 0.9997984421419753
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 0,
+          "relative_l2": 0.027300895303408387,
+          "cosine": 0.999627261094565
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 1,
+          "relative_l2": 0.011443024267216452,
+          "cosine": 0.9999346513527749
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 1,
+          "relative_l2": 0.012280003403632186,
+          "cosine": 0.9999246927077974
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 1,
+          "relative_l2": 0.011443024267216452,
+          "cosine": 0.9999346513527749
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 2,
+          "relative_l2": 0.04840039371930901,
+          "cosine": 0.9988499538828253
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 2,
+          "relative_l2": 0.019235949308861994,
+          "cosine": 0.9998152880810318
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 2,
+          "relative_l2": 0.04840039371930901,
+          "cosine": 0.9988499538828253
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 17,
+          "step": 3,
+          "relative_l2": 0.10164246771604818,
+          "cosine": 0.9953705378070161
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 17,
+          "step": 3,
+          "relative_l2": 0.02651145076100454,
+          "cosine": 0.9996487410289475
+        },
+        {
+          "arm": "exact_max",
+          "layer": 17,
+          "step": 3,
+          "relative_l2": 0.10164246771604818,
+          "cosine": 0.9953705378070161
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 0,
+          "relative_l2": 0.004233951011979857,
+          "cosine": 0.999991158439072
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 0,
+          "relative_l2": 0.004329433952238913,
+          "cosine": 0.9999907699790915
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 0,
+          "relative_l2": 0.004233951011979857,
+          "cosine": 0.999991158439072
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 1,
+          "relative_l2": 0.0017586222878749737,
+          "cosine": 0.9999984536226756
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 1,
+          "relative_l2": 0.0021359697769456902,
+          "cosine": 0.9999977361022999
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 1,
+          "relative_l2": 0.0017586222878749737,
+          "cosine": 0.9999984536226756
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 2,
+          "relative_l2": 0.006338316148757125,
+          "cosine": 0.9999799431363622
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 2,
+          "relative_l2": 0.00645479802581953,
+          "cosine": 0.9999791933318962
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 2,
+          "relative_l2": 0.006338316148757125,
+          "cosine": 0.9999799431363622
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 18,
+          "step": 3,
+          "relative_l2": 0.011013019701412897,
+          "cosine": 0.9999394159745372
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 18,
+          "step": 3,
+          "relative_l2": 0.011066331364867444,
+          "cosine": 0.999938785238687
+        },
+        {
+          "arm": "exact_max",
+          "layer": 18,
+          "step": 3,
+          "relative_l2": 0.011013019701412897,
+          "cosine": 0.9999394159745372
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 0,
+          "relative_l2": 0.002295928990380374,
+          "cosine": 0.9999973670610596
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 0,
+          "relative_l2": 0.002295928990380374,
+          "cosine": 0.9999973670610596
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 0,
+          "relative_l2": 0.002295928990380374,
+          "cosine": 0.9999973670610596
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 1,
+          "relative_l2": 0.002121634593449148,
+          "cosine": 0.9999977564077497
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 1,
+          "relative_l2": 0.002121634593449148,
+          "cosine": 0.9999977564077497
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 1,
+          "relative_l2": 0.002121634593449148,
+          "cosine": 0.9999977564077497
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 2,
+          "relative_l2": 0.00318767868937236,
+          "cosine": 0.999994925766005
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 2,
+          "relative_l2": 0.00318767868937236,
+          "cosine": 0.999994925766005
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 2,
+          "relative_l2": 0.00318767868937236,
+          "cosine": 0.999994925766005
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 19,
+          "step": 3,
+          "relative_l2": 0.011631618833840543,
+          "cosine": 0.9999333746795898
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 19,
+          "step": 3,
+          "relative_l2": 0.011631618833840543,
+          "cosine": 0.9999333746795898
+        },
+        {
+          "arm": "exact_max",
+          "layer": 19,
+          "step": 3,
+          "relative_l2": 0.011631618833840543,
+          "cosine": 0.9999333746795898
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 0,
+          "relative_l2": 0.011421984012779744,
+          "cosine": 0.9999348065944826
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 0,
+          "relative_l2": 0.011645141605813168,
+          "cosine": 0.9999322531061574
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 0,
+          "relative_l2": 0.04018688182640769,
+          "cosine": 0.9992097291243189
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 1,
+          "relative_l2": 0.005310655856555755,
+          "cosine": 0.999985925876335
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 1,
+          "relative_l2": 0.005559048249004676,
+          "cosine": 0.9999845589015678
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 1,
+          "relative_l2": 0.004139345612222984,
+          "cosine": 0.9999914791150075
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 2,
+          "relative_l2": 0.002678495746069098,
+          "cosine": 0.999996430836208
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 2,
+          "relative_l2": 0.0030328864838391665,
+          "cosine": 0.9999954182544829
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 2,
+          "relative_l2": 0.005445598037603562,
+          "cosine": 0.9999852295924724
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 20,
+          "step": 3,
+          "relative_l2": 0.0032528447666910596,
+          "cosine": 0.9999947171453077
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 20,
+          "step": 3,
+          "relative_l2": 0.004123660521847104,
+          "cosine": 0.9999915193217099
+        },
+        {
+          "arm": "exact_max",
+          "layer": 20,
+          "step": 3,
+          "relative_l2": 0.004168777494233527,
+          "cosine": 0.9999913140188225
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 0,
+          "relative_l2": 0.022864853386999454,
+          "cosine": 0.9997392767125987
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 0,
+          "relative_l2": 0.021611565348121843,
+          "cosine": 0.9997664765557985
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 0,
+          "relative_l2": 0.01913490458940357,
+          "cosine": 0.999817887093749
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 1,
+          "relative_l2": 0.022703275404670292,
+          "cosine": 0.9997452516938051
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 1,
+          "relative_l2": 0.023856830149657757,
+          "cosine": 0.9997185038072905
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 1,
+          "relative_l2": 0.021783804028747467,
+          "cosine": 0.9997663549059407
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 2,
+          "relative_l2": 0.06629540110903302,
+          "cosine": 0.9978078350779046
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 2,
+          "relative_l2": 0.0775022368697401,
+          "cosine": 0.9970498047572552
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 2,
+          "relative_l2": 0.06630518839633212,
+          "cosine": 0.9978085328867254
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 21,
+          "step": 3,
+          "relative_l2": 0.0724947978186417,
+          "cosine": 0.9973964280149312
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 21,
+          "step": 3,
+          "relative_l2": 0.0847229403883618,
+          "cosine": 0.9964745761659146
+        },
+        {
+          "arm": "exact_max",
+          "layer": 21,
+          "step": 3,
+          "relative_l2": 0.07306008073117401,
+          "cosine": 0.9973584738270681
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 0,
+          "relative_l2": 0.03290454594855361,
+          "cosine": 0.9994707350227731
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 0,
+          "relative_l2": 0.03290454594855361,
+          "cosine": 0.9994707350227731
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 0,
+          "relative_l2": 0.03268671855489314,
+          "cosine": 0.9994769974629052
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 1,
+          "relative_l2": 0.012067583686209174,
+          "cosine": 0.9999276623399755
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 1,
+          "relative_l2": 0.012067583686209174,
+          "cosine": 0.9999276623399755
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 1,
+          "relative_l2": 0.00862354599129632,
+          "cosine": 0.9999628487165665
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 2,
+          "relative_l2": 0.07446120440378838,
+          "cosine": 0.9976171020584749
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 2,
+          "relative_l2": 0.07446120440378838,
+          "cosine": 0.9976171020584749
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 2,
+          "relative_l2": 0.0748557783549423,
+          "cosine": 0.9975985576389466
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 22,
+          "step": 3,
+          "relative_l2": 0.05824292773043972,
+          "cosine": 0.9984074851183954
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 22,
+          "step": 3,
+          "relative_l2": 0.05824292773043972,
+          "cosine": 0.9984074851183954
+        },
+        {
+          "arm": "exact_max",
+          "layer": 22,
+          "step": 3,
+          "relative_l2": 0.059170758666768485,
+          "cosine": 0.9983548348344138
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 0,
+          "relative_l2": 0.23011136697122453,
+          "cosine": 0.9824719087296108
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 0,
+          "relative_l2": 0.06989640714312854,
+          "cosine": 0.9976583647428598
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 0,
+          "relative_l2": 0.030950805890605945,
+          "cosine": 0.9995216991587313
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 1,
+          "relative_l2": 0.009025039697311658,
+          "cosine": 0.9999621055841001
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 1,
+          "relative_l2": 0.011158575154451842,
+          "cosine": 0.9999407704488887
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 1,
+          "relative_l2": 0.029220347803844204,
+          "cosine": 0.9995787430569448
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 2,
+          "relative_l2": 0.14736676447846947,
+          "cosine": 0.990558736309649
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 2,
+          "relative_l2": 0.12320676252032564,
+          "cosine": 0.9931673062453724
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 2,
+          "relative_l2": 0.05692202414739821,
+          "cosine": 0.9984332712308421
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 23,
+          "step": 3,
+          "relative_l2": 0.22973797596184492,
+          "cosine": 0.9813614203598618
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 23,
+          "step": 3,
+          "relative_l2": 0.20927682701054215,
+          "cosine": 0.9831544325790066
+        },
+        {
+          "arm": "exact_max",
+          "layer": 23,
+          "step": 3,
+          "relative_l2": 0.07144183715645369,
+          "cosine": 0.9975197092732474
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 0,
+          "relative_l2": 0.03572729488961799,
+          "cosine": 0.9993699562663796
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 0,
+          "relative_l2": 0.03528254326221149,
+          "cosine": 0.9993802367299814
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 0,
+          "relative_l2": 0.03528254326221149,
+          "cosine": 0.9993802367299814
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 1,
+          "relative_l2": 0.006117893596023023,
+          "cosine": 0.9999813061361671
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 1,
+          "relative_l2": 0.006112700626399004,
+          "cosine": 0.9999813371489664
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 1,
+          "relative_l2": 0.006112700626399004,
+          "cosine": 0.9999813371489664
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 2,
+          "relative_l2": 0.0643889280430308,
+          "cosine": 0.9979761480740102
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 2,
+          "relative_l2": 0.06337851926677208,
+          "cosine": 0.9980329337927986
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 2,
+          "relative_l2": 0.06337851926677208,
+          "cosine": 0.9980329337927986
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 24,
+          "step": 3,
+          "relative_l2": 0.20942817705156216,
+          "cosine": 0.9802296048976501
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 24,
+          "step": 3,
+          "relative_l2": 0.2088711713621595,
+          "cosine": 0.9802770551355626
+        },
+        {
+          "arm": "exact_max",
+          "layer": 24,
+          "step": 3,
+          "relative_l2": 0.2088711713621595,
+          "cosine": 0.9802770551355626
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 0,
+          "relative_l2": 0.01400298005295421,
+          "cosine": 0.9999041401535551
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 0,
+          "relative_l2": 0.013012838106989314,
+          "cosine": 0.9999183186717874
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 0,
+          "relative_l2": 0.01295414306779098,
+          "cosine": 0.9999191326130157
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 1,
+          "relative_l2": 0.001686824810605523,
+          "cosine": 0.9999985773857107
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 1,
+          "relative_l2": 0.000934066027119031,
+          "cosine": 0.9999995638723052
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 1,
+          "relative_l2": 0.0008599019530685744,
+          "cosine": 0.9999996304273918
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 2,
+          "relative_l2": 0.06662421978629242,
+          "cosine": 0.997789118080593
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 2,
+          "relative_l2": 0.06333727696543971,
+          "cosine": 0.9980223159863151
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 2,
+          "relative_l2": 0.06310121168930591,
+          "cosine": 0.9980346744005825
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 25,
+          "step": 3,
+          "relative_l2": 0.05238213543614664,
+          "cosine": 0.9986313332906896
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 25,
+          "step": 3,
+          "relative_l2": 0.049255891947030624,
+          "cosine": 0.9987864153269324
+        },
+        {
+          "arm": "exact_max",
+          "layer": 25,
+          "step": 3,
+          "relative_l2": 0.049257556415331215,
+          "cosine": 0.9987866488098085
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 0,
+          "relative_l2": 0.020863694595076913,
+          "cosine": 0.9997826255220466
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 0,
+          "relative_l2": 0.020863694595076913,
+          "cosine": 0.9997826255220466
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 0,
+          "relative_l2": 0.020863694595076913,
+          "cosine": 0.9997826255220466
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 1,
+          "relative_l2": 0.0008688756848955379,
+          "cosine": 0.9999996228614768
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 1,
+          "relative_l2": 0.0008688756848955379,
+          "cosine": 0.9999996228614768
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 1,
+          "relative_l2": 0.0008688756848955379,
+          "cosine": 0.9999996228614768
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 2,
+          "relative_l2": 0.009242117102670236,
+          "cosine": 0.9999572919451285
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 2,
+          "relative_l2": 0.009242117102670236,
+          "cosine": 0.9999572919451285
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 2,
+          "relative_l2": 0.009242117102670236,
+          "cosine": 0.9999572919451285
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 26,
+          "step": 3,
+          "relative_l2": 0.021586855572035636,
+          "cosine": 0.9997678859750874
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 26,
+          "step": 3,
+          "relative_l2": 0.021586855572035636,
+          "cosine": 0.9997678859750874
+        },
+        {
+          "arm": "exact_max",
+          "layer": 26,
+          "step": 3,
+          "relative_l2": 0.021586855572035636,
+          "cosine": 0.9997678859750874
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 0,
+          "relative_l2": 0.011512044512828997,
+          "cosine": 0.9999343205471557
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 0,
+          "relative_l2": 0.011512044512828997,
+          "cosine": 0.9999343205471557
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 0,
+          "relative_l2": 0.011512044512828997,
+          "cosine": 0.9999343205471557
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 1,
+          "relative_l2": 0.0016387979327769319,
+          "cosine": 0.9999986686911561
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 1,
+          "relative_l2": 0.0016387979327769319,
+          "cosine": 0.9999986686911561
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 1,
+          "relative_l2": 0.0016387979327769319,
+          "cosine": 0.9999986686911561
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 2,
+          "relative_l2": 0.01967250117990836,
+          "cosine": 0.9998070714439441
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 2,
+          "relative_l2": 0.01967250117990836,
+          "cosine": 0.9998070714439441
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 2,
+          "relative_l2": 0.01967250117990836,
+          "cosine": 0.9998070714439441
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 27,
+          "step": 3,
+          "relative_l2": 0.012261198834682172,
+          "cosine": 0.9999248290872405
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 27,
+          "step": 3,
+          "relative_l2": 0.012261198834682172,
+          "cosine": 0.9999248290872405
+        },
+        {
+          "arm": "exact_max",
+          "layer": 27,
+          "step": 3,
+          "relative_l2": 0.012261198834682172,
+          "cosine": 0.9999248290872405
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 0,
+          "relative_l2": 0.07065867448719425,
+          "cosine": 0.9975404117983969
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 0,
+          "relative_l2": 0.04492037944639029,
+          "cosine": 0.9990053257982128
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 0,
+          "relative_l2": 0.04492037944639029,
+          "cosine": 0.9990053257982128
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 1,
+          "relative_l2": 0.007216296457560647,
+          "cosine": 0.9999739656266621
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 1,
+          "relative_l2": 0.017072384103679943,
+          "cosine": 0.9998542802899094
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 1,
+          "relative_l2": 0.017072384103679943,
+          "cosine": 0.9998542802899094
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 2,
+          "relative_l2": 0.024709823621688796,
+          "cosine": 0.999695763811853
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 2,
+          "relative_l2": 0.020771111825880796,
+          "cosine": 0.9997846406084888
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 2,
+          "relative_l2": 0.020771111825880796,
+          "cosine": 0.9997846406084888
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 28,
+          "step": 3,
+          "relative_l2": 0.08955478141542966,
+          "cosine": 0.9961314356576838
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 28,
+          "step": 3,
+          "relative_l2": 0.026273270308862447,
+          "cosine": 0.9996576071535738
+        },
+        {
+          "arm": "exact_max",
+          "layer": 28,
+          "step": 3,
+          "relative_l2": 0.026273270308862447,
+          "cosine": 0.9996576071535738
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 0,
+          "relative_l2": 0.034379275314260556,
+          "cosine": 0.9994098414142464
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 0,
+          "relative_l2": 0.033399754061394615,
+          "cosine": 0.9994452536018379
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 0,
+          "relative_l2": 0.033399754061394615,
+          "cosine": 0.9994452536018379
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 1,
+          "relative_l2": 0.017274165778097095,
+          "cosine": 0.9998507906609088
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 1,
+          "relative_l2": 0.017242100322550587,
+          "cosine": 0.9998513593047479
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 1,
+          "relative_l2": 0.017242100322550587,
+          "cosine": 0.9998513593047479
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 2,
+          "relative_l2": 0.0484476637136089,
+          "cosine": 0.998830084836829
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 2,
+          "relative_l2": 0.04976748697946922,
+          "cosine": 0.998763185471278
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 2,
+          "relative_l2": 0.04976748697946922,
+          "cosine": 0.998763185471278
+        },
+        {
+          "arm": "one_bit_max",
+          "layer": 29,
+          "step": 3,
+          "relative_l2": 0.031703060786135974,
+          "cosine": 0.9994984054142035
+        },
+        {
+          "arm": "two_bit_max",
+          "layer": 29,
+          "step": 3,
+          "relative_l2": 0.03079552320662177,
+          "cosine": 0.9995259158589113
+        },
+        {
+          "arm": "exact_max",
+          "layer": 29,
+          "step": 3,
+          "relative_l2": 0.03079552320662177,
+          "cosine": 0.9995259158589113
+        }
+      ],
+      "assignments": {
+        "0": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "1": {
+          "one_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "2": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "3": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            4,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ]
+        },
+        "4": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "5": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "6": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "7": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "8": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "9": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "10": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "11": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "12": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "13": {
+          "one_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "14": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4,
+            16
+          ]
+        },
+        "15": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "16": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "17": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "18": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "19": {
+          "one_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "20": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "21": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            2,
+            2,
+            4,
+            2,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ]
+        },
+        "22": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ]
+        },
+        "23": {
+          "one_bit_max": [
+            16,
+            16,
+            2,
+            2,
+            2,
+            4,
+            4,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            4,
+            2,
+            2,
+            16
+          ]
+        },
+        "24": {
+          "one_bit_max": [
+            16,
+            16,
+            4,
+            2,
+            2,
+            2,
+            4,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ]
+        },
+        "25": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            2,
+            4,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ]
+        },
+        "26": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ],
+          "two_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ],
+          "exact_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            16,
+            4
+          ]
+        },
+        "27": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "28": {
+          "one_bit_max": [
+            16,
+            4,
+            4,
+            2,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        },
+        "29": {
+          "one_bit_max": [
+            16,
+            2,
+            4,
+            4,
+            2,
+            2,
+            4,
+            16
+          ],
+          "two_bit_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ],
+          "exact_max": [
+            16,
+            2,
+            4,
+            2,
+            4,
+            2,
+            4,
+            16
+          ]
+        }
+      },
+      "cache_accounting": [
+        {
+          "arm": "embedding_cosine_proxy",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "exact_softmax_mass",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "recency",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "position",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "interleaved",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "exact_mean_logit",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "one_bit_mean_logit",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "two_bit_mean_logit",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "random_73031",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "random_73033",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "random_73037",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "one_bit_max",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "two_bit_max",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "exact_max",
+          "visual_payload_bytes": 19200,
+          "quantizer_metadata_bytes": 18432,
+          "permutation_bytes": 32,
+          "visual_persistent_bytes": 37664
+        },
+        {
+          "arm": "visual_fp16",
+          "visual_payload_bytes": 49152,
+          "quantizer_metadata_bytes": 0,
+          "permutation_bytes": 0,
+          "visual_persistent_bytes": 49152
+        }
+      ],
+      "memory_scope": {
+        "native_fp32_visual_bytes": 98304,
+        "unchanged_nonvisual_prefill_bytes": 29184,
+        "unchanged_bytes_per_generated_token": 1536,
+        "scope": "Analytical packed storage; packing not implemented. Not allocated NumPy memory or measured GPU memory. Allocator padding, kernel workspace, scoring and dequantization transient buffers excluded."
+      },
+      "scope": "Teacher-forced local attention replay; no propagated model errors.",
+      "one_bit_max_beats_one_bit_mean": true
+    }
+  ],
+  "unchanged_baselines_reproduced": true,
+  "numpy": "2.5.4",
+  "one_bit_max_improves_both_images": true,
+  "train_eligible": false,
+  "novelty_established": false,
+  "scope": "Posthoc exploratory follow-up on two exposed development images. Not held-out evaluation or novelty evidence."
+}

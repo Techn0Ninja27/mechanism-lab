@@ -1,0 +1,31 @@
+{
+  "source_result_sha256": "3828e26500a793208d25ca31e863cd831a9f1d05a9196c4b68576f1ae4588efe",
+  "scope": "Machine-assisted post-run comparison with saved code, frozen protocol and results. Hash binding identifies the audited output; it is not scientific validation or human adjudication.",
+  "findings": [
+    {
+      "claim": "The historical exact-mass control and key scorers used future decode queries for ranking.",
+      "assessment": "False for the saved pilot. Rankings use prefill_q and prefill_text_visual_attention; assignments are fixed before the decode evaluation loop. The newly proposed data path does mention decode queries and would need a timing correction, but that does not describe the completed experiment.",
+      "evidence": "operator-studies/trace-window-ablation/experiment.py: score_arms uses prefill tensors; run_case fixes assignments before iterating over decode_q."
+    },
+    {
+      "claim": "A 2-bit mean-logit rerun is a new missing control.",
+      "assessment": "Already tested. two_bit_mean_logit is in the original frozen protocol, code and results. Only max aggregation is a new follow-up in this review.",
+      "evidence": "Original relative L2: two-bit mean 0.018037899615949114 (candy), 0.02194745805394658 (statue)."
+    },
+    {
+      "claim": "The two exact-mass scores are identical, possibly indicating a logging bug.",
+      "assessment": "The feedback rounded both to 0.01510. Full-precision values are different. The exact-result inspection resolves this concern; no logging error was found.",
+      "evidence": "Exact-mass relative L2: 0.015103760370299358 (candy), 0.015100667088659073 (statue). Distinct source traces and full per-layer/per-step rows are preserved."
+    },
+    {
+      "claim": "Exact attention mass is a fidelity ceiling that a key-derived scorer cannot exceed.",
+      "assessment": "Unsupported. Attention mass is a comparator, not a proved optimal precision allocator; value error and quantizer sensitivity also matter. The reviewer correctly challenged this assumption.",
+      "evidence": "The original fixed interleaved pattern beats exact mass on the statue fixture (0.014616507732575437 vs 0.015100667088659073 relative L2)."
+    },
+    {
+      "claim": "Max-per-window aggregation may fix the failed mean-logit ranking.",
+      "assessment": "Tested as an exploratory follow-up. One-bit max modestly lowers relative L2 on both exposed images but remains worse than exact mass; cosine slightly worsens on candy. This does not establish a useful new mechanism.",
+      "evidence": "operator-studies/trace-aggregation-ablation/result.json; one-bit max relative L2 0.02491678564678733 / 0.021124099555245517, versus exact mass 0.015103760370299358 / 0.015100667088659073."
+    }
+  ]
+}

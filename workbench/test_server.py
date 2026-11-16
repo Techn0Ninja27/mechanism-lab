@@ -238,6 +238,34 @@ class HTTPTests(unittest.TestCase):
             result=next(x for x in server.grounded_rows() if x['id']=='grounded-01')['operator_evaluation']
             self.assertFalse(result['verified']);self.assertEqual(result['status'],'unverified')
 
+    def test_factual_audit_attaches_only_with_matching_result_hash(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            run=Path(tmp)/'results/improvement-phase-2026-11-16/grounded-01';run.mkdir(parents=True)
+            result=run/'result.json';result.write_text('{"status":"reviewed","proposal":{},"review":{}}')
+            self.assertEqual(next(x for x in server.grounded_rows() if x['id']=='grounded-01')['factual_audit']['status'],'unavailable')
+            audit={'source_result_sha256':hashlib.sha256(result.read_bytes()).hexdigest(),'scope':'Claims checked against saved evidence.',
+                   'findings':[{'claim':'A claim','assessment':'Unsupported by the cited span.','evidence':'The method text does not state it.'}]}
+            (run/'factual-audit.json').write_text(json.dumps(audit))
+            row=next(x for x in server.grounded_rows() if x['id']=='grounded-01')
+            self.assertEqual(row['factual_audit']['status'],'attached');self.assertTrue(row['factual_audit']['verified'])
+            self.assertEqual(row['factual_audit']['findings'][0]['claim'],'A claim')
+            result.write_text('{"changed":true}')
+            row=next(x for x in server.grounded_rows() if x['id']=='grounded-01')
+            self.assertEqual(row['factual_audit']['status'],'mismatch');self.assertEqual(row['factual_audit']['findings'],[])
+
+    def test_factual_audit_invalid_and_oversize_are_quarantined(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            run=Path(tmp)/'results/improvement-phase-2026-11-16/grounded-01';run.mkdir(parents=True)
+            result=run/'result.json';result.write_text('{}')
+            for payload in [{'scope':'x','findings':[]}, {'source_result_sha256':'0'*64,'scope':'x','findings':[{'claim':'x','assessment':'y','evidence':'z'}]}]:
+                (run/'factual-audit.json').write_text(json.dumps(payload))
+                row=next(x for x in server.grounded_rows() if x['id']=='grounded-01')
+                self.assertIn(row['factual_audit']['status'], {'invalid','mismatch'});self.assertEqual(row['factual_audit']['findings'],[])
+            (run/'factual-audit.json').write_text('x'*100001)
+            row=next(x for x in server.grounded_rows() if x['id']=='grounded-01')
+            self.assertEqual(row['factual_audit']['status'],'invalid');self.assertEqual(row['factual_audit']['findings'],[])
+
     def test_source_pack_requires_explicit_documents_and_is_plan_only(self):
         status, project = self.request('/api/projects', {'name': 'Source pack project'})
         self.assertEqual(status, 201)
