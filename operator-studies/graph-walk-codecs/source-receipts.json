@@ -1,0 +1,22 @@
+{
+  "amazon": {
+    "id": "amazon",
+    "url": "https://snap.stanford.edu/data/bigdata/communities/com-amazon.ungraph.txt.gz",
+    "nodes": 334863,
+    "edges": 925872,
+    "sha256": "bb4b9fcf549c9174049e885e9a0a4057c9724846e7297c4a1ea299b8e92eec34",
+    "compressed_bytes": 4501435,
+    "uncompressed_sha256": "9c403688d01417ca452910947a7000bcd61965fc583f4afe57eb209c8b057b7a",
+    "csr_arrays_sha256": "0a25e4ffa785b6049ed4fefb8ba099b6f8573a9886c907ae6d43d7bfc4cbc7ca"
+  },
+  "dblp": {
+    "id": "dblp",
+    "url": "https://snap.stanford.edu/data/bigdata/communities/com-dblp.ungraph.txt.gz",
+    "nodes": 317080,
+    "edges": 1049866,
+    "sha256": "9eb0bd30312ddd04e2624f7c36c0983a2e99b116f0385be5a7fce6d6170f4cb3",
+    "compressed_bytes": 4138463,
+    "uncompressed_sha256": "ad025cd5933e163e3007e214b3554e0a99d735a3133d0a4e34fd001621219231",
+    "csr_arrays_sha256": "978771f70a46c4701dc6f240015ff59512fa8302b4fabb7325e25cffb6a66b5e"
+  }
+}

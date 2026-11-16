@@ -53,6 +53,18 @@ class FeedbackTests(unittest.TestCase):
         out = inspect_feedback(self.pack, self.root, self.registry([bad, self.record(id="valid")]))
         self.assertEqual([r["id"] for r in out["records"]], ["valid"])
 
+    def test_html_method_sources_match_abs_records_without_accepting_lookalikes(self):
+        pack = {"sources": [{"url": "https://arxiv.org/html/2508.08256v3"},
+                            {"url": "https://arxiv.org/html/2605.02262v1"}]}
+        self.assertEqual(inspect_feedback(pack, self.root, self.registry([self.record()]))["matched_count"], 1)
+        for url in ("https://arxiv.org.evil.test/html/2508.08256v3",
+                    "https://arxiv.org/html/2508.08256v3?redirect=other",
+                    "https://arxiv.org/html/2508.08256v3/extra",
+                    "https://arxiv.org/html/2508.08256v3.pdf"):
+            with self.subTest(url=url):
+                pack['sources'][0]['url'] = url
+                self.assertEqual(inspect_feedback(pack, self.root, self.registry([self.record()]))['matched_count'], 0)
+
     def test_tamper_flags_and_rejects_traversal_or_symlink_escape(self):
         bad = self.record(result_sha256="0" * 64)
         outside = self.root / "outside.json"

@@ -33,5 +33,12 @@
     "result_path": "operator-studies/trace-aggregation-ablation/result.json",
     "report_path": "operator-studies/trace-aggregation-ablation/README.md",
     "result_sha256": "7772338551dc009f714e396711deaf75f829bbcd538133370b54f7e83b209fa0"
+  },
+  "grounded-systems-v1": {
+    "status": "fails_byte_gate_against_packed_controls",
+    "summary": "Amazon/DBLP development walks: varint uses 25.0% / 21.1% more bytes than fixed-width packing even with a free resident rank dictionary; charging the dictionary worsens it. All 280 round trips exact. Static walks, not FeLoG training; no GPU, speed, energy or novelty claim.",
+    "result_path": "operator-studies/graph-walk-codecs/results.json",
+    "report_path": "operator-studies/graph-walk-codecs/README.md",
+    "result_sha256": "7457b74dbcddf116214dc2abb1476b38a6a9c78ce233c1ef37b6b8400a41eaf8"
   }
 }

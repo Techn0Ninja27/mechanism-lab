@@ -43,6 +43,27 @@
       "result_sha256": "7772338551dc009f714e396711deaf75f829bbcd538133370b54f7e83b209fa0",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "felog-rank-varint-walks-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2606.22180"
+      ],
+      "tested_change": "Frequency-ranked LEB128 versus uint32-tail FaBC and fixed-width controls on Amazon/DBLP walks. Median total bytes relative to best packed control: 1.680576 / 1.618156 including one rank dictionary; even free resident dictionaries give 1.250320 / 1.210749. All 280 encoded corpora round-trip exactly. Both frozen FaBC rules select k=0 in every seed. Failed predeclared byte gate; no GPU implementation justified by this run.",
+      "verdict": "no_support_against_packed_controls_in_development_walks",
+      "scope": "Five seeds per graph, 4096 uniform-transition walks x80 tokens per round; first round profiles and four later rounds evaluate. Static undirected graphs and dense trainer IDs. Not FeLoG/FeeST replication, held-out validation or a graph-task experiment.",
+      "limitations": [
+        "Small profiling round leaves many nodes unseen; tie-breaking and other profiles can change rank coding.",
+        "Walks have far less top-node concentration than the source illustration; no active-frontier feedback.",
+        "Known codecs, no new algorithm or novelty; no GPU, link, latency, energy, or training measurement.",
+        "Resident-mapping result is an optimistic lower bound on this implementation, not a deployable GPU layout.",
+        "The result rejects this tested configuration, not all graph compression or the source paper."
+      ],
+      "report_path": "operator-studies/graph-walk-codecs/README.md",
+      "result_path": "operator-studies/graph-walk-codecs/results.json",
+      "result_sha256": "7457b74dbcddf116214dc2abb1476b38a6a9c78ce233c1ef37b6b8400a41eaf8",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

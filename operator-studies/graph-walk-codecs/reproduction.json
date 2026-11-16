@@ -1,0 +1,8 @@
+{
+  "same_code_reproduction": true,
+  "results_byte_identical": true,
+  "result_sha256": "7457b74dbcddf116214dc2abb1476b38a6a9c78ce233c1ef37b6b8400a41eaf8",
+  "code_and_protocol_hashes_match": true,
+  "independent_replication": false,
+  "scope": "Reused verified CSR cache, fresh RNG streams and fresh encode/decode execution for all cases."
+}

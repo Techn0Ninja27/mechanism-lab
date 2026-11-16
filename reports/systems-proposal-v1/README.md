@@ -1,5 +1,9 @@
 # Broader ML-systems proposal: graph-walk transfer coding
 
+Subsequent [development codec replay](../../operator-studies/graph-walk-codecs/README.md)
+failed against packed controls on both graphs, even with a free rank dictionary.
+The record below describes the earlier generation/review stage.
+
 2026-11-17. **A candidate for a revised byte-accounting test, not a novel codec
 or measured systems improvement.** The updated Opus generator proposed replacing
 FeLoG's frequent-node bitmaps plus uint32 tail with frequency-ranked LEB128

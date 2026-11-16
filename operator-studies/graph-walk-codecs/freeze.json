@@ -1,0 +1,32 @@
+{
+  "protocol_sha256": "c22a5300aa1a984e26821d484bc9193eec7c876081e38970103e1ac1a3d307b3",
+  "sources": {
+    "amazon": {
+      "id": "amazon",
+      "url": "https://snap.stanford.edu/data/bigdata/communities/com-amazon.ungraph.txt.gz",
+      "nodes": 334863,
+      "edges": 925872,
+      "sha256": "bb4b9fcf549c9174049e885e9a0a4057c9724846e7297c4a1ea299b8e92eec34",
+      "compressed_bytes": 4501435,
+      "uncompressed_sha256": "9c403688d01417ca452910947a7000bcd61965fc583f4afe57eb209c8b057b7a",
+      "csr_arrays_sha256": "0a25e4ffa785b6049ed4fefb8ba099b6f8573a9886c907ae6d43d7bfc4cbc7ca"
+    },
+    "dblp": {
+      "id": "dblp",
+      "url": "https://snap.stanford.edu/data/bigdata/communities/com-dblp.ungraph.txt.gz",
+      "nodes": 317080,
+      "edges": 1049866,
+      "sha256": "9eb0bd30312ddd04e2624f7c36c0983a2e99b116f0385be5a7fce6d6170f4cb3",
+      "compressed_bytes": 4138463,
+      "uncompressed_sha256": "ad025cd5933e163e3007e214b3554e0a99d735a3133d0a4e34fd001621219231",
+      "csr_arrays_sha256": "978771f70a46c4701dc6f240015ff59512fa8302b4fabb7325e25cffb6a66b5e"
+    }
+  },
+  "code_sha256": {
+    "run.py": "31410f350ea8ffcd00aaf5c59f582b0836d7bd75d506a06f243a4a140f8326a6",
+    "codecs.py": "d9db67c581793436f6e6d30c21162969d8fbf0b486ee1114127d2e479f5ff0c7",
+    "prepare.py": "eb512f82cd478cb232bd4cdaf162fab4dc7d2ece0a63c7032ab057c6bd027f8f"
+  },
+  "python": "3.12.14",
+  "numpy": "2.5.4"
+}

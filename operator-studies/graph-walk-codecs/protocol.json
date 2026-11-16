@@ -1,0 +1,22 @@
+{
+  "version":1,
+  "date":"2026-11-17",
+  "scope":"Development falsification of a known codec composition on fixed-length unbiased random walks. Not FeLoG replication, FeeST training, held-out validation, latency, energy, or novelty.",
+  "datasets":[
+    {"id":"amazon","url":"https://snap.stanford.edu/data/bigdata/communities/com-amazon.ungraph.txt.gz","nodes":334863,"edges":925872},
+    {"id":"dblp","url":"https://snap.stanford.edu/data/bigdata/communities/com-dblp.ungraph.txt.gz","nodes":317080,"edges":1049866}
+  ],
+  "download_cap_bytes_per_file":15000000,
+  "seeds":[73101,73102,73103,73104,73105],
+  "walks_per_round":4096,
+  "walk_length":80,
+  "rounds":5,
+  "sampler":"Canonical dense trainer IDs from sorted original node IDs; undirected sorted-neighbor CSR; uniformly random start node and uniform neighbor at each step. No training or shrinking frontier. Round 1 profiles; rounds 2–5 evaluate frozen ranks/hot IDs.",
+  "rank_tie_break":"descending round-1 frequency, ascending dense trainer ID; include zero-frequency nodes",
+  "fabc_selection":"Corrected explicit marginal-add interpretation: start k=0; add next frequency rank while p[k]-c >= 0.1*g(k), c=1/L+1/32. Also report global-last-passing-add interpretation. Candidate comparison uses the smaller observed-byte FaBC variant as an oracle sensitivity control, not a deployable selector.",
+  "formats":["raw uint32","fixed-width dense trainer IDs","FaBC per-sequence bitmaps and uint32 tail","FaBC per-sequence bitmaps and fixed-width tail","frequency-rank unsigned LEB128"],
+  "frame":"Codec implementation fixes and reports framing. FaBC stores hot IDs per sequence; sequence tail offsets required for parallel reconstruction; varint stores per-sequence byte offsets. Rank-to-trainer uint32 dictionary charged once per four evaluation rounds. Common original-ID-to-dense mapping excluded for every arm because trainer uses dense IDs.",
+  "roundtrip":"Serialize and decode every evaluation corpus for every codec; exact trainer-ID equality required. Hash walk arrays and encoded payloads.",
+  "gate":"Only proceed to GPU work if both graphs have median across seeds of varint total/payload-FaBC <=0.85 AND varint total/best packed control <=0.90, with all round trips exact. Total includes one rank dictionary per seed and four rounds. Also report optimistic resident-dictionary ratios: failure there cannot be repaired by amortizing the dictionary.",
+  "limitations":["Finite sampled walks, not ten walks per node","Profile estimated from a small first round; unseen nodes tie by trainer ID","No real FeeST activity feedback or synchronization","No graph model trained","No final held-out graph downloaded or examined","All graphs and seeds are development, and may not resemble author skew","No codec implementation timing used as a systems claim"]
+}

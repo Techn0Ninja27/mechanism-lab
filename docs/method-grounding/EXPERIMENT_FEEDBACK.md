@@ -47,3 +47,9 @@ prefill-only selection, already-tested arms, more precise values and the fact
 that exact attention mass is not a theoretical fidelity ceiling. The max-
 aggregation follow-up is a second scoped record. These corrections do not
 establish that future reviews are reliable; see the post-run factual audit.
+
+HTML arXiv method URLs now canonicalize to the same paper identity as abs/pdf
+URLs, including version suffixes. Other hosts, query strings, extra path
+segments and invalid identifiers remain rejected. This lets the FeLoG method
+packet receive its scoped graph-walk codec result; it does not promote results
+to training labels or scientific validity.

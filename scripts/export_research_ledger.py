@@ -181,6 +181,33 @@ def build_ledger(root: Path = ROOT) -> dict[str, Any]:
                                'independent-review.json', 'output-audit.json', 'plan.json', 'receipts.json')) if f.is_file()],
             'evidence': {'source': _rel(diagnostic_dir / 'result.json', root)},
         })
+    codec_dir = root / 'operator-studies/graph-walk-codecs'
+    codec_result = _read(codec_dir / 'results.json', None)
+    if isinstance(codec_result, dict) and isinstance(codec_result.get('summary'), dict):
+        metrics = {}
+        for graph, values in codec_result['summary'].items():
+            if graph in {'amazon', 'dblp'} and isinstance(values, dict):
+                for metric in ('charged_ratio_to_packed', 'resident_ratio_to_packed'):
+                    metrics[graph + '_' + metric] = values.get(metric)
+        studies.append({
+            'id': 'graph-walk-codecs', 'cohort': 'codec_development',
+            'title': 'Graph-walk varint coding versus packed controls',
+            'artifact_directory': 'operator-studies/graph-walk-codecs',
+            'raw_verdict': codec_result.get('status', 'unknown'),
+            'audit_qualification': 'development_replay_not_systems_validation',
+            'audit_note': 'Serialized byte counts and exact round trips; same-code reproduction is not independent replication.',
+            'primary_metrics': metrics, 'secondary_metrics': {},
+            'novelty_established': False, 'human_adjudicated': False,
+            'prior_art_status': 'Known rank/LEB128 composition; no novel codec established.',
+            'limitations': ['Two development graphs, five seeds, finite first-round profiles.',
+                            'Uniform-transition walks, not FeLoG/FeeST training traces.',
+                            'Resident dictionary is an optimistic counterfactual.',
+                            'No GPU, link, latency, energy, graph-task or held-out result.'],
+            'artifact_refs': [{'path': _rel(f, root), 'sha256': _hash(f)} for f in
+                              (codec_dir / name for name in ('README.md', 'protocol.json', 'results.json', 'freeze.json',
+                               'source-receipts.json', 'reproduction.json', 'codecs.py', 'run.py')) if f.is_file()],
+            'evidence': {'source': _rel(codec_dir / 'results.json', root)},
+        })
     ledger = {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),

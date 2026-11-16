@@ -27,7 +27,7 @@ _ARXIV_ID = re.compile(r"^(?:[0-9]{4}\.[0-9]{4,5})(?:v[0-9]+)?$")
 
 
 def _canonical_arxiv(value: object) -> str | None:
-    """Canonicalize only a strict arXiv abs/pdf URL; never arbitrary URLs."""
+    """Canonicalize strict arXiv abs/pdf/html URLs; never arbitrary URLs."""
     if not isinstance(value, str) or not value.strip():
         return None
     try:
@@ -46,7 +46,7 @@ def _canonical_arxiv(value: object) -> str | None:
     if parsed.query or parsed.fragment:
         return None
     parts = [part for part in parsed.path.split("/") if part]
-    if len(parts) != 2 or parts[0] not in {"abs", "pdf"}:
+    if len(parts) != 2 or parts[0] not in {"abs", "pdf", "html"}:
         return None
     identifier = parts[1]
     if parts[0] == "pdf" and identifier.endswith(".pdf"):
