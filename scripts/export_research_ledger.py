@@ -100,6 +100,60 @@ def build_ledger(root: Path = ROOT) -> dict[str, Any]:
             "artifact_refs": [{"path": _rel(p, root), "sha256": _hash(p)} for p in (verdict_path, verdict_path.parent / "proposal.json", verdict_path.parent / "README.md") if p.exists()],
             "evidence": {"source": "study verdict/README", "secondary_alignment": "reconstruction-studies/harmonized-results.json"},
         })
+    # Explicitly registered experimental cohorts; never infer promotion from a score.
+    for sid, directory, filename, title in (
+        ("integer-composition", "operator-studies/integer-composition", "results.json", "Executable compression composition"),
+        ("utility-ranker", "reports/utility-ranker", "final.json", "Utility ranking on unseen problem families"),
+    ):
+        folder = root / directory
+        result_path = folder / filename
+        result = _read(result_path, None)
+        if not isinstance(result, dict):
+            continue
+        summary = result.get("summary", {})
+        if not isinstance(summary, dict):
+            summary = {}
+        frozen = _read(folder / "freeze.json", {})
+        sources = frozen.get("source_hashes", {}) if isinstance(frozen, dict) else {}
+        issues = []
+        if not isinstance(sources, dict) or not sources:
+            issues.append("Missing frozen source hashes")
+            sources = {}
+        for name, expected in sources.items():
+            target = (root / name).resolve()
+            if root not in target.parents or _hash(target) != expected:
+                issues.append("Frozen source mismatch: " + name)
+        if result.get("source_hashes") != sources:
+            issues.append("Result and freeze source hashes differ")
+        if not frozen.get("validation_sha256") or _hash(folder / "validation.json") != frozen.get("validation_sha256"):
+            issues.append("Frozen validation hash mismatch")
+        is_utility = sid == "utility-ranker"
+        metrics = ({"primary_metric": "selection_regret_lower_is_better", "mean_candidate": summary.get("regret"),
+                    "mean_control": summary.get("fixed_regret"), "mean_random": summary.get("random_regret")}
+                   if is_utility else
+                   {"primary_metric": "bytes_per_sample_lower_is_better", "mean_candidate": summary.get("candidate_bytes_per_sample"),
+                    "mean_control": summary.get("control_bytes_per_sample"), "control": summary.get("control")})
+        studies.append({
+            "id": sid, "cohort": "utility" if is_utility else "composition", "title": title,
+            "artifact_directory": directory,
+            "raw_verdict": result.get("status", "unknown") if is_utility else summary.get("status", "unknown"),
+            "audit_qualification": "artifact_mismatch" if issues else "frozen_sources_and_validation_match",
+            "audit_note": "; ".join(issues) if issues else "Hash agreement is provenance evidence, not independent replication.",
+            "primary_metrics": metrics,
+            "secondary_metrics": summary.get("per_family", {}) if is_utility else {},
+            "novelty_established": False, "human_adjudicated": False,
+            "prior_art_status": "Known compression operators; no new algorithm established.",
+            "limitations": (["Not promoted: worse than the fixed baseline in every held-out family.",
+                              "Synthetic tasks only; ranking scores are not calibrated utility predictions.",
+                              "BLAS warnings remain unresolved; independent inference selected identical chains."]
+                             if is_utility else
+                             ["Three synthetic shifted streams only; no production-codec comparison.",
+                              "Known operators enumerated deterministically, not an Alien beta-ranked result."])
+                            + ["No independent replication or established scientific novelty."] + issues,
+            "artifact_refs": [{"path": _rel(f, root), "sha256": _hash(f)} for f in
+                              (result_path, folder / "README.md", folder / "freeze.json", folder / "validation.json") if f.is_file()],
+            "evidence": {"source": _rel(result_path, root)},
+        })
     ledger = {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),

@@ -81,6 +81,16 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(self.request('/api/studies/abstracts-0/../../README.md')[0], 400)
         self.assertEqual(self.request('/api/studies/does-not-exist')[0], 404)
 
+    def test_new_study_reports_are_accessible_in_their_own_directories(self):
+        for sid, artifact in (("utility-ranker", "final.json"), ("integer-composition", "results.json")):
+            status, data = self.request('/api/studies/' + sid + '/' + artifact)
+            self.assertEqual(status, 200)
+            self.assertIn('summary', json.loads(data['content']))
+            self.assertEqual(self.request('/api/studies/' + sid + '/../../README.md')[0], 400)
+        status, data = self.request('/api/studies/utility-ranker')
+        self.assertEqual(data['study']['raw_verdict'], 'not_supported')
+        self.assertEqual(data['study']['audit_qualification'], 'frozen_sources_and_validation_match')
+
     def test_generated_research_is_machine_review_only_and_bounded(self):
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
             run_dir=Path(tmp)/'results/improvement-phase-2026-11-16/grounded-01'

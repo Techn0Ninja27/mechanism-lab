@@ -300,7 +300,8 @@ def study_rows():
         cohort = item.get("cohort", "unknown")
         rows.append({
             "id": item.get("id"), "kind": cohort,
-            "path": ("upstream:" + ("candidate-studies/" if cohort == "candidate" else "reconstruction-studies/") + str(item.get("id"))),
+            "path": "upstream:" + (item.get("artifact_directory") or (("candidate-studies/" if cohort == "candidate" else "reconstruction-studies/") + str(item.get("id")))),
+            "artifact_directory": item.get("artifact_directory") or (("candidate-studies/" if cohort == "candidate" else "reconstruction-studies/") + str(item.get("id"))),
             "raw_verdict": item.get("raw_verdict", "unknown"),
             "audit_qualification": item.get("audit_qualification", "unknown"),
             "audit_note": item.get("audit_note"),
@@ -645,7 +646,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             artifact = unquote(pieces[1])
             if pathlib.PurePosixPath(artifact).is_absolute() or any(part in {"", ".", ".."} for part in pathlib.PurePosixPath(artifact).parts):
                 return self.send_json({"error": "invalid artifact"}, 400)
-            root = (ENGINE / "reconstruction-studies" if row["kind"] == "reconstruction" else ENGINE / "candidate-studies") / row["id"]
+            directory = _safe_engine_relative(row["artifact_directory"])
+            if not directory: return self.send_json({"error": "invalid study directory"}, 400)
+            root = ENGINE / directory
             target = (root / artifact).resolve()
             if root.resolve() not in target.parents or target.suffix.lower() not in {".json", ".md", ".py"} or not target.is_file():
                 return self.send_json({"error": "artifact not found"}, 404)

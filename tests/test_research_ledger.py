@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 27)
+            self.assertEqual(ledger["study_count"], 29)
             self.assertTrue(all(x["read_only"] is True for x in [ledger]))
             reconstruction = next(x for x in ledger["studies"] if x["id"] == "abstracts-0")
             self.assertIn("mean_ap", reconstruction["secondary_metrics"])
@@ -27,6 +27,26 @@ class LedgerTests(unittest.TestCase):
             self.assertTrue(all(x["secondary_metrics"].get("mean_ap", {}).get("candidate") is not None for x in ledger["studies"] if x["cohort"] == "reconstruction"))
             self.assertEqual(next(x for x in ledger["studies"] if x["id"] == "atoms-1")["failure_assessment"]["type"], "remaining_mask_information_path")
             self.assertEqual(json.loads(out.read_text())["schema_version"], "1.0")
+
+    def test_new_results_preserve_failure_and_frozen_provenance(self):
+        rows = {x["id"]: x for x in build_ledger()["studies"]}
+        utility = rows["utility-ranker"]
+        self.assertEqual(utility["raw_verdict"], "not_supported")
+        self.assertGreater(utility["primary_metrics"]["mean_candidate"], utility["primary_metrics"]["mean_control"])
+        for sid in ("utility-ranker", "integer-composition"):
+            self.assertEqual(rows[sid]["audit_qualification"], "frozen_sources_and_validation_match")
+            self.assertFalse(rows[sid]["novelty_established"])
+
+    def test_missing_frozen_sources_are_not_verified(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            folder = root / "reports/utility-ranker"
+            folder.mkdir(parents=True)
+            (folder / "final.json").write_text('{"status":"not_supported","summary":{}}')
+            row = build_ledger(root)["studies"][0]
+            self.assertEqual(row["raw_verdict"], "not_supported")
+            self.assertEqual(row["audit_qualification"], "artifact_mismatch")
+            self.assertIn("Missing frozen source hashes", row["audit_note"])
 
     def test_pure_builder_handles_missing_optional_fields_and_relative_paths(self):
         with tempfile.TemporaryDirectory() as d:
