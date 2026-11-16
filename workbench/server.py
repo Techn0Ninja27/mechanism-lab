@@ -376,6 +376,61 @@ def mechanism_summary(value):
     return {k: value[k] for k in ("status",) + fields}
 
 
+def claim_assessment(value):
+    """Return a bounded, read-only view of the model's evidence assessment.
+
+    This is deliberately kept separate from proposal/review verdicts: claim
+    coverage is evidence accounting, not a confidence or novelty score.
+    """
+    if value is None:
+        return {"status": "not_recorded"}
+    statuses = {"central_evidence_unresolved", "central_overlap_reported",
+                "no_match_in_examined_evidence", "mixed_or_partial_overlap_reported"}
+    coverages = {"covered", "partial", "not_found", "unknown"}
+    roles = {"central", "supporting"}
+    kinds = {"problem", "method", "resource", "expected_result"}
+    if not isinstance(value, dict) or set(value) != {"status", "claims", "novelty_estimate",
+                                                       "novelty_established", "train_eligible", "scope"}:
+        return {"status": "invalid"}
+    if (not isinstance(value["status"], str) or value["status"] not in statuses or not isinstance(value["claims"], list)
+            or not 1 <= len(value["claims"]) <= 6 or value["novelty_estimate"] is not None
+            or value["novelty_established"] is not False or value["train_eligible"] is not False
+            or not isinstance(value["scope"], str) or not value["scope"].strip() or len(value["scope"]) > 2000):
+        return {"status": "invalid"}
+    checked = []; seen = set()
+    for item in value["claims"]:
+        if not isinstance(item, dict) or set(item) != {"claim_id", "coverage", "checked_chunk_ids", "evidence", "reason", "claim"}:
+            return {"status": "invalid"}
+        claim = item["claim"]
+        if (not isinstance(item["claim_id"], str) or not item["claim_id"].strip() or len(item["claim_id"]) > 200
+                or not isinstance(item["coverage"], str) or item["coverage"] not in coverages or not isinstance(item["checked_chunk_ids"], list)
+                or len(item["checked_chunk_ids"]) > 32 or any(not isinstance(x, str) or not x or len(x) > 300 for x in item["checked_chunk_ids"])
+                or not isinstance(item["evidence"], list) or len(item["evidence"]) > 12
+                or not isinstance(item["reason"], str) or len(item["reason"]) > 2400
+                or not isinstance(claim, dict) or set(claim) != {"id", "text", "role", "kind"}
+                or not isinstance(claim["id"], str) or not claim["id"].strip() or len(claim["id"]) > 200
+                or not isinstance(claim["text"], str) or not claim["text"].strip() or len(claim["text"]) > 2000
+                or not isinstance(claim["role"], str) or claim["role"] not in roles
+                or not isinstance(claim["kind"], str) or claim["kind"] not in kinds):
+            return {"status": "invalid"}
+        if item["claim_id"] != claim["id"] or item["claim_id"] in seen:
+            return {"status": "invalid"}
+        seen.add(item["claim_id"])
+        evidence = []
+        for entry in item["evidence"]:
+            if (not isinstance(entry, dict) or set(entry) != {"chunk_id", "quote", "supports"}
+                    or not isinstance(entry["chunk_id"], str) or not entry["chunk_id"] or len(entry["chunk_id"]) > 300
+                    or not isinstance(entry["quote"], str) or len(entry["quote"]) > 1000
+                    or not isinstance(entry["supports"], str) or len(entry["supports"]) > 1000):
+                return {"status": "invalid"}
+            evidence.append(entry)
+        checked.append({"claim_id": item["claim_id"], "coverage": item["coverage"],
+                        "checked_chunk_ids": item["checked_chunk_ids"], "evidence": evidence,
+                        "reason": item["reason"], "claim": claim})
+    return {"status": value["status"], "claims": checked, "novelty_estimate": None,
+            "novelty_established": False, "train_eligible": False, "scope": value["scope"]}
+
+
 def grounded_rows():
     """Expose completed grounded runs without source payloads or call receipts."""
     rows = []
@@ -471,6 +526,7 @@ def grounded_rows():
                      "project_id": project_id,
                      "status": data.get("status", "unknown"), "machine_review_only": True,
                      "empirical_result": False, "novelty_established": bool(data.get("novelty_established", False)),
+                     "claim_assessment": claim_assessment(data.get("claim_assessment")),
                      "pack_hash": data.get("pack_hash"), "proposal": {
                          "title": proposal.get("title"), "hypothesis": proposal.get("hypothesis"),
                          "baseline": proposal.get("baseline"), "operator_delta": proposal.get("operator_delta"),

@@ -105,6 +105,38 @@ class HTTPTests(unittest.TestCase):
             self.assertEqual(run['review']['mechanism_check']['status'], 'not_recorded')
             self.assertNotIn('api_key', json.dumps(run).lower())
             self.assertIn(run['operator_evaluation']['status'], {'unavailable', 'unverified'})
+            self.assertEqual(run['claim_assessment'], {'status': 'not_recorded'})
+
+    def test_claim_assessment_is_validated_and_never_promotes_novelty(self):
+        valid = {
+            'status': 'no_match_in_examined_evidence',
+            'claims': [{
+                'claim_id': 'c1', 'coverage': 'not_found', 'checked_chunk_ids': ['chunk-1'],
+                'evidence': [{'chunk_id': 'chunk-1', 'quote': 'No matching statement.', 'supports': 'does not establish claim'}],
+                'reason': 'The examined chunks do not state this claim.',
+                'claim': {'id': 'c1', 'text': 'A bounded claim', 'role': 'central', 'kind': 'problem'},
+            }],
+            'novelty_estimate': None, 'novelty_established': False, 'train_eligible': False,
+            'scope': 'Only the supplied evidence pack was examined.',
+        }
+        self.assertEqual(server.claim_assessment(None), {'status': 'not_recorded'})
+        self.assertEqual(server.claim_assessment(valid)['novelty_established'], False)
+        self.assertEqual(server.claim_assessment(valid)['train_eligible'], False)
+        for malformed in [valid | {'scope': 4}, valid | {'novelty_estimate': 'low'}, valid | {'status': []}, valid | {'claims': []},
+                          valid | {'claims': [valid['claims'][0]] * 2},
+                          valid | {'claims': [{**valid['claims'][0], 'coverage': []}]},
+                          valid | {'claims': [valid['claims'][0]] * 7},
+                          {**valid, 'claims': [{**valid['claims'][0], 'claim': {'id': 'c1', 'text': 'x', 'role': 'central', 'kind': 'bad'}}]}]:
+            self.assertEqual(server.claim_assessment(malformed), {'status': 'invalid'})
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            run_dir = Path(tmp) / 'results/improvement-phase-2026-11-16/grounded-claim'
+            run_dir.mkdir(parents=True)
+            (run_dir / 'result.json').write_text(json.dumps({'status': 'reviewed', 'novelty_established': True,
+                'claim_assessment': valid, 'proposal': {}, 'review': {}}))
+            row = next(x for x in server.grounded_rows() if x['id'] == 'grounded-claim')
+            self.assertEqual(row['claim_assessment']['status'], valid['status'])
+            self.assertFalse(row['claim_assessment']['novelty_established'])
+            self.assertTrue(row['novelty_established'])
 
     def test_project_grounded_result_is_discoverable(self):
         status, project = self.request('/api/projects', {'name': 'Completed grounded run'})

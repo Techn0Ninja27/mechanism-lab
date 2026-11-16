@@ -1,0 +1,29 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "reasoning": {
+    "enabled": false
+  },
+  "temperature": 0,
+  "max_tokens_per_stage": [
+    4096
+  ],
+  "pricing": {
+    "prompt": 1e-07,
+    "completion": 5e-07
+  },
+  "provider_max_price": {
+    "prompt": 0.1,
+    "completion": 0.5
+  },
+  "budget_usd": 0.03,
+  "shared_budget_path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/improvement-phase-2026-11-16/budget.json",
+  "shared_budget_usd": 10,
+  "system_prompt": "Compare claims to supplied evidence; do not establish novelty, usefulness or empirical truth.",
+  "input_sha256": "49c8ea4aa767a7d7dadf2b89e06ccf788689b17530f98eef1c3ccecd74fe9547",
+  "dependency_sha256": {
+    "results/claim-assessment-pilot-v1/run.py": "e8c6cd9793e61e0392bf052e3fab0460a00af4e64820cdac08e377c4b852ee17",
+    "generation/claim_assessment.py": "bdb65e6a4322ef2a3569aa47696a6ba83153e8ae697282857cf884932fa88404",
+    "scripts/world_search.py": "e3e14cc3b71c212cd7fa305cf04aa2a24273e0732de4c0f37d0364ad643be8a5",
+    "generation/api_budget.py": "18a050f7b6332d2a0cecc3c657d36feb783f74e05cbd8cc781c9bcd57befa7e4"
+  }
+}

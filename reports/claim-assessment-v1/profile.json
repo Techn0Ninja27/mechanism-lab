@@ -1,0 +1,78 @@
+{
+  "status": "central_evidence_unresolved",
+  "claims": [
+    {
+      "claim_id": "application",
+      "coverage": "not_found",
+      "checked_chunk_ids": [
+        "frequency-paper-abstract"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "frequency-paper-abstract",
+          "supports": "Shows frequency-ranked identifiers encoded as variable-length integers as a preprocessing step for text compression.",
+          "quote_sha256": "f5fc3b2f0d26229994ea50048cf4f1c17f0354289eecf842ce1a636f8346fcc5"
+        }
+      ],
+      "reason": "The supplied abstract covers frequency-ranked tokens with variable-length integer coding for lossless text compression. It does not address graph walk ID transfer or the FeLoG bitmap comparison, so the specific graph-walk application is not matched by the evidence. This is not a finding of novelty.",
+      "claim": {
+        "id": "application",
+        "role": "central",
+        "kind": "method",
+        "text": "Use frequency-ranked variable-length integer coding for graph walk ID transfer instead of FeLoG bitmaps."
+      }
+    },
+    {
+      "claim_id": "benefit",
+      "coverage": "unknown",
+      "checked_chunk_ids": [
+        "frequency-paper-abstract"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "frequency-paper-abstract",
+          "supports": "Reports text-compression byte gains for a related frequency-ordered scheme, which is not a measurement on graphs or against FaBC.",
+          "quote_sha256": "cd938ac9ec483334106673eafdb4d3e7a4702b370ddff2e0d8deff76f1cd28b5"
+        }
+      ],
+      "reason": "This is an expected-result hypothesis about byte ratios on new graphs relative to FaBC. The supplied evidence only contains text-compression results on enwik8/enwik9 and does not provide graph results or FaBC comparisons, so performance on graphs cannot be inferred from it. The claim remains an untested hypothesis.",
+      "claim": {
+        "id": "benefit",
+        "role": "central",
+        "kind": "expected_result",
+        "text": "The graph-walk codec will use at most 0.85 times the bytes of FaBC on new graphs."
+      }
+    },
+    {
+      "claim_id": "ingredient",
+      "coverage": "covered",
+      "checked_chunk_ids": [
+        "frequency-paper-abstract"
+      ],
+      "evidence": [
+        {
+          "chunk_id": "frequency-paper-abstract",
+          "supports": "Assigns small integer ranks to frequent symbols, matching the ingredient's ranking step.",
+          "quote_sha256": "2d1256c6f711ae4faed67cff3ee57bb1f567c16d00b1d0b09d7b87f3059af436"
+        },
+        {
+          "chunk_id": "frequency-paper-abstract",
+          "supports": "Encodes those ranks with variable-length integers, matching the ingredient's encoding step.",
+          "quote_sha256": "7412508d8d107e0d6c2c4a872485b49e9234e7e490d6477610c591f4e5a20e34"
+        }
+      ],
+      "reason": "The abstract directly discloses the combination of frequency-based small integer ranks and variable-length integer encoding. The ingredient is a supporting component and its prior disclosure does not by itself invalidate the distinct central application claim.",
+      "claim": {
+        "id": "ingredient",
+        "role": "supporting",
+        "kind": "method",
+        "text": "Assign small integer ranks to frequent symbols and encode those ranks using variable-length integers."
+      }
+    }
+  ],
+  "novelty_estimate": null,
+  "novelty_established": false,
+  "train_eligible": false,
+  "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection.",
+  "public_redaction": "Exact evidence spans replaced with hashes; raw profile retained locally."
+}
