@@ -1,0 +1,5 @@
+.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.score-grid div{background:#f5f6fa;padding:10px;border-radius:5px}.score-grid b{display:block;font:16px 'DM Mono',monospace;color:var(--ink)}.score-grid small{display:block;margin-top:4px;color:var(--muted);font-size:10px}
+
+#document-dialog{width:min(1000px,92vw);max-height:85vh;padding:28px}#document-dialog pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;font:14px/1.7 ui-monospace,monospace}textarea{width:100%;font:inherit;padding:10px;border:1px solid #bcc4d4}details{padding:12px 0;border-top:1px solid #d5dce8}details p{white-space:pre-wrap;line-height:1.65}small{overflow-wrap:anywhere}.candidate-atoms .atom-tag{white-space:normal} .detail-block button{margin:6px 6px 6px 0}
+
+.detail-block label{display:block;margin:12px 0}.detail-block select{margin-left:10px;padding:6px}#candidate-pager{margin-bottom:16px;font-size:12px;color:#52627b}#candidate-pager button{padding:7px 13px;border:1px solid #ccd4e5;border-radius:5px;background:white}.atom-detail strong{font-weight:400;line-height:1.6}.candidate-detail{align-self:start}

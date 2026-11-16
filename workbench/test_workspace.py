@@ -28,6 +28,12 @@ class WorkspaceTests(unittest.TestCase):
         self.assertEqual(first[0]["id"], second[0]["id"])
         self.assertEqual(self.ws.read_document(self.project["id"], first[0]["id"])["content"], "hello world")
 
+    def test_python_source_is_imported_as_text_never_executed(self):
+        source = "raise RuntimeError('source must never execute')\n"
+        doc = self.ws.import_documents(self.project['id'], [{'name':'method.py', 'content_base64':base64.b64encode(source.encode()).decode()}])[0]
+        self.assertEqual(self.ws.read_document(self.project['id'],doc['id'])['content'],source)
+        self.assertEqual(doc['kind'],'text')
+
     def test_pdf_is_binary(self):
         data = base64.b64encode(b"%PDF fake").decode()
         doc = self.ws.import_documents(self.project["id"], [{"name": "paper.pdf", "content_base64": data}])[0]

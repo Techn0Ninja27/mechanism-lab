@@ -1,0 +1,100 @@
+{
+  "novelty_established": false,
+  "prior_art": {
+    "authors": "Rahimi and Recht",
+    "role": "standard random-feature precedent; no novelty claim",
+    "title": "Random Features for Large-Scale Kernel Machines",
+    "url": "https://papers.nips.cc/paper_files/paper/2007/hash/013a006f03dbc5392effeb8f18fda755-Abstract.html"
+  },
+  "rows": [
+    {
+      "candidate": {
+        "affine_reconstruction_max_abs_error": 5.551115123125783e-17,
+        "batch_composition_invariant": true,
+        "column_permutation_equivariant": true,
+        "contract_digest": "3a81782a884b9f6e97c86278a684ca191e97f795cc7de5436572e2206ff52b9d",
+        "deterministic": true,
+        "distinguishes_binary_values": true,
+        "exact_affine_in_raw_binary_mask": true,
+        "finite": true,
+        "row_permutation_equivariant": true
+      },
+      "raw": {
+        "distinguishes_binary_values": true,
+        "finite": true
+      },
+      "rejected_column_cos_sin": {
+        "finite": false,
+        "finite_var_max": 1.232595164407831e-30,
+        "nan_count": 48
+      },
+      "seed": 16021,
+      "source_row_cos_sin": {
+        "batch_composition_changed": false,
+        "finite": true
+      }
+    },
+    {
+      "candidate": {
+        "affine_reconstruction_max_abs_error": 8.326672684688674e-17,
+        "batch_composition_invariant": true,
+        "column_permutation_equivariant": true,
+        "contract_digest": "de1d4fc3b904f5f55c1aff1babaf440dbcb00859e62e8da3f53c3b26be6ce4fe",
+        "deterministic": true,
+        "distinguishes_binary_values": true,
+        "exact_affine_in_raw_binary_mask": true,
+        "finite": true,
+        "row_permutation_equivariant": true
+      },
+      "raw": {
+        "distinguishes_binary_values": true,
+        "finite": true
+      },
+      "rejected_column_cos_sin": {
+        "finite": false,
+        "finite_var_max": 1.232595164407831e-30,
+        "nan_count": 48
+      },
+      "seed": 16023,
+      "source_row_cos_sin": {
+        "batch_composition_changed": false,
+        "finite": true
+      }
+    },
+    {
+      "candidate": {
+        "affine_reconstruction_max_abs_error": 5.551115123125783e-17,
+        "batch_composition_invariant": true,
+        "column_permutation_equivariant": true,
+        "contract_digest": "ebb3d0b2da1f09fc1bb4abd35f2cb25139a1bbda447d1b79ad9da68d569340fe",
+        "deterministic": true,
+        "distinguishes_binary_values": true,
+        "exact_affine_in_raw_binary_mask": true,
+        "finite": true,
+        "row_permutation_equivariant": true
+      },
+      "raw": {
+        "distinguishes_binary_values": true,
+        "finite": true
+      },
+      "rejected_column_cos_sin": {
+        "finite": false,
+        "finite_var_max": 1.232595164407831e-30,
+        "nan_count": 48
+      },
+      "seed": 16027,
+      "source_row_cos_sin": {
+        "batch_composition_changed": false,
+        "finite": true
+      }
+    }
+  ],
+  "scope": "representation contracts only; no independence, predictive utility, or research novelty claim",
+  "seeds": [
+    16021,
+    16023,
+    16027
+  ],
+  "source_sha256": "5f96be2c52082de1c48f64de7c87cce6772b2e398a69781cfa42a3f7df889e57",
+  "verdict": "contracts_pass_but_candidate_is_an_affine_reparameterization_of_raw_binary_mask; raw_indicator_is_simplest_preferred_baseline"
+}

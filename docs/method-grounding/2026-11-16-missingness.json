@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-16",
+  "scope": "Complete-method and official-code grounding for missingness-shift prediction",
+  "sources": [
+    {
+      "id": "mirrams",
+      "title": "MIRRAMS: Learning Robust Tabular Models under Unseen Missingness Shifts",
+      "paper": "https://arxiv.org/abs/2507.08280",
+      "official_code": null,
+      "evidence": "abstract and arXiv record",
+      "mechanism": "mutual-information robustness conditions and loss terms intended to remove dependence on unstable missingness information",
+      "limitation": "No author repository was verified in this scan; abstract-level claims are not an implementation record."
+    },
+    {
+      "id": "stablemiss",
+      "title": "StableMiss and StableMiss+: Prediction with Incomplete Data under Agnostic Mask Distribution Shift",
+      "paper": "https://arxiv.org/abs/2305.11197",
+      "official_code": "https://github.com/zyc-sjtu/StableMiss",
+      "code_commit": "fd02c06ce24b7ae153403bcbe6a477ffc6f76fe2",
+      "source_snapshot": "results/improvement-phase-2026-11-16/sources/stablemiss",
+      "evidence": "paper record plus official repository README and file listing",
+      "mechanism": "double parameterization with sample reweighting/decorrelation; StableMiss+ preserves feature-feature correlations while removing mask-mask and feature-mask correlations",
+      "operator_refs": ["reweight_stablemiss+.py:34-52", "metric.py:71-110", "model.py:11-27", "train.py:25-52"],
+      "reproduction": "python reweight_[stablemiss/stablemiss+].py; python train.py",
+      "license_status": "No license was visible in the repository page snapshot; verify before vendoring."
+    },
+    {
+      "id": "neumiss",
+      "title": "NeuMiss networks: differentiable programming for supervised learning with missing values",
+      "paper": "https://arxiv.org/abs/2007.01627",
+      "official_code": "https://github.com/marineLM/NeuMiss",
+      "code_commit": "58d54f1815bba847f9f06fe1910c95b754d9578c",
+      "source_snapshot": "results/improvement-phase-2026-11-16/sources/neumiss",
+      "evidence": "NeurIPS paper, official repository README, and repository file/license listing",
+      "mechanism": "truncated Neumann-series approximation with entrywise multiplication by the missingness indicator",
+      "operator_refs": ["neumannS0_mlp.py:77-110", "neumannS0_mlp.py:166-193"],
+      "reproduction": "launch_simu_perf MCAR|MAR_logistic|gaussian_sm|probit_sm",
+      "license": "BSD-3-Clause",
+      "environment": "NeuMiss.yml"
+    },
+    {
+      "id": "robust_prediction_missingness_shifts",
+      "title": "Robust prediction under missingness shifts",
+      "paper": "https://arxiv.org/abs/2406.16484",
+      "official_code": null,
+      "evidence": "arXiv HTML paper with theorem, estimator descriptions, and experimental setup",
+      "mechanism": "Bayes predictor invariance under ignorable missingness shifts; non-ignorable shifts can change the target predictor",
+      "limitation": "No official code repository was verified in this scan."
+    },
+    {
+      "id": "missingness_shift_bench",
+      "title": "Model Selection under Missing-Data Distribution Shift: Rank Reversals and Reliability",
+      "paper": null,
+      "official_code": "https://github.com/kovariati/MissingnessShiftBench",
+      "code_commit": "12089900a6b97de6114f93f446d9bea6edc07223",
+      "source_snapshot": "results/improvement-phase-2026-11-16/sources/bench",
+      "evidence": "official repository README, protocol manifest and license listing",
+      "mechanism": "model-selection transport under source/target missingness mechanisms, measuring rank reversals, winner persistence and target-oracle regret",
+      "scale": "19 datasets, 5x5 mechanisms, 22 pipelines, 5 seeds, 2,850 jobs, 52,250 evaluations",
+      "license": "MIT",
+      "data_boundary": "raw third-party datasets are not redistributed"
+    }
+  ],
+  "next_test": {
+    "question": "Does selective decorrelation that preserves feature-feature correlations help when training is MCAR and final masks are value-dependent or grouped?",
+    "candidate": "faithful StableMiss+ implementation",
+    "controls": ["StableMiss", "native-NaN HGB", "random-mask augmentation"],
+    "metrics": ["average_precision", "brier", "mask-mask correlation", "feature-mask correlation", "feature-feature correlation"],
+    "development": "One fresh seed for implementation agreement only; no confirmatory claim.",
+    "confirmatory_data": "Separate fresh seeds and an untouched transfer dataset; do not reuse the prior three-seed fixture.",
+    "falsifier": "No gain over strongest matched control, or gain disappears when the held-out mask mechanism changes.",
+    "novelty_established": false
+  }
+}

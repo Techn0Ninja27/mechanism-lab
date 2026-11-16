@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Hashes and provenance for ignored local source snapshots used to inspect official implementations.",
+  "snapshots": [
+    {
+      "repository": "https://github.com/zyc-sjtu/StableMiss",
+      "commit": "fd02c06ce24b7ae153403bcbe6a477ffc6f76fe2",
+      "local_directory": "results/improvement-phase-2026-11-16/sources/stablemiss",
+      "license_observed": null,
+      "files": {
+        "README.md": "4298d79f703b4f8434d688aa560b5326d361bbdaed4dac3cd7d91baa3344ad69",
+        "dataset.py": "4b256c3f55f58fe80769643b5493ef9a97fc0eb83b1c7fab4363f5c6529c77b8",
+        "model.py": "b84e82abef1739a2a9dd197fb4986b3543e8618ebf9b2c2b939c630d509c78ce",
+        "metric.py": "5f96be2c52082de1c48f64de7c87cce6772b2e398a69781cfa42a3f7df889e57",
+        "reweight_stablemiss+.py": "4e510ed6061a5f40ad2ac7b302fd8ac823ba41fc091d2a3d9da53dd34819284f",
+        "reweight_stablemiss.py": "335a07d3be6cffff29970c1e0e1c6a67abde7f4d8fd788bdb004fe5484c4552c",
+        "train.py": "80a7bc2ae4f264af86d43c49d7b9594fc520719490b3827582acb67664520bc2"
+      }
+    },
+    {
+      "repository": "https://github.com/marineLM/NeuMiss",
+      "commit": "58d54f1815bba847f9f06fe1910c95b754d9578c",
+      "local_directory": "results/improvement-phase-2026-11-16/sources/neumiss",
+      "license_observed": "BSD-3-Clause",
+      "files": {
+        "README.md": "53fd8e1f5227118d3d3706be81ce21ad62f86980395f638ec213d93a713514b0",
+        "amputation.py": "f99ba5bb6a1ed11da544ad7bb1348e699be6f87aeff3bce96aa018e61df6e20b",
+        "estimators.py": "15113c5a3b04083644b36fb8bcf4fc461cb8ccf8fc8af73358e7b96f34eb2a4f",
+        "ground_truth.py": "c393ea81ba727396e1e603ae0109d9c088cf3b253749f9f159b1295b7c3f27cc",
+        "neumannS0_mlp.py": "883d9ddc685e778257c981dc7c37f02a10ab60330865e38e6b74a415ed78b1ac"
+      }
+    },
+    {
+      "repository": "https://github.com/kovariati/MissingnessShiftBench",
+      "commit": "12089900a6b97de6114f93f446d9bea6edc07223",
+      "local_directory": "results/improvement-phase-2026-11-16/sources/bench",
+      "license_observed": "MIT",
+      "files": {
+        "README.md": "d1f46d644245a45b8a3b9177fafebc141d5c6b3388c9f0c450e750bb6c3c2184"
+      }
+    }
+  ]
+}

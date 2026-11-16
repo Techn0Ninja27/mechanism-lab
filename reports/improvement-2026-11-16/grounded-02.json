@@ -1,0 +1,116 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "581e6ca4a180767404557e8a634f2352911d54f18df09f4ada5bfb8b228e5682",
+  "status": "reviewed",
+  "proposal": {
+    "title": "Diagnostic-first test of a shared-matrix polynomial operator against NeuMiss's untied masked recurrence at equal matrix-vector cost",
+    "hypothesis": "Under MCAR Gaussian data, replacing NeuMiss's untied per-layer matrices with one shared matrix A and learned per-step scalars c_k should keep excess MSE over the Bayes predictor within 10% of the untied baseline at the same depth and the same number of d-by-d matvecs. This must be shown on fresh covariance draws, and it is claimed only if an oracle pre-training polynomial check first shows a gap that plain Neumann truncation cannot close.",
+    "baseline": "NeuMiss as implemented in neumannS0_mlp.py (Neumann.forward), with mlp_depth=0 and residual_connection=True. The recurrence, recovered from the code, uses x zero-imputed and m the missing indicator. h0 = x + m*mu. h_res = x - (1-m)*mu, which is (x-mu) on observed entries and 0 on missing entries because x is 0 there. Step 1: h1 = (h_res S0)\u2299(1-m), with no residual added. For k = 2..depth: h_k = (h_{k-1} W_k)\u2299(1-m) + h_res. Then h = (h_depth Wc)\u2299m + h0, and y = h\u00b7beta + b. The matrices are untied: each is a separate registered parameter W_i. The phase argument is unused, so training and inference run the same function and differ only by no_grad. The model has no uncertainty output. Without the residual, the chain keeps only the top-degree product term rather than a series sum. For a fixed mask, the predictor is affine in x.",
+    "operator_delta": "Replace the untied matrices {S0, W_2..W_depth} with one shared matrix A plus learned scalars c_1..c_depth. The recurrence becomes h_k = (h_{k-1} A)\u2299(1-m) + c_k h_res. The input/output contract is unchanged: (x zero-imputed, m) of shape (n,d) maps to y of shape (n,). Matvec count is unchanged: depth+1 d-by-d products per sample. Everything else is kept as is: mu, Wc, beta, b, initialization, SGD, scheduler and early stopping.",
+    "evidence": [
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "Iteration matrices are separately allocated, i.e. untied across layers.",
+        "quote_sha256": "a4986d6eb943d3d87a0f2be6f399e73cf782c04068bb8d3d48c882207ef05ed5"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "Each iteration is a matvec followed by masking to observed coordinates.",
+        "quote_sha256": "d7daee27f30333e9d90f95daba16b00254cf7986dd3687f3ca028b0ecf23201e"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "Missing coordinates are filled by a mixing matrix, and observed values are passed through via h0.",
+        "quote_sha256": "bfb549f244bde0071e6750c4ce46fa88cfc985b37f805c2936af2eda2c8d2c0a"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The phase argument exists but is never used in the body, so inference equals the training forward pass.",
+        "quote_sha256": "d8c507a01b48f49efd2f131bacc9edb0cc5034509d35cc83db7a6670ada2213a"
+      },
+      {
+        "chunk_id": "neumiss-ground_truth:chunk:0003",
+        "supports": "The Bayes predictor uses a mask-specific exact inverse; this is the target the truncation approximates.",
+        "quote_sha256": "a64784ee440a20590ffaf360ac4221a4a1d44a78bcee8a05fd3c1ce15dfa4979"
+      },
+      {
+        "chunk_id": "neumiss-estimators:chunk:0001",
+        "supports": "The raw-mask baseline is affine in the zero-imputed x and the indicators, with no mask-dependent slopes.",
+        "quote_sha256": "a1484e1b6cca3309444fa23b6e5cef1daba80b5d272c893181d8d40ac79f11f6"
+      }
+    ],
+    "assumptions": [
+      "Source-supported: the Bayes predictor needs Sigma_obs^{-1} for each mask pattern, and NeuMiss masks each iterate to observed coordinates.",
+      "Inferred: the untied matrices mostly emulate powers of one matrix, so a shared A with scalar coefficients loses little. This is testable by oracle polynomial fitting.",
+      "Inferred: equal matvec count is the right compute match. Parameter count differs (about d^2 versus depth*d^2) and is reported, not matched.",
+      "Inferred: for a fixed scalar step eta, the oracle choice A = I - eta*Sigma bounds what the shared form can represent."
+    ],
+    "data_paths": [
+      {
+        "input": "Oracle Sigma and mu from fresh gen_params draws, plus sampled MCAR masks",
+        "operation": "Before any training, compute the best least-squares degree-depth polynomial in (I - eta*Sigma_obs) applied to (x_obs - mu_obs). Compare its relative error to the exact Sigma_obs^{-1} solve against plain truncated Neumann (all c_k=1).",
+        "output": "Per-mask relative solve error and the predicted excess risk of each variant",
+        "possible_leakage": "Eta is tuned with oracle Sigma. Report eta chosen on development covariances only."
+      },
+      {
+        "input": "Observed x, m, y",
+        "operation": "Train the untied baseline, the shared-plus-scalar delta, ConstantImputedLR and EMLR",
+        "output": "Test MSE minus BayesPredictor_MCAR_MAR MSE",
+        "possible_leakage": "Early-stopping validation set: use a split separate from test. Mask-frequency differences can be absorbed by mu and Wc rather than the operator."
+      }
+    ],
+    "counterexample": "Near-diagonal Sigma (small diagonal noise, prop_latent near 0). Here Sigma_obs^{-1} is essentially diagonal, depth 1 suffices, and ConstantImputedLR or plain Neumann matches both variants, so no operator effect is observable. A second failure case is ill-conditioned Sigma_obs, where no degree-depth polynomial approximates the inverse and both variants fail equally.",
+    "matched_control": "Same code with c_k fixed to 1 and the shared A kept: plain tied Neumann, with equal matvecs, depth, initialization, optimizer, epochs, seeds and data. A second control is the untied baseline at the same depth.",
+    "experiment": {
+      "development": "Fresh gen_params seeds not used by any launch script. d=20, prop_latent in {0.3, 0.7}, MCAR at 0.25, depth in {3, 5}, 5 seeds. Run the oracle polynomial check first.",
+      "heldout": "Untouched new seeds, d=40, MCAR at 0.5, and a covariance family with condition number set by new diagonal ranges. Do not reuse launch_simu_perf, depth_effect or architecture outputs.",
+      "metric": "Excess MSE over the Bayes predictor, as a median ratio across seeds and covariances of delta to untied. The oracle relative solve error is also reported.",
+      "kill_threshold": "Kill if the oracle polynomial improves on plain Neumann solve error by less than 10% on development. Kill if the held-out median excess-MSE ratio (delta/untied) exceeds 1.10. Kill if the delta does not beat the c_k=1 control by at least 5%. Kill if ConstantImputedLR is within 5% of the delta."
+    },
+    "prior_art_difference": "There is substantial overlap. Polynomial/Krylov-style and Chebyshev-style accelerated iterations, adaptive depth, spectral stabilization, and tied versus untied unrolled networks are all extensive prior art. NeuMiss_sota may already use shared weights, which is unverified here. The only proposed difference is a pre-training oracle test of scalar-coefficient sharing inside this exact masked recurrence. Novelty is not established.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "review": {
+    "decision": "test",
+    "failure_type": "weak_control",
+    "reason": "The baseline transcription matches the code. h0 = x + m*mu and h_res = x - (1-m)*mu. The first step applies S0 and masks with no residual. The loop runs over l_W[1:depth] and adds h_res only when residual_connection is set. The output is matmul(h, Wc)*m + h0, then beta and b. The phase argument is unused. For a fixed mask the predictor is affine in x.\n\nThe delta is not an algebraic no-op. A shared A restricts h_depth to a scalar-weighted polynomial in (A restricted to observed coordinates) applied to h_res. This is a real subset of the untied products. Because the mask is applied after every matvec, the oracle A = I - eta*Sigma reproduces polynomials in (I - eta*Sigma_obs), so the oracle gate is well posed. Every input is observable or a learned parameter.\n\nThree control and identifiability issues remain.\n\n(1) The proposed recurrence adds c_1*h_res at step 1, but the baseline adds no residual at step 1. The 'c_k=1' control is therefore not the baseline structure with tying alone. It changes which terms enter the sum. The fix is to set c_1 = 0 (or omit it) so that only tying differs. Otherwise report both variants.\n\n(2) h_depth enters the output only through Wc, so a common scale of all c_k can be absorbed into Wc. Only the ratios c_k/c_1 are identified. The c_k=1 control is then distinguishable only through the relative weights, which is acceptable but should be stated. The same holds for A versus eta in the oracle check.\n\n(3) The oracle polynomial must use a single coefficient vector shared across all masks, as the learned model does. Fitting it per mask overstates what the delta can represent and would make the 10% gate too easy to pass.\n\nThe non-inferiority framing (ratio \u2264 1.10 against an untied model that strictly contains the delta) is coherent. The four kill criteria together can falsify the hypothesis cheaply.",
+    "evidence": [
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The first iteration uses S0 with no residual addition, unlike the proposed uniform c_k*h_res recurrence.",
+        "quote_sha256": "48f4438233065d8fc2ab1983f7c9afc06f96cdbbe679406984b64fca4f6755ce"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The residual-bearing steps are 2..depth, using untied matrices.",
+        "quote_sha256": "4ae1e90611ed1eb962a707be239eacb0fdf0234adcfa19b75e3092f2062e9107"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The residual is conditional and applies only inside the loop.",
+        "quote_sha256": "49ec618f6a5a63b503b7326542e78e7c6fdd0538155027f171053eec48af63ac"
+      },
+      {
+        "chunk_id": "neumiss-neumannS0_mlp:chunk:0001",
+        "supports": "The iterate reaches the output only through Wc, so a global scale on c_k is absorbable.",
+        "quote_sha256": "bfb549f244bde0071e6750c4ce46fa88cfc985b37f805c2936af2eda2c8d2c0a"
+      },
+      {
+        "chunk_id": "neumiss-ground_truth:chunk:0003",
+        "supports": "The Bayes target uses an exact mask-specific inverse, against which the oracle solve error is measured.",
+        "quote_sha256": "a64784ee440a20590ffaf360ac4221a4a1d44a78bcee8a05fd3c1ce15dfa4979"
+      },
+      {
+        "chunk_id": "neumiss-amputation:chunk:0001",
+        "supports": "MCAR masks are independent Bernoulli draws, so many distinct masks share one set of coefficients.",
+        "quote_sha256": "7244fea15a3adaeec4cf9c63abdd39de82329804d614ffd510a5464506642325"
+      }
+    ],
+    "strongest_counterargument": "These control issues may be immaterial. The step-1 residual changes only one low-degree term, and the free Wc scale is harmless. The question of whether scalar-weighted shared powers suffice is also well studied in polynomial and Krylov preconditioning, so the experiment may only confirm known approximation theory inside this specific recurrence rather than add information.",
+    "required_test": "First, on development covariances, run the oracle check numerically. Use A = I - eta*Sigma, with eta chosen on development covariances, and fit one global least-squares coefficient vector c across all sampled MCAR masks. Compare the per-mask relative solve error against all c_k=1, at depth 3 and 5, d=20. If the gain is under 10%, stop. Otherwise, train three models on identical seeds and data: the untied baseline, shared A with c_1=0 (matching the baseline step 1), and shared A with c fixed to 1. Then apply the stated held-out excess-MSE kill thresholds.",
+    "novelty_established": false
+  }
+}

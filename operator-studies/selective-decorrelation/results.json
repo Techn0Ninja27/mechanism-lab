@@ -1,0 +1,44 @@
+{
+  "dimensions": 3,
+  "n": 256,
+  "optimization": {
+    "final_effective_sample_size": 255.99972173309646,
+    "final_feature_offdiag": 1.6449692574957202,
+    "final_mask_offdiag": 0.16854564995361815,
+    "final_objective": 0.0388334755255965,
+    "initial_effective_sample_size": 256.0,
+    "initial_feature_offdiag": 1.6455775962863208,
+    "initial_mask_offdiag": 0.16843758208187912,
+    "initial_objective": 0.02837121905758977,
+    "note": "Under this partial finite-difference diagnostic and the source coefficient-of-variation penalty, the attempted update did not lower the objective. This is a fixture-specific observation, not a claim that the published optimizer fails.",
+    "objective_improved": false,
+    "objective_name": "mask_covariance_plus_cv_only",
+    "omitted_source_terms": [
+      "w_distance",
+      "intra_feature_correlation",
+      "inter_correlation"
+    ],
+    "onehot_cv": 16.0,
+    "onehot_full_cov_plus_cv_lower_bound": 160.0,
+    "uniform_cv": 0.0,
+    "weight_max": 0.00391258247304856,
+    "weight_min": 0.003872040434004322
+  },
+  "random_fourier_observation": {
+    "implication": "With num_f omitted, the source metric uses one random feature and row-wise min/max normalization before covariance; this is a stochastic proxy, not a direct covariance of the original variables.",
+    "source_default_num_f": 1,
+    "source_normalizes_each_row_across_features": true
+  },
+  "seed": 16017,
+  "source_equivalence": {
+    "cov_collapsed_weight_offdiag": 0.0,
+    "cov_scaled_weights_ratio": 191.7582557119138,
+    "cov_uniform_offdiag": 0.16843758208187912,
+    "note": "The source softmax produces sum-one weights; arbitrary rescaling is outside its parameterization. The direct cov helper itself is not scale invariant.",
+    "official_cov_ast_max_abs_diffs": [
+      2.384185791015625e-07,
+      0.0
+    ],
+    "official_cov_ast_source": "metric.py::cov, extracted by AST without importing the module"
+  }
+}

@@ -23,7 +23,7 @@ from pathlib import Path
 MAX_FILE = 10 * 1024 * 1024
 MAX_TOTAL = 40 * 1024 * 1024
 MAX_FILES = 100
-ALLOWED = {".md", ".txt", ".json", ".csv", ".pdf"}
+ALLOWED = {".md", ".txt", ".json", ".csv", ".pdf", ".py"}
 CATEGORIES = {"notes", "reviews"}
 
 

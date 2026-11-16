@@ -1,9 +1,9 @@
 name: Workbench checks
 on:
   push:
-    paths: ['workbench/**', '.github/workflows/workbench.yml']
+    paths: ['workbench/**', 'scripts/grounded_research.py', 'scripts/export_research_ledger.py', 'scripts/world_search.py', 'generation/sourcepack.py', 'generation/api_budget.py', '.github/workflows/workbench.yml']
   pull_request:
-    paths: ['workbench/**', '.github/workflows/workbench.yml']
+    paths: ['workbench/**', 'scripts/grounded_research.py', 'scripts/export_research_ledger.py', 'scripts/world_search.py', 'generation/sourcepack.py', 'generation/api_budget.py', '.github/workflows/workbench.yml']
 permissions:
   contents: read
 jobs:

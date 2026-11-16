@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Local-only HTTP API and static server for the Alien Science workbench.
 
-The API deliberately exposes research state and safe, offline operations. It never
-starts a paid decoder and never accepts arbitrary shell commands or filesystem paths.
+The API exposes local research state and allowlisted engine operations. Grounded
+generation uses selected source packs and a shared capped API ledger; arbitrary
+shell commands and caller-supplied filesystem paths are never accepted.
 Run with ``python server.py`` from the experiment directory.
 """
 from __future__ import annotations
 
 import http.server
+import hashlib
 import json
 import mimetypes
 import os
@@ -51,7 +53,7 @@ for saved in JOBS_DIR.glob("*.json"):
         if record.get("status") in {"running", "queued", "cancel_requested"}: record.update(status="interrupted", reason="Server restarted; inspect outputs before rerunning")
         JOBS[record["id"]] = record
     except (ValueError, KeyError, OSError): pass
-ALLOWED_ACTIONS = {"audit_provenance", "sample_offline", "rerank_offline", "prompt_export", "inventory", "decode_paid"}
+ALLOWED_ACTIONS = {"audit_provenance", "sample_offline", "rerank_offline", "prompt_export", "inventory", "grounded_execute", "decode_paid"}
 
 
 def read_json(path: pathlib.Path, default=None):
@@ -181,6 +183,167 @@ def inventory():
             "provenance": provenance()}
 
 
+def _study_root():
+    """Return the checked-out study directory, if the fork is available."""
+    root = ENGINE / "reconstruction-studies"
+    return root if root.is_dir() else ENGINE / "candidate-studies"
+
+
+def study_rows():
+    """Build a read-only registry from the committed study artifacts.
+
+    This deliberately reports the authors' raw verdict separately from the app's
+    audit qualification. A score or ``supported_pilot`` label never becomes a
+    novelty claim automatically.
+    """
+    if str(ENGINE / "scripts") not in sys.path:
+        sys.path.insert(0, str(ENGINE / "scripts"))
+    from export_research_ledger import build_ledger
+    ledger = build_ledger(ENGINE)
+    rows = []
+    for item in ledger.get("studies", []):
+        cohort = item.get("cohort", "unknown")
+        rows.append({
+            "id": item.get("id"), "kind": cohort,
+            "path": ("upstream:" + ("candidate-studies/" if cohort == "candidate" else "reconstruction-studies/") + str(item.get("id"))),
+            "raw_verdict": item.get("raw_verdict", "unknown"),
+            "audit_qualification": item.get("audit_qualification", "unknown"),
+            "audit_note": item.get("audit_note"),
+            "novelty_established": bool(item.get("novelty_established", False)),
+            "human_adjudicated": bool(item.get("human_adjudicated", False)),
+            "primary": item.get("primary_metrics", {}),
+            "secondary": item.get("secondary_metrics", {}),
+            "limitations": item.get("limitations", [])[:8],
+            "prior_art_status": item.get("prior_art_status") or "",
+            "proposal_title": item.get("title") or "",
+            "artifacts": [pathlib.PurePosixPath(a.get("path", "")).name for a in item.get("artifact_refs", []) if isinstance(a, dict) and a.get("path")],
+        })
+    return rows
+
+
+def study_by_id(study_id):
+    if not isinstance(study_id, str) or study_id in {"", ".", ".."} or any(part in {".", ".."} for part in pathlib.PurePosixPath(study_id).parts):
+        raise ValueError("invalid study")
+    return next((row for row in study_rows() if row["id"] == study_id), None)
+
+
+def grounded_rows():
+    """Expose completed grounded runs without source payloads or call receipts."""
+    rows = []
+    links = read_json(ENGINE / "reports" / "improvement-2026-11-16" / "evaluation-links.json", {}) or {}
+
+    def operator_check(run_id):
+        record = links.get(run_id) if isinstance(links, dict) else None
+        if not isinstance(record, dict):
+            return {"status": "unavailable", "verified": False, "summary": "No reviewed operator evaluation has been linked."}
+        result_ref = record.get("result_path")
+        report_ref = record.get("report_path")
+        refs = (result_ref, report_ref)
+        if any(not isinstance(x, str) or pathlib.PurePosixPath(x).is_absolute() or not x.startswith("operator-studies/") for x in refs):
+            return {"status": "unverified", "verified": False, "summary": "Evaluation links failed the operator-studies path policy."}
+        result_path = (ENGINE / result_ref).resolve(); report_path = (ENGINE / report_ref).resolve()
+        operator_root = (ENGINE / "operator-studies").resolve()
+        if any(operator_root not in p.parents or not p.is_file() for p in (result_path, report_path)):
+            return {"status": "unverified", "verified": False, "summary": "Linked operator artifacts are missing or outside the allowed root."}
+        recorded_hash = record.get("result_sha256")
+        actual_hash = hashlib.sha256(result_path.read_bytes()).hexdigest()
+        verified = isinstance(recorded_hash, str) and recorded_hash == actual_hash
+        return {"status": record.get("status", "unverified") if verified else "unverified", "verified": verified,
+                "summary": str(record.get("summary", ""))[:1000] if verified else "Result hash does not match the reviewed operator artifact.",
+                "result_path": result_ref, "report_path": report_ref,
+                "result_sha256": actual_hash}
+    candidates = [(p, p.parent.parent.name, None) for p in (ENGINE / "results").glob("improvement-phase-*/grounded-*/result.json")]
+    workspace_root = (ROOT / "workspace" / "projects").resolve()
+    if workspace_root.is_dir():
+        for p in workspace_root.glob("*/runs/sourcepack-*/execution/result.json"):
+            resolved = p.resolve()
+            if workspace_root in resolved.parents:
+                candidates.append((resolved, "project", p.parts[-5] if len(p.parts) >= 5 else None))
+    for result_path, phase, project_id in sorted(candidates, key=lambda x: str(x[0])):
+        data = read_json(result_path, {}) or {}
+        proposal = data.get("proposal") if isinstance(data.get("proposal"), dict) else {}
+        review = data.get("review") if isinstance(data.get("review"), dict) else {}
+        evidence = [{"chunk_id": e.get("chunk_id"), "quote": str(e.get("quote", ""))[:500], "supports": str(e.get("supports", ""))[:500]}
+                    for e in proposal.get("evidence", [])[:12] if isinstance(e, dict)]
+        budget_path = (ENGINE / "results" / "improvement-phase-2026-11-16" / "budget.json") if phase == "project" else result_path.parent.parent / "budget.json"
+        budget = read_json(budget_path, {}) or {}
+        reservations = budget.get("reservations", {}) if isinstance(budget, dict) else {}
+        def money(value):
+            try:
+                number = float(value or 0)
+                return number if math.isfinite(number) and number >= 0 else 0.0
+            except (TypeError, ValueError):
+                return 0.0
+        spent = sum(money(x.get("actual_usd")) for x in reservations.values() if isinstance(x, dict))
+        reserved = sum(money(x.get("reserved_usd")) for x in reservations.values() if isinstance(x, dict) and x.get("status") not in {"released", "reconciled", "over_budget"})
+        rows.append({"id": result_path.parent.name if phase != "project" else result_path.parent.parent.name, "phase": phase,
+                     "project_id": project_id,
+                     "status": data.get("status", "unknown"), "machine_review_only": True,
+                     "empirical_result": False, "novelty_established": bool(data.get("novelty_established", False)),
+                     "pack_hash": data.get("pack_hash"), "proposal": {
+                         "title": proposal.get("title"), "hypothesis": proposal.get("hypothesis"),
+                         "baseline": proposal.get("baseline"), "operator_delta": proposal.get("operator_delta"),
+                         "matched_control": proposal.get("matched_control"), "evidence": evidence,
+                         "experiment": proposal.get("experiment")},
+                     "review": {k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
+                     "budget": {"cap_usd": budget.get("cap_usd"), "actual_usd": spent, "active_reserved_usd": reserved},
+                     "artifact": public_path(result_path),
+                     "operator_evaluation": operator_check(result_path.parent.name) if phase == "improvement-phase-2026-11-16" else {"status":"unavailable","verified":False,"summary":"No operator check linked for this run."}})
+    return rows
+
+
+def build_project_source_pack(project_id, body):
+    """Create an offline, explicitly selected source pack and research plan."""
+    if not isinstance(body, dict) or not isinstance(body.get("document_ids"), list) or not body["document_ids"]:
+        raise ValueError("document_ids must be a non-empty list")
+    question = str(body.get("question", "")).strip()
+    if not question or len(question) > 2000:
+        raise ValueError("question must be 1-2000 characters")
+    workspace = get_workspace()
+    project = workspace.get_project(project_id)
+    docs = {d["id"]: d for d in workspace.list_documents(project_id)}
+    selected = []
+    for doc_id in body["document_ids"]:
+        if not isinstance(doc_id, str) or doc_id not in docs:
+            raise ValueError("unknown selected document")
+        doc = docs[doc_id]
+        if doc["kind"] != "text" or pathlib.Path(doc["relative_path"]).suffix.lower() not in {".md", ".txt", ".json", ".py"}:
+            raise ValueError("source packs accept selected UTF-8 text, Markdown, JSON, or Python documents only")
+        selected.append(doc)
+    try:
+        if str(ENGINE) not in sys.path:
+            sys.path.insert(0, str(ENGINE))
+        from generation.sourcepack import build_source_pack
+    except ImportError as exc:
+        raise ValueError("source-pack engine is unavailable") from exc
+    manifest = {"sources": [{"id": "doc-" + d["id"], "title": d["name"],
+                              "url": "local://project/" + project_id + "/" + d["id"],
+                              "path": d["relative_path"], "evidence_level": "user_document"}
+                             for d in selected]}
+    project_root = pathlib.Path(project["path"]).resolve()
+    pack = build_source_pack(manifest, project_root, max_total_chars=100000, chunk_chars=4000)
+    run_id = "sourcepack-" + uuid.uuid4().hex[:12]
+    output = project_root / "runs" / run_id
+    output.mkdir(parents=True, exist_ok=False)
+    (output / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")
+    (output / "source-pack.json").write_text(json.dumps(pack, indent=2, ensure_ascii=False) + "\n")
+    question_path = output / "question.txt"
+    question_path.write_text(question + "\n", encoding="utf-8")
+    grounded_script = ENGINE / "scripts" / "grounded_research.py"
+    planned_output = output / "execution"
+    plan = {"schema_version": "grounded-research-plan.v1", "question": question,
+            "source_pack_digest": pack["digest"], "selected_document_ids": [d["id"] for d in selected],
+            "execution": {"enabled": False, "reason": "Plan-only app operation; paid execution requires reviewed CLI workflow.",
+                          "command": [engine_python(), str(grounded_script), "--pack", str(output / "source-pack.json"),
+                                      "--question", str(question_path), "--output", str(planned_output)],
+                          "script_available": grounded_script.is_file()}}
+    (output / "grounded-plan.json").write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n")
+    return {"run_id": run_id, "project_id": project_id, "source_count": len(selected),
+            "source_pack": os.path.relpath(output / "source-pack.json", ROOT.resolve()),
+            "plan": os.path.relpath(output / "grounded-plan.json", ROOT.resolve()), "execution_enabled": False,
+            "digest": pack["digest"]}
+
+
 def job_write(job):
     dest = JOBS_DIR / f"{job['id']}.json"
     temp = dest.with_suffix("." + uuid.uuid4().hex + ".tmp"); temp.write_text(json.dumps(job, indent=2)); temp.replace(dest)
@@ -229,6 +392,40 @@ def launch_job(job_id, action, options):
         with LOCK:
             job = JOBS[job_id]; job.update({"status": "completed", "output": str(out_dir.relative_to(RESULTS)), "result": {"candidate_id": cid, "prompt": public_path(out_dir / "prompt.txt")}, "finished_at": time.time()}); job_write(job)
         return
+    elif action == "grounded_execute":
+        if not options.get("project_id") or not isinstance(options.get("sourcepack_run"), str):
+            raise ValueError("grounded execution requires a project and sourcepack_run")
+        run_id = options["sourcepack_run"]
+        if not run_id.startswith("sourcepack-") or len(run_id) != len("sourcepack-") + 12 or not all(c in "0123456789abcdef" for c in run_id[len("sourcepack-"):]):
+            raise ValueError("invalid sourcepack_run")
+        project = get_workspace().get_project(str(options["project_id"]))
+        source_dir = (pathlib.Path(project["path"]) / "runs" / run_id).resolve()
+        project_root = pathlib.Path(project["path"]).resolve()
+        if project_root not in source_dir.parents or not source_dir.is_dir():
+            raise ValueError("source pack is not in the selected project")
+        pack_path = (source_dir / "source-pack.json").resolve(); question_path = (source_dir / "question.txt").resolve()
+        plan_path = (source_dir / "grounded-plan.json").resolve()
+        if any(source_dir not in p.parents for p in (pack_path, question_path, plan_path)):
+            raise ValueError("source pack files escape the selected run")
+        if not pack_path.is_file() or not question_path.is_file() or not plan_path.is_file():
+            raise ValueError("source pack plan is incomplete")
+        if (source_dir / "execution" / "result.json").exists():
+            raise ValueError("this source pack already has a completed result; create a new pack")
+        if any(j.get("id") != job_id and j.get("action") == "grounded_execute" and j.get("options", {}).get("project_id") == str(options["project_id"]) and j.get("options", {}).get("sourcepack_run") == run_id and j.get("status") in {"queued", "running", "cancel_requested", "completed"} for j in JOBS.values()):
+            raise ValueError("this source pack already has a grounded job")
+        if str(ENGINE) not in sys.path: sys.path.insert(0, str(ENGINE))
+        from generation.sourcepack import validate_source_pack
+        try: pack = json.loads(pack_path.read_text()); validate_source_pack(pack)
+        except Exception as exc: raise ValueError("source pack failed integrity validation") from exc
+        plan = read_json(plan_path, {}) or {}
+        if plan.get("source_pack_digest") != pack.get("digest"):
+            raise ValueError("source pack digest does not match plan")
+        execution = source_dir / "execution"
+        if execution.exists() and execution.is_symlink():
+            raise ValueError("execution path cannot be a symlink")
+        if execution.resolve().parent != source_dir:
+            raise ValueError("execution path escapes the selected run")
+        cmd = [engine_python(), str(ENGINE / "scripts/grounded_research.py"), "--pack", str(pack_path), "--question", str(question_path), "--output", str(execution), "--execute"]
     else:
         cmd = ["python3", "-c", "import json; from pathlib import Path; print(json.dumps({\"inventory\": True}))"]
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -296,6 +493,23 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/setup": return self.send_json(setup_info())
         if path == "/api/health": return self.send_json({"ok": True, "service": "alien-science", "root": public_path(ROOT)})
         if path == "/api/summary": return self.send_json(inventory())
+        if path == "/api/studies":
+            rows = study_rows(); return self.send_json({"items": rows, "total": len(rows), "warning": "Study verdicts are evidence records, not automatic novelty claims."})
+        if path == "/api/generated-research":
+            rows = grounded_rows(); return self.send_json({"items": rows, "total": len(rows), "warning": "Machine review only; these records are not empirical results or novelty findings."})
+        if path.startswith("/api/studies/"):
+            pieces = path[len("/api/studies/"):].split("/", 1)
+            row = study_by_id(unquote(pieces[0]))
+            if not row: return self.send_json({"error": "study not found"}, 404)
+            if len(pieces) == 1: return self.send_json({"study": row})
+            artifact = unquote(pieces[1])
+            if pathlib.PurePosixPath(artifact).is_absolute() or any(part in {"", ".", ".."} for part in pathlib.PurePosixPath(artifact).parts):
+                return self.send_json({"error": "invalid artifact"}, 400)
+            root = (ENGINE / "reconstruction-studies" if row["kind"] == "reconstruction" else ENGINE / "candidate-studies") / row["id"]
+            target = (root / artifact).resolve()
+            if root.resolve() not in target.parents or target.suffix.lower() not in {".json", ".md", ".py"} or not target.is_file():
+                return self.send_json({"error": "artifact not found"}, 404)
+            return self.send_json({"name": artifact, "content": target.read_text(errors="replace")})
         if path == "/api/runs": return self.send_json({"runs": runs(), "provenance": provenance()})
         if path == "/api/candidates":
             run_id = qs.get("run", ["proposals-v2"])[0]
@@ -389,10 +603,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return self.send_json(record, 201)
         if path != "/api/jobs": return self.send_json({"error": "not found"}, 404)
         body = self.body()
-        if not isinstance(body, dict) or body.get("action") not in ALLOWED_ACTIONS: return self.send_json({"error": "action must be audit_provenance, sample_offline, rerank_offline, inventory, or decode_paid"}, 400)
+        if not isinstance(body, dict) or body.get("action") not in ALLOWED_ACTIONS: return self.send_json({"error": "unknown or disabled action"}, 400)
         jid = uuid.uuid4().hex[:12]; job = {"id": jid, "action": body["action"], "status": "queued", "created_at": time.time(), "options": body.get("options") or {}}
         with LOCK:
-            if body["action"] in {"sample_offline", "rerank_offline", "audit_provenance"} and any(p.poll() is None for p in PROCESSES.values()):
+            if body["action"] in {"sample_offline", "rerank_offline", "audit_provenance", "grounded_execute"} and any(p.poll() is None for p in PROCESSES.values()):
                 return self.send_json({"error": "Another engine job is running. Wait for it or cancel it first."}, 409)
             JOBS[jid] = job; job_write(job)
         if body["action"] == "inventory":
@@ -458,6 +672,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         with LOCK:
             if len(parts) == 2:
                 self.send_json(workspace.create_project(body.get('name'), body.get('description', '')), 201); return True
+            if len(parts) == 4 and parts[3] == 'source-pack':
+                self.send_json(build_project_source_pack(parts[2], body), 201); return True
             if len(parts) != 4: raise ValueError('Unknown project endpoint')
             project_id, section = parts[2], parts[3]
             if section == 'documents':

@@ -1,0 +1,115 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "1e83dfe7ea1d3f2f876cf11764f4bc981aa52cba0e9e0e0b1ef2ee95b3ab6780",
+  "status": "reviewed",
+  "proposal": {
+    "title": "Diagnostic revision: per-feature versus per-row normalization of the StableMiss random-feature decorrelation operator",
+    "hypothesis": "On fresh synthetic development draws from the official IndependentMaskGenerator, replacing only the per-row min-max normalization inside random_fourier_features with per-feature, column-wise normalization will cut the residual weighted off-diagonal mask covariance (Frobenius norm) by at least 20% relative to the official reweighter. The two reweighters will be matched on the weight coefficient of variation.",
+    "baseline": "StableMiss reweighting from stablemiss/reweight_stablemiss.py. Per-sample softmax weights w (model.SampleReweighter) minimize intra_feature_correlation(x,m,w) + intra_mask_correlation(m,w) + inter_correlation(x,m,w) + 10*std(w)/mean(w) for 20000 Adam steps. The features come from metric.random_fourier_features with num_f=1, resampled on every call. train.py then fits MLPPredictor, which computes y = sum(MLP([1,m]) * [1,x]*m), using a weighted squared error summed over each batch. In this code m=1 marks an observed entry.",
+    "operator_delta": "Inside random_fourier_features, change the normalization of mid. The official code subtracts mid.min(dim=1) and divides by mid.max(dim=1), which normalizes across the features of each sample. The delta normalizes over samples instead (dim=0), per feature and per random frequency. Nothing else changes.",
+    "evidence": [
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "The baseline normalizes along dim 1 of an (n, r, 1) tensor, which is the feature axis within each sample.",
+        "quote_sha256": "a2756a3a7fd1cebdc13d4d53d19fc2c207753510a0b1044a7c9b93ebb7038523"
+      },
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "Each feature gets a phase that is shared across samples. A row whose mask entries are all equal therefore normalizes to a function of b alone, so all-observed and all-missing rows receive identical features. This is an inferred algebraic cancellation.",
+        "quote_sha256": "ec52b41ab1d65fe879ee10890344cf4e810588a973ee3bdc5babf22dd246edef"
+      },
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "The baseline uses a single random frequency, and the callers pass num_f=None.",
+        "quote_sha256": "038d6c78bfdc6a07b0c7f7d44577d444addb6d967a48fedf5bdf256db4ed93e4"
+      },
+      {
+        "chunk_id": "stablemiss-reweight_stablemiss:chunk:0001",
+        "supports": "Weight dispersion is penalized, so the matched-CV comparison is meaningful.",
+        "quote_sha256": "a043f458984057a90d0075a332babcdf4220d62db27e10f19b9e7c48be309be1"
+      },
+      {
+        "chunk_id": "stablemiss-dataset:chunk:0002",
+        "supports": "Training masks mix row-level missing rates. This creates real cross-feature mask covariance that is present in the development data.",
+        "quote_sha256": "c9eeef01e14459953eb528cc0dcb438f5b48a7799f26dc7a0f06394893c9537b"
+      },
+      {
+        "chunk_id": "stablemiss-model:chunk:0001",
+        "supports": "The predictor conditions on m. Weights that depend only on m can therefore matter only through capacity sharing across patterns.",
+        "quote_sha256": "ae1c8a7bfa54c736e9ba49c56844cbc1a42dc794d07e6890a6fe635c6f367c07"
+      }
+    ],
+    "assumptions": [
+      "The official inter_correlation and intra_feature_correlation run at the official shapes. torch.mul of a (d,d) covariance with an (n,d) mask appears not to broadcast when n is not equal to d. If it raises an error, the baseline must be reported as not reproducible as written, and this proposal reverts to a reproduction test.",
+      "Mask covariance induced by the rate mixture is the dominant dependence that the mask penalty targets. This is testable by comparing against single-rate masks.",
+      "Inferred and testable: in the linear-Gaussian generators, E[y|x_obs,m] is linear in x_obs within each pattern. Weights that depend on x should then leave the minimizer for each pattern unchanged at infinite capacity, so any RMSE gain must come from finite-capacity sharing in MLPPredictor."
+    ],
+    "data_paths": [
+      {
+        "input": "m (development mask, 1 = observed)",
+        "operation": "random feature map with per-row versus per-column min-max normalization, then weighted covariance",
+        "output": "decorrelation loss and learned weights w",
+        "possible_leakage": "Under per-row normalization, rows with constant masks are indistinguishable. Under per-column normalization, the per-feature missing rate stays visible through m, and the row missing count remains recoverable from m in both variants."
+      },
+      {
+        "input": "x*m and w",
+        "operation": "weighted MSE with MLP([1,m]) coefficients",
+        "output": "predictor for each pattern",
+        "possible_leakage": "m is a direct input to the predictor, so the missingness pattern is always observable. Weights cannot hide the missingness pattern from the predictor."
+      }
+    ],
+    "counterexample": "Single-rate MCAR masks (all rows at one rate), where off-diagonal mask covariance is about zero in expectation. Neither normalization has anything to remove, so the 20% reduction cannot appear. More generally, in the well-specified linear-Gaussian case with ample predictor capacity, any weighting leaves the predictor for each pattern unchanged.",
+    "matched_control": "Run the official random_fourier_features with dim=1 normalization, keeping everything else identical: loss terms, LAMBDA, epochs, optimizer, learning rate, num_f, per-call resampling seeds, data, and initialization. Report the comparison at matched weight CV, interpolating along the LAMBDA path if needed.",
+    "experiment": {
+      "development": "Generate fresh draws with seeds 5101-5110, which do not overlap 9401/9403/9407. Use GaussianDataGenerator with d=20 and n=2048, IndependentMaskGenerator with missing_rate in {0.3, 0.5}, and only the reweighting stage. As a pre-check, run the official loss once and record whether it raises a shape error.",
+      "heldout": "Run seeds 6201-6210, untouched until the development decision is frozen. Use DependentMaskGenerator (contiguous blocks) and MARMaskGenerator at missing_rate 0.7, with GaussianMixtureDataGenerator. No previously exposed test fixtures are used. Downstream MLPPredictor RMSE is evaluated on masks from a different rate in the same held-out family.",
+      "metric": "Primary: Frobenius norm of the off-diagonal weighted covariance of m under the final w, as a ratio of delta to control. Report the median and a bootstrap 95% CI over seeds. Secondary, held-out only: the gap in held-out RMSE between delta and control.",
+      "kill_threshold": "Kill the delta if the median development ratio exceeds 0.8 or its CI includes 1. Kill it if the held-out RMSE gap is within \u00b11% of control RMSE. Kill it if the effect disappears when the comparison is made at matched CV. If the official code fails the shape check, stop and report a reproduction failure instead of testing the delta."
+    },
+    "prior_art_difference": "Supported overlap: StableMiss already decorrelates x and m with random features plus a CV penalty, and StableMiss+ swaps the intra-feature term for a 1-D Wasserstein term. The proposed difference is only the normalization axis inside the random-feature operator. Whether this has been examined elsewhere is unverified.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "review": {
+    "decision": "reject",
+    "failure_type": "algebraic_noop",
+    "reason": "In the official code, m is reshaped to (n,r,1). With num_f=1 and per-feature shared phases b, entry (i,j) becomes mid = m_ij*w + b_j. The callers pass sum=sum, which is Python's builtin sum and therefore truthy, so the output is cos(mid)+sin(mid). Under the proposed dim=0 (per-column) min-max normalization, a binary column takes only the two values b_j and w+b_j. These map exactly to {0,1} (to {1,0} if w<0) and then to {0, pi/2}. Since cos(0)+sin(0) = cos(pi/2)+sin(pi/2) = 1, every mask random feature becomes the constant 1 (times sqrt(2)). Its weighted covariance is therefore identically zero. Two consequences follow. First, intra_mask_correlation becomes 0. Second, inter_correlation becomes 0 because cov2 = 0. The delta does not decorrelate the mask better. It deletes both mask-dependent penalty terms, so the gradient signal on mask structure is gone. The optimizer is left with only intra_feature_correlation plus the CV penalty. Any change in residual mask Frobenius covariance would then be a side effect of the x-based term and the CV penalty, not of the stated mechanism. There is also a degenerate case. A column that is fully observed (for example, the always-observed MAR columns at held-out time) or fully missing gives max = 0, and the division produces NaN. The proposal's per-row cancellation premise is correct: constant rows collapse to a function of b. But the per-column replacement is worse, not better. A second, separate problem is that the baseline likely fails before any comparison. cov(...) is (r,r) and is multiplied by m, which is (n,r), with n=2048 and r=20. This does not broadcast, as the proposal itself suspects. So the matched control may not run as written.",
+    "evidence": [
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "The phase b_j is shared across samples for each feature, so a binary column takes only two values before normalization.",
+        "quote_sha256": "ec52b41ab1d65fe879ee10890344cf4e810588a973ee3bdc5babf22dd246edef"
+      },
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "Normalized values in [0,1] map to [0, pi/2], so binary columns land on the endpoints 0 and pi/2.",
+        "quote_sha256": "21a3feaf2b4fa3a8f26d64d5cf69888c0d9bedf5aa12ff6e128bfd08eaace297"
+      },
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "cos+sin equals 1 at both 0 and pi/2, so the mask features become constant under per-column normalization.",
+        "quote_sha256": "8f3f43b4a6de56dca37b30b5c45bb0abd4a46ad0d3fb4843a95426a478a44c7c"
+      },
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "The mask penalty uses num_f=1 and a truthy sum argument (the builtin), so the cos+sin branch is taken.",
+        "quote_sha256": "1181846d5909f6ef0bebaba4229b2b0a9ee606cf9343c9c0a0dbb138bed426d3"
+      },
+      {
+        "chunk_id": "stablemiss-metric:chunk:0001",
+        "supports": "An (r,r) covariance is multiplied by an (n,r) mask, which is a likely shape error at n=2048, r=20.",
+        "quote_sha256": "fd75477326274a2ba300bc35a800d57c3d2af5d4651267c924a0882bc69b6456"
+      },
+      {
+        "chunk_id": "stablemiss-dataset:chunk:0003",
+        "supports": "MAR leaves the observed columns at 1, so those columns are constant and per-column min-max divides by zero.",
+        "quote_sha256": "561d06db62d9777bb5a10b71610e1e156cbff08d1bbca9e3a90a277de0de0058"
+      }
+    ],
+    "strongest_counterargument": "If an implementation used sum=False, or num_f>1 with differing w per frequency, the cos and sin channels of a binary column would not cancel. In that case per-column normalization would yield a genuine two-level indicator feature that could remove the constant-row aliasing. A revised delta along those lines could be coherent. However, it would no longer be 'only the normalization axis'.",
+    "required_test": "Before any reweighting run, call the modified random_fourier_features on one generated IndependentMaskGenerator mask and assert whether the output has zero per-column variance (it should, up to float error). Also check for NaN on a mask with one all-ones column. Separately, run the official loss once at n=2048, d=20 to confirm or refute the shape error.",
+    "novelty_established": false
+  }
+}

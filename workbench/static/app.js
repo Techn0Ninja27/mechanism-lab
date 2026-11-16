@@ -1,5 +1,5 @@
 'use strict';
-const S = {view:'overview', projects:[], project:null, docs:[], runs:[], jobs:[], run:'proposals-v2', candidates:[], selected:null, offset:0, total:0};
+const S = {view:'overview', projects:[], project:null, docs:[], runs:[], jobs:[], studies:[], generated:[], lastSourcePack:null, packSelected:new Set(), run:'proposals-v2', candidates:[], selected:null, offset:0, total:0};
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let candidateRequest = 0;
@@ -36,8 +36,8 @@ function modal(title, content) {
 function go(view) {
   S.view=view;document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('hidden',x.id!==`screen-${view}`));
   document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.view===view));
-  $('#page-title').textContent={overview:'Overview',documents:'Documents',runs:'Engine runs',candidates:'Candidates',reviews:'Reviews',setup:'Setup & folders'}[view];
-  ({documents:documents,runs:refreshRuns,candidates:candidates,reviews:reviews,setup:setup,overview:documents}[view] || (()=>{}))().catch(fail);
+  $('#page-title').textContent={overview:'Overview',documents:'Documents',runs:'Engine runs',candidates:'Candidates',studies:'Implemented studies',generated:'Generated research',reviews:'Reviews',setup:'Setup & folders'}[view];
+  ({documents:documents,runs:refreshRuns,candidates:candidates,studies:studies,generated:generatedResearch,reviews:reviews,setup:setup,overview:documents}[view] || (()=>{}))().catch(fail);
 }
 function renderProjects() {
   $('#project-select').innerHTML=S.projects.length?S.projects.map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join(''):'<option value="">No projects yet</option>';
@@ -47,12 +47,30 @@ function renderProjects() {
 }
 async function load() {
   try {
-    const [summary,projects,runs]=await Promise.all([api('/api/summary'),api('/api/projects'),api('/api/runs')]);
-    S.projects=projects.items;S.runs=runs.runs;
+    const [summary,projects,runs,studyData,generatedData]=await Promise.all([api('/api/summary'),api('/api/projects'),api('/api/runs'),api('/api/studies'),api('/api/generated-research')]);
+    S.projects=projects.items;S.runs=runs.runs;S.studies=studyData.items;S.generated=generatedData.items;
     S.project=S.projects.find(p=>p.id===(S.project?.id || localStorage.getItem('alien-project'))) || S.projects[0] || null;
     $('#metrics').innerHTML=[['Selected candidates (v2)',summary.counts?.candidates],['Completed drafts (v2)',summary.counts?.proposals],['Repaired source atoms',summary.counts?.source_units_repaired],['Ranking validity',summary.provenance?.status]].map(([label,value])=>`<div class="metric"><small>${esc(label)}</small><b>${esc(value ?? '—')}</b></div>`).join('');
     renderProjects();populateRuns();await documents();if(S.view==='runs')await refreshRuns();
   } catch(error){fail(error);}
+}
+async function studies() {
+  const data=await api('/api/studies'); S.studies=data.items;
+  $('#study-list').innerHTML=(data.items||[]).map(study=>{
+    const scalar=(k,v)=>typeof v==='number'?`${k}: ${v.toFixed(4)}`:typeof v==='string'?`${k}: ${v}`:'';
+    const p=study.primary||{}; const primary=Object.entries(p).map(([k,v])=>scalar(k,v)).filter(Boolean).slice(0,4).map(x=>`<span>${esc(x)}</span>`).join(' · ');
+    const s=study.secondary||{}; const secondary=Object.entries(s).filter(([k,v])=>typeof v==='number' || (v&&typeof v==='object'&&typeof v.candidate==='number'&&typeof v.control==='number')).map(([k,v])=>typeof v==='number'?scalar(k,v):`${k}: candidate ${v.candidate.toFixed(4)}, control ${v.control.toFixed(4)}`).slice(0,3).map(x=>`<span>${esc(x)}</span>`).join(' · ');
+    return `<article class="run-card"><h2>${esc(study.proposal_title||study.id)} <small>${esc(study.id)} · ${esc(study.kind)}</small></h2><p><b>${esc(study.raw_verdict)}</b> · ${esc(study.audit_qualification)}</p><p class="muted">Primary: ${primary||'not recorded'}</p><p class="muted">Secondary: ${secondary||'not recorded'}</p><p>${esc(study.prior_art_status||'Prior-art status not recorded.')}</p><details><summary>Limitations and artifacts</summary><ul>${(study.limitations||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>${(study.artifacts||[]).map(x=>`<code>${esc(x)}</code>`).join(' ')}</p><pre class="run-log">${esc(JSON.stringify(study.secondary||{},null,2))}</pre></details></article>`;
+  }).join('') || '<p class="muted">No committed studies found.</p>';
+}
+async function generatedResearch() {
+  const data=await api('/api/generated-research'); S.generated=data.items;
+  $('#generated-list').innerHTML=(data.items||[]).map(run=>{
+    const p=run.proposal||{},r=run.review||{},b=run.budget||{};
+    const evidence=(p.evidence||[]).map(e=>`<li><code>${esc(e.chunk_id)}</code> — ${esc(e.supports)}<blockquote>${esc(e.quote)}</blockquote></li>`).join('');
+    const op=run.operator_evaluation||{};
+    return `<article class="run-card"><h2>${esc(p.title||run.id)} <small>${esc(run.phase)}/${esc(run.id)}</small></h2><p><b>${esc(run.status)}</b> · machine review only · empirical result: no</p><p><b>Hypothesis:</b> ${esc(p.hypothesis||'not recorded')}</p><p><b>Operator delta:</b> ${esc(p.operator_delta||'not recorded')}</p><p><b>Reviewer:</b> ${esc(r.decision||'not recorded')} · ${esc(r.failure_type||'')}</p><p>${esc(r.reason||'')}</p><p><b>Executable operator check:</b> ${esc(op.status||'unavailable')} · ${op.verified?'result hash verified':'not a verified result'}<br><span class="muted">${esc(op.summary||'Numerical diagnostic only; not a predictive benchmark.')}</span></p><details><summary>Baseline, control, evidence, and budget</summary><p><b>Baseline:</b> ${esc(p.baseline||'')}</p><p><b>Matched control:</b> ${esc(p.matched_control||'')}</p><ul>${evidence}</ul><p>Budget actual ${esc(b.actual_usd)} USD; active reservation ${esc(b.active_reserved_usd)} USD; cap ${esc(b.cap_usd)} USD.</p><p><code>${esc(run.artifact)}</code></p></details></article>`;
+  }).join('') || '<p class="muted">No completed grounded research runs found.</p>';
 }
 function populateRuns() {
   $('#run-select').innerHTML=S.runs.map(r=>`<option value="${esc(r.id)}">${esc(r.id)}</option>`).join('');
@@ -69,7 +87,7 @@ async function documents() {
 function renderDocs() {
   const query=$('#document-search').value.toLowerCase();
   const docs=S.docs.filter(d=>(d.name+' '+d.relative_path).toLowerCase().includes(query));
-  $('#document-items').innerHTML=docs.map(d=>`<button class="doc-item ${S.doc?.id===d.id?'selected':''}" data-doc="${esc(d.id)}"><b>${esc(d.name)}</b><small>${esc(d.relative_path)}<br>${Number(d.size).toLocaleString()} bytes</small></button>`).join('') || `<p class="muted">${S.project?'No documents found. Import files or write a note.':'Create a project to import documents.'}</p>`;
+  $('#document-items').innerHTML=docs.map(d=>`<div class="doc-pick"><label><input type="checkbox" data-packdoc="${esc(d.id)}" ${S.packSelected.has(d.id)?'checked':''} ${d.kind==='text'?'':'disabled'}> pack</label><button class="doc-item ${S.doc?.id===d.id?'selected':''}" data-doc="${esc(d.id)}"><b>${esc(d.name)}</b><small>${esc(d.relative_path)}<br>${Number(d.size).toLocaleString()} bytes</small></button></div>`).join('') || `<p class="muted">${S.project?'No documents found. Import files or write a note.':'Create a project to import documents.'}</p>`;
 }
 function renderFolders(folders) {
   const render=folders.map(f=>`<div class="folder-row"><span><b>${esc(f.name)}/</b><small>${esc(f.description)}</small><code class="folder-path">${esc(f.path)}</code></span><span class="folder-count">${f.document_count} files</span></div>`).join('');
@@ -124,6 +142,12 @@ async function job(action,options={}) {
   const result=await post('/api/jobs',{action,options:{...options,project_id:S.project?.id}});
   say(`${action}: ${result.status}`);go('runs');return result;
 }
+async function buildSourcePack(question) {
+  if(!S.project)throw Error('Create a project before building a source pack.');
+  const ids=[...S.packSelected]; if(!ids.length)throw Error('Check at least one text document first.');
+  const result=await post(`/api/projects/${S.project.id}/source-pack`,{document_ids:ids,question}); S.lastSourcePack=result;
+  modal('Offline research plan created',`<p>${esc(result.source_count)} selected documents were packed locally.</p><p><code>${esc(result.source_pack)}</code></p><p><code>${esc(result.plan)}</code></p><p class="library-boundary">The plan is source-grounded and bounded. The next action starts one reviewed run capped at $2 and governed by the shared $10 phase budget.</p><p><button class="button primary" data-grounded-run="${esc(result.run_id)}">Generate and review — up to $2/run</button></p>`);
+}
 async function candidates() {
   const request=++candidateRequest;
   if(!S.run){$('#candidate-items').textContent='No saved candidate pool. Start an offline run first.';return;}
@@ -172,6 +196,8 @@ async function click(event) {
     if(target.dataset.view){go(target.dataset.view);return;}
     if(target.classList.contains('wordmark')){event.preventDefault();go('overview');return;}
     if(target.dataset.doc){await openDocument(target.dataset.doc);return;}
+    if(target.dataset.packdoc){target.checked ? S.packSelected.add(target.dataset.packdoc) : S.packSelected.delete(target.dataset.packdoc);return;}
+    if(target.dataset.groundedRun){await job('grounded_execute',{sourcepack_run:target.dataset.groundedRun});return;}
     if(target.dataset.candidate){await openCandidate(target.dataset.candidate);return;}
     if(target.dataset.run){S.run=target.dataset.run;S.selected=null;S.offset=0;$('#candidate-search').value='';$('#run-select').value=S.run;go('candidates');return;}
     if(target.dataset.page){S.offset=Math.max(0,S.offset+Number(target.dataset.page)*50);S.selected=null;await candidates();return;}
@@ -183,6 +209,7 @@ async function click(event) {
       case 'refresh':await load();go(S.view);break;
       case 'new-project':$('#project-form').reset();$('#project-dialog').showModal();break;
       case 'new-note':if(!S.project)throw Error('Create a project before writing notes.');$('#note-form').reset();$('#note-dialog').showModal();break;
+      case 'source-pack':if(!S.project)throw Error('Create a project before building a source pack.');$('#source-pack-form').reset();$('#source-pack-dialog').showModal();break;
       case 'revise-note':$('#note-form').reset();$('#note-form').elements.title.value=S.doc.name.replace(/\.md$/i,'')+' revision '+Date.now();$('#note-form').elements.content.value=S.doc.content;$('#note-form').elements.category.value=S.doc.relative_path.split('/')[0];$('#note-dialog').showModal();break;
       case 'new-run':$('#run-dialog').showModal();break;
       case 'open-import':if(!S.project)throw Error('Create a project before importing.');$('#file-input').click();break;
@@ -215,5 +242,6 @@ for(const kind of ['project','note','run'])$('#'+kind+'-form').onsubmit=async ev
     $('#'+kind+'-dialog').close();
   }catch(error){fail(error);}
 };
+$('#source-pack-form').onsubmit=async event=>{if(event.submitter?.value==='cancel')return;event.preventDefault();try{await buildSourcePack(new FormData(event.target).get('question'));$('#source-pack-dialog').close();}catch(error){fail(error);}};
 setInterval(()=>{if(S.view==='runs'&&!document.querySelector('dialog[open]'))refreshRuns().catch(fail);},3000);
 load();

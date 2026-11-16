@@ -1,7 +1,9 @@
 """Bounded, resumable three-arm problem-solving experiment (paid only with run)."""
 import argparse,concurrent.futures,fcntl,hashlib,json,os,pathlib,random,sys,threading,time,urllib.request,urllib.error
 ROOT=pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/'local_runner'))
+from generation.api_budget import BudgetLedger
 from run import key
 MODEL='anthropic/claude-sonnet-4.6'
 SEEDS=['porous','mirrored','tidal','braided']
@@ -40,12 +42,23 @@ def prompts(case,stage,previous):
 class Client:
  def __init__(self,out,config):self.out=out;self.config=config;self.lock=threading.Lock();self.auth=key()
  def call(self,case,stage,prompt):
+  if self.config.get('shared_budget_path'):
+   self.out.mkdir(parents=True,exist_ok=True)
+   with (self.out/'shared-client.lock').open('w') as lock:
+    fcntl.flock(lock,fcntl.LOCK_EX)
+    return self._call(case,stage,prompt)
+  return self._call(case,stage,prompt)
+ def _call(self,case,stage,prompt):
   folder=self.out/'calls';folder.mkdir(exist_ok=True);path=folder/f'{case["id"]}-{stage}.json'
   req={'model':self.config['model'],'messages':[{'role':'user','content':prompt}],'temperature':.7,'max_tokens':self.config['max_tokens_per_stage'][stage],'reasoning':{'enabled':False},'provider':{'allow_fallbacks':False}}
+  if self.config.get('system_prompt'):req['messages'].insert(0,{'role':'system','content':self.config['system_prompt']})
   if 'reasoning' in self.config:req['reasoning']=self.config['reasoning']
   if self.config.get('temperature', .7) is None:req.pop('temperature', None)
   else:req['temperature']=self.config.get('temperature', .7)
+  if self.config.get('provider_max_price'):req['provider']['max_price']=self.config['provider_max_price']
   request_hash=digest(req)
+  ledger=BudgetLedger(self.config['shared_budget_path'],self.config.get('shared_budget_usd',10.0)) if self.config.get('shared_budget_path') else None
+  ledger_id=digest({'path':str(path.resolve()),'request':request_hash})
   with self.lock:
    if path.exists():
     old=json.loads(path.read_text())
@@ -53,14 +66,20 @@ class Client:
     if old.get('status')!='complete':raise ValueError('Previous call failed/unknown; no automatic retry')
     return old['content']
    # UTF-8 bytes conservatively bound input token count, plus framing margin.
-   reserve=(len(prompt.encode())+512)*self.config['pricing']['prompt']+req['max_tokens']*self.config['pricing']['completion']
+   reserve=(sum(len(m['content'].encode()) for m in req['messages'])+512)*self.config['pricing']['prompt']+req['max_tokens']*self.config['pricing']['completion']
    spent=0.0
    for f in folder.glob('*.json'):
-    previous=json.loads(f.read_text());actual=(previous.get('usage') or {}).get('cost_details',{}).get('upstream_inference_cost')
-    spent += actual if actual is not None else previous['reserved_usd']
+    previous=json.loads(f.read_text());usage=previous.get('usage') or {}
+    amounts=[usage.get('cost'),(usage.get('cost_details') or {}).get('upstream_inference_cost')]
+    amounts=[x for x in amounts if isinstance(x,(int,float)) and not isinstance(x,bool)]
+    spent += max(amounts) if amounts else previous['reserved_usd']
    if spent+reserve>self.config['budget_usd']:raise ValueError('Conservative run budget exhausted')
    record={'status':'pending','request_hash':request_hash,'request':req,'reserved_usd':reserve,'timestamp':time.time()}
    path.write_text(json.dumps(record,indent=2))
+   if ledger:
+    try:ledger.reserve(ledger_id,reserve,{'model':req['model'],'request_hash':request_hash})
+    except Exception as exc:
+     record.update(status='budget_denied',error=str(exc));path.write_text(json.dumps(record,indent=2));raise
   request=urllib.request.Request('https://openrouter.ai/api/v1/chat/completions',data=json.dumps(req).encode(),headers={'Authorization':'Bearer '+self.auth,'Content-Type':'application/json'})
   try:
    with urllib.request.urlopen(request,timeout=180) as response:data=json.load(response)
@@ -70,7 +89,14 @@ class Client:
    record['status']='complete';return content
   except Exception as exc:
    record.update(status='failed',error=type(exc).__name__+': '+str(exc)[:200]);raise
-  finally:path.write_text(json.dumps(record,indent=2))
+  finally:
+   path.write_text(json.dumps(record,indent=2))
+   if ledger:
+    usage=record.get('usage') or {}
+    amounts=[usage.get('cost'),(usage.get('cost_details') or {}).get('upstream_inference_cost')]
+    amounts=[x for x in amounts if isinstance(x,(float,int)) and not isinstance(x,bool)]
+    if amounts and record.get('response_id'):ledger.reconcile(ledger_id,max(amounts),verified=True,receipt_id=record['response_id'])
+    else:ledger.mark_unknown(ledger_id)
 
 def execute(out,config):
  client=Client(out,config)

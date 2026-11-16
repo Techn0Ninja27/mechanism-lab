@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-16",
+  "proposal": "grounded-02",
+  "decision": "sharing premise covered prior art; scalar-coefficient variant remains an unverified ablation",
+  "direct_overlap": {
+    "paper": "https://arxiv.org/abs/2106.00311",
+    "official_repository": "https://github.com/marineLM/NeuMiss_sota",
+    "commit": "7902b8dbe7114e8dc3010b5e8b132c35806a9d74",
+    "source_snapshot": "results/improvement-phase-2026-11-16/sources/neumiss_sota/NeuMissBlock.py",
+    "source_sha256": "cc535fa0a31f8463bfc97f537ebe642ef5c2eec6faea18d793193fac25745024",
+    "file": "neumiss/NeuMissBlock.py",
+    "lines": "52-66",
+    "evidence": "one Linear matrix is constructed and the same layer sequence is repeated depth times; the README identifies this as the shared-weight version introduced in the 2021 paper"
+  },
+  "primary_sources": [
+    {
+      "title": "NeuMiss networks: differentiable programming for supervised learning with missing values",
+      "url": "https://arxiv.org/abs/2007.01627",
+      "code": "https://github.com/marineLM/NeuMiss",
+      "role": "original untied masked recurrence"
+    },
+    {
+      "title": "What's a good imputation to predict with missing values?",
+      "url": "https://arxiv.org/abs/2106.00311",
+      "code": "https://github.com/marineLM/NeuMiss_sota",
+      "role": "published shared-weight and residual NeuMiss improvement"
+    },
+    {
+      "title": "Deep Unfolding: Model-Based Inspiration of Novel Deep Architectures",
+      "url": "https://arxiv.org/abs/1409.2574",
+      "role": "general tied versus untied unfolding precedent"
+    },
+    {
+      "title": "Generalization Error Bounds for Iterative Recovery Algorithms Unfolded as Neural Networks",
+      "url": "https://proceedings.mlr.press/v161/joukovsky21a.html",
+      "role": "theory covering degrees of layer weight sharing"
+    }
+  ],
+  "remaining_difference": "learned scalar coefficients on a shared matrix, tested as one global polynomial across masks",
+  "novelty_established": false,
+  "required_controls": ["published shared-weight NeuMiss with residuals", "original untied NeuMiss", "fixed-coefficient tied recurrence"],
+  "required_guards": ["c1 structural match", "one global coefficient vector across masks", "report Wc scale non-identifiability", "fresh development and untouched transfer data"]
+}

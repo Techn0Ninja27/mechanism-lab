@@ -1,0 +1,16 @@
+{
+  "grounded-01": {
+    "status": "rejected_as_written",
+    "summary": "Exact proposed normalization collapses finite binary-mask features and yields NaNs on constant columns. This is an operator diagnostic, not a predictive benchmark.",
+    "result_path": "operator-studies/normalization-axis/results.json",
+    "report_path": "operator-studies/normalization-axis/README.md",
+    "result_sha256": "520e283e89dd709e1d9bc5333883c126b2b3cc0aa8fd5f9cd0de8f21ffef4176"
+  },
+  "grounded-02": {
+    "status": "not_supported_against_strong_controls",
+    "summary": "Shared weights are covered by NeuMiss 2021. In a supplementary inverse-operator diagnostic, standard Richardson and Chebyshev controls outperform the scalar-coefficient candidate at matched polynomial degree. No trained-network or novelty claim.",
+    "result_path": "operator-studies/neumiss-polynomial/results-strong-controls.json",
+    "report_path": "operator-studies/neumiss-polynomial/README.md",
+    "result_sha256": "683ffd32bea6ec3b765f716a49ce70656e80c9a372e5c3bca654352e3a1a732d"
+  }
+}

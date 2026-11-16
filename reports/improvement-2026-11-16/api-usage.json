@@ -1,0 +1,138 @@
+{
+  "phase_cap_usd": 10,
+  "byok_exemption_applied": false,
+  "receipts": [
+    {
+      "status": "complete",
+      "request_hash": "56dfd3ab8ef83013c67a4999670a140784722c0adf9a1879443cdfc002587ddc",
+      "reserved_usd": 0.446916,
+      "timestamp": 1794792402.3453288,
+      "usage": {
+        "prompt_tokens": 31656,
+        "completion_tokens": 4630,
+        "total_tokens": 36286,
+        "cost": 0.21703176,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.219224,
+          "upstream_inference_prompt_cost": 0.126624,
+          "upstream_inference_completions_cost": 0.0926
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 2022,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794792403-eUWy63hRKDTXLNSbsQrv",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "run": "grounded-01"
+    },
+    {
+      "status": "complete",
+      "request_hash": "cf090bafa4511f0a2098edd672d124a09a88855127b273c7993b68d971686f3e",
+      "reserved_usd": 0.4677,
+      "timestamp": 1794792453.121563,
+      "usage": {
+        "prompt_tokens": 33670,
+        "completion_tokens": 2338,
+        "total_tokens": 36008,
+        "cost": 0.1796256,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.18144,
+          "upstream_inference_prompt_cost": 0.13468,
+          "upstream_inference_completions_cost": 0.04676
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 813,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794792454-9T8gELawvyYXrGsFaNkl",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "run": "grounded-01"
+    },
+    {
+      "status": "complete",
+      "request_hash": "1c6a04d149fcaae62b1665317b28c905b757ad2793fa4ae3d1a72eb8a1ff8829",
+      "reserved_usd": 0.324544,
+      "timestamp": 1794792841.927388,
+      "usage": {
+        "prompt_tokens": 16925,
+        "completion_tokens": 3741,
+        "total_tokens": 20666,
+        "cost": 0.1410948,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.14252,
+          "upstream_inference_prompt_cost": 0.0677,
+          "upstream_inference_completions_cost": 0.07482
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1105,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794792851-hq1RRUkOTdhxpiQDg6vr",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "run": "grounded-02"
+    },
+    {
+      "status": "complete",
+      "request_hash": "40c8e10547cf54faa930cf807ad9b68734cf51bc3d8b05d590bb371bdee307d1",
+      "reserved_usd": 0.343356,
+      "timestamp": 1794792889.4491751,
+      "usage": {
+        "prompt_tokens": 18994,
+        "completion_tokens": 2653,
+        "total_tokens": 21647,
+        "cost": 0.12774564,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.129036,
+          "upstream_inference_prompt_cost": 0.075976,
+          "upstream_inference_completions_cost": 0.05306
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 1071,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "response_id": "gen-1794792890-Z6eAc57VLq9uWwfIADzo",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "run": "grounded-02"
+    }
+  ]
+}

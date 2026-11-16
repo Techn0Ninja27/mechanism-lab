@@ -1,0 +1,21 @@
+{
+  "schema_version": "neumiss-polynomial-plan.v1",
+  "question": "Can the exact shared-matrix NeuMiss recurrence with fixed leading coefficient and one global vector of residual coefficients approximate mask-specific inverse covariance operators better than tied coefficients at equal matrix-vector depth?",
+  "source_url": "https://github.com/marineLM/NeuMiss/blob/58d54f1815bba847f9f06fe1910c95b754d9578c/neumannS0_mlp.py",
+  "source_sha256": "883d9ddc685e778257c981dc7c37f02a10ab60330865e38e6b74a415ed78b1ac",
+  "seeds": [17011, 17013, 17017],
+  "dimension": 20,
+  "eta": 0.5,
+  "depths": [3, 5],
+  "development_patterns_per_seed": 24,
+  "validation_patterns_per_seed": 24,
+  "development_mask_seed_offset": 1000,
+  "validation_mask_seed_offset": 2000,
+  "fit_rule": "One coefficient vector per depth fit across all development seeds and masks; no coefficients use validation patterns.",
+  "operator": "h_1 = r A; h_k = h_{k-1} A + c_k r for k=2..L, hence h_L = r A^L + sum_{k=2..L} c_k r A^(L-k). c_1 is absent/fixed zero and the leading coefficient is fixed one.",
+  "comparators": ["exact tied recurrence c_k=1", "conventional truncated Neumann eta*sum_{p=0}^{L-1} A^p", "exact inverse covariance"],
+  "metric": "relative Frobenius error to each mask-specific observed covariance inverse, summarized descriptively by split and seed",
+  "kill_rule": "This audit does not promote or train a method. Treat any apparent gain as uninformative if a coefficient vector was fit per mask, if the leading coefficient was relaxed, or if Wc scale absorbs all coefficients.",
+  "novelty_established": false,
+  "human_adjudicated": false
+}

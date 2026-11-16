@@ -1,0 +1,39 @@
+# Method grounding: missingness-shift prediction
+
+Date: 2026-11-16
+
+This note replaces abstract-only reconstruction with source-grounded method recovery. It does not claim a new method or reproduce any result. The goal is to identify complete algorithms, executable references, and one narrow falsifiable comparison before paying for another generated proposal.
+
+## What the primary sources actually establish
+
+**StableMiss and StableMiss+.** The authors' repository describes a two-stage implementation: first learn sample-reweighting weights to decorrelate the observation pattern, then train the prediction framework with those weights. At commit `fd02c06ce24b7ae153403bcbe6a477ffc6f76fe2`, `reweight_stablemiss+.py:34-52` instantiates a learned softmax sample-weight vector and minimizes `w_distance + intra_mask_correlation + inter_correlation + 10 * (std(w)/mean(w))`; `metric.py:71-110` defines the correlation and one-dimensional Wasserstein terms. `train.py:25-52` loads those weights and minimizes weighted MSE for an `MLPPredictor`. The predictor in `model.py:11-27` concatenates a constant with each feature and mask, uses the mask to produce per-mask coefficients, multiplies those coefficients by the zero-filled observed values, and sums. The README explicitly identifies StableMiss (IJCAI 2023) and StableMiss+ (ICASSP 2024), and says the difference is the reweighting procedure. This is an executable reference, but it is a small repository with no pinned environment or license visible in the page snapshot, so it should be treated as an implementation reference rather than a turnkey reproduction.
+
+StableMiss's operative claim is invariance when the complete feature/label law stays fixed while the mask distribution shifts agnostically. StableMiss+ preserves feature-feature correlations while removing mask-mask and feature-mask correlations. These are specific operators that can be traced and ablated; they are not equivalent to generic “mask-aware robustness.”
+
+**NeuMiss.** The NeurIPS paper derives a predictor under linear/Gaussian assumptions and approximates an inverse covariance operator with a truncated Neumann series. In the official code at commit `58d54f1815bba847f9f06fe1910c95b754d9578c`, `neumannS0_mlp.py:77-110` zero-fills inputs, builds a mask `m`, applies repeated matrix multiplies followed by `(1-m)` gating, mixes with `m`, and applies a linear readout; `:166-193` derives the mask from NaNs and uses SGD plus a ReduceLROnPlateau scheduler. The implementation's distinctive operation is multiplication by the missingness indicator inside the network. The official repository contains simulation, amputation, estimators, result scripts, an environment file, and a BSD-3-Clause license. Its README gives runnable simulation entry points for MCAR, logistic MAR, Gaussian self-masking, and probit self-masking. This is the cheapest complete method to port conceptually, but the original experiments are synthetic and the architecture is a neural model rather than a drop-in HGB estimator.
+
+**Robust prediction under missingness shifts.** Rockenschaub et al. provide the key identifiability boundary: if source and target missingness shifts are ignorable (depend only on observed covariates), the Bayes predictors remain equal; with non-ignorable shifts, equality is not guaranteed. Their experiments compare ICE, MICE, NeuMiss, NeuMISE and mask-aware variants. This is a theory and evaluation reference, not an official code repository in the source page. The paper reports that robustness differs by mechanism and direction, and that an estimator exploiting missingness can fail after a shift even when it wins in-source.
+
+**MissingnessShiftBench.** This official MIT repository is the strongest evaluation reference found. It freezes 19 binary datasets, 5x5 source/target missingness mechanisms, 22 candidate pipelines, 5 seeds, 2,850 jobs and 52,250 evaluations. Its target is model-selection transport: rank reversals, winner persistence and target-oracle regret. It explicitly separates missingness diagnostics from impact estimation. The repository includes protocol validation, frozen outputs and tests, but does not redistribute third-party raw data. This makes it suitable as an external evaluation contract, not as a dependency to silently copy into the synthetic pilot.
+
+## The cheap next baseline
+
+Implement StableMiss+ faithfully enough to run on a fresh development fixture with new seeds and an untouched transfer dataset. Do not reuse the existing three-seed final fixture for confirmatory claims; it is already part of the prior study. First reproduce its reweighting objective on a tiny synthetic case and compare the learned weights and correlations against the authors' code. Then train the supplied prediction model with those weights. The comparison must include native-NaN HGB, random-mask augmentation, StableMiss, and StableMiss+; all four use the same fresh rows, seeds, and transfer mask mechanisms.
+
+The first run should be CPU-only and capped at one fresh development seed. A second preregistered run should use separate fresh seeds and an untouched transfer dataset; the development data must not be reused for final claims. Do not call the model an official reproduction unless the objective, preprocessing, weighting, optimizer and stopping rules are matched or every deviation is explicit.
+
+## One operator-level question worth testing
+
+StableMiss+ claims that feature-feature correlations can be retained while mask-mask and feature-mask correlations are removed. The unresolved question is whether that selective decorrelation remains useful when the training distribution contains only MCAR masks but the final distribution includes value-dependent own-feature masks and grouped structural masks. This is narrower than “does atom composition work?”
+
+The falsification test is direct: compare StableMiss+ with StableMiss, native-NaN HGB and random-mask augmentation on fresh development data, then evaluate once on untouched transfer data with new mask mechanisms. Report the learned correlation diagnostics and average precision/Brier scores. If preserving feature-feature correlations does not improve the held-out shifted conditions, or if any gain disappears when the mask mechanism is changed, stop the hypothesis. A positive result would still be a pilot until repeated on public datasets and checked against the MissingnessShiftBench model-selection protocol.
+
+The important causal guard is that the operator must be tested in a training regime where its claimed correlations exist. If feature-feature correlation is absent or altered by preprocessing, a failure is a fixture mismatch, not evidence against the method. Conversely, if a “mask-blind” control still receives missingness through NaN routing, subset availability, fill-value equality, or sample selection, it is not a valid removal ablation.
+
+## Reproducibility and licensing boundaries
+
+The NeuMiss repository exposes a BSD-3-Clause license and pinned environment file. MissingnessShiftBench exposes an MIT license and explicit data-availability restrictions. StableMiss's public README confirms official code and commands, but the page snapshot did not expose a license or pinned environment; inspect the repository before copying code. The papers and repositories should be cited; source code should be vendored only when its license and attribution permit it. Do not redistribute third-party datasets or source abstracts in this repository.
+
+This note records verified source claims and proposed checks. It does not establish novelty, superiority, or faithful reproduction.
+
+The exact source snapshots used for these code readings are in the ignored local directory `results/improvement-phase-2026-11-16/sources/`; their commit IDs, hashes, and line references are recorded in the companion JSON manifest.

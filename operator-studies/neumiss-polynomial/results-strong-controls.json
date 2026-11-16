@@ -1,0 +1,2914 @@
+{
+  "code_sha256": "80e89c811b742d6f5f8b49f62ff8dd466b0d74f419c5ed26211cbe74ce703da4",
+  "degree_convention": "All controls use degree L, hence L+1 polynomial terms. The original v1 conventional comparator used L terms and is retained unchanged.",
+  "design_bounds": [
+    0.35,
+    1.0
+  ],
+  "fixed_eta": 0.5,
+  "frozen_v1_plan_sha256": "b9cb9f77477e5a6c0cb9e948ffa549df32d00a327e78ce7cafd143297e95f73e",
+  "frozen_v1_results_sha256": "f36735f4b89783f9c805e8f1f2d75eaa4abbc39bf962603e1e170cb1dc115e7d",
+  "interpretation": "Post-hoc operator comparison only; no training, predictive utility, or novelty claim.",
+  "matvec_cost": {
+    "candidate": "L shared A matvecs plus downstream Wc",
+    "chebyshev": "degree-L eigendecomposition oracle; runtime is not claimed",
+    "neumann_controls": "L+1 A matvecs for degree L"
+  },
+  "no_validation_tuning": true,
+  "recurrence_checks": [
+    2.7755575615628914e-17,
+    1.1102230246251565e-16,
+    2.7755575615628914e-17,
+    1.1102230246251565e-16,
+    5.551115123125783e-17,
+    4.440892098500626e-16,
+    4.440892098500626e-16,
+    2.220446049250313e-16
+  ],
+  "recurrence_max_abs_error": 4.440892098500626e-16,
+  "richardson_eta": 1.4814814814814814,
+  "rows": [
+    {
+      "candidate": 0.06534841532048974,
+      "chebyshev_known_bounds_same_degree": 0.006081610173198862,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30852651161180233,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.018713321361284133,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04817843297226351,
+      "chebyshev_known_bounds_same_degree": 0.006602231668690637,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2604025140099658,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.008225434658735145,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07111012027977356,
+      "chebyshev_known_bounds_same_degree": 0.005678491684327467,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3145364226369488,
+      "pattern_size": 19,
+      "richardson_optimal_eta_same_degree": 0.02114275177869053,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06990738278953529,
+      "chebyshev_known_bounds_same_degree": 0.0059212381935959315,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30228052411790646,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.020005387337124814,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06766852839876944,
+      "chebyshev_known_bounds_same_degree": 0.005314692099996519,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3038521102528874,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.019658832307251732,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06527281334300562,
+      "chebyshev_known_bounds_same_degree": 0.006070587164787072,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30290478984084007,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.01883190216337785,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04826703102432419,
+      "chebyshev_known_bounds_same_degree": 0.006283535009229029,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.267938765099738,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.009582703343113126,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05667903522561728,
+      "chebyshev_known_bounds_same_degree": 0.006097932159271366,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2849140238437515,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.01414224738897987,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04889897279291777,
+      "chebyshev_known_bounds_same_degree": 0.006715082376021495,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28215186953356963,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.011330570976931301,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07476431508546551,
+      "chebyshev_known_bounds_same_degree": 0.006113993051734498,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3154859541460849,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.02312902553838011,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06269138530308492,
+      "chebyshev_known_bounds_same_degree": 0.005866407152215844,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3028856987435572,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.017483818063557536,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04366246940686121,
+      "chebyshev_known_bounds_same_degree": 0.006748432118283461,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25983148690888835,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.006559529411879876,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.055464132406934825,
+      "chebyshev_known_bounds_same_degree": 0.0061994736697293515,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28723422579121927,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.013455091032574229,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.043846922585709214,
+      "chebyshev_known_bounds_same_degree": 0.006469730677029017,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.27170884486797386,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.00833308920979307,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06446930538065297,
+      "chebyshev_known_bounds_same_degree": 0.005620682225229985,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29226621110405665,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.017624868227159186,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05831476590350348,
+      "chebyshev_known_bounds_same_degree": 0.006170397524404006,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29126747275616066,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.01497845756774014,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.062084491308837454,
+      "chebyshev_known_bounds_same_degree": 0.006104823944182071,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.298430770654733,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.01782937678001563,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0475252397580203,
+      "chebyshev_known_bounds_same_degree": 0.0066956481855552094,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2843593861018113,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.010478688007657904,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.054395808960389834,
+      "chebyshev_known_bounds_same_degree": 0.006264223536677406,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2880503504409442,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.014138909289824532,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05126392298448405,
+      "chebyshev_known_bounds_same_degree": 0.006109552417748087,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25866231995492617,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.009783231723825437,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05386451760406907,
+      "chebyshev_known_bounds_same_degree": 0.0066516172233655815,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2874954919774514,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.013463200967826435,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05223018196550683,
+      "chebyshev_known_bounds_same_degree": 0.006229441903542677,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29433234905607,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.014122242595656464,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07039763957945248,
+      "chebyshev_known_bounds_same_degree": 0.005679107336474345,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3123244943967886,
+      "pattern_size": 19,
+      "richardson_optimal_eta_same_degree": 0.021326048073464516,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0541461990647914,
+      "chebyshev_known_bounds_same_degree": 0.006162262844671793,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28071050787319063,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.012830575034748317,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.048958094594191606,
+      "chebyshev_known_bounds_same_degree": 0.0063611699101682765,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25912165161015743,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.008793104905328813,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04128898625657496,
+      "chebyshev_known_bounds_same_degree": 0.006215887937703269,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25779738398907787,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.006259495884770773,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05152091642541426,
+      "chebyshev_known_bounds_same_degree": 0.006208722176228572,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25873387990139995,
+      "pattern_size": 11,
+      "richardson_optimal_eta_same_degree": 0.009161680200503978,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07622074753687379,
+      "chebyshev_known_bounds_same_degree": 0.006056324726035529,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30135839537489173,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.023958034201359658,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05103301156104644,
+      "chebyshev_known_bounds_same_degree": 0.006728146351319725,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30342495229617894,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.01409343503657605,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05152630575554052,
+      "chebyshev_known_bounds_same_degree": 0.0063159666793196284,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28196354170867327,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.012082962570852649,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07396958878628518,
+      "chebyshev_known_bounds_same_degree": 0.00615315221016271,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3091030819459348,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.022418996559181864,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05632337015225512,
+      "chebyshev_known_bounds_same_degree": 0.0060815056605986895,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28120071351241294,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.013220538994452581,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.042213550720295354,
+      "chebyshev_known_bounds_same_degree": 0.006761517691177419,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.26583789208224995,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.007292465069904121,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07484921728446037,
+      "chebyshev_known_bounds_same_degree": 0.00646865520346325,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.301453385071883,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.02301580246288075,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06843443901396759,
+      "chebyshev_known_bounds_same_degree": 0.005953146217748473,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29739752876635234,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0184747877273931,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0550626491829825,
+      "chebyshev_known_bounds_same_degree": 0.006009634282597802,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28386544065649444,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.013655873651516024,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0669579491415311,
+      "chebyshev_known_bounds_same_degree": 0.0058054321583737665,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2964719241979299,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.01850265663804216,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06274577185058476,
+      "chebyshev_known_bounds_same_degree": 0.006056979967790224,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29755677562649174,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.017102103233962343,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07442706623320686,
+      "chebyshev_known_bounds_same_degree": 0.005944749440647931,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2935120410954517,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.02223845251451168,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07487413222311395,
+      "chebyshev_known_bounds_same_degree": 0.005978427301455182,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3047471787403367,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.022778986790230306,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0697565137947779,
+      "chebyshev_known_bounds_same_degree": 0.005728289788969669,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31468371833954173,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.021192445374043738,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05838238643803041,
+      "chebyshev_known_bounds_same_degree": 0.0065902114098803375,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30512717866679717,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.016017106516461314,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06698694618306436,
+      "chebyshev_known_bounds_same_degree": 0.0056081667716013864,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3112516367704466,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.020459432539430458,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07276376866992035,
+      "chebyshev_known_bounds_same_degree": 0.006134358126251578,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30269303992940644,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.021770336099755823,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06714415222161697,
+      "chebyshev_known_bounds_same_degree": 0.006115941969412711,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30828453659233696,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.01933002609646106,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06761391335835253,
+      "chebyshev_known_bounds_same_degree": 0.0056097151584381,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.304646274720823,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.019131842113949537,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.056263389618770206,
+      "chebyshev_known_bounds_same_degree": 0.006321976952165075,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25676386717662525,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.011351234260509704,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07991127858591048,
+      "chebyshev_known_bounds_same_degree": 0.005933422769401106,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31867165052361224,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.025322834834653262,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0643637005467918,
+      "chebyshev_known_bounds_same_degree": 0.005628757454745935,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3029715982975126,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.018553137507088854,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04786693502415758,
+      "chebyshev_known_bounds_same_degree": 0.006898340221128847,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28993697675540064,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.011269957091696979,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05743437915159499,
+      "chebyshev_known_bounds_same_degree": 0.006182562210697503,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29523113179745847,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.014984733144782525,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06568952798986233,
+      "chebyshev_known_bounds_same_degree": 0.006175790121352572,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31016466274593885,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.01903964328065772,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05910264165693705,
+      "chebyshev_known_bounds_same_degree": 0.005704488082457019,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29452030677516616,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.015096410212395306,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0740402897501477,
+      "chebyshev_known_bounds_same_degree": 0.006057996264166503,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31177919883675737,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.022673850207637236,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.050362042474540014,
+      "chebyshev_known_bounds_same_degree": 0.006366073793170294,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.27463118314659746,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.010615149023811245,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06043933926452926,
+      "chebyshev_known_bounds_same_degree": 0.005704244215532673,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28728918727369895,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.016274340422606032,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.053650410919024526,
+      "chebyshev_known_bounds_same_degree": 0.00607295315039856,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2775870247097852,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.012441909924786523,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05563957335994221,
+      "chebyshev_known_bounds_same_degree": 0.006174163678925721,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2864079551678792,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.014181234596442686,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05843565601626698,
+      "chebyshev_known_bounds_same_degree": 0.005452277137368036,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2973770508623877,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.016215532470791036,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.053840347734634406,
+      "chebyshev_known_bounds_same_degree": 0.006317233242511095,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2829597116134827,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.013096819593577157,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.061596075142939535,
+      "chebyshev_known_bounds_same_degree": 0.0058008996778883895,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28573608348305624,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.016186498312913234,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04589469270678937,
+      "chebyshev_known_bounds_same_degree": 0.006223740607801277,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.27569485627700824,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.009614713939868843,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06792638907208864,
+      "chebyshev_known_bounds_same_degree": 0.00558991214067764,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29935602202531253,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.020379514967250698,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06470403653360067,
+      "chebyshev_known_bounds_same_degree": 0.005137315009916933,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2942525884758465,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.01875898970981011,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.04571270512897421,
+      "chebyshev_known_bounds_same_degree": 0.00664819988354625,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2564240213623144,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0059372771005240955,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05665695687488265,
+      "chebyshev_known_bounds_same_degree": 0.006433236696316877,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2966662062280675,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.014632432926002864,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.045852865568131805,
+      "chebyshev_known_bounds_same_degree": 0.006123639636616576,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2570951728540526,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0059611316855683666,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06689562276235213,
+      "chebyshev_known_bounds_same_degree": 0.005539402134359874,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3129641313834489,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.01986843426281652,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.06709738587152493,
+      "chebyshev_known_bounds_same_degree": 0.005957211982665752,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29795943656215335,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.018933612739961202,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.049895023342512,
+      "chebyshev_known_bounds_same_degree": 0.006117990678259411,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2758121572055188,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.011172731820655514,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05256542964918061,
+      "chebyshev_known_bounds_same_degree": 0.00626422698561783,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2817734629967651,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.012617592032959122,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.05813941535515126,
+      "chebyshev_known_bounds_same_degree": 0.006543578688564369,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2973467020264388,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.015547740027668986,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.07577295148592061,
+      "chebyshev_known_bounds_same_degree": 0.006268471456707962,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3125884611992305,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.023616226106329366,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05025530050783238,
+      "chebyshev_known_bounds_same_degree": 0.006665371215443307,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28035235273051495,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.01072104582474727,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05102996367575319,
+      "chebyshev_known_bounds_same_degree": 0.006150139848075883,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2753142972075775,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.011368539400638226,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.057309695178415804,
+      "chebyshev_known_bounds_same_degree": 0.006479746072814546,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2917513708729456,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.014530763694798578,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07008108986649479,
+      "chebyshev_known_bounds_same_degree": 0.005792029945439706,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3059301937176624,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.020386906983216095,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0679211561883503,
+      "chebyshev_known_bounds_same_degree": 0.0056413883521005195,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30922161375158386,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.020228625537163442,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07702790926130904,
+      "chebyshev_known_bounds_same_degree": 0.006673295139769829,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.316343375471974,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.024673581908531892,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05732694627981119,
+      "chebyshev_known_bounds_same_degree": 0.006171137761687234,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2866364532081133,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.014063057579152364,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.03969202825549494,
+      "chebyshev_known_bounds_same_degree": 0.006747341092351875,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.26519360968235617,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.005530426695298472,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.061420251426855116,
+      "chebyshev_known_bounds_same_degree": 0.005708269789364346,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2962263963191383,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.01691496818598178,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0723772645368465,
+      "chebyshev_known_bounds_same_degree": 0.006255146489037416,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3107836358387057,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.022522947233351277,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.048538138858614854,
+      "chebyshev_known_bounds_same_degree": 0.006628145423984766,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2784745446097966,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.009708910431430991,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0650368707878695,
+      "chebyshev_known_bounds_same_degree": 0.006045495011455702,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30397653179985124,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.01891835325802226,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.04770223438887071,
+      "chebyshev_known_bounds_same_degree": 0.006052974443092506,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2632798935388667,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.009019357204969904,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.059634724865111274,
+      "chebyshev_known_bounds_same_degree": 0.006424491785102091,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30127347802318816,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.01608253386677722,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05201630796873583,
+      "chebyshev_known_bounds_same_degree": 0.006586626314710431,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2746714728205709,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.010821675010425448,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.04129590054628593,
+      "chebyshev_known_bounds_same_degree": 0.006372711840705087,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.272371904192446,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0069857615208505155,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.051161640337459124,
+      "chebyshev_known_bounds_same_degree": 0.006448055018828775,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2977034643241887,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.013569642757082724,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06011072312861795,
+      "chebyshev_known_bounds_same_degree": 0.006526827470858922,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2975039686861443,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.016640722528201042,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07780142593745888,
+      "chebyshev_known_bounds_same_degree": 0.0066463728139300685,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.32106283850757505,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.02504905304348082,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05074413652459797,
+      "chebyshev_known_bounds_same_degree": 0.006553896780781225,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28777466470191215,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.012330602635222976,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06600158918389067,
+      "chebyshev_known_bounds_same_degree": 0.005991951926356334,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.303581875836301,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0193195625734551,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.053219140250929844,
+      "chebyshev_known_bounds_same_degree": 0.005775560520390577,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28118453905016444,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.012485864846253282,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06093714779014209,
+      "chebyshev_known_bounds_same_degree": 0.006155448833630688,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3044546621625292,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.01690680106495119,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06503101534000374,
+      "chebyshev_known_bounds_same_degree": 0.005758883414431213,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2957349687639769,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.017748639441277553,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06671037194111964,
+      "chebyshev_known_bounds_same_degree": 0.005931512779557094,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30316999793176347,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.019233534829937324,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06953054968646852,
+      "chebyshev_known_bounds_same_degree": 0.006064951898134971,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30992144618092105,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.021371549766557193,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07061282773434563,
+      "chebyshev_known_bounds_same_degree": 0.005532586015239557,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3063175763192527,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.021232907722912912,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06995443147772214,
+      "chebyshev_known_bounds_same_degree": 0.005794709812032602,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.310796261350803,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.021888706525988046,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05575312931845914,
+      "chebyshev_known_bounds_same_degree": 0.006304997230391093,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2953493636240591,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.014832886215797498,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06692291847726198,
+      "chebyshev_known_bounds_same_degree": 0.006216811434476548,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30820191687800885,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.02001075091840309,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05816852974491188,
+      "chebyshev_known_bounds_same_degree": 0.0063299951112172174,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.295613418422716,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0149234794355274,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06023466820920563,
+      "chebyshev_known_bounds_same_degree": 0.006139884907171114,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28520279410914046,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.014613528841926012,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.055867246887649984,
+      "chebyshev_known_bounds_same_degree": 0.005932035710061807,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28512384278644953,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.013671744099910801,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0650468302392748,
+      "chebyshev_known_bounds_same_degree": 0.005959285972940913,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30687830233431357,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.018674472577566416,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05664284282270359,
+      "chebyshev_known_bounds_same_degree": 0.00647072565704523,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3024523280113552,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.015535365631706908,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.053602485631345884,
+      "chebyshev_known_bounds_same_degree": 0.00637758910134099,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.25750863444337374,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.010393190263001704,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.047427077122122935,
+      "chebyshev_known_bounds_same_degree": 0.007311521822781801,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2825986808634921,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.010240747613764175,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.051738223431239204,
+      "chebyshev_known_bounds_same_degree": 0.006190948908669586,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.27163590594708625,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.011461289584158704,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.047573016205388334,
+      "chebyshev_known_bounds_same_degree": 0.0067838105192461595,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2836829308156606,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.01091493670003772,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0628140692481893,
+      "chebyshev_known_bounds_same_degree": 0.006002559553388007,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29931578568292944,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.017441069613506454,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06454690738519064,
+      "chebyshev_known_bounds_same_degree": 0.005997246101698226,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28593222993906825,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.017019010343948482,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05070655751300434,
+      "chebyshev_known_bounds_same_degree": 0.006701260994048055,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29782759450255414,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.012941275428918028,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07436996857713445,
+      "chebyshev_known_bounds_same_degree": 0.006643705733600745,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30117217594452483,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.02305201719407276,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07616159872040994,
+      "chebyshev_known_bounds_same_degree": 0.005689734263808773,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30506317222329526,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.023197961147517192,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.07284793526801137,
+      "chebyshev_known_bounds_same_degree": 0.006028726397480881,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31709851056131194,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.022351051633559337,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06737491479733847,
+      "chebyshev_known_bounds_same_degree": 0.006096983018315525,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3158087841365423,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.020744933400536264,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06765879878772371,
+      "chebyshev_known_bounds_same_degree": 0.0059152063758392505,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31133646433386386,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.020065838206403012,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05749002934921205,
+      "chebyshev_known_bounds_same_degree": 0.006157594948932106,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2888598460413414,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.014833113878041823,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.057125111628039696,
+      "chebyshev_known_bounds_same_degree": 0.006606951499266981,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29105709903851856,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.014355849829650168,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0778487762633743,
+      "chebyshev_known_bounds_same_degree": 0.006125214268129407,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3199933111617742,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.024760615412234375,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0546929508825484,
+      "chebyshev_known_bounds_same_degree": 0.006128984196414451,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.27848431931691703,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.01167418941367187,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06680363768982925,
+      "chebyshev_known_bounds_same_degree": 0.005375535707172302,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3005058810115695,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.01913897952228972,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05403457136569977,
+      "chebyshev_known_bounds_same_degree": 0.006025986519510859,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2871061164956038,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.013336171148828967,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.063774303474623,
+      "chebyshev_known_bounds_same_degree": 0.005677895691954604,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2994381765093863,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.01747658597664005,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.04982345553232757,
+      "chebyshev_known_bounds_same_degree": 0.006508299579583062,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.28292062693828796,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.011909658243520931,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06771932195465755,
+      "chebyshev_known_bounds_same_degree": 0.005825932238777901,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.301517885068151,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.02041965032000483,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05793162518111335,
+      "chebyshev_known_bounds_same_degree": 0.005831681323606365,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2928873430320564,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.015434543396394754,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05798002660033517,
+      "chebyshev_known_bounds_same_degree": 0.005829709117989639,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29182411051754653,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.01516257339470942,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06164370523859716,
+      "chebyshev_known_bounds_same_degree": 0.005699482371223686,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30095395521539436,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.018170728860789586,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.062166749888593636,
+      "chebyshev_known_bounds_same_degree": 0.004904838443935753,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.29474342985204866,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.017608782179483726,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.04696158458498281,
+      "chebyshev_known_bounds_same_degree": 0.006474608822763156,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2630437593073683,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.008600814997995592,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0762553736927115,
+      "chebyshev_known_bounds_same_degree": 0.005504132851160068,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3145945284778645,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.023500196405230295,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.055969196788035906,
+      "chebyshev_known_bounds_same_degree": 0.0062178361327156866,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2947326312123354,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.015174006111657744,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.06679776858740535,
+      "chebyshev_known_bounds_same_degree": 0.0063522048469383564,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.30860528902451567,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.019574309130759606,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.055859444127085794,
+      "chebyshev_known_bounds_same_degree": 0.006790878080913363,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2901998813311409,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.013635216213035503,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0665737548748745,
+      "chebyshev_known_bounds_same_degree": 0.005787647502852564,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.3015978021198388,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.01936219230681167,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.054759152745741724,
+      "chebyshev_known_bounds_same_degree": 0.005902307015374109,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2889507719069058,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.013710059514990606,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.045830001462623074,
+      "chebyshev_known_bounds_same_degree": 0.005984939849574309,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2526103917853156,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.007332209645513315,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.045408156698454674,
+      "chebyshev_known_bounds_same_degree": 0.006906350668682375,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2783737173799909,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.00886943627186019,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.05001529798109517,
+      "chebyshev_known_bounds_same_degree": 0.00629803024094831,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.2768698748007203,
+      "pattern_size": 11,
+      "richardson_optimal_eta_same_degree": 0.010229134440613444,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0771369677070125,
+      "chebyshev_known_bounds_same_degree": 0.005974237688094428,
+      "depth": 3,
+      "neumann_fixed_eta_same_degree": 0.31937227421189085,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.02455150021471477,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0037823820237048336,
+      "chebyshev_known_bounds_same_degree": 0.0004161098481470081,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18549431251554707,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.003273917579899454,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003867045341791932,
+      "chebyshev_known_bounds_same_degree": 0.00036025649479102807,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14359766212265124,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0009894499667173564,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004793096888375855,
+      "chebyshev_known_bounds_same_degree": 0.000420745503063641,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19079128769772394,
+      "pattern_size": 19,
+      "richardson_optimal_eta_same_degree": 0.003911764759149589,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004302928794331463,
+      "chebyshev_known_bounds_same_degree": 0.0004273048584880661,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1819095575568304,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.003699843215553224,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004505799710479859,
+      "chebyshev_known_bounds_same_degree": 0.00046221026262182886,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18209445167347735,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0036221582027331327,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004999667884401431,
+      "chebyshev_known_bounds_same_degree": 0.00038059547638925146,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1806951494320081,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0035185356218712565,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0038953197261409256,
+      "chebyshev_known_bounds_same_degree": 0.00038775556131539693,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14918692528638003,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0013848812497867442,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004123031803600246,
+      "chebyshev_known_bounds_same_degree": 0.0004110754921558224,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1644485475326826,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.002349470163133346,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003756600175768085,
+      "chebyshev_known_bounds_same_degree": 0.00044365072222111274,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1615301914883444,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0016463807317820011,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006138883663344464,
+      "chebyshev_known_bounds_same_degree": 0.0003549159653419289,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19232942609951925,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.0046769546432787155,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0037229916774755077,
+      "chebyshev_known_bounds_same_degree": 0.0004733981769495615,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1803161492935286,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0029924043481489274,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003977371545119925,
+      "chebyshev_known_bounds_same_degree": 0.00041817932781219007,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14181478626776298,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0007240597899021434,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003234735666390247,
+      "chebyshev_known_bounds_same_degree": 0.0004222797253437248,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16612311072120867,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0020470690025323293,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003882046216324981,
+      "chebyshev_known_bounds_same_degree": 0.0004233747719550368,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15169760675313754,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0010296373426660632,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003970100837892704,
+      "chebyshev_known_bounds_same_degree": 0.0004221183201839798,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17237797353349754,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.003236151408379472,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0038235721158696822,
+      "chebyshev_known_bounds_same_degree": 0.0004564502170124004,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16980767632719823,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0024577924288303045,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0044469060471699655,
+      "chebyshev_known_bounds_same_degree": 0.00041983579371125776,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17717235422087751,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0032999627850444015,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0036257722159347356,
+      "chebyshev_known_bounds_same_degree": 0.0003696196492737159,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1620506826887212,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0013945658511295108,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003593824747378391,
+      "chebyshev_known_bounds_same_degree": 0.000411132111076148,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16792925733643227,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.002306597445997341,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003435502477056366,
+      "chebyshev_known_bounds_same_degree": 0.0003727353810337212,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14324792089147614,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0013833065623626438,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003694795018310584,
+      "chebyshev_known_bounds_same_degree": 0.00040458010766819823,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16710027674135228,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0020684437064481006,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0037031490220449355,
+      "chebyshev_known_bounds_same_degree": 0.0004092816046140707,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17225507684464353,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0022926532206579545,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.00545466630034575,
+      "chebyshev_known_bounds_same_degree": 0.0004394832155949688,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1888384688462241,
+      "pattern_size": 19,
+      "richardson_optimal_eta_same_degree": 0.004113437701387935,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003637659867612616,
+      "chebyshev_known_bounds_same_degree": 0.0004319829877607662,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1609820015404023,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.00202336234981087,
+      "seed": 17011,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0037130254535308878,
+      "chebyshev_known_bounds_same_degree": 0.0003546145472974049,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1430617330446371,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.001095051963913021,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003923550225522532,
+      "chebyshev_known_bounds_same_degree": 0.0003662773275445736,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14044879379923766,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0006533580196558045,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0034741430388687726,
+      "chebyshev_known_bounds_same_degree": 0.00038790312635661917,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14301036267919434,
+      "pattern_size": 11,
+      "richardson_optimal_eta_same_degree": 0.00125226201532366,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.007402863532123106,
+      "chebyshev_known_bounds_same_degree": 0.00037122778786972954,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18183981525068788,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.005245848741309804,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0036462952043876075,
+      "chebyshev_known_bounds_same_degree": 0.0004277896086603578,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17907450504521877,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.002130872494058848,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003375953767431826,
+      "chebyshev_known_bounds_same_degree": 0.0004022007863705942,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16226467972658876,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0017812872298129335,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006066220122861034,
+      "chebyshev_known_bounds_same_degree": 0.0003137555833272288,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1869919449944164,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.004613334799433583,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0034783415635091606,
+      "chebyshev_known_bounds_same_degree": 0.0003829697892697595,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16152460711126582,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0020099465231809954,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0039041305976239213,
+      "chebyshev_known_bounds_same_degree": 0.00037582861506982594,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1473652099766101,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0007910185740743297,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006645914300808528,
+      "chebyshev_known_bounds_same_degree": 0.00035670629708335773,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18224597988534308,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.004927871972855278,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004746851810556073,
+      "chebyshev_known_bounds_same_degree": 0.0004009683702071402,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17572747166286443,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.003390525717313085,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0032106474028449905,
+      "chebyshev_known_bounds_same_degree": 0.00042516317746627865,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16466297130463278,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0021443739074520963,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.00493328929976169,
+      "chebyshev_known_bounds_same_degree": 0.0004472033980994166,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1751191644426691,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.003467113320642935,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004546055498432662,
+      "chebyshev_known_bounds_same_degree": 0.0004318405832545597,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17534425100057868,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.003029337230864264,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006142349424357196,
+      "chebyshev_known_bounds_same_degree": 0.0003617270785874807,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1760829927105073,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.004678723371802812,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006168026774831362,
+      "chebyshev_known_bounds_same_degree": 0.00037593100429558643,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18453523619443427,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.004694165371388501,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.005037807427811731,
+      "chebyshev_known_bounds_same_degree": 0.0003496945353028247,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19060084321286755,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.004129022799448216,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003783080122995748,
+      "chebyshev_known_bounds_same_degree": 0.0004025363529323083,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1806934817170567,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.002631185378947469,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004722639105326299,
+      "chebyshev_known_bounds_same_degree": 0.0003660731284229669,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18796971356936043,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.003965135404084757,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006137699093370008,
+      "chebyshev_known_bounds_same_degree": 0.0003516861985390246,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18219772739459636,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.004405098565747462,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004074048397066391,
+      "chebyshev_known_bounds_same_degree": 0.00040691077330867325,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1858279352551854,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0034430270002670954,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003775498102993955,
+      "chebyshev_known_bounds_same_degree": 0.00040875954370696044,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1826873029710784,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.003415991498781193,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.005002573092390112,
+      "chebyshev_known_bounds_same_degree": 0.00040124410543944785,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14062589642195014,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0020513702583507903,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006942428372406206,
+      "chebyshev_known_bounds_same_degree": 0.00040111829161164835,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19600347023169634,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.005298710459767985,
+      "seed": 17013,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0045229671608414046,
+      "chebyshev_known_bounds_same_degree": 0.000462328248322249,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18094636363151873,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.003331404811925101,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003877937476145441,
+      "chebyshev_known_bounds_same_degree": 0.00036296764660417326,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16739795357227916,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.001518384411878162,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0036257982895684573,
+      "chebyshev_known_bounds_same_degree": 0.00044650448635739963,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17312780847147224,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.00237863042371478,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004088267963862451,
+      "chebyshev_known_bounds_same_degree": 0.0004211572008403743,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18700757127615458,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.003348896058647576,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003180198674592769,
+      "chebyshev_known_bounds_same_degree": 0.00042964752591323566,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17206686890462808,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0024226039174798687,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0061421328014174235,
+      "chebyshev_known_bounds_same_degree": 0.000353322921852541,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1888894362536041,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.004663665173453732,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0036036802201678316,
+      "chebyshev_known_bounds_same_degree": 0.0003975506742816865,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15479777307372905,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0015253773889203836,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003923052259399699,
+      "chebyshev_known_bounds_same_degree": 0.0004166579857028709,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1682946780818717,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.002934991188816275,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003859048668994622,
+      "chebyshev_known_bounds_same_degree": 0.0004314800898427044,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15787149033023437,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0020133485845288753,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003724848069090213,
+      "chebyshev_known_bounds_same_degree": 0.0004040825472548408,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1662397019182956,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.002386002115311573,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0032011345080284115,
+      "chebyshev_known_bounds_same_degree": 0.0004445294616974071,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.175882707767523,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.002705333351747876,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0035188591283602452,
+      "chebyshev_known_bounds_same_degree": 0.0004149663606349318,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1635197578240888,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.00202851418703628,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0039088872407262,
+      "chebyshev_known_bounds_same_degree": 0.0004153246671622048,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16731804266229977,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0028206281657532,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003545899743361673,
+      "chebyshev_known_bounds_same_degree": 0.0003783090528693066,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15560768140031495,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0012929578100762636,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.005225740872242827,
+      "chebyshev_known_bounds_same_degree": 0.0003724761300931111,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17945134211854236,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.004110020431361588,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.004408514206694662,
+      "chebyshev_known_bounds_same_degree": 0.000385644041079192,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17430550824019908,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0036739490701800954,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.00400197983039189,
+      "chebyshev_known_bounds_same_degree": 0.0004175514487161325,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.13846339689350767,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0006362533435082841,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.003822338728378308,
+      "chebyshev_known_bounds_same_degree": 0.00043275472812351345,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1736848523174753,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0023325079529289143,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0035427255232685566,
+      "chebyshev_known_bounds_same_degree": 0.0003750379102817625,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.13857296341385567,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0006574821748337016,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0042126105332492446,
+      "chebyshev_known_bounds_same_degree": 0.0003971072725119928,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18865374195053994,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.003683882217518978,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0040860581212430564,
+      "chebyshev_known_bounds_same_degree": 0.0004239326499963033,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17863558641614233,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0034399247553270414,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0035554477831344724,
+      "chebyshev_known_bounds_same_degree": 0.00043342950395978307,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1567069955467594,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0016992794270812178,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0033037404198064647,
+      "chebyshev_known_bounds_same_degree": 0.000409188349075892,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16270352700931706,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.001877511475072334,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.0034774402857181775,
+      "chebyshev_known_bounds_same_degree": 0.0004229815598705003,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1760262047283189,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0024601871693856582,
+      "seed": 17017,
+      "split": "development"
+    },
+    {
+      "candidate": 0.006623316909397244,
+      "chebyshev_known_bounds_same_degree": 0.0003471472019548214,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19076040513872003,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.00489015049050067,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0037595967397365303,
+      "chebyshev_known_bounds_same_degree": 0.0003985974936838287,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1590196614796408,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0015015439349671555,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004097158774467153,
+      "chebyshev_known_bounds_same_degree": 0.000443067250022571,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15518947202080835,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0018266059703640277,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004290862897802985,
+      "chebyshev_known_bounds_same_degree": 0.00038418881678736744,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16977280134374143,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0023862063368755636,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004796711066261193,
+      "chebyshev_known_bounds_same_degree": 0.00040701971125041035,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18407160202655617,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0038228972891497398,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005100067968856836,
+      "chebyshev_known_bounds_same_degree": 0.0004340497887170803,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18610816989216905,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.0038228677679316907,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.007052987194411977,
+      "chebyshev_known_bounds_same_degree": 0.00043939210877212703,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1942738032701215,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.005253388284453145,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003284849586707406,
+      "chebyshev_known_bounds_same_degree": 0.0004065612099771127,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16654977919758832,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.002191156547461467,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004148002046370394,
+      "chebyshev_known_bounds_same_degree": 0.000429378108939444,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14509306306051356,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0005049789754963501,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.00385328195575848,
+      "chebyshev_known_bounds_same_degree": 0.0004350468782729041,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17521802264504932,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.002902114338000656,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.006305075645017375,
+      "chebyshev_known_bounds_same_degree": 0.00035793663129925115,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1879929016768572,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.004709337785066682,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003774273253983563,
+      "chebyshev_known_bounds_same_degree": 0.00038189634365610873,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15648343743540688,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.001309713389837153,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004860199334307121,
+      "chebyshev_known_bounds_same_degree": 0.0003691832337014932,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1811471997996284,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0036006903452483166,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0038115146562410452,
+      "chebyshev_known_bounds_same_degree": 0.0003714656254744575,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1451785834902548,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0013305209780095743,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004131876007151395,
+      "chebyshev_known_bounds_same_degree": 0.0004449735678446839,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17796215394770995,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.002665383100765143,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0040456473769903455,
+      "chebyshev_known_bounds_same_degree": 0.00035917122624486153,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15457663107497724,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0016182980739379814,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003771434639669713,
+      "chebyshev_known_bounds_same_degree": 0.0004202519286017391,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1508845595561316,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.000792451095178364,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003601827566043647,
+      "chebyshev_known_bounds_same_degree": 0.0003932802304767986,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17409563584280532,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0020528614900799423,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.00436713237972071,
+      "chebyshev_known_bounds_same_degree": 0.00040598921037518666,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17571824215211665,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.0029532818753714952,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.00732918330463636,
+      "chebyshev_known_bounds_same_degree": 0.0004116707162787834,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19753283551407178,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.005322922180533192,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003572800686129795,
+      "chebyshev_known_bounds_same_degree": 0.00038361744120734333,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1662523488366159,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0018144876916095815,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004833881377604576,
+      "chebyshev_known_bounds_same_degree": 0.00037606762387361125,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18159965664053715,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0037121242385681845,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0034375705930223136,
+      "chebyshev_known_bounds_same_degree": 0.000455322064462382,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16036410764009812,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0020006349449308296,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004282273228838953,
+      "chebyshev_known_bounds_same_degree": 0.0004443191439924483,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18061063100186647,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0028854987264751463,
+      "seed": 17011,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003721166128485889,
+      "chebyshev_known_bounds_same_degree": 0.00041833634075586526,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1752225568011061,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0031887585109943747,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0047468483408848105,
+      "chebyshev_known_bounds_same_degree": 0.0003980737914682978,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18080214443482354,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0036224687367863444,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005834421145538477,
+      "chebyshev_known_bounds_same_degree": 0.00039144032595939777,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18680848118602755,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.004318577453741806,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004979313056241806,
+      "chebyshev_known_bounds_same_degree": 0.00041329191842248383,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18504322158683797,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.004172766820101483,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005800495348769547,
+      "chebyshev_known_bounds_same_degree": 0.0003595460967054149,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18788474650278628,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.004500125564440628,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.00373767871391907,
+      "chebyshev_known_bounds_same_degree": 0.000417275071628717,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1731636343490306,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.002479361052664088,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005007188289615976,
+      "chebyshev_known_bounds_same_degree": 0.00035197979840497596,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18538384581176323,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.003848180361694489,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0032481620529187082,
+      "chebyshev_known_bounds_same_degree": 0.0004400248203189248,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17371250520668535,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.002317242060278392,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004044986493556082,
+      "chebyshev_known_bounds_same_degree": 0.00041798509659367046,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16466499483704297,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.002407761693141381,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0030553553900156505,
+      "chebyshev_known_bounds_same_degree": 0.00043065141084896265,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16529680460067572,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0021297491077090225,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004380654765513739,
+      "chebyshev_known_bounds_same_degree": 0.0003958841524456716,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18312047519779592,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.003441143865244206,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0036659124245013025,
+      "chebyshev_known_bounds_same_degree": 0.0004275669891957683,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17890642381238236,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0024997612114598675,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004395145292100757,
+      "chebyshev_known_bounds_same_degree": 0.0003840972042336139,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14140334351985473,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0016785670243940549,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004074085726694201,
+      "chebyshev_known_bounds_same_degree": 0.00030001555136814027,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1619142696212265,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0012732429583947262,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0033712444074805283,
+      "chebyshev_known_bounds_same_degree": 0.0003852653845917137,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15458295149297038,
+      "pattern_size": 12,
+      "richardson_optimal_eta_same_degree": 0.0017458208499776082,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0040299077563832435,
+      "chebyshev_known_bounds_same_degree": 0.0004202319975541815,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1620241954502873,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.001547169050536733,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0038485583366501134,
+      "chebyshev_known_bounds_same_degree": 0.00041240304834954425,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1779188939691059,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0031010648309410956,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004700987511980922,
+      "chebyshev_known_bounds_same_degree": 0.00038075786479581716,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1671532929647566,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0031406455805657553,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0034757180404205675,
+      "chebyshev_known_bounds_same_degree": 0.0003619096314308783,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17405664282940908,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0018392129975274695,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.006845049957014781,
+      "chebyshev_known_bounds_same_degree": 0.00038130897342748685,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18207497402036268,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.004978762946249168,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.006016189952213239,
+      "chebyshev_known_bounds_same_degree": 0.00040447313243985273,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.185336254456794,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.004758454150268859,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005346184476818879,
+      "chebyshev_known_bounds_same_degree": 0.0003689907098171059,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19320082769982944,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.004424970842601455,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005002516765303558,
+      "chebyshev_known_bounds_same_degree": 0.0003793607493844138,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1917843772291198,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.003931239112610035,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004338904448746316,
+      "chebyshev_known_bounds_same_degree": 0.0003862152647654921,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1885523207303847,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0036303973329957773,
+      "seed": 17013,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0036957065578799696,
+      "chebyshev_known_bounds_same_degree": 0.0004337268920127081,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16825950642492016,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.0025184756270419874,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004716302351395209,
+      "chebyshev_known_bounds_same_degree": 0.00041814906372292986,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16843594576102042,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.002451789349919945,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.006865996835485418,
+      "chebyshev_known_bounds_same_degree": 0.0003985704244123631,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1964582472729933,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.005159906033335196,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0031497309680541467,
+      "chebyshev_known_bounds_same_degree": 0.0004238220176283823,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15754410989431886,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0017794730667233273,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004260577106790114,
+      "chebyshev_known_bounds_same_degree": 0.0004377278939980843,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17924677350695686,
+      "pattern_size": 17,
+      "richardson_optimal_eta_same_degree": 0.0035358021708221153,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003364167849305306,
+      "chebyshev_known_bounds_same_degree": 0.00045782479335530724,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16629842567307782,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.002039188652425934,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0037255907248994542,
+      "chebyshev_known_bounds_same_degree": 0.0004369160784124839,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1772767134836312,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.0030382870517902684,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0037253884672121974,
+      "chebyshev_known_bounds_same_degree": 0.0003898429994037715,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16286756094339647,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0017434459846410206,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.005427321188494561,
+      "chebyshev_known_bounds_same_degree": 0.00034370149334067167,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18049848580222672,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.004081043407553027,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0031617050914685496,
+      "chebyshev_known_bounds_same_degree": 0.0004597758019838437,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17236498112965132,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0025161170667152553,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0032384225673331127,
+      "chebyshev_known_bounds_same_degree": 0.00043360234201004404,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17109404495100092,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0024431855990262284,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004299244748584985,
+      "chebyshev_known_bounds_same_degree": 0.0003574725807052898,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17933317444399466,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0034049276444451837,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004001006118411046,
+      "chebyshev_known_bounds_same_degree": 0.0004145095667734187,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.173356472142819,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0033464417893599827,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0037901076723478653,
+      "chebyshev_known_bounds_same_degree": 0.0003728948782673941,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.14575619921793695,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.001099897237094433,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0060125183426853225,
+      "chebyshev_known_bounds_same_degree": 0.00038747360437413537,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.1918696307286279,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.004735851547604007,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004089667593122547,
+      "chebyshev_known_bounds_same_degree": 0.00041305756262873986,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.17341258750007676,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.002473549083586762,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004665808846793927,
+      "chebyshev_known_bounds_same_degree": 0.0003634444141945236,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.186160502169635,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.0035814458247190113,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0043176994374258815,
+      "chebyshev_known_bounds_same_degree": 0.00033661306084137446,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16831344862778938,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0021521485641516898,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004574730104588216,
+      "chebyshev_known_bounds_same_degree": 0.00038212633852255666,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.18021716488432624,
+      "pattern_size": 16,
+      "richardson_optimal_eta_same_degree": 0.003720008554792259,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003670130259838619,
+      "chebyshev_known_bounds_same_degree": 0.0004536573209633946,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.16704906216339635,
+      "pattern_size": 15,
+      "richardson_optimal_eta_same_degree": 0.00221396795081424,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.003625454125947659,
+      "chebyshev_known_bounds_same_degree": 0.0004133387197666854,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.13717892325038117,
+      "pattern_size": 14,
+      "richardson_optimal_eta_same_degree": 0.0009291027025284488,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.004024094878758221,
+      "chebyshev_known_bounds_same_degree": 0.0003557486344214125,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15671045292097988,
+      "pattern_size": 13,
+      "richardson_optimal_eta_same_degree": 0.0010725240349662628,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.0035232974266488325,
+      "chebyshev_known_bounds_same_degree": 0.00040882924863739473,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.15621608187451416,
+      "pattern_size": 11,
+      "richardson_optimal_eta_same_degree": 0.0014261486768431452,
+      "seed": 17017,
+      "split": "validation"
+    },
+    {
+      "candidate": 0.006680631638203433,
+      "chebyshev_known_bounds_same_degree": 0.0004181192093181033,
+      "depth": 5,
+      "neumann_fixed_eta_same_degree": 0.19604292245298588,
+      "pattern_size": 18,
+      "richardson_optimal_eta_same_degree": 0.005075007875155475,
+      "seed": 17017,
+      "split": "validation"
+    }
+  ],
+  "schema_version": "neumiss-polynomial-strong-controls.v1",
+  "source_sha256": "883d9ddc685e778257c981dc7c37f02a10ab60330865e38e6b74a415ed78b1ac"
+}
