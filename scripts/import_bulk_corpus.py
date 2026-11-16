@@ -115,6 +115,15 @@ def normalize_record(raw: Mapping, *, source_file: str, source_file_sha256: str,
     slot = str(raw.get("query_slot") or "")
     group_name = raw.get("corpus_group") or slot.split(":")[0]
     group_name = {"machine_learning": "ml", "mathematics": "math"}.get(group_name, group_name)
+    influence_fields = {"citation_count": raw.get("cited_by_count"),
+                        "field_weighted_citation_impact": raw.get("fwci"),
+                        "citation_normalized_percentile": raw.get("citation_normalized_percentile")}
+    influence = []
+    if any(value is not None for value in influence_fields.values()):
+        influence.append({"provider": raw.get("retrieval_method") or ("openalex_api" if is_openalex else "unknown"),
+                          "source_id": source_id, "as_of": raw.get("retrieved_at"),
+                          "record_sha256": raw.get("source_hash"),
+                          "source_file": source_file, "values": influence_fields})
     return {
         "source_id": source_id, "canonical_id": canonical_id,
         "version": raw_id.rsplit("v", 1)[-1] if raw_id.rsplit("v", 1)[-1].isdigit() else "",
@@ -131,6 +140,7 @@ def normalize_record(raw: Mapping, *, source_file: str, source_file_sha256: str,
         "evidence_level": "indexed_abstract" if is_openalex else "primary_abstract",
         "full_text_available": False, "date_precision": "day" if published else "unknown",
         "source_file": source_file, "source_file_sha256": source_file_sha256,
+        "influence_provenance": influence,
         "citation_count": raw.get("cited_by_count"),
         "field_weighted_citation_impact": raw.get("fwci"),
         "citation_normalized_percentile": raw.get("citation_normalized_percentile"),
@@ -138,8 +148,8 @@ def normalize_record(raw: Mapping, *, source_file: str, source_file_sha256: str,
         "type": raw.get("type"), "metadata_source_hash": raw.get("source_hash"),
         "license": raw.get("license"),
         "authors_raw": raw.get("authors"),
-        "mirror_source": raw.get("mirror_source") or raw.get("source"),
-        "mirror_revision": raw.get("mirror_revision") or raw.get("dataset_revision"),
+        "mirror_source": raw.get("mirror_source") or raw.get("metadata_dataset") or raw.get("source"),
+        "mirror_revision": raw.get("mirror_revision") or raw.get("metadata_revision") or raw.get("dataset_revision"),
     }
 
 def _matches(categories: Iterable[str], prefixes: Iterable[str]) -> bool:
@@ -258,6 +268,10 @@ def import_bulk(input_path: Path, output: Path, *, existing: Path | None, max_ne
                         "metadata_source_hash"):
                 if row.get(key) is not None and match.get(key) is None:
                     match[key] = row[key]
+            observations = match.setdefault("influence_provenance", [])
+            for observation in row.get("influence_provenance", []):
+                if observation not in observations:
+                    observations.append(observation)
             if row.get("categories"):
                 match["categories"] = sorted(set(match.get("categories", []) + row["categories"]))
         elif row.get("content_sha256") not in old_hashes:
@@ -278,6 +292,13 @@ def import_bulk(input_path: Path, output: Path, *, existing: Path | None, max_ne
                 "records": sum(1 for line in candidate.read_text(encoding="utf-8").splitlines() if line.strip()),
             }
     aliases.update(aliases_before)
+    if existing and (existing.parent / "aliases.json").is_file():
+        previous_aliases = json.loads((existing.parent / "aliases.json").read_text())
+        canonical_ids = {row["canonical_id"] for row in rows}
+        for alias, target in previous_aliases.items():
+            if target not in canonical_ids:
+                raise ValueError("Existing alias target missing from merged corpus: " + target)
+            aliases[alias] = target
     output.mkdir(parents=True, exist_ok=True)
     write_corpus(rows, aliases, [], output, cutoff=cutoff)
     if existing_openai:
@@ -291,14 +312,16 @@ def import_bulk(input_path: Path, output: Path, *, existing: Path | None, max_ne
                      json.dumps({key: by_source[source].get(key) for key in
                                  ("query_slot", "corpus_group", "citation_count", "field_weighted_citation_impact",
                                   "citation_normalized_percentile", "topics", "locations",
-                                  "type", "metadata_source_hash", "license",
+                                  "type", "metadata_source_hash", "influence_provenance", "license",
                                   "authors_raw", "mirror_source", "mirror_revision")}, sort_keys=True),
                      source)
                     for source in by_source])
     db.commit()
     db.close()
     manifest = {"schema": "bulk-corpus.v1", "cutoff": cutoff, "records": len(rows),
+                "import_script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                 "existing_records": len(old), "bulk_selected": len(selected),
+                "bulk_new_records": len(rows) - len(old),
                 "source": source_manifest, "existing_snapshot": str(existing) if existing else None,
                 "existing_openai_sources": existing_openai_manifest,
                 "corpus_sha256": hashlib.sha256((output / "works.jsonl").read_bytes()).hexdigest()}

@@ -28,3 +28,10 @@ citation_count and field_weighted_citation_impact; SQLite adds categories_json.
 Citation and influence fields are descriptors for stratification and evidence
 retrieval, not paper-quality labels. Compare unweighted, field-normalized,
 recency-aware, and evidence/code availability weights as separate ablations.
+
+Influence observations retain provider, source ID, as-of date, record hash,
+input file, and supplied values in `influence_provenance`. Unknown dates stay
+unknown. Existing aliases are retained across subsequent imports. The manifest
+separately reports selected input records and net new output records, and pins
+the importer source hash. Metadata coverage can be checked without computing a
+quality score using `scripts/audit_corpus_metadata.py`.

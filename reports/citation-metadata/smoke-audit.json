@@ -1,0 +1,85 @@
+{
+  "schema": "corpus-metadata-audit.v1",
+  "source_sha256": "17347409410b22fa3fde4b28cf26c3cb86d1454c646726b0e38a6b4f27588b01",
+  "records": 115473,
+  "groups": {
+    "math": 20000,
+    "systems": 20000,
+    "ml": 60392,
+    "unassigned": 15081
+  },
+  "publication_years": {
+    "1991": 2,
+    "1992": 13,
+    "1993": 10,
+    "1994": 51,
+    "1995": 63,
+    "1996": 60,
+    "1997": 54,
+    "1998": 114,
+    "1999": 120,
+    "2000": 153,
+    "2001": 166,
+    "2002": 225,
+    "2003": 250,
+    "2004": 333,
+    "2005": 343,
+    "2006": 451,
+    "2007": 577,
+    "2008": 649,
+    "2009": 1223,
+    "2010": 1097,
+    "2011": 1248,
+    "2012": 1611,
+    "2013": 1917,
+    "2014": 2029,
+    "2015": 2209,
+    "2016": 2761,
+    "2017": 3456,
+    "2018": 4546,
+    "2019": 5547,
+    "2020": 7004,
+    "2021": 7746,
+    "2022": 8619,
+    "2023": 10976,
+    "2024": 16028,
+    "2025": 21988,
+    "2026": 11834
+  },
+  "providers": {
+    "arxiv_oai_metadata_mirror": 98720,
+    "arxiv_api": 299,
+    "offline_packet": 11,
+    "local_sqlite": 16047,
+    "openalex_api": 396
+  },
+  "empty_abstracts": 135,
+  "influence_fields": {
+    "citation_count": {
+      "known": 400,
+      "missing": 115073,
+      "invalid": 0,
+      "zero": 66,
+      "minimum": 0,
+      "maximum": 24368
+    },
+    "field_weighted_citation_impact": {
+      "known": 346,
+      "missing": 115127,
+      "invalid": 0,
+      "zero": 92,
+      "minimum": 0.0,
+      "maximum": 157.2097
+    },
+    "citation_normalized_percentile": {
+      "known": 346,
+      "missing": 115127,
+      "invalid": 0,
+      "zero": 92,
+      "minimum": 0.0,
+      "maximum": 0.99988865
+    }
+  },
+  "influence_rows_without_explicit_provenance": 0,
+  "scope": "Coverage and validity only; missing is not zero. Citation metrics do not establish usefulness, feasibility, or novelty."
+}

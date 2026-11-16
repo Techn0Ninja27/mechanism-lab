@@ -10,6 +10,24 @@ class BulkCorpusTests(unittest.TestCase):
         row = normalize_record({"id":"2401.00001v2","title":" T ","abstract":" A ","mechanism_summary":"fake","categories":"cs.LG cs.AI","versions":[{"created":"2024-01-01"},{"created":"2024-02-01"}],"authors":[{"name":"A"}]}, source_file="x", source_file_sha256="h", cutoff="2026-11-16")
         self.assertEqual((row["canonical_id"],row["published_date"],row["updated_date"],row["categories"]),("arxiv:2401.00001","2024-01-01","2024-02-01",["cs.AI","cs.LG"]))
         self.assertNotIn("mechanism_summary", row)
+    def test_existing_noncanonical_alias_is_preserved(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);base=root/"base";base.mkdir()
+            old=base/"works.jsonl";old.write_text(json.dumps({"source_id":"local:kept","canonical_id":"local:kept","title":"Existing paper title","abstract":"A","published_date":"2020-01-01"})+'\n')
+            (base/"aliases.json").write_text('{"old-version":"local:kept"}')
+            source=root/"new.jsonl";source.write_text(json.dumps({"id":"2401.00001","title":"New","abstract":"A"})+'\n')
+            out=root/"out";import_bulk(source,out,existing=old,max_new=1,cutoff="2026-11-16",seed=1)
+            self.assertEqual(json.loads((out/"aliases.json").read_text())["old-version"],"local:kept")
+
+    def test_influence_observation_and_arxiv_mirror_are_preserved(self):
+        row=normalize_record({"id":"https://openalex.org/W8","title":"T","abstract":"A","cited_by_count":0,"retrieved_at":"2026-11-16","source_hash":"record-hash"},source_file="snapshot.jsonl",source_file_sha256="file-hash",cutoff="2026-11-16")
+        obs=row["influence_provenance"][0]
+        self.assertEqual(obs["as_of"],"2026-11-16")
+        self.assertEqual(obs["values"]["citation_count"],0)
+        row=normalize_record({"id":"2401.00001","title":"T","abstract":"A","metadata_dataset":"mirror","metadata_revision":"revision"},source_file="snapshot.jsonl",source_file_sha256="file-hash",cutoff="2026-11-16")
+        self.assertEqual((row["mirror_source"],row["mirror_revision"]),("mirror","revision"))
+        self.assertEqual(row["influence_provenance"],[])
+
     def test_openalex_no_doi_keeps_provider_url_and_query_group(self):
         row = normalize_record({"source_id":"openalex:W123", "canonical_id":"https://openalex.org/W123", "title":"T", "abstract":"A", "query_slot":"machine_learning:T1:0"}, source_file="x", source_file_sha256="h", cutoff="2026-11-16")
         self.assertEqual(row["landing_url"], "https://openalex.org/W123")
