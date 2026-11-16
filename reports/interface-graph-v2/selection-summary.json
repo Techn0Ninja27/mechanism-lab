@@ -1,0 +1,36 @@
+{
+  "lexical": {
+    "candidates": {
+      "candidates": 20,
+      "unique_unordered_paper_pairs": 15,
+      "unique_papers": 16,
+      "maximum_paper_uses": 7,
+      "finding_producers": 9
+    },
+    "seeded_random_shortlist": {
+      "candidates": 20,
+      "unique_unordered_paper_pairs": 19,
+      "unique_papers": 21,
+      "maximum_paper_uses": 6,
+      "finding_producers": 16
+    }
+  },
+  "diverse": {
+    "candidates": {
+      "candidates": 18,
+      "unique_unordered_paper_pairs": 18,
+      "unique_papers": 15,
+      "maximum_paper_uses": 3,
+      "finding_producers": 0
+    },
+    "seeded_random_shortlist": {
+      "candidates": 18,
+      "unique_unordered_paper_pairs": 18,
+      "unique_papers": 15,
+      "maximum_paper_uses": 3,
+      "finding_producers": 0
+    }
+  },
+  "legacy_order_and_scores_preserved": true,
+  "scope": "Topology/count diagnostics only; no novelty or usefulness measure."
+}

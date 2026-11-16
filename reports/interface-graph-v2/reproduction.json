@@ -1,0 +1,6 @@
+{
+  "selection_byte_identical": true,
+  "review_aggregation_byte_identical": true,
+  "scope": "Deterministic selection and aggregation from archived labels, not repeated model judgments.",
+  "diverse_sha256": "180e46283eed66638d38df78d70abea3a28aaf091a57fc5cbf20c34498c6159d"
+}

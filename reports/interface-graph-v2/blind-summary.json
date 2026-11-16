@@ -1,0 +1,122 @@
+{
+  "date": "2026-11-16",
+  "packet_sha256": "5fd3736f75efaec928b86dce4578e48f822d0a6d7d0353ab387da0498775f069",
+  "unique_cases": 20,
+  "exact_agreement": 15,
+  "cohorts": {
+    "diverse_random8": {
+      "cases": 8,
+      "ids": [
+        "C001",
+        "C002",
+        "C003",
+        "C006",
+        "C009",
+        "C011",
+        "C015",
+        "C020"
+      ],
+      "reviewer_counts": {
+        "a": {
+          "unsupported_connection": 6,
+          "non_operational_producer": 1,
+          "requires_specific_bridge": 1
+        },
+        "b": {
+          "non_operational_producer": 3,
+          "unsupported_connection": 4,
+          "requires_specific_bridge": 1
+        }
+      },
+      "both_require_specific_bridge": [
+        "C006"
+      ]
+    },
+    "diverse_top8": {
+      "cases": 8,
+      "ids": [
+        "C004",
+        "C005",
+        "C008",
+        "C012",
+        "C015",
+        "C016",
+        "C017",
+        "C018"
+      ],
+      "reviewer_counts": {
+        "a": {
+          "unsupported_connection": 7,
+          "requires_specific_bridge": 1
+        },
+        "b": {
+          "unsupported_connection": 5,
+          "requires_specific_bridge": 3
+        }
+      },
+      "both_require_specific_bridge": [
+        "C018"
+      ]
+    },
+    "lexical_top8": {
+      "cases": 8,
+      "ids": [
+        "C007",
+        "C008",
+        "C010",
+        "C013",
+        "C014",
+        "C016",
+        "C018",
+        "C019"
+      ],
+      "reviewer_counts": {
+        "a": {
+          "non_operational_producer": 3,
+          "unsupported_connection": 2,
+          "requires_specific_bridge": 3
+        },
+        "b": {
+          "non_operational_producer": 2,
+          "unsupported_connection": 1,
+          "requires_specific_bridge": 5
+        }
+      },
+      "both_require_specific_bridge": [
+        "C014",
+        "C018",
+        "C019"
+      ]
+    }
+  },
+  "disagreements": [
+    {
+      "id": "C001",
+      "a": "unsupported_connection",
+      "b": "non_operational_producer"
+    },
+    {
+      "id": "C009",
+      "a": "unsupported_connection",
+      "b": "non_operational_producer"
+    },
+    {
+      "id": "C013",
+      "a": "non_operational_producer",
+      "b": "requires_specific_bridge"
+    },
+    {
+      "id": "C016",
+      "a": "unsupported_connection",
+      "b": "requires_specific_bridge"
+    },
+    {
+      "id": "C017",
+      "a": "unsupported_connection",
+      "b": "requires_specific_bridge"
+    }
+  ],
+  "novelty_established": false,
+  "train_eligible": false,
+  "scope": "Two separate native-agent reviews, same model family, no external novelty search. Overlapping exposed top-eight cohorts; not independent samples, human labels, a usefulness benchmark or general retrieval-quality evidence."
+}

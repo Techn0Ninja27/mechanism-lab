@@ -59,6 +59,9 @@ on two exposed images. That scoped negative now enters future proposal context;
 no VLM task-quality, speed or novelty gain has been demonstrated. A separate [PSD attention contract diagnostic](operator-studies/psd-attention-contract/README.md)
 illustrates why mathematical approximation guarantees alone do not establish
 attention compatibility.
+A [blinded shortlist review](reports/interface-graph-v2/README.md) found that
+reducing repeated paper pairs did not improve abstract-level compatibility
+judgments. The diversity-constrained selector remains experimental.
 
 ## What works today
 

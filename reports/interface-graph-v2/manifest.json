@@ -1,0 +1,13 @@
+{
+  "packet_sha256": "5fd3736f75efaec928b86dce4578e48f822d0a6d7d0353ab387da0498775f069",
+  "key_sha256": "48377d69ea229450d7fd5f09c869e88567879f9eed30c58a19723176cfac65de",
+  "script_sha256": "d5705248b3ef9aaecc6486c75d9c68b189ead21bbac3bf10cabd03b662a3c5d1",
+  "input_sha256": {
+    "lexical": "8267ba3f1697029f7763bf4a5ffa9997d07d07a4063d203db74a8fdd4cd2ea5d",
+    "diverse": "180e46283eed66638d38df78d70abea3a28aaf091a57fc5cbf20c34498c6159d",
+    "papers": "b500b468b1af17788a5b8a681bb3d559f5919e6b0ed69c367ceb74583e938ce8",
+    "atoms": "65844fd8bf9bb8b8b0c67f7506e20f8d842314a9829284a42abb1576fa5e3bb7"
+  },
+  "items": 20,
+  "scope": "Abstract-only machine review, shortlist origin and numerical scores hidden. Novelty and usefulness cannot be established."
+}

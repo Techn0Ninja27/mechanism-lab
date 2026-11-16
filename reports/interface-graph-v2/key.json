@@ -1,0 +1,238 @@
+[
+  {
+    "id": "C001",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 5
+      }
+    ],
+    "producer_atom_id": "atom-ca542650cbb7599e",
+    "target_atom_id": "atom-fd980ed308fc4332"
+  },
+  {
+    "id": "C002",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 4
+      }
+    ],
+    "producer_atom_id": "atom-5a401e2a48316e33",
+    "target_atom_id": "atom-d7574b7c1cc21e15"
+  },
+  {
+    "id": "C003",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 6
+      }
+    ],
+    "producer_atom_id": "atom-13d5cbcc9744b255",
+    "target_atom_id": "atom-76d8d161ec49a950"
+  },
+  {
+    "id": "C004",
+    "memberships": [
+      {
+        "group": "diverse_top8",
+        "rank": 4
+      }
+    ],
+    "producer_atom_id": "atom-76d8d161ec49a950",
+    "target_atom_id": "atom-32f2e53f659a3dee"
+  },
+  {
+    "id": "C005",
+    "memberships": [
+      {
+        "group": "diverse_top8",
+        "rank": 8
+      }
+    ],
+    "producer_atom_id": "atom-d7574b7c1cc21e15",
+    "target_atom_id": "atom-d91f5abd17c8dd18"
+  },
+  {
+    "id": "C006",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 8
+      }
+    ],
+    "producer_atom_id": "atom-76d8d161ec49a950",
+    "target_atom_id": "atom-5a401e2a48316e33"
+  },
+  {
+    "id": "C007",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 8
+      }
+    ],
+    "producer_atom_id": "atom-8bed9db9176620e8",
+    "target_atom_id": "atom-378799d40777a28f"
+  },
+  {
+    "id": "C008",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 7
+      },
+      {
+        "group": "diverse_top8",
+        "rank": 3
+      }
+    ],
+    "producer_atom_id": "atom-91bd44aa9ba3fb36",
+    "target_atom_id": "atom-5a401e2a48316e33"
+  },
+  {
+    "id": "C009",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 7
+      }
+    ],
+    "producer_atom_id": "atom-102a675e54698d88",
+    "target_atom_id": "atom-e9f2971cf2446c18"
+  },
+  {
+    "id": "C010",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 6
+      }
+    ],
+    "producer_atom_id": "atom-f9e84d6cc530a63c",
+    "target_atom_id": "atom-102a675e54698d88"
+  },
+  {
+    "id": "C011",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 1
+      }
+    ],
+    "producer_atom_id": "atom-91bd44aa9ba3fb36",
+    "target_atom_id": "atom-fd980ed308fc4332"
+  },
+  {
+    "id": "C012",
+    "memberships": [
+      {
+        "group": "diverse_top8",
+        "rank": 6
+      }
+    ],
+    "producer_atom_id": "atom-d7574b7c1cc21e15",
+    "target_atom_id": "atom-9ee0ed318a540def"
+  },
+  {
+    "id": "C013",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 1
+      }
+    ],
+    "producer_atom_id": "atom-cf7d71e6f10cadb1",
+    "target_atom_id": "atom-378799d40777a28f"
+  },
+  {
+    "id": "C014",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 5
+      }
+    ],
+    "producer_atom_id": "atom-d91f5abd17c8dd18",
+    "target_atom_id": "atom-378799d40777a28f"
+  },
+  {
+    "id": "C015",
+    "memberships": [
+      {
+        "group": "diverse_top8",
+        "rank": 7
+      },
+      {
+        "group": "diverse_random8",
+        "rank": 3
+      }
+    ],
+    "producer_atom_id": "atom-07b98b2463203506",
+    "target_atom_id": "atom-76d8d161ec49a950"
+  },
+  {
+    "id": "C016",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 4
+      },
+      {
+        "group": "diverse_top8",
+        "rank": 2
+      }
+    ],
+    "producer_atom_id": "atom-508b0298a5a8c595",
+    "target_atom_id": "atom-fd980ed308fc4332"
+  },
+  {
+    "id": "C017",
+    "memberships": [
+      {
+        "group": "diverse_top8",
+        "rank": 5
+      }
+    ],
+    "producer_atom_id": "atom-668cc9544b0b09c9",
+    "target_atom_id": "atom-76d8d161ec49a950"
+  },
+  {
+    "id": "C018",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 2
+      },
+      {
+        "group": "diverse_top8",
+        "rank": 1
+      }
+    ],
+    "producer_atom_id": "atom-378799d40777a28f",
+    "target_atom_id": "atom-fd980ed308fc4332"
+  },
+  {
+    "id": "C019",
+    "memberships": [
+      {
+        "group": "lexical_top8",
+        "rank": 3
+      }
+    ],
+    "producer_atom_id": "atom-378799d40777a28f",
+    "target_atom_id": "atom-d91f5abd17c8dd18"
+  },
+  {
+    "id": "C020",
+    "memberships": [
+      {
+        "group": "diverse_random8",
+        "rank": 2
+      }
+    ],
+    "producer_atom_id": "atom-ca542650cbb7599e",
+    "target_atom_id": "atom-13d5cbcc9744b255"
+  }
+]
