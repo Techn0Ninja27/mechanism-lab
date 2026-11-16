@@ -1,0 +1,29 @@
+{
+  "calls": [
+    {
+      "call": "batch-0-0",
+      "status": "complete",
+      "finish_reason": "stop",
+      "response_id": "gen-1794868073-F6SkF8w9EKkqZBtSPl9q",
+      "request_hash": "c24ad8cfe9f41977f483404892da3251c41e4b61ccc93118d52c6983a4532043",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 3316,
+      "completion_tokens": 2456,
+      "cost": 0.001544004,
+      "upstream_cost": 0.0015596
+    },
+    {
+      "call": "batch-1-0",
+      "status": "complete",
+      "finish_reason": "stop",
+      "response_id": "gen-1794868084-l8a7zorG7SLW2oHgSN7W",
+      "request_hash": "e771f8bc40d20f74c928eec869cbc91958861c41da3d63600a92a7056510f606",
+      "model": "anthropic/claude-haiku-5.5",
+      "prompt_tokens": 3175,
+      "completion_tokens": 2126,
+      "cost": 0.001366695,
+      "upstream_cost": 0.0013805
+    }
+  ],
+  "conservative_cost_usd": 0.0029401
+}

@@ -6,13 +6,13 @@ from scripts.world_search import Client
 from scripts.grounded_research import parse
 
 def validate(record,paper):
-    required={'source_id','operation','operation_quote','inputs','outputs','reported_outcomes','unknowns','ready_for_composition'}
+    required={'source_id','operation','operation_quote','stated_problems','inputs','outputs','reported_outcomes','unknowns','ready_for_composition'}
     if not isinstance(record,dict) or set(record)!=required or record['source_id']!=paper['source_id']:raise ValueError('record identity/schema')
     if record['ready_for_composition'] is not False:raise ValueError('abstract notes cannot establish composition readiness')
     for field in ['operation','operation_quote']:
         if not isinstance(record[field],str) or not record[field].strip() or len(record[field])>600:raise ValueError('operation field')
     if record['operation_quote'] not in paper['abstract']:raise ValueError('operation quote mismatch')
-    for field in ['inputs','outputs','reported_outcomes']:
+    for field in ['stated_problems','inputs','outputs','reported_outcomes']:
         if not isinstance(record[field],list) or len(record[field])>4:raise ValueError('bounded artifact list')
         for item in record[field]:
             if not isinstance(item,dict) or set(item)!={'name','quote'}:raise ValueError('artifact fields')
@@ -26,7 +26,7 @@ def execute(papers_path,out,paid):
     papers=json.loads(papers_path.read_text())
     if not isinstance(papers,list) or not 1<=len(papers)<=8 or len({r['source_id'] for r in papers})!=len(papers):raise ValueError('1–8 unique papers required')
     if any(not isinstance(r.get('abstract'),str) or not 400<=len(r['abstract'])<=12000 for r in papers):raise ValueError('abstract size bound')
-    config={'model':'anthropic/claude-haiku-5.5','reasoning':{'enabled':False},'temperature':0,
+    config={'protocol_version':2,'model':'anthropic/claude-haiku-5.5','reasoning':{'enabled':False},'temperature':0,
             'max_tokens_per_stage':[8192],'pricing':{'prompt':0.0000001,'completion':0.0000005},
             'provider_max_price':{'prompt':0.1,'completion':0.5},'budget_usd':0.1,
             'shared_budget_path':str(ROOT/'results/improvement-phase-2026-11-16/budget.json'),'shared_budget_usd':10.0,
@@ -44,8 +44,10 @@ def execute(papers_path,out,paid):
         client=Client(out,config);accepted=[];errors=[]
         for start in range(0,len(papers),4):
             batch=papers[start:start+4]
-            prompt=('Return JSON {"records":[...]} with one record per supplied source. Each record has source_id, operation, operation_quote, inputs, outputs, reported_outcomes, unknowns, ready_for_composition:false. '
-                    'inputs/outputs/reported_outcomes are lists of at most4 {"name":"short description","quote":"exact contiguous abstract span"}. '
+            prompt=('Return JSON {"records":[...]} with one record per supplied source. Each record has source_id, operation, operation_quote, stated_problems, inputs, outputs, reported_outcomes, unknowns, ready_for_composition:false. '
+                    'stated_problems/inputs/outputs/reported_outcomes are lists of at most4 {"name":"short description","quote":"exact contiguous abstract span"}. '
+                    'stated_problems records only explicit limitations, costs or unmet objectives described in this abstract. Use [] when none is stated. '
+                    'Preserve the source scope: a problem motivating the paper may already be addressed by its method. Do not label it currently unsolved, useful to our task, or novel. '
                     'Separate returned/transformed objects from experimental results such as accuracy, speedup or theoretical rates. A metric may be an output only if the operation actually estimates/returns it, not merely reports performance. '
                     'Use empty inputs or outputs if not stated; never invent tensor shapes, phases, prerequisites or exposed APIs from an abstract. List1–8 concrete missing contract details in unknowns. '
                     'For analytical/measurement papers describe the analysis without inventing a reusable algorithm. operation_quote must be an exact abstract span supporting the operation. Every quoted span must be copied exactly, preferably short. '
@@ -63,7 +65,7 @@ def execute(papers_path,out,paid):
                         accepted.append(validate(record,by_id[sid]));seen.add(sid)
                     except (ValueError,KeyError,TypeError) as exc:errors.append({'batch':start//4,'source_id':record.get('source_id') if isinstance(record,dict) else None,'error':str(exc)[:200]})
             except Exception as exc:errors.append({'batch':start//4,'error':type(exc).__name__+': '+str(exc)[:200]})
-        result={'status':'extracted_pending_semantic_review','notes':accepted,'errors':errors,'input_papers':len(papers),
+        result={'protocol_version':2,'status':'extracted_pending_semantic_review','notes':accepted,'errors':errors,'input_papers':len(papers),
                 'scope':'Quote identity and structure checked only. No semantic entailment, composition readiness, novelty or training claim.'}
         (out/'result.json').write_text(json.dumps(result,indent=2)+'\n');return {'status':result['status'],'notes':len(accepted),'errors':len(errors)}
 

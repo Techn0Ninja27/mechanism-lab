@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-17",
+  "queries": [
+    "parameter efficient fine tuning",
+    "sparse neural training",
+    "test time adaptation",
+    "diffusion distillation",
+    "activation checkpointing",
+    "distributed graph sampling",
+    "stochastic equality constrained optimization",
+    "randomized matrix approximation"
+  ],
+  "rule": "First unseen arXiv-ID record in FTS top20, abstract>=400 chars, published>=2023-01-01, cutoff2026-11-16; excludes specified prior packet.",
+  "corpus_sha256": "a594fc6f24d14a218f7b9d87622db1d9f304aebf7b74f77e45e3ffab646182ec",
+  "excluded_packet_sha256": "0b5edd25a1279a2cd01b7bb92791106f6243918119f1dc5bfa5e3f567fc8bcc3",
+  "papers_sha256": "7025d41908172517f535207c888b7aaab53110fba49c37d9ec70f5f294c874cc",
+  "script_sha256": "78854517784a50f4b6137a0f10101a433508ced34002dd6d22209cbdfb7ca57b",
+  "sources": [
+    {
+      "source_id": "arxiv:2301.01821",
+      "title": "Parameter-Efficient Fine-Tuning Design Spaces",
+      "url": "https://arxiv.org/abs/2301.01821",
+      "selection_query": "parameter efficient fine tuning"
+    },
+    {
+      "source_id": "arxiv:2305.02299",
+      "title": "Dynamic Sparse Training with Structured Sparsity",
+      "url": "https://arxiv.org/abs/2305.02299",
+      "selection_query": "sparse neural training"
+    },
+    {
+      "source_id": "arxiv:2501.18864",
+      "title": "Flatness Guided Test-Time Adaptation for Vision-Language Models",
+      "url": "https://arxiv.org/abs/2501.18864",
+      "selection_query": "test time adaptation"
+    },
+    {
+      "source_id": "arxiv:2410.11971",
+      "title": "DDIL: Diversity Enhancing Diffusion Distillation With Imitation Learning",
+      "url": "https://arxiv.org/abs/2410.11971",
+      "selection_query": "diffusion distillation"
+    },
+    {
+      "source_id": "arxiv:2302.02599",
+      "title": "Colossal-Auto: Unified Automation of Parallelization and Activation Checkpoint for Large-scale Models",
+      "url": "https://arxiv.org/abs/2302.02599",
+      "selection_query": "activation checkpointing"
+    },
+    {
+      "source_id": "arxiv:2311.02909",
+      "title": "Distributed Matrix-Based Sampling for Graph Neural Network Training",
+      "url": "https://arxiv.org/abs/2311.02909",
+      "selection_query": "distributed graph sampling"
+    },
+    {
+      "source_id": "arxiv:2301.00477",
+      "title": "A Sequential Quadratic Programming Method with High Probability Complexity Bounds for Nonlinear Equality Constrained Stochastic Optimization",
+      "url": "https://arxiv.org/abs/2301.00477",
+      "selection_query": "stochastic equality constrained optimization"
+    },
+    {
+      "source_id": "arxiv:2405.04811",
+      "title": "A unified error analysis for randomized low-rank approximation with application to data assimilation",
+      "url": "https://arxiv.org/abs/2405.04811",
+      "selection_query": "randomized matrix approximation"
+    }
+  ],
+  "scope": "Exposed development extraction packet, not representative coverage or a novelty benchmark."
+}

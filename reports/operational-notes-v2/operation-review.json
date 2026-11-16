@@ -1,0 +1,47 @@
+{
+  "scope": "Semantic audit of the seven accepted operational records in extraction/result.json against the corresponding source abstracts in operational-packet-v2/papers.json. Abstract-level support only: missing implementation detail is recorded as a limit, not treated as a composition blocker. Analytical and data representations are valid outputs when the abstract supports them. No web or source edits were used.",
+  "reviews": [
+    {
+      "source_id": "arxiv:2301.01821",
+      "status": "faithful_with_limits",
+      "reason": "The operation accurately captures parameterized PEFT design spaces, the four components, progressive refinement by model quality, greedy selection, discovered design patterns, and resulting PEFT methods. The design patterns and methods are supported outputs; the comparative performance claim is correctly retained as a reported outcome. No metric is misclassified as an output and no over-specific artifact name is inferred.",
+      "limits": "The abstract does not specify the concrete design-space encoding, candidate sets, stage schedule, greedy scoring or stopping rule, search budget, or the exact structures of the resulting methods. Backbone/task coverage and training details are also unspecified."
+    },
+    {
+      "source_id": "arxiv:2305.02299",
+      "status": "faithful_with_limits",
+      "reason": "The operation accurately states sparse-to-sparse DST, the structured N:M variant, the constant fan-in constraint, neuron ablation, and real-world layer acceleration. A learned sparse structured network is a supported data/model output, while acceleration figures are correctly reported outcomes. No metric is promoted to an output and the naming is not more specific than the abstract.",
+      "limits": "The abstract does not define the constant-fan-in implementation, neuron-ablation procedure, sparsity/update schedule, sparse formats, hardware/software stack, evaluated architectures or datasets, or the accuracy tradeoffs at high sparsity."
+    },
+    {
+      "source_id": "arxiv:2501.18864",
+      "status": "faithful_with_limits",
+      "reason": "The operation matches the abstract's sharpness-aware prompt-tuning stage, training flat minimum, sharpness-based test-sample selection, and alignment of training/test loss-flat regions. Augmented test samples and selected samples are supported inputs/output representations; the 4.88% comparison and baseline results remain reported outcomes. No metric is misclassified and no over-specific artifact name is inferred.",
+      "limits": "The sharpness definition, augmentation and selection rule, prompt parameterization, test-time update behavior, optimization loss, backbone/training setup, and adaptation hyperparameters are unspecified."
+    },
+    {
+      "source_id": "arxiv:2302.02599",
+      "status": "faithful_with_limits",
+      "reason": "The operation accurately describes joint optimization of distributed execution and gradient/activation checkpointing plans and the symbolic profiler for PyTorch models. The model/hardware inputs, memory and computing statistics, and optimized plans are supported; statistics are valid analytical outputs rather than performance metrics. No reported metric is incorrectly listed as an output and no over-specific name is inferred.",
+      "limits": "The abstract leaves the plan representation, supported parallelism modes, hardware/constraint interface, profiler accuracy and cost, ahead-of-time versus runtime behavior, and PyTorch integration details unspecified."
+    },
+    {
+      "source_id": "arxiv:2311.02909",
+      "status": "faithful_with_limits",
+      "reason": "The operation accurately captures matrix-based bulk sampling as SpGEMM, multiple minibatches, distributed communication-avoiding SpGEMM, and the end-to-end pipeline. Graph topology and matrix constructions are supported inputs and sampled minibatches are supported outputs. The 2.5x and 8.46x figures are correctly reported outcomes, not artifacts.",
+      "limits": "The abstract does not specify sparse matrix/tensor formats, graph partitioning, sampling API, GPU/topology assumptions, supported sampling variants beyond node-wise and layer-wise, embedding handling, or integration dependencies."
+    },
+    {
+      "source_id": "arxiv:2301.00477",
+      "status": "faithful_with_limits",
+      "reason": "The operation matches the proposed step-search SQP method for nonlinear equality-constrained stochastic optimization with inexact probabilistic zeroth- and first-order oracles. Constraint values/derivatives and oracle access are supported inputs; the absence of an explicit outputs entry does not create a false output claim. Complexity and numerical-test statements are correctly reported outcomes, not outputs.",
+      "limits": "The abstract does not expose the iterate/step representation, step-search rule, oracle sampling interface, assumptions for the high-probability bound, stopping criteria, or numerical comparison details. It also does not establish a separately named output artifact beyond the proposed method itself."
+    },
+    {
+      "source_id": "arxiv:2405.04811",
+      "status": "faithful_with_limits",
+      "reason": "The operation accurately describes a unified analytical error framework for randomized low-rank approximation with centered/non-standard Gaussian matrices and bounds in expectation and probability. Covariance structure is a supported input, and error bounds are valid analytical outputs explicitly stated by the abstract. The data-assimilation performance improvement is correctly a reported outcome, not an output artifact.",
+      "limits": "The abstract does not specify the covariance assumptions, exact bounds, random-matrix construction, target rank/oversampling, relation to individual algorithms, data-assimilation setup, quantitative results, or scope beyond Frobenius-norm analysis."
+    }
+  ]
+}

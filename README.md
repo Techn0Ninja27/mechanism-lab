@@ -53,6 +53,9 @@ The full corpus has not been atomized or used to retrain the scorers.
 A separate [eight-paper operational-note pilot](reports/operational-notes-v1/README.md)
 now explores non-KV sources and separates produced objects from reported
 outcomes. These notes are not yet eligible for composition or training.
+A [second operational packet](reports/operational-notes-v2/README.md) adds source-stated
+problems and displays seven accepted notes with scope reviews in the webapp.
+These motivations are not evidence of unsolved research gaps.
 
 The first [interface graph](reports/interface-graph/README.md) retains 49 atoms
 and proposes 20 pairs from 424 eligible directed pairs. Its selected

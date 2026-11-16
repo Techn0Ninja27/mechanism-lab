@@ -82,6 +82,42 @@ def _safe_engine_relative(value):
     return "/".join(parts)
 
 
+def operational_notes():
+    """Display a bounded, unpromoted abstract-note packet; no executable ports."""
+    path = ENGINE / "reports/operational-notes-v2/notes.json"
+    try:
+        if path.is_symlink() or path.stat().st_size > 200_000:
+            return []
+        with path.open('rb') as stream:
+            payload = stream.read(200_001)
+        if len(payload) > 200_000:
+            return []
+        raw = json.loads(payload)
+    except (OSError, ValueError):
+        return []
+    if not isinstance(raw, dict) or not isinstance(raw.get('notes'), list):
+        return []
+    rows = []
+    for note in raw['notes'][:8]:
+        if not isinstance(note, dict) or any(note.get(k) is not False for k in ('ready_for_composition','train_eligible','novelty_established')):
+            continue
+        def text(key, limit):
+            value = note.get(key)
+            return value[:limit] if isinstance(value, str) else ''
+        def names(key):
+            values = note.get(key)
+            return [x['name'][:400] for x in values[:4] if isinstance(x, dict) and isinstance(x.get('name'), str)] if isinstance(values, list) else []
+        review = note.get('problem_review') if isinstance(note.get('problem_review'), dict) else {}
+        unknowns = note.get('unknowns') if isinstance(note.get('unknowns'), list) else []
+        rows.append({'source_id':text('source_id',120),'source_url':text('source_url',2000),'operation':text('operation',600),
+                     'stated_problems':names('stated_problems'),'inputs':names('inputs'),'outputs':names('outputs'),
+                     'unknowns':[x[:400] for x in unknowns[:8] if isinstance(x,str)],
+                     'problem_review_status':review.get('status') if review.get('status') in ('pass','flag') else 'not_recorded',
+                     'problem_review_reason':review.get('reason','')[:1500] if isinstance(review.get('reason'),str) else '',
+                     'ready_for_composition':False,'train_eligible':False,'novelty_established':False})
+    return rows
+
+
 def operator_library():
     """Read the hand-curated operator catalog as inert JSON data.
 
@@ -123,6 +159,7 @@ def operator_library():
         "scope": raw.get("scope"),
         "operators": operators,
         "chains": chains,
+        "operational_notes": operational_notes(),
         "study": {"report_path": report_path, "status": study.get("status")},
     }
 

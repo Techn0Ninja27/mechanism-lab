@@ -1,0 +1,53 @@
+{
+  "review_scope": "Review of stated_problems only against original abstracts in operational-packet-v2/papers.json; same-family model review, not human adjudication.",
+  "entries": [
+    {
+      "source_id": "arxiv:2301.01821",
+      "status": "pass",
+      "reason": "The abstract explicitly says prior PEFT designs are hand-crafted separately and that it remains unclear whether design patterns exist. The quoted text directly entails the stated problem without asserting a broader novelty claim.",
+      "limitations": "Abstract-only review; does not establish whether the paper's claimed design patterns are genuinely novel beyond the abstract."
+    },
+    {
+      "source_id": "arxiv:2305.02299",
+      "status": "pass",
+      "reason": "The abstract explicitly states that achieving real-world hardware speedups with unstructured sparsity is challenging. The quote directly supports the stated problem.",
+      "limitations": "The abstract scopes the difficulty to real-world hardware and does not establish that it is universal across hardware or sparse formats."
+    },
+    {
+      "source_id": "arxiv:2501.18864",
+      "status": "flag",
+      "reason": "The performance-loss problem is directly entailed: the abstract says existing TTA methods design strategies in isolation from training characteristics and that this degrades performance. The computational-overhead item is only weakly evidenced by its quote, which reports that FGA avoids expensive updates and reduces overhead; that is a claimed method benefit, not a direct statement of an unresolved prior-method problem. The abstract does mention overhead reduction, so the issue is narrow rather than wholly unsupported.",
+      "limitations": "Keep the overhead claim scoped to test-time prompt-parameter updates/TTA as described in the abstract; do not generalize to all prompt updates, all adaptation, or all VLM computation."
+    },
+    {
+      "source_id": "arxiv:2302.02599",
+      "status": "flag",
+      "reason": "The no-joint-optimization problem is directly stated in the abstract. The costly-estimation item is only partially entailed by the supplied quote, which says existing systems estimate memory with a scaled input tensor but does not itself state cost or misleadingness; the full abstract does state that ahead-of-time estimation is often time-consuming and misleading.",
+      "limitations": "Scope the second problem to ahead-of-time memory/computing-overhead estimation in the described training systems; avoid claiming that scaled-input estimation is always costly or inaccurate."
+    },
+    {
+      "source_id": "arxiv:2311.02909",
+      "status": "pass",
+      "reason": "Both problems are directly entailed by the abstract: reducing communication is identified as the primary contribution, and the graph-topology-not-fitting-on-one-device condition motivates distributed sampling. Neither quote adds a broader unsolved-problem claim than the source supports.",
+      "limitations": "The memory statement is conditional on the input topology and does not imply that embeddings or every graph workload exceed one device."
+    },
+    {
+      "source_id": "arxiv:2301.00477",
+      "status": "flag",
+      "reason": "The abstract confirms that only stochastic approximations of the objective and derivatives are available, so the quote is source-faithful. However, this is primarily an oracle/modeling condition for the method, not by itself an explicit unsolved problem or novelty gap; the stated problem should not be read as claiming that stochastic oracles are newly unresolved in general.",
+      "limitations": "Keep the claim limited to inexact probabilistic zeroth- and first-order oracles in the stated nonlinear equality-constrained stochastic-optimization setting."
+    },
+    {
+      "source_id": "arxiv:2405.04811",
+      "status": "pass",
+      "reason": "The abstract explicitly says existing analyses rely on a specific covariance structure not adapted to all algorithms. The quote directly entails the stated problem and remains scoped to the analysis framework.",
+      "limitations": "Do not generalize beyond randomized low-rank approximation analyses or claim that every existing algorithm uses the restrictive covariance structure."
+    },
+    {
+      "source_id": "arxiv:2410.11971",
+      "status": "rejected",
+      "reason": "Retain the upstream rejection: the extraction result records an artifact quote mismatch for this source, so there is no accepted stated_problems record to semantically review.",
+      "limitations": "No problem-field entailment judgment was made; rejection is preserved rather than converted into acceptance or failure of an empty problem list."
+    }
+  ]
+}

@@ -143,6 +143,21 @@ class HTTPTests(unittest.TestCase):
     def test_run_traversal_rejected(self):
         self.assertEqual(self.request('/api/candidates?run=../../..')[0], 400)
 
+    def test_abstract_notes_remain_separate_and_unpromoted(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server,'ENGINE',Path(tmp)):
+            path=Path(tmp)/'reports/operational-notes-v2/notes.json';path.parent.mkdir(parents=True)
+            note={'source_id':'arxiv:test','operation':'Estimate an object','source_url':'https://example.test',
+                  'stated_problems':[{'name':'Source-scoped cost'}],'inputs':[],'outputs':[],
+                  'unknowns':['Missing interface'],'problem_review':{'status':'flag','reason':'Scope uncertain'},
+                  'ready_for_composition':False,'train_eligible':False,'novelty_established':False}
+            path.write_text(json.dumps({'notes':[note,{**note,'train_eligible':True}]}))
+            status,data=self.request('/api/operator-library')
+            self.assertEqual(status,200);self.assertEqual(data['operators'],[])
+            self.assertEqual(len(data['operational_notes']),1)
+            self.assertEqual(data['operational_notes'][0]['problem_review_status'],'flag')
+            self.assertFalse(data['operational_notes'][0]['ready_for_composition'])
+            path.write_text('x'*200001);self.assertEqual(server.operational_notes(),[])
+
     def test_operator_library_missing_catalog_is_empty(self):
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
             status, data = self.request('/api/operator-library')

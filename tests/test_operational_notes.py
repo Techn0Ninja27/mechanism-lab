@@ -6,7 +6,7 @@ class OperationalNotesTests(unittest.TestCase):
         self.paper={'source_id':'arxiv:0000.00001','abstract':'The estimator returns an accuracy estimate. Accuracy improved by 2 percent.',
                     'source_hash':'a'*64,'url':'https://example.test'}
         self.note={'source_id':self.paper['source_id'],'operation':'Estimate accuracy','operation_quote':'estimator returns an accuracy estimate',
-                   'inputs':[],'outputs':[{'name':'accuracy estimate','quote':'accuracy estimate'}],
+                   'stated_problems':[],'inputs':[],'outputs':[{'name':'accuracy estimate','quote':'accuracy estimate'}],
                    'reported_outcomes':[{'name':'measured improvement','quote':'Accuracy improved by 2 percent.'}],
                    'unknowns':['Estimator input and representation are unspecified.'],'ready_for_composition':False}
     def test_metric_valued_artifact_is_not_confused_with_reported_result(self):
@@ -25,5 +25,16 @@ class OperationalNotesTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate(n,self.paper)
         n=copy.deepcopy(self.note);n['outputs']*=5
         with self.assertRaises(ValueError):validate(n,self.paper)
+
+    def test_source_problem_requires_exact_evidence_and_allows_abstention(self):
+        n=copy.deepcopy(self.note)
+        self.assertEqual(validate(n,self.paper)['stated_problems'],[])
+        n['stated_problems']=[{'name':'An unsolved accuracy problem','quote':'Accuracy remains unsolved'}]
+        with self.assertRaises(ValueError):validate(n,self.paper)
+        self.paper['abstract']+=' Existing methods require excessive memory.'
+        n['stated_problems']=[{'name':'Memory cost in the source setting','quote':'Existing methods require excessive memory.'}]
+        result=validate(n,self.paper)
+        self.assertFalse(result['train_eligible'])
+        self.assertFalse(result['novelty_established'])
 
 if __name__=='__main__':unittest.main()

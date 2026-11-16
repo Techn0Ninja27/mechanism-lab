@@ -1,0 +1,424 @@
+{
+  "protocol_version": 2,
+  "status": "extracted_pending_semantic_review",
+  "notes": [
+    {
+      "source_id": "arxiv:2301.01821",
+      "operation": "Parameter-efficient fine-tuning design-space search: progressively refines a design space over layer grouping, trainable parameter allocation, tunable groups, and strategy assignment via greedy selection by model quality, yielding design patterns and resulting PEFT methods.",
+      "stated_problems": [
+        {
+          "name": "Hand-crafted separate designs",
+          "quote_sha256": "33214d5b328eaa83758bbfa4a78b4c48780e3659f5167efdaf92ac9987360e91",
+          "quote_characters": 149
+        }
+      ],
+      "inputs": [
+        {
+          "name": "Initial design space",
+          "quote_sha256": "968bd0600151aeac9ea025a6ffdb4600d783de1e3111201cb9fa965e6d948d5a",
+          "quote_characters": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Design patterns",
+          "quote_sha256": "840449d008e8cde0b405786b55245af72bb95105521fcce74afa260ef24ca3d6",
+          "quote_characters": 41
+        },
+        {
+          "name": "New PEFT methods",
+          "quote_sha256": "965a8e57b1cf46d2ae3799cd259e592cd9a46ca32994f0274f18af60e69a8eaa",
+          "quote_characters": 76
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "Outperforms PEFT baselines",
+          "quote_sha256": "ead1262206e50cbbfd85648dbf353c963dca63a64abf4444521aec884a18e22a",
+          "quote_characters": 196
+        }
+      ],
+      "unknowns": [
+        "Exact representation of layer groups and tunable-group parameterization",
+        "Greedy selection criterion and stopping condition",
+        "Number of stages and candidate choices per stage",
+        "Training budget and hyperparameters used during search",
+        "Concrete form of each discovered PEFT method",
+        "Which backbone models and tasks were used",
+        "Interface for strategy assignment (e.g., adapter/prefix/LoRA variants)",
+        "Computational cost of the search"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "e75fc2b75390b23402fc46493ef8a81adb615fa929b6d33eb3824529b3986a5a",
+      "source_url": "https://arxiv.org/abs/2301.01821",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "a01ec5f03a2fc4b02ed99e413a188d1977f22606671ac3b12b2db76f535bf003",
+      "problem_review": {
+        "status": "pass",
+        "reason": "The abstract explicitly says prior PEFT designs are hand-crafted separately and that it remains unclear whether design patterns exist. The quoted text directly entails the stated problem without asserting a broader novelty claim."
+      }
+    },
+    {
+      "source_id": "arxiv:2305.02299",
+      "operation": "Sparse-to-sparse dynamic sparse training that learns a fine-grained structured N:M-style sparsity via a constant fan-in constraint, with a neuron ablation method; evaluated via real-world layer acceleration measurements.",
+      "stated_problems": [
+        {
+          "name": "Unstructured sparsity speedup difficulty",
+          "quote_sha256": "f24cb4ffc4d7c37f28f987163d4171c70c0bf2ad32a0836d52010cb1d0edd9ca",
+          "quote_characters": 84
+        }
+      ],
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "Sparse structured network",
+          "quote_sha256": "796330cf38ef8a4599c0ef613ba284e49bfb471529a933b8a5fde0b33cb2cadb",
+          "quote_characters": 58
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "Layer acceleration",
+          "quote_sha256": "53cd823b92a661ca158137cdd1bc33a31ab69520da5c9f3e27ea92ea01830db6",
+          "quote_characters": 142
+        }
+      ],
+      "unknowns": [
+        "Definition of the constant fan-in constraint in implementation terms",
+        "Layer shapes and sparse data format used in benchmarks",
+        "Neuron ablation procedure details",
+        "Sparsity schedule and update interval",
+        "Hardware and software stack for CPU and GPU measurements",
+        "Which NN architectures and datasets were evaluated",
+        "Accuracy results of SRigL at high sparsity",
+        "Comparison details for dense and CSR baselines"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "3a4626c7dbb3aa57e81c6f07c218383ef64011c9d3cc07ce4f20ce83b779548f",
+      "source_url": "https://arxiv.org/abs/2305.02299",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "ded9f2ce3b02d8f24a6e90f0b8219cae560bd1e36005b9cf14e7d83fe3295412",
+      "problem_review": {
+        "status": "pass",
+        "reason": "The abstract explicitly states that achieving real-world hardware speedups with unstructured sparsity is challenging. The quote directly supports the stated problem."
+      }
+    },
+    {
+      "source_id": "arxiv:2501.18864",
+      "operation": "Flatness-guided test-time adaptation of vision-language models: sharpness-aware prompt tuning identifies a training flat minimum, and sharpness-based test sample selection aligns test-sample loss landscapes with it during adaptation.",
+      "stated_problems": [
+        {
+          "name": "Computational overhead of prompt updates",
+          "quote_sha256": "4f361452482b3c4746c975906ca1478c7ee9a9e1b200257b0553a8e7c1778db2",
+          "quote_characters": 123
+        },
+        {
+          "name": "Performance loss from isolated TTA design",
+          "quote_sha256": "9077edc08391312a6972d8045950cf97c469d24e09f1705997c322dc0cc2d82a",
+          "quote_characters": 178
+        }
+      ],
+      "inputs": [
+        {
+          "name": "Augmented test samples",
+          "quote_sha256": "22bd6d2733e3835b2f484614825dc8e589c12f57a6074156d18175f69f8e10c4",
+          "quote_characters": 43
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Selected test samples",
+          "quote_sha256": "3f0fe37ef1a258b37f977cdd7d02f3ca604a2978fa0083a81370b4a833d5d9f7",
+          "quote_characters": 60
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "Outperforms TTA baselines",
+          "quote_sha256": "11006c2f12b62e8c3fe4751c265c5bd1deb6745fffcd469ebe5cd61536ab2c94",
+          "quote_characters": 61
+        },
+        {
+          "name": "ImageNet OOD gain over TPT+CoOp",
+          "quote_sha256": "ec9087d45b0149864f3b6112c31b5b3ad2db953d0e7206ee1349006c88062923",
+          "quote_characters": 101
+        }
+      ],
+      "unknowns": [
+        "Sharpness metric and how it is computed",
+        "Augmentation scheme for test samples",
+        "Selection threshold or ratio",
+        "Form of prompt parameters and their training",
+        "Loss function used in sharpness-aware tuning",
+        "Exact test-time procedure and whether any parameters are updated",
+        "Training datasets and backbone details beyond ViT-B/16",
+        "Hyperparameters for sharpness-aware optimization"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "0fe7387dd7e58588d6f55a6a2f280db76196b77e8db23a025d3c2cdb47b4da7e",
+      "source_url": "https://arxiv.org/abs/2501.18864",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "6c84de316c2858bbf7a99ed345bb149a0fd4b8ace92353029b167c363e00282a",
+      "problem_review": {
+        "status": "flag",
+        "reason": "The performance-loss problem is directly entailed: the abstract says existing TTA methods design strategies in isolation from training characteristics and that this degrades performance. The computational-overhead item is only weakly evidenced by its quote, which reports that FGA avoids expensive updates and reduces overhead; that is a claimed method benefit, not a direct statement of an unresolved prior-method problem. The abstract does mention overhead reduction, so the issue is narrow rather than wholly unsupported."
+      }
+    },
+    {
+      "source_id": "arxiv:2302.02599",
+      "operation": "Jointly optimizes distributed execution (parallelization) and activation/gradient checkpointing plans, and provides a symbolic profiler that generates memory and computing statistics for PyTorch models.",
+      "stated_problems": [
+        {
+          "name": "No joint optimization",
+          "quote_sha256": "a96fbec16886a68fe1afe9f06523561157895763029b71c32617e253c874d5bb",
+          "quote_characters": 69
+        },
+        {
+          "name": "Costly overhead estimation",
+          "quote_sha256": "0b639a7d72cc5d9577d34d702f5aa329c304a938f23f3a53ac2286e3f218c029",
+          "quote_characters": 48
+        }
+      ],
+      "inputs": [
+        {
+          "name": "PyTorch model",
+          "quote_sha256": "be8f4a0f9fdb2a8b1653ed97177a3754e036861264a9a533fdabd4864ba5ad81",
+          "quote_characters": 17
+        },
+        {
+          "name": "Hardware",
+          "quote_sha256": "16c3c4f71f271b0f4ee554c3a4a87fe1b93ab26aab7913b33a1f714ff5764c3e",
+          "quote_characters": 54
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Memory and computing statistics",
+          "quote_sha256": "11c48b95503ca2555b8a30d7f23a7753bdcd6682d2489a3c27e29078d356c478",
+          "quote_characters": 41
+        },
+        {
+          "name": "Joint parallelization and checkpointing plan",
+          "quote_sha256": "90bb60039d673781c02f514a8a4294f0cb3387db8f20b4cba3b5431f8403d224",
+          "quote_characters": 71
+        }
+      ],
+      "reported_outcomes": [],
+      "unknowns": [
+        "Exact plan representation and output format",
+        "Supported parallelism modes beyond those named",
+        "Profiler accuracy versus physical execution",
+        "Required API entry points",
+        "Hardware and memory constraint specification format",
+        "Whether optimization is ahead-of-time or runtime",
+        "Estimated time cost of profiling",
+        "Interface to existing PyTorch training loops"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "b0d95df3c9de3429ba2197c5335aac17041ddc923a67322c1f499b74c3534228",
+      "source_url": "https://arxiv.org/abs/2302.02599",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "0fade882ac26b0cc6238223a545d980d2a63c002617924cb75054e09304f7575",
+      "problem_review": {
+        "status": "flag",
+        "reason": "The no-joint-optimization problem is directly stated in the abstract. The costly-estimation item is only partially entailed by the supplied quote, which says existing systems estimate memory with a scaled input tensor but does not itself state cost or misleadingness; the full abstract does state that ahead-of-time estimation is often time-consuming and misleading."
+      }
+    },
+    {
+      "source_id": "arxiv:2311.02909",
+      "operation": "Matrix-based bulk minibatch sampling for distributed GNN training, expressing sampling as sparse matrix multiplication (SpGEMM) and sampling multiple minibatches at once, with communication-avoiding SpGEMM when the graph is distributed.",
+      "stated_problems": [
+        {
+          "name": "Sampling communication cost",
+          "quote_sha256": "6d9fb5820fe0a7e5eeb1e836c2fe8de949cc0bee54afd32c3fe6e207d042cd64",
+          "quote_characters": 72
+        },
+        {
+          "name": "Graph exceeds single-device memory",
+          "quote_sha256": "e4419ad516d5e83337c29bbcf1a63350f1309ff75afde766a203ced45060d4d9",
+          "quote_characters": 61
+        }
+      ],
+      "inputs": [
+        {
+          "name": "Input graph topology",
+          "quote_sha256": "fed13f76a5dea1196a9bc5378dc085a3a3ce309fb39595f37cdd843a9868327a",
+          "quote_characters": 24
+        },
+        {
+          "name": "Sampling matrix constructions",
+          "quote_sha256": "0755b33caae1ed22f8b358ae1c6b54d785cc272ab43bd14e08ac2a73e34771a7",
+          "quote_characters": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Sampled minibatches",
+          "quote_sha256": "9391feaea6126ddb2bd4bca0bea9749bca9a4bc9caf9579af1e8c492e5360961",
+          "quote_characters": 36
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "End-to-end speedup over Quiver",
+          "quote_sha256": "5f0492c638db091f72d28c3643cb4fc368d335eaee5c108b7ad32b0612a13e3c",
+          "quote_characters": 46
+        },
+        {
+          "name": "Per-epoch speedup on non-OGB datasets",
+          "quote_sha256": "22df6558607af2248e1bda559e3c094dcdb09262ec1d65203b7eb45d516b8abc",
+          "quote_characters": 62
+        }
+      ],
+      "unknowns": [
+        "Input and output tensor/sparse matrix formats",
+        "Partitioning scheme for distributed graph",
+        "Sampling algorithm interfaces exposed",
+        "Required GPU count and hardware assumptions",
+        "Supported sampling algorithms list",
+        "Handling of embeddings during sampling",
+        "Communication-avoiding SpGEMM variant used",
+        "Dependencies on PyTorch-Geometric or Quiver integration"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "a9684d30f0a285b9a38881153d84092e0ec34432257bafb5eeec3e10028e3b9f",
+      "source_url": "https://arxiv.org/abs/2311.02909",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "c4501de95ffb598edbad1f50da1391acc7b43280ac42f68e60b26eb05d830e2d",
+      "problem_review": {
+        "status": "pass",
+        "reason": "Both problems are directly entailed by the abstract: reducing communication is identified as the primary contribution, and the graph-topology-not-fitting-on-one-device condition motivates distributed sampling. Neither quote adds a broader unsolved-problem claim than the source supports."
+      }
+    },
+    {
+      "source_id": "arxiv:2301.00477",
+      "operation": "A step-search sequential quadratic programming method for nonlinear equality constrained stochastic optimization using inexact probabilistic zeroth- and first-order oracles.",
+      "stated_problems": [
+        {
+          "name": "Stochastic oracle inexactness",
+          "quote_sha256": "ab2f7a0da322606513a5e488ceb7c488152fa701058b83ea98a5f242effa13dd",
+          "quote_characters": 103
+        }
+      ],
+      "inputs": [
+        {
+          "name": "Constraint function values and derivatives",
+          "quote_sha256": "17c45b1de2be734c8e9af1b5316114312864840a64bfcfc692cecc4bd4776487",
+          "quote_characters": 56
+        },
+        {
+          "name": "Probabilistic zeroth- and first-order oracles",
+          "quote_sha256": "ccf4f7b066e1516d5c15e218554b4a0107320f1303ad42e2dabeb612827d160e",
+          "quote_characters": 53
+        }
+      ],
+      "outputs": [],
+      "reported_outcomes": [
+        {
+          "name": "High-probability iteration complexity bound",
+          "quote_sha256": "654d2ce0584de64a96a72a6c8135efe3417574f6f3ab6357768e0e9b8e7b809b",
+          "quote_characters": 120
+        },
+        {
+          "name": "Numerical results on test problems",
+          "quote_sha256": "1da52c347aff1e30b26a691abdcea59d9ccbf5bdd1065cf5175671dab10a62de",
+          "quote_characters": 108
+        }
+      ],
+      "unknowns": [
+        "Iterate and step data types",
+        "Stopping criteria and tolerance parameters",
+        "Step-search rule details",
+        "Oracle call interface and sample sizes",
+        "Assumptions underlying the complexity bound",
+        "Quantitative numerical results",
+        "Handling of inequality constraints",
+        "Software implementation availability"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "f29acfe245396c765d2d9cf3e02e93692de51b0af04f3743f897dfd163e0ee02",
+      "source_url": "https://arxiv.org/abs/2301.00477",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "b0612901e77baa362f979103124a72c47be1659b2eec28780c956f52bf7f1ff9",
+      "problem_review": {
+        "status": "flag",
+        "reason": "The abstract confirms that only stochastic approximations of the objective and derivatives are available, so the quote is source-faithful. However, this is primarily an oracle/modeling condition for the method, not by itself an explicit unsolved problem or novelty gap; the stated problem should not be read as claiming that stochastic oracles are newly unresolved in general."
+      }
+    },
+    {
+      "source_id": "arxiv:2405.04811",
+      "operation": "Analytical error analysis of randomized low-rank approximation in Frobenius norm for centered and non-standard Gaussian matrices, deriving bounds in expectation and probability.",
+      "stated_problems": [
+        {
+          "name": "Restrictive covariance structure in existing analyses",
+          "quote_sha256": "0e9cbf2256a8a7b82104123d3c58a3d6897cafbb47d9f4e56cbde308f8fbb280",
+          "quote_characters": 96
+        }
+      ],
+      "inputs": [
+        {
+          "name": "Covariance matrix of Gaussian matrix",
+          "quote_sha256": "a1c406b0a77b96129ba529e6f256fab547a3fa89c1d6b27ee1a7214365dfb878",
+          "quote_characters": 50
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Error bounds in expectation and probability",
+          "quote_sha256": "c1f4630a919cf737572815e58326f29bd5167f59995aa52ef2183c510d9865f4",
+          "quote_characters": 61
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "Improved performance via structure-exploiting covariance choice",
+          "quote_sha256": "f66e3584a9b0da62ab3f1bf9a17ce28be58b59293047ddf48a6b66c9a6678aca",
+          "quote_characters": 116
+        }
+      ],
+      "unknowns": [
+        "Precise form of the error bounds",
+        "Assumptions on the covariance matrix",
+        "Algorithmic procedure for generating the random matrix",
+        "Target rank and oversampling parameters",
+        "Data assimilation experimental setup",
+        "Quantitative numerical results",
+        "Relation to specific existing algorithms",
+        "Scope of the Frobenius-norm results"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "10dd391c8bbed17d02943531f011a4bc796bb8d7504d7a6ec29fa856693da159",
+      "source_url": "https://arxiv.org/abs/2405.04811",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "8e0ac8d77320426493c211b3c8b06d68237c045d9c4a37f47ff58dd77796107f",
+      "problem_review": {
+        "status": "pass",
+        "reason": "The abstract explicitly says existing analyses rely on a specific covariance structure not adapted to all algorithms. The quote directly entails the stated problem and remains scoped to the analysis framework."
+      }
+    }
+  ],
+  "errors": [
+    {
+      "batch": 0,
+      "source_id": "arxiv:2410.11971",
+      "error": "artifact quote mismatch"
+    }
+  ],
+  "input_papers": 8,
+  "scope": "Quote identity and structure checked only. No semantic entailment, composition readiness, novelty or training claim.",
+  "public_redaction": "Exact source quotes replaced with hashes; not valid extraction input. Local originals retained."
+}
