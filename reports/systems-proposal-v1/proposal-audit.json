@@ -1,0 +1,67 @@
+{
+  "proposal": "proposal-0",
+  "status": "revise",
+  "scope": "Audit of the proposed frequency-rank LEB128 codec against the FaBC excerpt; local codec/byte/correctness evidence only. No distributed speedup, GPU-link throughput, energy, convergence, or task-quality claim is licensed.",
+  "source_status": "The proposal and author results are not independently replicated; the supplied methods are excerpts, not a complete implementation specification.",
+  "findings": [
+    {
+      "id": "rank-map-cost",
+      "candidate_status": "revise",
+      "finding": "The proposal treats frequency rank as if it were already a trainer-compatible node ID. A rank-coded stream needs a rank-to-original-node/trainer-index dictionary, its serialization, transfer or residency policy, and lookup cost. HaSyn's frequency sort does not establish that FaBC's codec or the trainer remaps IDs.",
+      "quotes": {
+        "sha256": "8ebc9498b909f60afb2a27a0f5a2b6d0c4e16fa2d1dd449ae5e7ea12d8663308",
+        "redacted": true
+      },
+      "scope_effect": "Without charging the mapping and any trainer-side remap, the proposed byte ratio and decode comparison are incomplete. A local test can measure dictionary bytes, lookup time, and whether the decoded sequence exactly restores trainer IDs; it cannot infer distributed transfer savings."
+    },
+    {
+      "id": "k-rule",
+      "candidate_status": "test",
+      "finding": "The proposal correctly flags an ambiguity but does not freeze a baseline. 'Largest k satisfying' can mean greedy stop at first failed marginal test or global largest satisfying index; because the condition need not be monotone, these are different FaBC baselines. The source also conflicts on bitmap extent, so both k interpretations and both byte models must be reported before comparing varints.",
+      "quotes": {
+        "sha256": "04864d20dc9b3fbe1208d57520ab1ee6b7318bcdf5b4303f00cd72f88d23898b",
+        "redacted": true
+      },
+      "scope_effect": "The cheapest valid test is analytic replay from a frozen histogram: enumerate all k, show the chosen k under each interpretation, and compute fully specified serialized bytes. Do not call a result a win until the baseline variant is declared."
+    },
+    {
+      "id": "uniform-regime",
+      "candidate_status": "revise",
+      "finding": "The proposal says uniform graphs are an excluded regime, but the source only says HaSyn is most effective when updates are skewed; it does not exclude FaBC or justify removing uniform data from the main codec test. Uniform/low-skew inputs are a required counterexample and should be included as a prespecified failure regime, not silently discarded.",
+      "quotes": {
+        "sha256": "e129e7ca410cd4aece82434fc8c0e18e63cd21483693e320841a49f6cd52fce2",
+        "redacted": true
+      },
+      "scope_effect": "Retain low-skew graphs in the held-out set and report them separately. A failure there bounds applicability; it does not refute a skew-conditional hypothesis. Do not generalize from YouTube-like skew."
+    },
+    {
+      "id": "throughput-gates",
+      "candidate_status": "reject",
+      "finding": "The proposed throughput gates are unsupported by the excerpts and are not a feasible local proxy for the stated link claim. 'at least 0.5x' and 'nominal 25 GB/s link' are arbitrary choices; the energy source measures GH200/JUPITER hardware with instrumented CPU/GPU paths, not Apple GPU varint kernels or PCIe/NVLink transfer.",
+      "quotes": {
+        "sha256": "583454be396ea56fd82a4d16c83fdd0ba33342ff6ce58134df8ca0e061fd0266",
+        "redacted": true
+      },
+      "scope_effect": "Remove the 0.5x and 25 GB/s kill gates. Measure codec encode/decode wall time on the actual available device (and state CPU versus Metal/GPU implementation), bytes per decoded trainer ID, and round-trip equality. Any link-time conclusion remains an explicit model extrapolation, not a measurement."
+    }
+  ],
+  "recommended_bounded_test": {
+    "decision": "revise_then_test",
+    "operator": "Known rank dictionary plus LEB128 codec, with dictionary bytes and remap work charged; FaBC baseline fixed to explicitly enumerated Eq. 8 and bitmap-length variants.",
+    "matched_control": "Identical walks, seeds, frozen first-round histogram, trainer-ID outputs, and serialization framing; vary only codec and required rank dictionary.",
+    "metrics": [
+      "total serialized bytes including mapping/headers",
+      "encode/decode time on the Mac implementation actually used",
+      "positions per second",
+      "exact round-trip equality"
+    ],
+    "kill_rule": "Reject the codec if its charged bytes are not lower than the selected FaBC baseline on the prespecified skewed test, or if remapping/decoding breaks exact equality; report low-skew results as applicability bounds, not as an excluded omission.",
+    "cannot_claim": [
+      "distributed bandwidth reduction",
+      "real GPU-link throughput",
+      "energy savings",
+      "graph-task quality or convergence",
+      "novelty"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "sources/felog-methods.txt",
+    "sha256": "e09b9a5072ed630cc359de8419d7d105be101c4f82a380d448d11de50623b680",
+    "characters": 20932,
+    "scope": "selected sections only"
+  },
+  {
+    "path": "sources/energy-methods.txt",
+    "sha256": "c840214d3e1807ed05b7e3adc0e963464e4417d39500fbdef786bd9dbceaa3ce",
+    "characters": 12123,
+    "scope": "selected sections only"
+  }
+]

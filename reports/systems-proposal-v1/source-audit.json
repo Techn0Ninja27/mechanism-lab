@@ -1,0 +1,59 @@
+{
+  "source_status": {
+    "files_read": [
+      "sources/felog-methods.txt",
+      "sources/energy-methods.txt"
+    ],
+    "trust_level": "untrusted excerpts; selected method sections, not complete papers",
+    "author_results_replicated": false,
+    "replication_note": "No author experiments or decoder results were inspected; the claims below are not replicated."
+  },
+  "findings": [
+    {
+      "id": "fabc-byte-baseline",
+      "issue": "The FaBC byte model is internally ambiguous about bitmap scope and what is counted.",
+      "impact": "The first two statements imply N*k*L/8 bitmap bytes, while the later statement implies k*N/8; these differ by a factor of L. Serialization headers, sequence lengths, offsets, and the selected-ID stream are also not specified, so the reported ratio is not reproducible from the excerpt alone.",
+      "cheap_single_mac_test": "For a fixed walk corpus, measure raw serialized bytes and an explicitly specified bitmap format byte-for-byte, including headers and offsets; report both per-sequence-L and corpus-level-N interpretations.",
+      "evidence_text_sha256": [
+        "53ad08b634722cc6be1ed3c8c20392ed8e7bfd9896e42cb15d41f9b0a401d41b",
+        "3f33964206dc2abd81041c0de418865844fd73530e43ac7da60b0f2e41c03faf",
+        "6db2993b46723b6367ed81b4599f95c28c197546a9a1ecae5182ba795e0e707b"
+      ]
+    },
+    {
+      "id": "fabc-frequency-and-threshold",
+      "issue": "Frequency normalization, scope, and the stopping rule are underspecified.",
+      "impact": "It is unclear whether p(i) is a corpus-wide position fraction, a per-sequence probability, or averaged per-worker frequency; the rule's 'largest k' tests the marginal node k+1 while the selected set is top-k, and its 10% threshold is an arbitrary fixed choice. The example's \u2018top-1 and top-2\u2019 conclusion cannot be checked without the actual frequency vector and L.",
+      "cheap_single_mac_test": "On a fixed corpus, sweep normalization choices, k, and threshold values (including 0%, 5%, 10%, 20%), and report exact reconstruction, bytes, encode/decode time, and sensitivity across seeds.",
+      "evidence_text_sha256": [
+        "ac5fd8c653b6f93b15928e3dec07dbe482d9f9eb53b328714cb1088837c0cf04",
+        "bac234d19f7470fc99ce24814457381c71f7cf2937a2d7206e04495e3d27c699",
+        "9e352b60ae90cf68839e5c088955cf9323406a0600c736e30ecd7a4baae8ea3e"
+      ]
+    },
+    {
+      "id": "hasyn-sync-rules",
+      "issue": "HaSyn does not define an executable synchronization protocol sufficiently to validate its network claim.",
+      "impact": "No synchronization period, block recomputation rule, conflict/aggregation semantics, payload format, or staleness bound is given. Distinct frequency values can make |F| large, so |F| << |V| is an assumption rather than a demonstrated bound. Random one-node sampling per block does not by itself establish accuracy or byte savings.",
+      "cheap_single_mac_test": "Use one process to emulate M logical workers and fixed update traces; count the exact bytes/messages under an explicitly chosen period and aggregation rule, and measure staleness/error against full synchronization. Label this a protocol simulation, not a distributed result.",
+      "evidence_text_sha256": [
+        "743d4347b1b65e4df02ef1c1efba583bf7bd548dba4d3a873aa95a56092a5629",
+        "d44468d1523a51bc9ee7127d4e7a4c2a59b06d4426a4244aaf9331c88a9ba891",
+        "ad24cf98b51c19703806c7ac3dc2cead6421325549ab9830b52c62461fa9a808"
+      ]
+    },
+    {
+      "id": "energy-transfer",
+      "issue": "The energy excerpt cannot support FaBC/HaSyn energy claims on a Mac.",
+      "impact": "The instrumentation, hardware, workloads, and FLOP accounting are specific to GH200/JUPITER multimodal training and do not transfer to a Mac. The excerpt reports general offloading observations, not measurements of FaBC or HaSyn.",
+      "cheap_single_mac_test": "Restrict the Mac test to wall-clock time, serialized bytes, CPU/GPU utilization where available, and exactness; optionally record platform power only as an architecture-specific exploratory measurement, without claiming distributed or energy gains.",
+      "evidence_text_sha256": [
+        "df4216726e7a5723287deea1bcbb120ab5531e76c38f46e473669237819c8978",
+        "ba28e2bf81b5dbbe1ffbadc1e032d478a35a1be128b2841c28f8415e98bcc1a3",
+        "3097664a1fa225815a8ca8ffbbadb3bde1f1787e8fe9cf6a4cde88b71bde7e55"
+      ]
+    }
+  ],
+  "scope_boundary": "A single Mac can falsify an encoding-format, threshold, correctness, and local runtime hypothesis. It cannot establish multi-machine bandwidth reduction, convergence under asynchronous synchronization, GH200 energy efficiency, or the authors' end-to-end claims.",
+  "quotation_caution": "Native agent evidence strings were not all verbatim source spans. They are withheld here; consult original excerpt snapshots for exact text."
+}

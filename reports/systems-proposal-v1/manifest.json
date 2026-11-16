@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "id": "2606.22180v1",
+      "title": "FeLoG sections 5.2\u20135.4",
+      "url": "https://arxiv.org/html/2606.22180v1",
+      "path": "sources/felog-methods.txt",
+      "evidence_level": "full_text"
+    },
+    {
+      "id": "2605.01938v1",
+      "title": "GH200 energy analysis sections III and V",
+      "url": "https://arxiv.org/html/2605.01938v1",
+      "path": "sources/energy-methods.txt",
+      "evidence_level": "full_text"
+    }
+  ]
+}

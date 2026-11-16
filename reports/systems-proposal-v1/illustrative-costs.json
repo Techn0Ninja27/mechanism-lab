@@ -1,0 +1,12 @@
+{
+  "scope": "Recalculation of model illustrative aggregate assumptions, not observed graph data or an implemented codec. Omits mapping/header/setup costs for all variants; tail rank-band masses are not a realized monotone histogram. No general falsification.",
+  "ratios_to_raw_uint32": {
+    "fabc": 0.4875,
+    "varint_with_sequence_offsets": 0.4125,
+    "fabc_with_three_byte_tail": 0.3875
+  },
+  "varint_over_original_fabc": 0.8461538461538461,
+  "varint_over_packed_tail": 1.064516129032258,
+  "novelty_established": false,
+  "train_eligible": false
+}

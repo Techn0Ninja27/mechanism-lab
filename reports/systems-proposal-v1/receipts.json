@@ -1,0 +1,30 @@
+{
+  "calls": [
+    {
+      "stage": "decode-v2",
+      "status": "complete",
+      "finish_reason": "stop",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "response_id": "gen-1794865973-Ug4LgIanNanmr39cFNnF",
+      "request_hash": "f5d06e662cec56b4e2a28d4b529ef8eec212861ec910da2619c1ac5b70de93e6",
+      "input_tokens": 20089,
+      "output_tokens": 4632,
+      "usage_cost_usd": 0.17126604,
+      "upstream_cost_usd": 0.172996
+    },
+    {
+      "stage": "review-after-relink",
+      "status": "complete",
+      "finish_reason": "stop",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "response_id": "gen-1794866138-r9PyUqPhjm6c8l6FMcNH",
+      "request_hash": "778ba8d5277ceb1012ed6a236ee048ecce5a8879ecf92387ce7599f7059edc3a",
+      "input_tokens": 21391,
+      "output_tokens": 4093,
+      "usage_cost_usd": 0.16574976,
+      "upstream_cost_usd": 0.167424
+    }
+  ],
+  "charged_usd": 0.34042,
+  "phase_charged_usd": 2.5123895000000003
+}

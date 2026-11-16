@@ -41,3 +41,14 @@ The default corpus is the integrated-v2 snapshot when present, otherwise the ear
 The curated method-lineage registry currently covers only NeuMiss/NeuMiss_sota and StableMiss/StableMiss+. It distinguishes exact pinned implementation files from README or abstract metadata. A known successor’s absence is a coverage warning, not evidence that the original is current or novel. This registry is agent-checked, not human adjudicated, and is not a comprehensive literature graph.
 
 A real protocol-v2 run recorded an arXiv HTTP 429 and continued with one local abstract plus the original code pack and a missing-successor warning. It explicitly recognized the published shared-weight successor. That is one observed case, not a controlled estimate of retrieval’s effect on idea quality. The alternative proposal still failed a numerical fixed-point test.
+
+## Broader systems run (2026-11-17)
+
+The [FeLoG transfer-codec run](../reports/systems-proposal-v1/README.md) used
+selected method sections and local prior-art retrieval with protocol 5. One
+citation lost TeX delimiters and failed validation; the original run is retained.
+A separate, documented quote-only correction enabled review. The known codec
+composition needs stronger packed-tail controls and complete mapping costs
+before experimentation. The webapp exposes the result and a five-point factual
+audit; neither the review's `test` decision nor its `nontrivial` mechanism status
+establishes novelty or measured performance.

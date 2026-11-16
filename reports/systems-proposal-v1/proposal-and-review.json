@@ -1,0 +1,159 @@
+{
+  "status": "reviewed_after_manual_quote_relink",
+  "proposal": {
+    "title": "Bounded local test: frequency-rank varint coding versus FaBC bitmaps for CPU-to-GPU walk-corpus transfer",
+    "hypothesis": "On random-walk corpora from untouched public graphs, a lossless byte-aligned varint coding of frequency-ranked node IDs will need at most 0.85x the bytes of FaBC (Eq. 6\u20138). Its decode throughput on the local Apple GPU will be at least 0.5x that of a matched FaBC decoder. Training and sampling semantics stay unchanged because both codecs are exactly reversible.",
+    "baseline": "FaBC as specified in FeLoG \u00a75.2.2 (2606.22180v1, chunks 0002\u20130003). The first round profiles frequencies p(i). The rule selects k by Eq. 8: p(k+1) \u2265 c + 0.1\u00b7g(k), with c = 1/L + 1/32. Encoding uses k per-sequence length-L bitmaps, the k IDs once per sequence, and a 4-byte ID stream for the tail. Size is S(k) = 4NL(1\u2212F_k) + 4Nk + NkL/8. No author code is supplied, so the baseline is a reimplementation from the text. That is a baseline-coverage gap, not grounds for rejection.",
+    "operator_delta": "Replace only the FaBC encode/decode operator. The new encoder (1) relabels IDs by descending first-round frequency rank and (2) emits each position as a LEB128 varint: 1 byte for rank<128, 2 bytes for rank<16384, 3 bytes for rank<2^21, otherwise 4\u20135 bytes. It also emits per-sequence byte offsets so the GPU can decode in parallel. Everything else is unchanged: sampler, walks, round-1 profile, checkpoint and trainer input. This is an obvious known composition of frequency ranking and varint coding, not a novel codec.",
+    "mechanism_check": {
+      "status": "nontrivial",
+      "assumption_scope": "Source-supported: walk corpora are skewed, with top-2 nodes covering over 50\u201360% on YouTube. Fixed 4-byte IDs are the uncompressed reference. The profile is reused across rounds. HaSyn already sorts the embedding matrix by frequency, so rank IDs exist. Target assumptions (inferred): the skew persists on new graphs, and the GPU varint decode cost is acceptable. Ambiguity 1: Eq. 6 describes per-sequence length-L bitmaps, but the later example describes k bitmaps of length N. Ambiguity 2: Eq. 8's 'largest k satisfying' could mean a greedy stop at the first failure or the largest k anywhere; the condition is not monotone. Both FaBC variants will be implemented and reported. Uniform-degree graphs are an excluded regime for FaBC, not a contradiction.",
+      "specialized_operation": "FaBC ratio: g(k) = 1 \u2212 F_k + k/L + k/32. With the source example (F_2 = 0.6, k = 2, L = 80), g = 0.4 + 0.025 + 0.0625 = 0.4875. Varint ratio: g_v = (1/4)\u00b7\u03a3_i p(i)\u00b7b(rank i), plus 4/(4L) for offsets. Under the same example, assume the top 2 ranks take 1 byte (0.6 mass). Suppose half of the remaining 0.4 mass falls in ranks <16384 (2 bytes) and the rest needs 3 bytes. Then g_v = (0.6 + 0.4 + 0.6)/4 + 0.0125 \u2248 0.41. This tail split is an assumption, not a source value.",
+      "remaining_effect": "What survives simplification is variable-length coding of the tail. FaBC keeps every non-hot position at 4 bytes and pays k bits per position. Varint pays about 1 byte for the top 127 ranks and shrinks the mid-frequency tail. Unresolved: the actual tail mass distribution on new graphs, and whether the decode cost (offsets, branchy parsing) erases the byte saving. PCIe/NVLink time is not measurable locally.",
+      "simplest_baseline": "(a) Plain 4-byte IDs: zero compute, 4NL bytes. (b) A general-purpose compressor (LZ4/zstd) over the rank-relabeled stream: it may compress better, but GPU decode is hard. (c) Entropy coding (Huffman/ANS) over ranks: near-optimal bytes, but the slowest decode. Varint is a midpoint, and (b) and (c) must be reported so a win against FaBC alone is not overclaimed.",
+      "distinguishing_test": "Analytic first: compute g(k) and g_v from the round-1 rank histogram alone, with no codec implementation. Proceed to a decoder benchmark only if g_v \u2264 0.85\u00b7g(k) on the development graphs."
+    },
+    "evidence": [
+      {
+        "chunk_id": "2606.22180v1:chunk:0002",
+        "supports": "Exact FaBC cost model, with a fixed 4-byte tail",
+        "quote_sha256": "010fd70d751237aadd9d919783ad97dac308cbf56cd5be25d2da0f57399304d6",
+        "quote_characters": 35
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0003",
+        "supports": "Selection rule, whose scope is ambiguous",
+        "quote_sha256": "ac318e8927859a2e125a08bd61df20710ab162394934ccae165b1154f2ce9842",
+        "quote_characters": 39
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0003",
+        "supports": "A bitmap-length description that conflicts with Eq. 6",
+        "quote_sha256": "f5b75bccf825e7c1d3f7935e6ffa86d2aa7c11ea1b74a4a09ebbcf02a391e472",
+        "quote_characters": 25
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0004",
+        "supports": "Frequency-rank IDs already exist in the FeLoG pipeline",
+        "quote_sha256": "eeef9288ba9bc0fd1e70642b546bff5e589f9539885df31eb7c84a92a1c1f544",
+        "quote_characters": 93
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0005",
+        "supports": "Decode cost lies on the GPU path and must be measured",
+        "quote_sha256": "71771d524bcc9f1ebc508fdb2da193747ef6a34796a1be2b7a38b56d8223c10d",
+        "quote_characters": 45
+      }
+    ],
+    "assumptions": [
+      "Round-1 rank profiles remain valid for later rounds (measured as the round-5 byte drift)",
+      "Walk skew on untouched graphs resembles the source examples",
+      "Apple GPU decode throughput gives only a relative proxy, not discrete-PCIe timing"
+    ],
+    "data_paths": [
+      {
+        "input": "Round-1 walk corpus",
+        "operation": "Frequency histogram, rank relabeling, FaBC k-selection",
+        "output": "Rank table and k",
+        "possible_leakage": "Profiling and evaluation on the same round inflates both codecs. Evaluate on rounds 2\u20135 with the profile frozen."
+      },
+      {
+        "input": "Walks from rounds 2\u20135",
+        "operation": "FaBC encoding versus varint encoding, then decoding",
+        "output": "Bytes, decode time, round-trip equality",
+        "possible_leakage": "None in the semantics, since the codec is lossless. A shared random seed across codecs is required."
+      }
+    ],
+    "counterexample": "A near-uniform-degree graph with |V| > 2^21: most ranks need 3\u20134 bytes, so g_v \u2248 0.8\u20131.0. FaBC picks k = 0, and varint only adds decode cost.",
+    "matched_control": "Same walks, seeds, rank relabeling, round-1 profile and offset arrays. Only the codec operator differs: FaBC (both Eq. 8 readings) versus varint. Plain rank-relabeled 4-byte IDs and LZ4 are also run on the identical stream.",
+    "experiment": {
+      "development": "DeepWalk/node2vec walks (L = 80, 10 walks/node, fixed p and q) on SNAP com-Amazon and com-DBLP. Wiki-Vote and YouTube are excluded because they appear in the source.",
+      "heldout": "soc-Pokec and one road network (roadNet-CA, the low-skew regime). Graph choice and thresholds are frozen before any held-out run.",
+      "metric": "Bytes per position relative to 4NL, and decode throughput in positions/s on the Apple GPU. Report the median over 5 seeds and the per-graph worst case.",
+      "kill_threshold": "Reject if on Pokec the median varint bytes exceed 0.85x FaBC bytes (best Eq. 8 variant). Also reject if varint decode throughput is below 0.5x the FaBC decoder, or below the throughput needed to beat plain 4-byte IDs at a nominal 25 GB/s link. Report roadNet as the expected failure regime."
+    },
+    "prior_art_difference": "Overlap: bitmap compression lineage (Roaring, WAH) and frequency-sorted ID coding, both standard. The proposed difference is only empirical: substituting a known varint rank code for FaBC inside the FeLoG transfer stage. FedAIS and SAT were not retrieved (0 local records), so overlap with them is unchecked. No local experiment feedback matches this pair. No novelty is claimed.",
+    "decision": "investigate",
+    "novelty_established": false
+  },
+  "manual_intervention": {
+    "kind": "manual_exact_quote_relink",
+    "raw_call_sha256": "4d89a0d5afe66f9dd37978fb0805acaf02b6abfe74df110e15311838a2a886f3",
+    "field": "evidence[2].quote",
+    "old": "k bitmaps of length N",
+    "new": "$k$ bitmaps of length $N$",
+    "source_chunk": "2606.22180v1:chunk:0003",
+    "scope": "Restore source TeX dollar delimiters only; all scientific claims unchanged; source entailment not established"
+  },
+  "novelty_established": false,
+  "train_eligible": false,
+  "human_adjudicated": false,
+  "review": {
+    "mechanism_check": {
+      "status": "nontrivial",
+      "assumption_scope": "Source assumptions (FeLoG): walk corpora are skewed. The top-1 and top-2 nodes give over 50% (about 60%) of YouTube frequency. The FaBC tail is kept in the original 4-byte ID form. The round-1 profile is 'largely stable under fixed sampling parameters'. Decompression runs on the GPU after a PCIe transfer.\n\nTarget assumptions (proposal): new graphs have a skewed rank histogram well beyond the top 2. A frozen round-1 rank table stays valid for rounds 2\u20135. An Apple unified-memory GPU is a useful relative proxy.\n\nUnknowns, not contradictions: tail mass by rank band; cross-round drift, given that FeeST shrinks the active frontier; how unseen or tied nodes are ranked.\n\nInternal source inconsistencies, not proposal contradictions: per-sequence length-L bitmaps (Eq. 6) versus 'k bitmaps of length N'; whether Eq. 8 is a greedy or global 'largest k'.\n\nExcluded regimes: low-skew graphs such as roads, and |V| > 2^21 near-uniform graphs. These are expected losses, not contradictions.\n\nOne mild tension: HaSyn's ordering comes from background-thread statistics, while the proposal uses the round-1 profile. So 'rank IDs already exist' holds only if the two orderings are made identical.",
+      "specialized_operation": "FaBC: g(k) = 1 \u2212 F_k + k/L + k/32. For F_2 = 0.6, L = 80: g(2) = 0.4875.\n\nVarint: g_v = (1/4)\u00b7\u03a3_r p(r)\u00b7b(r) + o, where b(r) = 1/2/3/4\u20135 bytes for r < 2^7 / 2^14 / 2^21 / beyond, and o is the offset overhead. With 4-byte per-sequence offsets, o = 1/L = 0.0125.\n\nUnder the proposal's assumed split (0.6 mass at 1 byte, 0.2 at 2 bytes, 0.2 at 3 bytes): g_v = 1.6/4 + 0.0125 = 0.4125, and g_v/g = 0.846. This is barely under the 0.85 kill line, and it rests entirely on an assumed tail split. The split is also pessimistic in one respect: it assigns ranks 3\u2013127 more than 1 byte, although varint codes them in 1 byte.\n\nOne-time and per-round costs omitted from both formulas:\n- the rank\u2192original-ID permutation (4|V| bytes), needed unless the trainer consumes rank IDs natively;\n- its transfer once, or again on every profile refresh;\n- the histogram and sort on the CPU;\n- the offset prefix-sum.\nFor a matched comparison, FaBC also needs per-sequence tail offsets for parallel decoding, which Eq. 6 omits.",
+      "remaining_effect": "What survives is a reduction of tail width: tail positions take fewer than 4 bytes. FaBC never shrinks its tail; it only removes hot positions, at k bits per position.\n\nMuch of this gain does not need variable-length coding. A fixed-width ceil(log2|V|)-bit or 3-byte rank/ID packing already gives \u2264 0.75 with a trivial, branch-free decode. FaBC with a packed tail gives about 0.4\u00b70.75 + 0.087 \u2248 0.39 in the example.\n\nThe effect left unresolved is the extra gain from varint's 1\u20132 byte classes over fixed-width packing, net of offsets, the mapping table and branchy decode.\n\nLink-time benefit cannot be established locally. Apple unified memory has no PCIe hop. Byte ratios are computable without any GPU. Local decode throughput is only a relative proxy.",
+      "simplest_baseline": "(1) Fixed-width bit-packing of IDs or ranks at ceil(log2|V|) bits: no offsets are needed for fixed L, and decode is a shift and mask. It does need the same permutation table if ranks are used.\n(2) FaBC with a bit-packed tail: the hybrid that isolates the tail-width effect.\n(3) Plain 4-byte IDs, and LZ4/zstd or entropy coding as bounding references.\nThe proposal's control set omits (1) and (2). Those are the baselines that compute nearly the same object.",
+      "distinguishing_test": "Use the round-1 rank histogram of each development graph only, with no implementation. Compute g(k) for both Eq. 8 readings. Compute g_v including offsets and a permutation table amortized over the rounds per refresh. Compute fixed-width packed g_p, and FaBC with a packed tail.\n\nProceed to an Apple-GPU decode microbenchmark only if g_v \u2264 0.85\u00b7g(k) AND g_v is clearly below min(g_p, FaBC+packed tail), for example by at least 10%. Repeat the byte computation on rounds 2\u20135 with the profile frozen to measure drift."
+    },
+    "decision": "test",
+    "failure_type": "weak_control",
+    "reason": "The hypothesis is coherent and cheaply checkable, but its matched control is incomplete.\n\nFaBC's only weakness that varint exploits is the fixed 4-byte tail. Fixed-width packing, alone or inside FaBC, removes most of that weakness without offsets or branchy decode. A win over FaBC alone would therefore be confounded.\n\nThe worked example (0.846) sits on the kill line and depends on an invented tail split. The mapping-table, offset and refresh costs are not in either formula. The byte claim is analytic, and a local GPU benchmark cannot establish any transfer-time claim.",
+    "evidence": [
+      {
+        "chunk_id": "2606.22180v1:chunk:0002",
+        "supports": "FaBC tail stays 4-byte; this is the only surviving gap",
+        "quote_sha256": "fd828f0dc88701d2e1f673249f6d057601a94b0bcd16164be0315d9e4bff7718",
+        "quote_characters": 63
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0002",
+        "supports": "Tail cost term in Eq. 6",
+        "quote_sha256": "57d9a7314da579328121dc1598883d0403e7bb784a48482841828c5a6e028739",
+        "quote_characters": 12
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0003",
+        "supports": "Source inconsistency with per-sequence length-L bitmaps",
+        "quote_sha256": "f5b75bccf825e7c1d3f7935e6ffa86d2aa7c11ea1b74a4a09ebbcf02a391e472",
+        "quote_characters": 25
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0003",
+        "supports": "Source assumption permitting a frozen round-1 profile",
+        "quote_sha256": "e50ff37f03f2888c43cb34a1aa9387d9aa72c909dc443a0a28ae963a1c226f66",
+        "quote_characters": 71
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0004",
+        "supports": "Possible cross-round rank drift; must be measured",
+        "quote_sha256": "855105c926e9d180efbe6b56f1edd446df2f4e1ee145957901948d658f47c526",
+        "quote_characters": 41
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0004",
+        "supports": "HaSyn ordering may differ from the round-1 rank table",
+        "quote_sha256": "07590b7c40858bc6e69f541436ad72065ed1a5ab4aba06ff7bbc746dbfc9bcea",
+        "quote_characters": 92
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0005",
+        "supports": "Decode cost is on the GPU critical path",
+        "quote_sha256": "71771d524bcc9f1ebc508fdb2da193747ef6a34796a1be2b7a38b56d8223c10d",
+        "quote_characters": 45
+      },
+      {
+        "chunk_id": "2606.22180v1:chunk:0001",
+        "supports": "The target benefit is PCIe time, which is absent on Apple unified memory",
+        "quote_sha256": "97f9e56684f45e6256d8b9a257396b0294cebba6c8c45b0c76c1333ce5286db2",
+        "quote_characters": 51
+      }
+    ],
+    "strongest_counterargument": "Varint is itself a cheap generalization of fixed-width packing. On skewed corpora, the 1-byte class covers far more than the top-2 mass, since ranks 3\u2013127 are also 1 byte. Varint could then beat both packed baselines substantially. The proposal's own split may be pessimistic, and the analytic pre-test already guards against overclaiming.",
+    "required_test": "Run an analytic byte audit from round-1 histograms on com-Amazon and com-DBLP. Compare varint (with offsets and an amortized permutation table) against:\n- FaBC under both Eq. 8 readings;\n- fixed-width bit-packed IDs;\n- FaBC with a bit-packed tail.\nThen re-evaluate on rounds 2\u20135 with the profile frozen. Proceed to the GPU decode benchmark only if varint beats both packed baselines and meets 0.85\u00d7 FaBC.",
+    "novelty_established": false
+  },
+  "public_redaction": "Exact source evidence quotes replaced with hashes; unredacted result stays local. Scientific claims and review retained.",
+  "local_result_sha256": "23df721ab4879354d4c5d615b5c7c100da6139099882fa748c0d580b8ce68f9f"
+}
