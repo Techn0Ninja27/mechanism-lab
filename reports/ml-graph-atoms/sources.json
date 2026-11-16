@@ -1,0 +1,194 @@
+[
+  {
+    "source_id": "local:ALzTQUgW8a",
+    "title": "MagicPIG: LSH Sampling for Efficient LLM Generation",
+    "url": "https://openreview.net/forum?id=ALzTQUgW8a",
+    "published_date": "2025-01-01",
+    "corpus_group": "ml",
+    "query": "attention approximation"
+  },
+  {
+    "source_id": "arxiv:2602.04915",
+    "title": "SLAY: Geometry-Aware Spherical Linearized Attention with Yat-Kernel",
+    "url": "https://arxiv.org/abs/2602.04915",
+    "published_date": "2026-02-04",
+    "corpus_group": "ml",
+    "query": "attention approximation"
+  },
+  {
+    "source_id": "arxiv:2511.05770",
+    "title": "An Efficient Gradient-Aware Error-Bounded Lossy Compressor for Federated Learning",
+    "url": "https://arxiv.org/abs/2511.05770",
+    "published_date": "2025-11-07",
+    "corpus_group": "ml",
+    "query": "gradient compression"
+  },
+  {
+    "source_id": "arxiv:2502.01717",
+    "title": "Choose Your Model Size: Any Compression of Large Language Models Without Re-Computation",
+    "url": "https://arxiv.org/abs/2502.01717",
+    "published_date": "2025-02-03",
+    "corpus_group": "ml",
+    "query": "gradient compression"
+  },
+  {
+    "source_id": "arxiv:2412.15266",
+    "title": "On the Structural Memory of LLM Agents",
+    "url": "https://arxiv.org/abs/2412.15266",
+    "published_date": "2024-12-17",
+    "corpus_group": "ml",
+    "query": "retrieval memory"
+  },
+  {
+    "source_id": "arxiv:2603.02473",
+    "title": "Diagnosing Retrieval vs. Utilization Bottlenecks in LLM Agent Memory",
+    "url": "https://arxiv.org/abs/2603.02473",
+    "published_date": "2026-03-02",
+    "corpus_group": "ml",
+    "query": "retrieval memory"
+  },
+  {
+    "source_id": "arxiv:2310.11766",
+    "title": "Multi Task Consistency Guided Source-Free Test-Time Domain Adaptation Medical Image Segmentation",
+    "url": "https://arxiv.org/abs/2310.11766",
+    "published_date": "2023-10-18",
+    "corpus_group": "ml",
+    "query": "test time adaptation"
+  },
+  {
+    "source_id": "arxiv:2407.15913",
+    "title": "Test-Time Low Rank Adaptation via Confidence Maximization for Zero-Shot Generalization of Vision-Language Models",
+    "url": "https://arxiv.org/abs/2407.15913",
+    "published_date": "2024-07-22",
+    "corpus_group": "ml",
+    "query": "test time adaptation"
+  },
+  {
+    "source_id": "arxiv:2510.12096",
+    "title": "Rethinking the Role of Dynamic Sparse Training for Scalable Deep Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2510.12096",
+    "published_date": "2025-10-14",
+    "corpus_group": "ml",
+    "query": "sparse training"
+  },
+  {
+    "source_id": "local:1ndDmZdT4g",
+    "title": "Dynamic Sparse No Training: Training-Free Fine-tuning for Sparse LLMs",
+    "url": "https://openreview.net/forum?id=1ndDmZdT4g",
+    "published_date": "2024-01-01",
+    "corpus_group": "ml",
+    "query": "sparse training"
+  },
+  {
+    "source_id": "arxiv:2605.02262",
+    "title": "WindowQuant: Mixed-Precision KV Cache Quantization based on Window-Level Similarity for VLMs Inference Optimization",
+    "url": "https://arxiv.org/abs/2605.02262",
+    "published_date": "2026-05-04",
+    "corpus_group": "ml",
+    "query": "quantization inference"
+  },
+  {
+    "source_id": "arxiv:2510.16088",
+    "title": "Differentiable, Bit-shifting, and Scalable Quantization without training neural network from scratch",
+    "url": "https://arxiv.org/abs/2510.16088",
+    "published_date": "2025-10-18",
+    "corpus_group": "ml",
+    "query": "quantization inference"
+  },
+  {
+    "source_id": "arxiv:2608.24195",
+    "title": "A Heterogeneous Mixture of Experts Framework for Interpretable Machine Learning",
+    "url": "https://arxiv.org/abs/2608.24195",
+    "published_date": "2026-08-25",
+    "corpus_group": "ml",
+    "query": "mixture experts"
+  },
+  {
+    "source_id": "arxiv:2512.09723",
+    "title": "Mixture of Lookup Key-Value Experts",
+    "url": "https://arxiv.org/abs/2512.09723",
+    "published_date": "2025-12-10",
+    "corpus_group": "ml",
+    "query": "mixture experts"
+  },
+  {
+    "source_id": "arxiv:2304.04259",
+    "title": "CLVOS23: A Long Video Object Segmentation Dataset for Continual Learning",
+    "url": "https://arxiv.org/abs/2304.04259",
+    "published_date": "2023-04-09",
+    "corpus_group": "ml",
+    "query": "continual learning"
+  },
+  {
+    "source_id": "arxiv:2311.11908",
+    "title": "Continual Learning: Applications and the Road Forward",
+    "url": "https://arxiv.org/abs/2311.11908",
+    "published_date": "2023-11-20",
+    "corpus_group": "ml",
+    "query": "continual learning"
+  },
+  {
+    "source_id": "arxiv:2311.17847",
+    "title": "FastSample: Accelerating Distributed Graph Neural Network Training for Billion-Scale Graphs",
+    "url": "https://arxiv.org/abs/2311.17847",
+    "published_date": "2023-11-29",
+    "corpus_group": "systems",
+    "query": "distributed training"
+  },
+  {
+    "source_id": "arxiv:2306.08423",
+    "title": "DistSim: A performance model of large-scale hybrid distributed DNN training",
+    "url": "https://arxiv.org/abs/2306.08423",
+    "published_date": "2023-06-14",
+    "corpus_group": "systems",
+    "query": "distributed training"
+  },
+  {
+    "source_id": "arxiv:2503.01281",
+    "title": "DCI: A Coordinated Allocation and Filling Workload-Aware Dual-Cache Allocation GNN Inference Acceleration System",
+    "url": "https://arxiv.org/abs/2503.01281",
+    "published_date": "2025-03-03",
+    "corpus_group": "systems",
+    "query": "inference cache"
+  },
+  {
+    "source_id": "arxiv:2508.08256",
+    "title": "FIER: Fine-Grained and Efficient KV Cache Retrieval for Long-context LLM Inference",
+    "url": "https://arxiv.org/abs/2508.08256",
+    "published_date": "2025-05-28",
+    "corpus_group": "systems",
+    "query": "inference cache"
+  },
+  {
+    "source_id": "arxiv:2311.14023",
+    "title": "Algorithm-agnostic low-rank approximation of operator monotone matrix functions",
+    "url": "https://arxiv.org/abs/2311.14023",
+    "published_date": "2023-11-23",
+    "corpus_group": "math",
+    "query": "matrix approximation"
+  },
+  {
+    "source_id": "arxiv:2601.07704",
+    "title": "TMATDG: applying TDG methods to multiple scattering via T-matrix approximation",
+    "url": "https://arxiv.org/abs/2601.07704",
+    "published_date": "2026-01-12",
+    "corpus_group": "math",
+    "query": "matrix approximation"
+  },
+  {
+    "source_id": "arxiv:2606.28230",
+    "title": "A Fletcher's Augmented Lagrangian-Based Stochastic First-Order Method for Nonconvex Equality-Constrained Optimization",
+    "url": "https://arxiv.org/abs/2606.28230",
+    "published_date": "2026-06-26",
+    "corpus_group": "math",
+    "query": "stochastic optimization"
+  },
+  {
+    "source_id": "arxiv:2302.07454",
+    "title": "Distributionally-Robust Optimization with Noisy Data for Discrete Uncertainties Using Total Variation Distance",
+    "url": "https://arxiv.org/abs/2302.07454",
+    "published_date": "2023-02-15",
+    "corpus_group": "math",
+    "query": "stochastic optimization"
+  }
+]

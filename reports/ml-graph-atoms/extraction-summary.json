@@ -1,0 +1,34 @@
+{
+  "paper_count": 24,
+  "atoms": 53,
+  "covered_papers": 20,
+  "batches": [
+    {
+      "status": "validated_structure",
+      "missing_sources": []
+    },
+    {
+      "status": "validated_structure",
+      "missing_sources": []
+    },
+    {
+      "status": "failed",
+      "error": "ValueError: atom 1 source_quote is not a contiguous abstract span"
+    },
+    {
+      "status": "validated_structure",
+      "missing_sources": []
+    },
+    {
+      "status": "validated_structure",
+      "missing_sources": []
+    },
+    {
+      "status": "validated_structure",
+      "missing_sources": []
+    }
+  ],
+  "scope": "Quote-span and schema validation only; semantic faithfulness not independently reviewed.",
+  "novelty_established": false,
+  "train_eligible": false
+}

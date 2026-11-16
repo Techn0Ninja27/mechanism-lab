@@ -1,0 +1,43 @@
+{
+  "atoms": 60,
+  "covered_papers": 24,
+  "rejected": [
+    {
+      "batch": 2,
+      "atom_index": 1,
+      "source_id": "arxiv:2510.12096",
+      "error": "atom 0 source_quote is not a contiguous abstract span"
+    }
+  ],
+  "source_receipts": [
+    {
+      "path": "results/ml-graph-atoms-v1/extraction/calls/atom-batch-000-0.json",
+      "sha256": "7e6c7798cc32fabb9426cff2f596864a91eedf96f3312a9af43d4c7256670b5e"
+    },
+    {
+      "path": "results/ml-graph-atoms-v1/extraction/calls/atom-batch-001-0.json",
+      "sha256": "7e99ddcb16686d26b8ae14ed25dc6b5255d74f726539f9adc7a7c19d37224324"
+    },
+    {
+      "path": "results/ml-graph-atoms-v1/extraction/calls/atom-batch-002-0.json",
+      "sha256": "0661ad444965ade69e5f4eb1e9dd8cf408821498e34267f2b5801fbc333aeb96"
+    },
+    {
+      "path": "results/ml-graph-atoms-v1/extraction/calls/atom-batch-003-0.json",
+      "sha256": "ef3283a770e156e9af054e4de1a6a0a31976deaab94fdacfedf0acd5068b6d04"
+    },
+    {
+      "path": "results/ml-graph-atoms-v1/extraction/calls/atom-batch-004-0.json",
+      "sha256": "2b68da7ce6a9e90bd7938e40b8eb78ba75a2459773d447240b8c3968b0c3aa54"
+    },
+    {
+      "path": "results/ml-graph-atoms-v1/extraction/calls/atom-batch-005-0.json",
+      "sha256": "de42c2edf251afdd83ec88767623c884948d24980d5672ecd0c8d37bfa1700ed"
+    }
+  ],
+  "original_plan_sha256": "cd565cf5c7b8eb29dc4826747dbc6e5c29fffbca27f7eb3f8c4ef5b3ed98413a",
+  "script_sha256": "000a29a88b281f49e5ebb8e8392fcf9abb58e6856e166f75605a1b455160c5f7",
+  "new_api_calls": 0,
+  "quotes_modified": false,
+  "scope": "Per-atom structural recovery; semantic review and training eligibility unchanged."
+}

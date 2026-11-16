@@ -35,3 +35,5 @@ unknown. Existing aliases are retained across subsequent imports. The manifest
 separately reports selected input records and net new output records, and pins
 the importer source hash. Metadata coverage can be checked without computing a
 quality score using `scripts/audit_corpus_metadata.py`.
+
+Identity merging requires DOI/arXiv identifiers or exact title-and-abstract content. Titles alone are not sufficient. Duplicate observations retain their own provider/date/hash metadata even when they resolve to one record.

@@ -1,8 +1,7 @@
 # Citation metadata merge checks — 2026-11-16
 
-The active 115,077-paper corpus has no recorded citation metrics yet. Its
-coverage audit preserves that absence as unknown, not zero. The larger
-OpenAlex collection is still in progress and has not replaced that snapshot.
+At the time of this trial, the 115,077-paper corpus had no recorded citation metrics. Its
+coverage audit preserves that absence as unknown, not zero. The subsequent [full merge](../corpus-207k/README.md) is now active.
 
 A completed 400-record trial import into a separate snapshot produced 115,473
 works: 396 new papers and citation observations for four existing papers. The

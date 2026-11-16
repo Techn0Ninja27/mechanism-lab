@@ -1,0 +1,36 @@
+{
+  "schema": "bulk-corpus.v1",
+  "cutoff": "2026-11-16",
+  "records": 207279,
+  "import_script_sha256": "11b059c4a8111396696f6b4be757a46aedd91f65261db66f197c2ae2d586849b",
+  "existing_records": 115077,
+  "bulk_selected": 93604,
+  "bulk_new_records": 92202,
+  "source": {
+    "path": "results/openalex-pages-100k/records.jsonl",
+    "sha256": "b8a76fe8f8a2d971ed10a3218ed3f651329a562b2a44f43fb5463bef500d3415",
+    "lines": 93604,
+    "accepted": 93604,
+    "skipped": 0,
+    "malformed": 0,
+    "selected": 93604,
+    "selected_by_group": {
+      "ml": 53604,
+      "systems": 20000,
+      "math": 20000
+    },
+    "quotas": {
+      "ml": 33334,
+      "systems": 33333,
+      "math": 33333
+    },
+    "seed": 73031
+  },
+  "existing_snapshot": "results/corpus-arxiv-100k/works.jsonl",
+  "existing_openai_sources": {
+    "path": "results/corpus-arxiv-100k/openai_sources.jsonl",
+    "sha256": "3eaf3c8d58448d8b3389f9a1b435ee6d1ae1c0dac56baccc99003d674305edd7",
+    "records": 15
+  },
+  "corpus_sha256": "c332b02c2ba7c8b4e2fabd32a0c6f9a55ae1e6be6deeefd6ce68606a36b1b443"
+}

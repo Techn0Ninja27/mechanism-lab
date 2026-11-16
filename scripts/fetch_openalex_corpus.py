@@ -140,7 +140,7 @@ def run(plan_path: Path, out: Path, *, max_requests=None, interval=.25, timeout=
             with receipts_path.open("a") as f: f.write(json.dumps(receipt, sort_keys=True)+"\n")
             state["requests"] += 1
             if error:
-                state["stop_reason"] = "http_429" if status == 429 else "request_error"; state_path.write_text(json.dumps(state,indent=2)); return state
+                state["stop_reason"] = "http_429" if status == 429 else "request_error"; _write_state(state_path, state); return state
             normalized = [x for x in (normalize(r, slot, receipt["timestamp"][:10]) for r in rows) if x is not None]
             with records_path.open("a") as f:
                 for row in normalized:
@@ -156,6 +156,11 @@ def run(plan_path: Path, out: Path, *, max_requests=None, interval=.25, timeout=
                 progress["cursor"] = next_cursor or ""; progress["done"] = not next_cursor or len(rows) == 0 or progress["count"] >= slot["target"]
             _write_state(state_path, state)
         if state["requests"] >= cap: stop_reason = "request_cap"; break
+    counts = {name: sum(state["slots"].get(slot["id"], {}).get("count", 0) for slot in slots if slot["category"] == name) for name in plan["targets"]}
+    state["category_counts"] = counts
+    state["shortfall"] = {name: max(0, target - counts[name]) for name, target in plan["targets"].items()}
+    if not any(state["shortfall"].values()): stop_reason = "targets_reached"
+    elif stop_reason == "targets_reached": stop_reason = "strata_exhausted"
     state["stop_reason"] = stop_reason; _write_state(state_path, state); return state
 
 def main():

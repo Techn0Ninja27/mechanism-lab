@@ -1,0 +1,103 @@
+{
+  "corpus": "results/corpus-arxiv-100k/corpus.sqlite",
+  "corpus_sha256": "bbfcb95d2f5e057be5e6c60a55cdbff6465e0b81206466097f45c4503660b351",
+  "coverage": [
+    {
+      "group": "ml",
+      "query": "attention approximation",
+      "picked": [
+        "local:ALzTQUgW8a",
+        "arxiv:2602.04915"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "gradient compression",
+      "picked": [
+        "arxiv:2511.05770",
+        "arxiv:2502.01717"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "retrieval memory",
+      "picked": [
+        "arxiv:2412.15266",
+        "arxiv:2603.02473"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "test time adaptation",
+      "picked": [
+        "arxiv:2310.11766",
+        "arxiv:2407.15913"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "sparse training",
+      "picked": [
+        "arxiv:2510.12096",
+        "local:1ndDmZdT4g"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "quantization inference",
+      "picked": [
+        "arxiv:2605.02262",
+        "arxiv:2510.16088"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "mixture experts",
+      "picked": [
+        "arxiv:2608.24195",
+        "arxiv:2512.09723"
+      ]
+    },
+    {
+      "group": "ml",
+      "query": "continual learning",
+      "picked": [
+        "arxiv:2304.04259",
+        "arxiv:2311.11908"
+      ]
+    },
+    {
+      "group": "systems",
+      "query": "distributed training",
+      "picked": [
+        "arxiv:2311.17847",
+        "arxiv:2306.08423"
+      ]
+    },
+    {
+      "group": "systems",
+      "query": "inference cache",
+      "picked": [
+        "arxiv:2503.01281",
+        "arxiv:2508.08256"
+      ]
+    },
+    {
+      "group": "math",
+      "query": "matrix approximation",
+      "picked": [
+        "arxiv:2311.14023",
+        "arxiv:2601.07704"
+      ]
+    },
+    {
+      "group": "math",
+      "query": "stochastic optimization",
+      "picked": [
+        "arxiv:2606.28230",
+        "arxiv:2302.07454"
+      ]
+    }
+  ],
+  "selection": "Fixed query set; two distinct top lexical hits per query within source group, from2023 onward. No citation weighting."
+}

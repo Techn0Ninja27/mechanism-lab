@@ -38,11 +38,16 @@ teach a model to choose well on new tasks.
 
 ## Research corpus
 
-The local search corpus now contains **115,077 works**. The latest addition
-selected **60k ML, 20k systems, and 20k mathematics papers** from a pinned arXiv
-metadata snapshot, preserving all previous records after deduplication.
-These are searchable metadata and abstracts; they have not all been atomized
-or used to retrain the scorers. [Coverage, verification, and reproduction](reports/corpus-115k/README.md).
+The local search corpus now contains **206,917 records**, combining an ML-first
+arXiv selection with OpenAlex metadata. All previous records remain traceable.
+Citation counts are available for 92,876 records and normalized influence
+metrics for 60,237; these are metadata, not usefulness labels.
+[Coverage, verification, and reproduction](reports/corpus-207k/README.md).
+
+A first 24-paper packet produced **60 source-linked candidate atoms** for
+$0.00835. Independent agent review flagged 12 semantic issues and separately
+tagged 9 transfer-oriented results. [Extraction and review](reports/ml-graph-atoms/README.md).
+The full corpus has not been atomized or used to retrain the scorers.
 
 ## What works today
 

@@ -40,6 +40,8 @@ class OpenAlexCorpusTests(unittest.TestCase):
             with patch('scripts.fetch_openalex_corpus.urllib.request.urlopen',return_value=Response()):
                 state=run(p,out,max_requests=10,interval=.2)
             self.assertEqual(state['requests'],3); self.assertEqual(state['records'],0)
+            self.assertEqual(state['stop_reason'],'strata_exhausted')
+            self.assertEqual(sum(state['shortfall'].values()),3)
             self.assertTrue(all(v['done'] for v in state['slots'].values()))
     def test_page_mode_advances_page_and_stops_on_short_page(self):
         class Response:

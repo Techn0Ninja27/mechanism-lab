@@ -1,5 +1,7 @@
 # ML-first corpus expansion — 2026-11-16
 
+Historical snapshot. The later [citation-enriched corpus](../corpus-207k/README.md) is now active.
+
 The active searchable corpus grew from **16,357 to 115,077 works**. This adds
 **98,720 net records** after merging a 100,000-paper selection with the existing
 snapshot. All 16,357 previous canonical IDs remain present. SQLite's integrity

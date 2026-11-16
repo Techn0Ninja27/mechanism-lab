@@ -1,0 +1,18 @@
+{
+  "records": 206917,
+  "preserved_old_ids": 115077,
+  "preserved_old_aliases": 116335,
+  "new_records": 91840,
+  "input_provider_records": 93604,
+  "provider_records_with_preserved_observations": 93604,
+  "observations": 93604,
+  "groups": {
+    "math": 39791,
+    "systems": 39742,
+    "ml": 112318,
+    "unassigned": 15066
+  },
+  "fts_rows": 206917,
+  "sqlite_quick_check": "ok",
+  "auxiliary_openai_records": 15
+}

@@ -1,6 +1,6 @@
 # OpenAlex first-stage corpus expansion
 
-The active arXiv-based corpus now contains 115,077 works. This separate plan collects at most
+The active arXiv-based corpus now contains 206,917 records. This separate plan collects at most
 100,000 records with abstracts, distributed across machine learning, systems,
 and mathematics. It uses the public OpenAlex Works API and reads no API key.
 
@@ -46,3 +46,5 @@ collector reconstructs deterministically. The official snapshot is much larger
 (about 1.5 TB for both formats), so the API is the bounded first stage. See the
 [OpenAlex work attributes](https://help.openalex.org/data/works/attributes/) and
 [snapshot documentation](https://help.openalex.org/tutorials/download-the-snapshot/).
+
+The completed page-based harvest returned 93,604 records, short of its 100,000 target because some ML strata exhausted their allocations. See [the verified merge](../../reports/corpus-207k/README.md). The raw terminal label targets_reached must not be read as an achieved count.

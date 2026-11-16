@@ -42,5 +42,5 @@ backtest: future citations leak information unavailable at its cutoff.
 
 The first atom-graph experiment uses no citation weights. Its nodes come from
 the original atom catalog; its edges record co-occurrence, not causal or typed
-mechanism relationships. Citation metadata collection is being added to the
-larger corpus; evidence-weighted selection is not yet validated or deployed.
+mechanism relationships. The expanded corpus now includes citation observations with explicit provider
+and as-of provenance. Evidence-weighted selection is not yet validated or deployed.

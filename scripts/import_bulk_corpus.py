@@ -6,6 +6,7 @@ from collections import Counter
 from datetime import date
 from email.utils import parsedate_to_datetime
 from pathlib import Path
+from urllib.parse import urlsplit
 from typing import Iterable, Mapping
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,10 +79,14 @@ def normalize_record(raw: Mapping, *, source_file: str, source_file_sha256: str,
     if not arxiv_id and isinstance(raw.get("locations"), list):
         for location in raw["locations"]:
             url = str(location.get("landing_page_url") or "") if isinstance(location, Mapping) else ""
-            match = re.search(r"arxiv\.org/(?:abs|pdf)/([^/?#]+)", url)
-            if match:
-                arxiv_id = match.group(1)
-                break
+            parsed = urlsplit(url)
+            if parsed.hostname in {"arxiv.org", "www.arxiv.org"}:
+                match = re.match(r"/(?:abs|pdf)/(.+)", parsed.path)
+                if match:
+                    arxiv_id = arxiv_canonical_id(match.group(1).removesuffix(".pdf"))
+                    break
+    if not is_openalex and not arxiv_id:
+        arxiv_id = canonical
     versions = raw.get("versions")
     published = _version_date(versions, 0) or _date(raw.get("published") or raw.get("published_date"))
     updated = _version_date(versions, -1) or _date(raw.get("update_date") or raw.get("updated") or raw.get("updated_date"))
@@ -241,7 +246,11 @@ def import_bulk(input_path: Path, output: Path, *, existing: Path | None, max_ne
     def title_key(value: object) -> str:
         return re.sub(r"[^a-z0-9]+", " ", clean(str(value or "")).casefold()).strip()
     old_by_doi = {doi_key(row.get("doi")): row for row in old if doi_key(row.get("doi"))}
-    old_by_arxiv = {arxiv_canonical_id(str(row.get("arxiv_id"))): row for row in old if row.get("arxiv_id")}
+    old_by_arxiv = {}
+    for row in old:
+        aid = row.get("arxiv_id") or (str(row.get("canonical_id", "")).removeprefix("arxiv:") if str(row.get("canonical_id", "")).startswith("arxiv:") else None)
+        if aid: old_by_arxiv[arxiv_canonical_id(str(aid))] = row
+    old_by_hash = {row["content_sha256"]: row for row in old if row.get("content_sha256")}
     old_by_title = {title_key(row.get("title")): row for row in old
                     if len(title_key(row.get("title"))) >= 24}
     aliases_before = {}
@@ -250,8 +259,10 @@ def import_bulk(input_path: Path, output: Path, *, existing: Path | None, max_ne
         match = old_by_doi.get(doi_key(row.get("doi"))) if doi_key(row.get("doi")) else None
         if match is None and row.get("arxiv_id"):
             match = old_by_arxiv.get(arxiv_canonical_id(str(row["arxiv_id"])))
+        # A title alone is not a safe bibliographic identity: unrelated works
+        # can share it. Require an identifier or exact title+abstract content.
         if match is None:
-            match = old_by_title.get(title_key(row.get("title")))
+            match = old_by_hash.get(row.get("content_sha256"))
         if match is not None:
             aliases_before[row["source_id"]] = match.get("canonical_id", match["source_id"])
             # Preserve the old canonical/source row, while retaining useful
@@ -274,8 +285,12 @@ def import_bulk(input_path: Path, output: Path, *, existing: Path | None, max_ne
                     observations.append(observation)
             if row.get("categories"):
                 match["categories"] = sorted(set(match.get("categories", []) + row["categories"]))
-        elif row.get("content_sha256") not in old_hashes:
+        else:
             unmatched.append(row)
+            if doi_key(row.get("doi")): old_by_doi[doi_key(row["doi"])] = row
+            if row.get("arxiv_id"): old_by_arxiv[arxiv_canonical_id(str(row["arxiv_id"]))] = row
+            if len(title_key(row.get("title"))) >= 24: old_by_title[title_key(row["title"])] = row
+            if row.get("content_sha256"): old_by_hash[row["content_sha256"]] = row
     rows, aliases = deduplicate(old + unmatched)
     old_canonical_ids = {str(row.get("canonical_id")) for row in old if row.get("canonical_id")}
     if not old_canonical_ids.issubset({str(row.get("canonical_id")) for row in rows}):

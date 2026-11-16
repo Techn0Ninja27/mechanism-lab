@@ -11,5 +11,14 @@ class CorpusRegistryTests(unittest.TestCase):
             self.assertEqual(active_corpus(root)['records'],16357)
             new=root/'results/corpus-arxiv-100k';(new/'bulk-manifest.json').write_text('{"records":115077}')
             self.assertEqual(active_corpus(root)['records'],115077)
+    def test_influence_audit_must_match_snapshot(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);p=root/'results/corpus-openalex-enriched-v3';p.mkdir(parents=True);(p/'corpus.sqlite').touch()
+            (p/'bulk-manifest.json').write_text(json.dumps({'records':10,'corpus_sha256':'right'}))
+            audit={'records':10,'source_sha256':'wrong','influence_fields':{'citation_count':{'known':3},'citation_normalized_percentile':{'known':2}}}
+            (p/'metadata-audit.json').write_text(json.dumps(audit));self.assertIsNone(active_corpus(root)['influence_coverage'])
+            audit['source_sha256']='right';(p/'metadata-audit.json').write_text(json.dumps(audit))
+            self.assertEqual(active_corpus(root)['influence_coverage']['citation_count'],3)
+
     def test_missing_corpus_stays_unavailable(self):
         with tempfile.TemporaryDirectory() as d:self.assertIsNone(active_corpus(d))

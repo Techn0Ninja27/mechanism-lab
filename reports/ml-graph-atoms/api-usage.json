@@ -1,0 +1,61 @@
+{
+  "model": "anthropic/claude-haiku-5.5",
+  "calls": [
+    {
+      "batch": "atom-batch-000-0.json",
+      "status": "complete",
+      "finish_reason": "stop",
+      "prompt_tokens": 2575,
+      "completion_tokens": 2423,
+      "cost_usd": 0.001469,
+      "sha256": "7e6c7798cc32fabb9426cff2f596864a91eedf96f3312a9af43d4c7256670b5e"
+    },
+    {
+      "batch": "atom-batch-001-0.json",
+      "status": "complete",
+      "finish_reason": "stop",
+      "prompt_tokens": 2453,
+      "completion_tokens": 2135,
+      "cost_usd": 0.0013128,
+      "sha256": "7e99ddcb16686d26b8ae14ed25dc6b5255d74f726539f9adc7a7c19d37224324"
+    },
+    {
+      "batch": "atom-batch-002-0.json",
+      "status": "complete",
+      "finish_reason": "stop",
+      "prompt_tokens": 2723,
+      "completion_tokens": 1812,
+      "cost_usd": 0.0011783,
+      "sha256": "0661ad444965ade69e5f4eb1e9dd8cf408821498e34267f2b5801fbc333aeb96"
+    },
+    {
+      "batch": "atom-batch-003-0.json",
+      "status": "complete",
+      "finish_reason": "stop",
+      "prompt_tokens": 2373,
+      "completion_tokens": 2026,
+      "cost_usd": 0.0012503,
+      "sha256": "ef3283a770e156e9af054e4de1a6a0a31976deaab94fdacfedf0acd5068b6d04"
+    },
+    {
+      "batch": "atom-batch-004-0.json",
+      "status": "complete",
+      "finish_reason": "stop",
+      "prompt_tokens": 2531,
+      "completion_tokens": 2584,
+      "cost_usd": 0.0015451,
+      "sha256": "2b68da7ce6a9e90bd7938e40b8eb78ba75a2459773d447240b8c3968b0c3aa54"
+    },
+    {
+      "batch": "atom-batch-005-0.json",
+      "status": "complete",
+      "finish_reason": "stop",
+      "prompt_tokens": 2201,
+      "completion_tokens": 2753,
+      "cost_usd": 0.0015966,
+      "sha256": "de42c2edf251afdd83ec88767623c884948d24980d5672ecd0c8d37bfa1700ed"
+    }
+  ],
+  "total_cost_usd": 0.0083521,
+  "output_limit_per_call": 8192
+}

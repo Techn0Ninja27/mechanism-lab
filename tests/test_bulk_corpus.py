@@ -10,6 +10,30 @@ class BulkCorpusTests(unittest.TestCase):
         row = normalize_record({"id":"2401.00001v2","title":" T ","abstract":" A ","mechanism_summary":"fake","categories":"cs.LG cs.AI","versions":[{"created":"2024-01-01"},{"created":"2024-02-01"}],"authors":[{"name":"A"}]}, source_file="x", source_file_sha256="h", cutoff="2026-11-16")
         self.assertEqual((row["canonical_id"],row["published_date"],row["updated_date"],row["categories"]),("arxiv:2401.00001","2024-01-01","2024-02-01",["cs.AI","cs.LG"]))
         self.assertNotIn("mechanism_summary", row)
+    def test_shared_title_does_not_merge_distinct_papers(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);old=root/"old.jsonl"
+            title="A shared sufficiently long research paper title"
+            old.write_text(json.dumps({"source_id":"local:old","canonical_id":"local:old","title":title,"abstract":"First study","doi":"10/old"})+'\n')
+            src=root/"new.jsonl";src.write_text(json.dumps({"source_id":"openalex:W9","title":title,"abstract":"Different study","doi":"10/new"})+'\n')
+            m=import_bulk(src,root/"out",existing=old,max_new=1,cutoff="2026-11-16",seed=1)
+            self.assertEqual(m["records"],2)
+
+    def test_short_exact_match_and_new_doi_duplicates_keep_observations(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);old=root/"old.jsonl"
+            from scripts.ingest_research_corpus import content_sha
+            old.write_text(json.dumps({"source_id":"local:base","canonical_id":"local:base","title":"Short","abstract":"Same abstract","content_sha256":content_sha("Short","Same abstract")})+'\n')
+            rows=[{"source_id":"openalex:W1","title":"Short","abstract":"Same abstract","cited_by_count":2,"retrieved_at":"2026-11-16"},
+                  {"source_id":"openalex:W2","title":"New A","abstract":"First abstract","doi":"https://doi.org/10/x","cited_by_count":3,"retrieved_at":"2026-11-16"},
+                  {"source_id":"openalex:W3","title":"New B","abstract":"Changed abstract","doi":"10/x","cited_by_count":4,"retrieved_at":"2026-11-16"}]
+            src=root/"source.jsonl";src.write_text('\n'.join(json.dumps(x) for x in rows)+'\n');out=root/"out"
+            m=import_bulk(src,out,existing=old,max_new=3,cutoff="2026-11-16",seed=1)
+            result=[json.loads(x) for x in (out/"works.jsonl").read_text().splitlines()]
+            self.assertEqual(m["records"],2)
+            self.assertEqual(sum(len(r.get("influence_provenance",[])) for r in result),3)
+            self.assertEqual(json.loads((out/"aliases.json").read_text())["openalex:W1"],"local:base")
+
     def test_existing_noncanonical_alias_is_preserved(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d);base=root/"base";base.mkdir()
@@ -51,7 +75,7 @@ class BulkCorpusTests(unittest.TestCase):
             "abstract":"new abstract","publication_date":"2024-01-01",
             "locations":[{"landing_page_url":"https://arxiv.org/abs/2401.00001v2"}]},
             source_file="x", source_file_sha256="h", cutoff="2026-11-16")
-        self.assertEqual(row["arxiv_id"],"2401.00001v2")
+        self.assertEqual(row["arxiv_id"],"2401.00001")
         with tempfile.TemporaryDirectory() as d:
             root=Path(d); source=root/"m.jsonl"; source.write_text(json.dumps({
                 "source_id":"openalex:W1","canonical_id":"https://openalex.org/W1",

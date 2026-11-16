@@ -1,0 +1,942 @@
+{
+  "review_type": "machine semantic-faithfulness and ML-relevance review",
+  "scope": {
+    "accepted_atoms": 53,
+    "sources": 24,
+    "rejected_batch": "extraction/batch-002.json",
+    "rejected_atoms_reviewed": false
+  },
+  "calibration": "Automated/agent review against the supplied abstract spans and papers.json; flags are triage findings, not human adjudication. Pass means no material issue found, not independently verified truth.",
+  "counts": {
+    "reviewed": 60,
+    "semantic_flags": 12,
+    "semantic_major": 0,
+    "semantic_minor": 12,
+    "relevance_only": 9,
+    "clean": 39
+  },
+  "atoms": [
+    {
+      "index": 1,
+      "source_id": "local:ALzTQUgW8a",
+      "source_hash": "95c9a550a234b74d15afcf50267bb703c65222c6e80da315a689861fc39e0bc7",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "64cf9cead19ca41825b07b4712fdf480bacfba1cddeaee9422067383e2eda12e",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 0
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 2,
+      "source_id": "local:ALzTQUgW8a",
+      "source_hash": "95c9a550a234b74d15afcf50267bb703c65222c6e80da315a689861fc39e0bc7",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "inputs/outputs add KV-cache and sampling-approximation framing not present in the cited span; likely contextually true but should be marked inferred or backed by the abstract"
+      ],
+      "statement_sha256": "029558ff042c8a11b27c7e7afa207541c6aea6cde34034a6c06e61b9d8192819",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 1
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 3,
+      "source_id": "local:ALzTQUgW8a",
+      "source_hash": "95c9a550a234b74d15afcf50267bb703c65222c6e80da315a689861fc39e0bc7",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "dc16abfcaae185a332ce65e3d6d4a6b476ac2d9ef2cf9ea46df265536da0fc80",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 2
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 4,
+      "source_id": "arxiv:2602.04915",
+      "source_hash": "83cb8e57d05b3b7c34ec3f988154197b4791d08cfa0180fb734f8c6c908c0e41",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "1be7528a75e513a783f072a97bd739fb686ddfd60202be55bb777bee18085c3a",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 3
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 5,
+      "source_id": "arxiv:2602.04915",
+      "source_hash": "83cb8e57d05b3b7c34ec3f988154197b4791d08cfa0180fb734f8c6c908c0e41",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "2a4683cdfc1032d7880d8020917df8874d3eb7039365bed9e57c0d5b13963755",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 4
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 6,
+      "source_id": "arxiv:2602.04915",
+      "source_hash": "83cb8e57d05b3b7c34ec3f988154197b4791d08cfa0180fb734f8c6c908c0e41",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "b4610fa23d11cf7607e9bd0fa93d6208f07e151e99e6cca77a008ddc25f00c6c",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 5
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 7,
+      "source_id": "arxiv:2511.05770",
+      "source_hash": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "The named Lorenzo/interpolation examples are not in the supplied quote; verify against the full abstract before treating them as source-grounded"
+      ],
+      "statement_sha256": "6391cda5d2cf777e709d104a9e3a6b4679e5c77863492ef838e005934a549495",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 6
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 8,
+      "source_id": "arxiv:2511.05770",
+      "source_hash": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "bbe429e8e2bf64b560c8ee78d2cc31ff64ec7a77329320d38023b288013b4ad3",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 7
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 9,
+      "source_id": "arxiv:2511.05770",
+      "source_hash": "6bf5fa629710c59b34d6d3dd4b1d4236b3d0bbb3581301b694ce58646effbacc",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "4b5fa9daab984008d19990098c77bff4376ed654d0b1e9eace5ae71aea9e3102",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 8
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 10,
+      "source_id": "arxiv:2502.01717",
+      "source_hash": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "LLM weights are added as an input although the cited span only says parameters; the paper title/context may support this, but the atom should not present the narrower input as quote-derived without that context"
+      ],
+      "statement_sha256": "82af18eac9231ffd6c81bd307308487743bb1d8399b747607029cc19f15b3645",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 9
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 11,
+      "source_id": "arxiv:2502.01717",
+      "source_hash": "fee4b93061d5fb8869803cec6523968f3270d3293b80cf8d32cf3d60529d759e",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "8fb05c61b8d3061173d1d371ad19b8a5cff4325c4288806e89c4665b89a8d654",
+      "extraction_location": {
+        "batch": 0,
+        "atom_index": 10
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 12,
+      "source_id": "arxiv:2412.15266",
+      "source_hash": "03b5b2f4bde84ebda6dbfb4f0d710303b3bceea470e2c6729b2de8de172dcbe3",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "49416d989785c6aef222242273ee5fa46ec762ea45633fb5f5dcf9bc6f761cfb",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 0
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 13,
+      "source_id": "arxiv:2412.15266",
+      "source_hash": "03b5b2f4bde84ebda6dbfb4f0d710303b3bceea470e2c6729b2de8de172dcbe3",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "73d4ebfb6e4d8b08fda9a7d1eef9c38836087f57e0fcdbc3395e3dba13fd399f",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 1
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 14,
+      "source_id": "arxiv:2412.15266",
+      "source_hash": "03b5b2f4bde84ebda6dbfb4f0d710303b3bceea470e2c6729b2de8de172dcbe3",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "The statement adds three retrieval methods and the inputs list four tasks/six datasets, which are not in the cited span; the assumption is correctly marked inferred, but the added details need full-abstract provenance"
+      ],
+      "statement_sha256": "0241004131de54679f05c5ecd14bfe046a7a7558ecdad985faf0cce8c7129983",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 2
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 15,
+      "source_id": "arxiv:2603.02473",
+      "source_hash": "9dcd705360c98acb598441077063ac884818693d62485687e31821d7f6aff774",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "25ef9289ee752246b225c34f04b691255dd106618f4161f9130d9cfc36a071d2",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 3
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 16,
+      "source_id": "arxiv:2603.02473",
+      "source_hash": "9dcd705360c98acb598441077063ac884818693d62485687e31821d7f6aff774",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "e47360739103745a20aadb85903f377f3a7f83c0856bb05acc248b0adaeb2382",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 4
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 17,
+      "source_id": "arxiv:2603.02473",
+      "source_hash": "9dcd705360c98acb598441077063ac884818693d62485687e31821d7f6aff774",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "Scope limitation is only in an inferred assumption; make explicit that this is a LoCoMo/3x3-study result, not a general claim about agent-memory failures"
+      ],
+      "statement_sha256": "e924750886ba56d4cb4c569746e878310fe30be524fffee48677204ea25215d9",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 5
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 18,
+      "source_id": "arxiv:2310.11766",
+      "source_hash": "3a5eb11a4a530117b3bb6e39e77fe1f9f34f44d36a5e615ffd6a97c8fc44e4ca",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "cbfc7d57a5f5c6272a153b1b557bffcf7b1ead40fdde47a4fe8ca4436e2712c1",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 6
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 19,
+      "source_id": "arxiv:2310.11766",
+      "source_hash": "3a5eb11a4a530117b3bb6e39e77fe1f9f34f44d36a5e615ffd6a97c8fc44e4ca",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "166ad7fae33f8239ddeabc749a29acb1b95d0d28a5c716722830775e51e30e59",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 7
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 20,
+      "source_id": "arxiv:2407.15913",
+      "source_hash": "e9d20b97f3a6b2da2038b5d99b0e940ba562c9c83ec03a81c3011e247d4d2b5b",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "Low-rank adapters and frozen prompts/backbone are not in the cited sentence, though they are in the supplied abstract; retain only if abstract-level provenance is allowed"
+      ],
+      "statement_sha256": "1c1dee3f3d39bb0ff27c5df18d81af67f67f0dd7f5f915a24b9d75fd56c3dc68",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 8
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 21,
+      "source_id": "arxiv:2407.15913",
+      "source_hash": "e9d20b97f3a6b2da2038b5d99b0e940ba562c9c83ec03a81c3011e247d4d2b5b",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "c38b6e71c3435af074ba24974e0cda984b863200f7cf86475868ba176f743e2b",
+      "extraction_location": {
+        "batch": 1,
+        "atom_index": 9
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 22,
+      "source_id": "arxiv:2608.24195",
+      "source_hash": "35e6d023bd243444d93ef3c6b629e0877188ac5261dd0726efd3cac2baccd565",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "d43115f428699e76f5967b4328a559528edc80dedf726b9ebc6a57c0362114e9",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 0
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 23,
+      "source_id": "arxiv:2608.24195",
+      "source_hash": "35e6d023bd243444d93ef3c6b629e0877188ac5261dd0726efd3cac2baccd565",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "The guarantee is stated without the theorem's optimization/regularity conditions; it should be scoped to the assumptions under which the gating update result holds"
+      ],
+      "statement_sha256": "41f3ca9a3cf52474f588c7947932bc71d595f2e6c097a85d89033ddd03ffb63f",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 1
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 24,
+      "source_id": "arxiv:2608.24195",
+      "source_hash": "35e6d023bd243444d93ef3c6b629e0877188ac5261dd0726efd3cac2baccd565",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "0598490e44aed3cfaf81a657c45e9484d122a49f8e667515ce95c43e92e79a90",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 2
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 25,
+      "source_id": "arxiv:2512.09723",
+      "source_hash": "167850703b947eb718c03174dfc0d7d83aae8084d2752f678ee9ae9f0559890c",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "df73593a0a9e348bdcfae9ad753207e20e9558c3a2a905d3303b1ee2d0b1da78",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 3
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 26,
+      "source_id": "arxiv:2512.09723",
+      "source_hash": "167850703b947eb718c03174dfc0d7d83aae8084d2752f678ee9ae9f0559890c",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "9ef1637efcc670ee9b42b42a40c89cde2327a3edcbcfd65ffa4cdaeaf4449726",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 4
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 27,
+      "source_id": "arxiv:2512.09723",
+      "source_hash": "167850703b947eb718c03174dfc0d7d83aae8084d2752f678ee9ae9f0559890c",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "f251688df9ad6fca6b70cee159215f2cde03cf7dd8d6aa2ea374594a42cdda99",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 5
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 28,
+      "source_id": "arxiv:2304.04259",
+      "source_hash": "ecc3cd7ae1c992105e86ab2c9c9254452c5f56503f747f20e344ac51db831e98",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "b25448022a75387838120c55fb07168614f2d35f3090e459a126ca3f7961c228",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 6
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 29,
+      "source_id": "arxiv:2304.04259",
+      "source_hash": "ecc3cd7ae1c992105e86ab2c9c9254452c5f56503f747f20e344ac51db831e98",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "496691ff0267f5dba4abca37aed6e17e113421aec30d14cceeda55158b3ba253",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 7
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 30,
+      "source_id": "arxiv:2311.11908",
+      "source_hash": "cfde9090a48e4c04ace98ac2c363805554a44bcd81a358e44a41db2d8e1820c0",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "8684f0079028e12a2ca6e0f3e823d7fd49bd25aa33b77cea3b53553b438be029",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 8
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 31,
+      "source_id": "arxiv:2311.11908",
+      "source_hash": "cfde9090a48e4c04ace98ac2c363805554a44bcd81a358e44a41db2d8e1820c0",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "749acbd98b167eac2e806760423c8faadbb8152f44b5174c24b3be39c8186b0b",
+      "extraction_location": {
+        "batch": 3,
+        "atom_index": 9
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 32,
+      "source_id": "arxiv:2311.17847",
+      "source_hash": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "28548786eec1a59971d8e3cadf3b58a1e698cbcf95d05beeaf46fbefad03c2f5",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 0
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 33,
+      "source_id": "arxiv:2311.17847",
+      "source_hash": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "47bc6447a5924e600d65508012cdd747f66530d3189a8357fae6a30d16c57002",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 1
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 34,
+      "source_id": "arxiv:2311.17847",
+      "source_hash": "a0bb93268126384ebe804eb17930da26ce53fb6f88554223429534434d9aee7a",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "36010c386284032f5050494d82af6d1d50a997456602d4d8aac2c6dbd51dfee5",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 2
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 35,
+      "source_id": "arxiv:2306.08423",
+      "source_hash": "759e41a863d22065d90af198e5c9366514779e135b92f682a2389e1e9b9e2023",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "4d70745b7d07d9c44e30a60aa3c7aec732c5f107f95ed4828383f41a9ce4def1",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 3
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 36,
+      "source_id": "arxiv:2306.08423",
+      "source_hash": "759e41a863d22065d90af198e5c9366514779e135b92f682a2389e1e9b9e2023",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "Unresolved entity-name mismatch: the abstract mentions DistDim for event breakdown but attributes surrounding modeling to DistSim. Treat the statement's DistSim normalization as needing source verification, not as a proven factual error"
+      ],
+      "statement_sha256": "85422daf22e8c8ceab20c529fc046d4fe4cc181ad8b814650c8f268cc23119d7",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 4
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 37,
+      "source_id": "arxiv:2306.08423",
+      "source_hash": "759e41a863d22065d90af198e5c9366514779e135b92f682a2389e1e9b9e2023",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "07cbf880f4c67ae5a4868e22056cdf69ec1edd8ed67b39026698c57be41cf628",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 5
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 38,
+      "source_id": "arxiv:2503.01281",
+      "source_hash": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "329b288e73f2edea9ff55014b71fc914ad4fc71adb3dba68c6f76742789ffa0b",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 6
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 39,
+      "source_id": "arxiv:2503.01281",
+      "source_hash": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "28a38b15231fe767afc506b28838bc8c71acac4df19264a79ceca79a692e3391",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 7
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 40,
+      "source_id": "arxiv:2503.01281",
+      "source_hash": "ee6d2371884a56414686c47c9c6a388dcf8ff444aea505f85cc31ae8c08d8697",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "dfb7244a647fae74ba87312a74bdbbfb815e6dc567d3d914a64e00b6ceb0ae79",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 8
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 41,
+      "source_id": "arxiv:2508.08256",
+      "source_hash": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "61a46b029a684411ead90c871ab084b7836a668fb58b16123d9cb7472f384ddf",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 9
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 42,
+      "source_id": "arxiv:2508.08256",
+      "source_hash": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "statement_sha256": "e2a7d0959e0b15b58bdb85dd7ed91c49499e4d6e80270fece9d1ceeb1da5dc3a",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 10
+      },
+      "flag_type": "none"
+    },
+    {
+      "index": 43,
+      "source_id": "arxiv:2508.08256",
+      "source_hash": "b57a9129edf4d410ff4996d44ee088499d0f1ca9bd284d019689e6f5c3563212",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "'1.2x to 1.5x lower latency' is ambiguous/misleading wording; report the source's latency reduction or speedup convention explicitly"
+      ],
+      "statement_sha256": "abcbc4de5fb3737e0f04266a4acc679056cf155c58cb4d7305c981e2406f9b5b",
+      "extraction_location": {
+        "batch": 4,
+        "atom_index": 11
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 44,
+      "source_id": "arxiv:2311.14023",
+      "source_hash": "fa4e5a069def5ffb5132d8a65e1e45d19d2a65c4d854f423cdad47aad20ef320",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "This is a mathematical theorem, not an ML result; it is ML-adjacent only when instantiated for a relevant matrix function. Keep the operator-monotone condition attached"
+      ],
+      "statement_sha256": "202669ea5f5ef061a77baacd35df5652905a5a006fa19853ddffc5e89f16bb04",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 0
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 45,
+      "source_id": "arxiv:2311.14023",
+      "source_hash": "fa4e5a069def5ffb5132d8a65e1e45d19d2a65c4d854f423cdad47aad20ef320",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Generic matrix-approximation theorem with no ML task or model context; relevance to an ML atom graph is indirect"
+      ],
+      "statement_sha256": "0420532e6084a11199b39dc0ba5c2c66dead0f6a3e66e29da28cb81897720799",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 1
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 46,
+      "source_id": "arxiv:2311.14023",
+      "source_hash": "fa4e5a069def5ffb5132d8a65e1e45d19d2a65c4d854f423cdad47aad20ef320",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "The implication to f(A) depends on the source's operator-monotone/function assumptions, which the statement omits"
+      ],
+      "statement_sha256": "ca1052134a77c7ca12e4b91a120eb9275e3f3ccdaf50d52264a7889da65d0b7a",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 2
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "index": 47,
+      "source_id": "arxiv:2601.07704",
+      "source_hash": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Low ML relevance: this is a MATLAB/Trefftz-DG/T-matrix multiple-scattering package paper, with no ML method, model, or evaluation in the atom"
+      ],
+      "statement_sha256": "45d47cf159c768b1a5f446ef973cad1735cbaa6008addb26bcf386bb4cc44be6",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 3
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 48,
+      "source_id": "arxiv:2601.07704",
+      "source_hash": "7fca75cdee688e784b172e59843cb32a7c572f9f40b4e7f4e9835923cd46725c",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Low ML relevance: polygonal-obstacle scattering/T-matrix computation is computational physics rather than machine learning; factual statement otherwise matches the source"
+      ],
+      "statement_sha256": "fbd15f335cbcf3e2625a2697dfb56a21c2157109559562b163f7f064fa036bc4",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 4
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 49,
+      "source_id": "arxiv:2606.28230",
+      "source_hash": "81d902425d4a6f4b902c90401072282b13ce11e8b00cd4f111ecadf8353c2438",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Generic stochastic constrained optimization method; no ML application is stated, so relevance is indirect rather than ML-specific"
+      ],
+      "statement_sha256": "ff0afed5e3a4b27b56b72c2cdcdae6ad9327b3668e010cba9d1d0ef003714735",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 5
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 50,
+      "source_id": "arxiv:2606.28230",
+      "source_hash": "81d902425d4a6f4b902c90401072282b13ce11e8b00cd4f111ecadf8353c2438",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Generic stochastic-optimization complexity theorem; ML relevance is indirect and the full regularity assumptions should remain attached"
+      ],
+      "statement_sha256": "6a0c5b953c42ae2fa406e397eb836b50c129ecc7e1854976b054699c308257ff",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 6
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 51,
+      "source_id": "arxiv:2302.07454",
+      "source_hash": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Generic distributionally robust stochastic-program result, not an ML experiment; convergence also depends on the prescribed ambiguity/noise setup"
+      ],
+      "statement_sha256": "dc3516cc4f5960fee23c0f8d5d93a1e1ee34e51acf4c725afcf7a17b829be13e",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 7
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 52,
+      "source_id": "arxiv:2302.07454",
+      "source_hash": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Generic stochastic optimization theorem with no ML task; relevance is indirect despite factual faithfulness"
+      ],
+      "statement_sha256": "74d1c4a6fdd9e0da5c1ff86928ec657bd53dc0650195e76aaebc8608e2cc8219",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 8
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "index": 53,
+      "source_id": "arxiv:2302.07454",
+      "source_hash": "93d1a169065077f37246dceaffdcba2bf370956a150b657a334f2ec7dbae5b61",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "Generic convex reformulation result, not ML-specific; 'amenable to large-scale stochastic problems' should not be read as an empirical ML scalability result"
+      ],
+      "statement_sha256": "b4a5d5d070f8a1fe97bdbedb0159932f75ef26f4cbe95d89ca707e997c2a7ad3",
+      "extraction_location": {
+        "batch": 5,
+        "atom_index": 9
+      },
+      "flag_type": "relevance_only"
+    }
+  ],
+  "recovered_batch2_atoms": [
+    {
+      "batch": 2,
+      "atom_index": 0,
+      "source_id": "arxiv:2510.12096",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [],
+      "source_hash": "aeef2934589c22601a490ac79ec18201493384749ab8fd9cbb2105f8bc0718a2",
+      "statement_sha256": "0d7bbfd7d3ce7cb6cafddf75ff74d08b398615099e0f354426ef019c69284dee",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 0
+      },
+      "flag_type": "none"
+    },
+    {
+      "batch": 2,
+      "atom_index": 2,
+      "source_id": "local:1ndDmZdT4g",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [],
+      "source_hash": "36ee9e849a3130aaf73d51a92ccf8889f9445e5e63be50d6c0f0fec43e55d117",
+      "statement_sha256": "c7dcac53165b9132db3bdbe23675190b1bc2accbdfbb4b962621d9c735f95398",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 2
+      },
+      "flag_type": "none"
+    },
+    {
+      "batch": 2,
+      "atom_index": 3,
+      "source_id": "local:1ndDmZdT4g",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [],
+      "source_hash": "36ee9e849a3130aaf73d51a92ccf8889f9445e5e63be50d6c0f0fec43e55d117",
+      "statement_sha256": "efec053fad3730fc5e0a448b480bd0ba2130a4d1b95dc6b70679b84352610a05",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 3
+      },
+      "flag_type": "none"
+    },
+    {
+      "batch": 2,
+      "atom_index": 4,
+      "source_id": "arxiv:2605.02262",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [
+        "The cited span does not establish that the KV cache is specifically for vision-language models; that input should be supported by the full abstract or marked contextual/inferred"
+      ],
+      "source_hash": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498",
+      "statement_sha256": "773faaecab53511249c34e2fb3de994ea7c4a13d25194195d94cd340e929aeb7",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 4
+      },
+      "flag_type": "relevance_only"
+    },
+    {
+      "batch": 2,
+      "atom_index": 5,
+      "source_id": "arxiv:2605.02262",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [],
+      "source_hash": "9741e52239245a09d399665dc7e72dd2dd6fd30275e6f1dea76a3efed3978498",
+      "statement_sha256": "f9bca2d0b1da31e12e38fcc4c266d3a73be6aa4aceba856e2a70eeb37225efad",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 5
+      },
+      "flag_type": "none"
+    },
+    {
+      "batch": 2,
+      "atom_index": 6,
+      "source_id": "arxiv:2510.16088",
+      "reviewed": true,
+      "verdict": "flag",
+      "severity": "minor",
+      "issues": [
+        "The statement repeats a strong convergence-to-the-optimal-network claim but drops the theorem's assumptions/meaning of optimal; retain scope and conditions"
+      ],
+      "source_hash": "ae560f4dfaf8f24739863b17073335adb190b4ed67f3e83557809f9c00f9bc52",
+      "statement_sha256": "e00018876c8271ca7ebab5d8c81ad2573873e4055b08fd670f961b0332525f5b",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 6
+      },
+      "flag_type": "semantic"
+    },
+    {
+      "batch": 2,
+      "atom_index": 7,
+      "source_id": "arxiv:2510.16088",
+      "reviewed": true,
+      "verdict": "pass",
+      "severity": "none",
+      "issues": [],
+      "source_hash": "ae560f4dfaf8f24739863b17073335adb190b4ed67f3e83557809f9c00f9bc52",
+      "statement_sha256": "bcd22ad0748bf6fc1793a908091c495d71bc53978e27ed79be4d772813a3fcff",
+      "extraction_location": {
+        "batch": 2,
+        "atom_index": 7
+      },
+      "flag_type": "none"
+    }
+  ],
+  "unreviewed_recovered": {
+    "count": 0,
+    "note": "All seven valid batch-2 recoveries were reviewed above. The separate invalid-quote atom arxiv:2510.12096 batch-2 atom_index 1 remains rejected and was not reviewed."
+  },
+  "reference_verification": "All60source/statementhashpairs verified; extraction_location is zero-based saved-response batch and atom index."
+}

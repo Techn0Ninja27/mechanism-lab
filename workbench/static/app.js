@@ -63,7 +63,7 @@ async function load() {
     const [summary,projects,runs,studyData,generatedData,operatorData]=await Promise.all([api('/api/summary'),api('/api/projects'),api('/api/runs'),api('/api/studies'),api('/api/generated-research'),api('/api/operator-library')]);
     S.projects=projects.items;S.runs=runs.runs;S.studies=studyData.items;S.generated=generatedData.items;S.operators=operatorData;
     S.project=S.projects.find(p=>p.id===(S.project?.id || localStorage.getItem('alien-project'))) || S.projects[0] || null;
-    $('#metrics').innerHTML=[['Searchable papers',summary.corpus?.records],['Selected candidates (v2)',summary.counts?.candidates],['Completed drafts (v2)',summary.counts?.proposals],['Repaired source atoms',summary.counts?.source_units_repaired],['Ranking validity',summary.provenance?.status]].map(([label,value])=>`<div class="metric"><small>${esc(label)}</small><b>${esc(value ?? '—')}</b></div>`).join('');
+    $('#metrics').innerHTML=[['Searchable papers',summary.corpus?.records],['With citation metadata',summary.corpus?.influence_coverage?.citation_count],['Selected candidates (v2)',summary.counts?.candidates],['Completed drafts (v2)',summary.counts?.proposals],['Repaired source atoms',summary.counts?.source_units_repaired],['Ranking validity',summary.provenance?.status]].map(([label,value])=>`<div class="metric"><small>${esc(label)}</small><b>${esc(value ?? '—')}</b></div>`).join('');
     renderProjects();populateRuns();await documents();if(S.view==='runs')await refreshRuns();
   } catch(error){fail(error);}
 }
