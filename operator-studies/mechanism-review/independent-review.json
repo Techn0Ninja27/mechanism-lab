@@ -1,0 +1,46 @@
+{
+  "review_scope": "Independent mathematical review of the six cases in cases.json only.",
+  "cases": [
+    {
+      "id": "case-01",
+      "classification": "redundant",
+      "reasoning": "Let c=x-mean(x) and v=mean(c^2)>0. Positive scaling gives 2x-mean(2x)=2c and sqrt(mean((2c)^2))=2sqrt(v), so N(2x)=c/sqrt(v)=N(x) exactly. The proposed operation has no effect on the stated normalized target in exact arithmetic.",
+      "concerns": "The conclusion relies on positive scaling and exact arithmetic; a sign change, epsilon, clipping, finite precision, or a separately applied operation could change the result, but none is supplied."
+    },
+    {
+      "id": "case-02",
+      "classification": "nontrivial",
+      "reasoning": "With c=x-mean(x) and v=mean(c^2)>0, N(x)=c/sqrt(v+1), whereas N(2x)=2c/sqrt(4v+1). These cannot be equal for nonzero c: equality of squared scale factors would require 4/(4v+1)=1/(v+1), which reduces to 4=1. Thus the fixed additive constant breaks scale invariance and changes the normalized representation for every stated input.",
+      "concerns": "This establishes a representational change, not usefulness, novelty, or a downstream performance improvement."
+    },
+    {
+      "id": "case-03",
+      "classification": "redundant",
+      "reasoning": "From dE/dt=-K E, X=E E^T obeys dX/dt=-KX-XK^T (and K^T=K here). The supplied setting has no forcing or noise, so the additive term F is identically zero. Exact linear propagation already gives X(t)=exp(-tK)X(0)exp(-tK)^T; inserting a randomized nonlinear stage for F adds no necessary correction to the stated target.",
+      "concerns": "A nonzero F could arise in a different stochastic, forced, approximate, or discretized model, but those mechanisms are explicitly absent or outside the comparison."
+    },
+    {
+      "id": "case-04",
+      "classification": "nontrivial",
+      "reasoning": "For the Ornstein-Uhlenbeck SDE, C(t)=e^{-tK}C(0)e^{-tK^T}+sigma^2 integral from 0 to t of e^{-(t-s)K}e^{-(t-s)K^T} ds. The omitted integral is nonzero for every t>0 when sigma is nonzero: with K symmetric PSD, its integrand is positive definite. Therefore the proposed stochastic-forcing term changes the expected second moment.",
+      "concerns": "The result concerns the expected second moment, as stated, and should not be conflated with a sample-path outer product or with a claim about computational benefit."
+    },
+    {
+      "id": "case-05",
+      "classification": "unresolved",
+      "reasoning": "Whether feeding D(Q(x)) changes the second-layer output depends on Q, D, the second-layer map, and the input. The supplied evidence gives no injectivity, reconstruction, error, or observed-output condition. It is consistent both with an identity/invertible representation that preserves the output and with a lossy representation that changes it; the word compressed alone does not decide this.",
+      "concerns": "Shapes matching is insufficient. A concrete Q, D, second-layer map, and input or a universal quantifier would be needed for classification."
+    },
+    {
+      "id": "case-06",
+      "classification": "unresolved",
+      "reasoning": "The source result assumes fixed p>0, comparable widths, and static masks, while the target uses p=d/n and therefore a sparse-limit regime. Those assumption mismatches do not establish transfer, but they also do not by themselves disprove the prediction. Without normalization details or an applicable sparse-limit theorem, the supplied evidence cannot decide accuracy.",
+      "concerns": "Exclusion from the stated theorem is not a contradiction. The asymptotic regime, mask construction, normalization, and target prediction must be specified before proving transfer or failure."
+    }
+  ],
+  "limitations": [
+    "This is a native same-family analytic review of the supplied case statements, not a proof audit by an independent human mathematician.",
+    "No labels.json, parent work, external source, paid API, source modification, or test modification was consulted.",
+    "Classifications address only whether the proposed operation changes the stated target under the supplied assumptions; they do not assess usefulness, novelty, implementation quality, or empirical performance."
+  ]
+}

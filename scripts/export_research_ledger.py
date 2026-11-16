@@ -154,6 +154,33 @@ def build_ledger(root: Path = ROOT) -> dict[str, Any]:
                               (result_path, folder / "README.md", folder / "freeze.json", folder / "validation.json") if f.is_file()],
             "evidence": {"source": _rel(result_path, root)},
         })
+    diagnostic_dir = root / 'operator-studies/mechanism-review'
+    diagnostic = _read(diagnostic_dir / 'result.json', None)
+    if isinstance(diagnostic, dict) and isinstance(diagnostic.get('arms'), dict):
+        metrics = {}
+        for arm, record in diagnostic['arms'].items():
+            if arm in {'old', 'specialization'} and isinstance(record, dict):
+                metrics[arm + '_reference_status_matches'] = record.get('label_matches')
+                metrics[arm + '_cases'] = record.get('count')
+        studies.append({
+            'id': 'mechanism-review', 'cohort': 'review_diagnostic',
+            'title': 'Mechanism review: exposed analytic cases',
+            'artifact_directory': 'operator-studies/mechanism-review',
+            'raw_verdict': 'development_diagnostic_only',
+            'audit_qualification': 'not_independent_quality_evidence',
+            'audit_note': 'Literal reference-status agreement; raw model reasons include a status contradiction and a disputed mapping.',
+            'primary_metrics': metrics, 'secondary_metrics': {},
+            'novelty_established': False, 'human_adjudicated': False,
+            'prior_art_status': 'Synthetic analytic cases; no literature novelty assessment.',
+            'limitations': ['Six exposed root-authored cases, one batch per arm.',
+                            'Same-family native label review is not independent human adjudication.',
+                            'Not the full production proposal/review pipeline.',
+                            'No calibrated ranker improvement, usefulness or novelty claim.'],
+            'artifact_refs': [{'path': _rel(f, root), 'sha256': _hash(f)} for f in
+                              (diagnostic_dir / name for name in ('README.md', 'cases.json', 'labels.json', 'result.json',
+                               'independent-review.json', 'output-audit.json', 'plan.json', 'receipts.json')) if f.is_file()],
+            'evidence': {'source': _rel(diagnostic_dir / 'result.json', root)},
+        })
     ledger = {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),

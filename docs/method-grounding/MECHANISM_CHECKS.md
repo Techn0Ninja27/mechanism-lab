@@ -42,3 +42,12 @@ comparison needs fixed source packets, matched model budgets, independently
 adjudicated cases (including nontrivial and uncertain cases), and checks for
 false rejection as well as missed redundancy. The motivating exposed case
 cannot serve as held-out evidence for that claim.
+
+## First development diagnostic
+
+The [six-case instruction diagnostic](../../operator-studies/mechanism-review/README.md)
+matched 4/6 reference statuses with the old instruction and 5/6 with added
+specialization. One old status contradicted its own correct derivation; both
+arms mishandled the fixed-kernel mapping. This is not the full production
+workflow or independent evidence of improved proposal quality. Raw results,
+reference derivations, native audit and receipts are retained.

@@ -1,0 +1,11 @@
+{
+  "scope":"Root-authored analytic development labels. No external novelty or usefulness labels.",
+  "labels": {
+    "case-01":{"status":"redundant","reason":"Mean scales by 2 and variance by 4, so N(2x)=N(x)."},
+    "case-02":{"status":"nontrivial","reason":"N(2x)=(x-mean(x))/sqrt(var(x)+1/4), different from epsilon 1 for nonconstant x."},
+    "case-03":{"status":"redundant","reason":"Product rule gives dX=-KX-XK^T; F=0 and its exact flow is identity."},
+    "case-04":{"status":"nontrivial","reason":"Ito's product rule adds sigma^2 I; its propagated integral is positive definite for t>0 and sigma nonzero."},
+    "case-05":{"status":"unresolved","reason":"Both exact reconstruction and output-changing reconstruction are consistent; the second layer could also erase differences."},
+    "case-06":{"status":"unresolved","reason":"Source theorem cannot establish transfer outside its assumptions, but does not disprove it. Kernel normalization and target theory are unknown."}
+  }
+}

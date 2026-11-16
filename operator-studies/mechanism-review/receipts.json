@@ -1,0 +1,31 @@
+{
+  "calls": [
+    {
+      "arm": "old-0",
+      "status": "complete",
+      "finish_reason": "stop",
+      "model": "anthropic/claude-haiku-5.5",
+      "response_id": "gen-1794865556-71vKt3L0eTYFNmBCnlHL",
+      "request_hash": "3bd5533d769196098c7b629bcb9ec56ec3898e13809dbb68e2f5904b558eecbf",
+      "prompt_tokens": 1623,
+      "completion_tokens": 911,
+      "usage_cost_usd": 0.000611622,
+      "upstream_cost_usd": 0.0006178,
+      "content_sha256": "0ac3ad4d68edf46ef4288ad90a408fcae89eb6a214ce793d864090f690382c62"
+    },
+    {
+      "arm": "specialization-0",
+      "status": "complete",
+      "finish_reason": "stop",
+      "model": "anthropic/claude-haiku-5.5",
+      "response_id": "gen-1794865562-QT3V7j2gwtJAeKh7z310",
+      "request_hash": "b4441ac3dab230b93f007fa9b55e1867f5e8b04ae675001861e3d467687d8bbd",
+      "prompt_tokens": 1752,
+      "completion_tokens": 973,
+      "usage_cost_usd": 0.000655083,
+      "upstream_cost_usd": 0.0006617,
+      "content_sha256": "cd737fb068e776760040bcdd4d56f1bec66a550c21943c721654025e4f433d3c"
+    }
+  ],
+  "conservative_cost_usd": 0.0012794999999999998
+}

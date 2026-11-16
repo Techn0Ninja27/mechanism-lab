@@ -1,0 +1,63 @@
+{
+  "audit_scope": "Comparison of result.json against the independent review, without consulting or changing reference labels or raw results.",
+  "overall": {
+    "summary": "The specialization arm agrees with the independent review on five cases and treats case-03 as unresolved rather than redundant. The old arm has a direct status-versus-reason contradiction for case-01 and a substantive status disagreement for case-03.",
+    "mathematical_errors_found": "No material mathematical error was found in the case-02 or case-04 derivations, or in the case-05/case-06 uncertainty reasoning.",
+    "important_ambiguity": "Case-03 depends on what counts as the proposed F. If F is obtained by mapping the stated unforced covariance equation, then F is identically zero and the added stage is redundant. If F is left as an arbitrary off-trajectory extension or an intentionally incorrect algorithm, its effect on output is unspecified; that is an unresolved specification question, not evidence that a necessary correction exists."
+  },
+  "cases": [
+    {
+      "id": "case-01",
+      "audit_status": "contradiction_in_old_arm",
+      "independent_classification": "redundant",
+      "specialization_status": "redundant",
+      "old_status": "nontrivial",
+      "finding": "The old row's prose correctly proves exact scale invariance and explicitly says the added effect is identically absent and redundant, but its status field says nontrivial. This is a direct status-versus-reason contradiction."
+    },
+    {
+      "id": "case-02",
+      "audit_status": "consistent",
+      "independent_classification": "nontrivial",
+      "specialization_status": "nontrivial",
+      "old_status": "nontrivial",
+      "finding": "The fixed +1 breaks positive scale invariance. The nonconstant-input condition implies variance greater than zero, so the denominator comparison supports a changed output."
+    },
+    {
+      "id": "case-03",
+      "audit_status": "ambiguity_and_status_disagreement",
+      "independent_classification": "redundant",
+      "specialization_status": "unresolved",
+      "old_status": "nontrivial",
+      "finding": "Both arms recognize that the exact unforced covariance equation has no required nonlinear correction. The old arm labels the operation nontrivial merely because an arbitrary added stage could alter the output; that conflates an intentionally incorrect/arbitrary algorithm with a correction obtained from the stated equation. The specialization arm is fairer about F being unspecified, but it should state the fork explicitly: mapped F=0 implies redundant; arbitrary off-trajectory F makes the operation unresolved, not established nontrivial."
+    },
+    {
+      "id": "case-04",
+      "audit_status": "consistent",
+      "independent_classification": "nontrivial",
+      "specialization_status": "nontrivial",
+      "old_status": "nontrivial",
+      "finding": "Ito covariance dynamics and the positive, nonzero diffusion integral are correctly stated for t>0 and nonzero sigma."
+    },
+    {
+      "id": "case-05",
+      "audit_status": "consistent",
+      "independent_classification": "unresolved",
+      "specialization_status": "unresolved",
+      "old_status": "unresolved",
+      "finding": "Unspecified Q, D, and second-layer map genuinely permit both output preservation and output change; shape matching and the word compressed do not decide it."
+    },
+    {
+      "id": "case-06",
+      "audit_status": "consistent",
+      "independent_classification": "unresolved",
+      "specialization_status": "unresolved",
+      "old_status": "unresolved",
+      "finding": "p=d/n leaves the fixed-p theorem's regime, but theorem exclusion neither proves transfer nor refutes it. The missing sparse-limit assumptions and normalization details justify unresolved."
+    }
+  ],
+  "limitations": [
+    "This audit checks internal reasoning and mathematical consistency against the supplied cases; it is not an independent re-run of the paid diagnostic.",
+    "No reference labels or raw result files were modified.",
+    "The audit does not decide whether an unspecified F in case-03 should be interpreted by the natural equation-mapping convention or as an arbitrary algorithm; it records the consequence of each interpretation."
+  ]
+}

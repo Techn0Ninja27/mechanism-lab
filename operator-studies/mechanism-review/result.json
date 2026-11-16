@@ -1,0 +1,89 @@
+{
+  "status": "diagnostic",
+  "arms": {
+    "old": {
+      "rows": [
+        {
+          "id": "case-01",
+          "status": "nontrivial",
+          "reason": "Baseline N is scale-invariant: N(2x)=N(x) since mean and standard deviation both scale by 2 and the ratio cancels exactly for nonconstant x. The proposal's claimed change in the normalized representation is therefore identically absent; the added effect is redundant. Status is redundant."
+        },
+        {
+          "id": "case-02",
+          "status": "nontrivial",
+          "reason": "With epsilon=1 fixed, N(2x) has denominator sqrt(4*var(x)+1) versus sqrt(var(x)+1), so the output generally changes (e.g., for var(x) not 0 the ratio is not 2-invariant). The stated target is changed by the scaling, satisfying the nontrivial definition. Status is nontrivial."
+        },
+        {
+          "id": "case-03",
+          "status": "nontrivial",
+          "reason": "The proposal alters the propagation of X: the claimed stage replaces exact linear flow with an added nonlinear term F between stages. With no forcing and exact exponentials, the baseline already yields X(t)=exp(-tK)X(0)exp(-tK)^T; the claim that F adds a necessary correction is not supported by the evidence, but the operation changes the stated target output, so it is nontrivial as an operation. Status is nontrivial."
+        },
+        {
+          "id": "case-04",
+          "status": "nontrivial",
+          "reason": "It\u00f4's formula gives dC/dt=-KC-CK^T+sigma^2 I, whose solution is exp(-tK)C(0)exp(-tK)^T plus the integral of sigma^2 exp(-(t-s)K)exp(-(t-s)K)^T ds. The added integral is positive semidefinite and nonzero for t>0 and sigma nonzero, so C(t) changes. Status is nontrivial."
+        },
+        {
+          "id": "case-05",
+          "status": "unresolved",
+          "reason": "Q, D and the second-layer map are unspecified; no reconstruction error, injectivity, or observed outputs are supplied. Whether D(Q(x)) differs from x, and hence whether the second layer's output changes, cannot be decided. Missing: explicit Q and D, or a test showing D(Q(x)) differs from x on the inputs of interest."
+        },
+        {
+          "id": "case-06",
+          "status": "unresolved",
+          "reason": "The source theorem assumes fixed retained fraction p>0; the proposal sets p=d/n->0, which lies outside the stated assumptions. The evidence neither establishes transfer nor contradicts it, since exclusion from a theorem is not a contradiction. Missing: a sparse-limit result for p=d/n, or a finite-n experiment comparing predicted and observed training behavior across increasing n."
+        }
+      ],
+      "label_matches": 4,
+      "count": 6,
+      "false_redundancy": [],
+      "missed_redundancy": [
+        "case-01",
+        "case-03"
+      ]
+    },
+    "specialization": {
+      "rows": [
+        {
+          "id": "case-01",
+          "status": "redundant",
+          "reason": "Baseline N is scale-invariant for positive scalars: mean(2x)=2mean(x) and x-mean(x) scales by 2, sqrt(mean((2x-2mean(x))^2))=2*sqrt(mean((x-mean(x))^2)); the ratio cancels exactly. Since the claimed added effect (a changed normalized output) is identically absent for every nonconstant x, the proposal is redundant."
+        },
+        {
+          "id": "case-02",
+          "status": "nontrivial",
+          "reason": "With +1 inside the root, the denominator sqrt(2^2*s^2+1) differs from 2*sqrt(s^2+1) unless s=0, where s^2=mean((x-mean(x))^2)>0 for nonconstant x. Hence N(2x) != N(x) in general, so the target output changes. The stated operation does change the normalized representation."
+        },
+        {
+          "id": "case-03",
+          "status": "unresolved",
+          "reason": "The linear part X' = -KX - XK is exact and equals the covariance of exp(-tK)E(0). The proposed F(t,X) is not supplied and no forcing exists, so the claimed necessity of a nonlinear correction is ungrounded: the exact baseline already satisfies the target with F=0. Whether the proposal's F is nonzero, and whether it changes the target quantity, cannot be decided from supplied evidence, though the evidence suggests the added stage is unnecessary for the exact target."
+        },
+        {
+          "id": "case-04",
+          "status": "nontrivial",
+          "reason": "It\u00f4's formula gives dC/dt=-KC-CK+sigma^2 I, so C(t)=exp(-tK)C(0)exp(-tK)^T+integral_0^t sigma^2 exp(-(t-s)K)exp(-(t-s)K)^T ds. The integral is positive semidefinite and nonzero for t>0 and sigma nonzero (its trace is positive since exp(-uK)exp(-uK)^T has positive trace). The baseline omits it, so the proposal changes C(t)."
+        },
+        {
+          "id": "case-05",
+          "status": "unresolved",
+          "reason": "Q, D, and the second-layer map are unspecified, and no reconstruction or injectivity information is supplied. Output change D(Q(x)) versus x depends on whether D(Q(x))=x for the relevant inputs, which is undetermined; Q may be lossy or lossless. Shape matching alone does not decide the change."
+        },
+        {
+          "id": "case-06",
+          "status": "unresolved",
+          "reason": "Only source assumptions (fixed p>0, comparable widths, static masks) are supplied. Setting p=d/n gives p->0, which lies outside the source regime; exclusion from the theorem is not a contradiction, and the target weight normalization and any sparse-limit theorem are unspecified. Transfer can be neither established nor disproved from this evidence."
+        }
+      ],
+      "label_matches": 5,
+      "count": 6,
+      "false_redundancy": [],
+      "missed_redundancy": [
+        "case-03"
+      ]
+    }
+  },
+  "train_eligible": false,
+  "novelty_established": false,
+  "scope": "Exposed root-authored development cases; one batched call per arm; common classification schema, not full production protocol comparison"
+}

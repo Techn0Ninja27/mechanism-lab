@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 29)
+            self.assertEqual(ledger["study_count"], 30)
             self.assertTrue(all(x["read_only"] is True for x in [ledger]))
             reconstruction = next(x for x in ledger["studies"] if x["id"] == "abstracts-0")
             self.assertIn("mean_ap", reconstruction["secondary_metrics"])
@@ -36,6 +36,15 @@ class LedgerTests(unittest.TestCase):
         for sid in ("utility-ranker", "integer-composition"):
             self.assertEqual(rows[sid]["audit_qualification"], "frozen_sources_and_validation_match")
             self.assertFalse(rows[sid]["novelty_established"])
+
+    def test_review_diagnostic_is_not_promoted_by_better_status_agreement(self):
+        row=next(x for x in build_ledger()['studies'] if x['id']=='mechanism-review')
+        self.assertEqual(row['audit_qualification'], 'not_independent_quality_evidence')
+        self.assertFalse(row['novelty_established'])
+        self.assertFalse(row['human_adjudicated'])
+        self.assertEqual(row['primary_metrics']['old_reference_status_matches'],4)
+        self.assertEqual(row['primary_metrics']['specialization_reference_status_matches'],5)
+        self.assertIn('status contradiction',row['audit_note'])
 
     def test_missing_frozen_sources_are_not_verified(self):
         with tempfile.TemporaryDirectory() as d:
