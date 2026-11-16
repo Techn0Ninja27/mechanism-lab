@@ -1,0 +1,61 @@
+{
+  "scope": "Second semantic review under the corrected rubric: non-executable outputs (including analytical representations, guidelines, numerical solutions, embeddings, tensors, documents, and intermediate signals) are valid outputs when the abstract supports them. Only unsupported output claims or reported metrics/results misrepresented as produced artifacts are flagged. This preserves semantic-review-v1.json unchanged.",
+  "reviews": [
+    {
+      "source_id": "arxiv:2307.11764",
+      "verdict": "faithful_with_limits",
+      "issue": "The operation, model output, and separation of downstream performance from the output are supported by the abstract. No metric is misrepresented as an artifact.",
+      "output_role_problem": false,
+      "missing_contract": "Exact sensitivity score, tensor-trimming mechanism and schedule, calibration data, and budget-to-model mapping are not exposed in the abstract."
+    },
+    {
+      "source_id": "arxiv:2510.17515",
+      "verdict": "faithful_with_limits",
+      "issue": "The abstract explicitly supports graphon representations and a derived Graphon NTK as analytical outputs, and separately reports correlation with observed training dynamics. No result is incorrectly presented as an artifact.",
+      "output_role_problem": false,
+      "missing_contract": "Finite-network graphon construction, covered pruning regimes, kernel evaluation procedure, and empirical conditions are not specified."
+    },
+    {
+      "source_id": "arxiv:2604.08598",
+      "verdict": "faithful_with_limits",
+      "issue": "The uncertainty indicator is a supported intermediate output: the abstract says disagreement estimates uncertainty and that the indicator drives recalibration. Benchmark improvements remain correctly separated as outcomes.",
+      "output_role_problem": false,
+      "missing_contract": "Disagreement definition and thresholds, updated parameters, adaptation schedule, gallery/test-set protocol, and whether the indicator is externally exposed are unspecified."
+    },
+    {
+      "source_id": "arxiv:2503.16397",
+      "verdict": "faithful_with_limits",
+      "issue": "The scale-wise framework, progressive generation, patch-level MMD objective, and distilled-model output are supported. Sampling-speed and comparison claims are retained as reported outcomes rather than artifacts.",
+      "output_role_problem": false,
+      "missing_contract": "Scale schedule, architecture changes, MMD kernel and patch sampling, teacher/loss setup, compute-budget definition, and evaluation protocol are unspecified."
+    },
+    {
+      "source_id": "arxiv:2605.01938",
+      "verdict": "faithful_with_limits",
+      "issue": "The cross-layer analysis and practitioner-guideline output are explicitly supported, while energy/runtime observations are represented as reported outcomes. No metric is misrepresented as an artifact.",
+      "output_role_problem": false,
+      "missing_contract": "Workload and GH200 configuration, energy measurement method, varied settings, benchmark suite, and precise guideline conditions are unspecified."
+    },
+    {
+      "source_id": "arxiv:2606.22180",
+      "verdict": "faithful_with_limits",
+      "issue": "Feedback-coupled sampling, activity-aware communication, interleaved pipelining, and node embeddings are supported by the abstract. Speedup, communication reduction, and utilization are correctly treated as reported outcomes.",
+      "output_role_problem": false,
+      "missing_contract": "Embedding-quality feedback metric, prioritization rule, compression and synchronization schemes, distributed topology, datasets/baselines, and scheduling details are unspecified."
+    },
+    {
+      "source_id": "arxiv:2604.14351",
+      "verdict": "needs_revision",
+      "issue": "The SQP method and complexity outcomes are supported, but the note elevates a search direction as the named output even though the abstract only states that step decomposition is used; it does not explicitly establish that search direction as an output artifact. The complexity bounds are correctly listed as outcomes.",
+      "output_role_problem": false,
+      "missing_contract": "Replace or qualify the search-direction output claim; stepsize rules, stochastic-noise and inexactness assumptions, subproblem specification, stopping conditions, and numerical comparison protocol are unspecified."
+    },
+    {
+      "source_id": "arxiv:2506.15259",
+      "verdict": "faithful_with_limits",
+      "issue": "The splitting-based randomized low-rank method and low-rank solution output are explicitly supported, while convergence orders are correctly separated as validation outcomes. No metric is misrepresented as an artifact.",
+      "output_role_problem": false,
+      "missing_contract": "Specific randomized methods, rank-adaptation rule, time-stepping/splitting details, dimensions and ranks, test parameters, and baseline/cost protocol are unspecified."
+    }
+  ]
+}

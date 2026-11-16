@@ -1,0 +1,61 @@
+{
+  "scope": "Semantic entailment and output-role review of eight abstract-only operational notes; reported outcomes are not treated as executable artifacts.",
+  "reviews": [
+    {
+      "source_id": "arxiv:2307.11764",
+      "verdict": "faithful_with_limits",
+      "issue": "The sensitivity-ranking and budget-aware tensor trimming description is entailed. The parameter-efficient fine-tuned model is a plausible produced artifact, while the comparative task performance remains a reported outcome, not an output.",
+      "output_role_problem": false,
+      "missing_contract": "Exact sensitivity score, tensor trimming mechanism and schedule, calibration data, and mapping from parameter/FLOPs budget to the resulting model are unspecified."
+    },
+    {
+      "source_id": "arxiv:2510.17515",
+      "verdict": "needs_revision",
+      "issue": "The graphon-limit and Graphon NTK description is faithful, but the listed graphon and kernel are analytical representations for studying trainability, not executable interfaces or deployable algorithm outputs.",
+      "output_role_problem": true,
+      "missing_contract": "Finite-network-to-graphon construction, covered pruning regimes, kernel evaluation procedure, and empirical setup are unspecified; the note must label these as theory/analysis artifacts."
+    },
+    {
+      "source_id": "arxiv:2604.08598",
+      "verdict": "needs_revision",
+      "issue": "The bidirectional-disagreement adaptation mechanism is accurately summarized, but the uncertainty indicator is an internal decision signal, not the main produced model artifact; the abstract supports recalibration/adaptation rather than exposing that indicator as the final output.",
+      "output_role_problem": true,
+      "missing_contract": "Disagreement definition and thresholds, parameters updated, adaptation schedule, test-set/gallery protocol, and resulting adapted-model interface are unspecified."
+    },
+    {
+      "source_id": "arxiv:2503.16397",
+      "verdict": "faithful_with_limits",
+      "issue": "The scale-wise progressive-generation framework and patch-level MMD objective are entailed, and a distilled diffusion model is a reasonable artifact; speed and preference comparisons remain reported outcomes.",
+      "output_role_problem": false,
+      "missing_contract": "Scale schedule, architecture changes, MMD kernel/patch sampling, teacher and loss weighting, compute-budget definition, and evaluation protocol are unspecified."
+    },
+    {
+      "source_id": "arxiv:2605.01938",
+      "verdict": "needs_revision",
+      "issue": "The cross-layer GH200 energy/performance analysis is accurately described, but practitioner guidelines are recommendations derived from the study, not an executable interface or algorithm artifact.",
+      "output_role_problem": true,
+      "missing_contract": "Workload and hardware configuration, energy measurement method, varied runtime settings, benchmark suite, and the precise conditional rules in the guidelines are unspecified."
+    },
+    {
+      "source_id": "arxiv:2606.22180",
+      "verdict": "faithful_with_limits",
+      "issue": "Feedback-coupled sampling, activity-aware communication, and interleaved pipelining are entailed. Node embeddings are a genuine computational result of the system; speedup, communication reduction, and utilization are correctly separated as outcomes.",
+      "output_role_problem": false,
+      "missing_contract": "Embedding-quality feedback metric, prioritization rule, compression and synchronization schemes, distributed topology, datasets/baselines, and pipeline scheduling details are unspecified."
+    },
+    {
+      "source_id": "arxiv:2604.14351",
+      "verdict": "needs_revision",
+      "issue": "The two-stepsize inexact stochastic SQP method and its complexity claims are supported, but a search direction is an intermediate quantity rather than the reusable algorithm artifact; the complexity bounds are results, not outputs.",
+      "output_role_problem": true,
+      "missing_contract": "Stepsize rules, stochastic-noise and inexactness assumptions, subproblem specification, infeasibility measure, stopping conditions, and numerical comparison protocol are unspecified."
+    },
+    {
+      "source_id": "arxiv:2506.15259",
+      "verdict": "needs_revision",
+      "issue": "The splitting, exponential-integrator, randomized low-rank, and rank-adaptation method description is faithful, but the low-rank solution is a numerical result produced for test equations, not an algorithm/interface artifact.",
+      "output_role_problem": true,
+      "missing_contract": "Specific randomized methods, rank-adaptation rule, time-stepping/splitting details, dimensions and ranks, test parameters, and cost/baseline protocol are unspecified."
+    }
+  ]
+}

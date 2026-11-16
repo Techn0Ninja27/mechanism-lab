@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-17",
+  "queries": [
+    "parameter efficient fine tuning",
+    "sparse neural training",
+    "test time adaptation",
+    "diffusion distillation",
+    "activation checkpointing",
+    "distributed graph sampling",
+    "stochastic equality constrained optimization",
+    "randomized matrix approximation"
+  ],
+  "rule": "First unseen arXiv-ID record in FTS top20, abstract>=400 chars, published>=2023-01-01, cutoff2026-11-16; excludes specified prior packet.",
+  "corpus_sha256": "065bfdd3b815b79b8571a86c88d771173e0c10935eedbb3244751b8f4234784e",
+  "excluded_packet_sha256": "b500b468b1af17788a5b8a681bb3d559f5919e6b0ed69c367ceb74583e938ce8",
+  "papers_sha256": "85de34a9991e0f1639f6c83794b6e33763e43bdb7a68255e0db0b0718a56f8f8",
+  "script_sha256": "78854517784a50f4b6137a0f10101a433508ced34002dd6d22209cbdfb7ca57b",
+  "sources": [
+    {
+      "source_id": "arxiv:2307.11764",
+      "title": "Sensi-BERT: Towards Sensitivity Driven Fine-Tuning for Parameter-Efficient BERT",
+      "url": "https://arxiv.org/abs/2307.11764",
+      "selection_query": "parameter efficient fine tuning"
+    },
+    {
+      "source_id": "arxiv:2510.17515",
+      "title": "The Graphon Limit Hypothesis: Understanding Neural Network Pruning via Infinite Width Analysis",
+      "url": "https://arxiv.org/abs/2510.17515",
+      "selection_query": "sparse neural training"
+    },
+    {
+      "source_id": "arxiv:2604.08598",
+      "title": "Pretrain-then-Adapt: Uncertainty-Aware Test-Time Adaptation for Text-based Person Search",
+      "url": "https://arxiv.org/abs/2604.08598",
+      "selection_query": "test time adaptation"
+    },
+    {
+      "source_id": "arxiv:2503.16397",
+      "title": "Scale-wise Distillation of Diffusion Models",
+      "url": "https://arxiv.org/abs/2503.16397",
+      "selection_query": "diffusion distillation"
+    },
+    {
+      "source_id": "arxiv:2605.01938",
+      "title": "Cross-Layer Energy Analysis of Multimodal Training on Grace Hopper Superchips",
+      "url": "https://arxiv.org/abs/2605.01938",
+      "selection_query": "activation checkpointing"
+    },
+    {
+      "source_id": "arxiv:2606.22180",
+      "title": "FeLoG: Scalable and Efficient Distributed Graph Embedding with Feedback Loop Mechanism",
+      "url": "https://arxiv.org/abs/2606.22180",
+      "selection_query": "distributed graph sampling"
+    },
+    {
+      "source_id": "arxiv:2604.14351",
+      "title": "Complexity of an inexact stochastic SQP algorithm for equality constrained optimization",
+      "url": "https://arxiv.org/abs/2604.14351",
+      "selection_query": "stochastic equality constrained optimization"
+    },
+    {
+      "source_id": "arxiv:2506.15259",
+      "title": "Splitting-based randomized dynamical low-rank approximations for stiff matrix differential equations",
+      "url": "https://arxiv.org/abs/2506.15259",
+      "selection_query": "randomized matrix approximation"
+    }
+  ],
+  "scope": "Exposed development extraction packet, not representative coverage or a novelty benchmark."
+}

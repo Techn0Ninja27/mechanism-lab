@@ -1,0 +1,405 @@
+{
+  "notes": [
+    {
+      "source_id": "arxiv:2307.11764",
+      "operation": "Sensitivity analysis ranks each parameter tensor of an off-the-shelf pre-trained BERT, and the ranking is used to trim tensors during fine-tuning under a parameter or FLOPs budget.",
+      "unknowns": [
+        "Exact sensitivity metric and how it is computed per tensor",
+        "Trimming mechanism (pruning, masking, or structural removal) and granularity",
+        "Scheduling of trimming relative to fine-tuning steps",
+        "Whether ranking is computed once or repeatedly during training",
+        "Calibration data used for the sensitivity analysis",
+        "Hyperparameters and budget-to-trim mapping",
+        "Handling of FLOPs versus parameter budget constraints",
+        "Code or API availability"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "abcbf2d29a0e7560776eba0186c8009bc20b0452163e8188d196150bf6414972",
+      "source_url": "https://arxiv.org/abs/2307.11764",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "7366d53f8de704f632022d80f9befe33ecc9ada733ab87d44e505bf1cbba639d",
+      "inputs": [
+        {
+          "name": "pre-trained BERT model",
+          "quote_sha256": "009b941591fa3442016b5c299042126a117625898850ac21999a66d53029149d",
+          "quote_characters": 44
+        },
+        {
+          "name": "parameter or FLOPs budget",
+          "quote_sha256": "d4685bcc9c33c5b92803394e287b4448a6cad51489dc3240230d54e3ffb021cb",
+          "quote_characters": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "parameter-efficient fine-tuned BERT model for downstream tasks",
+          "quote_sha256": "006de7342650a8d294e3f351974a416c2687e8479d37fa7a928ee53d3de0542b",
+          "quote_characters": 60
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "downstream task performance at similar or smaller parameter budget",
+          "quote_sha256": "7e700941f897efe6931cff25ac94974b42ce04d34e706cc781e23655ef8a7a72",
+          "quote_characters": 98
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2510.17515",
+      "operation": "Analytical framework that models sparse network connectivity induced by pruning as converging to graphons in the infinite-width limit and derives a Graphon NTK to analyze training dynamics; this is a theoretical analysis rather than a reusable algorithm.",
+      "unknowns": [
+        "Formal conditions under which the graphon limit holds",
+        "Exact pruning methods covered and their graphon characterization",
+        "Construction procedure for the graphon from a finite network",
+        "Kernel computation details and numerical evaluation procedure",
+        "Architectures and datasets used in the empirical evidence",
+        "Scaling assumptions on width and sparsity",
+        "Training setup such as optimizer and loss used in comparisons",
+        "Code availability"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "85d61783571d45f9fc0648a1845a2b868f109ce13d6f5a1ae5bdb56948e053b6",
+      "source_url": "https://arxiv.org/abs/2510.17515",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "c02f4a80c448849978c34351fa211b19949343acc029ca8ba2a6ac152bb3d1ac",
+      "inputs": [
+        {
+          "name": "pruning-induced sparse connectivity patterns",
+          "quote_sha256": "0bf765270c33a3aad332b8f957cc00a17a9e4ed5423222c5468021906d79498d",
+          "quote_characters": 74
+        }
+      ],
+      "outputs": [
+        {
+          "name": "graphon representation of sparse network",
+          "quote_sha256": "40f1be622e006138c7ff3eb6410b666463120552f5fc86f6a1e0d2d8017c410d",
+          "quote_characters": 38
+        },
+        {
+          "name": "Graphon Neural Tangent Kernel",
+          "quote_sha256": "d1532e49cf2c33df1e904cc4eee3bbc83e78a063a590bc17bf2827468f6e1232",
+          "quote_characters": 55
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "spectral analysis correlates with observed training dynamics",
+          "quote_sha256": "27cf0741116e504aa59b0fc925894f7063d37e363fb42614e6d4da7f5140a6b4",
+          "quote_characters": 98
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2604.08598",
+      "operation": "Uncertainty-aware offline test-time adaptation that estimates per-pair uncertainty via bidirectional retrieval disagreement (image-to-text versus text-to-image ranks) and uses it to recalibrate the model without labels on unlabeled test data.",
+      "unknowns": [
+        "Exact definition of retrieval disagreement and thresholds for low versus high uncertainty",
+        "Recalibration update rule and which parameters are updated",
+        "Number of adaptation steps and batching",
+        "Size and composition of the test set used for adaptation",
+        "Relation to the retrieval gallery construction",
+        "Pretraining data used for synthetic person-caption pairs",
+        "Behavior under varying domain shift magnitude",
+        "Code availability details beyond the repository link"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "c2221369c0f4fb015ba7a0eb15ca66e20c780c0c2c1f3fb0bd484e9ddc112645",
+      "source_url": "https://arxiv.org/abs/2604.08598",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "9a871668bfcf3693ff3fd010b78ef8dc8ce3ca257dea4aa9ecd346dd7d2086ac",
+      "inputs": [
+        {
+          "name": "unlabeled test data",
+          "quote_sha256": "b530e07571430d01fae84247a01e75765c2b979048aee18d7376ea14ac08a726",
+          "quote_characters": 30
+        },
+        {
+          "name": "image-text pairs",
+          "quote_sha256": "b19ab7bcf88823d517224cf01d1f59ac76ce3ab21466d4d852377746f4833c57",
+          "quote_characters": 81
+        }
+      ],
+      "outputs": [
+        {
+          "name": "uncertainty indicator per image-text pair",
+          "quote_sha256": "8bc5a24286fb298efc0c6a8dc070f27f20e84cee15452312177096091d5c8436",
+          "quote_characters": 74
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "consistent improvements across benchmarks",
+          "quote_sha256": "6bd384bfd4b19218884e545213ab7b75f7d4d2340ca35e378cbf9fdfc72be528",
+          "quote_characters": 104
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2503.16397",
+      "operation": "Scale-wise diffusion distillation framework that adds progressive, scale-wise generation to few-step diffusion models and a patch-level Maximum Mean Discrepancy distillation objective.",
+      "unknowns": [
+        "Specific scale schedule and resolution levels used",
+        "Architecture changes required in the base diffusion model",
+        "Form of the patch-level MMD kernel and sampling of patches",
+        "Training procedure, loss weighting, and teacher setup",
+        "Compute budget definition and measurement protocol",
+        "Conditions for progressive generation at intermediate timesteps",
+        "Evaluation metrics and human preference protocol specifics",
+        "Code availability beyond the project page"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "09b4fde78f37660514fc3bf42b97718103f000149da3ff80c723bfe2c3f3eeae",
+      "source_url": "https://arxiv.org/abs/2503.16397",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "601b93dc20952fd1784f3a2d00b0dfe83c36793b1a91619e620234c60c96f765",
+      "inputs": [
+        {
+          "name": "few-step text-conditional diffusion model",
+          "quote_sha256": "de2b405a81334a8c9dbe4eb12e1d96f252c4e4df0c61ddcdd72d35a1671a7ffa",
+          "quote_characters": 64
+        },
+        {
+          "name": "patch-level distillation objective based on MMD",
+          "quote_sha256": "e68c2254025b58e43c0f62e7072022bff66fd9578ac2ff4c1decb018b58235db",
+          "quote_characters": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "distilled scale-wise diffusion model",
+          "quote_sha256": "8b89c8a642f4b1b75688250690ed4df8faed757c74891bf323af8b3521138146",
+          "quote_characters": 62
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "sampling speed approaching two full-resolution steps",
+          "quote_sha256": "8b89c8a642f4b1b75688250690ed4df8faed757c74891bf323af8b3521138146",
+          "quote_characters": 62
+        },
+        {
+          "name": "outperforms alternatives under the same compute budget",
+          "quote_sha256": "6f0d2058312a6e6776ba061d8e62781fc73b1ac222c3a18f3d753ff9526fe07c",
+          "quote_characters": 62
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2605.01938",
+      "operation": "Cross-layer energy and performance characterization of multimodal training on GH200 systems, including analysis of CPU offloading, activation checkpointing and sequence parallelism",
+      "unknowns": [
+        "Specific model sizes and sequence lengths evaluated are not given in the abstract",
+        "Exact energy measurement methodology and power counters are not specified",
+        "Which DeepSpeed configuration parameters were varied is not stated",
+        "Number of GH200 nodes and interconnect topology are not described",
+        "Precise definition of the guidelines is not provided",
+        "Benchmark suite or datasets are not named"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "3b34efafc6df535e30766435b1a17da938e984ee48d1645861228cf08616b3e2",
+      "source_url": "https://arxiv.org/abs/2605.01938",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "01f86d9ef33422d74f8db8ee53d6d4da9e6e7c4f044ed96862e5f3638932ff47",
+      "inputs": [
+        {
+          "name": "multimodal training workloads",
+          "quote_sha256": "86b513556c8fb6bdf21f76952dce011e6d0782bac49efae1ab01671f23fa4022",
+          "quote_characters": 87
+        },
+        {
+          "name": "GH200 heterogeneous superchip configurations",
+          "quote_sha256": "a3ec85b918c9065a4e729e936dc3248c05ad93be6a0e925046ef1ae602854bf0",
+          "quote_characters": 41
+        }
+      ],
+      "outputs": [
+        {
+          "name": "practitioner guidelines for balancing offloading, sequence parallelism and scheduling",
+          "quote_sha256": "009853bee2e61da31fbc364f08be613c24ce4c4161ead34f7e9ab3e5ef8d7213",
+          "quote_characters": 59
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "energy efficiency governed by data movement and overlap",
+          "quote_sha256": "05bde15dbf68a95d09dbcb88b4d95b0625fa24370069006581107a8218d85933",
+          "quote_characters": 104
+        },
+        {
+          "name": "runtime-optimal configurations not necessarily energy-optimal",
+          "quote_sha256": "b1e43aa6ff0dd7a306587f4c817ce5aa7fb48779ca19a0d76101c00a7dc69fa9",
+          "quote_characters": 75
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2606.22180",
+      "operation": "Feedback-coupled sampling and training for distributed graph embedding, with activity-aware communication and round-interleaved CPU-GPU pipelining",
+      "unknowns": [
+        "Exact feedback metric used to measure embedding quality is not specified",
+        "Sampling rule for prioritizing undertrained nodes is not detailed",
+        "Compression scheme for node sequences is not described",
+        "Criteria for selective synchronization of embeddings are not given",
+        "Number of machines and GPUs in the distributed setup is not stated",
+        "Six baseline systems are not named",
+        "Graph datasets used are not identified",
+        "Pipeline scheduling details between sampling and training rounds are not given"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "b7d3f32340ac44e9cdf0b262d91a4134206c0d121b5372060cd88dd0fbbe8a86",
+      "source_url": "https://arxiv.org/abs/2606.22180",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "9c6815db28cf9ebcd9a67af3a37da47c30c341b6a4db64064285e60153640089",
+      "inputs": [
+        {
+          "name": "large-scale graph",
+          "quote_sha256": "9b8fbb274a9a175cccd1a240b5f5d01a1337f8aaf0dc9cde5f9b8ca2ef70bddc",
+          "quote_characters": 36
+        },
+        {
+          "name": "real-time embedding-quality feedback",
+          "quote_sha256": "55f205fa7b45bf0ba6e176a4b3c6a8de423637e8d56d32c31f35e118f8c31230",
+          "quote_characters": 36
+        }
+      ],
+      "outputs": [
+        {
+          "name": "graph node embeddings",
+          "quote_sha256": "153287646075b99ce1439d4f55281cb47e902014f62f5c180c38c72cb03ea0d6",
+          "quote_characters": 61
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "average speedup over baselines",
+          "quote_sha256": "a31e0d3c947614bfb63bfc057d8fec0256da8316c113394d8769155b927bcbd0",
+          "quote_characters": 36
+        },
+        {
+          "name": "communication cost reduction",
+          "quote_sha256": "bc218aea5b55b08b013a898cf1039460cf2974544f01b485d4297f12acc8c885",
+          "quote_characters": 45
+        },
+        {
+          "name": "CPU-GPU utilization",
+          "quote_sha256": "ca3e2b850770adc10784d0a822fda0cdffc87522c7899b304666c39f582dfa00",
+          "quote_characters": 37
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2604.14351",
+      "operation": "Inexact two-stepsize stochastic SQP with Byrd-Omojukun step decomposition for equality-constrained stochastic optimization, with worst-case complexity analysis",
+      "unknowns": [
+        "Specific stepsize selection rules are not given in the abstract",
+        "Precise mild assumptions required are not enumerated",
+        "Inexactness tolerance conditions on subproblem solves are not stated",
+        "Form of the stochastic gradient noise model is not specified",
+        "Numerical test problems are not identified",
+        "Baseline stochastic SQP method used for comparison is not named",
+        "Definition of the infeasibility measure is not provided",
+        "Parameter choices for the two stepsizes are not described"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "faf7e23a1bb9363f13e6ecb08e781b08fb37699d27ed76e36124ba40b7bbd3b3",
+      "source_url": "https://arxiv.org/abs/2604.14351",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "b65bc5af99094a4732c27e99aa58d069b02e0300cf1d5488db88d30e7f4ef9e1",
+      "inputs": [
+        {
+          "name": "stochastic objective with deterministic equality constraints",
+          "quote_sha256": "6049c528872b41ac2e91c947b8bc3381b5bba77f9f64f1a51237dab7fd198998",
+          "quote_characters": 107
+        },
+        {
+          "name": "stochastic gradient estimates",
+          "quote_sha256": "81588d3b5d1e6e65d77bddb7f4c1a47d9701c8c7300c304feb1c225b2a017379",
+          "quote_characters": 118
+        }
+      ],
+      "outputs": [
+        {
+          "name": "search direction via step decomposition",
+          "quote_sha256": "a4520549db13dc2f40aed2aed27bee92539744712f155022a67af21386c0409e",
+          "quote_characters": 38
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "infeasibility complexity without constraint qualification",
+          "quote_sha256": "1fa4395c6c4cedd53c5ad7cbaef572b322d080f1281374f87d906e04bee09c28",
+          "quote_characters": 110
+        },
+        {
+          "name": "complexity under LICQ",
+          "quote_sha256": "ec95aea955d07cc4f580bef0b39dd4c358433376097461c95a2085275b4ce4a6",
+          "quote_characters": 73
+        },
+        {
+          "name": "Lagrangian gradient complexity",
+          "quote_sha256": "9eca141f70a7f94eee74a2a0f73dbc21501e84707e0c9c1b11e206e6abb75a9e",
+          "quote_characters": 109
+        }
+      ]
+    },
+    {
+      "source_id": "arxiv:2506.15259",
+      "operation": "Splitting-based randomized dynamical low-rank approximation for semilinear stiff matrix differential equations, combining a low-rank exponential integrator on the linear part with randomized low-rank methods on the nonlinear part",
+      "unknowns": [
+        "Specific randomized low-rank approaches used for the nonlinear subproblem are not named",
+        "Rank-adaptation criterion is not described",
+        "Matrix dimensions and rank sizes tested are not stated",
+        "Time-stepping scheme order is not specified",
+        "Exact form of the exponential integrator is not given",
+        "Splitting order and error constants are not provided",
+        "Test problem parameters for Allen-Cahn and Riccati equations are not given",
+        "Computational cost comparison to baselines is not described"
+      ],
+      "ready_for_composition": false,
+      "source_hash": "3198bb06450baf516e8429b2248295b9bc66a2c1170d89abca7fb9d08f4e3baa",
+      "source_url": "https://arxiv.org/abs/2506.15259",
+      "train_eligible": false,
+      "novelty_established": false,
+      "evidence_scope": "abstract_only_quote_validation_not_entailment",
+      "operation_quote_sha256": "f54e1dab1f43d8075eca989e85b93dcedc73b138c2788dd899a77d88a580397d",
+      "inputs": [
+        {
+          "name": "semilinear stiff matrix differential equation",
+          "quote_sha256": "cd8e73d0f451947fdd06a2eb06cd8a92eb300675840f20f555352d91d5ef61ce",
+          "quote_characters": 58
+        }
+      ],
+      "outputs": [
+        {
+          "name": "low-rank solution of the matrix differential equation",
+          "quote_sha256": "d42d9e2d2481d827601f0642e2fda1ea7994847e8f2ae35e0c928ef1ff93c017",
+          "quote_characters": 61
+        }
+      ],
+      "reported_outcomes": [
+        {
+          "name": "desired convergence orders on canonical problems",
+          "quote_sha256": "5027084bf5630f99562b4c621c2bc6a58139472f6dfa9422bbb63dd2f089bb42",
+          "quote_characters": 66
+        }
+      ]
+    }
+  ],
+  "scope": "Public descriptions and excerpt hashes; original exact quotations retained locally. No executable compatibility or novelty claim.",
+  "raw_result_sha256": "82f4f01d78fb47a80b512b55e3df2874d27923a538e072b97114cda7ce790bcb"
+}

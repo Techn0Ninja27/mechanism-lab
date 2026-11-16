@@ -1,0 +1,10 @@
+{
+  "notes": 8,
+  "quote_schema_failures": 0,
+  "selection_reproduced_byte_identically": true,
+  "all_ready_for_composition": false,
+  "all_train_eligible": false,
+  "scope": "Exact span and structure checks do not prove semantic entailment.",
+  "ready_for_composition_count": 0,
+  "train_eligible_count": 0
+}

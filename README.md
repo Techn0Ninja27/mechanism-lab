@@ -49,6 +49,9 @@ A first 24-paper packet produced **60 source-linked candidate atoms** for
 $0.00835. Independent agent review flagged 11 semantic issues and separately
 tagged 10 transfer-oriented results. [Extraction and review](reports/ml-graph-atoms/README.md).
 The full corpus has not been atomized or used to retrain the scorers.
+A separate [eight-paper operational-note pilot](reports/operational-notes-v1/README.md)
+now explores non-KV sources and separates produced objects from reported
+outcomes. These notes are not yet eligible for composition or training.
 
 The first [interface graph](reports/interface-graph/README.md) retains 49 atoms
 and proposes 20 pairs from 424 eligible directed pairs. Its selected

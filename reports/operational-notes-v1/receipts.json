@@ -1,0 +1,70 @@
+{
+  "calls": [
+    {
+      "stage": "batch-0-0",
+      "status": "complete",
+      "response_id": "gen-1794864159-kRMnExRbDcC9N2zs9kCd",
+      "resolved_model": "anthropic/claude-haiku-5.5",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 3281,
+        "completion_tokens": 2136,
+        "total_tokens": 5417,
+        "cost": 0.001382139,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0013961,
+          "upstream_inference_prompt_cost": 0.0003281,
+          "upstream_inference_completions_cost": 0.001068
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "request_hash": "09841e04671c73df3b4a54f52af76f209d770592f8b555a0e5155be47dcbcc41"
+    },
+    {
+      "stage": "batch-1-0",
+      "status": "complete",
+      "response_id": "gen-1794864169-dTSSS04XqKsYdGpgx8IB",
+      "resolved_model": "anthropic/claude-haiku-5.5",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 3318,
+        "completion_tokens": 2268,
+        "total_tokens": 5586,
+        "cost": 0.001451142,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.0014658,
+          "upstream_inference_prompt_cost": 0.0003318,
+          "upstream_inference_completions_cost": 0.001134
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      },
+      "request_hash": "f95b1b64183731fc6a99d9753c9df7bd31f7092dfb3788a360f731ba1f4618b0"
+    }
+  ],
+  "phase_accounted_usd": 2.17069,
+  "run_accounted_usd": 0.0028619,
+  "run_usage_cost_usd": 0.002833281,
+  "phase_cap_usd": 10
+}
