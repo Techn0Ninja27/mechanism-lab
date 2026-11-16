@@ -1,0 +1,240 @@
+{
+  "schema": "smolvlm-trace.v2",
+  "status": "captured_pending_independent_replay",
+  "device": "mps",
+  "cases": [
+    {
+      "image": "candy",
+      "input_tokens": 82,
+      "visual_tokens": 64,
+      "prompt_text_tokens": 11,
+      "image_token_id": 49190,
+      "generated_ids": [
+        1385,
+        314,
+        253,
+        27721
+      ],
+      "generated_text": " There is a squirrel",
+      "max_row_sum_error": 3.5762786865234375e-07,
+      "max_causal_leakage": 0.0,
+      "npz": "candy.npz",
+      "npz_sha256": "5b5a2aab8b5827cbbe2ab7bae65566c97684f33a98987eb51aa835d901ea3ddc",
+      "bytes": 14218640,
+      "shapes": {
+        "input_ids": [
+          82
+        ],
+        "visual_positions": [
+          64
+        ],
+        "prompt_text_positions": [
+          11
+        ],
+        "aligned_input_embeddings": [
+          82,
+          576
+        ],
+        "prefill_q": [
+          30,
+          9,
+          82,
+          64
+        ],
+        "prefill_k": [
+          30,
+          3,
+          82,
+          64
+        ],
+        "prefill_v": [
+          30,
+          3,
+          82,
+          64
+        ],
+        "prefill_attention": [
+          30,
+          9,
+          82,
+          82
+        ],
+        "prefill_text_visual_attention": [
+          30,
+          9,
+          11,
+          64
+        ],
+        "decode_attention_0": [
+          30,
+          9,
+          83
+        ],
+        "decode_attention_1": [
+          30,
+          9,
+          84
+        ],
+        "decode_attention_2": [
+          30,
+          9,
+          85
+        ],
+        "decode_attention_3": [
+          30,
+          9,
+          86
+        ],
+        "decode_q": [
+          4,
+          30,
+          9,
+          1,
+          64
+        ],
+        "decode_k_new": [
+          4,
+          30,
+          3,
+          1,
+          64
+        ],
+        "decode_v_new": [
+          4,
+          30,
+          3,
+          1,
+          64
+        ],
+        "decode_visual_attention": [
+          4,
+          30,
+          9,
+          64
+        ],
+        "generated_ids": [
+          4
+        ]
+      }
+    },
+    {
+      "image": "statue",
+      "input_tokens": 83,
+      "visual_tokens": 64,
+      "prompt_text_tokens": 12,
+      "image_token_id": 49190,
+      "generated_ids": [
+        378,
+        2443,
+        21559,
+        253
+      ],
+      "generated_text": " The image depicts a",
+      "max_row_sum_error": 3.5762786865234375e-07,
+      "max_causal_leakage": 0.0,
+      "npz": "statue.npz",
+      "npz_sha256": "da1052a0f8aeec0307473cee065c5cd6fd43bf9165cc041ac88f5a4977e6aa16",
+      "bytes": 14475012,
+      "shapes": {
+        "input_ids": [
+          83
+        ],
+        "visual_positions": [
+          64
+        ],
+        "prompt_text_positions": [
+          12
+        ],
+        "aligned_input_embeddings": [
+          83,
+          576
+        ],
+        "prefill_q": [
+          30,
+          9,
+          83,
+          64
+        ],
+        "prefill_k": [
+          30,
+          3,
+          83,
+          64
+        ],
+        "prefill_v": [
+          30,
+          3,
+          83,
+          64
+        ],
+        "prefill_attention": [
+          30,
+          9,
+          83,
+          83
+        ],
+        "prefill_text_visual_attention": [
+          30,
+          9,
+          12,
+          64
+        ],
+        "decode_attention_0": [
+          30,
+          9,
+          84
+        ],
+        "decode_attention_1": [
+          30,
+          9,
+          85
+        ],
+        "decode_attention_2": [
+          30,
+          9,
+          86
+        ],
+        "decode_attention_3": [
+          30,
+          9,
+          87
+        ],
+        "decode_q": [
+          4,
+          30,
+          9,
+          1,
+          64
+        ],
+        "decode_k_new": [
+          4,
+          30,
+          3,
+          1,
+          64
+        ],
+        "decode_v_new": [
+          4,
+          30,
+          3,
+          1,
+          64
+        ],
+        "decode_visual_attention": [
+          4,
+          30,
+          9,
+          64
+        ],
+        "generated_ids": [
+          4
+        ]
+      }
+    }
+  ],
+  "plan_sha256": "bb233cf6ba29d7316ce05493117c8d5f9ead3c817633dfdb1b3e49253c8fb992",
+  "script_sha256": "47579886d5d73c2af4b2672fc90f82a0db7295d6a1ce96018e08198a4f9852a7",
+  "torch": "2.15.0",
+  "transformers": "4.57.6",
+  "scope": "Development traces, not quality, latency or novelty evidence."
+}

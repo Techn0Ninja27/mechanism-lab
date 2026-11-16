@@ -86,3 +86,8 @@ Follow-up: the [primary-source corpus repair](../corpus-ml-grounded-v4/README.md
 adds the three missing works. A [full-method audit](../../docs/method-grounding/kv-window-ranking-prior-art.md)
 now distinguishes overlapping mechanisms from the narrow proposed ablation.
 The original paid outputs above remain unchanged.
+
+Real-model follow-up: [SmolVLM MPS attention capture](../../operator-studies/smolvlm-trace/README.md)
+now supplies Q/K/V and attention tensors from two exposed development images.
+Independent NumPy replay verifies extraction consistency. This is not yet an
+evaluation of the proposed precision-ranking intervention.

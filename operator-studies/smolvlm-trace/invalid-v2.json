@@ -1,0 +1,13 @@
+{
+  "status": "superseded_invalid_extraction",
+  "run": "results/smolvlm-trace-v2",
+  "manifest_sha256": "1645036f97b1fae6daf7207a5b9bce113852ec3d6c864f06876b5a196ea8dfe3",
+  "errors": [
+    "Hardcoded visual ID range included two nonvisual markers.",
+    "Decode means averaged all keys and reduced to approximately 1/key_count.",
+    "Normalization was measured but not asserted; causal masks were not checked.",
+    "Image source bytes overwritten during transformation; only processed inputs retained."
+  ],
+  "replacement": "results/smolvlm-trace-v3",
+  "scope": "MPS execution succeeded, but v2 traces are not valid per-visual-key evidence."
+}

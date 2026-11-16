@@ -1,0 +1,20 @@
+{
+  "status": "full_runner_reproduced",
+  "command": "sh operator-studies/smolvlm-trace/run.sh results/smolvlm-reproduce-v1",
+  "checks": [
+    {
+      "file": "candy.npz",
+      "sha256": "5b5a2aab8b5827cbbe2ab7bae65566c97684f33a98987eb51aa835d901ea3ddc",
+      "byte_identical": true
+    },
+    {
+      "file": "statue.npz",
+      "sha256": "da1052a0f8aeec0307473cee065c5cd6fd43bf9165cc041ac88f5a4977e6aa16",
+      "byte_identical": true
+    }
+  ],
+  "run_script_sha256": "1d665a261b9f89cbfdbb14ba228174da602f72c81bc274274f2062be15b01c7b",
+  "prepare_script_sha256": "0f02313ede10b5a6698c1a871cef84a4380e85a803ad3cb8c3914c7c96e46aa0",
+  "device": "mps",
+  "scope": "Exact reproduction on the same machine and dependencies; not external replication or a task-quality result."
+}

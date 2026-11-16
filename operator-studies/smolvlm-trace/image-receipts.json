@@ -1,0 +1,14 @@
+[
+  {
+    "name": "candy",
+    "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG",
+    "original_sha256": "fc417c899e94f8df465b7541c5a70f0eebb85c414d06345f0b290c061eccc84c",
+    "processed_sha256": "a4b2bef8b1e6bdfc4336bc6add90d2f65b39bec4ff69d4d27b0913a971805710"
+  },
+  {
+    "name": "statue",
+    "url": "https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg",
+    "original_sha256": "ff13fd6f991b37253d3745dc6b9ef8e7a92f17cee7c4c8bc84735000a668fcd7",
+    "processed_sha256": "1aeafb4591cacae695991034c45a8a8b26878f1380f8bb7bef277617b33acfc5"
+  }
+]

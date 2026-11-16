@@ -1,0 +1,25 @@
+{
+  "status": "independent_numpy_attention_replay_passed",
+  "cases": [
+    {
+      "image": "candy",
+      "prefill_max_abs_error": 2.22191254040105e-06,
+      "decode_max_abs_error": 4.1332733480281547e-07,
+      "visual_tokens": 64,
+      "visual_key_variation": 0.03805522620677948,
+      "npz_sha256": "5b5a2aab8b5827cbbe2ab7bae65566c97684f33a98987eb51aa835d901ea3ddc"
+    },
+    {
+      "image": "statue",
+      "prefill_max_abs_error": 1.860993943503253e-06,
+      "decode_max_abs_error": 5.687525036490726e-07,
+      "visual_tokens": 64,
+      "visual_key_variation": 0.04068566858768463,
+      "npz_sha256": "da1052a0f8aeec0307473cee065c5cd6fd43bf9165cc041ac88f5a4977e6aa16"
+    }
+  ],
+  "verifier_sha256": "9f3818ae53413dad36c2682815d7e1f91c21d1f4ff5094dce8b83768f2c89555",
+  "producer_script_sha256": "47579886d5d73c2af4b2672fc90f82a0db7295d6a1ce96018e08198a4f9852a7",
+  "numpy": "2.5.4",
+  "scope": "Checks extraction consistency only; no intervention, predictive quality, runtime or novelty test."
+}

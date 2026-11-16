@@ -21,10 +21,10 @@
     "result_sha256": "673b00d4521f570aed35420ec4e0d1727fac981d1dc404b3297bf11838c7e20a"
   },
   "grounded-interface-v2": {
-    "status": "synthetic_contracts_passed_only",
-    "summary": "Three synthetic cases preserve precision counts and K/V/mask permutation invariance. Quantizer and invalid-input checks pass; exact independent rerun agrees. No VLM quality, latency or novelty result. Broad query-aware mixed precision overlaps existing work; real traces and stronger prior-art comparison remain required.",
-    "result_path": "operator-studies/window-rank-contract/results-v3.json",
-    "report_path": "operator-studies/window-rank-contract/README.md",
-    "result_sha256": "687a66a6550160bfc49db650e82ae6931d7497db3e4c5e1e852f774e1e8cf0a2"
+    "status": "real_model_trace_extraction_verified_only",
+    "summary": "Corrected SmolVLM-256M MPS capture covers two exposed images and four decoder steps. Independent NumPy Q/K replay agrees within 2.23e-6 prefill and 5.69e-7 decode. Prior synthetic composition contracts also pass. This verifies extraction only; the proposed ranking/quantization intervention, task quality, latency and novelty remain untested.",
+    "result_path": "operator-studies/smolvlm-trace/replay.json",
+    "report_path": "operator-studies/smolvlm-trace/README.md",
+    "result_sha256": "a31c78c987d270b998b1e17442b5826ddcbdd64e87f8cb4b1347b61401aa02b5"
   }
 }

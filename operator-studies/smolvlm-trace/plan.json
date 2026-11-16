@@ -1,0 +1,98 @@
+{
+  "schema": "smolvlm-trace-plan.v2",
+  "seed": 4811,
+  "model": "HuggingFaceTB/SmolVLM-256M-Instruct",
+  "revision": "d039ab0d4b9311b617e8ffec1d06c8464364aeb3",
+  "model_files": [
+    {
+      "file": "README.md",
+      "bytes": 16400,
+      "sha256": "0b687c656b2587d84cb85003825746f8b3a08497dff4ed51b54b1090719fa512"
+    },
+    {
+      "file": "added_tokens.json",
+      "bytes": 4739,
+      "sha256": "74135b8664b56088c0006f1c8e848d79a8eba003411f72ebf1dc2ee96227be3a"
+    },
+    {
+      "file": "chat_template.json",
+      "bytes": 516,
+      "sha256": "12462caec000542ca1bb73cd0ba25aaf320d90335fc46731fa6a8355ea34bd26"
+    },
+    {
+      "file": "config.json",
+      "bytes": 7353,
+      "sha256": "b70fb4bfde88df9eeebc9d8ff523733b8bf70d6c9b06c610325960e06ae9db52"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 136,
+      "sha256": "067a2a54e5f87162ecac6e0e911cc4665fc8f7f3324794ecbac0f76badb56636"
+    },
+    {
+      "file": "merges.txt",
+      "bytes": 466391,
+      "sha256": "0b54e8aa4e53d5383e2e4bc635a56b43f9647f7b13832d5d9ecd8f82dac4f510"
+    },
+    {
+      "file": "model.safetensors",
+      "bytes": 513028808,
+      "sha256": "74dea5904032e5ae99a2e0eef5179e6ac0f1dedc3ab0c7c2a5d4d387c843203e"
+    },
+    {
+      "file": "preprocessor_config.json",
+      "bytes": 486,
+      "sha256": "6cb6e36d6fcb88ca1502c4a26750715dc3e7dedddc9a8f17b27d8d167d1457e7"
+    },
+    {
+      "file": "processor_config.json",
+      "bytes": 68,
+      "sha256": "e7bff42da73ae9eec9042ef20e066e11f1ee20f025358ff79131e3c0fb549b46"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 1069,
+      "sha256": "aa0ff906077086dfa9734a7f97f68c825877a48f9468807be65504495cdeef09"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 3548256,
+      "sha256": "5ece781dc8d2b2f3e2f289ca0ae50b17cfc27dd27bfe7971bb8241e0b964331a"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 28336,
+      "sha256": "8a68fb58021bc3df79d70f3d5fa79d2e709083872be1f6965cc9bcd12f3ba66a"
+    },
+    {
+      "file": "vocab.json",
+      "bytes": 800662,
+      "sha256": "82b84012e3add4d01d12ba14442026e49b8cbbaead1f79ecf3d919784f82dc79"
+    }
+  ],
+  "model_metadata_sha256": "19aec3d515a1005b5e000e24126a83b0081d457c1e1786720467c3992634fb44",
+  "script_sha256": "47579886d5d73c2af4b2672fc90f82a0db7295d6a1ce96018e08198a4f9852a7",
+  "prompts": {
+    "candy": "What animal is on the candy?",
+    "statue": "What landmark is shown in this image?"
+  },
+  "images": [
+    {
+      "name": "candy",
+      "sha256": "a4b2bef8b1e6bdfc4336bc6add90d2f65b39bec4ff69d4d27b0913a971805710",
+      "bytes": 65111,
+      "provenance": "Previously archived processed v2 image. Original download bytes not retained; exposed development input."
+    },
+    {
+      "name": "statue",
+      "sha256": "1aeafb4591cacae695991034c45a8a8b26878f1380f8bb7bef277617b33acfc5",
+      "bytes": 105276,
+      "provenance": "Previously archived processed v2 image. Original download bytes not retained; exposed development input."
+    }
+  ],
+  "device": "mps",
+  "steps": 4,
+  "image_splitting": false,
+  "dependencies_sha256": "fe779ec7c69d764158f027ea26090bd69949aa8818b3526e6defe861b5a187c0",
+  "scope": "Smoke inputs already exposed; Q/K/V hooks duplicate projection computation, no timing claim."
+}
