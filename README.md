@@ -62,6 +62,9 @@ attention compatibility.
 A [blinded shortlist review](reports/interface-graph-v2/README.md) found that
 reducing repeated paper pairs did not improve abstract-level compatibility
 judgments. The diversity-constrained selector remains experimental.
+A [source-contract pilot](reports/interface-contracts/README.md) now supplies
+required inputs, intermediate-output exposure and representation constraints
+to grounded proposals. Its two curated substeps are not a general type system.
 
 ## What works today
 

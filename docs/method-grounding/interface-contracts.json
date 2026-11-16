@@ -1,0 +1,223 @@
+{
+  "schema": "interface-contracts.v1",
+  "contracts": [
+    {
+      "id": "fier_importance_substep",
+      "source_id": "fier",
+      "interpretation": "curated_not_formally_verified",
+      "evidence": [
+        {
+          "id": "score",
+          "chunk_id": "fier:chunk:0009",
+          "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+          "quote": "s̃ = q · K̃⊤"
+        },
+        {
+          "id": "reconstruct",
+          "chunk_id": "fier:chunk:0009",
+          "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+          "quote": "K̃ = KQ ⊙ sK + zK"
+        },
+        {
+          "id": "select",
+          "chunk_id": "fier:chunk:0009",
+          "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+          "quote": "Sq = Top-k(s̃)"
+        },
+        {
+          "id": "grouping",
+          "chunk_id": "fier:chunk:0008",
+          "source_sha256": "002b97a67297d82aaf900e9f440a95590f6e0f98a891a6244ceabcfd7d729620",
+          "quote": "groups of size g along each channel"
+        }
+      ],
+      "inputs": [
+        {
+          "id": "query",
+          "artifact": "query_tensor",
+          "representation": "full_precision_dense",
+          "granularity": "query",
+          "phase": null,
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "query_key_dimension_match"
+          ],
+          "evidence_ids": [
+            "score"
+          ]
+        },
+        {
+          "id": "key_codes",
+          "artifact": "quantized_key_codes",
+          "representation": "binary_codes",
+          "granularity": "token_channel",
+          "phase": null,
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "matching_scale_offset_layout",
+            "group_size_and_channel_layout_known"
+          ],
+          "evidence_ids": [
+            "reconstruct",
+            "grouping"
+          ]
+        },
+        {
+          "id": "scale_offset",
+          "artifact": "quantizer_metadata",
+          "representation": "groupwise_scale_offset_tensors",
+          "granularity": "sequence_group_channel",
+          "phase": null,
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "matching_scale_offset_layout",
+            "group_size_and_channel_layout_known"
+          ],
+          "evidence_ids": [
+            "reconstruct",
+            "grouping"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "importance",
+          "artifact": "token_scores",
+          "representation": "approximate_qk_scores",
+          "granularity": "token",
+          "phase": null,
+          "role": "artifact",
+          "exposure": "intermediate",
+          "conditions": [
+            "query_conditioned"
+          ],
+          "evidence_ids": [
+            "score"
+          ]
+        },
+        {
+          "id": "selected_indices",
+          "artifact": "token_indices",
+          "representation": "index_vector",
+          "granularity": "token",
+          "phase": null,
+          "role": "artifact",
+          "exposure": "intermediate",
+          "conditions": [],
+          "evidence_ids": [
+            "select"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "windowquant_partition_substep",
+      "source_id": "windowquant-method",
+      "interpretation": "curated_not_formally_verified",
+      "evidence": [
+        {
+          "id": "cache",
+          "chunk_id": "windowquant-method:chunk:0005",
+          "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+          "quote": "K, V cache of the visual tokens"
+        },
+        {
+          "id": "scores",
+          "chunk_id": "windowquant-method:chunk:0005",
+          "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+          "quote": "s: the similarity score list"
+        },
+        {
+          "id": "thresholds",
+          "chunk_id": "windowquant-method:chunk:0005",
+          "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+          "quote": "T_low, T_high"
+        },
+        {
+          "id": "phase",
+          "chunk_id": "windowquant-method:chunk:0004",
+          "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+          "quote": "we first calculate the output token"
+        },
+        {
+          "id": "layer_thresholds",
+          "chunk_id": "windowquant-method:chunk:0004",
+          "source_sha256": "5ca509416e31af4bbd96d6971fe319f20bb1d96b7681f11e64fe405baa875e40",
+          "quote": "current layer index"
+        }
+      ],
+      "inputs": [
+        {
+          "id": "cache",
+          "artifact": "kv_cache_pair",
+          "representation": "full_precision_dense",
+          "granularity": "visual_window",
+          "phase": "after_prefill_attention_before_decode",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "aligned_key_value_positions",
+            "window_membership_available"
+          ],
+          "evidence_ids": [
+            "cache",
+            "phase"
+          ]
+        },
+        {
+          "id": "similarities",
+          "artifact": "window_scores",
+          "representation": "encoder_cosine_similarity",
+          "granularity": "visual_window",
+          "phase": "after_prefill_attention_before_decode",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "visual_text_alignment"
+          ],
+          "evidence_ids": [
+            "scores",
+            "phase"
+          ]
+        },
+        {
+          "id": "thresholds",
+          "artifact": "precision_thresholds",
+          "representation": "per_layer_scalar_pair",
+          "granularity": "layer",
+          "phase": "after_prefill_attention_before_decode",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [],
+          "evidence_ids": [
+            "thresholds",
+            "phase",
+            "layer_thresholds"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "grouped_cache",
+          "artifact": "kv_cache_pair",
+          "representation": "bitwidth_grouped_blocks",
+          "granularity": "visual_window",
+          "phase": "after_prefill_attention_before_decode",
+          "role": "artifact",
+          "exposure": "intermediate",
+          "conditions": [
+            "aligned_key_value_positions"
+          ],
+          "evidence_ids": [
+            "cache",
+            "scores",
+            "thresholds"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "status": "offline_plan_verified",
+  "protocol_version": 4,
+  "matching_contracts": [
+    "fier_importance_substep",
+    "windowquant_partition_substep"
+  ],
+  "matching_experiments": [
+    "fier-windowquant-onebit-trace-v1"
+  ],
+  "source_contracts_hash": "0e005a0e1bc92b3ac2d5d82f98652e4378114fb907f883f23acbf24ae8a2b7b2",
+  "source_contract_registry_hash": "ce084794ff41c3bd3949b4f51b043b41c7c240ba9ab4d2b2dbfa7cd68c1907be",
+  "paid_calls": 0
+}

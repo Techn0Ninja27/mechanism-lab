@@ -136,6 +136,7 @@ class GroundedResearchTests(unittest.TestCase):
                 'scope':'two exposed development cases','limitations':['not a quality result'],
                 'result_sha256':'a'*64,'report_path':'operator-studies/fixture/README.md'}
         feedback={'records':[record],'scope':'partial curated feedback','warnings':[]}
+        contracts={'contracts':[{'id':'fixture_contract','inputs':[]}],'scope':'curated declarations only','warnings':[]}
         proposal={k:'specified' for k in g.SCHEMA}
         evidence=[{'chunk_id':'local_experiment:fixture','quote':'fixture scoped failure','supports':'previous local test only'}]
         proposal.update(decision='revise',novelty_established=False,evidence=evidence,
@@ -151,11 +152,13 @@ class GroundedResearchTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
             question=root/'q.txt';question.write_text('Test a distinct change.')
-            with patch.object(g,'inspect_feedback',return_value=feedback),patch.object(g,'Client',Client):
+            with patch.object(g,'inspect_feedback',return_value=feedback),patch.object(g,'inspect_contracts',return_value=contracts),patch.object(g,'Client',Client):
                 result=g.execute(pack,question,root/'run',True)
             self.assertEqual(result['status'],'reviewed')
             self.assertEqual(result['experiment_feedback'],feedback)
+            self.assertEqual(result['source_contracts'],contracts)
             self.assertTrue(all('fixture scoped failure' in prompt for prompt in prompts))
+            self.assertTrue(all('fixture_contract' in prompt for prompt in prompts))
             self.assertIn('not a ban on the source pair',prompts[0])
             self.assertFalse(result['train_eligible'])
 
@@ -166,4 +169,13 @@ class GroundedResearchTests(unittest.TestCase):
             with patch.object(g,'inspect_feedback',return_value={'records':[],'scope':'first','warnings':[]}):
                 g.execute(pack,question,root/'run')
             with patch.object(g,'inspect_feedback',return_value={'records':[],'scope':'changed','warnings':[]}),patch.object(g,'Client',side_effect=AssertionError('No paid call')):
+                with self.assertRaises(ValueError):g.execute(pack,question,root/'run',True)
+
+    def test_changed_contracts_block_saved_paid_plan(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
+            question=root/'q.txt';question.write_text('Test one connection.')
+            with patch.object(g,'inspect_contracts',return_value={'contracts':[],'scope':'first','warnings':[]}):
+                g.execute(pack,question,root/'run')
+            with patch.object(g,'inspect_contracts',return_value={'contracts':[],'scope':'changed','warnings':[]}),patch.object(g,'Client',side_effect=AssertionError('No paid call')):
                 with self.assertRaises(ValueError):g.execute(pack,question,root/'run',True)

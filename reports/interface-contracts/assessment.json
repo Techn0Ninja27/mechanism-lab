@@ -1,0 +1,147 @@
+{
+  "scope": "Curated declarations, not automatic extraction or executable compatibility proof.",
+  "input_sha256": {
+    "pack": "f14353a6af606a5f18f29635ab3b61721407700936bda069dd5a5aa5d1c46873",
+    "contracts": "7fe3fe4f3b24dbbc35b0dc976b0f0f23be20fd324d86b2b6ed9cec85d95edd00"
+  },
+  "code_sha256": {
+    "generation/interface_contracts.py": "3ca735b6fd0a037df8a42c5423f8453be2939ea6428c43036584dac0a4de0cde",
+    "scripts/check_interface_contracts.py": "d095456e6ce176e498b3c2bf32c012709e55ed69fac392ab796118f92befa421"
+  },
+  "assessments": [
+    {
+      "producer": "fier_importance_substep",
+      "output_port": "importance",
+      "consumer": "windowquant_partition_substep",
+      "input_port": "similarities",
+      "producer_required_inputs": [
+        "query",
+        "key_codes",
+        "scale_offset"
+      ],
+      "status": "requires_bridge",
+      "mismatches": [
+        {
+          "field": "artifact",
+          "produced": "token_scores",
+          "required": "window_scores"
+        },
+        {
+          "field": "representation",
+          "produced": "approximate_qk_scores",
+          "required": "encoder_cosine_similarity"
+        },
+        {
+          "field": "granularity",
+          "produced": "token",
+          "required": "visual_window"
+        }
+      ],
+      "unknown_fields": [
+        "phase"
+      ],
+      "unestablished_conditions": [
+        "visual_text_alignment"
+      ],
+      "other_required_inputs": [
+        "cache",
+        "thresholds"
+      ],
+      "output_exposure": "intermediate",
+      "adapter_or_exposure_required": true,
+      "novelty_established": false,
+      "executable_compatibility_proven": false,
+      "scope": "Comparison of curated declarations. Quotes establish provenance, not entailment. Differing phases may admit adaptation; this is not a universal impossibility result."
+    },
+    {
+      "producer": "fier_importance_substep",
+      "output_port": "importance",
+      "consumer": "windowquant_partition_substep",
+      "input_port": "cache",
+      "producer_required_inputs": [
+        "query",
+        "key_codes",
+        "scale_offset"
+      ],
+      "status": "requires_bridge",
+      "mismatches": [
+        {
+          "field": "artifact",
+          "produced": "token_scores",
+          "required": "kv_cache_pair"
+        },
+        {
+          "field": "representation",
+          "produced": "approximate_qk_scores",
+          "required": "full_precision_dense"
+        },
+        {
+          "field": "granularity",
+          "produced": "token",
+          "required": "visual_window"
+        }
+      ],
+      "unknown_fields": [
+        "phase"
+      ],
+      "unestablished_conditions": [
+        "aligned_key_value_positions",
+        "window_membership_available"
+      ],
+      "other_required_inputs": [
+        "similarities",
+        "thresholds"
+      ],
+      "output_exposure": "intermediate",
+      "adapter_or_exposure_required": true,
+      "novelty_established": false,
+      "executable_compatibility_proven": false,
+      "scope": "Comparison of curated declarations. Quotes establish provenance, not entailment. Differing phases may admit adaptation; this is not a universal impossibility result."
+    },
+    {
+      "producer": "fier_importance_substep",
+      "output_port": "selected_indices",
+      "consumer": "windowquant_partition_substep",
+      "input_port": "cache",
+      "producer_required_inputs": [
+        "query",
+        "key_codes",
+        "scale_offset"
+      ],
+      "status": "requires_bridge",
+      "mismatches": [
+        {
+          "field": "artifact",
+          "produced": "token_indices",
+          "required": "kv_cache_pair"
+        },
+        {
+          "field": "representation",
+          "produced": "index_vector",
+          "required": "full_precision_dense"
+        },
+        {
+          "field": "granularity",
+          "produced": "token",
+          "required": "visual_window"
+        }
+      ],
+      "unknown_fields": [
+        "phase"
+      ],
+      "unestablished_conditions": [
+        "aligned_key_value_positions",
+        "window_membership_available"
+      ],
+      "other_required_inputs": [
+        "similarities",
+        "thresholds"
+      ],
+      "output_exposure": "intermediate",
+      "adapter_or_exposure_required": true,
+      "novelty_established": false,
+      "executable_compatibility_proven": false,
+      "scope": "Comparison of curated declarations. Quotes establish provenance, not entailment. Differing phases may admit adaptation; this is not a universal impossibility result."
+    }
+  ]
+}
