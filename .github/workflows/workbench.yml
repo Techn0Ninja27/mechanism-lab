@@ -1,0 +1,21 @@
+name: Workbench checks
+on:
+  push:
+    paths: ['workbench/**', '.github/workflows/workbench.yml']
+  pull_request:
+    paths: ['workbench/**', '.github/workflows/workbench.yml']
+permissions:
+  contents: read
+jobs:
+  local-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m unittest discover -s workbench -p 'test_*.py'
+      - run: node --check workbench/static/app.js
