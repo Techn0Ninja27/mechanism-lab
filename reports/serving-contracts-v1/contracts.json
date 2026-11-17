@@ -1,0 +1,159 @@
+{
+  "schema": "interface-contracts.v1",
+  "contracts": [
+    {
+      "id": "chen_cancellation_length_bound",
+      "source_id": "2508.14544v2",
+      "interpretation": "curated_not_formally_verified",
+      "evidence": [
+        {
+          "id": "observed",
+          "chunk_id": "2508.14544v2:chunk:0002",
+          "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+          "quote": "number of output tokens already generated"
+        },
+        {
+          "id": "bound",
+          "chunk_id": "2508.14544v2:chunk:0002",
+          "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+          "quote": "a new certified lower bound"
+        },
+        {
+          "id": "retained",
+          "chunk_id": "2508.14544v2:chunk:0002",
+          "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+          "quote": "retains its current lower bound"
+        },
+        {
+          "id": "determinism",
+          "chunk_id": "2508.14544v2:chunk:0002",
+          "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+          "quote": "greedy and deterministic"
+        }
+      ],
+      "inputs": [
+        {
+          "id": "observed_tokens",
+          "artifact": "token_count",
+          "representation": "nonnegative_integer",
+          "granularity": "request",
+          "phase": "cancellation",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "deterministic_generation"
+          ],
+          "evidence_ids": [
+            "observed",
+            "determinism"
+          ]
+        },
+        {
+          "id": "previous_bound",
+          "artifact": "response_length",
+          "representation": "certified_lower_bound",
+          "granularity": "request",
+          "phase": "cancellation",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [],
+          "evidence_ids": [
+            "retained"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "updated_bound",
+          "artifact": "response_length",
+          "representation": "certified_lower_bound",
+          "granularity": "request",
+          "phase": "cancellation",
+          "role": "artifact",
+          "exposure": "intermediate",
+          "conditions": [
+            "lower_bound_only"
+          ],
+          "evidence_ids": [
+            "bound",
+            "retained"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dmrs_peak_demand",
+      "source_id": "2610.15579v1",
+      "interpretation": "curated_not_formally_verified",
+      "evidence": [
+        {
+          "id": "known",
+          "chunk_id": "2610.15579v1:chunk:0005",
+          "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+          "quote": "output token counts are known in advance"
+        },
+        {
+          "id": "sum",
+          "chunk_id": "2610.15579v1:chunk:0002",
+          "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+          "quote": "h_{i}=r_{i}(d_{i})=p_{i}+d_{i}."
+        },
+        {
+          "id": "nonpreemptive",
+          "chunk_id": "2610.15579v1:chunk:0001",
+          "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+          "quote": "Execution is non-preemptive within each phase"
+        }
+      ],
+      "inputs": [
+        {
+          "id": "output_length",
+          "artifact": "response_length",
+          "representation": "exact_length",
+          "granularity": "request",
+          "phase": "before_admission",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [
+            "exact_output_length_known"
+          ],
+          "evidence_ids": [
+            "known"
+          ]
+        },
+        {
+          "id": "prompt_size",
+          "artifact": "prompt_length",
+          "representation": "exact_length",
+          "granularity": "request",
+          "phase": "before_admission",
+          "role": "artifact",
+          "exposure": "required",
+          "conditions": [],
+          "evidence_ids": [
+            "sum"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "peak_demand",
+          "artifact": "memory_demand",
+          "representation": "exact_peak",
+          "granularity": "request",
+          "phase": "before_admission",
+          "role": "artifact",
+          "exposure": "intermediate",
+          "conditions": [
+            "exact_output_length_known",
+            "nonpreemptive_phase"
+          ],
+          "evidence_ids": [
+            "sum",
+            "nonpreemptive"
+          ]
+        }
+      ]
+    }
+  ]
+}

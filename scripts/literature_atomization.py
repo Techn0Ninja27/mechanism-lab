@@ -1,27 +1,21 @@
-"""Extract provenance-bound literature atoms with a bounded OpenRouter run.
+"""Extract provenance-bound literature atoms with offline helpers.
 
-The model proposes source-grounded conceptual units.  It is not asked to judge
-novelty and its output is never training-eligible automatically.
+The historical direct-network runner is retired. Use
+``scripts/atomize_budgeted.py`` for paid extraction so all calls go through the
+shared phase ledger. The plan, prompt, parser and validator remain available
+for historical artifact inspection and offline tests.
 """
 
 from __future__ import annotations
 
 import argparse
-import concurrent.futures
-import fcntl
 import hashlib
 import json
-import os
 import pathlib
 import re
-import sys
-import time
-import urllib.request
 from typing import Any, Iterable
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "local_runner"))
-from run import key  # noqa: E402
 
 DEFAULT_MODEL = "anthropic/claude-haiku-5.5"
 DEFAULT_MAX_TOKENS = 4096
@@ -171,54 +165,12 @@ def plan(input_path: pathlib.Path, output: pathlib.Path, model: str, max_tokens:
 
 
 def run(input_path: pathlib.Path, output: pathlib.Path, model: str, max_tokens: int) -> None:
-    papers = load_papers(input_path)
-    config = plan(input_path, output, model, max_tokens)
-    if config["batch_count"] > MAX_CALLS:
-        raise ValueError("call bound exceeded")
-    calls = output / "calls"; calls.mkdir(exist_ok=True)
-    atoms_path = output / "atoms.jsonl"
-    lock_path = output / "run.lock"
-    with lock_path.open("w") as lock:
-        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        for index, batch in enumerate(batches(papers)):
-            prompt = build_prompt(batch)
-            request = {"model": model, "messages": [{"role": "user", "content": prompt}],
-                       "max_tokens": max_tokens, "temperature": 0, "reasoning": {"enabled": False},
-                       "provider": {"allow_fallbacks": False}}
-            fingerprint = _sha({"model": model, "input_sha256": _sha(batch), "request": request})
-            path = calls / f"batch-{index:03d}.json"
-            if path.exists():
-                previous = json.loads(path.read_text())
-                if previous.get("fingerprint") != fingerprint:
-                    raise ValueError(f"cached request mismatch: batch {index}")
-                if previous.get("status") != "complete":
-                    raise ValueError(f"cached batch {index} is not complete; no automatic retry")
-                continue
-            record = {"status": "pending", "fingerprint": fingerprint, "request": request,
-                      "prompt": prompt, "batch_index": index, "timestamp": time.time()}
-            path.write_text(json.dumps(record, indent=2))
-            try:
-                req = urllib.request.Request("https://openrouter.ai/api/v1/chat/completions",
-                    data=json.dumps(request).encode(), headers={"Authorization": "Bearer " + key(), "Content-Type": "application/json"})
-                with urllib.request.urlopen(req, timeout=180) as response:
-                    data = json.load(response)
-                choice = data["choices"][0]
-                record.update(status="complete", response_id=data.get("id"), resolved_model=data.get("model"),
-                              usage=data.get("usage"), finish_reason=choice.get("finish_reason"),
-                              raw_response=choice.get("message", {}).get("content"))
-                if choice.get("finish_reason") != "stop" or not record["raw_response"]:
-                    raise ValueError(f"incomplete/provider refusal: {choice.get('finish_reason')}")
-                parsed = _parse_json(record["raw_response"])
-                extracted = validate_atoms(parsed, batch)
-                with atoms_path.open("a", encoding="utf-8") as stream:
-                    for atom in extracted:
-                        stream.write(json.dumps(atom, ensure_ascii=False) + "\n")
-                record["atom_count"] = len(extracted)
-            except Exception as exc:
-                record.update(status="failed", error=type(exc).__name__ + ": " + str(exc)[:300])
-                raise
-            finally:
-                path.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
+    raise RuntimeError(
+        "The legacy direct-network atomizer is retired; use "
+        "scripts/atomize_budgeted.py run with a fresh output directory so "
+        "the shared $20 phase ledger governs paid calls. Historical run "
+        "artifacts remain readable, and plan/validation helpers are offline."
+    )
 
 
 def main() -> None:

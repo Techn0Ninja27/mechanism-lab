@@ -16,6 +16,11 @@ keeps alternative mechanisms visible and compares every pair before selecting
 one for inspection. The first run exposed shared mechanisms missed by exact
 text fingerprints; it is a diagnostic, not proof of better research quality.
 
+A [source-contract bridge](reports/serving-contracts-v1/README.md) connects
+curated operational inputs and outputs to molecule hypotheses. Unmatched types
+or missing inputs stay explicit; two serving-paper substeps are the current
+real-source example, not a bulk-corpus conversion.
+
 This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
 The upstream authors created the sampling method and operate
 [Lacuna](https://lacuna.tiptreesystems.com). Their work is credited below; these

@@ -70,3 +70,13 @@ validation. Unit tests use mocked calls, including no-selection retention,
 all-pair coverage, duplicate identity, case-sensitive math and malformed UI
 records. The real run demonstrates one successful execution, not a controlled
 comparison against the one-proposal method.
+
+## Follow-up source and interface audit
+
+The [retention prior-art audit](retention-prior-art.md) identifies existing
+recompute, prefix reuse, distributed KV retention and admission/retention
+co-design. No distinct, complete retention operator is established by the
+selected candidate. It remains a scoped accounting question, not ready for
+an efficacy run. The [source-contract check](../serving-contracts-v1/README.md)
+separately makes the lower-bound versus exact-peak interface difference
+explicit; it does not reject an adaptation that supplies a valid eviction rule.

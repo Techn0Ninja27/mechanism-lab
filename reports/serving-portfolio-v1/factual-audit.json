@@ -11,6 +11,11 @@
       "claim": "Selected cand-00 is ready for a useful implementation.",
       "assessment": "Not established. Move-back, persistent duplicate and discard/re-prefill semantics are distinct. Capacity peaks, retention duration, transfer costs and replay cost need definition and matched controls before an efficacy test.",
       "evidence": "reports/serving-portfolio-v1/transition-accounting.md; original candidate mechanism_check."
+    },
+    {
+      "claim": "Retaining prompt KV across eviction is an established new research contribution.",
+      "assessment": "Not established. Official vLLM prefix-cache/recompute documentation, SGLang, MemServe and HAServe cover related mechanisms. The candidate does not yet specify a distinct two-pool transition; the interface mismatch alone is not novelty.",
+      "evidence": "reports/serving-portfolio-v1/retention-prior-art.md; reports/serving-portfolio-v1/transition-accounting.md"
     }
   ]
 }

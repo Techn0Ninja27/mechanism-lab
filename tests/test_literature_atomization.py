@@ -39,15 +39,13 @@ class LiteratureAtomizationTests(unittest.TestCase):
             cfg = la.plan(inp, out, la.DEFAULT_MODEL, la.DEFAULT_MAX_TOKENS)
             self.assertEqual(cfg["batch_count"], 1); self.assertTrue((out / "plan.json").exists())
 
-    def test_failed_call_is_persisted_and_not_retried(self):
+    def test_legacy_paid_runner_fails_before_key_or_network(self):
         with tempfile.TemporaryDirectory() as d:
             inp = pathlib.Path(d) / "papers.json"; out = pathlib.Path(d) / "out"; inp.write_text(json.dumps(PAPERS))
-            with patch.object(la, "key", return_value="test"), patch.object(la.urllib.request, "urlopen", side_effect=TimeoutError("x")) as net:
-                with self.assertRaises(TimeoutError): la.run(inp, out, la.DEFAULT_MODEL, la.DEFAULT_MAX_TOKENS)
-                with self.assertRaises(ValueError): la.run(inp, out, la.DEFAULT_MODEL, la.DEFAULT_MAX_TOKENS)
-                self.assertEqual(net.call_count, 1)
-            record = json.loads((out / "calls" / "batch-000.json").read_text())
-            self.assertEqual(record["status"], "failed"); self.assertIn("error", record)
+            with patch.object(la, "load_papers", side_effect=AssertionError("legacy path must not read input")):
+                with self.assertRaisesRegex(RuntimeError, "atomize_budgeted.py"):
+                    la.run(inp, out, la.DEFAULT_MODEL, la.DEFAULT_MAX_TOKENS)
+            self.assertFalse(out.exists())
 
 
 if __name__ == "__main__":

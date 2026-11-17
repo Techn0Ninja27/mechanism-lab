@@ -1,0 +1,25 @@
+# Prior-art audit: selected retention candidate
+
+Reviewed 2026-11-17. This is a bounded primary-source audit, not a novelty determination.
+
+The selected `cand-00` proposal combines lower-bound admission with a claimed retained prefill copy after decode eviction. Its wording conflates three operations: discard prompt KV and re-prefill later; move the only prompt KV copy back to prefill memory; or keep a second prompt copy while the request decodes. These have different memory peaks, transfer costs, and replay semantics. The candidate cannot be implemented or fairly compared until it chooses one.
+
+## Existing systems already cover the main pieces
+
+vLLM documents recompute preemption when KV space is insufficient: a request is preempted, its KV is recomputed when space returns, and V1 defaults to `RECOMPUTE` rather than `SWAP`. This is the ordinary discard/recompute path. See the official [vLLM optimization and preemption documentation](https://docs.vllm.ai/en/latest/configuration/optimization/).
+
+vLLM's official prefix-cache design maintains a block pool, cache hashes, request-to-block mappings, reference counts, and an eviction queue. Running requests allocate additional blocks as they decode; full blocks become reusable cache blocks, and blocks can be evicted when allocated again. This is ordinary block-level prefix caching and reference accounting, not evidence for a two-pool move-back transition. See [vLLM's prefix-cache design](https://docs.vllm.ai/en/latest/design/prefix_caching/).
+
+SGLang's RadixAttention is an established exact-prefix reuse mechanism for structured programs, including multi-turn and shared-prefix workloads. It addresses reuse in a radix tree; it does not by itself specify a retained prefill copy moved between separate prefill and decode pools. See the [SGLang paper](https://arxiv.org/abs/2312.07104).
+
+MemServe goes further than local prefix caching: its MemPool manages distributed memory and KV caches across serving instances, with a global prompt-tree locality-aware scheduler. This directly covers long-lived, cross-instance KV retention and transfer as a systems pattern. It does not prove that the proposed request transition is identical, because the candidate has not specified whether its retained state is a shared prefix, the request's only prompt copy, or a duplicate. See the [MemServe paper, v3](https://arxiv.org/abs/2406.17565v3). A same-name repository found during search was excluded: its README describes a different project and did not establish that it implements this paper.
+
+HAServe is the closest recent scheduling overlap. It jointly chooses admission and KV retention from a visible request horizon, evaluates post-reclamation capacity, rematches prefixes after hypothetical eviction, and commits only a feasible choice. Its paper models a retained prefix surviving until a matching request uses it, and notes that eviction during the wait can cause a miss. It compares FIFO/locality-aware admission with LRU and demand-aware retention. This substantially overlaps coupling admission with retention under finite KV capacity, even though HAServe uses exact prefix paths and visible consumers rather than the candidate's two-pool retained-prefill state. See [HAServe](https://arxiv.org/abs/2605.08581) and its [full HTML](https://arxiv.org/html/2605.08581v2).
+
+## What remains unverified
+
+The supplied evidence does not establish a published method with exactly this state interface: DMRS has separate prefill/decode memory and retained prompt KV while waiting, whereas the systems above emphasize recompute, prefix sharing, distributed/tiered storage, or visible-demand retention. That interface mismatch is not evidence of novelty. The candidate also does not state whether an eviction transfers a prompt block, duplicates it, or discards it; whether transfer is instantaneous; how memory is reserved during transfer; whether generated-token KV is replayed; or how the certified lower bound is initialized and updated.
+
+The existing [accounting table](transition-accounting.md) separates the three choices; any future state trace must choose one explicitly. Before any efficacy run, count both source and destination copies during transfer including the pre-EOS peak; compare discard/re-prefill, move-back, and duplicate-retain with identical lower-bound and admission rules; include ordinary vLLM-style recompute and prefix-retention/HAServe-style visible-demand controls where their information is available; and keep unknown output lengths hidden from policy decisions while reporting transfer, replay, eviction, and P95/P99 costs separately.
+
+Disposition: the selected candidate is a useful accounting question, but it is not an established new mechanism and is not ready for a production or novelty claim. If the explicit state trace reduces to ordinary prefix retention, recompute preemption, or MemServe/HAServe-style retention, close it as a rediscovery. If a distinct two-pool transition survives, test that transition against those controls before spending on a larger simulator.

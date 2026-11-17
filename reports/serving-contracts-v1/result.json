@@ -1,0 +1,81 @@
+{
+  "schema": "contract-molecule-connection.v1",
+  "atoms": [
+    {
+      "type": "atom",
+      "id": "contract:chen_cancellation_length_bound",
+      "definition": "Source-linked substep chen_cancellation_length_bound; inputs: observed_tokens, previous_bound; outputs: updated_bound",
+      "revision": 1,
+      "provenance": [
+        {
+          "source_id": "2508.14544v2",
+          "url": "https://arxiv.org/html/2508.14544v2",
+          "contract_id": "chen_cancellation_length_bound",
+          "contract_sha256": "6befb766ffacd900b21ccfb80aa1bfe5c5e4c5c5cfb79e00f9abe66444892276",
+          "evidence_chunk_ids": [
+            "2508.14544v2:chunk:0002"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "atom",
+      "id": "contract:dmrs_peak_demand",
+      "definition": "Source-linked substep dmrs_peak_demand; inputs: output_length, prompt_size; outputs: peak_demand",
+      "revision": 1,
+      "provenance": [
+        {
+          "source_id": "2610.15579v1",
+          "url": "https://arxiv.org/html/2610.15579v1",
+          "contract_id": "dmrs_peak_demand",
+          "contract_sha256": "783ee7c3f1eb9f51005515f88d7d773f9eabade7141371c87286db15c351c2a7",
+          "evidence_chunk_ids": [
+            "2610.15579v1:chunk:0001",
+            "2610.15579v1:chunk:0002",
+            "2610.15579v1:chunk:0005"
+          ]
+        }
+      ]
+    }
+  ],
+  "assessment": {
+    "producer": "chen_cancellation_length_bound",
+    "output_port": "updated_bound",
+    "consumer": "dmrs_peak_demand",
+    "input_port": "output_length",
+    "producer_required_inputs": [
+      "observed_tokens",
+      "previous_bound"
+    ],
+    "status": "requires_bridge",
+    "mismatches": [
+      {
+        "field": "representation",
+        "produced": "certified_lower_bound",
+        "required": "exact_length"
+      },
+      {
+        "field": "phase",
+        "produced": "cancellation",
+        "required": "before_admission"
+      }
+    ],
+    "unknown_fields": [],
+    "unestablished_conditions": [
+      "exact_output_length_known"
+    ],
+    "other_required_inputs": [
+      "prompt_size"
+    ],
+    "output_exposure": "intermediate",
+    "adapter_or_exposure_required": true,
+    "novelty_established": false,
+    "executable_compatibility_proven": false,
+    "scope": "Comparison of curated declarations. Quotes establish provenance, not entailment. Differing phases may admit adaptation; this is not a universal impossibility result."
+  },
+  "molecule": null,
+  "train_eligible": false,
+  "novelty_established": false,
+  "executable_compatibility_proven": false,
+  "scope": "Hypothesis representation from validated source declarations. Unmet inputs or mismatched ports require a separately specified bridge."
+}
