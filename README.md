@@ -18,11 +18,12 @@ extensions and results are specific to this fork.
 
 ## Results, including what failed
 
-Results recorded **2026-11-16**. These are engineering pilots, not established
+Results recorded through **2026-11-17**. These are engineering pilots, not established
 scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Check published polynomial inverses on training matrices** | 18/56 covariance blocks were eligible under a conservative selection rule; all 18 met a 1% inverse-residual threshold. The other 38 remain uncovered. No speed or training-quality claim. | [Functional matrix check](operator-studies/newton-muon-polynomial/README.md) |
 | **Compose executable compression operators** | Searching 115 compatible chains selected frame-of-reference packing + LZMA. On three shifted synthetic streams it used **24.25% fewer bytes** than the control frozen during validation, with exact round trips. | [Protocol, results, and limitations](operator-studies/integer-composition/README.md) |
 | **Recover atom combinations with graphs** | Adamic–Adar recovered **23/100** withheld pairs, versus **21/100** for degree product and **10/100** for text similarity. This measures co-occurrence recovery, not novelty or usefulness. | [Graph baseline](reports/atom-graph/README.md) |
 | **Learn which implementation to choose** | A pairwise utility ranker improved validation selection, then **lost to the fixed baseline on all three unseen families**. Held-out regret: **0.09412 vs 0.02238**, lower is better. Not promoted. | [Held-out report](reports/utility-ranker/README.md) |

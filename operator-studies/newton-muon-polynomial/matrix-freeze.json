@@ -1,0 +1,10 @@
+{
+  "scope": "Frozen before inspecting real-matrix polynomial fidelity; development captures already available",
+  "hashes": {
+    "matrix_check.py": "95dc8ebf615250df6e5d56c43dfe022f198ec6b5a853a5ea1700964e3b47bbc7",
+    "polynomial.py": "ecbbe00ae82be215e6a50e6fe07d634af8c5d80fd8253e8c2b595c94e38f0cb1",
+    "plans.json": "dd5a122b4f92c567ef04de584e0f2663291b25d421e877f9e2467124790ca982",
+    "test_polynomial.py": "0138f11e5358e92ecfb46d394ac6a2edfb11d9a0864d5b0bb0a40599f570bb48"
+  },
+  "criterion": "reported s_out<=.01, budget<=13, explicit coverage gap otherwise"
+}

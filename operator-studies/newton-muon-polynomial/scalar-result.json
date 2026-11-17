@@ -1,0 +1,219 @@
+{
+  "schema": "newton-muon-polynomial-scalar-check.v1",
+  "scope": "Float64 scalar residual-map replay on a dense initial interval. This checks transcription and numerical behavior only; it is not a matrix proof, source-certificate verification, or optimizer performance result.",
+  "source": {
+    "id": "arxiv:2604.01472v1",
+    "path": "results/optimizer-problem-v1/sources/2604.01472v1.txt",
+    "lines": [
+      886,
+      1077
+    ],
+    "table": "Table 5",
+    "table_settings": {
+      "cmax": 32,
+      "interval_pad_rel": 0.001,
+      "noise_abs": 0.001
+    },
+    "sha256": "f1dd6e095d6bd112bede516edf574414974c1ff03cc1c109068d2cc3732994fb"
+  },
+  "points": 1000001,
+  "plans_checked": 11,
+  "rows": [
+    {
+      "index": 0,
+      "epsilon": 0.0015,
+      "total_sypp": 12,
+      "published_s_out": 0.030717,
+      "numeric_final_residual": 0.0297166083059619,
+      "numeric_peak_residual": 0.9985,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.9910379210768696,
+        0.8974309999989006,
+        0.462228336845232,
+        0.0297166083059619
+      ],
+      "polynomial_count": 4,
+      "sypp_sum": 12
+    },
+    {
+      "index": 1,
+      "epsilon": 0.0015,
+      "total_sypp": 13,
+      "published_s_out": 0.004865,
+      "numeric_final_residual": 0.003864820358427501,
+      "numeric_peak_residual": 0.9985,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.9910379210768696,
+        0.9400555139389959,
+        0.6247635842514521,
+        0.2440629999940016,
+        0.003864820358427501
+      ],
+      "polynomial_count": 5,
+      "sypp_sum": 13
+    },
+    {
+      "index": 2,
+      "epsilon": 0.003,
+      "total_sypp": 10,
+      "published_s_out": 0.019885,
+      "numeric_final_residual": 0.01888489249511216,
+      "numeric_peak_residual": 0.997,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.964953,
+        0.7563601412971563,
+        0.40325499999999925,
+        0.01888489249511216
+      ],
+      "polynomial_count": 4,
+      "sypp_sum": 10
+    },
+    {
+      "index": 3,
+      "epsilon": 0.003,
+      "total_sypp": 11,
+      "published_s_out": 0.002839,
+      "numeric_final_residual": 0.0018388263010939987,
+      "numeric_peak_residual": 0.997,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.964953,
+        0.7563601412971563,
+        0.19146105075108033,
+        0.0018388263010939987
+      ],
+      "polynomial_count": 4,
+      "sypp_sum": 11
+    },
+    {
+      "index": 4,
+      "epsilon": 0.006,
+      "total_sypp": 8,
+      "published_s_out": 0.047094,
+      "numeric_final_residual": 0.04609438964015089,
+      "numeric_peak_residual": 0.994,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.9159352032936688,
+        0.5250740868695447,
+        0.04609438964015089
+      ],
+      "polynomial_count": 3,
+      "sypp_sum": 8
+    },
+    {
+      "index": 5,
+      "epsilon": 0.006,
+      "total_sypp": 9,
+      "published_s_out": 0.014106,
+      "numeric_final_residual": 0.013106371620286827,
+      "numeric_peak_residual": 0.994,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.9159352032936688,
+        0.3602474158213118,
+        0.013106371620286827
+      ],
+      "polynomial_count": 3,
+      "sypp_sum": 9
+    },
+    {
+      "index": 6,
+      "epsilon": 0.006,
+      "total_sypp": 10,
+      "published_s_out": 0.002087,
+      "numeric_final_residual": 0.0010870385106496183,
+      "numeric_peak_residual": 0.994,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.9159352032936688,
+        0.5250740868695447,
+        0.1609729999999927,
+        0.0010870385106496183
+      ],
+      "polynomial_count": 4,
+      "sypp_sum": 10
+    },
+    {
+      "index": 7,
+      "epsilon": 0.012,
+      "total_sypp": 7,
+      "published_s_out": 0.047594,
+      "numeric_final_residual": 0.046593999999978264,
+      "numeric_peak_residual": 0.988,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.8289000191286775,
+        0.29709668483653284,
+        0.046593999999978264
+      ],
+      "polynomial_count": 3,
+      "sypp_sum": 7
+    },
+    {
+      "index": 8,
+      "epsilon": 0.012,
+      "total_sypp": 8,
+      "published_s_out": 0.008118,
+      "numeric_final_residual": 0.007117501425729755,
+      "numeric_peak_residual": 0.988,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.8289000191286775,
+        0.29709668483653284,
+        0.007117501425729755
+      ],
+      "polynomial_count": 3,
+      "sypp_sum": 8
+    },
+    {
+      "index": 9,
+      "epsilon": 0.025,
+      "total_sypp": 6,
+      "published_s_out": 0.048057,
+      "numeric_final_residual": 0.04705688308937961,
+      "numeric_peak_residual": 0.975,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.528164445371387,
+        0.04705688308937961
+      ],
+      "polynomial_count": 2,
+      "sypp_sum": 6
+    },
+    {
+      "index": 10,
+      "epsilon": 0.025,
+      "total_sypp": 7,
+      "published_s_out": 0.008458,
+      "numeric_final_residual": 0.00745835989125887,
+      "numeric_peak_residual": 0.975,
+      "final_within_published_plus_1e-5": true,
+      "peak_within_one": true,
+      "step_maxima": [
+        0.679044,
+        0.30156199999996613,
+        0.00745835989125887
+      ],
+      "polynomial_count": 3,
+      "sypp_sum": 7
+    }
+  ],
+  "all_finals_within_published_plus_1e-5": true,
+  "all_peaks_within_one": true,
+  "plans_sha256": "dd5a122b4f92c567ef04de584e0f2663291b25d421e877f9e2467124790ca982",
+  "script_sha256": "87c8ceae33286dc177e3c35dadb96dce9cc9dd9203d5fbe1fdcb5f44500a3388"
+}

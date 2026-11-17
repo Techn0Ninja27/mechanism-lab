@@ -1,0 +1,3 @@
+# Python 3.12.14; matrix/capture checks additionally require Apple MPS
+numpy==2.5.4
+torch==2.15.0
