@@ -1,0 +1,18 @@
+[
+  {
+    "id": "2610.15579v1",
+    "html_bytes": 631056,
+    "html_sha256": "720591140296ad2ce5d1a75de355184756b850db019db1bad26f75f0932e905f",
+    "full_text_bytes": 99481,
+    "selected_text_bytes": 22976,
+    "selected_text_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a"
+  },
+  {
+    "id": "2505.11916v2",
+    "html_bytes": 275320,
+    "html_sha256": "963a0e4cb0b9cf42c10be7a4c3b82358562cdc97248719d706092696b3cf5f3e",
+    "full_text_bytes": 112355,
+    "selected_text_bytes": 26796,
+    "selected_text_sha256": "2048938336f10d67efd0fd33b37018a51434aaef26d3c4a96e00588f44758598"
+  }
+]
