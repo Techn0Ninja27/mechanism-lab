@@ -104,6 +104,8 @@ def rank_and_select(rows: list[Mapping[str, Any]], count: int, *, seed: int = 0,
                     exploration_quota: int = 0) -> SelectionResult:
     """Select at most ``count`` rows with deterministic exploitation/exploration.
 
+    Selection never promotes scientific confidence: complete supplied numbers
+    do not establish calibration, novelty or usefulness.
     Unknown values are never converted to zero.  They can enter only through
     the explicit exploration quota (or when the quota exceeds known rows).
     """
@@ -158,7 +160,7 @@ def rank_and_select(rows: list[Mapping[str, Any]], count: int, *, seed: int = 0,
     out = []
     for r in chosen:
         explored = len(out) < min(count, exploration_quota)
-        out.append(Selection(r["id"], r, "exploration_quota" if explored else ("pareto_frontier" if r in frontier else "best_known"), not explored, explored))
+        out.append(Selection(r["id"], r, "exploration_quota" if explored else ("pareto_frontier" if r in frontier else "best_known"), False, explored))
     return SelectionResult(tuple(out), rejected)
 
 

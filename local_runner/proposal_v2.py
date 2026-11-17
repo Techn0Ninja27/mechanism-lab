@@ -8,20 +8,20 @@ except ImportError:
  HTTPS_CONTEXT=ssl.create_default_context()
 from run import key
 ROOT=pathlib.Path(os.environ.get('ALIEN_WORKSPACE', pathlib.Path(__file__).resolve().parent));UP=pathlib.Path(os.environ.get('ALIEN_REPO', ROOT/'upstream'));sys.path.insert(0,str(UP))
-from generation.rerank import rerank
+from generation.exploratory_seeds import select_seed_triplets
 OUT=ROOT/os.environ.get('PROPOSAL_OUTPUT', 'results/proposals-v3');OUT.mkdir(parents=True,exist_ok=True)
 MAX_TOKENS=int(os.environ.get('DECODE_MAX_TOKENS', '16384'))
 MODEL=os.environ.get('DECODE_MODEL', 'anthropic/claude-opus-5.5')
 if not 1024 <= MAX_TOKENS <= 16384: raise ValueError('Output budget must be between 1024 and 16384')
 def select():
- poolpath=UP/'results/hybrid-50000-seed45/k3/scored_candidates.json';pool=json.loads(poolpath.read_text())
+ sourcepath=UP/'papers/clusters.json';cat=json.loads(sourcepath.read_text())
  reviewed=set()
  for p in (ROOT.parents[1]/'notes/2026-11-16-alien-science-review').glob('*.md'):
   m=re.search(r'(\d+)-(\d+)-(\d+)\.md$',p.name)
   if m:reviewed.add(tuple(sorted(map(int,m.groups()))))
- ranked=rerank(pool['candidates'],.6,1000,.5,1)
- selected=[r for r in ranked['top_k_sequences'] if tuple(r['cluster_ids']) not in reviewed][:6]
- cat=json.loads((UP/'papers/clusters.json').read_text());db=sqlite3.connect(UP/'data/llm-papers.db');db.row_factory=sqlite3.Row
+ selection=select_seed_triplets(cat,6,seed=int(os.environ.get('PROPOSAL_SEED','45')),excluded=reviewed)
+ selected=[{'cluster_ids':ids} for ids in selection['triplets']]
+ db=sqlite3.connect(UP/'data/llm-papers.db');db.row_factory=sqlite3.Row
  for i,r in enumerate(selected,1):
   r={k:v for k,v in r.items() if k=='cluster_ids'};selected[i-1]=r
   r['id']=f'{i:02d}-'+ '-'.join(map(str,r['cluster_ids']));r['atoms']=[]
@@ -31,7 +31,7 @@ def select():
     row=db.execute('select title,abstract,pdf_url,venue_year from papers where paper_id=?',(pid.replace('__','/') if pid.startswith('conf__') else pid,)).fetchone()
     if row:papers.append(dict(row))
    r['atoms'].append({'id':cid,'description':cat['clusters'][str(cid)]['name'],'source_units':[{'paper_id':x['paper_id'],'text':x['text']} for x in assignments[:3]],'sample_supporting_papers':papers})
- (OUT/'selection.json').write_text(json.dumps({'provenance':{'decode_allowed':True,'ranking_claim_allowed':False,'mode':'unranked seed concepts; original assignment evidence','source_file':'papers/clusters.json','source_sha256':hashlib.sha256((UP/'papers/clusters.json').read_bytes()).hexdigest(),'warning':'Do not interpret seed selection as semantically validated scorer ranking; clusters_80 assignments failed lineage audit.'},'source':str(poolpath),'source_config':pool['config'],'selection':ranked['config'],'excluded_reviewed_triplets':[list(s) for s in sorted(reviewed)],'candidates':selected},indent=2))
+ (OUT/'selection.json').write_text(json.dumps({'provenance':{'decode_allowed':True,'ranking_claim_allowed':False,'mode':'uniform unranked baseline; original assignment evidence','source_file':'papers/clusters.json','source_sha256':hashlib.sha256((UP/'papers/clusters.json').read_bytes()).hexdigest(),'warning':'Do not interpret seed selection as semantically validated scorer ranking; clusters_80 assignments failed lineage audit.'},'source':str(sourcepath),'selection':{k:v for k,v in selection.items() if k!='triplets'},'excluded_reviewed_triplets':[list(s) for s in sorted(reviewed)],'candidates':selected},indent=2))
  print('\n'.join(r['id']+' '+str([a['description'][:100] for a in r['atoms']]) for r in selected))
 def decode():
  data=json.loads((OUT/'selection.json').read_text())

@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-17",
+  "selection": {
+    "method": "uniform_source_backed_triplets",
+    "seed": 45,
+    "eligible_atoms": 273,
+    "candidate_combinations": 3353896,
+    "requested": 6,
+    "returned": 6,
+    "ranking_claim_allowed": false
+  },
+  "source_sha256": "99b157f1baedba7908fca0236fb7dca23b3a49da44054ada305035036aa27013",
+  "triplets": [
+    [
+      35,
+      58,
+      166
+    ],
+    [
+      59,
+      105,
+      147
+    ],
+    [
+      73,
+      109,
+      217
+    ],
+    [
+      33,
+      42,
+      257
+    ],
+    [
+      9,
+      110,
+      255
+    ],
+    [
+      39,
+      226,
+      247
+    ]
+  ],
+  "excluded_count": 13,
+  "replay_byte_identical": true,
+  "selection_sha256": "517aedf37e0f474a4addcf8877e81fd81e8e486a3255eef5f0cfa74a7ce6a911",
+  "scope": "Unranked baseline only. No scientific quality or novelty inference. No model calls or new training."
+}

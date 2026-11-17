@@ -12,6 +12,12 @@ def row(i, family="f", novelty=0.5, feasibility=0.5, gain=0.5, metric="m", basel
 
 
 class DualRankerTests(unittest.TestCase):
+  def test_complete_supplied_numbers_do_not_promote_confidence(self):
+    result=rank_and_select([row("a",novelty=.99,feasibility=.99,gain=100)],1)
+    self.assertEqual(len(result.selected),1)
+    self.assertFalse(result.selected[0].exploration)
+    self.assertFalse(result.selected[0].promoted_confidence)
+
   def test_pareto_domination(self):
     self.assertTrue(dominates(row("a", novelty=.8, feasibility=.8, gain=.8), row("b")))
     self.assertFalse(dominates(row("b"), row("a")))

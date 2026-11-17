@@ -11,9 +11,11 @@ model calls were made. Popularity is not evaluation evidence.
 `generation/rerank.py` combines standardized coherence and unavailability with a
 beta weight, optionally enforcing coherence and pair-diversity constraints.
 It does not measure task benefit, empirical feasibility or contribution-level
-prior-art overlap. `local_runner/proposal_v2.py` still uses that ordering to pick
-seeds but explicitly strips scores and disclaims ranking validity because of the
-previous atom/scorer lineage failure. A larger search corpus has not repaired
+prior-art overlap. `local_runner/proposal_v2.py` previously used that ordering to pick
+seeds despite stripping scores and disclaiming ranking validity. The later
+[selection-route correction](../../reports/selection-route-audit-v1/README.md)
+replaced this with source-backed uniform triplets; beta no longer influences
+that selector. This does not repair the learned scorer. A larger search corpus has not repaired
 that model or retrained it.
 
 `generation/dual_ranker.py` is a useful selection scaffold: it separates axes,
