@@ -156,7 +156,7 @@ def main() -> None:
     except Exception as exc:
         if not args.output.exists():
             args.output.parent.mkdir(parents=True, exist_ok=True)
-            failure = {"schema": "newton-muon-refresh-control.v1", "status": "failed", "command": " ".join(sys.argv), "python_version": sys.version, "protocol": vars(args), "error_type": type(exc).__name__, "error": str(exc), "text": str(args.text), "text_sha256": sha(args.text) if args.text.exists() else None}
+            failure = {"schema": "newton-muon-refresh-control.v1", "status": "failed", "command": " ".join(sys.argv), "python_version": sys.version, "protocol": {key: str(value) for key, value in vars(args).items()}, "error_type": type(exc).__name__, "error": str(exc), "text": str(args.text), "text_sha256": sha(args.text) if args.text.exists() else None}
             args.output.write_text(json.dumps(failure, indent=2) + "\n")
         raise
     print(json.dumps({"width": args.width, "refresh": args.refresh, "ms_per_step": result["ms_per_step"], "refreshes": result["refresh_counts"]}))
