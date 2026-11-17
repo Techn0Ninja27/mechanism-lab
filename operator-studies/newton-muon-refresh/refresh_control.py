@@ -20,7 +20,7 @@ from pathlib import Path
 import torch
 
 HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[2]
+ROOT = HERE.parents[1]
 FROZEN = ROOT / "operator-studies/newton-muon-cost-screen/cost_profile.py"
 
 
@@ -44,6 +44,21 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def tensor_stream_hash(tensors) -> str:
+    digest = hashlib.sha256()
+    for tensor in tensors:
+        digest.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+    return digest.hexdigest()
+
+
+def model_state_hash(model) -> str:
+    digest = hashlib.sha256()
+    for name, tensor in sorted(model.state_dict().items()):
+        digest.update(name.encode("utf-8"))
+        digest.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+    return digest.hexdigest()
+
+
 def run(args: argparse.Namespace) -> dict:
     if args.output.exists():
         raise FileExistsError(f"refusing to overwrite {args.output}")
@@ -57,8 +72,10 @@ def run(args: argparse.Namespace) -> dict:
     batches = [(x.to(device), y.to(device)) for x, y in cp.make_batches(
         text, 256, seq=64, batch=4, steps=args.warmup + args.steps, seed=0
     )]
+    batch_hash = tensor_stream_hash([value for pair in batches for value in pair])
     torch.manual_seed(0)
     model, opt, adam = cp._make_arm(args.width, device, 0, "newton_cholesky", args.refresh)
+    initial_model_hash = model_state_hash(model)
     losses = []
     measured_windows = []
     warning_text = []
@@ -83,6 +100,8 @@ def run(args: argparse.Namespace) -> dict:
                     "refreshes": expected_refreshes(args.refresh, begin, args.window),
                 })
             warning_text = [str(item.message)[:500] for item in caught]
+        if any("cpu" in x.lower() and "fall" in x.lower() for x in warning_text):
+            raise RuntimeError("internal CPU fallback warning")
         values = [float(value.cpu()) for value in losses]
         infos = [int(info.max().cpu()) for info in opt.factor_infos]
         refresh_counts = sorted({state.refresh_count for state in opt.states.values()})
@@ -97,7 +116,9 @@ def run(args: argparse.Namespace) -> dict:
             "schema": "newton-muon-refresh-control.v1",
             "scope": "Matched short end-to-end cost control; loss is a training-stream sanity trace, not optimizer-quality or time-to-target evidence.",
             "protocol": {"width": args.width, "refresh": args.refresh, "warmup": args.warmup, "steps": args.steps, "window": args.window, "windows": len(measured_windows), "seed": 0, "batch": 4, "seq": 64, "vocab": 256},
+            "command": " ".join(sys.argv), "python_version": sys.version,
             "device": str(device), "torch_version": torch.__version__, "platform": platform.platform(),
+            "initial_model_state_sha256": initial_model_hash, "batch_stream_sha256": batch_hash,
             "text": str(args.text), "text_sha256": sha(args.text),
             "frozen_cost_profile": str(FROZEN), "frozen_cost_profile_sha256": sha(FROZEN),
             "fallback_env": os.environ.get("PYTORCH_ENABLE_MPS_FALLBACK"),
@@ -130,7 +151,14 @@ def main() -> None:
     parser.add_argument("--steps", type=int, default=128)
     parser.add_argument("--window", type=int, default=32)
     args = parser.parse_args()
-    result = run(args)
+    try:
+        result = run(args)
+    except Exception as exc:
+        if not args.output.exists():
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            failure = {"schema": "newton-muon-refresh-control.v1", "status": "failed", "command": " ".join(sys.argv), "python_version": sys.version, "protocol": vars(args), "error_type": type(exc).__name__, "error": str(exc), "text": str(args.text), "text_sha256": sha(args.text) if args.text.exists() else None}
+            args.output.write_text(json.dumps(failure, indent=2) + "\n")
+        raise
     print(json.dumps({"width": args.width, "refresh": args.refresh, "ms_per_step": result["ms_per_step"], "refreshes": result["refresh_counts"]}))
 
 
