@@ -27,6 +27,10 @@ A [fixed-operation three-paper run](reports/full-contract-extraction-v3/README.m
 now preserves missing estimator/communication details and distinguishes PERA's
 two polynomial expansions. Two cards need revision; one is accepted only as a
 limited draft. An independent audit also identifies overreach by the reviewer.
+A [subsequent PERA audit](reports/pera-method-audit-v1/README.md) found a concrete
+counterexample to the paper’s approximation theorem and an isolated published
+layer issue. The equation, theorem and implementation now have separate evidence;
+none of these checks establishes a new useful adaptation method.
 
 This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
 The upstream authors created the sampling method and operate

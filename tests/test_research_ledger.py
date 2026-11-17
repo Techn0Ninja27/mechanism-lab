@@ -11,7 +11,13 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 41)
+            self.assertEqual(ledger["study_count"], 44)
+            rows = {x["id"]:x for x in ledger["studies"]}
+            for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1"):
+                self.assertIn(sid, rows)
+                self.assertFalse(rows[sid]["novelty_established"])
+                self.assertFalse(rows[sid]["evidence"]["train_eligible"])
+            self.assertIn("gate_failed",rows["pera-algebra-diagnostic-v2"]["raw_verdict"])
             self.assertTrue(all(x["read_only"] is True for x in [ledger]))
             reconstruction = next(x for x in ledger["studies"] if x["id"] == "abstracts-0")
             self.assertIn("mean_ap", reconstruction["secondary_metrics"])

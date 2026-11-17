@@ -209,6 +209,66 @@
       "result_sha256": "7359654aa309ede23462bd507461e94d8ec7c76dc32b7c6bb2baf60a6ad0779d",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "pera-algebra-diagnostic-v2",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.11841"
+      ],
+      "tested_change": "Source-faithful CPU float64 algebra diagnostic for PERA's Poly2(B) PolyH2(A) update. Nine seeded arms (ranks 1, 2, 4; 16x12 matrices) agreed between concatenated-factor and independent rank-one implementations within 2.85e-14, and the special h_ii=lambda, h_ij=2lambda identity within 1.43e-14. All three initialized synthetic matrix-MSE traces had zero initial B/h gradients, nonzero A gradients, and nonzero h gradients after one A update. The frozen absolute gradient-equivalence gate failed in 2/9 arms (maximum 2.183e-11 versus 1e-11); a separate post-run scale diagnostic found maximum relative L2 discrepancy 1.62e-15. The failed absolute gate is retained.",
+      "verdict": "algebra_verified_absolute_gradient_gate_failed",
+      "scope": "CPU float64 matrix algebra only; seeds 0,1,2; ranks 1,2,4; dimensions 16x12; ten synthetic matrix-MSE updates at learning rate 0.01. This is not a transformer, benchmark, speed, usefulness, or novelty result.",
+      "limitations": [
+        "The v2 runner status is checks_failed because the predeclared absolute gradient tolerance failed; relative floating-point agreement does not turn that gate into a pass.",
+        "Random fixtures attaining the algebraic rank bound do not show useful singular directions, universal rank attainment, or downstream quality.",
+        "The selected excerpt is incomplete and does not establish the authors' full implementation, optimizer schedule, scaling convention, or benchmark reproducibility.",
+        "Prior art includes LoHa/FedPara, HiRA, ABBA and blockwise Hadamard adapters; this diagnostic does not establish a novel method."
+      ],
+      "report_path": "operator-studies/pera-algebra/README.md",
+      "result_path": "operator-studies/pera-algebra/result.json",
+      "result_sha256": "27184f9d13b8e5d3d8516b39181bee81d08e6d23d13e7e433744b4dcbe8c7721",
+      "train_eligible": false,
+      "novelty_established": false
+    },
+    {
+      "id": "pera-author-layer-probe-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.11841"
+      ],
+      "tested_change": "Read-only AST-isolated probe of the public PERA author layer source at commit 87751531305bb4097e4ebed52fc0043cc1506b47. The published class declares a polynomial coefficient ParameterDict but its adapter-entry creation and initialization are commented out; the unmodified bias-free fixture therefore raises a missing-coefficient AttributeError. Explicit diagnostic injection makes the bias-free path return the frozen base output at A=0, while the injected non-null-bias fixture raises a reduced-dimension shape error. This probes one pinned class path only and does not refute the full training results.",
+      "verdict": "isolated_author_code_reproducibility_issue",
+      "scope": "CPU float32, seed 17, isolated published LoraLayer/Linear class definitions, 12-to-16 layer, rank 2. Package imports, model downloads, trainer code, and full benchmark execution were excluded. Coefficient injection is explicitly a diagnostic alteration.",
+      "limitations": [
+        "The source snapshot is read-only and hash-pinned; an external wrapper or uninspected code could supply the missing state.",
+        "The probe is not a complete installation or training reproduction and does not establish whether the reported experiments ran from another revision.",
+        "The bias shape error is exposed only in the injected diagnostic arm and may not occur in the reported bias-free model layers.",
+        "No train, usefulness, or novelty claim follows from a code-path exception."
+      ],
+      "report_path": "operator-studies/pera-author-probe/README.md",
+      "result_path": "operator-studies/pera-author-probe/result.json",
+      "result_sha256": "b6fbbb60333dd27c198ca8e9da9ebf5845940c2444dc0008d1a91f5730e0b3f6",
+      "train_eligible": false,
+      "novelty_established": false
+    },
+    {
+      "id": "pera-rank-counterexample-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.11841"
+      ],
+      "tested_change": "Analytical check of PERA v1 Appendix A.3 spectral approximation bound. For nominal rank1 and target P=I-11^T/3 in R^(3x3), the target has singular values1,1,0 but every tied PERA update has spectral error at least1/sqrt3. Exact integer target checks verify the projector; the universal lower bound is a written row-space proof independently checked by native agents.",
+      "verdict": "analytical_counterexample_to_stated_source_bound",
+      "scope": "Real-parameter r=1 polynomially tied PERA update. Refutes the theorem as stated, not the elementary rank upper bound or empirical benchmark results.",
+      "limitations": [
+        "Written mathematical proof is not formally verified; executable checks cover the target identities only.",
+        "No claim that this observation is previously unpublished.",
+        "No evidence about downstream usefulness, speed, or comparative training performance.",
+        "This does not apply to a different model with independent arbitrary square/cross factors."
+      ],
+      "report_path": "operator-studies/pera-rank-counterexample/README.md",
+      "result_path": "operator-studies/pera-rank-counterexample/result.json",
+      "result_sha256": "d91ffaa64fb75a3dcb063ff07db1beff103acb11ac5ebb31c0e77802a33eebec",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

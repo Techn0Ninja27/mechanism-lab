@@ -1,0 +1,17 @@
+{
+  "schema": "pera-feedback-integration.v1",
+  "source_pack_sha256": "756ac12016a998542b69499715a00a53a2f4442b438b490f3f7e624f350b3b20",
+  "registry_sha256": "ef4fe743c16dc404f493feb1cd8f458023803c6d6ebf0ee3ddde4301cc3eade1",
+  "included_ids": [
+    "local_experiment:pera-algebra-diagnostic-v2",
+    "local_experiment:pera-author-layer-probe-v1",
+    "local_experiment:pera-rank-counterexample-v1"
+  ],
+  "result_hashes": {
+    "pera-algebra-diagnostic-v2": "27184f9d13b8e5d3d8516b39181bee81d08e6d23d13e7e433744b4dcbe8c7721",
+    "pera-author-layer-probe-v1": "b6fbbb60333dd27c198ca8e9da9ebf5845940c2444dc0008d1a91f5730e0b3f6",
+    "pera-rank-counterexample-v1": "d91ffaa64fb75a3dcb063ff07db1beff103acb11ac5ebb31c0e77802a33eebec"
+  },
+  "paid_calls": 0,
+  "scope": "Verified the generation engine selects all three source-matched feedback records as bounded prompt evidence. This is not a generated proposal or a guarantee models will obey the evidence."
+}

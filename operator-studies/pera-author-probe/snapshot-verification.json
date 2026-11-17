@@ -1,0 +1,8 @@
+{
+  "upstream_git_blob": "160d7bbaffd5e30cae16ac1e522bcaf32caa2923",
+  "upstream_sha256": "613f10589a80893b9a55128428fd213ff5b86f1ab5072bf1e5af6ecb5d9afca4",
+  "executed_snapshot_sha256": "ebf5f2509f29ec2c81a409f47287cb89822ef4eab87a469bf63e28f27c084a31",
+  "snapshot_equals_upstream_plus_newline": true,
+  "ast_identical": true,
+  "scope": "Tool file creation added one trailing newline; Python AST is unchanged. Original exact connector content retained locally."
+}

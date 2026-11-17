@@ -1,0 +1,44 @@
+{
+  "schema": "pera-algebra-protocol.v2",
+  "frozen_date": "2026-11-17",
+  "source": {
+    "path": "results/contract-eval-packet-v1/sources/2604.11841v1.selected.txt",
+    "sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+  },
+  "algebra": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "ranks": [
+      1,
+      2,
+      4
+    ],
+    "m": 16,
+    "n": 12,
+    "special_lambda": 0.37,
+    "factorization_atol": 1e-12,
+    "gradient_atol": 1e-11
+  },
+  "training": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "rank": 2,
+    "learning_rate": 0.01,
+    "updates": 10,
+    "objective": "synthetic matrix MSE",
+    "target": "seeded standard-normal matrix"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "dtype": "float64",
+    "device": "cpu"
+  },
+  "interpretation": "Algebraic and synthetic diagnostics only; rank attainment is descriptive and is not a usefulness, novelty, or task-quality gate."
+}

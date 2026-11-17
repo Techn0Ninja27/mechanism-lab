@@ -1,0 +1,70 @@
+{
+  "schema": "pera-author-probe-result.v1",
+  "checks": {
+    "unmodified_bias_false_forward_missing_h": true,
+    "injected_h_bias_false_forward_matches_base": true,
+    "injected_h_bias_true_exposes_shape_failure": true
+  },
+  "all_expected_observations": true,
+  "rows": [
+    {
+      "bias": false,
+      "coefficient_injected": false,
+      "coefficient_keys": [],
+      "outcome": "exception",
+      "exception_type": "AttributeError",
+      "message": "'ParameterDict' object has no attribute 'probe'"
+    },
+    {
+      "bias": false,
+      "coefficient_injected": true,
+      "coefficient_keys": [
+        "probe"
+      ],
+      "outcome": "returned",
+      "shape": [
+        3,
+        16
+      ],
+      "max_base_error": 0.0
+    },
+    {
+      "bias": true,
+      "coefficient_injected": true,
+      "coefficient_keys": [
+        "probe"
+      ],
+      "outcome": "exception",
+      "exception_type": "RuntimeError",
+      "message": "The expanded size of the tensor (5) must match the existing size (16) at non-singleton dimension 1.  Target sizes: [3, 5].  Tensor sizes: [16]"
+    }
+  ],
+  "protocol": {
+    "schema": "pera-author-probe.v1",
+    "date": "2026-11-17",
+    "source_sha256": "ebf5f2509f29ec2c81a409f47287cb89822ef4eab87a469bf63e28f27c084a31",
+    "source_commit": "87751531305bb4097e4ebed52fc0043cc1506b47",
+    "seed": 17,
+    "in_features": 12,
+    "out_features": 16,
+    "rank": 2,
+    "expected_checks": [
+      "unmodified_bias_false_forward_missing_h",
+      "injected_h_bias_false_forward_matches_base",
+      "injected_h_bias_true_exposes_shape_failure"
+    ],
+    "scope": "Isolated published Linear/LoraLayer classes with torch, math and transpose supplied; not the complete package or training pipeline. Coefficient injection is explicitly a diagnostic alteration."
+  },
+  "protocol_sha256": "b0b3031e97b9914e45c4bf5eb9c4778bf6ee023e28e753080532a65daf22ba31",
+  "runner_sha256": "281e5f39206440e6d91a861503bc9354d6baceb358a041c277b3b04b70919f7a",
+  "source_sha256": "ebf5f2509f29ec2c81a409f47287cb89822ef4eab87a469bf63e28f27c084a31",
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.15.0",
+    "device": "cpu",
+    "dtype": "float32"
+  },
+  "scope": "Isolated published Linear/LoraLayer classes with torch, math and transpose supplied; not the complete package or training pipeline. Coefficient injection is explicitly a diagnostic alteration.",
+  "novelty_established": false,
+  "benchmark_reproduced": false
+}

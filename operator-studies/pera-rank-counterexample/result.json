@@ -1,0 +1,56 @@
+{
+  "schema": "pera-rank-counterexample-result.v1",
+  "status": "exact_target_checks_pass",
+  "checks": {
+    "symmetric": true,
+    "q_squared_equals_3q": true,
+    "q_annihilates_ones": true,
+    "q_trace_is_6": true
+  },
+  "protocol": {
+    "schema": "pera-rank-counterexample.v1",
+    "date": "2026-11-17",
+    "source_url": "https://arxiv.org/html/2604.11841v1",
+    "source_html_sha256": "9d1ec776f160e8b3800af9aa0f3f147b98683e69775dd5d73521472e955342b1",
+    "section": "Appendix A.3 Theorem 1",
+    "rank": 1,
+    "dimensions": [
+      3,
+      3
+    ],
+    "q": [
+      [
+        2,
+        -1,
+        -1
+      ],
+      [
+        -1,
+        2,
+        -1
+      ],
+      [
+        -1,
+        -1,
+        2
+      ]
+    ],
+    "target": "P=Q/3=I-11^T/3",
+    "spectral_lower_bound": "1/sqrt(3)",
+    "scope": "Analytical proof in README independently checked by native agents; script checks exact target identities, not a formal verification of the universal proof."
+  },
+  "protocol_sha256": "fc3bf1da852cdc0b984a8bee08480598faed44cbd0eb5cd5d3ae1bd4ea340a39",
+  "script_sha256": "6970a30b4d46834d6a746d70efc35333d37220579b16f038a03587949a7f02b2",
+  "python": "3.12.14",
+  "target_singular_values_exact": [
+    1,
+    1,
+    0
+  ],
+  "claimed_error_upper_bound_for_target": 0,
+  "analytical_error_lower_bound": "1/sqrt(3)",
+  "analytical_error_lower_bound_decimal": 0.5773502691896258,
+  "proof_status": "written_analytical_argument_reviewed_by_native_agents_not_formal_verification",
+  "novelty_established": false,
+  "task_usefulness_established": false
+}

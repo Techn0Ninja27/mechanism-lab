@@ -1,0 +1,224 @@
+{
+  "schema": "pera-gradient-scale-diagnostic.v1",
+  "result_sha256": "27184f9d13b8e5d3d8516b39181bee81d08e6d23d13e7e433744b4dcbe8c7721",
+  "script_sha256": "f70d0f7a7a0101ab287286a228c4780dded3d770eff3c92026f901ca762b7a5f",
+  "rows": [
+    {
+      "seed": 0,
+      "rank": 1,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 7.105427357601002e-15,
+          "reference_max_abs": 51.820186390506265,
+          "relative_l2_error": 1.5089164837072322e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 1.4210854715202004e-14,
+          "reference_max_abs": 66.9796523040855,
+          "relative_l2_error": 2.0872803493993335e-16
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 6.394884621840902e-14,
+          "reference_max_abs": 39.51786819550281,
+          "relative_l2_error": 1.6182261123510325e-15
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "rank": 2,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 9.094947017729282e-13,
+          "reference_max_abs": 2125.395790355291,
+          "relative_l2_error": 3.0033347610966264e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 1.8189894035458565e-12,
+          "reference_max_abs": 3753.131185168047,
+          "relative_l2_error": 4.651053496842899e-16
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 3.637978807091713e-12,
+          "reference_max_abs": 8797.686560327915,
+          "relative_l2_error": 4.115717273100276e-16
+        }
+      ]
+    },
+    {
+      "seed": 0,
+      "rank": 4,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 9.094947017729282e-13,
+          "reference_max_abs": 4458.825305709092,
+          "relative_l2_error": 1.998542667399168e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 2.2737367544323206e-13,
+          "reference_max_abs": 7218.135426677168,
+          "relative_l2_error": 5.529926435412946e-17
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 9.094947017729282e-13,
+          "reference_max_abs": 6956.928997434228,
+          "relative_l2_error": 1.2389657420692473e-16
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "rank": 1,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 1.1368683772161603e-13,
+          "reference_max_abs": 512.8043506249472,
+          "relative_l2_error": 1.8240055420417684e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 7.105427357601002e-15,
+          "reference_max_abs": 308.3249412792213,
+          "relative_l2_error": 4.14694266925626e-17
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 4.547473508864641e-13,
+          "reference_max_abs": 1508.6087167305031,
+          "relative_l2_error": 3.014349220200747e-16
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "rank": 2,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 3.637978807091713e-12,
+          "reference_max_abs": 29606.23313424326,
+          "relative_l2_error": 1.3464083918934967e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 9.094947017729282e-13,
+          "reference_max_abs": 39353.507382287884,
+          "relative_l2_error": 2.729672283921605e-17
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 2.1827872842550278e-11,
+          "reference_max_abs": 47995.250512865096,
+          "relative_l2_error": 4.544030023051692e-16
+        }
+      ]
+    },
+    {
+      "seed": 1,
+      "rank": 4,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 7.275957614183426e-12,
+          "reference_max_abs": 20755.0798057515,
+          "relative_l2_error": 3.355566626920407e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 1.0913936421275139e-11,
+          "reference_max_abs": 18099.627318475952,
+          "relative_l2_error": 4.9044188726958595e-16
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 1.8189894035458565e-12,
+          "reference_max_abs": 53445.564089378735,
+          "relative_l2_error": 3.745934932779862e-17
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "rank": 1,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 1.4210854715202004e-14,
+          "reference_max_abs": 171.94608952664112,
+          "relative_l2_error": 1.0132228140555946e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 5.684341886080802e-14,
+          "reference_max_abs": 263.0394501718175,
+          "relative_l2_error": 1.6207671730750723e-16
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 1.1368683772161603e-13,
+          "reference_max_abs": 607.3328973566203,
+          "relative_l2_error": 1.8719031723200096e-16
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "rank": 2,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 6.821210263296962e-13,
+          "reference_max_abs": 2025.329301616244,
+          "relative_l2_error": 2.5921890382005997e-16
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 4.547473508864641e-13,
+          "reference_max_abs": 2596.4170109648726,
+          "relative_l2_error": 2.077756681483225e-16
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 4.547473508864641e-13,
+          "reference_max_abs": 2769.5400096681824,
+          "relative_l2_error": 1.501366300948801e-16
+        }
+      ]
+    },
+    {
+      "seed": 2,
+      "rank": 4,
+      "gradients": [
+        {
+          "parameter": "B",
+          "max_abs_error": 2.2737367544323206e-13,
+          "reference_max_abs": 1693.0655640554498,
+          "relative_l2_error": 8.891027861103583e-17
+        },
+        {
+          "parameter": "A",
+          "max_abs_error": 9.094947017729282e-13,
+          "reference_max_abs": 2119.265921281823,
+          "relative_l2_error": 3.4231929773495743e-16
+        },
+        {
+          "parameter": "h",
+          "max_abs_error": 5.684341886080802e-14,
+          "reference_max_abs": 2022.9039347671896,
+          "relative_l2_error": 3.3195006116430326e-17
+        }
+      ]
+    }
+  ],
+  "scope": "Post-run diagnostic of floating-point scale. Does not alter the original absolute tolerance or its failed status."
+}
