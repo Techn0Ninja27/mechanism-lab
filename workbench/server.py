@@ -325,7 +325,7 @@ def _study_root():
     return root if root.is_dir() else ENGINE / "candidate-studies"
 
 
-def study_rows():
+def study_rows(*, diagnostics=None):
     """Build a read-only registry from the committed study artifacts.
 
     This deliberately reports the authors' raw verdict separately from the app's
@@ -336,6 +336,8 @@ def study_rows():
         sys.path.insert(0, str(ENGINE / "scripts"))
     from export_research_ledger import build_ledger
     ledger = build_ledger(ENGINE)
+    if diagnostics is not None:
+        diagnostics.extend(ledger.get("feedback_diagnostics", []))
     rows = []
     for item in ledger.get("studies", []):
         cohort = item.get("cohort", "unknown")
@@ -831,7 +833,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/operator-library":
             return self.send_json(operator_library())
         if path == "/api/studies":
-            rows = study_rows(); return self.send_json({"items": rows, "total": len(rows), "warning": "Study verdicts are evidence records, not automatic novelty claims."})
+            diagnostics = []; rows = study_rows(diagnostics=diagnostics); return self.send_json({"items": rows, "total": len(rows), "diagnostics": diagnostics, "warning": "Study verdicts are evidence records, not automatic novelty claims."})
         if path == "/api/generated-research":
             rows = grounded_rows(); return self.send_json({"items": rows, "total": len(rows), "warning": "Machine review only; these records are not empirical results or novelty findings."})
         if path.startswith("/api/studies/"):

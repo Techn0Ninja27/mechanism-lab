@@ -83,12 +83,13 @@ async function operatorLibrary() {
 }
 async function studies() {
   const data=await api('/api/studies'); S.studies=data.items;
-  $('#study-list').innerHTML=(data.items||[]).map(study=>{
+  const diagnosticHtml=(data.diagnostics||[]).map(x=>`<p class="library-boundary">Evidence registry warning: ${esc(x)}</p>`).join('');
+  $('#study-list').innerHTML=diagnosticHtml+((data.items||[]).map(study=>{
     const scalar=(k,v)=>typeof v==='number'?`${k}: ${v.toFixed(4)}`:typeof v==='string'?`${k}: ${v}`:'';
     const p=study.primary||{}; const primary=Object.entries(p).map(([k,v])=>scalar(k,v)).filter(Boolean).slice(0,4).map(x=>`<span>${esc(x)}</span>`).join(' · ');
     const s=study.secondary||{}; const secondary=Object.entries(s).filter(([k,v])=>typeof v==='number' || (v&&typeof v==='object'&&typeof v.candidate==='number'&&typeof v.control==='number')).map(([k,v])=>typeof v==='number'?scalar(k,v):`${k}: candidate ${v.candidate.toFixed(4)}, control ${v.control.toFixed(4)}`).slice(0,3).map(x=>`<span>${esc(x)}</span>`).join(' · ');
-    return `<article class="run-card"><h2>${esc(study.proposal_title||study.id)} <small>${esc(study.id)} · ${esc(study.kind)}</small></h2><p><b>${esc(study.raw_verdict)}</b> · ${esc(study.audit_qualification)}</p><p class="muted">Primary: ${primary||'not recorded'}</p><p class="muted">Secondary: ${secondary||'not recorded'}</p><p>${esc(study.prior_art_status||'Prior-art status not recorded.')}</p><details><summary>Limitations and artifacts</summary><ul>${(study.limitations||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>${(study.artifacts||[]).map(x=>`<code>${esc(x)}</code>`).join(' ')}</p><pre class="run-log">${esc(JSON.stringify(study.secondary||{},null,2))}</pre></details></article>`;
-  }).join('') || '<p class="muted">No committed studies found.</p>';
+    return `<article class="run-card"><h2>${esc(study.proposal_title||study.id)} <small>${esc(study.id)} · ${esc(study.kind)}</small></h2><p><b>${esc(study.raw_verdict)}</b> · ${esc(study.audit_qualification)}</p>${study.audit_note?`<p class="library-boundary">${esc(study.audit_note)}</p>`:""}<p class="muted">Primary: ${primary||'not recorded'}</p><p class="muted">Secondary: ${secondary||'not recorded'}</p><p>${esc(study.prior_art_status||'Prior-art status not recorded.')}</p><details><summary>Limitations and artifacts</summary><ul>${(study.limitations||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul><p>${(study.artifacts||[]).map(x=>`<code>${esc(x)}</code>`).join(' ')}</p><pre class="run-log">${esc(JSON.stringify(study.secondary||{},null,2))}</pre></details></article>`;
+  }).join('') || '<p class="muted">No committed studies found.</p>');
 }
 function mechanismCheck(label, check) {
   const value=check||{status:'not_recorded'};
@@ -201,7 +202,7 @@ async function buildSourcePack(question, priorArtQueries=[], allowArxiv=false) {
   if(!S.project)throw Error('Create a project before building a source pack.');
   const ids=[...S.packSelected]; if(!ids.length)throw Error('Check at least one text document first.');
   const result=await post(`/api/projects/${S.project.id}/source-pack`,{document_ids:ids,question,prior_art_queries:priorArtQueries,allow_arxiv:allowArxiv}); S.lastSourcePack=result;
-  modal('Offline research plan created',`<p>${esc(result.source_count)} selected documents were packed locally.</p><p><code>${esc(result.source_pack)}</code></p><p><code>${esc(result.plan)}</code></p><p class="library-boundary">The plan is source-grounded and bounded. The next action starts one reviewed run capped at $2 and governed by the shared $10 phase budget.</p><p><button class="button primary" data-grounded-run="${esc(result.run_id)}">Generate and review — up to $2/run</button></p>`);
+  modal('Offline research plan created',`<p>${esc(result.source_count)} selected documents were packed locally.</p><p><code>${esc(result.source_pack)}</code></p><p><code>${esc(result.plan)}</code></p><p class="library-boundary">The plan is source-grounded and bounded. The next action starts one reviewed run capped at $2 and governed by the shared $20 phase budget.</p><p><button class="button primary" data-grounded-run="${esc(result.run_id)}">Generate and review — up to $2/run</button></p>`);
 }
 async function candidates() {
   const request=++candidateRequest;

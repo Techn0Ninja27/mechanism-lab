@@ -79,6 +79,15 @@ Use the source's polynomial inverse and larger refresh intervals as controls.
 The [algebra preflight](../../operator-studies/newton-muon-preflight/README.md)
 tests the identities only; it cannot validate usefulness.
 
+The first polynomial control is recorded in the [matrix-fidelity study](../../operator-studies/newton-muon-polynomial/README.md).
+On captured real training covariances, 18/56 blocks had an eligible published
+plan under a conservative spectral bound, and every covered block met the 1%
+inverse-residual check. The other 38 blocks remain uncovered by that policy;
+this is a coverage limitation, not evidence that the published method fails.
+The check is untimed and does not establish optimizer quality, time-to-loss,
+memory savings, or novelty. The [evidence ledger](../../docs/method-grounding/experiment-feedback.json)
+keeps the result hash-bound and explicitly ineligible for training claims.
+
 ## Reproduction and cost
 
 Local `results/optimizer-problem-v1/` retains HTML, selected text, source pack,
@@ -100,3 +109,19 @@ The webapp shows the original failed run, its proposal and a separate factual
 audit. It does not present the unvalidated model review as an accepted review.
 The next step is a corrected, cost-accounted baseline profile, not an assertion
 that the engine has discovered a new optimizer.
+
+## Additional controls, 2026-11-17
+
+The [matched refresh control](../../operator-studies/newton-muon-refresh/README.md)
+found refresh64 versus32 was 0.24% costlier at width256 and 1.57% cheaper at
+width512. This short, fixed-order screen provides no consistent improvement
+or quality claim. The [spectral-bound diagnostic](../../operator-studies/newton-muon-bound-diagnostic/README.md)
+found cheap alternative bounds add no polynomial-plan coverage; a CPU
+eigensolver makes 28/56 blocks eligible, with no runtime claim.
+
+These results do not justify promoting the generated low-rank proposal. Before
+more approximation engineering, the unresolved decision is whether full
+Newton-Muon improves held-out loss per wall-clock time over Muon on this
+workload at all. A matched held-out comparison can falsify this local use case;
+if it fails, close this candidate here and use the recorded evidence in the
+next problem-led generation rather than optimizing an unhelpful baseline.

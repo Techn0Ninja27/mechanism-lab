@@ -1,0 +1,2132 @@
+{
+  "schema": "newton-muon-bound-diagnostic.v1",
+  "scope": "CPU float64 bound comparison on frozen captures; no runtime certificate, timing, training-quality, or novelty claim",
+  "filters": {
+    "epsilon_at_least_table": true,
+    "sypp_budget": 13,
+    "reported_residual_at_most": 0.01
+  },
+  "bounds": {
+    "frobenius": "1.001 * ||K||_F (original policy)",
+    "row_sum": "1.001 * max_i sum_j |K_ij| (valid induced-norm bound for symmetric K)",
+    "trace": "1.001 * trace(K) (valid for PSD K)",
+    "eigvalsh_oracle": "1.001 * largest float64 eigvalsh value (offline diagnostic only)"
+  },
+  "sources": [
+    {
+      "width": 256,
+      "npz_sha256": "3de045653cde076238a16dcb4e5a2919800a922dd8100b0562e1b728bcc8ec6a",
+      "source": {
+        "cost_profile": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/operator-studies/newton-muon-cost-screen/cost_profile.py",
+        "cost_profile_sha256": "53aacf3e1fb20b8a42964031197c1bc9133c5134d5862a484b473ca876c3398e",
+        "text": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/newton-muon-cost-screen-v1/text.txt",
+        "text_sha256": "f405e6560295121e04015267923425b6a064b99545a511c7091f4ab16b18344e"
+      }
+    },
+    {
+      "width": 512,
+      "npz_sha256": "c13b46c00cd6d54ba3b726f5900df6050c09dbc870c297ea49778980f1252701",
+      "source": {
+        "cost_profile": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/operator-studies/newton-muon-cost-screen/cost_profile.py",
+        "cost_profile_sha256": "53aacf3e1fb20b8a42964031197c1bc9133c5134d5862a484b473ca876c3398e",
+        "text": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/newton-muon-cost-screen-v1/text.txt",
+        "text_sha256": "f405e6560295121e04015267923425b6a064b99545a511c7091f4ab16b18344e"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "width": 256,
+      "module": "step32_block0.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499146672923307,
+      "frobenius": 3.2555471166320937,
+      "max_abs_row_sum": 4.5257969701706315,
+      "trace": 13.034305108711123,
+      "lambda_max_float64": 1.7161069908318445,
+      "selections": {
+        "frobenius": {
+          "upper": 3.2588026637487255,
+          "delta": 0.010183050866180566,
+          "epsilon": 0.0031150490565481567,
+          "plan_index": 3
+        },
+        "row_sum": {
+          "upper": 4.5303227671408015,
+          "delta": 0.010183050866180566,
+          "epsilon": 0.002242712877009446,
+          "plan_index": 1
+        },
+        "trace": {
+          "upper": 13.047339413819833,
+          "delta": 0.010183050866180566,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.717823097822676,
+          "delta": 0.010183050866180566,
+          "epsilon": 0.005892948282566625,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block0.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499851369061919,
+      "frobenius": 0.6765842309513506,
+      "max_abs_row_sum": 1.4633912774597775,
+      "trace": 1.6493641696870327,
+      "lambda_max_float64": 0.6373915105269823,
+      "selections": {
+        "frobenius": {
+          "upper": 0.6772608151823019,
+          "delta": 0.0012885657575679944,
+          "epsilon": 0.0018990007120530874,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 1.464854668737237,
+          "delta": 0.0012885657575679944,
+          "epsilon": 0.0008788812220055708,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 1.6510135338567196,
+          "delta": 0.0012885657575679944,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 0.6380289020375092,
+          "delta": 0.0012885657575679944,
+          "epsilon": 0.0020155334751169717,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block0.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499578214352126,
+      "frobenius": 3.2803294756115,
+      "max_abs_row_sum": 4.712147647078382,
+      "trace": 13.124609131366014,
+      "lambda_max_float64": 1.7728102037862197,
+      "selections": {
+        "frobenius": {
+          "upper": 3.283609805087111,
+          "delta": 0.0102536008838797,
+          "epsilon": 0.0031129405260984294,
+          "plan_index": 3
+        },
+        "row_sum": {
+          "upper": 4.71685979472546,
+          "delta": 0.0102536008838797,
+          "epsilon": 0.0021691040653696817,
+          "plan_index": 1
+        },
+        "trace": {
+          "upper": 13.13773374049738,
+          "delta": 0.0102536008838797,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.7745830139900056,
+          "delta": 0.0102536008838797,
+          "epsilon": 0.005744840058990054,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block0.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499969575206238,
+      "frobenius": 0.9174721732198624,
+      "max_abs_row_sum": 1.7050309948007225,
+      "trace": 3.1799651458859444,
+      "lambda_max_float64": 0.6570901110380283,
+      "selections": {
+        "frobenius": {
+          "upper": 0.9183896453930822,
+          "delta": 0.002484347770223394,
+          "epsilon": 0.0026978151068088917,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 1.706736025795523,
+          "delta": 0.002484347770223394,
+          "epsilon": 0.0014534976347377548,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 3.18314511103183,
+          "delta": 0.002484347770223394,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 0.6577472011490663,
+          "delta": 0.002484347770223394,
+          "epsilon": 0.003762843163568808,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block0.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499967282187023,
+      "frobenius": 0.9910186077975588,
+      "max_abs_row_sum": 1.9739077126432676,
+      "trace": 3.3784058114979416,
+      "lambda_max_float64": 0.7413977951351345,
+      "selections": {
+        "frobenius": {
+          "upper": 0.9920096264053563,
+          "delta": 0.0026393795402327672,
+          "epsilon": 0.0026535788247468986,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 1.9758816203559106,
+          "delta": 0.0026393795402327672,
+          "epsilon": 0.0013340164397402472,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 3.381784217309439,
+          "delta": 0.0026393795402327672,
+          "epsilon": 0.0007798608728202891,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 0.7421391929302695,
+          "delta": 0.0026393795402327672,
+          "epsilon": 0.003543844624151432,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block0.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499941182575402,
+      "frobenius": 0.9974232447071891,
+      "max_abs_row_sum": 2.2904699063656153,
+      "trace": 3.4607459262479097,
+      "lambda_max_float64": 0.743580586238334,
+      "selections": {
+        "frobenius": {
+          "upper": 0.9984206679518962,
+          "delta": 0.0027037077548811798,
+          "epsilon": 0.002700671185807864,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 2.2927603762719806,
+          "delta": 0.0027037077548811798,
+          "epsilon": 0.0011778479888642599,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 3.464206672174157,
+          "delta": 0.0027037077548811798,
+          "epsilon": 0.0007798608728202891,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 0.7443241668245723,
+          "delta": 0.0027037077548811798,
+          "epsilon": 0.0036192863036111716,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block0.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499961286329776,
+      "frobenius": 0.8161407002075649,
+      "max_abs_row_sum": 1.518927750075818,
+      "trace": 3.0294131960254163,
+      "lambda_max_float64": 0.5597411659672826,
+      "selections": {
+        "frobenius": {
+          "upper": 0.8169568409077724,
+          "delta": 0.002366729059394857,
+          "epsilon": 0.0028886378302160876,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 1.5204466778258936,
+          "delta": 0.002366729059394857,
+          "epsilon": 0.0015541819166378927,
+          "plan_index": 1
+        },
+        "trace": {
+          "upper": 3.0324426092214414,
+          "delta": 0.002366729059394857,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 0.5603009071332499,
+          "delta": 0.002366729059394857,
+          "epsilon": 0.004206264777213065,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498503106251496,
+      "frobenius": 8.192660056031976,
+      "max_abs_row_sum": 16.85621986113256,
+      "trace": 13.082412295043468,
+      "lambda_max_float64": 7.922192290694188,
+      "selections": {
+        "frobenius": {
+          "upper": 8.200852716088006,
+          "delta": 0.01022063460550271,
+          "epsilon": 0.001244737949471548,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 16.873076080993687,
+          "delta": 0.01022063460550271,
+          "epsilon": 0.0006053696015458542,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 13.09549470733851,
+          "delta": 0.01022063460550271,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 7.930114482984881,
+          "delta": 0.01022063460550271,
+          "epsilon": 0.0012871792505156027,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499105271739587,
+      "frobenius": 3.451387394367933,
+      "max_abs_row_sum": 7.994309253044776,
+      "trace": 3.895281669218093,
+      "lambda_max_float64": 3.450186798999993,
+      "selections": {
+        "frobenius": {
+          "upper": 3.4548387817623003,
+          "delta": 0.0030431888040766356,
+          "epsilon": 0.0008800730707353156,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 8.00230356229782,
+          "delta": 0.0030431888040766356,
+          "epsilon": 0.0003801445332343356,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 3.899176950887311,
+          "delta": 0.0030431888040766356,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 3.4536369857989926,
+          "delta": 0.0030431888040766356,
+          "epsilon": 0.0008803790487866252,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.000949835265629314,
+      "frobenius": 8.595985055580751,
+      "max_abs_row_sum": 18.528045723593095,
+      "trace": 13.142275797203183,
+      "lambda_max_float64": 8.378800418626614,
+      "selections": {
+        "frobenius": {
+          "upper": 8.604581040636331,
+          "delta": 0.010267402966564988,
+          "epsilon": 0.0011918263024335877,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 18.546573769316687,
+          "delta": 0.010267402966564988,
+          "epsilon": 0.0005532947591263818,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 13.155418073000385,
+          "delta": 0.010267402966564988,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 8.38717921904524,
+          "delta": 0.010267402966564988,
+          "epsilon": 0.0012226815398446902,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.00094998410498477,
+      "frobenius": 1.4374345723157138,
+      "max_abs_row_sum": 5.272742900413505,
+      "trace": 2.537577454932034,
+      "lambda_max_float64": 1.3811009142386914,
+      "selections": {
+        "frobenius": {
+          "upper": 1.4388720068880294,
+          "delta": 0.0019824823866656516,
+          "epsilon": 0.0013759074225903297,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 5.278015643313918,
+          "delta": 0.0019824823866656516,
+          "epsilon": 0.0003754702822745043,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 2.5401150323869657,
+          "delta": 0.0019824823866656516,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.38248201515293,
+          "delta": 0.0019824823866656516,
+          "epsilon": 0.001431948880010159,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499887032774846,
+      "frobenius": 1.6816589530855754,
+      "max_abs_row_sum": 4.892987230181461,
+      "trace": 2.710268310038373,
+      "lambda_max_float64": 1.6424389307575558,
+      "selections": {
+        "frobenius": {
+          "upper": 1.683340612038661,
+          "delta": 0.002117397117217479,
+          "epsilon": 0.0012562740250514617,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 4.897880217411642,
+          "delta": 0.002117397117217479,
+          "epsilon": 0.0004321220710269813,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 2.712978578348411,
+          "delta": 0.002117397117217479,
+          "epsilon": 0.0007798608728202889,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.6440813696883132,
+          "delta": 0.002117397117217479,
+          "epsilon": 0.0012862341777392498,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499859772157358,
+      "frobenius": 1.597167065254659,
+      "max_abs_row_sum": 4.08010854627355,
+      "trace": 2.7009080458665267,
+      "lambda_max_float64": 1.5458256095393321,
+      "selections": {
+        "frobenius": {
+          "upper": 1.5987642323199136,
+          "delta": 0.002110084410833224,
+          "epsilon": 0.001318082493285525,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 4.084188654819823,
+          "delta": 0.002110084410833224,
+          "epsilon": 0.000516380359217324,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 2.703608953912393,
+          "delta": 0.002110084410833224,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.5473714351488712,
+          "delta": 0.002110084410833224,
+          "epsilon": 0.001361800308165546,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step32_block5.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499791879741179,
+      "frobenius": 2.1469427854569707,
+      "max_abs_row_sum": 7.34685470641125,
+      "trace": 3.258463368169032,
+      "lambda_max_float64": 2.1142678298278463,
+      "selections": {
+        "frobenius": {
+          "upper": 2.1490897282424273,
+          "delta": 0.0025456745063820565,
+          "epsilon": 0.0011831346998333664,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 7.3542015611176605,
+          "delta": 0.0025456745063820565,
+          "epsilon": 0.0003460326180645402,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 3.2617218315372005,
+          "delta": 0.0025456745063820565,
+          "epsilon": 0.0007798608728202891,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 2.116382097657674,
+          "delta": 0.0025456745063820565,
+          "epsilon": 0.0012013974897229105,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573181652408779,
+      "frobenius": 9.167049928327081,
+      "max_abs_row_sum": 13.186890581215266,
+      "trace": 36.3850409835577,
+      "lambda_max_float64": 4.9221396578776595,
+      "selections": {
+        "frobenius": {
+          "upper": 9.176216978255407,
+          "delta": 0.028425813268404456,
+          "epsilon": 0.00308820384584404,
+          "plan_index": 3
+        },
+        "row_sum": {
+          "upper": 13.20007747179648,
+          "delta": 0.028425813268404456,
+          "epsilon": 0.0021488306466610997,
+          "plan_index": 1
+        },
+        "trace": {
+          "upper": 36.421426024541255,
+          "delta": 0.028425813268404456,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 4.927061797535536,
+          "delta": 0.028425813268404456,
+          "epsilon": 0.005736229307975784,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008584316193518128,
+      "frobenius": 2.3301271359056304,
+      "max_abs_row_sum": 4.1660709468706045,
+      "trace": 6.242609946988523,
+      "lambda_max_float64": 2.1358829810957163,
+      "selections": {
+        "frobenius": {
+          "upper": 2.332457263041536,
+          "delta": 0.004877039021084784,
+          "epsilon": 0.0020865817169503555,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 4.170237017817475,
+          "delta": 0.004877039021084784,
+          "epsilon": 0.0011681211470370536,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 6.2488525569355104,
+          "delta": 0.004877039021084784,
+          "epsilon": 0.0007798608728202891,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 2.1380188640768116,
+          "delta": 0.004877039021084784,
+          "epsilon": 0.002275910376250311,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008575192429780954,
+      "frobenius": 9.194062575623336,
+      "max_abs_row_sum": 13.009920091499225,
+      "trace": 36.924605242908,
+      "lambda_max_float64": 5.0851552131780835,
+      "selections": {
+        "frobenius": {
+          "upper": 9.203256638198958,
+          "delta": 0.028847347846021876,
+          "epsilon": 0.003124677526339263,
+          "plan_index": 3
+        },
+        "row_sum": {
+          "upper": 13.022930011590724,
+          "delta": 0.028847347846021876,
+          "epsilon": 0.0022102237152524335,
+          "plan_index": 1
+        },
+        "trace": {
+          "upper": 36.9615298481509,
+          "delta": 0.028847347846021876,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.090240368391261,
+          "delta": 0.028847347846021876,
+          "epsilon": 0.005635251717707571,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008668456818196061,
+      "frobenius": 3.9205572920995473,
+      "max_abs_row_sum": 8.034654823422898,
+      "trace": 13.426152064464986,
+      "lambda_max_float64": 2.7062767003508936,
+      "selections": {
+        "frobenius": {
+          "upper": 3.9244778493916463,
+          "delta": 0.010489181300363271,
+          "epsilon": 0.0026656338461160185,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 8.04268947824632,
+          "delta": 0.010489181300363271,
+          "epsilon": 0.0013024895812945633,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 13.43957821652945,
+          "delta": 0.010489181300363271,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 2.708982977051244,
+          "delta": 0.010489181300363271,
+          "epsilon": 0.0038570651544089455,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008669635263585178,
+      "frobenius": 4.7446255988820285,
+      "max_abs_row_sum": 10.194052916485816,
+      "trace": 15.15474331798032,
+      "lambda_max_float64": 3.5719902196167794,
+      "selections": {
+        "frobenius": {
+          "upper": 4.74937022448091,
+          "delta": 0.011839643217172124,
+          "epsilon": 0.002486687952467064,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 10.2042469694023,
+          "delta": 0.011839643217172124,
+          "epsilon": 0.0011589215779109728,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 15.169898061298298,
+          "delta": 0.011839643217172124,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 3.575562209836396,
+          "delta": 0.011839643217172124,
+          "epsilon": 0.003300339271189904,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008678780820295086,
+      "frobenius": 4.858684321260335,
+      "max_abs_row_sum": 10.32341592211742,
+      "trace": 15.79119327897206,
+      "lambda_max_float64": 3.669788462330189,
+      "selections": {
+        "frobenius": {
+          "upper": 4.863543005581595,
+          "delta": 0.012336869749196922,
+          "epsilon": 0.0025301832827372434,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 10.333739338039535,
+          "delta": 0.012336869749196922,
+          "epsilon": 0.001192420150540693,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 15.80698447225103,
+          "delta": 0.012336869749196922,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 3.6734582507925184,
+          "delta": 0.012336869749196922,
+          "epsilon": 0.003347139313425464,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block0.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.000864478559121765,
+      "frobenius": 4.052269651231008,
+      "max_abs_row_sum": 9.450883033045102,
+      "trace": 13.718868714291602,
+      "lambda_max_float64": 2.9855005117439886,
+      "selections": {
+        "frobenius": {
+          "upper": 4.0563219208822385,
+          "delta": 0.010717866183040315,
+          "epsilon": 0.0026352990735736526,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 9.460333916078145,
+          "delta": 0.010717866183040315,
+          "epsilon": 0.001131644766541595,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 13.732587583005893,
+          "delta": 0.010717866183040315,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 2.9884860122557324,
+          "delta": 0.010717866183040315,
+          "epsilon": 0.003573570393160291,
+          "plan_index": 3
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573878383607212,
+      "frobenius": 21.763548098508114,
+      "max_abs_row_sum": 45.62127999891527,
+      "trace": 36.75855626538396,
+      "lambda_max_float64": 21.034644213190905,
+      "selections": {
+        "frobenius": {
+          "upper": 21.78531164660662,
+          "delta": 0.02871762208233122,
+          "epsilon": 0.001316474903769907,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 45.66690127891418,
+          "delta": 0.02871762208233122,
+          "epsilon": 0.0006284546040299928,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 36.79531482164934,
+          "delta": 0.02871762208233122,
+          "epsilon": 0.0007798608728202889,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 21.055678857404093,
+          "delta": 0.02871762208233122,
+          "epsilon": 0.0013620319704323225,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008575126519198362,
+      "frobenius": 14.08508673713559,
+      "max_abs_row_sum": 36.911279460880905,
+      "trace": 16.498435852350667,
+      "lambda_max_float64": 14.029203352888224,
+      "selections": {
+        "frobenius": {
+          "upper": 14.099171823872725,
+          "delta": 0.01288940300964896,
+          "epsilon": 0.0009133607629972335,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 36.94819074034178,
+          "delta": 0.01288940300964896,
+          "epsilon": 0.00034872906743142106,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 16.514934288203015,
+          "delta": 0.01288940300964896,
+          "epsilon": 0.0007798608728202891,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 14.043232556241112,
+          "delta": 0.01288940300964896,
+          "epsilon": 0.0009169956725628759,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573819825344683,
+      "frobenius": 22.899847039799628,
+      "max_abs_row_sum": 50.08275289449375,
+      "trace": 36.79369897954166,
+      "lambda_max_float64": 22.319318360948362,
+      "selections": {
+        "frobenius": {
+          "upper": 22.922746886839423,
+          "delta": 0.028745077327766922,
+          "epsilon": 0.0012524273965563945,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 50.13283564738824,
+          "delta": 0.028745077327766922,
+          "epsilon": 0.0005730496709327866,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 36.830492678521196,
+          "delta": 0.028745077327766922,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 22.341637679309308,
+          "delta": 0.028745077327766922,
+          "epsilon": 0.0012849613545051453,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.000857629903461273,
+      "frobenius": 5.421319336882151,
+      "max_abs_row_sum": 18.266951132914983,
+      "trace": 9.39387764618732,
+      "lambda_max_float64": 5.256298249552003,
+      "selections": {
+        "frobenius": {
+          "upper": 5.426740656219033,
+          "delta": 0.007338966911083844,
+          "epsilon": 0.0013505446036980377,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 18.285218084047894,
+          "delta": 0.007338966911083844,
+          "epsilon": 0.00040119961854644603,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 9.403271523833507,
+          "delta": 0.007338966911083844,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.261554547801555,
+          "delta": 0.007338966911083844,
+          "epsilon": 0.001392885791028196,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008578662684743454,
+      "frobenius": 6.048327589925066,
+      "max_abs_row_sum": 18.057270334800705,
+      "trace": 9.834641544613987,
+      "lambda_max_float64": 5.910664448462308,
+      "selections": {
+        "frobenius": {
+          "upper": 6.0543759175149905,
+          "delta": 0.007683313706729678,
+          "epsilon": 0.001267442862840721,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 18.075327605135502,
+          "delta": 0.007683313706729678,
+          "epsilon": 0.000424891282829663,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 9.8444761861586,
+          "delta": 0.007683313706729678,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.9165751129107695,
+          "delta": 0.007683313706729678,
+          "epsilon": 0.001296924130150839,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008579315442021291,
+      "frobenius": 4.960767669454467,
+      "max_abs_row_sum": 13.618444564810488,
+      "trace": 9.146550255129114,
+      "lambda_max_float64": 4.733900768057794,
+      "selections": {
+        "frobenius": {
+          "upper": 4.9657284371239205,
+          "delta": 0.007145742386819621,
+          "epsilon": 0.0014369441350962672,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 13.632063009375297,
+          "delta": 0.007145742386819621,
+          "epsilon": 0.0005239117984682525,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 9.155696805384242,
+          "delta": 0.007145742386819621,
+          "epsilon": 0.000779860872820289,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 4.738634668825851,
+          "delta": 0.007145742386819621,
+          "epsilon": 0.0015057043874041566,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 256,
+      "module": "step96_block5.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008577794463696749,
+      "frobenius": 7.620931301666194,
+      "max_abs_row_sum": 24.34993599075824,
+      "trace": 11.845690661109984,
+      "lambda_max_float64": 7.489257990149811,
+      "selections": {
+        "frobenius": {
+          "upper": 7.628552232967859,
+          "delta": 0.009254445828992175,
+          "epsilon": 0.0012116627479827739,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 24.374285926748996,
+          "delta": 0.009254445828992175,
+          "epsilon": 0.0003795365926188402,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 11.857536351771092,
+          "delta": 0.009254445828992175,
+          "epsilon": 0.0007798608728202891,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 7.49674724813996,
+          "delta": 0.009254445828992175,
+          "epsilon": 0.0012329394804730849,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498556263817244,
+      "frobenius": 6.442784207574271,
+      "max_abs_row_sum": 9.17591091112945,
+      "trace": 26.053603798151016,
+      "lambda_max_float64": 3.45888085985501,
+      "selections": {
+        "frobenius": {
+          "upper": 6.4492269917818446,
+          "delta": 0.010177188983652741,
+          "epsilon": 0.0015755615686595188,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 9.185086822040578,
+          "delta": 0.010177188983652741,
+          "epsilon": 0.001106785946705965,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 26.079657401949163,
+          "delta": 0.010177188983652741,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 3.4623397407148646,
+          "delta": 0.010177188983652741,
+          "epsilon": 0.002930781674989939,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499218583525605,
+      "frobenius": 2.0384427203367337,
+      "max_abs_row_sum": 6.469739678958831,
+      "trace": 5.701941795181483,
+      "lambda_max_float64": 1.853152376879045,
+      "selections": {
+        "frobenius": {
+          "upper": 2.0404811630570703,
+          "delta": 0.002227321013742767,
+          "epsilon": 0.001090376346459407,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 6.476209418637789,
+          "delta": 0.002227321013742767,
+          "epsilon": 0.00034380531959359256,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 5.707643736976664,
+          "delta": 0.002227321013742767,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.8550055292559238,
+          "delta": 0.002227321013742767,
+          "epsilon": 0.0011992685857453815,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498859957837022,
+      "frobenius": 6.503411535659796,
+      "max_abs_row_sum": 9.226780484939809,
+      "trace": 26.180337266996503,
+      "lambda_max_float64": 3.602070401643065,
+      "selections": {
+        "frobenius": {
+          "upper": 6.509914947195456,
+          "delta": 0.010226694244920509,
+          "epsilon": 0.001568477313425558,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 9.236007265424748,
+          "delta": 0.010226694244920509,
+          "epsilon": 0.0011060388791293216,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 26.206517604263496,
+          "delta": 0.010226694244920509,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 3.6056724720447075,
+          "delta": 0.010226694244920509,
+          "epsilon": 0.002828257585350312,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499587553065855,
+      "frobenius": 2.343294978968985,
+      "max_abs_row_sum": 5.135669074620097,
+      "trace": 8.31094937690068,
+      "lambda_max_float64": 1.7185645209784144,
+      "selections": {
+        "frobenius": {
+          "upper": 2.3456382739479538,
+          "delta": 0.0032464646003518283,
+          "epsilon": 0.001382130228475263,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 5.140804743694717,
+          "delta": 0.0032464646003518283,
+          "epsilon": 0.0006311104747784632,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 8.31926032627758,
+          "delta": 0.0032464646003518283,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.7202830854993927,
+          "delta": 0.0032464646003518283,
+          "epsilon": 0.0018836141220578133,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.000949950322172951,
+      "frobenius": 2.6655875964610307,
+      "max_abs_row_sum": 5.198118740471614,
+      "trace": 8.963894733577035,
+      "lambda_max_float64": 2.012597068462898,
+      "selections": {
+        "frobenius": {
+          "upper": 2.6682531840574915,
+          "delta": 0.0035015213803035296,
+          "epsilon": 0.0013105699311306233,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 5.203316859212085,
+          "delta": 0.0035015213803035296,
+          "epsilon": 0.000672487712142008,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 8.972858628310611,
+          "delta": 0.0035015213803035296,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 2.014609665531361,
+          "delta": 0.0035015213803035296,
+          "epsilon": 0.0017350487936504345,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499551611926318,
+      "frobenius": 2.594404205151483,
+      "max_abs_row_sum": 4.94063842879666,
+      "trace": 9.164879536256194,
+      "lambda_max_float64": 1.8668062440335733,
+      "selections": {
+        "frobenius": {
+          "upper": 2.596998609356634,
+          "delta": 0.003580031068850076,
+          "epsilon": 0.0013766286522542315,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 4.945579067225457,
+          "delta": 0.003580031068850076,
+          "epsilon": 0.0007233614837890155,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 9.17404441579245,
+          "delta": 0.003580031068850076,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.8686730502776068,
+          "delta": 0.003580031068850076,
+          "epsilon": 0.0019121512494856981,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block0.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009499542598342432,
+      "frobenius": 2.4033278468651145,
+      "max_abs_row_sum": 5.54306228346104,
+      "trace": 8.50793965603225,
+      "lambda_max_float64": 1.7521977395643216,
+      "selections": {
+        "frobenius": {
+          "upper": 2.4057311747119794,
+          "delta": 0.0033234139281375975,
+          "epsilon": 0.001379551108475971,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 5.548605345744501,
+          "delta": 0.0033234139281375975,
+          "epsilon": 0.0005986052905213355,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 8.51644759568828,
+          "delta": 0.0033234139281375975,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 1.7539499373038856,
+          "delta": 0.0033234139281375975,
+          "epsilon": 0.001891233327932478,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009495153885167018,
+      "frobenius": 18.85569527340844,
+      "max_abs_row_sum": 40.853898961097,
+      "trace": 26.229970019310713,
+      "lambda_max_float64": 18.647311677091125,
+      "selections": {
+        "frobenius": {
+          "upper": 18.874550968681845,
+          "delta": 0.010246082038793248,
+          "epsilon": 0.0005425571697315254,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 40.8947528600581,
+          "delta": 0.010246082038793248,
+          "epsilon": 0.0002504848381318161,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 26.25619998933002,
+          "delta": 0.010246082038793248,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 18.665958988768214,
+          "delta": 0.010246082038793248,
+          "epsilon": 0.000548616916549552,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009496224539846004,
+      "frobenius": 12.915346489868861,
+      "max_abs_row_sum": 40.64446641683753,
+      "trace": 13.801420233445242,
+      "lambda_max_float64": 12.914243388349707,
+      "selections": {
+        "frobenius": {
+          "upper": 12.928261836358729,
+          "delta": 0.005391179778689548,
+          "epsilon": 0.0004168334941383484,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 40.68511088325437,
+          "delta": 0.005391179778689548,
+          "epsilon": 0.00013249233863809668,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 13.815221653678686,
+          "delta": 0.005391179778689548,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 12.927157631738055,
+          "delta": 0.005391179778689548,
+          "epsilon": 0.0004168690841428391,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009494806663602513,
+      "frobenius": 19.47197671807681,
+      "max_abs_row_sum": 44.462395556885895,
+      "trace": 26.14513161359355,
+      "lambda_max_float64": 19.31055508421405,
+      "selections": {
+        "frobenius": {
+          "upper": 19.491448694794887,
+          "delta": 0.01021294203655998,
+          "epsilon": 0.0005236959920005739,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 44.50685795244278,
+          "delta": 0.01021294203655998,
+          "epsilon": 0.00022941630775232585,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 26.171276745207138,
+          "delta": 0.01021294203655998,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 19.329865639298262,
+          "delta": 0.01021294203655998,
+          "epsilon": 0.000528071382626983,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498495556564981,
+      "frobenius": 5.646873637147715,
+      "max_abs_row_sum": 19.894280220629298,
+      "trace": 7.787888570339419,
+      "lambda_max_float64": 5.596901067509279,
+      "selections": {
+        "frobenius": {
+          "upper": 5.652520510784862,
+          "delta": 0.003042143972788836,
+          "epsilon": 0.00053790297420358,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 19.914174500849924,
+          "delta": 0.003042143972788836,
+          "epsilon": 0.00015273941269196425,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 7.795676458909758,
+          "delta": 0.003042143972788836,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.602497968576787,
+          "delta": 0.003042143972788836,
+          "epsilon": 0.0005427030958137543,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498604839859109,
+      "frobenius": 5.6004959408962565,
+      "max_abs_row_sum": 18.033120414626865,
+      "trace": 7.697191954823211,
+      "lambda_max_float64": 5.557603393099033,
+      "selections": {
+        "frobenius": {
+          "upper": 5.606096436837152,
+          "delta": 0.003006715607352817,
+          "epsilon": 0.0005360421310922869,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 18.05115353504149,
+          "delta": 0.003006715607352817,
+          "epsilon": 0.0001665386573293964,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 7.704889146778033,
+          "delta": 0.003006715607352817,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.563160996492131,
+          "delta": 0.003006715607352817,
+          "epsilon": 0.0005401769696620808,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498421971260859,
+      "frobenius": 5.280629943610669,
+      "max_abs_row_sum": 16.754658578443923,
+      "trace": 7.4731401989702135,
+      "lambda_max_float64": 5.225254752878538,
+      "selections": {
+        "frobenius": {
+          "upper": 5.285910573554279,
+          "delta": 0.00291919539022274,
+          "epsilon": 0.0005519548780647042,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 16.771413237022365,
+          "delta": 0.00291919539022274,
+          "epsilon": 0.00017402751507309213,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 7.480613339169183,
+          "delta": 0.00291919539022274,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.2304800076314155,
+          "delta": 0.00291919539022274,
+          "epsilon": 0.0005578010155497535,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step32_block5.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0009498622301392711,
+      "frobenius": 5.671697063181131,
+      "max_abs_row_sum": 15.802716578083391,
+      "trace": 7.909475422115065,
+      "lambda_max_float64": 5.61047624847129,
+      "selections": {
+        "frobenius": {
+          "upper": 5.677368760244312,
+          "delta": 0.0030896388367636974,
+          "epsilon": 0.0005439066039570866,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 15.818519294661472,
+          "delta": 0.0030896388367636974,
+          "epsilon": 0.00019527968677206857,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 7.917384897537179,
+          "delta": 0.0030896388367636974,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 5.616086724719761,
+          "delta": 0.0030896388367636974,
+          "epsilon": 0.0005498383814399773,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008571755788167723,
+      "frobenius": 17.99789239322191,
+      "max_abs_row_sum": 25.57531719771214,
+      "trace": 72.25801210477948,
+      "lambda_max_float64": 9.842667988067006,
+      "selections": {
+        "frobenius": {
+          "upper": 18.01589028561513,
+          "delta": 0.028225785978429487,
+          "epsilon": 0.0015642653741772755,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 25.600892514909848,
+          "delta": 0.028225785978429487,
+          "epsilon": 0.0011013170896890048,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 72.33027011688425,
+          "delta": 0.028225785978429487,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 9.852510656055072,
+          "delta": 0.028225785978429487,
+          "epsilon": 0.0028566479982559366,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573155921481318,
+      "frobenius": 8.683985916102195,
+      "max_abs_row_sum": 23.24799381941557,
+      "trace": 30.36246350593865,
+      "lambda_max_float64": 7.330629178888628,
+      "selections": {
+        "frobenius": {
+          "upper": 8.692669902018297,
+          "delta": 0.011860337307007286,
+          "epsilon": 0.0013625476597719983,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 23.271241813234983,
+          "delta": 0.011860337307007286,
+          "epsilon": 0.0005093967818515626,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 30.392825969444583,
+          "delta": 0.011860337307007286,
+          "epsilon": 0.0003900825414657743,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 7.337959808067517,
+          "delta": 0.011860337307007286,
+          "epsilon": 0.0016136908213286517,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573346061987817,
+      "frobenius": 17.608819817495522,
+      "max_abs_row_sum": 26.361376903252676,
+      "trace": 73.92038891091943,
+      "lambda_max_float64": 9.694746050628233,
+      "selections": {
+        "frobenius": {
+          "upper": 17.626428637313015,
+          "delta": 0.0288751519183279,
+          "epsilon": 0.0016354944816038782,
+          "plan_index": 1
+        },
+        "row_sum": {
+          "upper": 26.387738280155926,
+          "delta": 0.0288751519183279,
+          "epsilon": 0.0010930678904991116,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 73.99430929983033,
+          "delta": 0.0288751519183279,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 9.70444079667886,
+          "delta": 0.0288751519183279,
+          "epsilon": 0.0029666304957961967,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008579205924151901,
+      "frobenius": 13.312092497603835,
+      "max_abs_row_sum": 29.189598507306073,
+      "trace": 45.18106715125032,
+      "lambda_max_float64": 10.053697811712691,
+      "selections": {
+        "frobenius": {
+          "upper": 13.325404590101437,
+          "delta": 0.017648854355957155,
+          "epsilon": 0.0013226998175060415,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 29.218788105813374,
+          "delta": 0.017648854355957155,
+          "epsilon": 0.0006036595492125568,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 45.226248218401565,
+          "delta": 0.017648854355957155,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 10.063751509524403,
+          "delta": 0.017648854355957155,
+          "epsilon": 0.0017506352013545129,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008578562160985554,
+      "frobenius": 15.056879932136173,
+      "max_abs_row_sum": 28.422646236685978,
+      "trace": 48.306014652363956,
+      "lambda_max_float64": 11.518583989783227,
+      "selections": {
+        "frobenius": {
+          "upper": 15.071936812068307,
+          "delta": 0.01886953697357967,
+          "epsilon": 0.001250399517238368,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 28.451068882922662,
+          "delta": 0.01886953697357967,
+          "epsilon": 0.0006627881204123953,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 48.35432066701632,
+          "delta": 0.01886953697357967,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 11.530102573773009,
+          "delta": 0.01886953697357967,
+          "epsilon": 0.0016338715508734433,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008579385248560541,
+      "frobenius": 15.883698919008882,
+      "max_abs_row_sum": 30.841944803949445,
+      "trace": 51.33000361267477,
+      "lambda_max_float64": 12.148079390715104,
+      "selections": {
+        "frobenius": {
+          "upper": 15.899582617927889,
+          "delta": 0.020050782661201083,
+          "epsilon": 0.001259500275958561,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 30.87278674875339,
+          "delta": 0.020050782661201083,
+          "epsilon": 0.0006490430877646528,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 51.38133361628744,
+          "delta": 0.020050782661201083,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 12.160227470105818,
+          "delta": 0.020050782661201083,
+          "epsilon": 0.0016461678662099616,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block0.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008578920708312363,
+      "frobenius": 12.847783893017953,
+      "max_abs_row_sum": 24.913557744410355,
+      "trace": 44.6000774926506,
+      "lambda_max_float64": 9.706873473403942,
+      "selections": {
+        "frobenius": {
+          "upper": 12.86063167691097,
+          "delta": 0.01742190527056664,
+          "epsilon": 0.0013528368366685563,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 24.938471302154763,
+          "delta": 0.01742190527056664,
+          "epsilon": 0.0006981078627705844,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 44.644677570143244,
+          "delta": 0.01742190527056664,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 9.716580346877345,
+          "delta": 0.01742190527056664,
+          "epsilon": 0.0017897987712836526,
+          "plan_index": 1
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.qkv",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008572966885334966,
+      "frobenius": 52.122252337036535,
+      "max_abs_row_sum": 125.3359189114999,
+      "trace": 73.62836614530534,
+      "lambda_max_float64": 51.6238028159159,
+      "selections": {
+        "frobenius": {
+          "upper": 52.17437458937356,
+          "delta": 0.028761080525509897,
+          "epsilon": 0.000550945458667033,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 125.46125483041139,
+          "delta": 0.028761080525509897,
+          "epsilon": 0.00022919018948824011,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 73.70199451145064,
+          "delta": 0.028761080525509897,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 51.67542661873181,
+          "delta": 0.028761080525509897,
+          "epsilon": 0.0005562621096148276,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.proj",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008563331296037759,
+      "frobenius": 69.84408833990882,
+      "max_abs_row_sum": 197.878929303959,
+      "trace": 76.88656891975552,
+      "lambda_max_float64": 69.71460703415585,
+      "selections": {
+        "frobenius": {
+          "upper": 69.91393242824873,
+          "delta": 0.0300338159842795,
+          "epsilon": 0.00042939823971958175,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 198.07680823326294,
+          "delta": 0.0300338159842795,
+          "epsilon": 0.00015160413276798092,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 76.96345548867527,
+          "delta": 0.0300338159842795,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 69.78432164118999,
+          "delta": 0.0300338159842795,
+          "epsilon": 0.00043019542023420857,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.fc1",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008572847818054117,
+      "frobenius": 53.860028694954295,
+      "max_abs_row_sum": 128.68973279744387,
+      "trace": 73.05448568239808,
+      "lambda_max_float64": 53.483889277135134,
+      "selections": {
+        "frobenius": {
+          "upper": 53.913888723649244,
+          "delta": 0.02853690846968675,
+          "epsilon": 0.00052902531050986,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 128.8184225302413,
+          "delta": 0.02853690846968675,
+          "epsilon": 0.00022147909887823927,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 73.12754016808047,
+          "delta": 0.02853690846968675,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 53.537373166412266,
+          "delta": 0.02853690846968675,
+          "epsilon": 0.0005327438370746218,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.fc2",
+      "block": 0,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573799404384384,
+      "frobenius": 21.21402950597579,
+      "max_abs_row_sum": 73.77051313431002,
+      "trace": 29.448601138195954,
+      "lambda_max_float64": 21.035066753585316,
+      "selections": {
+        "frobenius": {
+          "upper": 21.235243535481764,
+          "delta": 0.011503359819607796,
+          "epsilon": 0.0005414174638731031,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 73.84428364744433,
+          "delta": 0.011503359819607796,
+          "epsilon": 0.00015575434621631484,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 29.478049739334146,
+          "delta": 0.011503359819607796,
+          "epsilon": 0.0003900825414657743,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 21.0561018203389,
+          "delta": 0.011503359819607796,
+          "epsilon": 0.0005460212359799524,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.fc2",
+      "block": 1,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573813672753592,
+      "frobenius": 19.624525101482156,
+      "max_abs_row_sum": 70.56683349458035,
+      "trace": 27.994524983107112,
+      "lambda_max_float64": 19.438887444407875,
+      "selections": {
+        "frobenius": {
+          "upper": 19.644149626583637,
+          "delta": 0.010935361321526216,
+          "epsilon": 0.0005563629629816068,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 70.63740032807492,
+          "delta": 0.010935361321526216,
+          "epsilon": 0.00015478583061890157,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 28.022519508090216,
+          "delta": 0.010935361321526216,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 19.45832633185228,
+          "delta": 0.010935361321526216,
+          "epsilon": 0.0005616731386049583,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.fc2",
+      "block": 2,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573815079959673,
+      "frobenius": 16.902032876580282,
+      "max_abs_row_sum": 56.68754837941378,
+      "trace": 25.27137530874461,
+      "lambda_max_float64": 16.69738756061309,
+      "selections": {
+        "frobenius": {
+          "upper": 16.918934909456862,
+          "delta": 0.009871630979978363,
+          "epsilon": 0.0005831262207645047,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 56.74423592779319,
+          "delta": 0.009871630979978363,
+          "epsilon": 0.000173936855050633,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 25.29664668405335,
+          "delta": 0.009871630979978363,
+          "epsilon": 0.0003900825414657742,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 16.714084948173703,
+          "delta": 0.009871630979978363,
+          "epsilon": 0.0005902688716785653,
+          "plan_index": null
+        }
+      }
+    },
+    {
+      "width": 512,
+      "module": "step96_block5.fc2",
+      "block": 3,
+      "relative_asymmetry": 0.0,
+      "minimum_eigenvalue": 0.0008573791980138695,
+      "frobenius": 18.461072944735836,
+      "max_abs_row_sum": 56.87079677474685,
+      "trace": 27.599055847036652,
+      "lambda_max_float64": 18.190402582220592,
+      "selections": {
+        "frobenius": {
+          "upper": 18.47953401768057,
+          "delta": 0.010780881190248693,
+          "epsilon": 0.0005830555752680592,
+          "plan_index": null
+        },
+        "row_sum": {
+          "upper": 56.92766757152159,
+          "delta": 0.010780881190248693,
+          "epsilon": 0.0001893427285642032,
+          "plan_index": null
+        },
+        "trace": {
+          "upper": 27.626654902883686,
+          "delta": 0.010780881190248693,
+          "epsilon": 0.00039008254146577416,
+          "plan_index": null
+        },
+        "eigvalsh_oracle": {
+          "upper": 18.20859298480281,
+          "delta": 0.010780881190248693,
+          "epsilon": 0.0005917262179010163,
+          "plan_index": null
+        }
+      }
+    }
+  ],
+  "summary": {
+    "blocks": 56,
+    "coverage": {
+      "frobenius": 18,
+      "row_sum": 5,
+      "trace": 0,
+      "eigvalsh_oracle": 28
+    },
+    "uncovered": {
+      "frobenius": 38,
+      "row_sum": 51,
+      "trace": 56,
+      "eigvalsh_oracle": 28
+    },
+    "all_psd_checked": true,
+    "max_relative_asymmetry": 0.0
+  },
+  "hashes": {
+    "analyze.py": "7f39000398f1e657333028fb3d56efe7f3a8c11f4e568c38127d7bbf298ea0b8",
+    "plans.json": "dd5a122b4f92c567ef04de584e0f2663291b25d421e877f9e2467124790ca982"
+  }
+}

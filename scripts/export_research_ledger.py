@@ -5,10 +5,18 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
+# The documented CLI is run as ``python scripts/export_research_ledger.py``;
+# in that mode Python puts ``scripts/`` on sys.path rather than the repository
+# root.  Bootstrap the package path before importing generation modules.
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from generation.experiment_feedback import inspect_feedback
 
 
 def _read(path: Path, default: Any) -> Any:
@@ -35,6 +43,63 @@ def _hash(path: Path) -> str | None:
 def _metric(v: dict[str, Any]) -> dict[str, Any]:
     keys = ("primary_metric", "mean_candidate", "mean_control", "mean_strongest_control", "strongest_control")
     return {k: v[k] for k in keys if k in v}
+
+
+def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
+    """Expose hash-checked feedback without promoting it to evidence.
+
+    The generation pipeline additionally requires a matching source pack.  The
+    read-only workbench registry has no single pack for all historical studies,
+    so it supplies each record's own canonical arXiv URLs to the same validator
+    and labels the result as registry provenance only.  Invalid records are
+    omitted and their validator warnings are retained in the ledger.
+    """
+    path = root / "docs/method-grounding/experiment-feedback.json"
+    registry = _read(path, {})
+    if not isinstance(registry, dict) or not isinstance(registry.get("records"), list):
+        return [], ["experiment feedback registry is missing or malformed"]
+    rows: list[dict[str, Any]] = []
+    warnings: list[str] = []
+    seen: set[str] = set()
+    for raw in registry["records"]:
+        if not isinstance(raw, dict):
+            warnings.append("experiment feedback record is not an object")
+            continue
+        sid = raw.get("id")
+        if isinstance(sid, str) and sid in seen:
+            warnings.append(f"duplicate experiment feedback id {sid!r}")
+            continue
+        if isinstance(sid, str):
+            seen.add(sid)
+        urls = raw.get("source_urls")
+        pack = {"sources": [{"url": x} for x in urls]} if isinstance(urls, list) else {}
+        checked = inspect_feedback(pack, root, {"schema_version": "experiment-feedback.v1", "records": [raw]})
+        warnings.extend(f"{sid or '<unknown>'}: {message}" for message in checked.get("warnings", []))
+        valid = checked.get("records", [])
+        if not valid:
+            continue
+        record = valid[0]
+        report = record["report_path"]
+        result = record["result_path"]
+        rows.append({
+            "id": record["id"], "cohort": "experiment_feedback",
+            "title": record["id"], "artifact_directory": str(Path(report).parent),
+            "raw_verdict": record["verdict"],
+            "audit_qualification": "registry_hash_and_paths_verified",
+            "audit_note": ("Registry and result hash/path verified; this is not independent scientific validation. "
+                           f"Tested change: {record['tested_change']} Scope: {record['scope']}"),
+            "primary_metrics": {}, "secondary_metrics": {},
+            "novelty_established": False, "human_adjudicated": False,
+            "prior_art_status": "Source-linked local experiment; no novelty established.",
+            "limitations": list(record["limitations"]),
+            "artifact_refs": [{"path": report, "sha256": _hash(root / report)},
+                              {"path": result, "sha256": record["result_sha256"]}],
+            "evidence": {"source": "docs/method-grounding/experiment-feedback.json",
+                         "source_urls": list(record["source_urls"]),
+                         "tested_change": record["tested_change"], "scope": record["scope"],
+                         "train_eligible": False, "novelty_established": False},
+        })
+    return rows, warnings
 
 
 GROUNDED_FAILURES = {
@@ -233,12 +298,31 @@ def build_ledger(root: Path = ROOT) -> dict[str, Any]:
                                'predictions.json','evaluation.json','summary.json','plan.json','receipts.json','run.py')) if f.is_file()],
             'evidence': {'source': _rel(utility_probe_dir / 'evaluation.json', root)},
         })
+    feedback_rows, feedback_warnings = _feedback_studies(root)
+    existing_ids = {item.get("id") for item in studies}
+    canonical_dirs = {
+        str(item.get("artifact_directory"))
+        for item in studies
+        if isinstance(item.get("artifact_directory"), str)
+    }
+    for item in feedback_rows:
+        if item.get("id") in existing_ids:
+            feedback_warnings.append(f"duplicate experiment feedback id {item['id']!r} omitted")
+        elif item.get("artifact_directory") in canonical_dirs:
+            feedback_warnings.append(
+                f"experiment feedback {item['id']!r} omitted: artifact directory already registered"
+            )
+        else:
+            studies.append(item)
+            existing_ids.add(item.get("id"))
+            canonical_dirs.add(item.get("artifact_directory"))
     ledger = {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
         "read_only": True,
         "novelty_policy": "No automatic novelty or promotion decisions; novelty_established and human_adjudicated are copied from artifacts.",
         "study_count": len(studies), "studies": studies,
+        "feedback_diagnostics": feedback_warnings,
         "cohort_sources": {"candidate_audit": _rel(root / "candidate-studies/audit.json", root), "reconstruction_report": _rel(root / "reconstruction-studies/README.md", root), "failure_assessments": "notes/2026-11-16-reconstruction-review/ASSESSMENT.md"},
     }
     return ledger

@@ -48,11 +48,29 @@ hash matches across all six arms.
 | 512 | 32 | 131.445 | 5.6836 → 2.7029 |
 | 512 | 64 | 129.381 | 5.6836 → 2.6683 |
 
-At this scale, less frequent refresh was cheaper in these short windows: about
-2.9% lower median cost at width 256 for refresh 32 versus 16, and about 3.6%
-at width 512 for refresh 64 versus 16. The loss traces are not held-out or
+Against the source refresh interval of 32, refresh 64 was 0.24% slower at
+width 256 and 1.57% cheaper at width 512 in these short windows. Refresh 16
+was costlier at both widths. There is no consistent cost advantage from
+increasing the interval across these two widths. The loss traces are not held-out or
 time-to-target measurements, so these are cost observations and a sanity check,
 not evidence that any refresh value is a better optimizer. The four windows are
 within one process and are not independent uncertainty intervals. Earlier
 `results/newton-muon-refresh-v1/` files are retained as a pre-provenance pilot;
 they are not used for this table.
+
+Raw per-arm JSON files are committed beside this report. Requirements match
+the pinned cost-screen environment. The fixed process order was width 256
+then 512, and intervals 16, 32, 64 within each width; no order balancing or
+independent repeat was run. Runner provenance is commit `f4bb33a`; the raw
+results retain the imported harness hash, but did not record a runner hash.
+The published runner hash is recorded at aggregation time, not retrospectively
+represented as a pre-run freeze.
+
+Recompute and validate the descriptive summary (choose a fresh output path):
+
+```sh
+../.venv/bin/python operator-studies/newton-muon-refresh/summarize.py --input operator-studies/newton-muon-refresh --output /tmp/newton-refresh-summary.json
+```
+
+[Machine-readable summary](result.json) retains raw-result hashes and explicitly
+keeps training eligibility and novelty false.

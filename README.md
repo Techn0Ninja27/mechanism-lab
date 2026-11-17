@@ -23,6 +23,7 @@ scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Test cheaper refresh scheduling** | Across six matched short runs, refresh64 versus32 was **0.24% costlier** at width256 and **1.57% cheaper** at width512. No consistent cost advantage or training-quality conclusion. | [Matched controls and raw results](operator-studies/newton-muon-refresh/README.md) |
 | **Check published polynomial inverses on training matrices** | 18/56 covariance blocks were eligible under a conservative selection rule; all 18 met a 1% inverse-residual threshold. The other 38 remain uncovered. No speed or training-quality claim. | [Functional matrix check](operator-studies/newton-muon-polynomial/README.md) |
 | **Compose executable compression operators** | Searching 115 compatible chains selected frame-of-reference packing + LZMA. On three shifted synthetic streams it used **24.25% fewer bytes** than the control frozen during validation, with exact round trips. | [Protocol, results, and limitations](operator-studies/integer-composition/README.md) |
 | **Recover atom combinations with graphs** | Adamic–Adar recovered **23/100** withheld pairs, versus **21/100** for degree product and **10/100** for text similarity. This measures co-occurrence recovery, not novelty or usefulness. | [Graph baseline](reports/atom-graph/README.md) |

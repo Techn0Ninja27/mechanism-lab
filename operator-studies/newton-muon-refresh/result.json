@@ -1,0 +1,103 @@
+{
+  "status": "mixed_short_run_cost_no_quality_conclusion",
+  "arms": [
+    {
+      "width": 256,
+      "refresh": 16,
+      "median_ms_per_step": 38.21470378125014,
+      "window_ms_per_step": [
+        38.86823699986053,
+        38.31017968741435,
+        38.119227875085926,
+        38.07923565636884
+      ],
+      "loss_last": 2.6398825645446777
+    },
+    {
+      "width": 256,
+      "refresh": 32,
+      "median_ms_per_step": 37.102588546986226,
+      "window_ms_per_step": [
+        37.40282550006668,
+        37.1839140625525,
+        37.02126303141995,
+        37.00267056274242
+      ],
+      "loss_last": 2.6518208980560303
+    },
+    {
+      "width": 256,
+      "refresh": 64,
+      "median_ms_per_step": 37.19430404680679,
+      "window_ms_per_step": [
+        37.477703124750406,
+        37.18506381255793,
+        36.181999999826076,
+        37.203544281055656
+      ],
+      "loss_last": 2.6621158123016357
+    },
+    {
+      "width": 512,
+      "refresh": 16,
+      "median_ms_per_step": 134.24330339057633,
+      "window_ms_per_step": [
+        134.79609112528124,
+        134.45335937467462,
+        133.9608085936561,
+        134.03324740647804
+      ],
+      "loss_last": 2.6483969688415527
+    },
+    {
+      "width": 512,
+      "refresh": 32,
+      "median_ms_per_step": 131.44459506270323,
+      "window_ms_per_step": [
+        131.61903256286678,
+        131.08238412496576,
+        131.27015756253968,
+        131.67932940632454
+      ],
+      "loss_last": 2.7029433250427246
+    },
+    {
+      "width": 512,
+      "refresh": 64,
+      "median_ms_per_step": 129.3808444061142,
+      "window_ms_per_step": [
+        127.7864948124261,
+        130.9751939998023,
+        127.76554037463939,
+        131.38941665647508
+      ],
+      "loss_last": 2.6682636737823486
+    }
+  ],
+  "comparisons": [
+    {
+      "width": 256,
+      "refresh64_to32_cost_ratio": 1.0024719434253062
+    },
+    {
+      "width": 512,
+      "refresh64_to32_cost_ratio": 0.9842994635450429
+    }
+  ],
+  "raw_sha256": {
+    "d256-r16.json": "c833e7c25a0c25aa77a1cbea507d638ed1447f8a91c52990d5c0715661b473f2",
+    "d256-r32.json": "5422551f4fa8818bcc5ce417434322cf5a11b61003a6cee639b4ce521e136ec5",
+    "d256-r64.json": "c2f11350c72cfc958072b4b9067f5719f6b26308d6822f8baccc93a9218a6b5e",
+    "d512-r16.json": "e5e3b056674a4201ef6fc6915cd9d2a77ef55954e571107e867f7804fd33ee8a",
+    "d512-r32.json": "7736d82efe0e7a0e7a5f229e16daf69ce2a070d419e6daca821f25ebdcf4f7bb",
+    "d512-r64.json": "3059094515451e8fa42ad5dd3711378d27b0109cad71794fbab0944aa6416812"
+  },
+  "runner_sha256_at_aggregation": "1358302b3efed05ff12a8f84d55c357f619574dd38e08c902efc66ede0699dbf",
+  "limitations": [
+    "One process per arm, fixed order, four dependent windows.",
+    "No held-out quality or time-to-target measurement.",
+    "Generic FP32 MPS development harness; not source optimized CUDA kernels."
+  ],
+  "novelty_established": false,
+  "train_eligible": false
+}
