@@ -1,0 +1,16 @@
+{
+  "status": "failed",
+  "source_ids": [
+    "2610.15579v1",
+    "2508.14544v2"
+  ],
+  "drafts": [],
+  "review": null,
+  "train_eligible": false,
+  "novelty_established": false,
+  "executable_compatibility_proven": false,
+  "curated_registry_updated": false,
+  "error": "ValueError: non-exact evidence quote",
+  "original_result_sha256": "07e3e1960ba9f9deedc8f6401d82c3f2d6733e2692af449804d154741f24128f",
+  "export_scope": "Evidence quotes replaced by hashes; validation applies to the original local artifact, not this redacted export."
+}

@@ -20,6 +20,9 @@ A [source-contract bridge](reports/serving-contracts-v1/README.md) connects
 curated operational inputs and outputs to molecule hypotheses. Unmatched types
 or missing inputs stay explicit; two serving-paper substeps are the current
 real-source example, not a bulk-corpus conversion.
+A [full-method draft extractor](reports/full-contract-extraction-v2/README.md)
+now adds a separate semantic review before any curation. Its two-source pilot
+caught an omitted algorithm input; accepted drafts still remain unverified.
 
 This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
 The upstream authors created the sampling method and operate

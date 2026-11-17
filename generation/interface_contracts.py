@@ -8,8 +8,10 @@ TOKEN=re.compile(r'^[a-z][a-z0-9_]{0,79}$')
 def _token(value, nullable=False):
     if nullable and value is None:return
     if not isinstance(value,str) or not TOKEN.fullmatch(value):raise ValueError('invalid contract identifier')
+    if nullable and value in {'unknown','unspecified','not_stated','not_specified','none','null'}:raise ValueError('Use JSON null for an unknown contract field')
 
-def validate_contracts(registry,pack):
+def validate_contracts(registry,pack, *, expected_interpretation='curated_not_formally_verified'):
+    if expected_interpretation not in {'curated_not_formally_verified','model_proposed_not_curated'}:raise ValueError('unsupported interpretation mode')
     validate_source_pack(pack)
     if not isinstance(registry,dict) or set(registry)!={'schema','contracts'} or registry['schema']!=SCHEMA:raise ValueError('contract schema')
     if not isinstance(registry['contracts'],list) or not 1<=len(registry['contracts'])<=32:raise ValueError('contract count')
@@ -19,7 +21,7 @@ def validate_contracts(registry,pack):
         _token(c['id'])
         if c['id'] in validated:raise ValueError('duplicate contract ID')
         if not isinstance(c['source_id'],str) or not c['source_id'].strip() or len(c['source_id'])>200:raise ValueError('contract source ID')
-        if c['interpretation']!='curated_not_formally_verified':raise ValueError('unsupported verification claim')
+        if c['interpretation']!=expected_interpretation:raise ValueError('unsupported verification claim')
         if not isinstance(c['evidence'],list) or not 1<=len(c['evidence'])<=12:raise ValueError('evidence count')
         evidence={}
         for e in c['evidence']:

@@ -1,0 +1,32 @@
+[
+  {
+    "call": "contract-drafts-0",
+    "status": "complete",
+    "request_hash": "bd32180091c4560272c34a19ffc46e2df811d437b620546858d91a9e6bf49c9e",
+    "reserved_usd": 0.007788699999999999,
+    "usage": {
+      "prompt_tokens": 17101,
+      "completion_tokens": 1938,
+      "total_tokens": 19039,
+      "cost": 0.002652309,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0026791,
+        "upstream_inference_prompt_cost": 0.0017101,
+        "upstream_inference_completions_cost": 0.000969
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "finish_reason": "stop"
+  }
+]

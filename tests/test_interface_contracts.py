@@ -40,6 +40,10 @@ class ContractTests(unittest.TestCase):
             with self.subTest(field=field),self.assertRaises(ValueError):validate_contracts(r,self.pack)
         r=self.registry();r['contracts'][1]['id']='one'
         self.assertEqual(inspect_contracts(r,self.pack)['matched_count'],0)
+    def test_unknown_sentinels_are_not_concrete_types(self):
+        r=self.registry();r['contracts'][0]['outputs'][0]['phase']='unknown'
+        with self.assertRaisesRegex(ValueError,'JSON null'):validate_contracts(r,self.pack)
+
     def test_partial_source_coverage_keeps_valid_card(self):
         r=self.registry();r['contracts'][1]['source_id']='absent'
         result=inspect_contracts(r,self.pack);self.assertEqual(result['matched_count'],1);self.assertTrue(result['warnings'])

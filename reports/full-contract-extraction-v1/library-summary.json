@@ -1,0 +1,39 @@
+{
+  "schema": "contract-draft-library.v1",
+  "status": "failed",
+  "result_sha256": "68af0a9d39c3803a6c8fb34146eaa72a5af12bcb49aa468e6eb054b239c9e594",
+  "records": [
+    {
+      "source_id": "2610.15579v1",
+      "source_url": "https://arxiv.org/html/2610.15579v1",
+      "contract_id": null,
+      "inputs": [],
+      "outputs": [],
+      "unknowns": [
+        "Batch failed exact evidence validation; raw model output is retained locally and no card was accepted."
+      ],
+      "review": {
+        "decision": "not_run",
+        "reason": "Semantic review was not charged after the failed batch.",
+        "issues": []
+      }
+    },
+    {
+      "source_id": "2508.14544v2",
+      "source_url": "https://arxiv.org/html/2508.14544v2",
+      "contract_id": null,
+      "inputs": [],
+      "outputs": [],
+      "unknowns": [
+        "Batch failed exact evidence validation; raw model output is retained locally and no card was accepted."
+      ],
+      "review": {
+        "decision": "not_run",
+        "reason": "Semantic review was not charged after the failed batch.",
+        "issues": []
+      }
+    }
+  ],
+  "curated": false,
+  "novelty_established": false
+}

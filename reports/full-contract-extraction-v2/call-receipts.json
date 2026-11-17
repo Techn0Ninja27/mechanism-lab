@@ -1,0 +1,62 @@
+[
+  {
+    "call": "contract-drafts-0",
+    "status": "complete",
+    "request_hash": "498bc6353b7a956b5067a116eeb76b2f0251ac36d48034703cd11113354e71d8",
+    "reserved_usd": 0.31242800000000004,
+    "usage": {
+      "prompt_tokens": 17178,
+      "completion_tokens": 2781,
+      "total_tokens": 19959,
+      "cost": 0.12308868,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.124332,
+        "upstream_inference_prompt_cost": 0.068712,
+        "upstream_inference_completions_cost": 0.05562
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "finish_reason": "stop"
+  },
+  {
+    "call": "contract-review-1",
+    "status": "complete",
+    "request_hash": "03a72b82461f4821b306a58394db83b966ee9652e71af0eb582bbafa1ad9fc7c",
+    "reserved_usd": 0.33422799999999997,
+    "usage": {
+      "prompt_tokens": 19780,
+      "completion_tokens": 1447,
+      "total_tokens": 21227,
+      "cost": 0.1069794,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.10806,
+        "upstream_inference_prompt_cost": 0.07912,
+        "upstream_inference_completions_cost": 0.02894
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 566,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "finish_reason": "stop"
+  }
+]

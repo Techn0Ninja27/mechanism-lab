@@ -117,6 +117,70 @@ def operational_notes():
                      'ready_for_composition':False,'train_eligible':False,'novelty_established':False})
     return rows
 
+def contract_draft_library():
+    """Read hash-bound full-method draft contracts as inert review data."""
+    warnings = []
+    rows = []
+    root = ENGINE / "reports"
+    if root.is_symlink(): return {"records":[],"warnings":["Symlinked report root ignored"],"scope":"Drafts only"}
+    try:
+        reports = sorted(root.glob("full-contract-extraction-*/library-summary.json"))[:5]
+    except OSError:
+        reports = []
+    for path in reports:
+        try:
+            parent = path.parent
+            if path.is_symlink() or parent.is_symlink() or parent.resolve().parent != root.resolve() or path.stat().st_size > 200_000:
+                warnings.append(f"ignored oversized or symlinked draft summary: {path.name}"); continue
+            with path.open('rb') as stream:
+                payload = stream.read(200_001)
+            if len(payload) > 200_000: warnings.append(f"oversized draft summary: {path.name}"); continue
+            raw = json.loads(payload)
+            if not isinstance(raw, dict) or raw.get("schema") != "contract-draft-library.v1" or not isinstance(raw.get("records"), list):
+                warnings.append(f"invalid draft summary schema: {path.name}"); continue
+            if len(raw['records']) > 5: warnings.append(f"too many draft records: {path.name}"); continue
+            result = path.parent / "result.json"
+            if result.is_symlink() or not result.is_file() or result.stat().st_size > 1_000_000:
+                warnings.append(f"draft result missing, symlinked or oversized: {path.name}"); continue
+            with result.open('rb') as stream: result_bytes = stream.read(1_000_001)
+            if len(result_bytes) > 1_000_000 or hashlib.sha256(result_bytes).hexdigest() != raw.get("result_sha256"):
+                warnings.append(f"draft result hash mismatch: {path.name}"); continue
+            for record in raw["records"]:
+                if not isinstance(record, dict): warnings.append(f"invalid draft record: {path.name}"); continue
+                sid = record.get("source_id")
+                if not isinstance(sid, str) or len(sid) > 200: warnings.append(f"invalid draft source: {path.name}"); continue
+                def ports(key):
+                    values = record.get(key, [])
+                    if not isinstance(values, list) or len(values)>8: raise ValueError(f"invalid {key} ports")
+                    out=[]
+                    for port in values[:8]:
+                        if not isinstance(port, dict): raise ValueError(f"invalid {key} port")
+                        if not isinstance(port.get('id'),str) or len(port['id'])>200: raise ValueError(f"invalid {key} port ID")
+                        conditions=port.get('conditions',[])
+                        if not isinstance(conditions,list) or len(conditions)>12 or any(not isinstance(x,str) for x in conditions): raise ValueError(f"invalid {key} conditions")
+                        fields={}
+                        for key in ("id","artifact","representation","granularity","phase","role","exposure"):
+                            value=port.get(key)
+                            if value is not None and not isinstance(value,str):raise ValueError("invalid port field")
+                            fields[key]=value[:200] if isinstance(value,str) else None
+                        out.append(fields)
+                        out[-1]["conditions"]=[x[:200] for x in conditions]
+                    return out
+                unknowns=record.get('unknowns',[])
+                if not isinstance(unknowns,list) or len(unknowns)>8 or any(not isinstance(x,str) for x in unknowns): raise ValueError('invalid draft unknowns')
+                review = record.get("review") if isinstance(record.get("review"), dict) else {}
+                issues=review.get('issues',[])
+                if not isinstance(issues,list) or len(issues)>16: raise ValueError('invalid draft review issues')
+                if any(not isinstance(i,dict) or not isinstance(i.get('reason',''),str) for i in issues): raise ValueError('invalid draft review issue')
+                rows.append({"source_id":sid,"source_url":str(record.get("source_url", ""))[:2000],"contract_id":record["contract_id"][:200] if isinstance(record.get("contract_id"),str) else None,
+                             "inputs":ports("inputs"),"outputs":ports("outputs"),"unknowns":[x[:500] for x in unknowns],
+                             "status":str(raw.get('status',''))[:80],"review":{"decision":str(review.get("decision", "not_recorded"))[:40],"reason":str(review.get("reason", ""))[:2400],"issues":[{"port_id":i.get("port_id") if isinstance(i,dict) else None,"field":str(i.get("field", ""))[:80],"reason":str(i.get("reason", ""))[:1500]} for i in issues]}})
+        except ValueError as exc:
+            warnings.append(f"invalid draft record in {path.name}: {str(exc)[:160]}")
+        except (OSError, ValueError, TypeError) as exc:
+            warnings.append(f"could not read draft summary {path.name}: {type(exc).__name__}")
+    return {"records":rows,"warnings":warnings,"scope":"Model-proposed full-method contracts; curated, executable compatibility and novelty are unverified."}
+
 
 def operator_library():
     """Read the hand-curated operator catalog as inert JSON data.
@@ -160,6 +224,7 @@ def operator_library():
         "operators": operators,
         "chains": chains,
         "operational_notes": operational_notes(),
+        "contract_drafts": contract_draft_library(),
         "study": {"report_path": report_path, "status": study.get("status")},
     }
 

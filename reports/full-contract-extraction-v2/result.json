@@ -1,0 +1,339 @@
+{
+  "status": "reviewed_drafts_not_curated",
+  "source_ids": [
+    "2610.15579v1",
+    "2508.14544v2"
+  ],
+  "drafts": [
+    {
+      "source_id": "2610.15579v1",
+      "contract": {
+        "id": "lp_guided_dyadic_group_admission_scheduling",
+        "source_id": "2610.15579v1",
+        "interpretation": "model_proposed_not_curated",
+        "inputs": [
+          {
+            "id": "request_characteristics",
+            "artifact": "request_set",
+            "representation": "integer_tuples_m_p_d",
+            "granularity": "per_request",
+            "phase": "offline_batch",
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "characteristics_known_in_advance",
+              "batch_released_at_time_zero",
+              "p_i_le_m_p",
+              "h_i_le_m_d"
+            ],
+            "evidence_ids": [
+              "ev_input_line",
+              "ev_known_advance",
+              "ev_feasibility"
+            ]
+          },
+          {
+            "id": "memory_capacities",
+            "artifact": "memory_capacity_pair",
+            "representation": "token_units",
+            "granularity": "per_pool",
+            "phase": "offline_batch",
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "alpha_lt_1",
+              "beta_lt_1"
+            ],
+            "evidence_ids": [
+              "ev_input_line",
+              "ev_alpha_beta"
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "lp_completion_times",
+            "artifact": "lp_solution",
+            "representation": "relaxed_completion_time_values",
+            "granularity": "per_request",
+            "phase": "offline_batch",
+            "role": "artifact",
+            "exposure": "intermediate",
+            "conditions": [
+              "lp_solved_optimally"
+            ],
+            "evidence_ids": [
+              "ev_solve_lp"
+            ]
+          },
+          {
+            "id": "dyadic_groups",
+            "artifact": "request_partition",
+            "representation": null,
+            "granularity": "per_group",
+            "phase": "offline_batch",
+            "role": "artifact",
+            "exposure": "intermediate",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_solve_lp"
+            ]
+          },
+          {
+            "id": "admission_times",
+            "artifact": "schedule",
+            "representation": "prefill_and_decode_admission_times",
+            "granularity": "per_request",
+            "phase": "offline_batch",
+            "role": "artifact",
+            "exposure": "returned",
+            "conditions": [
+              "decode_admission_reserves_peak_demand"
+            ],
+            "evidence_ids": [
+              "ev_output_line",
+              "ev_decode_rule"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "ev_input_line",
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "8dcf7d6b123f42ed811ef2aeffb316bdd20cc0085295ac0cf70155ae0ae6b3ff"
+          },
+          {
+            "id": "ev_output_line",
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "b221997b3c4c75b31018ed63dfc84e28103116a38191b62c449137db7b67ec36"
+          },
+          {
+            "id": "ev_solve_lp",
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "77cb716947cea4779bbec7ceaed658ae4e3af9da24e346cb345da61f7814ce81"
+          },
+          {
+            "id": "ev_decode_rule",
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "03d24052350c7e0deaeb8a58a37d88ffc8c2763f6486f477cd4c54d906116846"
+          },
+          {
+            "id": "ev_alpha_beta",
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "ded4b5d015ceeab53b6e887869ab0684d7127aa07090cc806f2f68dc93b60bcf"
+          },
+          {
+            "id": "ev_known_advance",
+            "chunk_id": "2610.15579v1:chunk:0002",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "46fce5f0ad5365a004a63037ec11241214aaec537b3c66ffbc13a2eff71dc1f4"
+          },
+          {
+            "id": "ev_feasibility",
+            "chunk_id": "2610.15579v1:chunk:0002",
+            "source_sha256": "3f412ef98d857bf4ff4a05b10eede505ff36e1e9a4d1b70083d1d7e12169cf5a",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "2bd208e70eb8420faa8a245a69984dff5a055f187af32e3d43ce13d0e65294cb"
+          }
+        ]
+      },
+      "unknowns": [
+        "Remaining lines of Algorithm 1 after the prefill memory check are truncated.",
+        "LP solver used and how exponentially many subset constraints are handled in practice is not shown (proof in Appendix C.2 omitted).",
+        "Algorithm 2 (uniform 36-approximation) details are not supplied.",
+        "Tie-breaking within equal m_i+d_i ordering is unspecified.",
+        "How m_i is measured per deployment configuration is not described."
+      ],
+      "interpretation": "model_proposed_not_curated",
+      "executable_compatibility_proven": false,
+      "novelty_established": false
+    },
+    {
+      "source_id": "2508.14544v2",
+      "contract": {
+        "id": "a_min_lower_bound_batch_formation_step",
+        "source_id": "2508.14544v2",
+        "interpretation": "model_proposed_not_curated",
+        "inputs": [
+          {
+            "id": "memory_capacity",
+            "artifact": "kv_cache_limit",
+            "representation": "token_units",
+            "granularity": "global",
+            "phase": "decode",
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_amin_input"
+            ]
+          },
+          {
+            "id": "output_length_lower_bounds",
+            "artifact": "length_prediction",
+            "representation": "lower_bound_scalar",
+            "granularity": "per_request",
+            "phase": null,
+            "role": "artifact",
+            "exposure": "required",
+            "conditions": [
+              "upper_bound_not_required"
+            ],
+            "evidence_ids": [
+              "ev_amin_input",
+              "ev_no_upper"
+            ]
+          }
+        ],
+        "outputs": [
+          {
+            "id": "updated_lower_bounds",
+            "artifact": "lower_bound_state",
+            "representation": "generated_token_count",
+            "granularity": "per_request",
+            "phase": "decode",
+            "role": "artifact",
+            "exposure": "intermediate",
+            "conditions": [
+              "updated_only_on_cancellation"
+            ],
+            "evidence_ids": [
+              "ev_update"
+            ]
+          },
+          {
+            "id": "processing_sequence",
+            "artifact": "batch_sequence",
+            "representation": null,
+            "granularity": "per_time_step",
+            "phase": "decode",
+            "role": "artifact",
+            "exposure": "returned",
+            "conditions": [
+              "memory_constraint_satisfied"
+            ],
+            "evidence_ids": [
+              "ev_amin_output",
+              "ev_select"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "ev_amin_input",
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "9acae7cbb09a7f808aa90abdc4d22c026322aad5f054cfe89b7f2ad1b77b6bd9"
+          },
+          {
+            "id": "ev_amin_output",
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "58744d3f3fd03d2609435a389d20a7c8ac6bd27776b8f060f421f4bc78d14155"
+          },
+          {
+            "id": "ev_no_upper",
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "db8a232afbbebd5c6d51d90d1c181d400f939526aab9dcd3042f29311e952552"
+          },
+          {
+            "id": "ev_update",
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "177db817622b96637ede1a1b8ee10cc7936ae9b3aa5af780c6aa72b4de5e9ce5"
+          },
+          {
+            "id": "ev_select",
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "source_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+            "quote": "[Verbatim span retained in local artifact]",
+            "quote_sha256": "841c22bbbf3f198dcbb941470d90ebce63e44f8a5bbd4272a37411449cb4f2f9"
+          }
+        ]
+      },
+      "unknowns": [
+        "Equation (3) is not included in the excerpt.",
+        "How projected memory usage at t+1 is computed is not fully specified.",
+        "Source of lower bound predictions \u2113 is not described.",
+        "Prompt size s is assumed uniform across requests; heterogeneity handling unknown."
+      ],
+      "interpretation": "model_proposed_not_curated",
+      "executable_compatibility_proven": false,
+      "novelty_established": false
+    }
+  ],
+  "review": {
+    "assessments": [
+      {
+        "source_id": "2610.15579v1",
+        "contract_id": "lp_guided_dyadic_group_admission_scheduling",
+        "decision": "accept",
+        "reason": "The source supports the limited draft for Algorithm 1. Its inputs are the per-request (m_i,p_i,d_i) tuples and the capacities M_P and M_D, all known in advance for a batch released at t=0. Its returned output is the per-request prefill and decode admission times. The LP solution and the dyadic groups are correctly marked intermediate, and decode admission does reserve peak decode demand h_i. The alpha<1 and beta<1 applicability condition and the feasibility assumptions are stated in the source. Truncation of the remaining pseudocode is acknowledged as an explicit unknown. This acceptance covers only this draft; it does not establish curation, executability or novelty.",
+        "issues": []
+      },
+      {
+        "source_id": "2508.14544v2",
+        "contract_id": "a_min_lower_bound_batch_formation_step",
+        "decision": "revise",
+        "reason": "Most ports match Algorithm 2 (A_min): memory capacity M, lower bounds, intermediate lower-bound updates applied only on cancellation, and the returned processing sequence. However, the draft omits the explicitly listed prompt-size input. It also labels the contract a batch-formation step even though the returned output and the update port come from the whole loop, including eviction.",
+        "issues": [
+          {
+            "port_id": null,
+            "field": "artifact",
+            "reason": "Prompt size s is an explicit algorithm input and enters the memory constraint, but no input port models it. This is a hidden prerequisite.",
+            "evidence": [
+              {
+                "chunk_id": "2508.14544v2:chunk:0002",
+                "quote": "[Verbatim span retained in local artifact]",
+                "quote_sha256": "9acae7cbb09a7f808aa90abdc4d22c026322aad5f054cfe89b7f2ad1b77b6bd9"
+              }
+            ]
+          },
+          {
+            "port_id": "processing_sequence",
+            "field": "operation_scope",
+            "reason": "The contract is named as a batch-formation step, but the processing sequence (I_0,...,I_T) is the output of the whole while-loop. That loop also includes overflow eviction and lower-bound updates, so its scope is not just one batch-formation substep.",
+            "evidence": [
+              {
+                "chunk_id": "2508.14544v2:chunk:0002",
+                "quote": "[Verbatim span retained in local artifact]",
+                "quote_sha256": "d4c8a823d705547a2a638d419206e96577f6842c8b86e71506b5fca6ed682b8a"
+              },
+              {
+                "chunk_id": "2508.14544v2:chunk:0002",
+                "quote": "[Verbatim span retained in local artifact]",
+                "quote_sha256": "bbddde7e0d237a2048cd4e0316e3fe031622fdad1751f7819e0b5cb93097eef5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scope": "Model-proposed contract review; semantic truth, executable compatibility, usefulness and novelty remain unverified.",
+    "curated": false,
+    "executable_compatibility_proven": false,
+    "novelty_established": false
+  },
+  "train_eligible": false,
+  "novelty_established": false,
+  "executable_compatibility_proven": false,
+  "curated_registry_updated": false,
+  "original_result_sha256": "b6e18591ee0324dace3b60aa2593191e899feab662e3491d25e9370361ff4b31",
+  "export_scope": "Evidence quotes replaced by hashes; validation applies to the original local artifact, not this redacted export."
+}

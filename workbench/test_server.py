@@ -328,6 +328,25 @@ class HTTPTests(unittest.TestCase):
             portfolio['candidates'][0]['near_duplicate_of']=42
             self.assertEqual(read()['status'],'invalid')
 
+    def test_contract_draft_library_rejects_oversized_result_and_malformed_ports(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            folder=Path(tmp)/'reports/full-contract-extraction-fixture';folder.mkdir(parents=True)
+            result=folder/'result.json';result.write_text('{"status":"failed"}')
+            summary={'schema':'contract-draft-library.v1','result_sha256':hashlib.sha256(result.read_bytes()).hexdigest(),'status':'failed',
+                     'records':[{'source_id':'paper','inputs':[{'id':'x','conditions':'bad'}],'outputs':[],'unknowns':[],'review':{}}]}
+            (folder/'library-summary.json').write_text(json.dumps(summary))
+            rows=server.operator_library()['contract_drafts'];self.assertEqual(rows['records'],[]);self.assertTrue(rows['warnings'])
+            result.write_bytes(b'x'*(1_000_001));self.assertEqual(server.operator_library()['contract_drafts']['records'],[])
+
+    def test_contract_draft_library_rejects_symlinked_report_parent(self):
+        import os
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);target=root/'real';target.mkdir(parents=True);(target/'library-summary.json').write_text('{}')
+            reports=root/'reports';reports.mkdir();link=reports/'full-contract-extraction-linked';os.symlink(target,link)
+            with mock.patch.object(server,'ENGINE',root):
+                data=server.operator_library()['contract_drafts'];self.assertEqual(data['records'],[]);self.assertTrue(data['warnings'])
+
     def test_operator_links_require_matching_artifact_hash(self):
         import hashlib
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
@@ -343,6 +362,23 @@ class HTTPTests(unittest.TestCase):
             (op/'results.json').write_text('{"changed":true}')
             result=next(x for x in server.grounded_rows() if x['id']=='grounded-01')['operator_evaluation']
             self.assertFalse(result['verified']);self.assertEqual(result['status'],'unverified')
+
+    def test_contract_draft_library_keeps_rejected_record_and_hash_warns(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            folder=Path(tmp)/'reports/full-contract-extraction-fixture';folder.mkdir(parents=True)
+            result=folder/'result.json';result.write_text('{"status":"reviewed_drafts_not_curated"}')
+            summary={'schema':'contract-draft-library.v1','result_sha256':hashlib.sha256(result.read_bytes()).hexdigest(),
+                     'status':'reviewed_drafts_not_curated','records':[{'source_id':'paper','source_url':'https://example.test/paper','contract_id':None,
+                     'inputs':[],'outputs':[],'unknowns':['shape not stated'],'review':{'decision':'reject','reason':'abstract insufficient','issues':[]}}]}
+            (folder/'library-summary.json').write_text(json.dumps(summary))
+            rows=server.operator_library()['contract_drafts']
+            self.assertEqual(rows['records'][0]['review']['decision'],'reject')
+            self.assertIn('shape not stated',rows['records'][0]['unknowns'])
+            result.write_text('{"changed":true}')
+            rows=server.operator_library()['contract_drafts']
+            self.assertEqual(rows['records'],[])
+            self.assertTrue(rows['warnings'])
 
     def test_mechanism_summary_preserves_unknown_and_rejects_invalid_claims(self):
         self.assertEqual(server.mechanism_summary(None), {'status':'not_recorded'})
