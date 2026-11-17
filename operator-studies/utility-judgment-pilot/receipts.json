@@ -1,0 +1,194 @@
+[
+  {
+    "status": "complete",
+    "request_hash": "328f55286be79d061f567e2f07188e893f6c73c7c8d791e6976eb4dc516b7b2e",
+    "reserved_usd": 0.0009947,
+    "timestamp": 1794875273.985149,
+    "usage": {
+      "prompt_tokens": 614,
+      "completion_tokens": 366,
+      "total_tokens": 980,
+      "cost": 0.000241956,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0002444,
+        "upstream_inference_prompt_cost": 6.14e-05,
+        "upstream_inference_completions_cost": 0.000183
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794875274-uCGGgV25bYThe9Yz4Yc3",
+    "resolved_model": "anthropic/claude-haiku-5.5",
+    "finish_reason": "stop"
+  },
+  {
+    "status": "complete",
+    "request_hash": "095d958abbc5a9355332168813197abe024297d4cab63b7b7671233ea23febd9",
+    "reserved_usd": 0.0009947,
+    "timestamp": 1794875276.825197,
+    "usage": {
+      "prompt_tokens": 614,
+      "completion_tokens": 360,
+      "total_tokens": 974,
+      "cost": 0.000238986,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0002414,
+        "upstream_inference_prompt_cost": 6.14e-05,
+        "upstream_inference_completions_cost": 0.00018
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794875277-3HW2hIa3iJAzp3iqinxz",
+    "resolved_model": "anthropic/claude-haiku-5.5",
+    "finish_reason": "stop"
+  },
+  {
+    "status": "complete",
+    "request_hash": "00eab81af27967a5e76ea312f740d508e1e425b24b10f319c99ee9ec8bd86906",
+    "reserved_usd": 0.0009615,
+    "timestamp": 1794875259.673648,
+    "usage": {
+      "prompt_tokens": 513,
+      "completion_tokens": 525,
+      "total_tokens": 1038,
+      "cost": 0.000310662,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0003138,
+        "upstream_inference_prompt_cost": 5.13e-05,
+        "upstream_inference_completions_cost": 0.0002625
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794875260-gCJ9246Fb3mhlPlSdfZd",
+    "resolved_model": "anthropic/claude-haiku-5.5",
+    "finish_reason": "stop"
+  },
+  {
+    "status": "complete",
+    "request_hash": "02f3fa3f1d04549e7861e2087a4aa133c89b592b99e69380ee7be6fac249efa5",
+    "reserved_usd": 0.0009615,
+    "timestamp": 1794875263.61182,
+    "usage": {
+      "prompt_tokens": 513,
+      "completion_tokens": 621,
+      "total_tokens": 1134,
+      "cost": 0.000358182,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0003618,
+        "upstream_inference_prompt_cost": 5.13e-05,
+        "upstream_inference_completions_cost": 0.0003105
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794875263-j1lwytrSTP4MxNuorsP6",
+    "resolved_model": "anthropic/claude-haiku-5.5",
+    "finish_reason": "stop"
+  },
+  {
+    "status": "complete",
+    "request_hash": "e3214e65e7b593cbbc45b812d232d61bdd8cd0fefe44bf223a0bb607c6803abd",
+    "reserved_usd": 0.0009611999999999999,
+    "timestamp": 1794875267.806953,
+    "usage": {
+      "prompt_tokens": 499,
+      "completion_tokens": 378,
+      "total_tokens": 877,
+      "cost": 0.000236511,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0002389,
+        "upstream_inference_prompt_cost": 4.99e-05,
+        "upstream_inference_completions_cost": 0.000189
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794875268-KvPxEZszwDwgaiHZ5OSD",
+    "resolved_model": "anthropic/claude-haiku-5.5",
+    "finish_reason": "stop"
+  },
+  {
+    "status": "complete",
+    "request_hash": "2a1c4d35ec2d41e1cae73eb4b63b3e1f8471c3f09b6b24524dfef37f9915366f",
+    "reserved_usd": 0.0009611999999999999,
+    "timestamp": 1794875270.84566,
+    "usage": {
+      "prompt_tokens": 499,
+      "completion_tokens": 398,
+      "total_tokens": 897,
+      "cost": 0.000246411,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0002489,
+        "upstream_inference_prompt_cost": 4.99e-05,
+        "upstream_inference_completions_cost": 0.000199
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "response_id": "gen-1794875271-mM1QBYx2VYUkTlM3E7Mg",
+    "resolved_model": "anthropic/claude-haiku-5.5",
+    "finish_reason": "stop"
+  }
+]

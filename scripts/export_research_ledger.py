@@ -208,6 +208,31 @@ def build_ledger(root: Path = ROOT) -> dict[str, Any]:
                                'source-receipts.json', 'reproduction.json', 'codecs.py', 'run.py')) if f.is_file()],
             'evidence': {'source': _rel(codec_dir / 'results.json', root)},
         })
+    utility_probe_dir = root / 'operator-studies/utility-judgment-pilot'
+    utility_probe = _read(utility_probe_dir / 'summary.json', None)
+    if isinstance(utility_probe, dict):
+        studies.append({
+            'id': 'utility-judgment-pilot', 'cohort': 'utility_judgment_diagnostic',
+            'title': 'Outcome-withheld usefulness judgments on three exposed method pairs',
+            'artifact_directory': 'operator-studies/utility-judgment-pilot',
+            'raw_verdict': utility_probe.get('status', 'unknown'),
+            'audit_qualification': 'retrospective_development_not_ranker_validation',
+            'audit_note': 'Three cases selected after outcomes; two orders per case are not independent observations.',
+            'primary_metrics': {key: utility_probe.get(key) for key in
+                                ('cases','presentations','abstentions','answered','correct_answered')},
+            'secondary_metrics': {'conditional_mean_brier': utility_probe.get('conditional_mean_brier'),
+                                  'changed_pairs': utility_probe.get('preference_or_abstention_changed_pairs')},
+            'novelty_established': False, 'human_adjudicated': False,
+            'prior_art_status': 'Known methods and exposed local outcomes; no novelty assessment.',
+            'limitations': ['No outcomes supplied to judge, but cases were selected retrospectively.',
+                            'Abstentions remain unknown; only three numeric answers.',
+                            'Order sensitivity also includes possible hosted inference variability.',
+                            'No trained ranker, independent calibration or stronger-model comparison.'],
+            'artifact_refs': [{'path': _rel(f, root), 'sha256': _hash(f)} for f in
+                              (utility_probe_dir / name for name in ('README.md','cases.json','labels.json',
+                               'predictions.json','evaluation.json','summary.json','plan.json','receipts.json','run.py')) if f.is_file()],
+            'evidence': {'source': _rel(utility_probe_dir / 'evaluation.json', root)},
+        })
     ledger = {
         "schema_version": "1.0",
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(),

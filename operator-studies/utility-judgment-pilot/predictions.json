@@ -1,0 +1,127 @@
+[
+  {
+    "case": "graph_codec",
+    "order": 0,
+    "mapping": {
+      "A": "packed",
+      "B": "rank_varint"
+    },
+    "status": "complete",
+    "assessment": {
+      "winner": "abstain",
+      "p_A_better": null,
+      "reason": "The comparison hinges on the empirical frequency distribution of visited node IDs, which is not supplied. Method A costs a fixed 19 bits per ID (2^19 = 524288 covers ~335k nodes). Method B's cost depends on how many bits LEB128 uses for ranks: the varint cost is 7 bits per byte step, so ranks below 128 cost 1 byte (8 bits), below 16384 cost 2 bytes (16 bits), and larger ranks cost 3 bytes (24 bits). Whether B beats A depends on how concentrated the walk visits are. Under uniform-transition walks on a graph with ~320k nodes, 4096 walks of length 80 give about 327k visits, so many nodes are visited rarely and the frequency distribution is likely fairly flat; in that regime many ranks would fall in the 2-3 byte range, making B's per-ID cost near or above 19 bits, and B additionally pays a fixed uint32 dictionary of about 1.3 MB for all nodes. This is an educated expectation that A may be smaller, but it is not measured, and the exact visit concentration (and hence rank magnitudes) decides the outcome, so I abstain.",
+      "missing_evidence": [
+        "Empirical first-round visit-frequency histogram (or the rank distribution) for both graphs",
+        "Measured encoded byte counts for both methods on the same walks, including framing",
+        "Whether the inverse dictionary is charged per graph or once across graphs",
+        "Exact framing and length-field overhead for each method"
+      ]
+    }
+  },
+  {
+    "case": "graph_codec",
+    "order": 1,
+    "mapping": {
+      "A": "rank_varint",
+      "B": "packed"
+    },
+    "status": "complete",
+    "assessment": {
+      "winner": "A",
+      "p_A_better": 0.8,
+      "reason": "Educated expectation, not measured fact: with ~317k\u2013335k nodes, B's fixed 19-bit packing (2^19 = 524,288 > node count) costs 19 bits per walk-step. For 4 rounds of 4096 walks of length 80 that is about 4 \u00d7 4096 \u00d7 80 = 1,310,720 steps, roughly 3.1 MB before framing. A encodes frequency ranks with LEB128: under uniform-transition random walks the stationary distribution is degree-proportional, so frequent nodes (high-degree) get small ranks and many steps fit in 1\u20133 bytes, while the rare tail costs 3 bytes (ranks up to ~2^21 need 3 LEB128 bytes). The one-time uint32 inverse dictionary adds about 1.3 MB for ~320k nodes (4 bytes \u00d7 ~320k). Whether A wins depends on the rank-byte distribution: if most visits concentrate on ranks under 16,384 (2 bytes or less), A's per-step average is well under 19 bits and A wins even after paying the dictionary; if visits spread broadly, A's per-step cost approaches 3 bytes (24 bits) and B could win. Degree skew in typical graphs makes the first case more likely, but this is unmeasured. Confidence is moderate.",
+      "missing_evidence": [
+        "Degree distribution / empirical first-round frequency histogram of both graphs",
+        "Measured fraction of walk steps with LEB128 rank below 128, 16384, and 2^21",
+        "Exact framing and length-encoding overhead for each method",
+        "Whether the inverse dictionary must be stored as uint32 for every node or only for visited nodes",
+        "Confirmation that the four encoded rounds reuse the first-round frequency ranking"
+      ]
+    }
+  },
+  {
+    "case": "visual_kv",
+    "order": 0,
+    "mapping": {
+      "A": "softmax",
+      "B": "onebit"
+    },
+    "status": "complete",
+    "assessment": {
+      "winner": "abstain",
+      "p_A_better": null,
+      "reason": "Both methods select FP16 windows from prefill attention information, but no trace values, quantization error distributions, or measured decode output errors are supplied, so the relative ranking cannot be determined from the stated evidence. An educated expectation is that exact softmax mass (A) would identify windows that dominate decode attention more reliably than a one-bit key approximation of raw logits (B), since A uses exact scores and softmax normalization tracks which tokens actually receive weight; however, raw logits can carry magnitude information that softmax mass can distort, and the one-bit approximation's effect on ranking quality is unmeasured. This remains an expectation, not a measured fact.",
+      "missing_evidence": [
+        "Actual prefill attention traces for the two small-VLM examples",
+        "Measured decode attention-output relative L2 for each method's window assignment",
+        "Quantization error distributions for FP16, INT4 and INT2 on these windows",
+        "Fidelity of one-bit key approximation to true query-key logits on these traces",
+        "Ranking agreement between exact softmax mass and approximated logit ranking"
+      ]
+    }
+  },
+  {
+    "case": "visual_kv",
+    "order": 1,
+    "mapping": {
+      "A": "onebit",
+      "B": "softmax"
+    },
+    "status": "complete",
+    "assessment": {
+      "winner": "B",
+      "p_A_better": 0.4,
+      "reason": "Under the stated metric (decode attention-output relative L2), the method that more faithfully identifies windows that receive high attention mass should better protect the windows that matter most for decode output, favoring exact softmax mass (B) over a one-bit key approximation of raw logits (A), which adds ranking noise and ignores softmax normalization. This is an educated expectation, not a measured result: no traces, quantization error distributions, or measured output errors were supplied, and the one-bit approximation's actual distortion on these traces is unknown. Raw logits and softmax mass can also rank windows differently in ways that may or may not matter for output error, so the margin is small, hence p_A_better near 0.4 rather than lower.",
+      "missing_evidence": [
+        "Actual attention trace values for the two small-VLM examples",
+        "Measured decode attention-output relative L2 for each method under the matched quantizer and budget",
+        "Quantization-error distributions for FP16, INT4 and INT2 windows in these traces",
+        "Degree of agreement between one-bit-key logit rankings and exact softmax-mass rankings on these traces",
+        "Variance of the metric across the two traces"
+      ]
+    }
+  },
+  {
+    "case": "embedding_gate",
+    "order": 0,
+    "mapping": {
+      "A": "predictor",
+      "B": "gate"
+    },
+    "status": "complete",
+    "assessment": {
+      "winner": "B",
+      "p_A_better": 0.35,
+      "reason": "Method B generalizes A: it mixes the same damped-trend predictor with a last-observed hold and adapts per-partition-pair weights from observed endpoint errors. Adaptive mixing with a hold fallback should typically reduce stale-embedding error when trend extrapolation is unreliable, and the convex mixture bounds the downside. This is an educated expectation, not a measured result: no trajectories, operator losses, or validation scores were supplied, and B's rate and share hyperparameters are chosen on development seeds that may not transfer to screening seeds. Because the expectation favors B, p_A_better is below 0.5 and the winner is B.",
+      "missing_evidence": [
+        "Embedding trajectories or measured stale-error values for either method on Cora",
+        "Screening-seed results for both arms under the stated metric",
+        "Development-seed selection results for B's rate and fixed weight",
+        "Sensitivity of B's Fixed Share weights to the share parameter and sync budget",
+        "Evidence that the learning-rate drop interacts differently with the mixture than with A alone"
+      ]
+    }
+  },
+  {
+    "case": "embedding_gate",
+    "order": 1,
+    "mapping": {
+      "A": "gate",
+      "B": "predictor"
+    },
+    "status": "complete",
+    "assessment": {
+      "winner": "abstain",
+      "p_A_better": null,
+      "reason": "No embedding trajectories, measured operator losses, or validation scores were supplied, so the relative stale-embedding error of the adaptive mixture (A) versus the always-on damped linear-trend predictor (B) cannot be measured from this description. Educated expectation only: A can fall back toward last-observed hold per partition pair and is tuned on development seeds, which plausibly helps under heterogeneous dynamics; B's self-fed state may accumulate error between syncs, but its damping at 0.2 may keep it stable. Neither direction is established as measured fact, and the metric comparison depends on data not provided.",
+      "missing_evidence": [
+        "Per-arm mean relative L2 stale embedding error on the screening seeds",
+        "Actual hidden embedding trajectories from the Cora GCN replay",
+        "Measured error of the linear-trend predictor and the last-observed hold baseline per partition pair",
+        "Development-selected learning rate and weight values and their sensitivity",
+        "Whether the learning-rate drop schedule changes the ranking between A and B"
+      ]
+    }
+  }
+]

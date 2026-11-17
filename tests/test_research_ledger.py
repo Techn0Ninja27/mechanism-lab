@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 31)
+            self.assertEqual(ledger["study_count"], 32)
             self.assertTrue(all(x["read_only"] is True for x in [ledger]))
             reconstruction = next(x for x in ledger["studies"] if x["id"] == "abstracts-0")
             self.assertIn("mean_ap", reconstruction["secondary_metrics"])
@@ -53,6 +53,14 @@ class LedgerTests(unittest.TestCase):
         self.assertGreater(row['primary_metrics']['amazon_resident_ratio_to_packed'],1)
         self.assertGreater(row['primary_metrics']['dblp_resident_ratio_to_packed'],1)
         self.assertIn('not_systems_validation',row['audit_qualification'])
+
+    def test_utility_judgment_preserves_abstentions_and_retrospective_scope(self):
+        row=next(x for x in build_ledger()['studies'] if x['id']=='utility-judgment-pilot')
+        self.assertEqual(row['primary_metrics']['abstentions'],3)
+        self.assertEqual(row['primary_metrics']['correct_answered'],1)
+        self.assertFalse(row['novelty_established'])
+        self.assertIn('not_ranker_validation',row['audit_qualification'])
+        self.assertIn('not independent',row['audit_note'])
 
     def test_missing_frozen_sources_are_not_verified(self):
         with tempfile.TemporaryDirectory() as d:

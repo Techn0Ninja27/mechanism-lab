@@ -1,0 +1,32 @@
+[
+  {
+    "id": "graph_codec",
+    "task": "Lossless serialization of graph-walk node IDs on two graphs with about 317k\u2013335k nodes. A first round of 4096 length-80 uniform-transition walks estimates frequencies; four subsequent rounds are encoded. Minimize total encoded bytes including framing and one inverse rank dictionary where needed. No latency objective.",
+    "methods": {
+      "packed": "Encode dense IDs using fixed-width 19-bit packing; framing and lengths included, no frequency dictionary.",
+      "rank_varint": "Sort IDs by first-round frequency, remap to integer ranks, encode ranks with unsigned LEB128, and charge one uint32 inverse dictionary for all graph nodes across the four encoded rounds."
+    },
+    "metric": "total serialized bytes, lower is better",
+    "unknowns": "No empirical frequency histogram or encoded byte measurements supplied."
+  },
+  {
+    "id": "visual_kv",
+    "task": "Two exposed small-VLM still-image attention traces, 64 visual tokens grouped into eight contiguous windows. Assign exactly two FP16, three INT4 and three INT2 windows; first window stays FP16. Use only prefill information to choose windows; evaluate subsequent decode attention output relative L2. Quantizer and resident budget matched; ranking overhead not measured.",
+    "methods": {
+      "softmax": "Rank windows by exact prefill text-to-visual attention softmax mass, averaged over query heads/tokens.",
+      "onebit": "Rank windows by prefill mean raw query-key logits approximated using one-bit keys, averaged over heads/tokens."
+    },
+    "metric": "mean decode attention-output relative L2, lower is better",
+    "unknowns": "No trace values, quantization-error distributions or measured output errors supplied."
+  },
+  {
+    "id": "embedding_gate",
+    "task": "Offline replay of real Cora two-layer GCN hidden embeddings with four random graph partitions, warmup20 and sync every4 epochs. Two development seeds choose rate from .1,1,10 and fixed weight from 0,.25,.5,.75,1; two separate seeds screen both constant learning rate and a prespecified x.1 learning-rate drop. Same predictor state, boundary pairs and sync budgets in every arm.",
+    "methods": {
+      "predictor": "Always use a self-fed damped linear-trend predictor; exponential slope accumulator and damping rates .2. Warmup observes real values; stale predictions update predictor state.",
+      "gate": "Convex mixture of that predictor and separate last-observed hold, with one Fixed Share weight per directed partition pair. Start weights .5/.5, share .01. Update only from grouped squared relative endpoint errors when synchronization reveals truth; predict before observation. Development selects the rate. Intermediate truth is evaluator-only."
+    },
+    "metric": "mean relative L2 stale embedding error across screening seeds, lower is better",
+    "unknowns": "No embedding trajectories, measured operator losses or validation scores supplied."
+  }
+]

@@ -1,0 +1,169 @@
+{
+  "scope": "Outcome-selected retrospective development cases; not held-out or independent ground truth for general research utility. Labels refer only to recorded narrow metrics.",
+  "source_hashes": {
+    "operator-studies/graph-walk-codecs/results.json": "7457b74dbcddf116214dc2abb1476b38a6a9c78ce233c1ef37b6b8400a41eaf8",
+    "operator-studies/trace-window-ablation/result.json": "6575b75ee85947500b8a3d76f4b4b1166107e4cdb0d6c1f9b6aeb51ac7bf89c5",
+    "operator-studies/gnn-sync-gate/result.json": "997c21574da224618da3cc5b56efa26241ec4dff2358919b3663ad59efbfd1a8"
+  },
+  "labels": {
+    "graph_codec": {
+      "winner": "packed",
+      "evidence": {
+        "amazon": {
+          "charged_ratio_to_fabc": 0.9735239411586074,
+          "charged_ratio_to_packed": 1.6805761491889892,
+          "resident_ratio_to_fabc": 0.7242853602115004,
+          "resident_ratio_to_packed": 1.2503202541989598,
+          "profile_top_two_mass": 0.00043640136718749997,
+          "pass_gate": false
+        },
+        "dblp": {
+          "charged_ratio_to_fabc": 0.9373652816729485,
+          "charged_ratio_to_packed": 1.618156132434266,
+          "resident_ratio_to_fabc": 0.7013625902836081,
+          "resident_ratio_to_packed": 1.2107491057294986,
+          "profile_top_two_mass": 0.0002899169921875,
+          "pass_gate": false
+        }
+      }
+    },
+    "visual_kv": {
+      "winner": "softmax",
+      "evidence": [
+        {
+          "image": "candy",
+          "primary_summary": {
+            "embedding_cosine_proxy": {
+              "relative_l2": 0.03284942541250897,
+              "cosine": 0.9986514609386491
+            },
+            "exact_softmax_mass": {
+              "relative_l2": 0.015103760370299358,
+              "cosine": 0.9997521483393744
+            },
+            "recency": {
+              "relative_l2": 0.016304545718486593,
+              "cosine": 0.9997167170358706
+            },
+            "position": {
+              "relative_l2": 0.03713111963337063,
+              "cosine": 0.9986377649949072
+            },
+            "interleaved": {
+              "relative_l2": 0.0270868590465067,
+              "cosine": 0.9990100477436973
+            },
+            "exact_mean_logit": {
+              "relative_l2": 0.01971942793576747,
+              "cosine": 0.9995337798965187
+            },
+            "one_bit_mean_logit": {
+              "relative_l2": 0.02517767560729072,
+              "cosine": 0.9992563491365818
+            },
+            "two_bit_mean_logit": {
+              "relative_l2": 0.018037899615949114,
+              "cosine": 0.9996293298455571
+            },
+            "random_73031": {
+              "relative_l2": 0.02820964480125303,
+              "cosine": 0.9992112658876671
+            },
+            "random_73033": {
+              "relative_l2": 0.030784630136318287,
+              "cosine": 0.998932425072794
+            },
+            "random_73037": {
+              "relative_l2": 0.026567901726464508,
+              "cosine": 0.999277377225698
+            },
+            "visual_fp16": {
+              "relative_l2": 7.655516353549533e-05,
+              "cosine": 0.9999999949925442
+            }
+          }
+        },
+        {
+          "image": "statue",
+          "primary_summary": {
+            "embedding_cosine_proxy": {
+              "relative_l2": 0.018484097236731365,
+              "cosine": 0.9996166380226869
+            },
+            "exact_softmax_mass": {
+              "relative_l2": 0.015100667088659073,
+              "cosine": 0.9996671114791634
+            },
+            "recency": {
+              "relative_l2": 0.01889508068444038,
+              "cosine": 0.9995337405678625
+            },
+            "position": {
+              "relative_l2": 0.01917661609404233,
+              "cosine": 0.999590203916006
+            },
+            "interleaved": {
+              "relative_l2": 0.014616507732575437,
+              "cosine": 0.9997013750666881
+            },
+            "exact_mean_logit": {
+              "relative_l2": 0.02173376274548445,
+              "cosine": 0.9991588331423453
+            },
+            "one_bit_mean_logit": {
+              "relative_l2": 0.022285657871530064,
+              "cosine": 0.9991286079596841
+            },
+            "two_bit_mean_logit": {
+              "relative_l2": 0.02194745805394658,
+              "cosine": 0.9991489711271739
+            },
+            "random_73031": {
+              "relative_l2": 0.02065144351507714,
+              "cosine": 0.9994973839169039
+            },
+            "random_73033": {
+              "relative_l2": 0.023020280594906545,
+              "cosine": 0.9992406237454067
+            },
+            "random_73037": {
+              "relative_l2": 0.022190551014675885,
+              "cosine": 0.9993023188947474
+            },
+            "visual_fp16": {
+              "relative_l2": 5.906180697720055e-05,
+              "cosine": 0.9999999959476944
+            }
+          }
+        }
+      ]
+    },
+    "embedding_gate": {
+      "winner": "predictor",
+      "evidence": {
+        "constant": {
+          "selected_gate": 0.012858862330984653,
+          "selected_mixture": "1",
+          "fixed_controls": {
+            "1": 0.006163587099191467,
+            "0": 0.02936827997680029
+          },
+          "best_fixed_control": 0.006163587099191467,
+          "relative_reduction_vs_best_fixed": -1.086262775887675,
+          "go_rule_pass": false
+        },
+        "lr_drop": {
+          "selected_gate": 0.011503762007701344,
+          "selected_mixture": "1",
+          "fixed_controls": {
+            "1": 0.005711005780370415,
+            "0": 0.023863464512883476
+          },
+          "best_fixed_control": 0.005711005780370415,
+          "relative_reduction_vs_best_fixed": -1.014314544601146,
+          "go_rule_pass": false
+        }
+      }
+    }
+  }
+}

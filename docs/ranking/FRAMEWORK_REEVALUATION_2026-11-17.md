@@ -144,3 +144,7 @@ calibration claims.
 The immediate priority is a bounded claim/evidence layer plus a strong-baseline
 check. A full MiroFish-style simulator or large review-graph import would add
 cost without first resolving those two demonstrated failure modes.
+
+## First outcome-withheld usefulness probe
+
+A [retrospective paired judgment probe](../../operator-studies/utility-judgment-pilot/README.md) has now been run on three completed local experiments. Six Haiku presentations (both orders) produced three abstentions and one correct preference among three answered presentations. Each pair changed between abstention and preference. Outcomes were withheld from the model, but the cases were selected after inspecting outcomes, so this is exposed development evidence. It does not support promoting those probabilities to usefulness scores or training labels; it also does not establish the accuracy of stronger models or evidence-enriched reviews. Cost/accounting and convex-mixture reasoning errors are recorded for a future prospectively fixed comparison.

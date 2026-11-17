@@ -1,0 +1,15 @@
+{
+  "status": "not_supported_as_unassisted_utility_ranker",
+  "cases": 3,
+  "presentations": 6,
+  "abstentions": 3,
+  "answered": 3,
+  "correct_answered": 1,
+  "conditional_mean_brier": 0.40750000000000003,
+  "preference_or_abstention_changed_pairs": 3,
+  "cost_usd": 0.0016492,
+  "phase_total_usd": 2.8189165,
+  "novelty_established": false,
+  "train_eligible": false,
+  "scope": "Retrospective outcome-selected development probe. Three method pairs; repeated orderings are not independent. No inference about general model accuracy or stronger models."
+}

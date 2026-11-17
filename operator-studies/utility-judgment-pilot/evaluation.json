@@ -1,0 +1,88 @@
+{
+  "rows": [
+    {
+      "case": "graph_codec",
+      "order": 0,
+      "status": "complete",
+      "predicted_method": null,
+      "observed_winner": "packed",
+      "abstained": true,
+      "correct": null,
+      "brier": null,
+      "p_observed_winner": null
+    },
+    {
+      "case": "graph_codec",
+      "order": 1,
+      "status": "complete",
+      "predicted_method": "rank_varint",
+      "observed_winner": "packed",
+      "abstained": false,
+      "correct": false,
+      "brier": 0.6400000000000001,
+      "p_observed_winner": 0.19999999999999996
+    },
+    {
+      "case": "visual_kv",
+      "order": 0,
+      "status": "complete",
+      "predicted_method": null,
+      "observed_winner": "softmax",
+      "abstained": true,
+      "correct": null,
+      "brier": null,
+      "p_observed_winner": null
+    },
+    {
+      "case": "visual_kv",
+      "order": 1,
+      "status": "complete",
+      "predicted_method": "softmax",
+      "observed_winner": "softmax",
+      "abstained": false,
+      "correct": true,
+      "brier": 0.16000000000000003,
+      "p_observed_winner": 0.6
+    },
+    {
+      "case": "embedding_gate",
+      "order": 0,
+      "status": "complete",
+      "predicted_method": "gate",
+      "observed_winner": "predictor",
+      "abstained": false,
+      "correct": false,
+      "brier": 0.42250000000000004,
+      "p_observed_winner": 0.35
+    },
+    {
+      "case": "embedding_gate",
+      "order": 1,
+      "status": "complete",
+      "predicted_method": null,
+      "observed_winner": "predictor",
+      "abstained": true,
+      "correct": null,
+      "brier": null,
+      "p_observed_winner": null
+    }
+  ],
+  "order_checks": [
+    {
+      "case": "graph_codec",
+      "complete_pair": true,
+      "same_preference": false
+    },
+    {
+      "case": "visual_kv",
+      "complete_pair": true,
+      "same_preference": false
+    },
+    {
+      "case": "embedding_gate",
+      "complete_pair": true,
+      "same_preference": false
+    }
+  ],
+  "scope": "Three exposed cases, repeated orders are not independent observations; no general calibration or ranking accuracy claim."
+}
