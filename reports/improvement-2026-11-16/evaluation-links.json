@@ -56,10 +56,10 @@
     "result_sha256": "997c21574da224618da3cc5b56efa26241ec4dff2358919b3663ad59efbfd1a8"
   },
   "grounded-optimizer-v1": {
-    "status": "baseline_cost_measured_candidate_utility_unmeasured",
-    "summary": "Full Cholesky Newton\u2013Muon costs about 5.1\u20138.6% more per step than Muon in two fresh-process MPS profiles per width (256/512). Instrumented preconditioning fractions of 10.2\u201314.9% include extra barriers. This is baseline cost, not time-to-loss, low-rank benefit or novelty.",
-    "result_path": "operator-studies/newton-muon-cost-screen/result.json",
-    "report_path": "operator-studies/newton-muon-cost-screen/README.md",
-    "result_sha256": "530a6e2155f57b280875afdc5702ecb3c184e37ea5bd84da0048b01a9fdc5ad3"
+    "status": "mixed_heldout_signal_allocation_rule_failed",
+    "summary": "Full Newton-Muon has better fixed-step and matched-time held-out endpoints in both seeds but worse normalized full-curve loss/time area. Frozen strict continuation rule fails; local approximation work closed at these settings. No low-rank candidate or novelty validated.",
+    "result_path": "operator-studies/newton-muon-heldout/result.json",
+    "report_path": "operator-studies/newton-muon-heldout/README.md",
+    "result_sha256": "ece7f533fdcd170f808f3316927783f0cfdb90c8712239bda161613b900d633e"
   }
 }

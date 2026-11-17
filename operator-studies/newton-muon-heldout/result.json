@@ -1,0 +1,75 @@
+{
+  "status": "close_local_candidate_at_fixed_settings",
+  "paired_seeds": [
+    {
+      "seed": 0,
+      "common_training_seconds": 8.9652276240231,
+      "arms": {
+        "muon": {
+          "fixed_step_endpoint": 2.5209239818329037,
+          "common_time_interpolated": 2.5209239818329037,
+          "common_time_last_observed": 2.5209239818329037,
+          "last_observed_step": 256,
+          "normalized_time_area": 2.7830173066552892
+        },
+        "newton_cholesky": {
+          "fixed_step_endpoint": 2.508002360199773,
+          "common_time_interpolated": 2.5076903151280776,
+          "common_time_last_observed": 2.507453111715095,
+          "last_observed_step": 224,
+          "normalized_time_area": 2.7893177158247475
+        }
+      },
+      "newton_minus_muon": {
+        "fixed_step_endpoint": -0.012921621633130709,
+        "common_time_interpolated": -0.013233666704826064,
+        "common_time_last_observed": -0.013470870117808786,
+        "normalized_time_area": 0.0063004091694582876
+      },
+      "escalation_rule_passed": false
+    },
+    {
+      "seed": 1,
+      "common_training_seconds": 9.010880582995014,
+      "arms": {
+        "muon": {
+          "fixed_step_endpoint": 2.545850333779357,
+          "common_time_interpolated": 2.545850333779357,
+          "common_time_last_observed": 2.545850333779357,
+          "last_observed_step": 256,
+          "normalized_time_area": 2.7823720245778065
+        },
+        "newton_cholesky": {
+          "fixed_step_endpoint": 2.5063978087070375,
+          "common_time_interpolated": 2.513342187617741,
+          "common_time_last_observed": 2.5187881935474485,
+          "last_observed_step": 224,
+          "normalized_time_area": 2.790791396993395
+        }
+      },
+      "newton_minus_muon": {
+        "fixed_step_endpoint": -0.039452525072319666,
+        "common_time_interpolated": -0.032508146161616125,
+        "common_time_last_observed": -0.02706214023190867,
+        "normalized_time_area": 0.008419372415588544
+      },
+      "escalation_rule_passed": false
+    }
+  ],
+  "raw_sha256": {
+    "muon-seed0.json": "abfbd618860a167f964d035b878271ebb5846faaf91cdda78c50d0630bc6fb2f",
+    "newton_cholesky-seed0.json": "a3858404009753d821b11891bc08f9455103c7ee4c681a87fd9a5167dd611ebf",
+    "muon-seed1.json": "a3fa6dc9aa6325297d49a9cf7fb9cf1c0893792f36932f4a6aca4752c1eb9ccb",
+    "newton_cholesky-seed1.json": "38ff3dd13921815c2b202244a2aa6ab4ccf2058d0d31a0eef65617c81d81246c"
+  },
+  "freeze_sha256": "68505b7984493d60f21b9d8127f5cee13424721085b98c8835831e00dfb88ded",
+  "scope": "Two seeds, one tiny byte workload, fixed settings; allocation rule, not a significance test or universal optimizer verdict.",
+  "limitations": [
+    "Piecewise-linear interpolation between 32-step checkpoints is not a measured endpoint.",
+    "Evaluation time excluded; initial evaluation warms forward kernels before timed training.",
+    "256 steps can miss late benefits; learning rates were not tuned independently.",
+    "No low-rank candidate, novelty, or general usefulness established."
+  ],
+  "novelty_established": false,
+  "train_eligible": false
+}

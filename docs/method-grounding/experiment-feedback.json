@@ -145,6 +145,27 @@
       "result_sha256": "f33770c4e80704b4a6775575ca330ecced5cc91ef26d868b57db0314340cf8e5",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "newton-muon-heldout-control-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.01472"
+      ],
+      "tested_change": "Compared full Cholesky Newton-Muon refresh32 with Muon on disjoint held-out text. Newton final cross-entropy was lower in both seeds (2.508002 vs2.520924;2.506398 vs2.545850), also lower at matched training time. Normalized loss/time area was worse by .006300/.008419. Frozen rule required both endpoints and time-area wins for both seeds, so it fails; local approximation candidate closed at these settings. Favorable endpoint evidence is retained.",
+      "verdict": "mixed_quality_signal_fails_frozen_allocation_rule",
+      "scope": "Width256 six-layer byteTransformer, seeds0/1,256steps, evaluation every32 on688windows from32reserved abstracts,96train abstracts. Matchedinitialization and trainstream; counterbalancedmodeorder; onefreshprocess perarm.",
+      "limitations": [
+        "Two seeds, one tiny corpus, fixed shared untuned hyperparameters; does not refute Newton-Muon or establish general optimizer ranking.",
+        "Time-area is piecewise-linear on a coarse32step grid; steep initial loss drop and first-training overhead influence it.",
+        "Validation and setup time excluded; initial evaluation warms forward kernels. No end-to-end job-time claim.",
+        "No low-rank or polynomial candidate tested. Favorable endpoints are not erased by the allocation-rule failure.",
+        "This validation fixture is now exposed development evidence, not an untouched future final test."
+      ],
+      "report_path": "operator-studies/newton-muon-heldout/README.md",
+      "result_path": "operator-studies/newton-muon-heldout/result.json",
+      "result_sha256": "ece7f533fdcd170f808f3316927783f0cfdb90c8712239bda161613b900d633e",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

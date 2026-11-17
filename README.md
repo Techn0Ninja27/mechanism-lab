@@ -23,6 +23,7 @@ scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Check held-out optimizer quality** | Newton–Muon reached lower final loss in both seeds, but worse average loss over training time. The frozen continuation rule failed; this local approximation candidate is closed at these settings. | [Held-out control and raw curves](operator-studies/newton-muon-heldout/README.md) |
 | **Test cheaper refresh scheduling** | Across six matched short runs, refresh64 versus32 was **0.24% costlier** at width256 and **1.57% cheaper** at width512. No consistent cost advantage or training-quality conclusion. | [Matched controls and raw results](operator-studies/newton-muon-refresh/README.md) |
 | **Check published polynomial inverses on training matrices** | 18/56 covariance blocks were eligible under a conservative selection rule; all 18 met a 1% inverse-residual threshold. The other 38 remain uncovered. No speed or training-quality claim. | [Functional matrix check](operator-studies/newton-muon-polynomial/README.md) |
 | **Compose executable compression operators** | Searching 115 compatible chains selected frame-of-reference packing + LZMA. On three shifted synthetic streams it used **24.25% fewer bytes** than the control frozen during validation, with exact round trips. | [Protocol, results, and limitations](operator-studies/integer-composition/README.md) |

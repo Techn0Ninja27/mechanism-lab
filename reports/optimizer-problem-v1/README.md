@@ -125,3 +125,13 @@ Newton-Muon improves held-out loss per wall-clock time over Muon on this
 workload at all. A matched held-out comparison can falsify this local use case;
 if it fails, close this candidate here and use the recorded evidence in the
 next problem-led generation rather than optimizing an unhelpful baseline.
+
+## Held-out decision, 2026-11-17
+
+The [completed held-out screen](../../operator-studies/newton-muon-heldout/README.md)
+found favorable Newton endpoint losses in both seeds, including common-time
+comparisons, but worse normalized full loss/time area. The pre-run rule required
+all three measures to improve in both seeds; it fails. We close local
+approximation work under these fixed settings while preserving the positive
+endpoint signal. This is mixed evidence, not proof the baseline is unhelpful
+or a rejection of the paper. No low-rank candidate was evaluated.

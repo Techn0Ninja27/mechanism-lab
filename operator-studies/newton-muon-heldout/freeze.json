@@ -1,0 +1,38 @@
+{
+  "status": "frozen_before_first_heldout_training_run",
+  "date": "2026-11-17",
+  "hashes": {
+    "run_arm.py": "3beb20e1ba2b65a8b2b82458c0d0e9aa640bd5ac98c5c40ef43e93e671909e21",
+    "summarize.py": "9e64862ae1e8f48f9bee05b9270b08d035c4763a620a85ba83c06ef98599078a",
+    "test_run_arm.py": "f6645cdbd1fd58692ef0e47bc45dbadb97de25324f54c58dbf918ccb48d15fc8",
+    "test_summarize.py": "923db122f365b9449634eead161092e03313b4f8ff20ed750b8d8a6de8c881b5",
+    "newton-muon-heldout-audit.md": "0e14d1ecbfc869ea7c540f1acd05ae01ae0dad5a4d8fae8fce9860cf47234782",
+    "cost_profile.py": "53aacf3e1fb20b8a42964031197c1bc9133c5134d5862a484b473ca876c3398e"
+  },
+  "data_hashes": {
+    "text.txt": "f405e6560295121e04015267923425b6a064b99545a511c7091f4ab16b18344e",
+    "unused-validation.txt": "2b1f5f115f4b833366f29e4018132ee9ae60979c8ad399f3a3f1445acdf5f5e3",
+    "text-manifest.json": "7c52f3b42a52a1da92d8757bfa75f8b1f83ab7f58dc79b4f93a8ede8c3409d2f"
+  },
+  "order": [
+    {
+      "mode": "muon",
+      "seed": 0
+    },
+    {
+      "mode": "newton_cholesky",
+      "seed": 0
+    },
+    {
+      "mode": "newton_cholesky",
+      "seed": 1
+    },
+    {
+      "mode": "muon",
+      "seed": 1
+    }
+  ],
+  "decision": "Escalate to larger baseline study only if fixed-step endpoint, interpolated common-time endpoint and normalized time-area are strictly lower for Newton in BOTH seeds; otherwise close this local candidate at fixed settings. Last-observed equal-time checkpoint is sensitivity only. No posthoc loss target.",
+  "python": "3.14.7 (v3.14.7:823f0323ee6, Aug  5 2026, 07:07:01) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O"
+}
