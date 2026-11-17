@@ -1,0 +1,107 @@
+{
+  "schema": "newton-muon-preflight.v1",
+  "scope": "Seeded algebra and momentum identities only; no training, timing, MPS, utility, novelty, or real-data claim.",
+  "seed": 73031,
+  "inverse_checks": [
+    {
+      "n": 4,
+      "rank": 0,
+      "damping": 0.9133575261864966,
+      "rho": 4.566787630932483,
+      "max_abs_error_vs_explicit_inverse": 0.0,
+      "exact_branch": false
+    },
+    {
+      "n": 4,
+      "rank": 1,
+      "damping": 0.9133575261864966,
+      "rho": 3.1793310628887865,
+      "max_abs_error_vs_explicit_inverse": 2.7755575615628914e-17,
+      "exact_branch": false
+    },
+    {
+      "n": 4,
+      "rank": 3,
+      "damping": 0.9133575261864966,
+      "rho": 0.27605918317193456,
+      "max_abs_error_vs_explicit_inverse": 1.8041124150158794e-16,
+      "exact_branch": false
+    },
+    {
+      "n": 4,
+      "rank": 4,
+      "damping": 0.9133575261864966,
+      "rho": null,
+      "max_abs_error_vs_explicit_inverse": 2.220446049250313e-16,
+      "exact_branch": true
+    },
+    {
+      "n": 7,
+      "rank": 0,
+      "damping": 1.3715651176258032,
+      "rho": 6.857825588129016,
+      "max_abs_error_vs_explicit_inverse": 0.0,
+      "exact_branch": false
+    },
+    {
+      "n": 7,
+      "rank": 1,
+      "damping": 1.3715651176258032,
+      "rho": 4.322505105297931,
+      "max_abs_error_vs_explicit_inverse": 5.551115123125783e-17,
+      "exact_branch": false
+    },
+    {
+      "n": 7,
+      "rank": 6,
+      "damping": 1.3715651176258032,
+      "rho": 0.316874859010575,
+      "max_abs_error_vs_explicit_inverse": 2.3592239273284576e-16,
+      "exact_branch": false
+    },
+    {
+      "n": 7,
+      "rank": 7,
+      "damping": 1.3715651176258032,
+      "rho": null,
+      "max_abs_error_vs_explicit_inverse": 1.6653345369377348e-16,
+      "exact_branch": true
+    }
+  ],
+  "inverse_max_error": 2.3592239273284576e-16,
+  "momentum_check": {
+    "beta": 0.9,
+    "gradients": [
+      [
+        [
+          1.0,
+          0.0
+        ]
+      ],
+      [
+        [
+          0.0,
+          1.0
+        ]
+      ]
+    ],
+    "varying_scales": [
+      1.0,
+      4.0
+    ],
+    "constant_scales": [
+      3.0,
+      3.0
+    ],
+    "varying_scale_polar_gap": 0.44945253650049866,
+    "constant_scale_polar_gap": 2.220446049250313e-16,
+    "interpretation": "r=0 is scalar preconditioning at each step; varying positive scalars before momentum can change polar direction, while one constant scalar does not."
+  },
+  "cost_notes": {
+    "full_apply": "For G in R^(m x n), dense G P costs O(m n^2).",
+    "lowrank_apply": "The rank-r formula costs O(m n r) plus O(m n) for cG; apply savings require 2r<n up to constants.",
+    "refresh": "Dense eigendecomposition is O(n^3); iterative subspace extraction adds iteration-count and matrix-multiply cost. K formation/storage remain O(n^2) unless separately changed.",
+    "gate": "Accounting gates, not measured speed or utility results."
+  },
+  "passed": true
+}

@@ -1,0 +1,105 @@
+{
+  "status": "failed_validation_original_review",
+  "validation_error": "Claim 'C2': checked_chunk_ids contains unknown IDs: '2610.24839 (prior_art:b80616e44f0e58922f92)'",
+  "review": {
+    "claim_assessments": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2604.01472v1:chunk:0002",
+          "2604.01472v1:chunk:0003",
+          "2604.01472v1:chunk:0004",
+          "2604.01472v1:chunk:0008"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2604.01472v1:chunk:0004",
+            "quote_sha256": "934f0e84ef1e6d2131aa17c3a03e1d3ba6fd0f71875f1b40d3c120fa8e58f857",
+            "supports": "The source measures preconditioner overhead, but only at about 275M parameters on an L40S."
+          },
+          {
+            "chunk_id": "2604.01472v1:chunk:0002",
+            "quote_sha256": "e64427acb4c8c0cae0d25b414d530bbe625d4aa76e26bf9fd2ee28d7ff4d20a1",
+            "supports": "The source claims the overhead is small. This premise works against the motivation of C1."
+          },
+          {
+            "chunk_id": "2604.01472v1:chunk:0008",
+            "quote_sha256": "87f7b38c18aab8d3e7bcc52d5b447216e68f74b830259cef8a9559caf16c89b2",
+            "supports": "The source names reducing overhead while keeping the benefit as an open direction."
+          }
+        ],
+        "reason": "The source frames the cost/benefit question and reports total runtimes. None of the examined chunks contains a synchronized-timing, tiny-scale, MPS, cost-accounted screen. Absence from these chunks is not novelty; outside this pack it is unknown."
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2604.01472v1:chunk:0008",
+          "2604.01472v1:chunk:0009",
+          "2604.01472v1:chunk:0010",
+          "2610.24839 (prior_art:b80616e44f0e58922f92)"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2604.01472v1:chunk:0008",
+            "quote_sha256": "bc02291f9a051b5f4edd848e1a0e242f6c6fff8541cec68bcda0ef84f8a63605",
+            "supports": "Low-rank factorization of K_gamma is named as future work."
+          },
+          {
+            "chunk_id": "2604.01472v1:chunk:0009",
+            "quote_sha256": "16762d694d2443cd29fd3f5017ae24202050f5d1558db815694492f6a0148539",
+            "supports": "A structured K approximation is already used for the MLP contraction."
+          }
+        ],
+        "reason": "The source names the low-rank family but does not specify the eigen-plus-isotropic-remainder form. The proposal itself calls this a known approximation and not new. That is consistent with the examined evidence, but the specific form is not located in these chunks."
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "2604.01472v1:chunk:0004",
+          "2604.01472v1:chunk:0006"
+        ],
+        "evidence": [],
+        "reason": "C3 is an unobserved expected result, not evidence. Its wording is also inconsistent with the rest of the proposal. 'At most 3% gain' conflicts with the hypothesis (\u22640.97\u00d7 time, i.e. at least a 3% gain) and with the kill threshold (\u22653% better). The source reports only that Newton\u2013Muon is more than 4% faster than Muon, at 124M+ scale on GPU. No examined chunk reports a low-rank-vs-full comparison."
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "Source assumptions: activations K are strongly anisotropic in Pythia-70M; k in {16,32,64} works best at 124M\u2013455M; damping gamma\u00b7tr(K)/n is used; settings are single H100/L40S. Target assumptions: a tiny d\u2264512 Transformer on MPS; the top-r spectrum dominates; refresh plus preconditioning is a material fraction of step time. Tiny scale and MPS are an excluded or untested regime, not a contradiction. The source's statement that the overhead is 'insignificant' is evidence against the target premise f>5%, not a contradiction of it.",
+      "specialized_operation": "1) K\u2190\u03b2K+(1\u2212\u03b2)ZZ\u1d40/N. 2) \u03b3_\u2113=\u03b3\u00b7tr(K)/n. 3) At refresh, compute (V,\u039b)=top-r eig(K) and \u03c1=(trK\u2212\u03a3\u039b)/(n\u2212r). 4) Set D=(\u039b+\u03b3_\u2113I)^{-1}\u2212(\u03c1+\u03b3_\u2113)^{-1}I and c=(\u03c1+\u03b3_\u2113)^{-1}. 5) Each step compute G\u0303=((G V) D) V\u1d40 + c G. This costs 2mnr+mn flops, versus mn\u00b2 for G K^{-1}. 6) Run momentum, then NS5, then the update. The algebra checks: r=n reproduces (K+\u03b3I)^{-1}, and r=0 gives cG, which is Muon after msgn. The damping detail matters. Because \u03b3_\u2113 equals 0.2\u00d7 the mean eigenvalue, the tail eigenvalues \u03bb_i\u226a\u03b3_\u2113 are already nearly flattened to 1/\u03b3_\u2113. Replacing them by \u03c1 therefore changes the operator only on mid-spectrum directions. This is plausible, but it must be measured.",
+      "remaining_effect": "The per-step apply saves flops only when 2r<n. The refresh cost is a separate issue. A full eigh is O(n\u00b3) and usually slower than Cholesky, so a refresh saving requires r-step subspace iteration at O(n\u00b2r\u00b7iters). On MPS, the availability and speed of eigh or Cholesky kernels (possible CPU fallback) is unverified and could reverse the sign of any saving. The surviving effect is therefore a pure wall-clock trade-off with fidelity loss. Whether any saving exceeds noise at n\u2264512 is unresolved.",
+      "simplest_baseline": "Full-inverse Newton\u2013Muon in three variants. (a) Larger k: zero code, but staleness. (b) The source's polynomial-iteration inverse (Appendix B.3): matmul-only, MPS-friendly, still O(n\u00b3) per refresh. (c) Block-diagonal K (Appendix A). Plain Muon is the zero-overhead floor. Baseline (b) is the most direct competitor for cutting refresh cost, and the proposal omits it.",
+      "distinguishing_test": "Profile one optimizer step on MPS with torch.mps.synchronize, separating forward/backward, refresh (Cholesky, eigh or subspace iteration, and polynomial inverse) and apply (G K^{-1} vs. the low-rank apply) across n\u2208{256,512} and r\u2208{16,32,64}. Run the costly training sweep only if the full-inverse overhead fraction f exceeds 5% and the low-rank path is faster than both Cholesky and the polynomial inverse. In parallel, compute the operator error \u2016P\u2212(K+\u03b3I)^{-1}\u2016 relative to (K+\u03b3I)^{-1} on logged K matrices, and the cosine between msgn(G P) and msgn(G K^{-1})."
+    },
+    "decision": "test",
+    "failure_type": "none_found",
+    "reason": "The operator algebra is correct and reduces properly at r=n and r=0, so this is not a no-op. The idea is coherent but uncertain on cost. At tiny n, the apply saving requires 2r<n, and the refresh saving requires avoiding a full eigh. The source already states the overhead is insignificant, and that it is only a few percent of total runtime at larger scale. The proposal also omits the polynomial-inverse and larger-k baselines as cost competitors. Its C3 wording ('at most 3% gain') is internally inconsistent with its hypothesis and kill threshold and should be corrected. A cheap profiling test decides the question before any training.",
+    "evidence": [
+      {
+        "chunk_id": "2604.01472v1:chunk:0003",
+        "quote_sha256": "89097e06756f5d3809b63e7da8fe37cc5530e568e4fe381b16827a09615a99f2",
+        "supports": "The baseline inverse options include a polynomial iteration, which is an omitted cost competitor."
+      },
+      {
+        "chunk_id": "2604.01472v1:chunk:0009",
+        "quote_sha256": "479b9cb9159f72d571aab4ac37dd8039239390657ac059170c430cb7ccaff92c",
+        "supports": "The polynomial inverse is a cheaper existing alternative."
+      },
+      {
+        "chunk_id": "2604.01472v1:chunk:0004",
+        "quote_sha256": "bee51584f3a9822c1261b462f2d337448e925b8b6da4eece5bd2f9bd91c16e81",
+        "supports": "Damping flattens the spectrum, which is relevant to how closely an isotropic remainder can match the full inverse."
+      },
+      {
+        "chunk_id": "2604.01472v1:chunk:0005",
+        "quote_sha256": "ed290289a44de1cb5ff6086f8577d63ca2690ba01120ffe36d48304f30460cc3",
+        "supports": "Spectral concentration is shown in the source model only, not in the target model."
+      }
+    ],
+    "strongest_counterargument": "The test may be redundant. At d\u2264512, a Cholesky inverse every 32 steps plus one 512\u00d7512 matmul per step is likely well under 1% of step time, and the source itself calls the cost insignificant. Profiling may simply confirm that there is nothing to save. Conversely, if MPS lacks efficient eigh or Cholesky, the low-rank path could be slower, not faster.",
+    "required_test": "A synchronized MPS microbenchmark of overhead fraction f for three refresh methods (Cholesky, polynomial inverse, rank-r subspace iteration) and two apply methods (full and low-rank), plus operator and msgn-direction fidelity on logged K. Kill the project if f<5% or if the low-rank path is not faster than the polynomial inverse.",
+    "novelty_established": false
+  }
+}

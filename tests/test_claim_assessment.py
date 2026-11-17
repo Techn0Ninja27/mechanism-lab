@@ -28,3 +28,23 @@ class ClaimAssessmentTests(unittest.TestCase):
         r=assess(claims,[self.row(c['id'],'covered') for c in claims],self.chunks)
         self.assertEqual(r['claims'][0]['claim']['kind'],'expected_result')
         self.assertFalse(r['novelty_established'])
+
+    def test_checked_id_diagnostics_reject_decorated_unknown_id(self):
+        row=self.row('method','not_found')
+        row['checked_chunk_ids']=['2610.24839 (prior_art:b80616e44f0e58922f92)']
+        with self.assertRaisesRegex(ValueError, r"Claim 'method'.*unknown IDs.*2610\.24839"):
+            assess(self.claims,[row,self.row('component','unknown')],self.chunks)
+
+    def test_checked_id_diagnostics_are_bounded_and_typed(self):
+        cases=[
+            (None,'must be a list'),
+            ([1,'source'],'non-string values'),
+            (['source','source'],'duplicate IDs'),
+            (['x'*1000],'unknown IDs'),
+            (['source']*31,'maximum is 30'),
+        ]
+        for value,fragment in cases:
+            row=self.row('method','not_found');row['checked_chunk_ids']=value
+            with self.subTest(fragment=fragment),self.assertRaisesRegex(ValueError,fragment) as ctx:
+                assess(self.claims,[row,self.row('component','unknown')],self.chunks)
+            self.assertLess(len(str(ctx.exception)),500)

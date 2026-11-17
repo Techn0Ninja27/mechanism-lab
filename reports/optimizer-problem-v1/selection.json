@@ -1,0 +1,44 @@
+[
+  {
+    "source_id": "2604.01472v1",
+    "path": "sources/newton-muon-methods.txt",
+    "chars": 36065,
+    "sha256": "6d487359bd6b81f2203fb8bce3790fae165ef890fc486ecc739145bdb375c2b4"
+  },
+  {
+    "source_id": "2608.26288v1",
+    "path": "sources/finite-ns-setting-and-limits.txt",
+    "chars": 10866,
+    "sha256": "9c2e9bdea48da743e9475a3370f7eba0276fef1f0f3409f6052e935d12d10625"
+  },
+  {
+    "source_id": "2604.09967v1",
+    "path": "sources/2604.09967v1-abstract.txt",
+    "chars": 1391,
+    "sha256": "446ad1d450d81f76aa429237c640e3b22522d34dcd66b22260992ca625b28d3b"
+  },
+  {
+    "source_id": "2609.33047v1",
+    "path": "sources/2609.33047v1-abstract.txt",
+    "chars": 1651,
+    "sha256": "089bea10dd0d0a5c81822459557841aa7a43aa84ab92c9534795b651d5123754"
+  },
+  {
+    "source_id": "2610.26742v1",
+    "path": "sources/2610.26742v1-abstract.txt",
+    "chars": 1955,
+    "sha256": "24f3c0feac9d7920da57a41f05fdb368f9b703abff4eda5196eb77067b49fe9b"
+  },
+  {
+    "source_id": "2606.16371v1",
+    "path": "sources/2606.16371v1-abstract.txt",
+    "chars": 1382,
+    "sha256": "58d3d2c481b94441186628a54d51c66361d2b678efbb6b9f80765de1124e38c8"
+  },
+  {
+    "source_id": "2606.27216v1",
+    "path": "sources/2606.27216v1-abstract.txt",
+    "chars": 1902,
+    "sha256": "50d27a8c74e2d185ec627fcd03e984f9a94f41224bf3ae78e5f5ff126d4ae17d"
+  }
+]

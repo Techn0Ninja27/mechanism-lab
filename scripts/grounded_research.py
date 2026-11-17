@@ -209,7 +209,7 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
               'budget_usd': 2.0, 'pricing': {'prompt': .000004, 'completion': .000020},
               'provider_max_price': {'prompt': 4, 'completion': 20},
               'shared_budget_path': str(ROOT / 'results/improvement-phase-2026-11-16/budget.json'),
-              'shared_budget_usd': 10.0,
+              'shared_budget_usd': 20.0,
               'dependency_hashes': {str(f): hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in ('scripts/world_search.py','generation/api_budget.py','generation/sourcepack.py','generation/prior_art_retrieval.py','generation/method_lineage.py','generation/corpus_registry.py','generation/experiment_feedback.py','generation/interface_contracts.py','generation/claim_assessment.py','generation/citation_evidence.py','generation/citation_neighborhood.py')},
               'protocol_version': 7, 'search': search, 'citation_evidence_hash': digest(citation), 'citation_evidence': citation['summary'], 'lineage_registry_hash': digest(lineage_registry),
               'experiment_feedback_registry_hash':digest(feedback_registry),'experiment_feedback_hash':digest(feedback),

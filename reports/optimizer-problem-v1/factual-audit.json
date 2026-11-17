@@ -1,0 +1,31 @@
+{
+  "source_result_sha256": "9646c7c57e6cf93f406e0337b02f74e09b0bc78477483546633f8d6a2705a7d6",
+  "scope": "Root and native-agent audit of a generated proposal and an invalid-ID model review; no training result or novelty certification.",
+  "findings": [
+    {
+      "claim": "Review failed because the output was truncated.",
+      "assessment": "No. Both calls finished with stop. Review had a decorated, non-existent checked_chunk_id. Exact evidence quotes otherwise match supplied spans, but the review remains unvalidated and unchanged.",
+      "evidence": "Claim 'C2': checked_chunk_ids contains unknown IDs: '2610.24839 (prior_art:b80616e44f0e58922f92)'"
+    },
+    {
+      "claim": "r=0 reduces to ordinary Muon.",
+      "assessment": "Only a one-step scalar cancellation. The preconditioner precedes momentum; time-varying scalar weights change the accumulated direction. The claimed training-trajectory equivalence is false in general.",
+      "evidence": "Source order: right precondition gradient, then momentum/NS; native mathematical audit."
+    },
+    {
+      "claim": "The formula covers r=n unchanged.",
+      "assessment": "rho=(trace K-sum retained eigenvalues)/(n-r) is undefined at full rank. Use an explicit exact-inverse branch. For r<n the inverse formula is valid for its eigen-plus-isotropic surrogate.",
+      "evidence": "Proposal specialized_operation and reviewer algebra claim."
+    },
+    {
+      "claim": "Low-rank inverse necessarily saves optimizer memory and refresh work.",
+      "assessment": "It still retains full K and pays for its construction/EWMA. Full eigh stays cubic; iterative extraction on dense K costs roughly q*n*n*r. Count those costs and compare polynomial inverse plus larger refresh intervals.",
+      "evidence": "Newton-Muon Appendix A/B and proposal refresh description."
+    },
+    {
+      "claim": "C3 matches the time-to-loss improvement threshold.",
+      "assessment": "C3 says at most3% gain while hypothesis and kill rule require at least3%. Freeze a single direction before experiment; source-reported results are not evidence for that target.",
+      "evidence": "Original proposal contribution_claims C3 versus hypothesis and experiment.kill_threshold."
+    }
+  ]
+}

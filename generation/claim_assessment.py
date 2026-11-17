@@ -9,6 +9,37 @@ ASSESSMENT_SCHEMA = {'claim_id':'exact proposal claim ID','coverage':'covered|pa
 def _text(value,limit):
     return isinstance(value,str) and bool(value.strip()) and len(value)<=limit
 
+def _bounded_values(values, limit=3, width=160):
+    """Render malformed evidence IDs without echoing unbounded model output."""
+    out=[]
+    for value in values[:limit]:
+        if isinstance(value,str):
+            out.append(repr(value[:width] + ('…' if len(value)>width else '')))
+        else:
+            out.append(repr(value)[:width])
+    if len(values)>limit: out.append(f'… and {len(values)-limit} more')
+    return ', '.join(out)
+
+def _checked_id_error(claim_id, checked, source):
+    prefix=f'Claim {claim_id!r}: '
+    if not isinstance(checked,list):
+        return prefix+'checked_chunk_ids must be a list'
+    if len(checked)>30:
+        return prefix+f'checked_chunk_ids has {len(checked)} IDs; maximum is 30'
+    bad_types=[x for x in checked if not isinstance(x,str)]
+    if bad_types:
+        return prefix+'checked_chunk_ids contains non-string values: '+_bounded_values(bad_types)
+    duplicates=[];seen=set()
+    for value in checked:
+        if value in seen and value not in duplicates: duplicates.append(value)
+        seen.add(value)
+    if duplicates:
+        return prefix+'checked_chunk_ids contains duplicate IDs: '+_bounded_values(duplicates)
+    unknown=[x for x in checked if x not in source]
+    if unknown:
+        return prefix+'checked_chunk_ids contains unknown IDs: '+_bounded_values(unknown)
+    return None
+
 def validate_claims(claims):
     if not isinstance(claims,list) or not 1<=len(claims)<=6:
         raise ValueError('One to six contribution claims required')
@@ -33,8 +64,8 @@ def assess(claims,assessments,chunks):
         seen.add(cid)
         if a['coverage'] not in ('covered','partial','not_found','unknown') or not _text(a['reason'],2400):raise ValueError('Invalid coverage assessment')
         checked=a['checked_chunk_ids']
-        if not isinstance(checked,list) or len(checked)>30 or any(not isinstance(x,str) or x not in source for x in checked) or len(checked)!=len(set(checked)):
-            raise ValueError('Invalid checked evidence IDs')
+        checked_error=_checked_id_error(cid,checked,source)
+        if checked_error: raise ValueError(checked_error)
         if a['coverage']!='unknown' and not checked:raise ValueError('Missing evidence cannot establish coverage or a completed search')
         ev=a['evidence']
         if not isinstance(ev,list) or len(ev)>5:raise ValueError('Invalid claim evidence')

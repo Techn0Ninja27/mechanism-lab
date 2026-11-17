@@ -1,0 +1,51 @@
+[
+  {
+    "id": "2604.01472v1",
+    "url": "https://arxiv.org/html/2604.01472v1",
+    "bytes": 839293,
+    "sha256": "2ac29795c325c3c6ad30daad4b01867d4697606aabb29668130bda2049a1f929",
+    "text_sha256": "f1dd6e095d6bd112bede516edf574414974c1ff03cc1c109068d2cc3732994fb"
+  },
+  {
+    "id": "2608.26288v1",
+    "url": "https://arxiv.org/html/2608.26288v1",
+    "bytes": 979412,
+    "sha256": "e5245baf425c793a4bf956f876364d41104ce669d8d227f2036413d1f971ab19",
+    "text_sha256": "863dd608c0c3e25f5a0d57878c15070665ac49389a291f005bf65a062e2bbc3a"
+  },
+  {
+    "id": "2604.09967v1",
+    "url": "https://arxiv.org/html/2604.09967v1",
+    "bytes": 335000,
+    "sha256": "43fc7d01956d441362c6887f6b0133f5542327868bf93e3355d3f4414de39412",
+    "text_sha256": "e132ae6aff089c06b8ce747d6fff5409e13676078032357dd76fea07a5a2f797"
+  },
+  {
+    "id": "2609.33047v1",
+    "url": "https://arxiv.org/html/2609.33047v1",
+    "bytes": 666823,
+    "sha256": "0b7e65a11a027c961bc7923ca0898e5a9b23d8a450943e2f737f0c7bc5a34267",
+    "text_sha256": "b1068d7e2da585510e132b1443aea04d43ea4bcfb9f55bfffea62d2f65253675"
+  },
+  {
+    "id": "2610.26742v1",
+    "url": "https://arxiv.org/html/2610.26742v1",
+    "bytes": 937188,
+    "sha256": "a4d77dc80a9c64209c2d305d6fb0848fbaa56edab40e8404426fba39abb8a612",
+    "text_sha256": "70355cbffd3adfaa0e621f82c54d23f0fe50969662e29bdfdfd40d7db12e7f56"
+  },
+  {
+    "id": "2606.16371v1",
+    "url": "https://arxiv.org/html/2606.16371v1",
+    "bytes": 735018,
+    "sha256": "8c504e62d4eca354bdd607bb77544b2e6c2c99ac0995f64ebccfb728069f6eba",
+    "text_sha256": "2eef78e9ee59c884397fa763b36d59146ad4161de446a827fae08df16e6c0621"
+  },
+  {
+    "id": "2606.27216v1",
+    "url": "https://arxiv.org/html/2606.27216v1",
+    "bytes": 375794,
+    "sha256": "4d589daa67f1134701cdda261c312efd0feae88181b15c26f67a82d06d8d2956",
+    "text_sha256": "6b243f7e0c2b4a5d31066dfa0d1100dc5afe158d22a83c5b26537f5fdebbdde2"
+  }
+]

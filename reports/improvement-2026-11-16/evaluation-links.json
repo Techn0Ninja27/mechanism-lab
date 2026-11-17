@@ -54,5 +54,12 @@
     "result_path": "operator-studies/gnn-sync-gate/result.json",
     "report_path": "operator-studies/gnn-sync-gate/README.md",
     "result_sha256": "997c21574da224618da3cc5b56efa26241ec4dff2358919b3663ad59efbfd1a8"
+  },
+  "grounded-optimizer-v1": {
+    "status": "algebra_correction_utility_unmeasured",
+    "summary": "Eigen-plus-isotropic inverse agrees with inverse of its surrogate (max error2.36e-16); explicit full-rank branch required. Changing scalar preconditioning before momentum changes polar direction (gap0.44945), refuting rank-zero trajectory equivalence. No training, timing, memory or novelty benefit tested.",
+    "result_path": "operator-studies/newton-muon-preflight/result.json",
+    "report_path": "operator-studies/newton-muon-preflight/README.md",
+    "result_sha256": "31e5c1af22d15d53aadd00984ce40e7141140bcb48d5f5edf32d6772781ecd37"
   }
 }

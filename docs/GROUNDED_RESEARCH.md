@@ -20,7 +20,7 @@ Protocol 7 accepts `--citation-config CONFIG.json` alongside the primary source 
 
 ## Spending and failure behavior
 
-Each run is capped at $2 in conservative reservations. All new runs share `results/improvement-phase-2026-11-16/budget.json`, capped at $10. No BYOK exemption is assumed. Provider price ceilings, UTF-8-byte input bounds and output-token limits determine reservations before requests. Failed/unknown calls retain reservations unless a verified receipt establishes actual usage. Actual receipts are retained even if a provider overruns a reservation.
+Each run is capped at $2 in conservative reservations. All new runs share `results/improvement-phase-2026-11-16/budget.json`, capped at $20 after the user-authorized 2026-11-17 cap migration. No BYOK exemption is assumed. Provider price ceilings, UTF-8-byte input bounds and output-token limits determine reservations before requests. Failed/unknown calls retain reservations unless a verified receipt establishes actual usage. Actual receipts are retained even if a provider overruns a reservation.
 
 Calls are cached by request identity; changed inputs need a new run directory. There are no automatic paid retries. Existing final results are not overwritten. A failure can therefore require a new, explicitly recorded experiment rather than an invisible retry. Parallel clients share a file-locked ledger.
 

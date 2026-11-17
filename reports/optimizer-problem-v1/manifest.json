@@ -1,0 +1,53 @@
+{
+  "sources": [
+    {
+      "id": "2604.01472v1",
+      "title": "newton-muon-methods",
+      "url": "https://arxiv.org/html/2604.01472v1",
+      "path": "sources/newton-muon-methods.txt",
+      "evidence_level": "full_text"
+    },
+    {
+      "id": "2608.26288v1",
+      "title": "finite-ns-setting-and-limits",
+      "url": "https://arxiv.org/html/2608.26288v1",
+      "path": "sources/finite-ns-setting-and-limits.txt",
+      "evidence_level": "full_text"
+    },
+    {
+      "id": "2604.09967v1",
+      "title": "2604.09967v1-abstract",
+      "url": "https://arxiv.org/html/2604.09967v1",
+      "path": "sources/2604.09967v1-abstract.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "2609.33047v1",
+      "title": "2609.33047v1-abstract",
+      "url": "https://arxiv.org/html/2609.33047v1",
+      "path": "sources/2609.33047v1-abstract.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "2610.26742v1",
+      "title": "2610.26742v1-abstract",
+      "url": "https://arxiv.org/html/2610.26742v1",
+      "path": "sources/2610.26742v1-abstract.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "2606.16371v1",
+      "title": "2606.16371v1-abstract",
+      "url": "https://arxiv.org/html/2606.16371v1",
+      "path": "sources/2606.16371v1-abstract.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "2606.27216v1",
+      "title": "2606.27216v1-abstract",
+      "url": "https://arxiv.org/html/2606.27216v1",
+      "path": "sources/2606.27216v1-abstract.txt",
+      "evidence_level": "abstract"
+    }
+  ]
+}

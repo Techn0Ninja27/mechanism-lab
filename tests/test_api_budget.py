@@ -1,9 +1,10 @@
 import multiprocessing as mp
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
-from generation.api_budget import BudgetError, BudgetLedger, request_id
+from generation.api_budget import BudgetError, BudgetLedger, migrate_cap, request_id
 
 
 def _reserve(path, barrier, out):
@@ -69,6 +70,48 @@ class BudgetTests(unittest.TestCase):
             self.assertEqual(b.reconcile("r", 1.2, verified=True)["status"], "over_budget")
             with self.assertRaises(BudgetError): b.reconcile("r", 1.1, verified=True)
             with self.assertRaises(BudgetError): b.reserve("new", .01)
+
+    def test_cap_migration_preserves_receipts_and_rejects_inflight(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "ledger.json"
+            b = BudgetLedger(p, 10)
+            b.reserve("done", 1, {"model": "test"})
+            b.reconcile("done", .25, verified=True, receipt_id="receipt")
+            backup, audit = Path(d) / "before.json", Path(d) / "audit.json"
+            record = migrate_cap(p, old_cap_usd=10, new_cap_usd=20,
+                                 backup_path=backup, audit_path=audit,
+                                 authorization="user authorized cap migration")
+            self.assertEqual(record["old_cap_usd"], 10.0)
+            self.assertEqual(json.loads(p.read_text())["cap_usd"], 20.0)
+            self.assertEqual(json.loads(backup.read_text())["cap_usd"], 10.0)
+            self.assertEqual(json.loads(p.read_text())["reservations"]["done"]["actual_usd"], .25)
+            self.assertTrue(audit.exists())
+
+    def test_cap_migration_refuses_unknown_and_is_immutable(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "ledger.json"
+            b = BudgetLedger(p, 10)
+            b.reserve("inflight", 1)
+            b.mark_unknown("inflight")
+            with self.assertRaises(BudgetError):
+                migrate_cap(p, old_cap_usd=10, new_cap_usd=20,
+                            backup_path=Path(d) / "before.json", audit_path=Path(d) / "audit.json",
+                            authorization="user authorized cap migration")
+            self.assertEqual(json.loads(p.read_text())["cap_usd"], 10.0)
+
+    def test_cap_migration_requires_authorization_and_distinct_paths(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "ledger.json"
+            BudgetLedger(p, 10).reserve("done", .1)
+            for kwargs in (
+                {"authorization": ""},
+                {"authorization": "ok", "backup_path": p},
+            ):
+                args = {"old_cap_usd": 10, "new_cap_usd": 20,
+                        "backup_path": Path(d) / "before.json",
+                        "audit_path": Path(d) / "audit.json",
+                        **kwargs}
+                with self.assertRaises(BudgetError): migrate_cap(p, **args)
 
 
 if __name__ == "__main__": unittest.main()

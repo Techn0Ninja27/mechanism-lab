@@ -1,0 +1,6 @@
+{
+  "reproduction_byte_identical": true,
+  "result_sha256": "31e5c1af22d15d53aadd00984ce40e7141140bcb48d5f5edf32d6772781ecd37",
+  "script_sha256": "0828515cac7f99dbc34ca33b97fb640c409a9654e1163062bd196b9403c34543",
+  "scope": "Fresh-process seeded algebra reproduction only; no utility result"
+}

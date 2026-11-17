@@ -1,0 +1,233 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "9888860d6b0edbb71c213dd1149bab80c2abbc9db56f38e5341830c009ba2ea0",
+  "status": "failed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://arxiv.org/html/2604.01472v1",
+        "https://arxiv.org/html/2604.09967v1",
+        "https://arxiv.org/html/2606.16371v1",
+        "https://arxiv.org/html/2606.27216v1",
+        "https://arxiv.org/html/2608.26288v1",
+        "https://arxiv.org/html/2609.33047v1",
+        "https://arxiv.org/html/2610.26742v1"
+      ]
+    }
+  },
+  "experiment_feedback": {
+    "schema_version": "experiment-feedback-report.v1",
+    "scope": "partial curated experiment feedback; artifact integrity does not establish scientific validity, usefulness, feasibility, or novelty",
+    "records": [],
+    "warnings": [
+      "record 'fier-windowquant-onebit-trace-v1' source pair is absent from the supplied source pack",
+      "record 'fier-windowquant-max-aggregation-v1' source pair is absent from the supplied source pack",
+      "record 'felog-rank-varint-walks-v1' source pair is absent from the supplied source pack",
+      "record 'sni-sync-fixedshare-cora-v1' source pair is absent from the supplied source pack"
+    ],
+    "matched_count": 0,
+    "registry_sha256": "96221a71edd8114b03ef3fbde6a282ddfcccbdaa7b2a055cfde7e21d8766551e"
+  },
+  "source_contracts": {
+    "scope": "Partial curated source declarations; not executable compatibility, novelty or correctness proofs.",
+    "contracts": [],
+    "warnings": [
+      "evidence source mismatch",
+      "evidence source mismatch"
+    ],
+    "matched_count": 0
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v3",
+    "query_hash": "4d6d4efd2083b747e6dff2ad65a3d22d21a37dea49f38f4f2bd9d57fca7a9efe",
+    "queries": [
+      "Muon preconditioning low rank",
+      "Muon covariance approximation",
+      "orthogonalization optimizer"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus"
+    ],
+    "failures": [],
+    "errors": [],
+    "coverage": [
+      {
+        "query": "Muon preconditioning low rank",
+        "compiled_query": "\"Muon\" AND \"preconditioning\" AND \"low\" AND \"rank\"",
+        "provider": "local_corpus",
+        "records": 3,
+        "status": "ok",
+        "retained_records": 3
+      },
+      {
+        "query": "Muon covariance approximation",
+        "compiled_query": "\"Muon\" AND \"covariance\" AND \"approximation\"",
+        "provider": "local_corpus",
+        "records": 1,
+        "status": "ok",
+        "retained_records": 1
+      },
+      {
+        "query": "orthogonalization optimizer",
+        "compiled_query": "\"orthogonalization\" AND \"optimizer\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 6
+      }
+    ],
+    "truncation": {
+      "truncated": true,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "33b17ae1860369045028c4e74085d2ea17307fd47083b6d7988ac8ca9af7b38a"
+  },
+  "retrieved_source_count": 10,
+  "citation_evidence": {
+    "status": "not_requested"
+  },
+  "proposal": {
+    "title": "Is Newton\u2013Muon's activation-covariance refresh worth its cost at tiny scale? A cost-accounted screen of a low-rank-plus-diagonal K inverse (likely revise/reject)",
+    "hypothesis": "On a real-text tiny Transformer on MPS, replacing Newton\u2013Muon's full damped inverse (K+\u03b3I)^{-1} with a rank-r eigen-plus-isotropic-remainder inverse, refreshed at the same interval, reaches a fixed held-out loss in at most 0.97\u00d7 the synchronized wall-clock time of full-inverse Newton\u2013Muon, with matched tuning.",
+    "baseline": "Newton\u2013Muon Algorithm 1 (2604.01472v1 chunk 0003). It keeps a per-layer EWMA K\u2190\u03b2K+(1\u2212\u03b2)ZZ\u1d40/N, refreshed every k steps. It sets \u03b3_\u2113=\u03b3\u00b7tr(K)/n and computes the inverse by float32 Cholesky with torch.cholesky_inverse. It right-multiplies the raw gradient as G K^{-1}, applied before momentum and the remaining Muon pipeline. MLP contraction uses a 4-block diagonal approximation. The source's default hyperparameters are \u03b2=0.95, \u03b3=0.2 and k=32. No official code URL is supplied, which is a baseline-coverage gap. Muon itself (NS5) is the second required control.",
+    "operator_delta": "At each refresh, replace the Cholesky inverse with a top-r eigendecomposition K\u2248V\u039bV\u1d40 plus an isotropic remainder \u03c1. The preconditioner becomes P=V[(\u039b+\u03b3I)^{-1}\u2212(\u03c1+\u03b3)^{-1}I]V\u1d40+(\u03c1+\u03b3)^{-1}I. It is applied as G\u00b7P, costing two n\u00d7r products per step instead of one n\u00d7n product.",
+    "contribution_claims": [
+      {
+        "id": "C1",
+        "text": "A cost-accounted, synchronized-timing tiny-scale screen of whether Newton\u2013Muon's preconditioner overhead can be reduced without losing its time-to-loss benefit.",
+        "role": "central",
+        "kind": "problem"
+      },
+      {
+        "id": "C2",
+        "text": "Low-rank-plus-isotropic inverse of the damped activation second moment. This is a known structured approximation that the source names as future work, not a new algorithm.",
+        "role": "supporting",
+        "kind": "method"
+      },
+      {
+        "id": "C3",
+        "text": "Hypothesized at most 3% time-to-loss gain over full-inverse Newton\u2013Muon. This is unobserved.",
+        "role": "supporting",
+        "kind": "expected_result"
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "Source-supported: ZZ\u1d40 is strongly anisotropic in Pythia-70M, and moderate refresh intervals work best at 124M\u2013455M on H100/L40S. Inferred target assumptions: the spectrum of K in a tiny model is concentrated enough for small r, and inverse cost is a material fraction of step time on MPS. A tiny model is an untested regime, not a contradiction of the source results.",
+      "specialized_operation": "Algorithm steps: 1) Update K as in the baseline. 2) Every k steps, run an r-step subspace iteration or eigh on K to obtain V and \u039b. 3) Set \u03c1 to the mean of the remaining eigenvalues, (tr K \u2212 \u03a3\u039b)/(n\u2212r). 4) Each step, compute G\u00b7P = (G\u00b7V)\u00b7D\u00b7V\u1d40 + c\u00b7G, where D is the diagonal correction and c=(\u03c1+\u03b3)^{-1}. 5) Pass the result to the standard Muon pipeline. If r=n, P equals (K+\u03b3I)^{-1} exactly. If r=0, P=cI, which is Muon up to a scale that msgn removes.",
+      "remaining_effect": "The only surviving effect is the cost reduction from O(n\u00b3/k + mn\u00b2) to O(nr\u00b2+ \u2026 + mnr) at a reduced fidelity. At n\u2264512 the per-step G\u00b7K^{-1} matmul is small relative to forward/backward, so the saving may be negligible. Whether it is negligible is the unresolved question.",
+      "simplest_baseline": "Full-inverse Newton\u2013Muon with a larger refresh interval k. Its known limitation is staleness. Plain Muon, which adds zero overhead, is the floor control.",
+      "distinguishing_test": "Cheap analytic and operator test first. Measure the fraction f of synchronized step time spent on refresh plus preconditioning in full Newton\u2013Muon on MPS. Cost/benefit rule: proceed to training only if f>5% and the rank-r P keeps a quadratic score s(Q) of at least 0.9\u00d7 the full inverse on held-out batches. Even then, the quadratic score is not accepted as evidence of better training."
+    },
+    "evidence": [
+      {
+        "chunk_id": "2604.01472v1:chunk:0003",
+        "quote_sha256": "89097e06756f5d3809b63e7da8fe37cc5530e568e4fe381b16827a09615a99f2",
+        "supports": "The exact inverse method used by the baseline."
+      },
+      {
+        "chunk_id": "2604.01472v1:chunk:0008",
+        "quote_sha256": "bc02291f9a051b5f4edd848e1a0e242f6c6fff8541cec68bcda0ef84f8a63605",
+        "supports": "The proposed delta is source-named future work."
+      },
+      {
+        "chunk_id": "2604.01472v1:chunk:0004",
+        "quote_sha256": "934f0e84ef1e6d2131aa17c3a03e1d3ba6fd0f71875f1b40d3c120fa8e58f857",
+        "supports": "Overhead is a real bottleneck."
+      },
+      {
+        "chunk_id": "2604.01472v1:chunk:0004",
+        "quote_sha256": "55851db225db3c3daadd85a987fe2d07860ce767b16d2c939c9381efbdb3c397",
+        "supports": "The benefit margin is small, so overhead matters."
+      }
+    ],
+    "assumptions": [
+      "The overhead fraction f is above 5% on MPS for d\u2264512.",
+      "The top-r eigenvalues capture most of the preconditioning effect.",
+      "Speedups reported at 124M\u2013455M on H100/L40S do not transfer to this setting and are not assumed to."
+    ],
+    "data_paths": [
+      {
+        "input": "Training-batch activations Z and gradients G",
+        "operation": "EWMA K, rank-r eigendecomposition, right preconditioning",
+        "output": "Update direction",
+        "possible_leakage": "None from held-out data. The held-out split is used only for loss evaluation at fixed intervals."
+      }
+    ],
+    "counterexample": "At small n, the full Cholesky inverse every 32 steps costs under 1% of step time. Then no time saving is possible, and any approximation can only lose quality.",
+    "matched_control": "Full-inverse Newton\u2013Muon with identical \u03b2, \u03b3, k, learning rate, seeds, data order and NS steps. Only the inverse operator differs. Plain Muon is included as a floor control.",
+    "experiment": {
+      "development": "Fresh small real-text corpus split, about 6-layer d=256\u2013512 Transformer, 3 seeds, learning-rate sweep matched across all methods.",
+      "heldout": "A different untouched text domain with a d=512 model, a fresh seed set, and no reuse of old fixtures.",
+      "metric": "torch.mps.synchronize-timed wall-clock to a fixed held-out loss, median over seeds. Peak optimizer memory is also reported.",
+      "kill_threshold": "Reject if f<5%, or if the quadratic-score ratio is below 0.9. Also reject if median time-to-loss is not at least 3% better than both controls with no seed worse than full Newton\u2013Muon by more than 2%. Note that Newton\u2013Muon itself may fail to beat Muon at this scale, which also ends the project."
+    },
+    "prior_art_difference": "Newton\u2013Muon already uses block-diagonal approximations and suggests low-rank factorizations and polynomial inverses. Appendix F's negative results concern \u03a3_W, not K. The only difference here is the specific rank-r-plus-isotropic inverse together with a strict cost audit. It is not established as new, and there is no matching local experiment. Muon2-F, CacheMuon, HiMuon, Polar Switch and the spectrum-adaptive NS work target the orthogonalization step, not this component, and their full details are unverified.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "error": "ValueError: Invalid checked evidence IDs"
+}

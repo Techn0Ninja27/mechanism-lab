@@ -1,0 +1,17 @@
+{
+  "after_sha256": "262b2f05778cafa2f0b0fdf8063ec4204a165b98a19d74448dd43ee74ab8a084",
+  "authorization": "user explicitly raised shared phase cap from $10 to $20",
+  "backup": "results/budget-cap-change-2026-11-17/budget.before.json",
+  "before_sha256": "c6ef0f5b4b5457feeeeb2a38476b18265ee6283c8e6637714e91f141fdedf7be",
+  "charged_usd": 3.2803365000000007,
+  "ledger": "results/improvement-phase-2026-11-16/budget.json",
+  "new_cap_usd": 20.0,
+  "old_cap_usd": 10.0,
+  "receipts_preserved": true,
+  "reservation_count": 36,
+  "schema": "budget-cap-migration.v1",
+  "statuses": [
+    "reconciled"
+  ],
+  "timestamp_utc": "2026-11-17T00:41:58.901134+00:00"
+}
