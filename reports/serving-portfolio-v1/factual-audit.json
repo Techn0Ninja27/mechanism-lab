@@ -1,0 +1,16 @@
+{
+  "source_result_sha256": "3608f21fd6205074ed6fc0bb8ebd0bfd81e3299c0bd01e5c7e404e9146bcb443",
+  "scope": "Post-run native/root review of mechanism distinctions; no scientific validation or novelty claim.",
+  "findings": [
+    {
+      "claim": "Three distinct mechanisms were generated.",
+      "assessment": "All declared-field fingerprints differed, but the reviewer and subsequent native audit identify the retained-prefill transition as the shared central mechanism of cand-00/cand-01. Lexical non-overlap is not semantic diversity.",
+      "evidence": "Portfolio pair cand-00/cand-01; reports/serving-portfolio-v1/audit-notes.md."
+    },
+    {
+      "claim": "Selected cand-00 is ready for a useful implementation.",
+      "assessment": "Not established. Move-back, persistent duplicate and discard/re-prefill semantics are distinct. Capacity peaks, retention duration, transfer costs and replay cost need definition and matched controls before an efficacy test.",
+      "evidence": "reports/serving-portfolio-v1/transition-accounting.md; original candidate mechanism_check."
+    }
+  ]
+}

@@ -541,6 +541,54 @@ def grounded_rows():
                 "summary": str(record.get("summary", ""))[:1000] if verified else "Result hash does not match the reviewed operator artifact.",
                 "result_path": result_ref, "report_path": report_ref,
                 "result_sha256": actual_hash}
+    def portfolio_view(value):
+        if value is None: return None
+        def text(value,limit=2400): return value[:limit] if isinstance(value,str) else ''
+        bad={'status':'invalid','summary':'Malformed portfolio metadata; no conclusions inferred.','candidates':[], 'review':None, 'experiment_eligible':False,'novelty_established':False}
+        if not isinstance(value,dict) or not isinstance(value.get('candidates'),list):return bad
+        ids={'cand-00','cand-01','cand-02'};seen=set();safe=[];invalid=len(value['candidates'])!=3
+        for item in value['candidates'][:3]:
+            if not isinstance(item,dict) or not isinstance(item.get('id'),str) or item['id'] not in ids or item['id'] in seen:
+                invalid=True;continue
+            seen.add(item['id']);p=item.get('proposal');p=p if isinstance(p,dict) else {}
+            if any(not isinstance(p.get(k),str) for k in ('title','baseline','operator_delta','matched_control')):invalid=True
+            near=item.get('near_duplicate_of',[]);exact=item.get('exact_duplicate_of')
+            if not isinstance(near,list):invalid=True;near=[]
+            if any(not isinstance(x,str) or x not in ids or x==item['id'] for x in near):invalid=True
+            if exact is not None and (not isinstance(exact,str) or exact not in ids or exact==item['id']):invalid=True;exact=None
+            safe.append({'id':item['id'],'proposal':{k:text(p.get(k)) for k in ('title','baseline','operator_delta','matched_control')},
+                         'exact_duplicate_of':exact,'near_duplicate_of':[x for x in near[:3] if isinstance(x,str) and x in ids], 'auto_eligible':False})
+        out={**bad,'candidates':safe,'scope':text(value.get('scope'),1000)}
+        raw=value.get('review')
+        if raw is None:
+            out.update(status='invalid' if invalid else 'unreviewed',summary='Candidates retained; comparative review not recorded.');return out
+        if not isinstance(raw,dict):return out
+        selected=raw.get('selected_candidate_id');rawreviews=raw.get('reviews');rawpairs=raw.get('comparisons')
+        if selected is not None and (not isinstance(selected,str) or selected not in seen):invalid=True;selected=None
+        if not isinstance(raw.get('selection_reason'),str):invalid=True
+        if not isinstance(rawreviews,list) or len(rawreviews)!=3:invalid=True;rawreviews=[]
+        if not isinstance(rawpairs,list) or len(rawpairs)!=3:invalid=True;rawpairs=[]
+        reviews=[];reviewed=set()
+        for item in rawreviews:
+            cid=item.get('candidate_id') if isinstance(item,dict) else None
+            rv=item.get('review') if isinstance(item,dict) else None
+            if not isinstance(cid,str) or cid not in seen or cid in reviewed or not isinstance(rv,dict):invalid=True;continue
+            reviewed.add(cid)
+            if rv.get('decision') not in ('test','revise','reject','insufficient_evidence') or any(not isinstance(rv.get(k),str) for k in ('failure_type','reason','required_test')):invalid=True
+            reviews.append({'candidate_id':cid,'review':{k:text(rv.get(k)) for k in ('decision','failure_type','reason','required_test')}})
+        pairs=[];pairset=set()
+        for item in rawpairs:
+            pair=item.get('candidate_ids') if isinstance(item,dict) else None
+            if not isinstance(pair,list) or len(pair)!=2 or any(not isinstance(x,str) or x not in seen for x in pair) or pair[0]==pair[1]:invalid=True;continue
+            key=tuple(sorted(pair))
+            if key in pairset:invalid=True;continue
+            pairset.add(key)
+            if item.get('relationship') not in ('same_mechanism','different_mechanism','uncertain') or not isinstance(item.get('reason'),str):invalid=True
+            pairs.append({'candidate_ids':pair,'relationship':text(item.get('relationship'),80),'reason':text(item.get('reason'),1200)})
+        if reviewed!=ids or len(pairset)!=3:invalid=True
+        out.update(status='invalid' if invalid else 'recorded',summary='Malformed metadata; valid candidate cards retained.' if invalid else 'Model comparisons, not scientific validation.',
+                   review={'selected_candidate_id':selected,'selection_reason':text(raw.get('selection_reason')),'reviews':reviews,'comparisons':pairs})
+        return out
     candidates = [(p, p.parent.parent.name, None) for p in (ENGINE / "results").glob("improvement-phase-*/grounded-*/result.json")]
     workspace_root = (ROOT / "workspace" / "projects").resolve()
     if workspace_root.is_dir():
@@ -584,6 +632,7 @@ def grounded_rows():
                      "lineage_warnings": (data.get("lineage") or {}).get("warnings",[]),
                      "review": {**{k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
                                 "mechanism_check": mechanism_summary(review.get("mechanism_check"))},
+                     "portfolio": portfolio_view(data.get("portfolio")),
                      "budget": {"cap_usd": budget.get("cap_usd"), "actual_usd": spent, "active_reserved_usd": reserved},
                      "artifact": public_path(result_path),
                      "factual_audit": factual_audit(result_path),

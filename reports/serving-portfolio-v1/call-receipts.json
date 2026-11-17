@@ -1,0 +1,62 @@
+[
+  {
+    "call": "portfolio-0",
+    "status": "complete",
+    "request_hash": "438ba85402b822442ac2a8921a7ba99229c4e8bb26c50d93ee08b657dc5cfa75",
+    "reserved_usd": 0.691484,
+    "usage": {
+      "prompt_tokens": 46239,
+      "completion_tokens": 4064,
+      "total_tokens": 50303,
+      "cost": 0.26357364,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.266236,
+        "upstream_inference_prompt_cost": 0.184956,
+        "upstream_inference_completions_cost": 0.08128
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "finish_reason": "stop"
+  },
+  {
+    "call": "portfolio-review-1",
+    "status": "complete",
+    "request_hash": "de51cae00fe154067c3d51f59e373db0d76945b9c818294d5cb7da06deb5d8dc",
+    "reserved_usd": 0.725136,
+    "usage": {
+      "prompt_tokens": 49839,
+      "completion_tokens": 3715,
+      "total_tokens": 53554,
+      "cost": 0.27091944,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.273656,
+        "upstream_inference_prompt_cost": 0.199356,
+        "upstream_inference_completions_cost": 0.0743
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "finish_reason": "stop"
+  }
+]

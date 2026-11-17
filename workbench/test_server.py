@@ -307,6 +307,27 @@ class HTTPTests(unittest.TestCase):
             with zipfile.ZipFile(io.BytesIO(response.read())) as z:
                 self.assertEqual(z.read('sources/papers/a.md'), b'# Source\nactual bytes')
 
+    def test_portfolio_preserves_all_cards_and_null_selection(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server,'ENGINE',Path(tmp)):
+            run=Path(tmp)/'results/improvement-phase-2026-11-16/grounded-portfolio';run.mkdir(parents=True)
+            portfolio={'candidates':[{'id':f'cand-{i:02d}','proposal':{k:f'value{i}' for k in ('title','baseline','operator_delta','matched_control')},'exact_duplicate_of':None,'near_duplicate_of':[]} for i in range(3)]}
+            file=run/'result.json'
+            def read():
+                file.write_text(json.dumps({'status':'reviewed','portfolio':portfolio}))
+                return server.grounded_rows()[0]['portfolio']
+            self.assertEqual(read()['status'],'unreviewed')
+            portfolio['review']={'selected_candidate_id':None,'selection_reason':'No selection',
+                'reviews':[{'candidate_id':f'cand-{i:02d}','review':{'decision':'revise','failure_type':'weak_control','reason':'reason','required_test':'test'}} for i in range(3)],
+                'comparisons':[{'candidate_ids':[f'cand-{i:02d}',f'cand-{j:02d}'],'relationship':'uncertain','reason':'unknown'} for i,j in ((0,1),(0,2),(1,2))]}
+            row=read();self.assertEqual(row['status'],'recorded');self.assertEqual(len(row['candidates']),3)
+            self.assertIsNone(row['review']['selected_candidate_id']);self.assertFalse(row['experiment_eligible'])
+            portfolio['review']['comparisons'][2]=portfolio['review']['comparisons'][0]
+            row=read();self.assertEqual(row['status'],'invalid');self.assertEqual(len(row['candidates']),3)
+            portfolio['review']['reviews'][0]['review']='malformed'
+            self.assertEqual(read()['status'],'invalid')
+            portfolio['candidates'][0]['near_duplicate_of']=42
+            self.assertEqual(read()['status'],'invalid')
+
     def test_operator_links_require_matching_artifact_hash(self):
         import hashlib
         with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):

@@ -11,6 +11,11 @@ prior-art retrieval, executable experiments, and evidence-aware ranking. A
 molecule records how operators connect—not just which concepts occur together.
 A promising proposal still has to survive a baseline and a reproducible test.
 
+An optional [three-candidate portfolio](reports/serving-portfolio-v1/README.md)
+keeps alternative mechanisms visible and compares every pair before selecting
+one for inspection. The first run exposed shared mechanisms missed by exact
+text fingerprints; it is a diagnostic, not proof of better research quality.
+
 This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
 The upstream authors created the sampling method and operate
 [Lacuna](https://lacuna.tiptreesystems.com). Their work is credited below; these

@@ -162,6 +162,38 @@ class GroundedResearchTests(unittest.TestCase):
         g.require_retrieval_hits({'queries':['cache']},{'records':[{'source_id':'fixture'}]})
         g.require_retrieval_hits({'queries':[]},{'records':[]})
 
+    def test_portfolio_retains_all_candidates_with_no_selection(self):
+        pack={'chunks':[{'id':'s1','text':'Evidence source sentence.'}]}
+        proposals=[]
+        for i in range(3):
+            p={k:'specified' for k in g.SCHEMA}
+            p.update(operator_delta=f'operation {i}',decision='revise',novelty_established=False,
+                     contribution_claims=claims(),mechanism_check=mechanism_check(),
+                     evidence=[dict(chunk_id='s1',quote='Evidence source',supports='premise')],
+                     assumptions=['assumption'],data_paths=[dict(input='x',operation=f'op{i}',output='y',possible_leakage='none')],
+                     experiment={k:'specified' for k in ('development','heldout','metric','kill_threshold')})
+            proposals.append(p)
+        review=dict(decision='revise',failure_type='weak_control',reason='Need matched control',
+                    evidence=[dict(chunk_id='s1',quote='Evidence source',supports='premise')],
+                    strongest_counterargument='Might work',required_test='Test baseline',novelty_established=False,
+                    mechanism_check=mechanism_check(),claim_assessments=claim_reviews())
+        adjudication={'reviews':[{'candidate_id':f'cand-{i:02d}','review':copy.deepcopy(review)} for i in range(3)],
+                      'comparisons':[{'candidate_ids':[f'cand-{i:02d}',f'cand-{j:02d}'],'relationship':'uncertain','reason':'Needs derivation'} for i,j in ((0,1),(0,2),(1,2))],
+                      'selected_candidate_id':None,'selection_reason':'No candidate justified yet'}
+        seen=[]
+        class Client:
+            def call(self,case,stage,prompt):
+                seen.append((case,stage));return json.dumps({'proposals':proposals} if stage==0 else adjudication)
+        with tempfile.TemporaryDirectory() as tmp:
+            result=g.execute_portfolio(Client(),'prompt',pack,'context','["s1"]',pathlib.Path(tmp),{'novelty_established':False})
+            self.assertEqual(result['status'],'reviewed')
+            self.assertEqual(len(result['portfolio']['candidates']),3)
+            self.assertIsNone(result['portfolio']['review']['selected_candidate_id'])
+            self.assertNotIn('proposal',result)
+            self.assertEqual(len(result['portfolio']['claim_assessments']),3)
+            self.assertEqual([stage for _,stage in seen],[0,1])
+            self.assertTrue(all(not c['auto_eligible'] for c in result['portfolio']['candidates']))
+
     def test_local_feedback_is_citable_and_remains_scoped(self):
         record={'id':'fixture','tested_change':'fixture scoped failure','verdict':'no_support',
                 'scope':'two exposed development cases','limitations':['not a quality result'],

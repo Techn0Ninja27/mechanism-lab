@@ -1,0 +1,1103 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "93fd3ffeaa02fbd370c4da737b280aaaab2be4968a8f8b1259eda24f785051f0",
+  "status": "reviewed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://arxiv.org/html/2505.11916v2",
+        "https://arxiv.org/html/2508.14544v2",
+        "https://arxiv.org/html/2601.22996v1",
+        "https://arxiv.org/html/2607.09248v1",
+        "https://arxiv.org/html/2610.15579v1"
+      ]
+    }
+  },
+  "experiment_feedback": {
+    "schema_version": "experiment-feedback-report.v1",
+    "scope": "partial curated experiment feedback; artifact integrity does not establish scientific validity, usefulness, feasibility, or novelty",
+    "records": [
+      {
+        "id": "serving-admission-preflight-v2",
+        "source_urls": [
+          "https://arxiv.org/abs/2610.15579",
+          "https://arxiv.org/abs/2508.14544"
+        ],
+        "tested_change": "Development accounting diagnostic for largest-prompt-first decode admission. Corrected projected-growth admission and pre-EOS peak checking. Across five exposed deterministic traces, four policies finish with no peak violation; two-request counterexample gives largest-first flowtime7 vs smallest-reservation6. No stochastic efficacy gate or hardware result.",
+        "verdict": "diagnostic_counterexample_not_utility_evidence",
+        "scope": "Unit-cost slots, instantaneous transfer, explicit lowerbound1, restart requiresprefill, individuallyfeasibleoraclefixtures; true lengths withheld frompolicy data.",
+        "limitations": [
+          "Cases inspected during debugging; not held-out or independently sampled.",
+          "v1 accounting was invalid and is preserved separately; only corrected v2 peak checks apply.",
+          "Counterexample refutes uniform dominance only; no general rejection of a regime-specific benefit.",
+          "No literature/backpressure performance comparison; generated5% versus3% thresholds unresolved."
+        ],
+        "report_path": "operator-studies/serving-admission-preflight/README.md",
+        "result_path": "operator-studies/serving-admission-preflight/summary.json",
+        "result_sha256": "0bd09b570483b7b3e1861237c0ef737e2bb931edc6e0a5ed4f00cda2fa5acf84",
+        "train_eligible": false,
+        "novelty_established": false,
+        "normalized_source_ids": [
+          "arxiv:2508.14544",
+          "arxiv:2610.15579"
+        ],
+        "artifact_sha256_verified": true
+      },
+      {
+        "id": "serving-largest-prompt-screen-v1",
+        "source_urls": [
+          "https://arxiv.org/abs/2610.15579",
+          "https://arxiv.org/abs/2508.14544"
+        ],
+        "tested_change": "Largest-prompt-first decode admission versus FIFO, smallest-reservation, smallest-prompt, smallest-prefill and FIFO with backpressure in a fixed two-pool simulator. All 1,080 arms completed across 180 synthetic traces. All six primary groups at prefill capacity 8 failed: median mean-flow ratios to the best-control envelope were 1.0000\u20131.1122, and P99 ratios were 1.0000\u20131.1524. No primary group achieved 5% improvement versus FIFO alone. Local ordering candidate closed at these settings.",
+        "verdict": "fails_frozen_local_development_gate",
+        "scope": "24 jobs per trace, 10 seeds, two arrival patterns, three prompt/output associations, three prefill capacities, decode capacity 24. Hidden lengths remain in the oracle; unit-cost slots and instantaneous transfer.",
+        "limitations": [
+          "Synthetic development model, not real serving throughput or a general scheduling conclusion.",
+          "Best-per-trace control envelope is a conservative allocation test, not a realizable oracle policy.",
+          "With24requests P99 is the maximum; no production-tail or population confidence claim.",
+          "No implementation of full literature systems; simple matched controls sufficed for this failure.",
+          "Frozen variant resolves ambiguous generatedthresholds to5% meanflow, not retrospective validation of the original proposal."
+        ],
+        "report_path": "operator-studies/serving-admission-screen/README.md",
+        "result_path": "operator-studies/serving-admission-screen/result.json",
+        "result_sha256": "7359654aa309ede23462bd507461e94d8ec7c76dc32b7c6bb2baf60a6ad0779d",
+        "train_eligible": false,
+        "novelty_established": false,
+        "normalized_source_ids": [
+          "arxiv:2508.14544",
+          "arxiv:2610.15579"
+        ],
+        "artifact_sha256_verified": true
+      }
+    ],
+    "warnings": [
+      "record 'fier-windowquant-onebit-trace-v1' source pair is absent from the supplied source pack",
+      "record 'fier-windowquant-max-aggregation-v1' source pair is absent from the supplied source pack",
+      "record 'felog-rank-varint-walks-v1' source pair is absent from the supplied source pack",
+      "record 'sni-sync-fixedshare-cora-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-mps-cost-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-polynomial-matrix-fidelity-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-refresh-control-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-heldout-control-v1' source pair is absent from the supplied source pack"
+    ],
+    "matched_count": 2,
+    "registry_sha256": "78506b9c3dc53559d82364fa7d5aaab850d74d5752993459db5045c864de56cd"
+  },
+  "source_contracts": {
+    "scope": "Partial curated source declarations; not executable compatibility, novelty or correctness proofs.",
+    "contracts": [],
+    "warnings": [
+      "evidence source mismatch",
+      "evidence source mismatch"
+    ],
+    "matched_count": 0
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v3",
+    "query_hash": "c6b53d3cc8869b1b26a769d40e56318d0143edf5e334cbe87845e35d7b3eccbd",
+    "queries": [
+      "KV cache scheduling",
+      "output length prediction",
+      "prefill decode scheduling"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus"
+    ],
+    "failures": [],
+    "errors": [],
+    "coverage": [
+      {
+        "query": "KV cache scheduling",
+        "compiled_query": "\"KV\" AND \"cache\" AND \"scheduling\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 4
+      },
+      {
+        "query": "output length prediction",
+        "compiled_query": "\"output\" AND \"length\" AND \"prediction\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 3
+      },
+      {
+        "query": "prefill decode scheduling",
+        "compiled_query": "\"prefill\" AND \"decode\" AND \"scheduling\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 3
+      }
+    ],
+    "truncation": {
+      "truncated": true,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "67219dddd8491b9bfbc05a9147e8b698bfc673a8f322b81c43ea131d00a5f844"
+  },
+  "retrieved_source_count": 10,
+  "citation_evidence": {
+    "status": "not_requested"
+  },
+  "portfolio": {
+    "candidates": [
+      {
+        "id": "cand-00",
+        "proposal": {
+          "title": "Certified-lower-bound decode admission with kill-and-restart into prefill-retained state for two-pool non-clairvoyant serving",
+          "hypothesis": "In a two-pool simulator with unknown output lengths and decode memory overflow, decode admission that uses a per-request certified lower bound counter and evicts the smallest bound first lowers mean flow time by at least 5% compared with peak-reservation backpressure at a fixed maximum length. Both policies must have zero memory violations.",
+          "baseline": "DMRS Algorithm 1 decode-admission step (2610.15579v1, lines 11-13): admit from W while sum of h_j plus h_i is at most M_D. Because h is unknown online, the non-clairvoyant instantiation sets h_i = p_i + u_max. This is the A_max analogue of 2508.14544v2. The strongest supplied non-clairvoyant control is A_min (2508.14544v2 Algorithm 2), applied to the decode pool alone.",
+          "operator_delta": "Replace peak reservation with A_min-style lower-bound admission plus ordered eviction in the decode pool. The eviction transition is the new part: an evicted request's retained-cache location is determined by whether the prompt KV is still held in prefill memory, and that occupancy counts against M_P.",
+          "contribution_claims": [
+            {
+              "id": "C1",
+              "text": "State-transition rule: decode eviction returns a request to W only if its prompt KV is retained and counted in the M_P constraint; otherwise it returns to U and needs re-prefill.",
+              "role": "central",
+              "kind": "method"
+            },
+            {
+              "id": "C2",
+              "text": "Two-pool accounting simulator with projected-growth checks, reusing the corrected v2 peak checking.",
+              "role": "supporting",
+              "kind": "resource"
+            },
+            {
+              "id": "C3",
+              "text": "Hypothesized at least 5% mean-flow gain over peak-reservation backpressure in tight-M_D, short-output-dominated traces.",
+              "role": "supporting",
+              "kind": "expected_result"
+            }
+          ],
+          "mechanism_check": {
+            "status": "unresolved",
+            "assumption_scope": "A_min assumes one memory pool, a common prompt length s, and a known lower bound \u2113. DMRS assumes known d_i and instantaneous transfer. The target has heterogeneous p_i, two pools, and a retained cache. These are excluded regimes for each source, not contradictions.",
+            "specialized_operation": "Each slot: (1) for D, if the sum of (p_i + a_i + 1) would exceed M_D, sort D by \u00f5_i ascending and evict until the projected sum fits; set \u00f5_i to a_i. (2) An evicted request with a prefill copy kept goes to W and consumes p_i in M_P; otherwise it goes to U. (3) Admit from W in ascending \u00f5_i while the sum of (p_j + a_j + 1) stays within M_D. (4) Prefill admits FIFO under the M_P constraint (1e).",
+            "remaining_effect": "If no prefill copy is kept, the policy reduces to A_min applied to the decode pool plus the DMRS prefill rule; the only added effect is cross-pool coupling. Whether keeping the copy beats re-prefill, given the M_P pressure it creates, is unresolved.",
+            "simplest_baseline": "A_min applied to decode with re-prefill on eviction. Its cost is repeated prefill compute; it has no M_P coupling.",
+            "distinguishing_test": "Run a matched ablation: retain-copy versus discard-copy under an identical A_min decode rule, sweeping M_P tightness."
+          },
+          "evidence": [
+            {
+              "chunk_id": "2610.15579v1:chunk:0002",
+              "supports": "Waiting requests occupy prefill memory.",
+              "quote": "[Verbatim span retained locally]",
+              "quote_sha256": "7e8660bedb5be3e5cb20d14ffcfc0fc114351b7ff6cc023500e29e3394a64535"
+            },
+            {
+              "chunk_id": "2508.14544v2:chunk:0001",
+              "supports": "Ordered-eviction rule based on certified lower bounds.",
+              "quote": "[Verbatim span retained locally]",
+              "quote_sha256": "1ee786b0506fd22bc99808f4b82c381391affc613abb64e91c6715c99fcff4f7"
+            },
+            {
+              "chunk_id": "2610.15579v1:chunk:0006",
+              "supports": "DMRS memory safety is accounting, not allocation.",
+              "quote": "[Verbatim span retained locally]",
+              "quote_sha256": "f7d5e6c2d836d57c20a7e6507dacaaac4216ca3f6f8ba839d15a62edb2dcf70d"
+            }
+          ],
+          "assumptions": [
+            "Generated token count a_i is observable online.",
+            "Restart cost equals m_i for re-prefill, or a transfer cost for a retained copy.",
+            "Lengths are deterministic under greedy decoding."
+          ],
+          "data_paths": [
+            {
+              "input": "p_i, a_i, pool occupancies",
+              "operation": "lower-bound admission and eviction",
+              "output": "S_i^D and the eviction set",
+              "possible_leakage": "The simulator oracle holds d_i. The policy must read only a_i and EOS events."
+            }
+          ],
+          "counterexample": "Very long outputs and tight M_D cause repeated evictions. Wasted decode work then exceeds what peak reservation would idle, so peak reservation wins.",
+          "matched_control": "The same simulator and prefill rule, with decode using peak reservation at u_max. A second control is A_min with discard-copy.",
+          "experiment": {
+            "development": "New synthetic traces with seeds not used in the serving-admission screens, two-pool, unit slots.",
+            "heldout": "Freshly sampled seeds and a length distribution not inspected during development. Do not reuse the 180 exposed traces.",
+            "metric": "Mean flow-time ratio per trace, median over seeds, plus a count of violations.",
+            "kill_threshold": "Stop if the median ratio to the best simple control exceeds 0.95, or if any memory violation occurs."
+          },
+          "prior_art_difference": "Overlaps A_min (eviction by lower bound) and DMRS (retained cache). The unverified difference is eviction that targets retained prefill state. This is unlike the local largest-prompt screen, which changed only the waiting-queue order and had no eviction.",
+          "decision": "investigate",
+          "novelty_established": false
+        },
+        "fingerprint": "67e8701e76c7cd5d58e6a1d1313d17128321ffdb566d0cbabaa3896305bf662a",
+        "exact_duplicate_of": null,
+        "auto_eligible": false,
+        "near_duplicate_of": []
+      },
+      {
+        "id": "cand-01",
+        "proposal": {
+          "title": "Geometric decode slicing with prefill-side retained restart",
+          "hypothesis": "Applying GSA-style geometric response caps to decode admission, with killed requests returning to W instead of U, reduces mean flow time by at least 5% compared with full re-prefill GSA when M_P has slack.",
+          "baseline": "GSA (2601.22996v1 Algorithm 2), in which killed jobs discard progress and restart. Restart cost there models re-prefill.",
+          "operator_delta": "Change only the kill transition: when a decode job reaches its phase cap \u03c4_p, its prompt KV is returned to, or kept in, prefill memory (W) rather than discarded.",
+          "contribution_claims": [
+            {
+              "id": "C1",
+              "text": "A kill transition targeting a retained prompt cache that is counted in the M_P constraint.",
+              "role": "central",
+              "kind": "method"
+            },
+            {
+              "id": "C2",
+              "text": "Hypothesized gain is limited to settings with prefill-memory slack.",
+              "role": "supporting",
+              "kind": "expected_result"
+            }
+          ],
+          "mechanism_check": {
+            "status": "unresolved",
+            "assumption_scope": "GSA assumes identical prompts, an offline batch, and a single pool. Online arrivals and heterogeneous p_i are excluded regimes. The second source notes that relaxing these leads to hardness.",
+            "specialized_operation": "Phase p: run SPS with \u03c4_p on D. When a job reaches \u03c4_p without EOS, discard its decode tokens and move the prompt KV to W, which requires an available p_i in M_P (transfer back). Otherwise move it to U. The next phase uses \u03c4_{p+1} = \u03b1\u00b7\u03c4_p.",
+            "remaining_effect": "The saved compute is only m_i per kill. With unit-cost slots and m_i = 1, the gain is near zero, so the effect survives only when m_i is large relative to \u03c4.",
+            "simplest_baseline": "GSA with re-prefill. Another simple option is keeping the prompt in decode memory, but that reduces k*.",
+            "distinguishing_test": "Analytically count kills times m_i against total flow time. Run the simulator only if that ratio exceeds 5%."
+          },
+          "evidence": [
+            {
+              "chunk_id": "2601.22996v1:chunk:0001",
+              "supports": "Restart cost is re-prefill.",
+              "quote": "[Verbatim span retained locally]",
+              "quote_sha256": "e4adb9b56d3db8c661529654455ccaf96e391c2cf9be618b10bd5d583df93f3d"
+            },
+            {
+              "chunk_id": "2601.22996v1:chunk:0002",
+              "supports": "Kills are bounded per job.",
+              "quote": "[Verbatim span retained locally]",
+              "quote_sha256": "fe0c92c113b2a48201b5d29e3e4bfc0dd6c7139a53a92f9087dfb74c60b294fe"
+            }
+          ],
+          "assumptions": [
+            "KV transfer back to prefill is feasible and costs less than m_i.",
+            "SPS can be adapted to heterogeneous p_i using a proxy prompt, as in 2607.09248v1."
+          ],
+          "data_paths": [
+            {
+              "input": "EOS events and the phase cap",
+              "operation": "kill and route to W or U",
+              "output": "Restart queue",
+              "possible_leakage": "None if \u03c4 is set without oracle lengths."
+            }
+          ],
+          "counterexample": "With m_i = 1 slot and transfer cost of at least 1, retention saves nothing and consumes M_P.",
+          "matched_control": "The same GSA phases and \u03b1, with kills routed to U.",
+          "experiment": {
+            "development": "Fresh synthetic traces with m_i proportional to p_i.",
+            "heldout": "New seeds and a different prompt distribution.",
+            "metric": "Median mean-flow ratio.",
+            "kill_threshold": "Reject if the analytic saved fraction is below 5%, or if the empirical ratio exceeds 0.95."
+          },
+          "prior_art_difference": "GSA and Regime-Aware Routing supply both the slicing and the restart. The only proposed difference is the retained target. No local experiment tested this.",
+          "decision": "revise",
+          "novelty_established": false
+        },
+        "fingerprint": "4d17dff82afce24be5ade15a969c150236210f6e25f64655895d17a44736c5ee",
+        "exact_duplicate_of": null,
+        "auto_eligible": false,
+        "near_duplicate_of": []
+      },
+      {
+        "id": "cand-02",
+        "proposal": {
+          "title": "Arrow-style pool reallocation triggered by retained-cache pressure",
+          "hypothesis": "Shifting memory or instances between pools when W occupancy exceeds a fraction of M_P improves mean flow time over static pools.",
+          "baseline": "Arrow Algorithm 2, which flips instances based on TTFT/TPOT load (2505.11916v2).",
+          "operator_delta": "Use the fraction of retained-cache occupancy in prefill memory as the flip signal instead of SLO load.",
+          "contribution_claims": [
+            {
+              "id": "C1",
+              "text": "A flip trigger based on the size of W.",
+              "role": "central",
+              "kind": "method"
+            }
+          ],
+          "mechanism_check": {
+            "status": "redundant",
+            "assumption_scope": "Arrow uses stateless instances and SLO loads. Its flips already address decode overload, which is the cause of a growing W.",
+            "specialized_operation": "Each interval: if the sum over W of p_i divided by M_P is at least \u03b8, flip a prefill instance to decode. In Arrow, high decode load (L_D \u2265 L_EXPAND) already triggers the same flip.",
+            "remaining_effect": "A large W occurs exactly when decode admission stalls, which coincides with high decode load. After substitution, the signal mostly rescales Arrow's trigger, so it amounts to threshold tuning.",
+            "simplest_baseline": "Arrow P\u2192D flip on L_D, which carries cooldown costs.",
+            "distinguishing_test": "Measure the correlation between the W fraction and L_D in traces. Do not proceed unless there are many cases where the two diverge."
+          },
+          "evidence": [
+            {
+              "chunk_id": "2505.11916v2:chunk:0004",
+              "supports": "Arrow already targets this failure.",
+              "quote": "[Verbatim span retained locally]",
+              "quote_sha256": "ca5cf8e53c1d5464cc43a999522098e170318bcea82e4334b811dc4d72301ed9"
+            }
+          ],
+          "assumptions": [
+            "Pool memory can be reassigned."
+          ],
+          "data_paths": [
+            {
+              "input": "W occupancy",
+              "operation": "threshold flip",
+              "output": "Pool sizes",
+              "possible_leakage": "none"
+            }
+          ],
+          "counterexample": "Any trace where W grows only under decode overload, in which case the policy is identical to Arrow.",
+          "matched_control": "Arrow flip based on L_D with the same cooldown.",
+          "experiment": {
+            "development": "None recommended.",
+            "heldout": "None.",
+            "metric": "Not applicable.",
+            "kill_threshold": "Rejected before any experiment."
+          },
+          "prior_art_difference": "Substantially overlaps Arrow and FlowKV's load-aware allocation. This candidate is threshold tuning.",
+          "decision": "reject",
+          "novelty_established": false
+        },
+        "fingerprint": "c497797b3084bd5ceb039fc3013dc0736f098598c212408a20c4b99df96f9098",
+        "exact_duplicate_of": null,
+        "auto_eligible": false,
+        "near_duplicate_of": []
+      }
+    ],
+    "diagnostics": {
+      "exact_duplicate_groups": [],
+      "near_duplicate_pairs": [],
+      "scope": "Deterministic structural diagnostics only; no novelty or usefulness score."
+    },
+    "scope": "Same-call candidate breadth diagnostic; not independent samples, novelty or utility measurement.",
+    "review": {
+      "reviews": [
+        {
+          "candidate_id": "cand-00",
+          "review": {
+            "claim_assessments": [
+              {
+                "claim_id": "C1",
+                "coverage": "partial",
+                "checked_chunk_ids": [
+                  "2610.15579v1:chunk:0002",
+                  "2508.14544v2:chunk:0001",
+                  "2601.22996v1:chunk:0001"
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "2610.15579v1:chunk:0002",
+                    "supports": "DMRS already counts retained prompt KV in M_P for requests in W.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "7e8660bedb5be3e5cb20d14ffcfc0fc114351b7ff6cc023500e29e3394a64535"
+                  },
+                  {
+                    "chunk_id": "2508.14544v2:chunk:0001",
+                    "supports": "A_min eviction resets the job to unprocessed, which corresponds to returning it to U.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "0f5d019e6a713f1eab52c5defc66cdc8046bdd1a93844a66a45beecac190f1a4"
+                  },
+                  {
+                    "chunk_id": "2601.22996v1:chunk:0001",
+                    "supports": "The choice between keeping and discarding KV state on preemption is already named.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "7d6cea48e25639501883d076854994d058ddb1a3517fc0d54bc7a4109c28e372"
+                  }
+                ],
+                "reason": "Each component appears in the evidence: retained-cache accounting in DMRS, eviction with reset in A_min, and swap versus discard in GSA. No supplied chunk describes routing a decode eviction back into a prefill-held copy that is counted in M_P. That composition is not found, but this does not establish novelty."
+              },
+              {
+                "claim_id": "C2",
+                "coverage": "partial",
+                "checked_chunk_ids": [
+                  "local_experiment:serving-admission-preflight-v2",
+                  "2610.15579v1:chunk:0003"
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "local_experiment:serving-admission-preflight-v2",
+                    "supports": "The v2 peak checking that this claim reuses already exists locally.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "4d7ee0ddf9bd9bd5bdda66cacffedf78658f5844510cf8b64b4a7625b0c8f41e"
+                  }
+                ],
+                "reason": "This is a resource built from existing local accounting plus the DMRS constraints (1e) and (1f). The only new part is the eviction state."
+              },
+              {
+                "claim_id": "C3",
+                "coverage": "unknown",
+                "checked_chunk_ids": [
+                  "local_experiment:serving-largest-prompt-screen-v1"
+                ],
+                "evidence": [],
+                "reason": "The 5% gain is a hypothesis, not an observation. The local screen tested only waiting-queue ordering and did not test eviction."
+              }
+            ],
+            "mechanism_check": {
+              "status": "unresolved",
+              "assumption_scope": "A_min assumes one pool and a common prompt length s. DMRS assumes the output length d_i is known and transfer is instantaneous. The target has heterogeneous p_i, two pools and unknown d_i. These are regimes the sources exclude, not contradictions of them.",
+              "specialized_operation": "Each slot runs four steps. (1) If the sum over D of (p_i+a_i+1) exceeds M_D, evict in ascending order of \u00f5_i and set \u00f5_i=a_i. (2) An evicted request goes to W if p_i fits in M_P, otherwise to U. (3) Admit from W in ascending order of \u00f5_i while the sum of (p_j+1) fits. (4) Prefill admits FIFO under constraint (1e).",
+              "remaining_effect": "With the retained copy discarded, the policy reduces to A_min on the decode pool. The surviving effect is that retention saves m_i per eviction but costs M_P occupancy. Whether that trade is net positive is unresolved.",
+              "simplest_baseline": "A_min on decode with re-prefill on eviction. It repeats prefill compute and has no M_P coupling. A second baseline is DMRS peak reservation at u_max, which idles memory when outputs are short.",
+              "distinguishing_test": "Count evictions \u00d7 m_i analytically on fresh traces. Then run a matched retain versus discard comparison under the same A_min rule, sweeping M_P."
+            },
+            "decision": "test",
+            "failure_type": "none_found",
+            "reason": "There are two separable effects. Lower-bound admission versus peak reservation is mostly prior art from A_min. Retain versus discard is the unverified addition. The proposal already supplies controls for both, and both tests are cheap.",
+            "evidence": [
+              {
+                "chunk_id": "2508.14544v2:chunk:0001",
+                "supports": "The ordered-eviction rule comes from A_min.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "1ee786b0506fd22bc99808f4b82c381391affc613abb64e91c6715c99fcff4f7"
+              },
+              {
+                "chunk_id": "2610.15579v1:chunk:0006",
+                "supports": "The target regime is the future work that DMRS names.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "4c8f256e1b7aa5fd062e83515cea5c191609a05759f748c0214a6e2f038d6daa"
+              }
+            ],
+            "strongest_counterargument": "Any gain over peak reservation may come entirely from A_min, and the retention part may be negligible when m_i is small. In that case the contribution is a straightforward composition of known pieces.",
+            "required_test": "First, an analytic count of the share of total flow time saved by retention (evictions \u00d7 m_i). Then, if that share is material, a held-out simulation of retain versus discard against peak reservation.",
+            "novelty_established": false
+          }
+        },
+        {
+          "candidate_id": "cand-01",
+          "review": {
+            "claim_assessments": [
+              {
+                "claim_id": "C1",
+                "coverage": "partial",
+                "checked_chunk_ids": [
+                  "2601.22996v1:chunk:0001",
+                  "2601.22996v1:chunk:0002",
+                  "2610.15579v1:chunk:0002"
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "2601.22996v1:chunk:0001",
+                    "supports": "In GSA, killing a job forces re-prefill.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "e4adb9b56d3db8c661529654455ccaf96e391c2cf9be618b10bd5d583df93f3d"
+                  },
+                  {
+                    "chunk_id": "2610.15579v1:chunk:0002",
+                    "supports": "Retained-cache accounting in M_P already exists in DMRS.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "10633b579b80a7ac2bca79b4e4085933758083f1bacf7633f0ead171f8afd95c"
+                  }
+                ],
+                "reason": "This is the same retained-target kill transition as cand-00 C1, applied to GSA phase kills instead of A_min overflow evictions."
+              },
+              {
+                "claim_id": "C2",
+                "coverage": "unknown",
+                "checked_chunk_ids": [
+                  "2601.22996v1:chunk:0002"
+                ],
+                "evidence": [],
+                "reason": "The expected gain is a hypothesis. It also depends on m_i being large, which is unspecified."
+              }
+            ],
+            "mechanism_check": {
+              "status": "unresolved",
+              "assumption_scope": "GSA assumes identical prompts, an offline batch and a single pool. Heterogeneous prompts are handled only through the proxy prompts of the regime-aware routing paper (2607.09248v1).",
+              "specialized_operation": "In phase p, a job that is killed at \u03c4_p and still fits in M_P moves to W, and is otherwise sent to U. The next phase uses \u03c4_{p+1}=\u03b1\u03c4_p.",
+              "remaining_effect": "The saving is the number of kills times m_i. This is near zero when m_i=1.",
+              "simplest_baseline": "GSA with re-prefill.",
+              "distinguishing_test": "Analytically compare the number of kills \u00d7 m_i against total flow time."
+            },
+            "decision": "revise",
+            "failure_type": "unsupported_assumption",
+            "reason": "The mechanism is the same as cand-00's retention ablation. It adds a dependence on adapting SPS to heterogeneous p_i, and assumes a transfer cost below m_i, which is unsupported.",
+            "evidence": [
+              {
+                "chunk_id": "2601.22996v1:chunk:0002",
+                "supports": "Bounded kills limit how much retention can save.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "fe0c92c113b2a48201b5d29e3e4bfc0dd6c7139a53a92f9087dfb74c60b294fe"
+              }
+            ],
+            "strongest_counterargument": "Geometric kills are more frequent than A_min evictions, so retention might pay off more here.",
+            "required_test": "The analytic saved-fraction bound.",
+            "novelty_established": false
+          }
+        },
+        {
+          "candidate_id": "cand-02",
+          "review": {
+            "claim_assessments": [
+              {
+                "claim_id": "C1",
+                "coverage": "covered",
+                "checked_chunk_ids": [
+                  "2505.11916v2:chunk:0003",
+                  "2505.11916v2:chunk:0004",
+                  "prior_art:8fd8baa117066f344265"
+                ],
+                "evidence": [
+                  {
+                    "chunk_id": "2505.11916v2:chunk:0004",
+                    "supports": "Arrow already targets the failure of a growing W.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "ca5cf8e53c1d5464cc43a999522098e170318bcea82e4334b811dc4d72301ed9"
+                  },
+                  {
+                    "chunk_id": "2505.11916v2:chunk:0003",
+                    "supports": "Arrow's existing flip trigger is decode load, which co-occurs with a growing W.",
+                    "quote": "[Verbatim span retained locally]",
+                    "quote_sha256": "9b9fb9b14f413096a0c75af708cd2545822fc467d2aec553ff5338ca6c770f70"
+                  }
+                ],
+                "reason": "The proposed trigger mostly rescales Arrow's existing flip trigger."
+              }
+            ],
+            "mechanism_check": {
+              "status": "redundant",
+              "assumption_scope": "Arrow uses stateless instances. Reassigning memory between pools is an assumption the proposal does not support.",
+              "specialized_operation": "Flip when the sum over W of p_i divided by M_P is at least \u03b8, which tracks L_D \u2265 L_EXPAND.",
+              "remaining_effect": "Only threshold tuning remains.",
+              "simplest_baseline": "Arrow's P\u2192D flip on L_D, with cooldown.",
+              "distinguishing_test": "Measure the correlation between the W fraction and L_D."
+            },
+            "decision": "reject",
+            "failure_type": "prior_art_overlap",
+            "reason": "After substitution, the signal is redundant with Arrow's decode-load trigger.",
+            "evidence": [
+              {
+                "chunk_id": "2505.11916v2:chunk:0004",
+                "supports": "Arrow already biases flips toward decode.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "8fda208a2da78bf3d23418f6c1468fbd137f8a1464b30f3a57103404c4df7934"
+              }
+            ],
+            "strongest_counterargument": "W can grow because of M_D memory limits while TPOT stays fine. In that case L_D would stay low and the two triggers would diverge.",
+            "required_test": "A divergence count between the W fraction and L_D on traces.",
+            "novelty_established": false
+          }
+        }
+      ],
+      "comparisons": [
+        {
+          "candidate_ids": [
+            "cand-00",
+            "cand-01"
+          ],
+          "relationship": "same_mechanism",
+          "reason": "Both change the preemption target to a retained prefill copy counted in M_P. Only the eviction trigger differs: A_min memory overflow versus a GSA phase cap. The observable is the same, namely saved re-prefill versus M_P pressure."
+        },
+        {
+          "candidate_ids": [
+            "cand-00",
+            "cand-02"
+          ],
+          "relationship": "different_mechanism",
+          "reason": "cand-00 changes per-request admission and eviction. cand-02 changes pool sizing."
+        },
+        {
+          "candidate_ids": [
+            "cand-01",
+            "cand-02"
+          ],
+          "relationship": "different_mechanism",
+          "reason": "cand-01 changes the kill-state transition. cand-02 changes the instance flip trigger."
+        }
+      ],
+      "selected_candidate_id": "cand-00",
+      "selection_reason": "cand-00 has explicit matched controls: peak reservation, and A_min with discard-copy. It also has a cheap first check: analytically count evictions \u00d7 m_i, then run the retain versus discard ablation while sweeping M_P. That ablation decides cand-01's mechanism too. Selection is for human inspection only and does not authorize an experiment.",
+      "novelty_established": false,
+      "scope": "Review bookkeeping only; no automatic novelty, usefulness, or promotion decision."
+    },
+    "claim_assessments": {
+      "cand-00": {
+        "status": "mixed_or_partial_overlap_reported",
+        "claims": [
+          {
+            "claim_id": "C1",
+            "coverage": "partial",
+            "checked_chunk_ids": [
+              "2610.15579v1:chunk:0002",
+              "2508.14544v2:chunk:0001",
+              "2601.22996v1:chunk:0001"
+            ],
+            "evidence": [
+              {
+                "chunk_id": "2610.15579v1:chunk:0002",
+                "supports": "DMRS already counts retained prompt KV in M_P for requests in W.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "7e8660bedb5be3e5cb20d14ffcfc0fc114351b7ff6cc023500e29e3394a64535"
+              },
+              {
+                "chunk_id": "2508.14544v2:chunk:0001",
+                "supports": "A_min eviction resets the job to unprocessed, which corresponds to returning it to U.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "0f5d019e6a713f1eab52c5defc66cdc8046bdd1a93844a66a45beecac190f1a4"
+              },
+              {
+                "chunk_id": "2601.22996v1:chunk:0001",
+                "supports": "The choice between keeping and discarding KV state on preemption is already named.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "7d6cea48e25639501883d076854994d058ddb1a3517fc0d54bc7a4109c28e372"
+              }
+            ],
+            "reason": "Each component appears in the evidence: retained-cache accounting in DMRS, eviction with reset in A_min, and swap versus discard in GSA. No supplied chunk describes routing a decode eviction back into a prefill-held copy that is counted in M_P. That composition is not found, but this does not establish novelty.",
+            "claim": {
+              "id": "C1",
+              "text": "State-transition rule: decode eviction returns a request to W only if its prompt KV is retained and counted in the M_P constraint; otherwise it returns to U and needs re-prefill.",
+              "role": "central",
+              "kind": "method"
+            }
+          },
+          {
+            "claim_id": "C2",
+            "coverage": "partial",
+            "checked_chunk_ids": [
+              "local_experiment:serving-admission-preflight-v2",
+              "2610.15579v1:chunk:0003"
+            ],
+            "evidence": [
+              {
+                "chunk_id": "local_experiment:serving-admission-preflight-v2",
+                "supports": "The v2 peak checking that this claim reuses already exists locally.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "4d7ee0ddf9bd9bd5bdda66cacffedf78658f5844510cf8b64b4a7625b0c8f41e"
+              }
+            ],
+            "reason": "This is a resource built from existing local accounting plus the DMRS constraints (1e) and (1f). The only new part is the eviction state.",
+            "claim": {
+              "id": "C2",
+              "text": "Two-pool accounting simulator with projected-growth checks, reusing the corrected v2 peak checking.",
+              "role": "supporting",
+              "kind": "resource"
+            }
+          },
+          {
+            "claim_id": "C3",
+            "coverage": "unknown",
+            "checked_chunk_ids": [
+              "local_experiment:serving-largest-prompt-screen-v1"
+            ],
+            "evidence": [],
+            "reason": "The 5% gain is a hypothesis, not an observation. The local screen tested only waiting-queue ordering and did not test eviction.",
+            "claim": {
+              "id": "C3",
+              "text": "Hypothesized at least 5% mean-flow gain over peak-reservation backpressure in tight-M_D, short-output-dominated traces.",
+              "role": "supporting",
+              "kind": "expected_result"
+            }
+          }
+        ],
+        "novelty_estimate": null,
+        "novelty_established": false,
+        "train_eligible": false,
+        "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection."
+      },
+      "cand-01": {
+        "status": "mixed_or_partial_overlap_reported",
+        "claims": [
+          {
+            "claim_id": "C1",
+            "coverage": "partial",
+            "checked_chunk_ids": [
+              "2601.22996v1:chunk:0001",
+              "2601.22996v1:chunk:0002",
+              "2610.15579v1:chunk:0002"
+            ],
+            "evidence": [
+              {
+                "chunk_id": "2601.22996v1:chunk:0001",
+                "supports": "In GSA, killing a job forces re-prefill.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "e4adb9b56d3db8c661529654455ccaf96e391c2cf9be618b10bd5d583df93f3d"
+              },
+              {
+                "chunk_id": "2610.15579v1:chunk:0002",
+                "supports": "Retained-cache accounting in M_P already exists in DMRS.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "10633b579b80a7ac2bca79b4e4085933758083f1bacf7633f0ead171f8afd95c"
+              }
+            ],
+            "reason": "This is the same retained-target kill transition as cand-00 C1, applied to GSA phase kills instead of A_min overflow evictions.",
+            "claim": {
+              "id": "C1",
+              "text": "A kill transition targeting a retained prompt cache that is counted in the M_P constraint.",
+              "role": "central",
+              "kind": "method"
+            }
+          },
+          {
+            "claim_id": "C2",
+            "coverage": "unknown",
+            "checked_chunk_ids": [
+              "2601.22996v1:chunk:0002"
+            ],
+            "evidence": [],
+            "reason": "The expected gain is a hypothesis. It also depends on m_i being large, which is unspecified.",
+            "claim": {
+              "id": "C2",
+              "text": "Hypothesized gain is limited to settings with prefill-memory slack.",
+              "role": "supporting",
+              "kind": "expected_result"
+            }
+          }
+        ],
+        "novelty_estimate": null,
+        "novelty_established": false,
+        "train_eligible": false,
+        "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection."
+      },
+      "cand-02": {
+        "status": "central_overlap_reported",
+        "claims": [
+          {
+            "claim_id": "C1",
+            "coverage": "covered",
+            "checked_chunk_ids": [
+              "2505.11916v2:chunk:0003",
+              "2505.11916v2:chunk:0004",
+              "prior_art:8fd8baa117066f344265"
+            ],
+            "evidence": [
+              {
+                "chunk_id": "2505.11916v2:chunk:0004",
+                "supports": "Arrow already targets the failure of a growing W.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "ca5cf8e53c1d5464cc43a999522098e170318bcea82e4334b811dc4d72301ed9"
+              },
+              {
+                "chunk_id": "2505.11916v2:chunk:0003",
+                "supports": "Arrow's existing flip trigger is decode load, which co-occurs with a growing W.",
+                "quote": "[Verbatim span retained locally]",
+                "quote_sha256": "9b9fb9b14f413096a0c75af708cd2545822fc467d2aec553ff5338ca6c770f70"
+              }
+            ],
+            "reason": "The proposed trigger mostly rescales Arrow's existing flip trigger.",
+            "claim": {
+              "id": "C1",
+              "text": "A flip trigger based on the size of W.",
+              "role": "central",
+              "kind": "method"
+            }
+          }
+        ],
+        "novelty_estimate": null,
+        "novelty_established": false,
+        "train_eligible": false,
+        "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection."
+      }
+    }
+  },
+  "proposal": {
+    "title": "Certified-lower-bound decode admission with kill-and-restart into prefill-retained state for two-pool non-clairvoyant serving",
+    "hypothesis": "In a two-pool simulator with unknown output lengths and decode memory overflow, decode admission that uses a per-request certified lower bound counter and evicts the smallest bound first lowers mean flow time by at least 5% compared with peak-reservation backpressure at a fixed maximum length. Both policies must have zero memory violations.",
+    "baseline": "DMRS Algorithm 1 decode-admission step (2610.15579v1, lines 11-13): admit from W while sum of h_j plus h_i is at most M_D. Because h is unknown online, the non-clairvoyant instantiation sets h_i = p_i + u_max. This is the A_max analogue of 2508.14544v2. The strongest supplied non-clairvoyant control is A_min (2508.14544v2 Algorithm 2), applied to the decode pool alone.",
+    "operator_delta": "Replace peak reservation with A_min-style lower-bound admission plus ordered eviction in the decode pool. The eviction transition is the new part: an evicted request's retained-cache location is determined by whether the prompt KV is still held in prefill memory, and that occupancy counts against M_P.",
+    "contribution_claims": [
+      {
+        "id": "C1",
+        "text": "State-transition rule: decode eviction returns a request to W only if its prompt KV is retained and counted in the M_P constraint; otherwise it returns to U and needs re-prefill.",
+        "role": "central",
+        "kind": "method"
+      },
+      {
+        "id": "C2",
+        "text": "Two-pool accounting simulator with projected-growth checks, reusing the corrected v2 peak checking.",
+        "role": "supporting",
+        "kind": "resource"
+      },
+      {
+        "id": "C3",
+        "text": "Hypothesized at least 5% mean-flow gain over peak-reservation backpressure in tight-M_D, short-output-dominated traces.",
+        "role": "supporting",
+        "kind": "expected_result"
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "A_min assumes one memory pool, a common prompt length s, and a known lower bound \u2113. DMRS assumes known d_i and instantaneous transfer. The target has heterogeneous p_i, two pools, and a retained cache. These are excluded regimes for each source, not contradictions.",
+      "specialized_operation": "Each slot: (1) for D, if the sum of (p_i + a_i + 1) would exceed M_D, sort D by \u00f5_i ascending and evict until the projected sum fits; set \u00f5_i to a_i. (2) An evicted request with a prefill copy kept goes to W and consumes p_i in M_P; otherwise it goes to U. (3) Admit from W in ascending \u00f5_i while the sum of (p_j + a_j + 1) stays within M_D. (4) Prefill admits FIFO under the M_P constraint (1e).",
+      "remaining_effect": "If no prefill copy is kept, the policy reduces to A_min applied to the decode pool plus the DMRS prefill rule; the only added effect is cross-pool coupling. Whether keeping the copy beats re-prefill, given the M_P pressure it creates, is unresolved.",
+      "simplest_baseline": "A_min applied to decode with re-prefill on eviction. Its cost is repeated prefill compute; it has no M_P coupling.",
+      "distinguishing_test": "Run a matched ablation: retain-copy versus discard-copy under an identical A_min decode rule, sweeping M_P tightness."
+    },
+    "evidence": [
+      {
+        "chunk_id": "2610.15579v1:chunk:0002",
+        "supports": "Waiting requests occupy prefill memory.",
+        "quote": "[Verbatim span retained locally]",
+        "quote_sha256": "7e8660bedb5be3e5cb20d14ffcfc0fc114351b7ff6cc023500e29e3394a64535"
+      },
+      {
+        "chunk_id": "2508.14544v2:chunk:0001",
+        "supports": "Ordered-eviction rule based on certified lower bounds.",
+        "quote": "[Verbatim span retained locally]",
+        "quote_sha256": "1ee786b0506fd22bc99808f4b82c381391affc613abb64e91c6715c99fcff4f7"
+      },
+      {
+        "chunk_id": "2610.15579v1:chunk:0006",
+        "supports": "DMRS memory safety is accounting, not allocation.",
+        "quote": "[Verbatim span retained locally]",
+        "quote_sha256": "f7d5e6c2d836d57c20a7e6507dacaaac4216ca3f6f8ba839d15a62edb2dcf70d"
+      }
+    ],
+    "assumptions": [
+      "Generated token count a_i is observable online.",
+      "Restart cost equals m_i for re-prefill, or a transfer cost for a retained copy.",
+      "Lengths are deterministic under greedy decoding."
+    ],
+    "data_paths": [
+      {
+        "input": "p_i, a_i, pool occupancies",
+        "operation": "lower-bound admission and eviction",
+        "output": "S_i^D and the eviction set",
+        "possible_leakage": "The simulator oracle holds d_i. The policy must read only a_i and EOS events."
+      }
+    ],
+    "counterexample": "Very long outputs and tight M_D cause repeated evictions. Wasted decode work then exceeds what peak reservation would idle, so peak reservation wins.",
+    "matched_control": "The same simulator and prefill rule, with decode using peak reservation at u_max. A second control is A_min with discard-copy.",
+    "experiment": {
+      "development": "New synthetic traces with seeds not used in the serving-admission screens, two-pool, unit slots.",
+      "heldout": "Freshly sampled seeds and a length distribution not inspected during development. Do not reuse the 180 exposed traces.",
+      "metric": "Mean flow-time ratio per trace, median over seeds, plus a count of violations.",
+      "kill_threshold": "Stop if the median ratio to the best simple control exceeds 0.95, or if any memory violation occurs."
+    },
+    "prior_art_difference": "Overlaps A_min (eviction by lower bound) and DMRS (retained cache). The unverified difference is eviction that targets retained prefill state. This is unlike the local largest-prompt screen, which changed only the waiting-queue order and had no eviction.",
+    "decision": "investigate",
+    "novelty_established": false
+  },
+  "review": {
+    "claim_assessments": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0002",
+          "2508.14544v2:chunk:0001",
+          "2601.22996v1:chunk:0001"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2610.15579v1:chunk:0002",
+            "supports": "DMRS already counts retained prompt KV in M_P for requests in W.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "7e8660bedb5be3e5cb20d14ffcfc0fc114351b7ff6cc023500e29e3394a64535"
+          },
+          {
+            "chunk_id": "2508.14544v2:chunk:0001",
+            "supports": "A_min eviction resets the job to unprocessed, which corresponds to returning it to U.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "0f5d019e6a713f1eab52c5defc66cdc8046bdd1a93844a66a45beecac190f1a4"
+          },
+          {
+            "chunk_id": "2601.22996v1:chunk:0001",
+            "supports": "The choice between keeping and discarding KV state on preemption is already named.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "7d6cea48e25639501883d076854994d058ddb1a3517fc0d54bc7a4109c28e372"
+          }
+        ],
+        "reason": "Each component appears in the evidence: retained-cache accounting in DMRS, eviction with reset in A_min, and swap versus discard in GSA. No supplied chunk describes routing a decode eviction back into a prefill-held copy that is counted in M_P. That composition is not found, but this does not establish novelty."
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "local_experiment:serving-admission-preflight-v2",
+          "2610.15579v1:chunk:0003"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "local_experiment:serving-admission-preflight-v2",
+            "supports": "The v2 peak checking that this claim reuses already exists locally.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "4d7ee0ddf9bd9bd5bdda66cacffedf78658f5844510cf8b64b4a7625b0c8f41e"
+          }
+        ],
+        "reason": "This is a resource built from existing local accounting plus the DMRS constraints (1e) and (1f). The only new part is the eviction state."
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "local_experiment:serving-largest-prompt-screen-v1"
+        ],
+        "evidence": [],
+        "reason": "The 5% gain is a hypothesis, not an observation. The local screen tested only waiting-queue ordering and did not test eviction."
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "A_min assumes one pool and a common prompt length s. DMRS assumes the output length d_i is known and transfer is instantaneous. The target has heterogeneous p_i, two pools and unknown d_i. These are regimes the sources exclude, not contradictions of them.",
+      "specialized_operation": "Each slot runs four steps. (1) If the sum over D of (p_i+a_i+1) exceeds M_D, evict in ascending order of \u00f5_i and set \u00f5_i=a_i. (2) An evicted request goes to W if p_i fits in M_P, otherwise to U. (3) Admit from W in ascending order of \u00f5_i while the sum of (p_j+1) fits. (4) Prefill admits FIFO under constraint (1e).",
+      "remaining_effect": "With the retained copy discarded, the policy reduces to A_min on the decode pool. The surviving effect is that retention saves m_i per eviction but costs M_P occupancy. Whether that trade is net positive is unresolved.",
+      "simplest_baseline": "A_min on decode with re-prefill on eviction. It repeats prefill compute and has no M_P coupling. A second baseline is DMRS peak reservation at u_max, which idles memory when outputs are short.",
+      "distinguishing_test": "Count evictions \u00d7 m_i analytically on fresh traces. Then run a matched retain versus discard comparison under the same A_min rule, sweeping M_P."
+    },
+    "decision": "test",
+    "failure_type": "none_found",
+    "reason": "There are two separable effects. Lower-bound admission versus peak reservation is mostly prior art from A_min. Retain versus discard is the unverified addition. The proposal already supplies controls for both, and both tests are cheap.",
+    "evidence": [
+      {
+        "chunk_id": "2508.14544v2:chunk:0001",
+        "supports": "The ordered-eviction rule comes from A_min.",
+        "quote": "[Verbatim span retained locally]",
+        "quote_sha256": "1ee786b0506fd22bc99808f4b82c381391affc613abb64e91c6715c99fcff4f7"
+      },
+      {
+        "chunk_id": "2610.15579v1:chunk:0006",
+        "supports": "The target regime is the future work that DMRS names.",
+        "quote": "[Verbatim span retained locally]",
+        "quote_sha256": "4c8f256e1b7aa5fd062e83515cea5c191609a05759f748c0214a6e2f038d6daa"
+      }
+    ],
+    "strongest_counterargument": "Any gain over peak reservation may come entirely from A_min, and the retention part may be negligible when m_i is small. In that case the contribution is a straightforward composition of known pieces.",
+    "required_test": "First, an analytic count of the share of total flow time saved by retention (evictions \u00d7 m_i). Then, if that share is material, a held-out simulation of retain versus discard against peak reservation.",
+    "novelty_established": false
+  },
+  "claim_assessment": {
+    "status": "mixed_or_partial_overlap_reported",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0002",
+          "2508.14544v2:chunk:0001",
+          "2601.22996v1:chunk:0001"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2610.15579v1:chunk:0002",
+            "supports": "DMRS already counts retained prompt KV in M_P for requests in W.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "7e8660bedb5be3e5cb20d14ffcfc0fc114351b7ff6cc023500e29e3394a64535"
+          },
+          {
+            "chunk_id": "2508.14544v2:chunk:0001",
+            "supports": "A_min eviction resets the job to unprocessed, which corresponds to returning it to U.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "0f5d019e6a713f1eab52c5defc66cdc8046bdd1a93844a66a45beecac190f1a4"
+          },
+          {
+            "chunk_id": "2601.22996v1:chunk:0001",
+            "supports": "The choice between keeping and discarding KV state on preemption is already named.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "7d6cea48e25639501883d076854994d058ddb1a3517fc0d54bc7a4109c28e372"
+          }
+        ],
+        "reason": "Each component appears in the evidence: retained-cache accounting in DMRS, eviction with reset in A_min, and swap versus discard in GSA. No supplied chunk describes routing a decode eviction back into a prefill-held copy that is counted in M_P. That composition is not found, but this does not establish novelty.",
+        "claim": {
+          "id": "C1",
+          "text": "State-transition rule: decode eviction returns a request to W only if its prompt KV is retained and counted in the M_P constraint; otherwise it returns to U and needs re-prefill.",
+          "role": "central",
+          "kind": "method"
+        }
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "local_experiment:serving-admission-preflight-v2",
+          "2610.15579v1:chunk:0003"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "local_experiment:serving-admission-preflight-v2",
+            "supports": "The v2 peak checking that this claim reuses already exists locally.",
+            "quote": "[Verbatim span retained locally]",
+            "quote_sha256": "4d7ee0ddf9bd9bd5bdda66cacffedf78658f5844510cf8b64b4a7625b0c8f41e"
+          }
+        ],
+        "reason": "This is a resource built from existing local accounting plus the DMRS constraints (1e) and (1f). The only new part is the eviction state.",
+        "claim": {
+          "id": "C2",
+          "text": "Two-pool accounting simulator with projected-growth checks, reusing the corrected v2 peak checking.",
+          "role": "supporting",
+          "kind": "resource"
+        }
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "local_experiment:serving-largest-prompt-screen-v1"
+        ],
+        "evidence": [],
+        "reason": "The 5% gain is a hypothesis, not an observation. The local screen tested only waiting-queue ordering and did not test eviction.",
+        "claim": {
+          "id": "C3",
+          "text": "Hypothesized at least 5% mean-flow gain over peak-reservation backpressure in tight-M_D, short-output-dominated traces.",
+          "role": "supporting",
+          "kind": "expected_result"
+        }
+      }
+    ],
+    "novelty_estimate": null,
+    "novelty_established": false,
+    "train_eligible": false,
+    "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection."
+  },
+  "export_scope": "Evidence quote hashes replace verbatim spans. Validation applies to the original local artifact, not this redacted export.",
+  "original_result_sha256": "6bd12ab8c97fd86c6518ff9fe2239ad14bfc923c3673670881d6d2be18822b98"
+}
