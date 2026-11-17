@@ -1,0 +1,13 @@
+{
+  "protocol_sha256": "06e926419e29210ad7c2685d3a195039b188a00e212c561cc4695def1bbeaa20",
+  "frozen_before_training": true,
+  "amendment": "Source-corrected before training, original freeze preserved",
+  "code_hashes": {
+    "cost_profile.py": "53aacf3e1fb20b8a42964031197c1bc9133c5134d5862a484b473ca876c3398e",
+    "test_profile.py": "387e4beac12ca871bd6d339f5448239f2cbecac1dc47ca6b4be76060fff1d550",
+    "prepare_text.py": "5c806d09a7f27aa61a5b476f73dc9fb1e02d3a717e1ccae353eeb96caaf32f55",
+    "protocol.json": "06e926419e29210ad7c2685d3a195039b188a00e212c561cc4695def1bbeaa20",
+    "requirements.txt": "615d5038257d72ed8a64ff4a70e946efd01abeb21551510a7d2b13590f856770"
+  },
+  "text_sha256": "f405e6560295121e04015267923425b6a064b99545a511c7091f4ab16b18344e"
+}

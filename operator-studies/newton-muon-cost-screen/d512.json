@@ -1,0 +1,203 @@
+{
+  "schema": "newton-muon-cost-screen.v3",
+  "width": 512,
+  "device": "mps",
+  "dtype": "float32",
+  "seed": 0,
+  "refresh": 32,
+  "arms": {
+    "muon": {
+      "end_to_end": {
+        "windows": [
+          {
+            "window": 0,
+            "steps": 32,
+            "seconds": 3.8446966250048717
+          },
+          {
+            "window": 1,
+            "steps": 32,
+            "seconds": 3.835593458992662
+          },
+          {
+            "window": 2,
+            "steps": 32,
+            "seconds": 3.8353415000019595
+          }
+        ],
+        "loss_finite": true,
+        "loss_first": 5.68361234664917,
+        "loss_last": 2.6675822734832764,
+        "diagnostic_components": [],
+        "refresh_counts": [],
+        "covariance_state_bytes": 0,
+        "inverse_state_bytes": 0,
+        "cholesky_info_max": 0,
+        "memory_snapshot": {
+          "current_allocated_bytes": 155481088,
+          "driver_allocated_bytes": 340049920,
+          "scope": "end-of-arm snapshots, NOT peak memory"
+        }
+      },
+      "instrumented": {
+        "windows": [
+          {
+            "window": 0,
+            "steps": 32,
+            "seconds": 4.046683332999237
+          }
+        ],
+        "loss_finite": true,
+        "loss_first": 5.68361234664917,
+        "loss_last": 2.706425189971924,
+        "refresh_counts": [],
+        "covariance_state_bytes": 0,
+        "inverse_state_bytes": 0,
+        "cholesky_info_max": 0,
+        "memory_snapshot": {
+          "current_allocated_bytes": 155464704,
+          "driver_allocated_bytes": 340049920,
+          "scope": "end-of-arm snapshots, NOT peak memory"
+        },
+        "steps": 32,
+        "component_seconds": {
+          "covariance": 0.0,
+          "refresh": 0.0,
+          "apply": 0.0,
+          "muon": 3.4775694798881887,
+          "forward_backward": 0.5158310829865513,
+          "adam": 0.04407370797707699,
+          "total": 4.044647039976553
+        },
+        "precondition_fraction_total": 0.0,
+        "scope": "Separately initialized and warmed diagnostic; synchronization changes overlap. Not additive to uninstrumented windows."
+      }
+    },
+    "newton_cholesky": {
+      "end_to_end": {
+        "windows": [
+          {
+            "window": 0,
+            "steps": 32,
+            "seconds": 4.166337291986565
+          },
+          {
+            "window": 1,
+            "steps": 32,
+            "seconds": 4.164893667009892
+          },
+          {
+            "window": 2,
+            "steps": 32,
+            "seconds": 4.168218207996688
+          }
+        ],
+        "loss_finite": true,
+        "loss_first": 5.68361234664917,
+        "loss_last": 2.6655428409576416,
+        "diagnostic_components": [],
+        "refresh_counts": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "covariance_state_bytes": 44040192,
+        "inverse_state_bytes": 44040192,
+        "cholesky_info_max": 0,
+        "memory_snapshot": {
+          "current_allocated_bytes": 243579904,
+          "driver_allocated_bytes": 441794560,
+          "scope": "end-of-arm snapshots, NOT peak memory"
+        }
+      },
+      "instrumented": {
+        "windows": [
+          {
+            "window": 0,
+            "steps": 32,
+            "seconds": 4.515609374997439
+          }
+        ],
+        "loss_finite": true,
+        "loss_first": 5.68361234664917,
+        "loss_last": 2.7127785682678223,
+        "refresh_counts": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "covariance_state_bytes": 44040192,
+        "inverse_state_bytes": 44040192,
+        "cholesky_info_max": 0,
+        "memory_snapshot": {
+          "current_allocated_bytes": 243551232,
+          "driver_allocated_bytes": 441794560,
+          "scope": "end-of-arm snapshots, NOT peak memory"
+        },
+        "steps": 32,
+        "component_seconds": {
+          "covariance": 0.008477623021462932,
+          "refresh": 0.10888816605438478,
+          "apply": 0.3511780869739596,
+          "muon": 3.47338642689283,
+          "forward_backward": 0.5181256249634316,
+          "adam": 0.044788710976717994,
+          "total": 4.5134588749933755
+        },
+        "precondition_fraction_total": 0.10381037891931495,
+        "scope": "Separately initialized and warmed diagnostic; synchronization changes overlap. Not additive to uninstrumented windows."
+      }
+    }
+  },
+  "fallback_env": "0",
+  "warnings": [],
+  "internal_cpu_fallback_detected": false,
+  "valid_mps_timing": true,
+  "torch_version": "2.15.0",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "scope": "Necessary cost screen only; no target-loss, utility or novelty claim",
+  "text_sha256": "f405e6560295121e04015267923425b6a064b99545a511c7091f4ab16b18344e",
+  "script_sha256": "53aacf3e1fb20b8a42964031197c1bc9133c5134d5862a484b473ca876c3398e"
+}

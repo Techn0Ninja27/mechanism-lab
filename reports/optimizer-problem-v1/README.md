@@ -17,6 +17,8 @@ justify the extra approximation. Its early test requires overhead above 5% and
 adequate operator fidelity before a real-text training sweep. These are proposed
 criteria, not measured thresholds supported by this run.
 
+A subsequent [real-text MPS baseline cost screen](../../operator-studies/newton-muon-cost-screen/README.md) measured about 5–9% higher per-step time for full Cholesky Newton–Muon versus Muon at widths 256/512. The necessary cost screen survived; low-rank benefit and time-to-loss remain untested.
+
 ## Evidence and closest existing methods
 
 Seven HTML snapshots totaled 4,868,528 bytes. The bounded pack supplied 55,198

@@ -1,0 +1,77 @@
+{
+  "schema": "newton-muon-cost-screen.v1",
+  "date": "2026-11-17",
+  "question": "Is full covariance preconditioning a material cost in this small real-text training setup on this Mac?",
+  "scope": "Necessary cost screen only; not candidate performance or time-to-target-loss evaluation",
+  "data": "96 January2025 research abstracts selected deterministically from the local corpus; byte tokens; next32 documents reserved unused",
+  "model": {
+    "layers": 6,
+    "widths": [
+      256,
+      512
+    ],
+    "heads": 4,
+    "context": 64,
+    "batch": 4,
+    "vocab": 256,
+    "dropout": 0
+  },
+  "device": "MPS, with general CPU fallback disabled; record internal fallback warnings",
+  "seed": 0,
+  "arms": [
+    "Muon",
+    "full_Cholesky_NewtonMuon"
+  ],
+  "covariance": {
+    "initial": "1e-3 I",
+    "ewma": 0.95,
+    "ridge": "0.2 trace(K)/n",
+    "refresh": 32,
+    "contract": "four input blocks, each width d",
+    "others": "full dxd shared across QKV",
+    "update_frequency": "refresh steps only",
+    "first_refresh": "step32, with identity inverse before first refresh"
+  },
+  "muon": {
+    "ns_steps": 5,
+    "coefficients": [
+      3.4445,
+      -4.775,
+      2.0315
+    ],
+    "normalization": "Frobenius +1e-7",
+    "momentum": 0.95,
+    "nesterov": true,
+    "qkv": "split packed gradient into three square blocks for NS",
+    "scale": "sqrt(max(rows,cols)) per matrix; sqrt(d) for each QKV block",
+    "momentum_formula": "buf=0.95*buf+preconditioned_gradient; nesterov=preconditioned_gradient+0.95*buf"
+  },
+  "learning_rate": 0.001,
+  "weight_decay": 0.01,
+  "warmup_steps": 8,
+  "measurement_windows": 3,
+  "steps_per_window": 32,
+  "instrumented_steps": 32,
+  "timing": "Synchronize at end-to-end window boundaries only. Separate instrumented runs synchronize components; do not equate their sums with uninstrumented timings.",
+  "matched_controls": "Same byte batches, initialization and schedule per width/arm; all non-Muon parameters use AdamW",
+  "gate": "A measured preconditioning cost fraction above5% of total instrumented training step supports only further profiling. If below5% stop this configuration. End-to-end matched-arm difference and synchronization distortion must also be reported.",
+  "still_required": [
+    "source polynomial inverse and larger refresh interval controls",
+    "iterative low-rank refresh and apply cost",
+    "real K/G operator fidelity",
+    "full NewtonMuon must beat Muon in time-to-loss before approximating it",
+    "untouched data/model validation"
+  ],
+  "limitations": [
+    "No candidate low-rank path in this first screen",
+    "Not exact author-code or optimized CUDA-kernel reproduction",
+    "No held-out loss or novelty claim",
+    "Warmup is compilation/runtime warmup, not convergence"
+  ],
+  "dtype": "float32 throughout, including NS; differs from source BF16 NS implementation",
+  "source_reference": {
+    "commit": "df78af0db523d8bceb25af4919a3e3e7082b80f3",
+    "file": "train_gpt_newton_muon_1.py"
+  },
+  "source_audit_amendment": "Before any profiling run: verified refresh-only covariance, identity initial inverse, QKV split NS and scale against pinned author code. Retain first draft freeze separately."
+}

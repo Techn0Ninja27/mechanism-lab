@@ -1,0 +1,60 @@
+{
+  "status": "cost_opportunity_observed_quality_unmeasured",
+  "comparisons": [
+    {
+      "width": 256,
+      "repeat": 0,
+      "muon_seconds_per_step": 0.03447824218756068,
+      "newton_seconds_per_step": 0.03691750781263181,
+      "newton_to_muon_ratio": 1.070747969452781,
+      "instrumented_precondition_fraction": 0.14925947520047023,
+      "covariance_bytes": 11010048,
+      "inverse_bytes": 11010048,
+      "source_result": "d256.json"
+    },
+    {
+      "width": 256,
+      "repeat": 1,
+      "muon_seconds_per_step": 0.03665383462521277,
+      "newton_seconds_per_step": 0.038516537781561055,
+      "newton_to_muon_ratio": 1.0508187799556177,
+      "instrumented_precondition_fraction": 0.14749467537239366,
+      "covariance_bytes": 11010048,
+      "inverse_bytes": 11010048,
+      "source_result": "d256-repeat.json"
+    },
+    {
+      "width": 512,
+      "repeat": 0,
+      "muon_seconds_per_step": 0.11986229559352068,
+      "newton_seconds_per_step": 0.13019804037458016,
+      "newton_to_muon_ratio": 1.0862301587824603,
+      "instrumented_precondition_fraction": 0.10381037891931495,
+      "covariance_bytes": 44040192,
+      "inverse_bytes": 44040192,
+      "source_result": "d512.json"
+    },
+    {
+      "width": 512,
+      "repeat": 1,
+      "muon_seconds_per_step": 0.126802940093512,
+      "newton_seconds_per_step": 0.13404809765643222,
+      "newton_to_muon_ratio": 1.057137141753789,
+      "instrumented_precondition_fraction": 0.10180765077521589,
+      "covariance_bytes": 44040192,
+      "inverse_bytes": 44040192,
+      "source_result": "d512-repeat.json"
+    }
+  ],
+  "necessary_cost_screen_met": true,
+  "ready_for_lowrank_training": false,
+  "remaining": [
+    "Polynomial inverse and larger refresh interval controls",
+    "Iterative low-rank refresh/apply timing and fidelity on real K/G",
+    "Full-baseline time to held-out loss compared with Muon",
+    "Untouched domain and model validation"
+  ],
+  "scope": "One Mac, FP32 tiny Transformer development port, real paper-abstract text. Two fresh-process profiles per width, fixed arm order; consecutive windows are not independent repeats. Costs are not benefits; no candidate algorithm was tested.",
+  "novelty_established": false,
+  "train_eligible": false
+}

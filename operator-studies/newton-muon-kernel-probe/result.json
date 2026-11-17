@@ -1,0 +1,74 @@
+{
+  "schema": "newton-muon-kernel-probe.v1",
+  "status": "completed",
+  "scope": "MPS capability and numerical residuals only; no timing, optimizer, training, utility or novelty claim.",
+  "seed": 73031,
+  "matrix_size": 256,
+  "dtype": "torch.float32",
+  "device": "mps",
+  "torch_version": "2.15.0",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "fallback_disabled": true,
+  "operations": [
+    {
+      "name": "synchronize",
+      "status": "available",
+      "fallback_disabled": true,
+      "warnings": [],
+      "residuals": {}
+    },
+    {
+      "name": "dense_matmul",
+      "status": "available",
+      "fallback_disabled": true,
+      "warnings": [],
+      "residuals": {
+        "max_abs_vs_cpu": 0.0
+      }
+    },
+    {
+      "name": "cholesky_ex",
+      "status": "available",
+      "fallback_disabled": true,
+      "warnings": [],
+      "residuals": {
+        "info_max_abs": 0.0,
+        "factorization_max_abs": 0.0001373291015625
+      }
+    },
+    {
+      "name": "cholesky_inverse",
+      "status": "available",
+      "fallback_disabled": true,
+      "warnings": [],
+      "residuals": {
+        "identity_max_abs": 3.292454493930563e-05,
+        "symmetry_max_abs": 0.0
+      }
+    },
+    {
+      "name": "eigh",
+      "status": "internal_cpu_fallback",
+      "fallback_disabled": true,
+      "warnings": [
+        "linalg.eigh: matrix too large to stage in MPS threadgroup memory (524288 > 32768 bytes); falling back to CPU. (Triggered internally at /Users/runner/work/pytorch/pytorch/aten/src/ATen/native/mps/operations/LinearAlgebra.mm:2426.)"
+      ],
+      "error": {
+        "type": "InternalFallbackWarning",
+        "message": "MPS operation warned that it fell back to CPU"
+      }
+    },
+    {
+      "name": "qr",
+      "status": "available",
+      "fallback_disabled": true,
+      "warnings": [],
+      "residuals": {
+        "reconstruction_max_abs": 0.00018310546875,
+        "orthogonality_max_abs": 1.1920928955078125e-06
+      }
+    }
+  ],
+  "passed": true,
+  "interpretation": "Unsupported MPS kernels are capability findings; CPU residuals verify outputs only where an operation executes. This probe does not justify choosing an optimizer implementation."
+}
