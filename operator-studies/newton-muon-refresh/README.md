@@ -30,3 +30,29 @@ Tests:
 ```sh
 ../.venv/bin/python -m unittest discover -s operator-studies/newton-muon-refresh -p 'test_*.py' -v
 ```
+
+## Run result (2026-11-17)
+
+The provenance-complete fresh-process runs are in
+`results/newton-muon-refresh-v1-v2/`. All six arms completed with no warnings,
+no Cholesky failures, finite losses, and exact refresh counts. The initial
+model hash matches across refresh values within each width and the batch-stream
+hash matches across all six arms.
+
+| Width | Refresh | Median ms/step | Loss first → last |
+|---:|---:|---:|---:|
+| 256 | 16 | 38.215 | 5.7302 → 2.6399 |
+| 256 | 32 | 37.103 | 5.7302 → 2.6518 |
+| 256 | 64 | 37.194 | 5.7302 → 2.6621 |
+| 512 | 16 | 134.243 | 5.6836 → 2.6484 |
+| 512 | 32 | 131.445 | 5.6836 → 2.7029 |
+| 512 | 64 | 129.381 | 5.6836 → 2.6683 |
+
+At this scale, less frequent refresh was cheaper in these short windows: about
+2.9% lower median cost at width 256 for refresh 32 versus 16, and about 3.6%
+at width 512 for refresh 64 versus 16. The loss traces are not held-out or
+time-to-target measurements, so these are cost observations and a sanity check,
+not evidence that any refresh value is a better optimizer. The four windows are
+within one process and are not independent uncertainty intervals. Earlier
+`results/newton-muon-refresh-v1/` files are retained as a pre-provenance pilot;
+they are not used for this table.
