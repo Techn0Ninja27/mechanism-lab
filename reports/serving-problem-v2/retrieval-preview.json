@@ -1,0 +1,32 @@
+{
+  "scope": "Local-only preview; network retrieval is never run during planning.",
+  "records": 10,
+  "status": "hits",
+  "coverage": [
+    {
+      "query": "KV cache scheduling",
+      "compiled_query": "\"KV\" AND \"cache\" AND \"scheduling\"",
+      "provider": "local_corpus",
+      "records": 10,
+      "status": "ok",
+      "retained_records": 4
+    },
+    {
+      "query": "output length prediction",
+      "compiled_query": "\"output\" AND \"length\" AND \"prediction\"",
+      "provider": "local_corpus",
+      "records": 10,
+      "status": "ok",
+      "retained_records": 3
+    },
+    {
+      "query": "prefill decode scheduling",
+      "compiled_query": "\"prefill\" AND \"decode\" AND \"scheduling\"",
+      "provider": "local_corpus",
+      "records": 10,
+      "status": "ok",
+      "retained_records": 3
+    }
+  ],
+  "failures": []
+}

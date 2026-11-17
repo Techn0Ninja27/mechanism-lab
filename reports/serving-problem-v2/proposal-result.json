@@ -1,0 +1,473 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "93fd3ffeaa02fbd370c4da737b280aaaab2be4968a8f8b1259eda24f785051f0",
+  "status": "reviewed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://arxiv.org/html/2505.11916v2",
+        "https://arxiv.org/html/2508.14544v2",
+        "https://arxiv.org/html/2601.22996v1",
+        "https://arxiv.org/html/2607.09248v1",
+        "https://arxiv.org/html/2610.15579v1"
+      ]
+    }
+  },
+  "experiment_feedback": {
+    "schema_version": "experiment-feedback-report.v1",
+    "scope": "partial curated experiment feedback; artifact integrity does not establish scientific validity, usefulness, feasibility, or novelty",
+    "records": [],
+    "warnings": [
+      "record 'fier-windowquant-onebit-trace-v1' source pair is absent from the supplied source pack",
+      "record 'fier-windowquant-max-aggregation-v1' source pair is absent from the supplied source pack",
+      "record 'felog-rank-varint-walks-v1' source pair is absent from the supplied source pack",
+      "record 'sni-sync-fixedshare-cora-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-mps-cost-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-polynomial-matrix-fidelity-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-refresh-control-v1' source pair is absent from the supplied source pack",
+      "record 'newton-muon-heldout-control-v1' source pair is absent from the supplied source pack"
+    ],
+    "matched_count": 0,
+    "registry_sha256": "c6d52404ab0d711700fdcd108b64d9217fae758d02801325ea19d78f851a984d"
+  },
+  "source_contracts": {
+    "scope": "Partial curated source declarations; not executable compatibility, novelty or correctness proofs.",
+    "contracts": [],
+    "warnings": [
+      "evidence source mismatch",
+      "evidence source mismatch"
+    ],
+    "matched_count": 0
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v3",
+    "query_hash": "f782e992ad6e22e786427d9fd5599f92f538b3b9431fa45de214bf958cbc1c3d",
+    "queries": [
+      "non clairvoyant LLM scheduling Feng",
+      "LLM serving uncertain output lengths Chen",
+      "dual memory request scheduling Arrow"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus"
+    ],
+    "failures": [],
+    "errors": [],
+    "coverage": [
+      {
+        "query": "non clairvoyant LLM scheduling Feng",
+        "compiled_query": "\"non\" AND \"clairvoyant\" AND \"LLM\" AND \"scheduling\" AND \"Feng\"",
+        "provider": "local_corpus",
+        "records": 0,
+        "status": "ok",
+        "retained_records": 0
+      },
+      {
+        "query": "LLM serving uncertain output lengths Chen",
+        "compiled_query": "\"LLM\" AND \"serving\" AND \"uncertain\" AND \"output\" AND \"lengths\" AND \"Chen\"",
+        "provider": "local_corpus",
+        "records": 0,
+        "status": "ok",
+        "retained_records": 0
+      },
+      {
+        "query": "dual memory request scheduling Arrow",
+        "compiled_query": "\"dual\" AND \"memory\" AND \"request\" AND \"scheduling\" AND \"Arrow\"",
+        "provider": "local_corpus",
+        "records": 0,
+        "status": "ok",
+        "retained_records": 0
+      }
+    ],
+    "truncation": {
+      "truncated": false,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "06557e2fdfa3232e5ce8fb214cdd19e194f1961c2236995dc22dd5ab2c26efef"
+  },
+  "retrieved_source_count": 0,
+  "citation_evidence": {
+    "status": "not_requested"
+  },
+  "proposal": {
+    "title": "Prompt-release-ordered decode admission for online non-clairvoyant disaggregated serving: a revise-level proposal",
+    "hypothesis": "In a slot-level two-pool simulator with online arrivals and unknown output lengths, ordering the decode-admission queue by retained prompt size (largest prompt first), instead of FIFO, under the same certified-lower-bound reservation and eviction rules, lowers total completion time by at least 5% without raising P99 completion time by more than 5%.",
+    "baseline": "The simplest strong baseline is an online FIFO two-pool policy that applies the DMRS prefill memory constraint (sum over E and W of p_i, plus p_new, must not exceed M_P). Decode admission is FIFO and reserves p_i+\u00f5_i, where \u00f5_i is the certified lower bound. Overflow is resolved with Chen A_min ordered eviction (2508.14544v2 Algorithm 2). No executable code is supplied for DMRS, A_min, the Feng GSA/Response algorithms or Arrow. That is a baseline-coverage gap: every baseline must be reimplemented in simulation from the pseudocode.",
+    "operator_delta": "Change only the scan order of the decode-admission waiting set W from FIFO to nonincreasing p_i, with ties broken by arrival time. Reservation, eviction and prefill admission stay identical.",
+    "contribution_claims": [
+      {
+        "id": "C1",
+        "text": "A minimal decode-admission ordering operator that targets release of retained prefill KV under non-clairvoyance.",
+        "role": "central",
+        "kind": "method"
+      },
+      {
+        "id": "C2",
+        "text": "An online two-pool simulator with a checked memory-safety invariant and a restart cost model that includes re-prefill.",
+        "role": "supporting",
+        "kind": "resource"
+      },
+      {
+        "id": "C3",
+        "text": "Hypothesized change in TCT and P99 relative to FIFO/work-conserving/backpressure controls. This is a simulation-only hypothesis.",
+        "role": "supporting",
+        "kind": "expected_result"
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "Source-supported: DMRS uses known d_i, a batch released at t=0, instantaneous transfer and non-preemptive phases. Chen A_min uses a single pool, identical prompts and cancellation. Feng uses a single pool with kill-and-restart. The target setting has online arrivals, unknown d_i and two pools, and it permits decode eviction. Those source regimes are excluded from the target, not contradicted by it. No source guarantee transfers to the target.",
+      "specialized_operation": "Each slot t runs these steps. (1) Remove finished decode requests; the end-of-sequence event is the only signal of d_i. (2) Move requests that finished prefill (S^P+m_i=t) to W. (3) Overflow check: if the sum over D of (p_j+a_j+1) exceeds M_D, evict in increasing order of \u00f5_j. Each evicted job sets \u00f5_j=a_j, discards its KV and re-enters U, so it must prefill again. (4) Scan W in the chosen order and admit i if the sum over D of (p_j+max(a_j+1,\u00f5_j)), plus p_i+\u00f5_i, does not exceed M_D. Admission transfers the KV and frees p_i from prefill memory. (5) Scan U in FIFO order and admit to prefill if the sum over E\u222aW of p, plus p_i, does not exceed M_P. Invariant: neither pool constraint is violated in any slot, because step 3 runs before any decode growth. A request that runs past \u00f5_i triggers the overflow check rather than violating memory. Inputs are only p_i, m_i, arrival times and observed tokens a_j. No true lengths are used.",
+      "remaining_effect": "At first admission \u00f5_i equals \u2113 for all requests, so the new order reduces to largest-prompt-first. Its effect is to free more prefill memory per admission while spending more decode memory per admission. Whether the net effect is positive is not derivable from the sources and is unresolved. It could equally hurt by starving short-prompt requests in W and raising P99.",
+      "simplest_baseline": "FIFO decode admission, or smallest-reservation-first ordering by p_i+\u00f5_i as in A_min batch formation. Both have equal O(|W| log|W|) cost per slot. The smallest-first variant maximizes decode concurrency but frees less prefill memory.",
+      "distinguishing_test": "Sweep the ratio M_P/M_D on small synthetic traces. The operator should help only where prefill memory is binding. If gains do not grow as M_P shrinks, the claimed coupling mechanism is absent."
+    },
+    "evidence": [
+      {
+        "chunk_id": "2610.15579v1:chunk:0001",
+        "supports": "Source premise: retained prefill KV couples the two pools.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "1326819330fc5b2ca59c23f612452ffe99d30dacad8fde68d57ac42f8cd45ec0"
+      },
+      {
+        "chunk_id": "2610.15579v1:chunk:0005",
+        "supports": "DMRS guarantees exclude the non-clairvoyant setting.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "4a4046120ac8888df6bbc28b3f09553eb3d52c0e2910b98c926217228d9a1cce"
+      },
+      {
+        "chunk_id": "2610.15579v1:chunk:0006",
+        "supports": "Known tail-latency counterexample that the P99 metric must track.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "afad331afdca61fa9c03be4abd6c6e67432a25c07a601e9bf0647952ddeb6367"
+      },
+      {
+        "chunk_id": "2508.14544v2:chunk:0001",
+        "supports": "Eviction rule reused as a supporting component.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "09731dee02f15d75de0bec1de2a097a1dd0e5e5531b2904938cd7c6365e8909e"
+      },
+      {
+        "chunk_id": "2601.22996v1:chunk:0001",
+        "supports": "Restart cost includes re-prefill.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "e4adb9b56d3db8c661529654455ccaf96e391c2cf9be618b10bd5d583df93f3d"
+      },
+      {
+        "chunk_id": "2505.11916v2:chunk:0004",
+        "supports": "Arrow manages instance roles and compute, not two-pool memory admission order.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "bcd419d0077872b36ed38314c61c27778fe59325b33ed0ada3c50202704cce61"
+      }
+    ],
+    "assumptions": [
+      "Prefill memory is binding for some of the time in the chosen traces.",
+      "A slot model with a uniform per-token cost is adequate for comparing orderings.",
+      "Eviction discards KV, and a restarted request repeats prefill."
+    ],
+    "data_paths": [
+      {
+        "input": "p_i, m_i, arrival time, observed token count a_j, EOS events",
+        "operation": "queue ordering and admission checks",
+        "output": "admission times and completion times",
+        "possible_leakage": "Trace generators that sort by output length or correlate arrival order with d_i. Audit that d_i is read only by the EOS oracle."
+      }
+    ],
+    "counterexample": "All prompts are equal. The order then reduces to FIFO, so no effect is possible. Separately, when long-prompt requests also have long outputs, decode memory saturates, evictions rise and P99 worsens.",
+    "matched_control": "The identical policy with FIFO decode ordering, using the same reservation, eviction, prefill admission, capacities, information and seeds. Additional controls: work-conserving FIFO without reservation, and a backpressure policy that blocks prefill admission when W exceeds a threshold.",
+    "experiment": {
+      "development": "Fresh synthetic Poisson and bursty arrivals with lognormal prompt and output lengths. Use 20 seeds and a sweep over M_P/M_D, run in a local CPU simulator.",
+      "heldout": "A new generator family (Pareto outputs, prompt-output correlation \u03c1 in {-0.5, 0.5}) with seeds drawn after development is frozen. No reuse of DMRS or Arrow fixtures.",
+      "metric": "Total completion time and P99 completion time, each as a ratio to the FIFO control. Report the median across seeds with bootstrap 95% CI. Also report eviction count.",
+      "kill_threshold": "Reject if the TCT ratio CI upper bound exceeds 0.97 on held-out, or if the median P99 ratio exceeds 1.05."
+    },
+    "prior_art_difference": "Overlap: the two-pool constraints come from DMRS, eviction from A_min and restart cost from Feng; Arrow does adaptive instance flipping. The only proposed difference is the W ordering by retained prompt size. That difference is unverified and may be a trivial heuristic. Literature coverage is bounded, and no local experiment matches this proposal.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "review": {
+    "claim_assessments": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0001",
+          "2610.15579v1:chunk:0002",
+          "2610.15579v1:chunk:0004",
+          "2610.15579v1:chunk:0005",
+          "2508.14544v2:chunk:0001",
+          "2508.14544v2:chunk:0002",
+          "2601.22996v1:chunk:0001",
+          "2607.09248v1:chunk:0001",
+          "2607.09248v1:chunk:0002",
+          "2505.11916v2:chunk:0004"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "supports": "DMRS Algorithm 1 already applies an explicit ordering to the scan of the decode-waiting set W. Its key is m_i+d_i (shortest first), so ordering W is a known operation.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "5c4ff73aad714c643ada62a2f3521f96d85e053841330fc04c1884b78b4b6449"
+          },
+          {
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "supports": "A_min forms batches with a smallest-lower-bound-first ordering under non-clairvoyance. This covers a single pool only.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "7dd4d1a623e723d4fd19a84e313ff790b840fb711d2f5100990afd59e5722429"
+          },
+          {
+            "chunk_id": "2610.15579v1:chunk:0002",
+            "supports": "Premise that requests in W retain prefill memory. It does not support any claim about the effect of an ordering.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "10633b579b80a7ac2bca79b4e4085933758083f1bacf7633f0ead171f8afd95c"
+          }
+        ],
+        "reason": "Ordering the W scan is prior art: DMRS sorts W by m_i+d_i, and A_min sorts by \u00f5_i. The specific key, largest retained p_i first, is not found in the examined chunks. It is also the reverse of the natural non-clairvoyant DMRS analogue: with d_i unknown, the DMRS key reduces to roughly smallest m_i first, and m_i likely correlates with p_i. Its use in an online, non-clairvoyant, two-pool setting with eviction is not covered. Whether it is beneficial is unresolved."
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0002",
+          "2610.15579v1:chunk:0003",
+          "2508.14544v2:chunk:0001",
+          "2601.22996v1:chunk:0001"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2610.15579v1:chunk:0003",
+            "supports": "The two-pool memory constraints are taken from DMRS.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "714e9d2d2036f8759fea0227ac2579d5a09ff16627fc3316e7f447d85dc6054e"
+          },
+          {
+            "chunk_id": "2601.22996v1:chunk:0001",
+            "supports": "A restart cost that includes re-prefill is an existing modeling choice.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "e4adb9b56d3db8c661529654455ccaf96e391c2cf9be618b10bd5d583df93f3d"
+          },
+          {
+            "chunk_id": "2508.14544v2:chunk:0001",
+            "supports": "The eviction-based feasibility rule is taken from A_min.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "09731dee02f15d75de0bec1de2a097a1dd0e5e5531b2904938cd7c6365e8909e"
+          }
+        ],
+        "reason": "Every component is sourced from the examined evidence. What is not found is their combination: online arrivals, two pools, eviction with re-entry to U, and a checked invariant. The invariant itself is a property the authors must verify; it is not established by the sources."
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0006",
+          "2610.15579v1:chunk:0005"
+        ],
+        "evidence": [],
+        "reason": "This is a hypothesized simulation result, not an observation. No evidence in the supplied chunks tests it. DMRS reports higher P99 for its own orderings, but that concerns a different policy."
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "Source assumptions: DMRS is offline, has known d_i, a batch released at t=0, non-preemptive phases and instantaneous transfer. A_min and Feng GSA use a single pool, and Feng GSA uses identical prompts. Response permits heterogeneous prompts but uses a single pool. Target assumptions: online arrivals, unknown d_i, two pools, and permitted decode eviction with re-prefill. These are excluded regimes, not contradictions, so no source guarantee transfers. A separate gap: the target needs an initial \u00f5_i (\u2113), but no prediction source is specified. If \u2113=1, the reservation p_i+\u00f5_i is essentially p_i, and admission is nearly work-conserving.",
+      "specialized_operation": "At slot t: set W'=sort(W, key=-p_i, tie=arrival). For each i in W', admit i if \u03a3_{j\u2208D}(p_j+max(a_j+1,\u00f5_j)) + p_i + \u00f5_i \u2264 M_D. On admission, release p_i from M_P. Next, admit from U in FIFO order while \u03a3_{E\u222aW} p + p_i \u2264 M_P. The only operation changed relative to the FIFO control is the permutation of W. Because the scan greedily skips infeasible requests, the permutation changes which subset is admitted. Under largest-first, a large p_i that fails the decode check is skipped and smaller requests may still enter, so the ordering is not strictly blocking.",
+      "remaining_effect": "The permutation is not a no-op when prompts differ. It trades prefill memory freed per admission (\u0394_P=+p_i) against decode memory consumed per admission (p_i+\u00f5_i). The net effect on total completion time depends on which pool binds. It also interacts with eviction: larger admitted p_j makes overflow eviction costlier, since an evicted job re-prefills p_j in M_P. The sign of the effect is unresolved. A plausible failure mode is that largest-first lowers decode concurrency, so it lengthens per-request waiting in W for small requests and raises P99.",
+      "simplest_baseline": "Two orderings at identical O(|W|log|W|) cost per slot. (a) FIFO. (b) Smallest-first by p_i+\u00f5_i or by m_i, the non-clairvoyant analogue of DMRS's m_i+d_i key and A_min's ascending \u00f5_i. Smallest-first maximizes the number of admitted requests, which is the standard sum-of-completion-times heuristic, but frees less prefill memory. A backpressure control that blocks prefill admission when W is large directly targets the same coupling without reordering.",
+      "distinguishing_test": "Run a two-request analytic toy and a small-trace sweep over M_P/M_D, with \u03c1(p,d) fixed at 0 and the three orderings (FIFO, smallest-first, largest-first) under identical seeds. Largest-first must beat smallest-first, not just FIFO, in the regime where M_P binds. If smallest-first matches or dominates it everywhere, the ordering contribution does not survive."
+    },
+    "decision": "test",
+    "failure_type": "weak_control",
+    "reason": "The mechanism is coherent and nonredundant at the level of a permutation: greedy skipping makes admitted sets order-dependent. However, the matched controls omit the most obvious competitor, smallest-first ordering, which is the non-clairvoyant reduction of the DMRS and A_min keys. Beating FIFO alone would not isolate the claimed release-of-prefill-memory mechanism. The initial \u00f5_i is also unspecified, which changes the reservation semantics.",
+    "evidence": [
+      {
+        "chunk_id": "2610.15579v1:chunk:0004",
+        "supports": "An existing W ordering, smallest m_i+d_i first, should be a control.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "5c4ff73aad714c643ada62a2f3521f96d85e053841330fc04c1884b78b4b6449"
+      },
+      {
+        "chunk_id": "2508.14544v2:chunk:0002",
+        "supports": "Smallest-lower-bound-first admission is the non-clairvoyant baseline ordering.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "e3eb251cb5757e0a642b3d1083c8f58ebe8d01965bb655b373de693e9ab69496"
+      },
+      {
+        "chunk_id": "2610.15579v1:chunk:0006",
+        "supports": "Orderings that improve total completion time can worsen tail latency.",
+        "quote": "[Verbatim evidence span retained in local validated artifact]",
+        "quote_sha256": "afad331afdca61fa9c03be4abd6c6e67432a25c07a601e9bf0647952ddeb6367"
+      }
+    ],
+    "strongest_counterargument": "When M_P is the bottleneck, prefill admission stalls behind W. Freeing the largest p_i then unlocks the most U admissions per decode admission, which smallest-first cannot do. The effect could therefore be real in that regime, even if it is regime-specific.",
+    "required_test": "Add smallest-first (by p_i+\u00f5_i and by m_i) and backpressure as matched controls, and specify initial \u00f5_i. Sweep M_P/M_D at \u03c1=0 and \u03c1=\u00b10.5. Accept only if largest-first beats the best of these controls on held-out total completion time with P99 ratio \u22641.05 where M_P binds.",
+    "novelty_established": false
+  },
+  "claim_assessment": {
+    "status": "mixed_or_partial_overlap_reported",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0001",
+          "2610.15579v1:chunk:0002",
+          "2610.15579v1:chunk:0004",
+          "2610.15579v1:chunk:0005",
+          "2508.14544v2:chunk:0001",
+          "2508.14544v2:chunk:0002",
+          "2601.22996v1:chunk:0001",
+          "2607.09248v1:chunk:0001",
+          "2607.09248v1:chunk:0002",
+          "2505.11916v2:chunk:0004"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2610.15579v1:chunk:0004",
+            "supports": "DMRS Algorithm 1 already applies an explicit ordering to the scan of the decode-waiting set W. Its key is m_i+d_i (shortest first), so ordering W is a known operation.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "5c4ff73aad714c643ada62a2f3521f96d85e053841330fc04c1884b78b4b6449"
+          },
+          {
+            "chunk_id": "2508.14544v2:chunk:0002",
+            "supports": "A_min forms batches with a smallest-lower-bound-first ordering under non-clairvoyance. This covers a single pool only.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "7dd4d1a623e723d4fd19a84e313ff790b840fb711d2f5100990afd59e5722429"
+          },
+          {
+            "chunk_id": "2610.15579v1:chunk:0002",
+            "supports": "Premise that requests in W retain prefill memory. It does not support any claim about the effect of an ordering.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "10633b579b80a7ac2bca79b4e4085933758083f1bacf7633f0ead171f8afd95c"
+          }
+        ],
+        "reason": "Ordering the W scan is prior art: DMRS sorts W by m_i+d_i, and A_min sorts by \u00f5_i. The specific key, largest retained p_i first, is not found in the examined chunks. It is also the reverse of the natural non-clairvoyant DMRS analogue: with d_i unknown, the DMRS key reduces to roughly smallest m_i first, and m_i likely correlates with p_i. Its use in an online, non-clairvoyant, two-pool setting with eviction is not covered. Whether it is beneficial is unresolved.",
+        "claim": {
+          "id": "C1",
+          "text": "A minimal decode-admission ordering operator that targets release of retained prefill KV under non-clairvoyance.",
+          "role": "central",
+          "kind": "method"
+        }
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0002",
+          "2610.15579v1:chunk:0003",
+          "2508.14544v2:chunk:0001",
+          "2601.22996v1:chunk:0001"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "2610.15579v1:chunk:0003",
+            "supports": "The two-pool memory constraints are taken from DMRS.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "714e9d2d2036f8759fea0227ac2579d5a09ff16627fc3316e7f447d85dc6054e"
+          },
+          {
+            "chunk_id": "2601.22996v1:chunk:0001",
+            "supports": "A restart cost that includes re-prefill is an existing modeling choice.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "e4adb9b56d3db8c661529654455ccaf96e391c2cf9be618b10bd5d583df93f3d"
+          },
+          {
+            "chunk_id": "2508.14544v2:chunk:0001",
+            "supports": "The eviction-based feasibility rule is taken from A_min.",
+            "quote": "[Verbatim evidence span retained in local validated artifact]",
+            "quote_sha256": "09731dee02f15d75de0bec1de2a097a1dd0e5e5531b2904938cd7c6365e8909e"
+          }
+        ],
+        "reason": "Every component is sourced from the examined evidence. What is not found is their combination: online arrivals, two pools, eviction with re-entry to U, and a checked invariant. The invariant itself is a property the authors must verify; it is not established by the sources.",
+        "claim": {
+          "id": "C2",
+          "text": "An online two-pool simulator with a checked memory-safety invariant and a restart cost model that includes re-prefill.",
+          "role": "supporting",
+          "kind": "resource"
+        }
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "2610.15579v1:chunk:0006",
+          "2610.15579v1:chunk:0005"
+        ],
+        "evidence": [],
+        "reason": "This is a hypothesized simulation result, not an observation. No evidence in the supplied chunks tests it. DMRS reports higher P99 for its own orderings, but that concerns a different policy.",
+        "claim": {
+          "id": "C3",
+          "text": "Hypothesized change in TCT and P99 relative to FIFO/work-conserving/backpressure controls. This is a simulation-only hypothesis.",
+          "role": "supporting",
+          "kind": "expected_result"
+        }
+      }
+    ],
+    "novelty_estimate": null,
+    "novelty_established": false,
+    "train_eligible": false,
+    "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection."
+  },
+  "export_scope": "Evidence quotes replaced by hashes for publication. Validation applies to original local artifact, not this redacted export.",
+  "original_result_sha256": "ade47a2ae036c17c4d211c68418e8d74c86f4dd73e662f71bad5a610d439e610"
+}

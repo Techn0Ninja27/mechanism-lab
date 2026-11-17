@@ -1,0 +1,16 @@
+{
+  "scope": "Development diagnostic freeze after debugging and unit tests; NOT held-out or preregistered efficacy evidence. v1 invalid accounting preserved locally.",
+  "source_proposal_sha256": "ade47a2ae036c17c4d211c68418e8d74c86f4dd73e662f71bad5a610d439e610",
+  "hashes": {
+    "test_simulator.py": "977b8a601b1936ffbfac52ff739393c9a9e3542e3d75a70dcacbede563438e1a",
+    "run_cases.py": "8e4bb6737a750eed406c2203d8e32a46aa2634329b44073b920848f8f06f525b",
+    "simulator.py": "0805022836671d8c70ff765c0577b2c5f5598c714642b60ab15a7ad9e791a462"
+  },
+  "cases_sha256": "57f42ed08e58508a646576e77690d51d008264af6b3ad37a7b0bd02cd2a8c149",
+  "assumptions": [
+    "Initial lower bound1, monotonically retained after restart, observed tokens reset.",
+    "Oracle fixture check enforces individual feasibility; true length hidden from PolicySpec.",
+    "Unit decode cost, instantaneous transfer, unlimited parallel prefills within memory constraints.",
+    "Capacity check includes projected growth before admission, and peak before EOS releases."
+  ]
+}

@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 39)
+            self.assertEqual(ledger["study_count"], 40)
             self.assertTrue(all(x["read_only"] is True for x in [ledger]))
             reconstruction = next(x for x in ledger["studies"] if x["id"] == "abstracts-0")
             self.assertIn("mean_ap", reconstruction["secondary_metrics"])

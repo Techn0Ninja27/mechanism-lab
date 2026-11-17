@@ -1,0 +1,321 @@
+{
+  "schema": "serving-retrieval-diagnostic.v1",
+  "scope": "Read-only local-corpus FTS5 query comparison; no arXiv/network fallback, generation, novelty or completeness claim.",
+  "corpus": "results/corpus-ml-complete-mirror-v6/corpus.sqlite",
+  "corpus_sha256": "a594fc6f24d14a218f7b9d87622db1d9f304aebf7b74f77e45e3ffab646182ec",
+  "cutoff": "2026-11-16",
+  "limit": 6,
+  "query_count": 6,
+  "rows": [
+    {
+      "query": "KV cache scheduling",
+      "compiled_query": "\"KV\" AND \"cache\" AND \"scheduling\"",
+      "records": 6,
+      "results": [
+        {
+          "source_id": "arxiv:2605.08581",
+          "title": "PRISM: Fast Online LLM Serving via Scheduling-Memory Co-design",
+          "published_date": "2026-05-09",
+          "url": "https://arxiv.org/abs/2605.08581",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2508.13231",
+          "title": "Accelerating LLM Inference via Dynamic KV Cache Placement in Heterogeneous Memory System",
+          "published_date": "2025-08-17",
+          "url": "https://arxiv.org/abs/2508.13231",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2504.03775",
+          "title": "FlowKV: A Disaggregated Inference Framework with Low-Latency KV Cache Transfer and Load-Aware Scheduling",
+          "published_date": "2025-04-03",
+          "url": "https://arxiv.org/abs/2504.03775",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "openalex:W7225178322",
+          "title": "Fairway: Load-Aware KV Cache Reuse for LLM Prefill Scheduling",
+          "published_date": "2026-11-01",
+          "url": "https://doi.org/10.48550/arxiv.2611.02082",
+          "evidence_level": "indexed_abstract"
+        },
+        {
+          "source_id": "arxiv:2502.07115",
+          "title": "Online Scheduling for LLM Inference with KV Cache Constraints",
+          "published_date": "2025-02-10",
+          "url": "https://arxiv.org/abs/2502.07115",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2508.06526",
+          "title": "PiKV: KV Cache Management System for Mixture of Experts",
+          "published_date": "2025-08-02",
+          "url": "https://arxiv.org/abs/2508.06526",
+          "evidence_level": "primary_abstract"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "LLM inference scheduling",
+      "compiled_query": "\"LLM\" AND \"inference\" AND \"scheduling\"",
+      "records": 6,
+      "results": [
+        {
+          "source_id": "local:conf/ijcai/LiCL25",
+          "title": "Semi-Clairvoyant Scheduling of Speculative Decoding Requests to Minimize LLM Inference Latency",
+          "published_date": "2025-01-01",
+          "url": "https://www.ijcai.org/proceedings/2025/0951.pdf",
+          "evidence_level": "abstract_only"
+        },
+        {
+          "source_id": "arxiv:2505.17074",
+          "title": "Semi-Clairvoyant Scheduling of Speculative Decoding Requests to Minimize LLM Inference Latency",
+          "published_date": "2025-05-20",
+          "url": "https://arxiv.org/abs/2505.17074",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2502.07115",
+          "title": "Online Scheduling for LLM Inference with KV Cache Constraints",
+          "published_date": "2025-02-10",
+          "url": "https://arxiv.org/abs/2502.07115",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "local:uNqTxj5brQ",
+          "title": "Fast Inference for Augmented Large Language Models",
+          "published_date": "2025-01-01",
+          "url": "https://openreview.net/forum?id=uNqTxj5brQ",
+          "evidence_level": "abstract_only"
+        },
+        {
+          "source_id": "arxiv:2503.07545",
+          "title": "Queueing, Predictions, and LLMs: Challenges and Open Problems",
+          "published_date": "2025-03-10",
+          "url": "https://arxiv.org/abs/2503.07545",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2410.18248",
+          "title": "Fast Inference for Augmented Large Language Models",
+          "published_date": "2024-10-23",
+          "url": "https://arxiv.org/abs/2410.18248",
+          "evidence_level": "primary_abstract"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "output length inference",
+      "compiled_query": "\"output\" AND \"length\" AND \"inference\"",
+      "records": 6,
+      "results": [
+        {
+          "source_id": "arxiv:2604.00499",
+          "title": "Scheduling LLM Inference with Uncertainty-Aware Output Length Predictions",
+          "published_date": "2026-04-01",
+          "url": "https://arxiv.org/abs/2604.00499",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:1807.00425",
+          "title": "Dynamic Prediction Length for Time Series with Sequence to Sequence Networks",
+          "published_date": "2018-07-02",
+          "url": "https://arxiv.org/abs/1807.00425",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2605.04215",
+          "title": "Predict-then-Diffuse: Adaptive Response Length for Compute-Budgeted Inference in Diffusion LLMs",
+          "published_date": "2026-05-05",
+          "url": "https://arxiv.org/abs/2605.04215",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2508.14544",
+          "title": "Adaptively Robust LLM Inference Optimization under Prediction Uncertainty",
+          "published_date": "2025-08-20",
+          "url": "https://arxiv.org/abs/2508.14544",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2607.23915",
+          "title": "Understanding Tone-Dependent Inference Cost in Large Language Models",
+          "published_date": "2026-07-27",
+          "url": "https://arxiv.org/abs/2607.23915",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2604.01621",
+          "title": "DWDP: Distributed Weight Data Parallelism for High-Performance LLM Inference on NVL72",
+          "published_date": "2026-04-02",
+          "url": "https://arxiv.org/abs/2604.01621",
+          "evidence_level": "primary_abstract"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "prefill decode scheduling",
+      "compiled_query": "\"prefill\" AND \"decode\" AND \"scheduling\"",
+      "records": 6,
+      "results": [
+        {
+          "source_id": "arxiv:2510.08055",
+          "title": "From Tokens to Layers: Redefining Stall-Free Scheduling for MoE Serving with Layered Prefill",
+          "published_date": "2025-10-09",
+          "url": "https://arxiv.org/abs/2510.08055",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2605.02329",
+          "title": "Taming Request Imbalance: SLO-Aware Scheduling for Disaggregated LLM Inference",
+          "published_date": "2026-05-04",
+          "url": "https://arxiv.org/abs/2605.02329",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2508.06133",
+          "title": "LLM Serving Optimization with Variable Prefill and Decode Lengths",
+          "published_date": "2025-08-08",
+          "url": "https://arxiv.org/abs/2508.06133",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2601.11589",
+          "title": "LAPS: A Length-Aware-Prefill LLM Serving System",
+          "published_date": "2026-01-04",
+          "url": "https://arxiv.org/abs/2601.11589",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2607.04206",
+          "title": "Sangam: Efficiently Serving Diffusion LLMs with the AR Stack",
+          "published_date": "2026-07-05",
+          "url": "https://arxiv.org/abs/2607.04206",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "openalex:W7224958518",
+          "title": "PDScope: Breaking the Prefill-Decode Seesaw for Memory-Bound MoE Inference",
+          "published_date": "2026-10-29",
+          "url": "https://doi.org/10.48550/arxiv.2610.39216",
+          "evidence_level": "indexed_abstract"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "online LLM scheduling",
+      "compiled_query": "\"online\" AND \"LLM\" AND \"scheduling\"",
+      "records": 6,
+      "results": [
+        {
+          "source_id": "arxiv:2502.07115",
+          "title": "Online Scheduling for LLM Inference with KV Cache Constraints",
+          "published_date": "2025-02-10",
+          "url": "https://arxiv.org/abs/2502.07115",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2606.22327",
+          "title": "Geometry-Aware Online Scheduling for LLM Serving: From Theoretical Bound to System Practice",
+          "published_date": "2026-06-21",
+          "url": "https://arxiv.org/abs/2606.22327",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2607.27698",
+          "title": "Guiding Large Language Models with Genetic Programming-Evolved Heuristic Knowledge for Dynamic Multi-Mode Project Scheduling",
+          "published_date": "2026-07-30",
+          "url": "https://arxiv.org/abs/2607.27698",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "local:uNqTxj5brQ",
+          "title": "Fast Inference for Augmented Large Language Models",
+          "published_date": "2025-01-01",
+          "url": "https://openreview.net/forum?id=uNqTxj5brQ",
+          "evidence_level": "abstract_only"
+        },
+        {
+          "source_id": "arxiv:2606.18431",
+          "title": "Beyond Prediction: Tail-Aware Scheduling for LLM Inference",
+          "published_date": "2026-06-16",
+          "url": "https://arxiv.org/abs/2606.18431",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "local:HKfZwLjSwQ",
+          "title": "LLM Query Scheduling with Prefix Reuse and Latency Constraints",
+          "published_date": "2025-01-01",
+          "url": "https://openreview.net/forum?id=HKfZwLjSwQ",
+          "evidence_level": "abstract_only"
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "disaggregated LLM inference",
+      "compiled_query": "\"disaggregated\" AND \"LLM\" AND \"inference\"",
+      "records": 6,
+      "results": [
+        {
+          "source_id": "arxiv:2501.14743",
+          "title": "KVDirect: Distributed Disaggregated LLM Inference",
+          "published_date": "2024-12-13",
+          "url": "https://arxiv.org/abs/2501.14743",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2502.03589",
+          "title": "HACK: Homomorphic Acceleration via Compression of the Key-Value Cache for Disaggregated LLM Inference",
+          "published_date": "2025-02-05",
+          "url": "https://arxiv.org/abs/2502.03589",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2406.17565",
+          "title": "MemServe: Context Caching for Disaggregated LLM Serving with Elastic Memory Pool",
+          "published_date": "2024-06-25",
+          "url": "https://arxiv.org/abs/2406.17565",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2508.03148",
+          "title": "Frontier: Simulating the Next Generation of LLM Inference Systems",
+          "published_date": "2025-08-05",
+          "url": "https://arxiv.org/abs/2508.03148",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "arxiv:2604.09562",
+          "title": "StreamServe: Adaptive Speculative Flows for Low-Latency Disaggregated LLM Serving",
+          "published_date": "2026-02-11",
+          "url": "https://arxiv.org/abs/2604.09562",
+          "evidence_level": "primary_abstract"
+        },
+        {
+          "source_id": "local:Cs6MrbFuMq",
+          "title": "HexGen-2: Disaggregated Generative Inference of LLMs in Heterogeneous Environment",
+          "published_date": "2025-01-01",
+          "url": "https://openreview.net/forum?id=Cs6MrbFuMq",
+          "evidence_level": "abstract_only"
+        }
+      ],
+      "status": "ok"
+    }
+  ],
+  "original_zero_recall": {
+    "non clairvoyant LLM scheduling": true,
+    "LLM serving uncertain output lengths Chen": true,
+    "dual memory request scheduling Arrow": true
+  },
+  "warnings": [
+    "FTS5 token matching is conjunctive: author names and every supplied term must occur in one record.",
+    "Zero records are a retrieval miss under this query/corpus/cutoff, not evidence that prior art is absent.",
+    "The corpus contains abstracts/metadata only for many records; local hits do not establish full-text entailment."
+  ]
+}

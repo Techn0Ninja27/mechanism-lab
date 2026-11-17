@@ -1,0 +1,21 @@
+{
+  "source_result_sha256": "b801100c6b280b12e33af061e70c602c81fc72e89f71131cf2d67f68a1ac852b",
+  "scope": "Native-agent and root post-run development audit; not scientific validation or novelty adjudication.",
+  "findings": [
+    {
+      "claim": "The generated proposal establishes memory safety and a useful scheduling improvement.",
+      "assessment": "Neither is established. Initial lower bound, restart details, per-request feasibility and transfer semantics required explicit toy assumptions. The hypothesis says 5% improvement while the kill rule permits3%; no efficacy threshold was finalized, and the toy diagnostic applies neither threshold.",
+      "evidence": "Generated proposal assumptions/experiment; operator-studies/serving-admission-preflight documents corrected diagnostic only."
+    },
+    {
+      "claim": "The proposal was checked against retrieved corpus prior art.",
+      "assessment": "The paid run retrieved zero records because conjunctive queries were overconstrained. It did include five manually selected primary-paper excerpts. Shorter local queries subsequently retrieved additional leads; no novelty conclusion follows.",
+      "evidence": "results/serving-problem-v2/decode/prior-art.json; results/serving-retrieval-diagnostic-v1/result.json"
+    },
+    {
+      "claim": "Largest-prompt-first admission is uniformly beneficial.",
+      "assessment": "A two-request toy yields total flow time7 versus6 for smallest-reservation-first. This refutes uniform dominance only, not a regime-specific benefit or the broader stochastic hypothesis.",
+      "evidence": "operator-studies/serving-admission-preflight/result.json case two_job_counterexample."
+    }
+  ]
+}

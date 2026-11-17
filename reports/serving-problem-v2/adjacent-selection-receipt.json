@@ -1,0 +1,93 @@
+{
+  "schema": "adjacent-selection-receipt.v1",
+  "ranges_are_normalized_visible_html_lines": true,
+  "source_count": 3,
+  "total_downloaded_bytes": 2473082,
+  "records": [
+    {
+      "id": "2601.22996v1",
+      "title": "Competitive Non-Clairvoyant KV-Cache Scheduling for LLM Inference",
+      "url": "https://arxiv.org/html/2601.22996v1",
+      "path": "sources/2601.22996v1.selected.txt",
+      "evidence_level": "full_text",
+      "source_html": "sources/2601.22996v1.html",
+      "source_html_sha256": "973c1b1a2db7a42d9268128e0eeb8b591f54fd48a1040a6eeffa1c69aec8bf70",
+      "selected_sha256": "a7cecf9365c5574d27b0db874cf0bb31aa6043cf3b3072a6cf224c8354718c4e",
+      "selected_chars": 7288,
+      "line_ranges": [
+        [
+          245,
+          248
+        ],
+        [
+          419,
+          454
+        ],
+        [
+          491,
+          493
+        ],
+        [
+          824,
+          827
+        ]
+      ],
+      "purpose": "problem assumptions, kill-and-restart model, GSA, GBA, conclusion",
+      "omitted": "All normalized HTML lines outside listed ranges; no completeness claim."
+    },
+    {
+      "id": "2607.09248v1",
+      "title": "General Non-Clairvoyant KV-Cache Scheduling via Regime-Aware Routing",
+      "url": "https://arxiv.org/html/2607.09248v1",
+      "path": "sources/2607.09248v1.selected.txt",
+      "evidence_level": "full_text",
+      "source_html": "sources/2607.09248v1.html",
+      "source_html_sha256": "c69f062a661966f99c8d9ba473a965f55f7ef604a38e15a85b3be3117737c085",
+      "selected_sha256": "34f75ce93fd8d612dca83e11d967c2f47b765a1bf209419152eda1e7a38d41e6",
+      "selected_chars": 7246,
+      "line_ranges": [
+        [
+          423,
+          424
+        ],
+        [
+          665,
+          705
+        ],
+        [
+          768,
+          776
+        ],
+        [
+          904,
+          905
+        ]
+      ],
+      "purpose": "clairvoyant lower-bound obstruction, rectangle-strip, response slicing, routing, conclusion",
+      "omitted": "All normalized HTML lines outside listed ranges; no completeness claim."
+    },
+    {
+      "id": "2508.14544v2",
+      "title": "Adaptively Robust LLM Inference Optimization under Prediction Uncertainty",
+      "url": "https://arxiv.org/html/2508.14544v2",
+      "path": "sources/2508.14544v2.selected.txt",
+      "evidence_level": "full_text",
+      "source_html": "sources/2508.14544v2.html",
+      "source_html_sha256": "1cb6d1f1b2bb4852d6168d76b0d3b52d3592b7a73449b642d72784fa267cafb2",
+      "selected_sha256": "f321e664b3adc2ca43fe17ffa2932f6547591ddf77bd80fb1060289fe09188a1",
+      "selected_chars": 7456,
+      "line_ranges": [
+        [
+          85,
+          89
+        ],
+        [
+          142,
+          170
+        ]
+      ],
+      "purpose": "memory/cancellation model and A_min mechanism; heterogeneous extension and experiments omitted",
+      "omitted": "All normalized HTML lines outside listed ranges; no completeness claim."
+    }
+  ]
+}

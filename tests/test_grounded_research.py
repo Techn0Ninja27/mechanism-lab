@@ -134,12 +134,15 @@ class GroundedResearchTests(unittest.TestCase):
             root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
             question=root/'q.txt';question.write_text('What changes?')
             config=root/'search.json';config.write_text(json.dumps({'queries':['NeuMiss'],'allow_arxiv':True}))
-            with patch.object(g,'retrieve',side_effect=AssertionError('Planning must be offline')), patch.object(g,'Client',side_effect=AssertionError('No paid client')):
+            with patch.object(g,'retrieve',return_value={'records':[], 'coverage':[], 'failures':[]}) as preview, patch.object(g,'Client',side_effect=AssertionError('No paid client')):
                 result=g.execute(pack,question,root/'out',search_config_path=config)
                 self.assertEqual(result['status'],'planned')
                 self.assertTrue(result['config']['search']['allow_arxiv'])
+                self.assertFalse(preview.call_args.kwargs['allow_arxiv'])
+                self.assertEqual(result['retrieval_preview']['status'],'no_local_hits')
+                self.assertTrue((root/'out/planning-diagnostics.json').is_file())
 
-    def test_retrieval_happens_before_paid_client_and_is_reported(self):
+    def test_empty_requested_retrieval_blocks_paid_client(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=pathlib.Path(tmp);pack=root/'pack.json';pack.write_text(json.dumps(self._valid_pack(root)))
             question=root/'q.txt';question.write_text('What changes?')
@@ -151,11 +154,13 @@ class GroundedResearchTests(unittest.TestCase):
                 def __init__(self,*args):events.append('client')
                 def call(self,*args):raise RuntimeError('mock rejection; no network')
             with patch.object(g,'retrieve',side_effect=retrieve),patch.object(g,'Client',Client):
-                result=g.execute(pack,question,root/'out',True,config)
-            self.assertEqual(events,['retrieve','client'])
-            self.assertEqual(result['retrieved_source_count'],0)
-            self.assertEqual(result['retrieval']['coverage'][0]['records'],0)
-            self.assertEqual(result['status'],'failed')
+                with self.assertRaisesRegex(ValueError,'No paid call was made'):
+                    g.execute(pack,question,root/'out',True,config)
+            self.assertEqual(events,['retrieve'])
+
+    def test_retrieval_guard_allows_hits_or_explicit_source_only(self):
+        g.require_retrieval_hits({'queries':['cache']},{'records':[{'source_id':'fixture'}]})
+        g.require_retrieval_hits({'queries':[]},{'records':[]})
 
     def test_local_feedback_is_citable_and_remains_scoped(self):
         record={'id':'fixture','tested_change':'fixture scoped failure','verdict':'no_support',

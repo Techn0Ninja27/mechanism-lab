@@ -1,0 +1,119 @@
+[
+  {
+    "id": "equal_prompt_no_effect",
+    "prefill_capacity": 8,
+    "decode_capacity": 12,
+    "horizon": 50,
+    "jobs": [
+      {
+        "id": 1,
+        "arrival": 0,
+        "prompt": 2,
+        "prefill_slots": 1,
+        "true_output": 2
+      },
+      {
+        "id": 2,
+        "arrival": 0,
+        "prompt": 2,
+        "prefill_slots": 1,
+        "true_output": 5
+      }
+    ]
+  },
+  {
+    "id": "capacity_edge_restart",
+    "prefill_capacity": 4,
+    "decode_capacity": 4,
+    "horizon": 100,
+    "jobs": [
+      {
+        "id": 1,
+        "arrival": 0,
+        "prompt": 1,
+        "prefill_slots": 1,
+        "true_output": 3
+      },
+      {
+        "id": 2,
+        "arrival": 0,
+        "prompt": 1,
+        "prefill_slots": 1,
+        "true_output": 3
+      }
+    ]
+  },
+  {
+    "id": "ordering_inactive_original_case",
+    "prefill_capacity": 6,
+    "decode_capacity": 10,
+    "horizon": 100,
+    "jobs": [
+      {
+        "id": 1,
+        "arrival": 0,
+        "prompt": 5,
+        "prefill_slots": 1,
+        "true_output": 4
+      },
+      {
+        "id": 2,
+        "arrival": 0,
+        "prompt": 1,
+        "prefill_slots": 1,
+        "true_output": 1
+      },
+      {
+        "id": 3,
+        "arrival": 1,
+        "prompt": 1,
+        "prefill_slots": 1,
+        "true_output": 1
+      }
+    ]
+  },
+  {
+    "id": "two_job_counterexample",
+    "prefill_capacity": 10,
+    "decode_capacity": 10,
+    "horizon": 50,
+    "jobs": [
+      {
+        "id": 1,
+        "arrival": 0,
+        "prompt": 8,
+        "prefill_slots": 1,
+        "true_output": 2
+      },
+      {
+        "id": 2,
+        "arrival": 0,
+        "prompt": 2,
+        "prefill_slots": 1,
+        "true_output": 1
+      }
+    ]
+  },
+  {
+    "id": "projected_growth_admission",
+    "prefill_capacity": 3,
+    "decode_capacity": 5,
+    "horizon": 50,
+    "jobs": [
+      {
+        "id": 1,
+        "arrival": 0,
+        "prompt": 2,
+        "prefill_slots": 1,
+        "true_output": 3
+      },
+      {
+        "id": 2,
+        "arrival": 1,
+        "prompt": 1,
+        "prefill_slots": 1,
+        "true_output": 2
+      }
+    ]
+  }
+]

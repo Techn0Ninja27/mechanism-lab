@@ -166,6 +166,27 @@
       "result_sha256": "ece7f533fdcd170f808f3316927783f0cfdb90c8712239bda161613b900d633e",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "serving-admission-preflight-v2",
+      "source_urls": [
+        "https://arxiv.org/abs/2610.15579",
+        "https://arxiv.org/abs/2508.14544"
+      ],
+      "tested_change": "Development accounting diagnostic for largest-prompt-first decode admission. Corrected projected-growth admission and pre-EOS peak checking. Across five exposed deterministic traces, four policies finish with no peak violation; two-request counterexample gives largest-first flowtime7 vs smallest-reservation6. No stochastic efficacy gate or hardware result.",
+      "verdict": "diagnostic_counterexample_not_utility_evidence",
+      "scope": "Unit-cost slots, instantaneous transfer, explicit lowerbound1, restart requiresprefill, individuallyfeasibleoraclefixtures; true lengths withheld frompolicy data.",
+      "limitations": [
+        "Cases inspected during debugging; not held-out or independently sampled.",
+        "v1 accounting was invalid and is preserved separately; only corrected v2 peak checks apply.",
+        "Counterexample refutes uniform dominance only; no general rejection of a regime-specific benefit.",
+        "No literature/backpressure performance comparison; generated5% versus3% thresholds unresolved."
+      ],
+      "report_path": "operator-studies/serving-admission-preflight/README.md",
+      "result_path": "operator-studies/serving-admission-preflight/summary.json",
+      "result_sha256": "0bd09b570483b7b3e1861237c0ef737e2bb931edc6e0a5ed4f00cda2fa5acf84",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

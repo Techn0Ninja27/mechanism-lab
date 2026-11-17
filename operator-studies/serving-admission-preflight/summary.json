@@ -1,0 +1,14 @@
+{
+  "status": "diagnostic_counterexample_no_efficacy_claim",
+  "cases": 5,
+  "policies": 4,
+  "all_cases_completed": true,
+  "counterexample": {
+    "largest_first_flow_time": 7,
+    "smallest_reservation_flow_time": 6
+  },
+  "scope": "Five exposed deterministic toy traces; corrected accounting, no serving benchmark, statistical efficacy or novelty claim.",
+  "raw_result_sha256": "2850e59caf07a4a79be16a36cd0c14da2487d0105e4f3998923b15eea26a59d7",
+  "novelty_established": false,
+  "train_eligible": false
+}
