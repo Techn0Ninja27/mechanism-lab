@@ -1,0 +1,632 @@
+{
+  "curated_registry_updated": false,
+  "drafts": [
+    {
+      "contract": {
+        "evidence": [
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_inputs",
+            "quote_chars": 82,
+            "quote_sha256": "8b59189afa30996c75d15c191469d65d19a805cb408737b82c4ef8c5dfc6257b",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_forward",
+            "quote_chars": 68,
+            "quote_sha256": "cf828e1d6b0fd1f0218cedce915e5893d799708c110012c94b8bb6fd46f539b4",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_proj",
+            "quote_chars": 67,
+            "quote_sha256": "e8f474f25dea187cc11f13681dae9ef4047738e90150e3f91598ac183641551d",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_recon",
+            "quote_chars": 36,
+            "quote_sha256": "a58a5dab02d9c4f1fab755b68d9904fbe65a954b355eafb39268eb781cc2f98e",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_correct",
+            "quote_chars": 21,
+            "quote_sha256": "35b1981fb04c649987b420f05b463fcd524a266720743bc537c8355d18f868ff",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_est",
+            "quote_chars": 29,
+            "quote_sha256": "7244de71d1b553e23f7063fa0bb777d7009ce74ffdddb70ae7c94866d8aa282e",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_acc",
+            "quote_chars": 19,
+            "quote_sha256": "7c5ee62f3946ee58ea363ae489ffa7842818536602ab92a9b10129f8d07ce51b",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0001",
+            "id": "ev_update",
+            "quote_chars": 18,
+            "quote_sha256": "b0257ac0830d8df31f849a18f7759dc741086c91f23e0855a56b7983faf6f042",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          },
+          {
+            "chunk_id": "2510.22467v1:chunk:0002",
+            "id": "ev_return",
+            "quote_chars": 16,
+            "quote_sha256": "e7ea99885f83dc3f66bb4575d565e629c086da71daee0c28aba7985324f17fbd",
+            "source_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db"
+          }
+        ],
+        "id": "gradlite_optimization_step",
+        "inputs": [
+          {
+            "artifact": "learning_rate",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_inputs"
+            ],
+            "exposure": "required",
+            "granularity": null,
+            "id": "learning_rate",
+            "phase": "training",
+            "representation": "scalar",
+            "role": "artifact"
+          },
+          {
+            "artifact": "model_parameters",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_inputs"
+            ],
+            "exposure": "required",
+            "granularity": null,
+            "id": "parameters_t",
+            "phase": "training",
+            "representation": "real_vector",
+            "role": "artifact"
+          },
+          {
+            "artifact": "error_accumulator",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_inputs"
+            ],
+            "exposure": "required",
+            "granularity": null,
+            "id": "error_accumulator_t",
+            "phase": "training",
+            "representation": "real_vector",
+            "role": "artifact"
+          },
+          {
+            "artifact": "training_minibatch",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_forward"
+            ],
+            "exposure": "required",
+            "granularity": "minibatch",
+            "id": "minibatch",
+            "phase": "training",
+            "representation": null,
+            "role": "artifact"
+          }
+        ],
+        "interpretation": "model_proposed_not_curated",
+        "outputs": [
+          {
+            "artifact": "approximate_gradient",
+            "conditions": [
+              "low_rank_projection_u_v"
+            ],
+            "evidence_ids": [
+              "ev_proj",
+              "ev_recon"
+            ],
+            "exposure": "intermediate",
+            "granularity": null,
+            "id": "approximate_gradient",
+            "phase": "training",
+            "representation": "real_vector",
+            "role": "artifact"
+          },
+          {
+            "artifact": "corrected_gradient",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_correct"
+            ],
+            "exposure": "intermediate",
+            "granularity": null,
+            "id": "corrected_gradient",
+            "phase": "training",
+            "representation": "real_vector",
+            "role": "artifact"
+          },
+          {
+            "artifact": "model_parameters",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_update",
+              "ev_return"
+            ],
+            "exposure": "returned",
+            "granularity": null,
+            "id": "parameters_t_plus_1",
+            "phase": "training",
+            "representation": "real_vector",
+            "role": "artifact"
+          },
+          {
+            "artifact": "error_accumulator",
+            "conditions": [
+              "approximation_error_estimated"
+            ],
+            "evidence_ids": [
+              "ev_est",
+              "ev_acc",
+              "ev_return"
+            ],
+            "exposure": "returned",
+            "granularity": null,
+            "id": "error_accumulator_t_plus_1",
+            "phase": "training",
+            "representation": "real_vector",
+            "role": "artifact"
+          }
+        ],
+        "source_id": "2510.22467v1"
+      },
+      "executable_compatibility_proven": false,
+      "interpretation": "model_proposed_not_curated",
+      "novelty_established": false,
+      "source_id": "2510.22467v1",
+      "unknowns": [
+        "How U_t and V_t are obtained or adapted per step is not specified in the excerpt.",
+        "How Delta_t approximating g_t - g~_t is estimated without computing the exact gradient is unspecified.",
+        "The rank k and the compressed activation representation format are not given.",
+        "Whether the error accumulator is initialized to zero is not stated."
+      ]
+    },
+    {
+      "contract": {
+        "evidence": [
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_foreach",
+            "quote_chars": 72,
+            "quote_sha256": "3984522da0d69e2ba9b2533e6566f998f6bc1e42a8d0cce59ee5cf6b1e543d8d",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_gse",
+            "quote_chars": 32,
+            "quote_sha256": "d7e5ebc7756afa396337c4bc383edb53a4edea7cf59a70f528f78fb80d142074",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_tracker",
+            "quote_chars": 38,
+            "quote_sha256": "a0748a4c71afba15433b0bbd003f4a347158dce1c75c4aa3a8762d76b9459f6c",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_stable",
+            "quote_chars": 22,
+            "quote_sha256": "2dcd9529e5618a8ae2fab7e96d11e79f267d1a25c42a89308ce24d27137aa526",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_compress",
+            "quote_chars": 109,
+            "quote_sha256": "4f02a7579e326823b4666e4b6b6c4bf71835606e6350dba76b145d75cd03f00f",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_comm",
+            "quote_chars": 37,
+            "quote_sha256": "a1dc3329733071368b783c6b2be913646ef1e134464aca2451e45736a4d2aee4",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0002",
+            "id": "ev_allreduce",
+            "quote_chars": 40,
+            "quote_sha256": "b623dbd3cc45c9f1a05f263c6e3c7a3c54172077491a2e864035b37e227ed328",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          },
+          {
+            "chunk_id": "2505.18563v1:chunk:0001",
+            "id": "ev_unstable",
+            "quote_chars": 66,
+            "quote_sha256": "1bb6dcf5c9b7fd0478da78da4ef14de56bfddc9c0331f83b399a253eafb9530b",
+            "source_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111"
+          }
+        ],
+        "id": "pactrain_mask_stability_communication_branch",
+        "inputs": [
+          {
+            "artifact": "model_update",
+            "conditions": [
+              "gse_applied",
+              "model_pruned"
+            ],
+            "evidence_ids": [
+              "ev_foreach",
+              "ev_gse"
+            ],
+            "exposure": "required",
+            "granularity": "per_update",
+            "id": "model_update",
+            "phase": "distributed_training",
+            "representation": "gradient_tensor",
+            "role": "artifact"
+          },
+          {
+            "artifact": "sparse_mask",
+            "conditions": [
+              "updated_by_mask_tracker"
+            ],
+            "evidence_ids": [
+              "ev_tracker"
+            ],
+            "exposure": "required",
+            "granularity": null,
+            "id": "sparse_mask_state",
+            "phase": "distributed_training",
+            "representation": null,
+            "role": "artifact"
+          }
+        ],
+        "interpretation": "model_proposed_not_curated",
+        "outputs": [
+          {
+            "artifact": "compressed_update",
+            "conditions": [
+              "mask_stable"
+            ],
+            "evidence_ids": [
+              "ev_stable",
+              "ev_compress",
+              "ev_comm"
+            ],
+            "exposure": "intermediate",
+            "granularity": "per_update",
+            "id": "compressed_update",
+            "phase": "distributed_training",
+            "representation": "non_zero_elements",
+            "role": "artifact"
+          },
+          {
+            "artifact": "model_update",
+            "conditions": [
+              "mask_unstable"
+            ],
+            "evidence_ids": [
+              "ev_allreduce",
+              "ev_unstable"
+            ],
+            "exposure": "unknown",
+            "granularity": "per_update",
+            "id": "allreduced_update",
+            "phase": "distributed_training",
+            "representation": "dense_tensor",
+            "role": "artifact"
+          }
+        ],
+        "source_id": "2505.18563v1"
+      },
+      "executable_compatibility_proven": false,
+      "interpretation": "model_proposed_not_curated",
+      "novelty_established": false,
+      "source_id": "2505.18563v1",
+      "unknowns": [
+        "The criterion the Mask Tracker uses to judge mask stability is not defined.",
+        "The compress() function's exact format (beyond non-zero elements, reformatted into dense tensors) is unclear.",
+        "Whether the stable branch uses all-reduce on the reformatted dense tensor is only implied by Fig. 2 text.",
+        "How aggregated results are applied back to the model is not shown in the excerpt."
+      ]
+    },
+    {
+      "contract": {
+        "evidence": [
+          {
+            "chunk_id": "2604.11841v1:chunk:0002",
+            "id": "ev_ba",
+            "quote_chars": 70,
+            "quote_sha256": "bf676445cc33d8badbdf4479e074592be4547fc448479020eb606f86de63e917",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          },
+          {
+            "chunk_id": "2604.11841v1:chunk:0001",
+            "id": "ev_h",
+            "quote_chars": 59,
+            "quote_sha256": "14741f573cbe9e269492f109c5377dda32bcaebd5c6fa7345ec560e99c289e72",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          },
+          {
+            "chunk_id": "2604.11841v1:chunk:0002",
+            "id": "ev_polyb",
+            "quote_chars": 50,
+            "quote_sha256": "be0328822f8665be2d3758a45314034fa58ab39158f1932c7b9bcc328f8505b6",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          },
+          {
+            "chunk_id": "2604.11841v1:chunk:0002",
+            "id": "ev_polya",
+            "quote_chars": 49,
+            "quote_sha256": "7310ad0b0ee5ac571692e5958738289a343a3f005fcc11aadbd78632a3a4c654",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          },
+          {
+            "chunk_id": "2604.11841v1:chunk:0002",
+            "id": "ev_dw",
+            "quote_chars": 45,
+            "quote_sha256": "eb185c09417180e3653f425e3e5bb551b73ce99cb143335ae2a02afb49340be9",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          },
+          {
+            "chunk_id": "2604.11841v1:chunk:0002",
+            "id": "ev_bdim",
+            "quote_chars": 95,
+            "quote_sha256": "3b20fef679b0977206fc3a964804273ead04cfdc276a0febdedf07438c752138",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          },
+          {
+            "chunk_id": "2604.11841v1:chunk:0002",
+            "id": "ev_adim",
+            "quote_chars": 108,
+            "quote_sha256": "75761905d25bf17b808124af471ea7bbfe28ecc7767e43f73e83a86177306eda",
+            "source_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa"
+          }
+        ],
+        "id": "pera_delta_w_polynomial_update",
+        "inputs": [
+          {
+            "artifact": "low_rank_matrix_b",
+            "conditions": [
+              "gaussian_initialized"
+            ],
+            "evidence_ids": [
+              "ev_ba"
+            ],
+            "exposure": "required",
+            "granularity": "per_linear_layer",
+            "id": "low_rank_b",
+            "phase": "fine_tuning",
+            "representation": "matrix_m_by_r",
+            "role": "artifact"
+          },
+          {
+            "artifact": "low_rank_matrix_a",
+            "conditions": [
+              "zero_initialized"
+            ],
+            "evidence_ids": [
+              "ev_ba"
+            ],
+            "exposure": "required",
+            "granularity": "per_linear_layer",
+            "id": "low_rank_a",
+            "phase": "fine_tuning",
+            "representation": "matrix_r_by_n",
+            "role": "artifact"
+          },
+          {
+            "artifact": "hadamard_coefficients",
+            "conditions": [
+              "zero_initialized",
+              "learnable"
+            ],
+            "evidence_ids": [
+              "ev_h"
+            ],
+            "exposure": "required",
+            "granularity": "per_pair_i_le_j",
+            "id": "hadamard_coefficients_h",
+            "phase": "fine_tuning",
+            "representation": "vector",
+            "role": "artifact"
+          }
+        ],
+        "interpretation": "model_proposed_not_curated",
+        "outputs": [
+          {
+            "artifact": "expanded_b",
+            "conditions": [
+              "standard_polynomial_expansion_no_coefficients"
+            ],
+            "evidence_ids": [
+              "ev_polyb",
+              "ev_bdim"
+            ],
+            "exposure": "intermediate",
+            "granularity": "per_linear_layer",
+            "id": "poly2_b",
+            "phase": "fine_tuning",
+            "representation": "matrix_m_by_2r_plus_c_r_2",
+            "role": "artifact"
+          },
+          {
+            "artifact": "expanded_a",
+            "conditions": [
+              "hadamard_based_expansion_with_h"
+            ],
+            "evidence_ids": [
+              "ev_polya",
+              "ev_adim"
+            ],
+            "exposure": "intermediate",
+            "granularity": "per_linear_layer",
+            "id": "poly2_h_a",
+            "phase": "fine_tuning",
+            "representation": "matrix_2r_plus_c_r_2_by_n",
+            "role": "artifact"
+          },
+          {
+            "artifact": "weight_update",
+            "conditions": [],
+            "evidence_ids": [
+              "ev_dw"
+            ],
+            "exposure": "unknown",
+            "granularity": "per_linear_layer",
+            "id": "delta_w",
+            "phase": "fine_tuning",
+            "representation": "matrix_m_by_n",
+            "role": "artifact"
+          }
+        ],
+        "source_id": "2604.11841v1"
+      },
+      "executable_compatibility_proven": false,
+      "interpretation": "model_proposed_not_curated",
+      "novelty_established": false,
+      "source_id": "2604.11841v1",
+      "unknowns": [
+        "Column/row ordering of square and cross terms in the concatenated expansions is not explicitly fixed.",
+        "Whether a LoRA-style scaling factor is applied to Delta W is not stated.",
+        "Whether Delta W is materialized or only applied implicitly in the forward pass is unclear."
+      ]
+    }
+  ],
+  "executable_compatibility_proven": false,
+  "export_scope": "Evidence quotes replaced by hashes; prompts, raw model responses and call receipts are excluded.",
+  "novelty_established": false,
+  "original_result_sha256": "e2acf222b768394ec9314ac35a2dcb368721ca4a3a960eb4f61570b0a58bb09f",
+  "requested_operations": {
+    "2505.18563v1": {
+      "chunk_ids": [
+        "2505.18563v1:chunk:0001",
+        "2505.18563v1:chunk:0002"
+      ],
+      "operation": "PacTrain Algorithm 1 stable-versus-unstable mask communication branch on model_update."
+    },
+    "2510.22467v1": {
+      "chunk_ids": [
+        "2510.22467v1:chunk:0001"
+      ],
+      "operation": "GradLite Algorithm 1 optimization step, including its projected gradient and error-feedback state updates."
+    },
+    "2604.11841v1": {
+      "chunk_ids": [
+        "2604.11841v1:chunk:0001",
+        "2604.11841v1:chunk:0002"
+      ],
+      "operation": "PERA parameter update Delta W = Poly^2(B) Poly_H^2(A), preserving the distinction between the two expansions."
+    }
+  },
+  "review": {
+    "assessments": [
+      {
+        "contract_id": "gradlite_optimization_step",
+        "decision": "revise",
+        "issues": [
+          {
+            "evidence": [
+              {
+                "chunk_id": "2510.22467v1:chunk:0001",
+                "quote_chars": 36,
+                "quote_sha256": "a58a5dab02d9c4f1fab755b68d9904fbe65a954b355eafb39268eb781cc2f98e"
+              },
+              {
+                "chunk_id": "2510.22467v1:chunk:0001",
+                "quote_chars": 30,
+                "quote_sha256": "d751ee79c1a9fd31e7bc8ef84ce84335b3905c94863b861c696408f583118967"
+              }
+            ],
+            "field": "artifact",
+            "port_id": null,
+            "reason": "The projection and reconstruction steps require the low-rank factors U_t and V_t, but the draft does not declare them as inputs. Listing their origin as an unknown does not expose them as prerequisites."
+          },
+          {
+            "evidence": [
+              {
+                "chunk_id": "2510.22467v1:chunk:0001",
+                "quote_chars": 29,
+                "quote_sha256": "7244de71d1b553e23f7063fa0bb777d7009ce74ffdddb70ae7c94866d8aa282e"
+              }
+            ],
+            "field": "conditions",
+            "port_id": "error_accumulator_t_plus_1",
+            "reason": "The accumulator update depends on Delta_t approximating g_t minus g~_t, which references the exact gradient. The draft does not declare this as a prerequisite. The condition 'approximation_error_estimated' hides this dependency instead of exposing it."
+          }
+        ],
+        "reason": "The draft covers the requested Algorithm 1 step. The source supports the declared inputs (learning rate, parameters, accumulator, minibatch), the intermediate approximate and corrected gradients, and the returned theta_{t+1} and r_{t+1}. However, the step also consumes U_t, V_t and the error signal delta_t, and the error estimate Delta_t depends on g_t. None of these are declared as ports. They appear only as unknowns rather than as required prerequisites, so the contract hides inputs that the projection and accumulator updates depend on.",
+        "source_id": "2510.22467v1"
+      },
+      {
+        "contract_id": "pactrain_mask_stability_communication_branch",
+        "decision": "revise",
+        "issues": [
+          {
+            "evidence": [
+              {
+                "chunk_id": "2505.18563v1:chunk:0002",
+                "quote_chars": 38,
+                "quote_sha256": "a0748a4c71afba15433b0bbd003f4a347158dce1c75c4aa3a8762d76b9459f6c"
+              }
+            ],
+            "field": "role",
+            "port_id": "sparse_mask_state",
+            "reason": "The mask is updated within the operation at line 7, before the branch test. It is intermediate state, not an externally supplied required input."
+          },
+          {
+            "evidence": [
+              {
+                "chunk_id": "2505.18563v1:chunk:0002",
+                "quote_chars": 40,
+                "quote_sha256": "b623dbd3cc45c9f1a05f263c6e3c7a3c54172077491a2e864035b37e227ed328"
+              }
+            ],
+            "field": "representation",
+            "port_id": "allreduced_update",
+            "reason": "'dense_tensor' for the unstable branch is not stated. The source says only that All-reduce is performed on the update. The dense reformatting text refers to sparse gradients in the compressed path."
+          }
+        ],
+        "reason": "The draft scopes the requested stable-versus-unstable branch on model_update (lines 6-12), and the compress and All-reduce branches are quoted correctly. Two problems remain. First, the sparse mask is updated inside the loop by the Mask Tracker, so it is internal state produced within the operation, not a required external input. Second, the unstable-branch output is given a dense_tensor representation. The source only says All-reduce or full synchronization is performed on the update; the 'reformatted into dense tensors' statement describes the sparse, stable path.",
+        "source_id": "2505.18563v1"
+      },
+      {
+        "contract_id": "pera_delta_w_polynomial_update",
+        "decision": "accept",
+        "issues": [],
+        "reason": "The draft covers the requested Delta W = Poly^2(B) Poly_H^2(A) and keeps the standard expansion of B distinct from the Hadamard-coefficient expansion of A. The initializations of B, A and h, the expanded dimensions, and the per-linear-layer scope are supported. The m-by-n shape of Delta W follows from the stated factor dimensions. Exposure is honestly left unknown. This accepts only this limited draft as source-supported, not as curated or executable.",
+        "source_id": "2604.11841v1"
+      }
+    ],
+    "curated": false,
+    "executable_compatibility_proven": false,
+    "novelty_established": false,
+    "scope": "Model-proposed contract review; semantic truth, executable compatibility, usefulness and novelty remain unverified."
+  },
+  "source_ids": [
+    "2510.22467v1",
+    "2505.18563v1",
+    "2604.11841v1"
+  ],
+  "source_pack_sha256": "756ac12016a998542b69499715a00a53a2f4442b438b490f3f7e624f350b3b20",
+  "source_urls": {
+    "2505.18563v1": "https://arxiv.org/html/2505.18563v1",
+    "2510.22467v1": "https://arxiv.org/html/2510.22467v1",
+    "2604.11841v1": "https://arxiv.org/html/2604.11841v1"
+  },
+  "status": "reviewed_drafts_not_curated",
+  "train_eligible": false
+}

@@ -23,6 +23,10 @@ real-source example, not a bulk-corpus conversion.
 A [full-method draft extractor](reports/full-contract-extraction-v2/README.md)
 now adds a separate semantic review before any curation. Its two-source pilot
 caught an omitted algorithm input; accepted drafts still remain unverified.
+A [fixed-operation three-paper run](reports/full-contract-extraction-v3/README.md)
+now preserves missing estimator/communication details and distinguishes PERA's
+two polynomial expansions. Two cards need revision; one is accepted only as a
+limited draft. An independent audit also identifies overreach by the reviewer.
 
 This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
 The upstream authors created the sampling method and operate

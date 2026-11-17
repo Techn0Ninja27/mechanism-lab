@@ -1,0 +1,358 @@
+{
+  "curated": false,
+  "novelty_established": false,
+  "records": [
+    {
+      "contract_id": "gradlite_optimization_step",
+      "inputs": [
+        {
+          "artifact": "learning_rate",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_inputs"
+          ],
+          "exposure": "required",
+          "granularity": null,
+          "id": "learning_rate",
+          "phase": "training",
+          "representation": "scalar",
+          "role": "artifact"
+        },
+        {
+          "artifact": "model_parameters",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_inputs"
+          ],
+          "exposure": "required",
+          "granularity": null,
+          "id": "parameters_t",
+          "phase": "training",
+          "representation": "real_vector",
+          "role": "artifact"
+        },
+        {
+          "artifact": "error_accumulator",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_inputs"
+          ],
+          "exposure": "required",
+          "granularity": null,
+          "id": "error_accumulator_t",
+          "phase": "training",
+          "representation": "real_vector",
+          "role": "artifact"
+        },
+        {
+          "artifact": "training_minibatch",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_forward"
+          ],
+          "exposure": "required",
+          "granularity": "minibatch",
+          "id": "minibatch",
+          "phase": "training",
+          "representation": null,
+          "role": "artifact"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact": "approximate_gradient",
+          "conditions": [
+            "low_rank_projection_u_v"
+          ],
+          "evidence_ids": [
+            "ev_proj",
+            "ev_recon"
+          ],
+          "exposure": "intermediate",
+          "granularity": null,
+          "id": "approximate_gradient",
+          "phase": "training",
+          "representation": "real_vector",
+          "role": "artifact"
+        },
+        {
+          "artifact": "corrected_gradient",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_correct"
+          ],
+          "exposure": "intermediate",
+          "granularity": null,
+          "id": "corrected_gradient",
+          "phase": "training",
+          "representation": "real_vector",
+          "role": "artifact"
+        },
+        {
+          "artifact": "model_parameters",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_update",
+            "ev_return"
+          ],
+          "exposure": "returned",
+          "granularity": null,
+          "id": "parameters_t_plus_1",
+          "phase": "training",
+          "representation": "real_vector",
+          "role": "artifact"
+        },
+        {
+          "artifact": "error_accumulator",
+          "conditions": [
+            "approximation_error_estimated"
+          ],
+          "evidence_ids": [
+            "ev_est",
+            "ev_acc",
+            "ev_return"
+          ],
+          "exposure": "returned",
+          "granularity": null,
+          "id": "error_accumulator_t_plus_1",
+          "phase": "training",
+          "representation": "real_vector",
+          "role": "artifact"
+        }
+      ],
+      "review": {
+        "decision": "revise",
+        "issues": [
+          {
+            "field": "artifact",
+            "port_id": null,
+            "reason": "The projection and reconstruction steps require the low-rank factors U_t and V_t, but the draft does not declare them as inputs. Listing their origin as an unknown does not expose them as prerequisites."
+          },
+          {
+            "field": "conditions",
+            "port_id": "error_accumulator_t_plus_1",
+            "reason": "The accumulator update depends on Delta_t approximating g_t minus g~_t, which references the exact gradient. The draft does not declare this as a prerequisite. The condition 'approximation_error_estimated' hides this dependency instead of exposing it."
+          }
+        ],
+        "reason": "The draft covers the requested Algorithm 1 step. The source supports the declared inputs (learning rate, parameters, accumulator, minibatch), the intermediate approximate and corrected gradients, and the returned theta_{t+1} and r_{t+1}. However, the step also consumes U_t, V_t and the error signal delta_t, and the error estimate Delta_t depends on g_t. None of these are declared as ports. They appear only as unknowns rather than as required prerequisites, so the contract hides inputs that the projection and accumulator updates depend on."
+      },
+      "source_id": "2510.22467v1",
+      "source_url": "https://arxiv.org/html/2510.22467v1",
+      "unknowns": [
+        "How U_t and V_t are obtained or adapted per step is not specified in the excerpt.",
+        "How Delta_t approximating g_t - g~_t is estimated without computing the exact gradient is unspecified.",
+        "The rank k and the compressed activation representation format are not given.",
+        "Whether the error accumulator is initialized to zero is not stated."
+      ]
+    },
+    {
+      "contract_id": "pactrain_mask_stability_communication_branch",
+      "inputs": [
+        {
+          "artifact": "model_update",
+          "conditions": [
+            "gse_applied",
+            "model_pruned"
+          ],
+          "evidence_ids": [
+            "ev_foreach",
+            "ev_gse"
+          ],
+          "exposure": "required",
+          "granularity": "per_update",
+          "id": "model_update",
+          "phase": "distributed_training",
+          "representation": "gradient_tensor",
+          "role": "artifact"
+        },
+        {
+          "artifact": "sparse_mask",
+          "conditions": [
+            "updated_by_mask_tracker"
+          ],
+          "evidence_ids": [
+            "ev_tracker"
+          ],
+          "exposure": "required",
+          "granularity": null,
+          "id": "sparse_mask_state",
+          "phase": "distributed_training",
+          "representation": null,
+          "role": "artifact"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact": "compressed_update",
+          "conditions": [
+            "mask_stable"
+          ],
+          "evidence_ids": [
+            "ev_stable",
+            "ev_compress",
+            "ev_comm"
+          ],
+          "exposure": "intermediate",
+          "granularity": "per_update",
+          "id": "compressed_update",
+          "phase": "distributed_training",
+          "representation": "non_zero_elements",
+          "role": "artifact"
+        },
+        {
+          "artifact": "model_update",
+          "conditions": [
+            "mask_unstable"
+          ],
+          "evidence_ids": [
+            "ev_allreduce",
+            "ev_unstable"
+          ],
+          "exposure": "unknown",
+          "granularity": "per_update",
+          "id": "allreduced_update",
+          "phase": "distributed_training",
+          "representation": "dense_tensor",
+          "role": "artifact"
+        }
+      ],
+      "review": {
+        "decision": "revise",
+        "issues": [
+          {
+            "field": "role",
+            "port_id": "sparse_mask_state",
+            "reason": "The mask is updated within the operation at line 7, before the branch test. It is intermediate state, not an externally supplied required input."
+          },
+          {
+            "field": "representation",
+            "port_id": "allreduced_update",
+            "reason": "'dense_tensor' for the unstable branch is not stated. The source says only that All-reduce is performed on the update. The dense reformatting text refers to sparse gradients in the compressed path."
+          }
+        ],
+        "reason": "The draft scopes the requested stable-versus-unstable branch on model_update (lines 6-12), and the compress and All-reduce branches are quoted correctly. Two problems remain. First, the sparse mask is updated inside the loop by the Mask Tracker, so it is internal state produced within the operation, not a required external input. Second, the unstable-branch output is given a dense_tensor representation. The source only says All-reduce or full synchronization is performed on the update; the 'reformatted into dense tensors' statement describes the sparse, stable path."
+      },
+      "source_id": "2505.18563v1",
+      "source_url": "https://arxiv.org/html/2505.18563v1",
+      "unknowns": [
+        "The criterion the Mask Tracker uses to judge mask stability is not defined.",
+        "The compress() function's exact format (beyond non-zero elements, reformatted into dense tensors) is unclear.",
+        "Whether the stable branch uses all-reduce on the reformatted dense tensor is only implied by Fig. 2 text.",
+        "How aggregated results are applied back to the model is not shown in the excerpt."
+      ]
+    },
+    {
+      "contract_id": "pera_delta_w_polynomial_update",
+      "inputs": [
+        {
+          "artifact": "low_rank_matrix_b",
+          "conditions": [
+            "gaussian_initialized"
+          ],
+          "evidence_ids": [
+            "ev_ba"
+          ],
+          "exposure": "required",
+          "granularity": "per_linear_layer",
+          "id": "low_rank_b",
+          "phase": "fine_tuning",
+          "representation": "matrix_m_by_r",
+          "role": "artifact"
+        },
+        {
+          "artifact": "low_rank_matrix_a",
+          "conditions": [
+            "zero_initialized"
+          ],
+          "evidence_ids": [
+            "ev_ba"
+          ],
+          "exposure": "required",
+          "granularity": "per_linear_layer",
+          "id": "low_rank_a",
+          "phase": "fine_tuning",
+          "representation": "matrix_r_by_n",
+          "role": "artifact"
+        },
+        {
+          "artifact": "hadamard_coefficients",
+          "conditions": [
+            "zero_initialized",
+            "learnable"
+          ],
+          "evidence_ids": [
+            "ev_h"
+          ],
+          "exposure": "required",
+          "granularity": "per_pair_i_le_j",
+          "id": "hadamard_coefficients_h",
+          "phase": "fine_tuning",
+          "representation": "vector",
+          "role": "artifact"
+        }
+      ],
+      "outputs": [
+        {
+          "artifact": "expanded_b",
+          "conditions": [
+            "standard_polynomial_expansion_no_coefficients"
+          ],
+          "evidence_ids": [
+            "ev_polyb",
+            "ev_bdim"
+          ],
+          "exposure": "intermediate",
+          "granularity": "per_linear_layer",
+          "id": "poly2_b",
+          "phase": "fine_tuning",
+          "representation": "matrix_m_by_2r_plus_c_r_2",
+          "role": "artifact"
+        },
+        {
+          "artifact": "expanded_a",
+          "conditions": [
+            "hadamard_based_expansion_with_h"
+          ],
+          "evidence_ids": [
+            "ev_polya",
+            "ev_adim"
+          ],
+          "exposure": "intermediate",
+          "granularity": "per_linear_layer",
+          "id": "poly2_h_a",
+          "phase": "fine_tuning",
+          "representation": "matrix_2r_plus_c_r_2_by_n",
+          "role": "artifact"
+        },
+        {
+          "artifact": "weight_update",
+          "conditions": [],
+          "evidence_ids": [
+            "ev_dw"
+          ],
+          "exposure": "unknown",
+          "granularity": "per_linear_layer",
+          "id": "delta_w",
+          "phase": "fine_tuning",
+          "representation": "matrix_m_by_n",
+          "role": "artifact"
+        }
+      ],
+      "review": {
+        "decision": "accept",
+        "issues": [],
+        "reason": "The draft covers the requested Delta W = Poly^2(B) Poly_H^2(A) and keeps the standard expansion of B distinct from the Hadamard-coefficient expansion of A. The initializations of B, A and h, the expanded dimensions, and the per-linear-layer scope are supported. The m-by-n shape of Delta W follows from the stated factor dimensions. Exposure is honestly left unknown. This accepts only this limited draft as source-supported, not as curated or executable."
+      },
+      "source_id": "2604.11841v1",
+      "source_url": "https://arxiv.org/html/2604.11841v1",
+      "unknowns": [
+        "Column/row ordering of square and cross terms in the concatenated expansions is not explicitly fixed.",
+        "Whether a LoRA-style scaling factor is applied to Delta W is not stated.",
+        "Whether Delta W is materialized or only applied implicitly in the forward pass is unclear."
+      ]
+    }
+  ],
+  "result_sha256": "627ec7fff984a48c00afc28c9e2c4c6811df26898703e7e3b3b136780ecdd6f9",
+  "schema": "contract-draft-library.v1",
+  "status": "reviewed_drafts_not_curated"
+}

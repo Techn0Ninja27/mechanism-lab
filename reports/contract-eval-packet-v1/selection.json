@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-17",
+  "queries": ["activation checkpointing", "gradient compression", "low rank adaptation"],
+  "selection_rule": "For each exact query, inspect local FTS top20 and select the first unseen canonical arXiv ID with published_date >= 2025-01-01 and abstract length >= 400. Exclude IDs in the prior ML atom packet, operational packet, and serving source pack. Do not replace a selected source after this freeze.",
+  "corpus_snapshot": "corpus-ml-complete-mirror-v6",
+  "corpus_path": "results/corpus-ml-complete-mirror-v6/corpus.sqlite",
+  "corpus_records": 739964,
+  "corpus_cutoff": "2026-11-16",
+  "corpus_sha256": "a594fc6f24d14a218f7b9d87622db1d9f304aebf7b74f77e45e3ffab646182ec",
+  "excluded_packets": [
+    "results/ml-graph-atoms-v1/papers.json",
+    "results/operational-packet-v2/papers.json",
+    "results/serving-problem-v2/pack.json"
+  ],
+  "excluded_source_count": 37,
+  "excluded_packet_sha256": {
+    "results/ml-graph-atoms-v1/papers.json":"b500b468b1af17788a5b8a681bb3d559f5919e6b0ed69c367ceb74583e938ce8",
+    "results/operational-packet-v2/papers.json":"7025d41908172517f535207c888b7aaab53110fba49c37d9ec70f5f294c874cc",
+    "results/serving-problem-v2/pack.json":"db850ac54538ce99f25610f35d22224e519f3a004c51dc800b00f797a47fdc39"
+  },
+  "sources": [
+    {"source_id":"arxiv:2510.22467","title":"Backward-Friendly Optimization: Training Large Language Models with Approximate Gradients under Memory Constraints","url":"https://arxiv.org/abs/2510.22467","selection_query":"activation checkpointing","published_date":"2025-10-26","abstract_chars":1396,"operation_scope":"approximate-gradient training under activation-memory constraints; exact substep and assumptions to be verified from full text"},
+    {"source_id":"arxiv:2505.18563","title":"PacTrain: Pruning and Adaptive Sparse Gradient Compression for Efficient Collective Communication in Distributed Deep Learning","url":"https://arxiv.org/abs/2505.18563","selection_query":"gradient compression","published_date":"2025-05-24","abstract_chars":1308,"operation_scope":"adaptive sparse gradient communication; exact compression/update substep and error conditions to be verified from full text"},
+    {"source_id":"arxiv:2604.11841","title":"Polynomial Expansion Rank Adaptation: Enhancing Low-Fine-Tuning with High-Order Interactions","url":"https://arxiv.org/abs/2604.11841","selection_query":"low rank adaptation","published_date":"2026-04-12","abstract_chars":1364,"operation_scope":"high-order polynomial rank adaptation; exact parameter-update substep and rank assumptions to be verified from full text"}
+  ],
+  "scope":"Exposed development packet from deterministic local retrieval; not representative corpus coverage, unseen benchmark data, or novelty evidence. Frozen before primary HTML fetch and method inspection."
+}

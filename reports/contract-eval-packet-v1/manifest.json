@@ -1,0 +1,74 @@
+{
+  "schema": "contract-eval-primary-evidence.v1",
+  "sources": [
+    {
+      "id": "2510.22467v1",
+      "title": "Backward-Friendly Optimization: Training Large Language Models with Approximate Gradients under Memory Constraints",
+      "url": "https://arxiv.org/html/2510.22467v1",
+      "path": "sources/2510.22467v1.selected.txt",
+      "source_html": "sources/2510.22467v1.html",
+      "source_html_sha256": "4a7e939cdc00c5c0baa6a5773f5acc1ea57b490726cb5172495e6568e43a039b",
+      "selected_sha256": "03d13900f8e5d2017c64a5e06c4d8b17d49b8364c91dcd8f88289fe6fbec80db",
+      "selected_chars": 7585,
+      "line_ranges": [
+        [
+          62,
+          111
+        ],
+        [
+          200,
+          215
+        ]
+      ],
+      "operation_scope": "GradLite approximate-gradient construction: low-rank Jacobian approximation and error-feedback update, plus source-stated memory/accuracy boundaries.",
+      "evidence_level": "full_text",
+      "omitted": "All normalized visible source lines outside inspected ranges; no completeness claim."
+    },
+    {
+      "id": "2505.18563v1",
+      "title": "PacTrain: Pruning and Adaptive Sparse Gradient Compression for Efficient Collective Communication in Distributed Deep Learning",
+      "url": "https://arxiv.org/html/2505.18563v1",
+      "path": "sources/2505.18563v1.selected.txt",
+      "source_html": "sources/2505.18563v1.html",
+      "source_html_sha256": "4115ea0d8960d3b6ea376c4c5637aa02261e8a1c108b9ac83068183e07681090",
+      "selected_sha256": "5e4788f5db093f9399e834a11caf0ea0fad516b980820e7e5b45e1f87e670111",
+      "selected_chars": 8191,
+      "line_ranges": [
+        [
+          125,
+          175
+        ],
+        [
+          210,
+          219
+        ]
+      ],
+      "operation_scope": "PacTrain pruning-aware sparse gradient communication: gradient sparsity enforcement, mask stability, sparse AllReduce/quantization and bandwidth-limited evaluation.",
+      "evidence_level": "full_text",
+      "omitted": "All normalized visible source lines outside inspected ranges; no completeness claim."
+    },
+    {
+      "id": "2604.11841v1",
+      "title": "Polynomial Expansion Rank Adaptation: Enhancing Low-Fine-Tuning with High-Order Interactions",
+      "url": "https://arxiv.org/html/2604.11841v1",
+      "path": "sources/2604.11841v1.selected.txt",
+      "source_html": "sources/2604.11841v1.html",
+      "source_html_sha256": "9d1ec776f160e8b3800af9aa0f3f147b98683e69775dd5d73521472e955342b1",
+      "selected_sha256": "b1fcabcdd39ad1f6bdb8b7fc5db81f982e0abc5c8f03ffe7c0aa641ec74393aa",
+      "selected_chars": 10493,
+      "line_ranges": [
+        [
+          123,
+          183
+        ],
+        [
+          675,
+          680
+        ]
+      ],
+      "operation_scope": "PERA polynomial expansion of low-rank factors into a parameter update, rank/feature analysis, efficiency and evaluation limitations.",
+      "evidence_level": "full_text",
+      "omitted": "All normalized visible source lines outside inspected ranges; no completeness claim."
+    }
+  ]
+}

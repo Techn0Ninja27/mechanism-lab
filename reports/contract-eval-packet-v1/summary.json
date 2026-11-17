@@ -1,0 +1,17 @@
+{
+  "status": "ready_for_contract_draft_extraction",
+  "source_count": 3,
+  "pack_digest": "6b03e6185b4978346bc21960f19f95d1df93f75a96888b4b8e256d71735eb423",
+  "pack_limits": {
+    "max_total_chars": 36000,
+    "chunk_chars": 4000,
+    "included_chars": 26261,
+    "truncated_source_count": 0
+  },
+  "operation_scopes": {
+    "2510.22467v1": "GradLite approximate-gradient construction: low-rank Jacobian approximation and error-feedback update, plus source-stated memory/accuracy boundaries.",
+    "2505.18563v1": "PacTrain pruning-aware sparse gradient communication: gradient sparsity enforcement, mask stability, sparse AllReduce/quantization and bandwidth-limited evaluation.",
+    "2604.11841v1": "PERA polynomial expansion of low-rank factors into a parameter update, rank/feature analysis, efficiency and evaluation limitations."
+  },
+  "scope": "Exposed development packet from three primary full-text snapshots; no extraction or model calls run. Not representative coverage or novelty evidence."
+}

@@ -1,0 +1,22 @@
+{
+  "2510.22467v1": {
+    "operation": "GradLite Algorithm 1 optimization step, including its projected gradient and error-feedback state updates.",
+    "chunk_ids": [
+      "2510.22467v1:chunk:0001"
+    ]
+  },
+  "2505.18563v1": {
+    "operation": "PacTrain Algorithm 1 stable-versus-unstable mask communication branch on model_update.",
+    "chunk_ids": [
+      "2505.18563v1:chunk:0001",
+      "2505.18563v1:chunk:0002"
+    ]
+  },
+  "2604.11841v1": {
+    "operation": "PERA parameter update Delta W = Poly^2(B) Poly_H^2(A), preserving the distinction between the two expansions.",
+    "chunk_ids": [
+      "2604.11841v1:chunk:0001",
+      "2604.11841v1:chunk:0002"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "calls": [
+    {
+      "status": "complete",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 15715,
+        "completion_tokens": 5247,
+        "total_tokens": 20962,
+        "cost": 0.166122,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.1678,
+          "upstream_inference_prompt_cost": 0.06286,
+          "upstream_inference_completions_cost": 0.10494
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    },
+    {
+      "status": "complete",
+      "resolved_model": "anthropic/claude-opus-5.5",
+      "finish_reason": "stop",
+      "usage": {
+        "prompt_tokens": 21098,
+        "completion_tokens": 2279,
+        "total_tokens": 23377,
+        "cost": 0.12867228,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0.129972,
+          "upstream_inference_prompt_cost": 0.084392,
+          "upstream_inference_completions_cost": 0.04558
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 984,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  ],
+  "charged_usd": 0.29777200000000004,
+  "accounting": "Maximum reported provider charge per call; shared ledger reconciled."
+}
