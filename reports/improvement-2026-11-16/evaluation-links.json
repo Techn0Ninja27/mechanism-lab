@@ -47,5 +47,12 @@
     "result_path": "operator-studies/graph-walk-codecs/results.json",
     "report_path": "operator-studies/graph-walk-codecs/README.md",
     "result_sha256": "7457b74dbcddf116214dc2abb1476b38a6a9c78ce233c1ef37b6b8400a41eaf8"
+  },
+  "grounded-gnn-gate-v1": {
+    "status": "fails_strong_control_gate_on_cora_replay",
+    "summary": "Sync-revealed Fixed Share has 2.086x / 2.014x predictor-only relative L2 error on ordinary / LR-drop Cora screening trajectories. Both frozen 5% gates fail. Offline real-GCN replay, not closed-loop accuracy, SNI replication or general rejection of adaptive methods.",
+    "result_path": "operator-studies/gnn-sync-gate/result.json",
+    "report_path": "operator-studies/gnn-sync-gate/README.md",
+    "result_sha256": "997c21574da224618da3cc5b56efa26241ec4dff2358919b3663ad59efbfd1a8"
   }
 }

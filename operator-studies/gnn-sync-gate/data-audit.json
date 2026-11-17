@@ -1,0 +1,12 @@
+{
+  "nodes": 2708,
+  "features": 1433,
+  "classes": 7,
+  "unique_ids": 2708,
+  "feature_widths": [
+    1433
+  ],
+  "raw_edges": 5429,
+  "unknown_endpoints": 0,
+  "unique_undirected_nonself_edges": 5278
+}

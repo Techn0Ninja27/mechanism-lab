@@ -1,0 +1,411 @@
+{
+  "human_adjudicated": false,
+  "train_eligible": false,
+  "novelty_established": false,
+  "pack_hash": "51075f76587c3e142f3b41690f6577577cee1497818f70f688a369d6d1a09332",
+  "status": "reviewed",
+  "lineage": {
+    "schema_version": "method-lineage-report.v1",
+    "scope": "curated2families not exhaustive",
+    "warnings": [],
+    "coverage": {
+      "relations": {
+        "neumiss-sharedweights": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "sharedweights",
+          "paper_reported_change": "The later NeuMiss version reports shared weights and residual connections relative to the original untied architecture.",
+          "claims": [
+            "NeuMiss_sota records the published shared-weight residual implementation."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2106.00311",
+            "https://github.com/marineLM/NeuMiss_sota/blob/7902b8dbe7114e8dc3010b5e8b132c35806a9d74/neumiss/NeuMissBlock.py"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        },
+        "stablemiss-selectivecorrelation": {
+          "curated_relation": true,
+          "older_present": false,
+          "newer_present": false,
+          "older_metadata_present": false,
+          "newer_metadata_present": false,
+          "mechanism": "selectivecorrelation",
+          "paper_reported_change": "The paper presents StableMiss+ as a selective decorrelation variant that aims to preserve feature-feature correlations.",
+          "claims": [
+            "The paper reports StableMiss+ as preserving feature-feature correlations while removing mask-related correlations; implementation behavior requires verification."
+          ],
+          "supports": [
+            "https://arxiv.org/abs/2305.11197",
+            "https://github.com/zyc-sjtu/StableMiss"
+          ],
+          "review_status": {
+            "agent_checked": true,
+            "human_adjudicated": false
+          },
+          "known_successor_urls": [],
+          "missing_baseline_evidence": [
+            "older_baseline",
+            "newer_related_version"
+          ],
+          "status": "absent"
+        }
+      },
+      "matched_repository_urls": [
+        "https://arxiv.org/html/2608.06441v1",
+        "https://doi.org/10.1007/s00778-024-00897-2",
+        "https://doi.org/10.1137/1.9781611978520.62",
+        "https://doi.org/10.1145/3809161",
+        "https://doi.org/10.14778/3648160.3648184"
+      ]
+    }
+  },
+  "experiment_feedback": {
+    "schema_version": "experiment-feedback-report.v1",
+    "scope": "partial curated experiment feedback; artifact integrity does not establish scientific validity, usefulness, feasibility, or novelty",
+    "records": [],
+    "warnings": [
+      "record 'fier-windowquant-onebit-trace-v1' source pair is absent from the supplied source pack",
+      "record 'fier-windowquant-max-aggregation-v1' source pair is absent from the supplied source pack",
+      "record 'felog-rank-varint-walks-v1' source pair is absent from the supplied source pack"
+    ],
+    "matched_count": 0,
+    "registry_sha256": "ca6bc531de02ebe3377f5efcb064c76f4fe927ad3528a3bb5046743ba05035b0"
+  },
+  "source_contracts": {
+    "scope": "Partial curated source declarations; not executable compatibility, novelty or correctness proofs.",
+    "contracts": [],
+    "warnings": [
+      "evidence source mismatch",
+      "evidence source mismatch"
+    ],
+    "matched_count": 0
+  },
+  "retrieval": {
+    "schema": "prior-art-retrieval-v3",
+    "query_hash": "5ab7ce1a1a84dc88e9b6b7b40eaa46f12555a067d9ee56e54ceccf8a1e6aa2d6",
+    "queries": [
+      "embedding predictor staleness",
+      "historical embedding adaptive",
+      "online expert delayed feedback"
+    ],
+    "cutoff": "2026-11-16",
+    "limit": 10,
+    "providers": [
+      "local_corpus"
+    ],
+    "failures": [],
+    "errors": [],
+    "coverage": [
+      {
+        "query": "embedding predictor staleness",
+        "compiled_query": "\"embedding\" AND \"predictor\" AND \"staleness\"",
+        "provider": "local_corpus",
+        "records": 1,
+        "status": "ok",
+        "retained_records": 1
+      },
+      {
+        "query": "historical embedding adaptive",
+        "compiled_query": "\"historical\" AND \"embedding\" AND \"adaptive\"",
+        "provider": "local_corpus",
+        "records": 10,
+        "status": "ok",
+        "retained_records": 5
+      },
+      {
+        "query": "online expert delayed feedback",
+        "compiled_query": "\"online\" AND \"expert\" AND \"delayed\" AND \"feedback\"",
+        "provider": "local_corpus",
+        "records": 7,
+        "status": "ok",
+        "retained_records": 4
+      }
+    ],
+    "truncation": {
+      "truncated": true,
+      "limit": 10,
+      "arxiv_max_per_query": 5
+    },
+    "novelty_label": null,
+    "digest": "31907c01b7ebdb5757f88d415d8fd78a5644372b28d14694e30f96b66e85fde9"
+  },
+  "retrieved_source_count": 10,
+  "proposal": {
+    "title": "Sync-revealed Hedge gating between SNI-style damped trend prediction and last-observed hold for stale remote GNN embeddings: an application test",
+    "hypothesis": "On a fixed single-process partition emulation of small node-classification graphs, a per-partition-pair two-expert Hedge gate updated only at actual sync epochs reduces the mean relative stale-embedding error, ||x_used - h_true|| / ||h_true||, over stale epochs by at least 5% versus the best of three controls: hold, ungated predictor, and a development-tuned fixed mixture. The prediction and sync budgets are identical across arms.",
+    "baseline": "The SNI-GNN Algorithm 2 self-feeding damped trend predictor, x_pred = x_last + v\u00b7\u0394\u00b7e^{-\u03b2\u0394}, applied to boundary nodes selected by sampling. The comparison also includes last-observed hold, which SNI uses for unsampled nodes. The implementation reference is sni-method chunks 0004\u20130005. No SNI code is supplied, so this is a reimplementation from the text and its fidelity is a baseline-coverage gap. SAT (a learned online predictor) is a stronger competitor, but only its abstract is available. It is listed as an uncovered baseline.",
+    "operator_delta": "Replace the fixed choice between predictor and hold with a convex combination for each node group g. The combination is x_used = w_g\u00b7x_pred + (1 - w_g)\u00b7x_last. The weight w_g comes from exponentially weighted (Hedge) updates. These updates use losses that become available only when a sync reveals true embeddings and are scored against the predictions frozen during the preceding interval.",
+    "contribution_claims": [
+      {
+        "id": "C1",
+        "text": "An application question: whether sync-revealed expert gating between damped trend prediction and hold reduces harmful extrapolation in stale GNN embeddings.",
+        "role": "central",
+        "kind": "problem"
+      },
+      {
+        "id": "C2",
+        "text": "A frozen-prediction, sync-revealed loss protocol with horizon-matched loss attribution. Losses are computed for every stale offset \u0394 by storing frozen outputs.",
+        "role": "supporting",
+        "kind": "method"
+      },
+      {
+        "id": "C3",
+        "text": "Expected result (hypothesis only): the gate beats the best fixed operator only when the predictor's relative quality changes over training, for example after the prespecified learning-rate drop.",
+        "role": "supporting",
+        "kind": "expected_result"
+      }
+    ],
+    "mechanism_check": {
+      "status": "redundant",
+      "assumption_scope": "Source premises: embeddings 'evolve smoothly', SNI uses a fixed sync interval s, and the error theorem assumes a bounded second difference with an undamped Taylor predictor. Theorem IV.1 does not cover the damped, EMA-baselined, self-fed implementation, so no guarantee is claimed. Target assumptions (inferred): there is non-stationarity in which operator is better, and losses can be logged at revealed syncs. Regimes without such shifts are outside the hypothesis's scope; they are not contradictions of it.",
+      "specialized_operation": "For each group g, keep a weight w_g. Steps: (1) At sync time t0, freeze w_g for the interval. (2) For each stale epoch t0+\u0394 with \u0394 = 1..s-1, compute x_pred(\u0394) and x_last. Use x_used = w_g\u00b7x_pred + (1-w_g)\u00b7x_last and store x_pred(\u0394) per node; storing per-node scalars is not enough because predictor state must be matched. (3) At the next sync t1 = t0+s, h(t1) is observed. Compute L_P = mean_i ||x_pred_i(s) - h_i(t1)||\u00b2 / ||h_i(t1)||\u00b2, and L_H the same way for x_last. Only the end horizon \u0394 = s is revealed; intermediate h is never shown to the gate. (4) Update w_g \u221d w_g\u00b7e^{-\u03b7\u00b7L_P} and (1-w_g) \u221d (1-w_g)\u00b7e^{-\u03b7\u00b7L_H}, with a fixed-share floor \u03b5 = 0.01. (5) Feed the predictor its observation exactly as in Algorithm 2.",
+      "remaining_effect": "This reduces exactly to Hedge or Fixed Share with delayed feedback over two experts (arXiv 1902.10433). No new learning algorithm survives simplification. The remaining effect is empirical: whether the losses at \u0394 = s rank the experts correctly for shorter \u0394. Damping e^{-\u03b2\u0394} makes the predictor's error depend on \u0394, so this ranking is unresolved. Costs are 1 scalar per group plus a buffer of s\u00b7|sampled|\u00b7d for frozen predictions, or reuse of x_pred at \u0394 = s only, which adds O(|sampled|\u00b7d) memory.",
+      "simplest_baseline": "A global fixed mixture w* tuned on the development graph, with zero runtime state and no adaptivity. It also covers the better fixed operator (w = 0 or 1).",
+      "distinguishing_test": "Cheap screening on synchronous trajectories. Record full-sync trajectories, then emulate stale epochs offline. Compare the Hedge gate against w* and the best fixed operator on stale-epoch relative error, using both the ordinary schedule and an LR\u00d70.1 drop at 50% of epochs. If Hedge does not beat w* by 5%, stop before closed-loop training."
+    },
+    "evidence": [
+      {
+        "chunk_id": "sni-method:chunk:0004",
+        "quote_sha256": "1a2e43ce3218173e092bde1aa8ea6869228a5ce8515d6fa316fab0ed5bd46168",
+        "supports": "Exact form of the baseline predictor."
+      },
+      {
+        "chunk_id": "sni-method:chunk:0003",
+        "quote_sha256": "a31f09cc15f8811efc0978786443a5c8c3892a6a8761cd266b2e8e9578bc98c7",
+        "supports": "Hold is an existing operator inside SNI."
+      },
+      {
+        "chunk_id": "sni-method:chunk:0002",
+        "quote_sha256": "1083b46452d1c0ac18eefd7b5685c02a63afeff632dd7481003eb6c389207947",
+        "supports": "Feedback arrives only at fixed syncs."
+      },
+      {
+        "chunk_id": "prior_art:90f47e9e3c2039460910",
+        "quote_sha256": "8da5c58f871e8b19281483f1427d4c83e604d74fbf1934dc89dd08aeb988eec9",
+        "supports": "The gate is an existing expert rule."
+      }
+    ],
+    "assumptions": [
+      "The ranking of predictor versus hold at \u0394 = s agrees with the ranking at \u0394 < s in at least 80% of intervals; this is checked offline using full trajectories.",
+      "The relative merit of the two operators shifts after the LR change.",
+      "Group-level gating at the partition-pair level is sufficient."
+    ],
+    "data_paths": [
+      {
+        "input": "Embeddings revealed at sync",
+        "operation": "Score frozen x_pred(s) and x_last, then apply the Hedge update",
+        "output": "w_g for the next interval",
+        "possible_leakage": "Intermediate-epoch truth is used only in offline evaluation and never by the gate. The w* tuned on dev must not see test graphs or seeds."
+      }
+    ],
+    "counterexample": "A smooth, monotone trajectory in which the predictor is always better. Then w \u2192 1 and the gate only adds lag relative to the ungated predictor, so it matches or underperforms the better fixed operator.",
+    "matched_control": "The same predictor state, the same sampled nodes, s, and feedback logging, with w fixed at the dev-tuned w*, at 0, or at 1. A random-weight-sequence control is also included.",
+    "experiment": {
+      "development": "Cora and CiteSeer with public splits, 4 METIS-like partitions emulated in one process on CPU/MPS, a 2-layer GCN, s = 4, seeds 0\u20132. The protocol is frozen, \u03b7 is tuned on a grid of 3 values, and w* is tuned here.",
+      "heldout": "Amazon-Photo and Coauthor-CS with fixed random splits, seeds 10\u201314, never inspected before the protocol is frozen. The gate must pass trajectory screening first. Closed-loop training is then run with the ordinary schedule and the LR drop.",
+      "metric": "Primary: mean relative stale-embedding error over stale epochs, averaged across seeds. Closed-loop: final test accuracy as mean \u00b1 std. No hardware speedup claims are made.",
+      "kill_threshold": "Reject if the error reduction relative to min(w*, hold, predictor) is below 5% on held-out data, or if closed-loop accuracy gains are within 1 std or below 0.3 points in either schedule."
+    },
+    "prior_art_difference": "The gate overlaps entirely with delayed-feedback Hedge and Fixed Share. SNI selects between prediction and hold statically by node importance. SAT learns a predictor online; whether it gates between operators cannot be verified from the abstract. There is no matching local experiment. The only unverified difference is applying a sync-revealed two-expert rule to SNI-style operators, not a new algorithm.",
+    "decision": "revise",
+    "novelty_established": false
+  },
+  "review": {
+    "claim_assessments": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "sni-method:chunk:0003",
+          "sni-method:chunk:0004",
+          "sni-method:chunk:0005",
+          "prior_art:90f47e9e3c2039460910",
+          "W4409983225:chunk:0001",
+          "W4407013152:chunk:0001",
+          "W4396628137:chunk:0001",
+          "W7160826828:chunk:0001"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "sni-method:chunk:0003",
+            "quote_sha256": "182d54c86ca0dbc96925e5bc7a9c2f5f2386a6b406c031049c79327cf6412eb8",
+            "supports": "SNI already uses both operators, prediction and hold, but chooses between them statically by node importance."
+          },
+          {
+            "chunk_id": "prior_art:90f47e9e3c2039460910",
+            "quote_sha256": "8da5c58f871e8b19281483f1427d4c83e604d74fbf1934dc89dd08aeb988eec9",
+            "supports": "The gating rule itself is existing delayed-feedback expert weighting."
+          },
+          {
+            "chunk_id": "W4409983225:chunk:0001",
+            "quote_sha256": "4e6501562e827d029dc46099f4551406dd75dae32304e443d05e375f7276e1e5",
+            "supports": "Adaptive staleness reduction exists in SAT, but its mechanism is visible only at abstract level."
+          }
+        ],
+        "reason": "Both operators and the expert rule appear in the examined evidence. None of the examined chunks applies a sync-revealed loss-driven gate between SNI's predictor and hold. SAT's internals are unknown from its abstract alone. This absence does not establish novelty."
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "prior_art:90f47e9e3c2039460910",
+          "sni-method:chunk:0002",
+          "sni-method:chunk:0004"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "prior_art:90f47e9e3c2039460910",
+            "quote_sha256": "09a5f2374a807deb6ef88b13883d4fb8b8ebda4a61160fb8601dc08410bc5dbd",
+            "supports": "Scoring experts on losses revealed after a delay is generic delayed-feedback Hedge."
+          },
+          {
+            "chunk_id": "sni-method:chunk:0002",
+            "quote_sha256": "1083b46452d1c0ac18eefd7b5685c02a63afeff632dd7481003eb6c389207947",
+            "supports": "Feedback arrives only at sync epochs."
+          }
+        ],
+        "reason": "Delayed scoring is covered by the Hedge evidence. The horizon-matched attribution part is not found in the evidence. It is also internally inconsistent: C2 says losses are computed for every stale offset \u0394, but the proposal's own mechanism says only \u0394 = s is revealed and intermediate truth is never shown to the gate. Per-\u0394 losses cannot be computed online, because h(t0+\u0394) for \u0394 < s is never observed."
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "sni-method:chunk:0005",
+          "prior_art:90f47e9e3c2039460910"
+        ],
+        "evidence": [],
+        "reason": "This is an expected result, a hypothesis rather than an observation. No supplied evidence reports how predictor-versus-hold ranking behaves across a learning-rate drop."
+      }
+    ],
+    "mechanism_check": {
+      "status": "unresolved",
+      "assumption_scope": "Source assumptions: SNI assumes smooth evolution and a fixed s. Theorem IV.1 assumes a bounded second difference with an undamped Taylor predictor, so it does not cover Algorithm 2's damped, self-fed form. Target assumptions: which operator is better changes over training, and the loss at \u0394 = s ranks the experts correctly at \u0394 < s. Stationary regimes are excluded from the hypothesis's scope; they do not contradict it.",
+      "specialized_operation": "Algorithm 2 steps (d) and (i) self-feed x_pred into x_last and set t_last = t. If Predict is called every stale epoch, then \u0394 = 1 at each call, and 'x_last' during stale epochs is the previous prediction, not the last observed value. Hold must therefore be a separate cached value, h_sync(t0). The gate then computes x_used = w\u00b7x_pred + (1 - w)\u00b7h_sync. At t1 it scores L_P = rel-err(x_pred at t1 before the observation is written) and L_H = rel-err(h_sync(t0)), then sets w \u221d w\u00b7e^{-\u03b7L_P} with Fixed Share. The predictor state must be fed x_pred, not x_used, so that the gate does not alter the expert.",
+      "remaining_effect": "The gate is an algorithmic no-op relative to delayed Fixed Share. What survives is only the empirical question of whether per-group adaptive w beats a tuned constant w* on non-stationary trajectories. Also unresolved: the operator definitions under self-feeding, which determine whether 'hold' even differs from the predictor's internal state.",
+      "simplest_baseline": "A dev-tuned constant w*, with w = 0 and w = 1 as special cases. It needs no runtime state but cannot track shifts. A second baseline is SNI's static importance-based selection.",
+      "distinguishing_test": "Run offline replay on full-sync trajectories with an explicitly separate h_sync. Compute per-interval regret of Hedge versus w*, before and after the learning-rate drop. Check whether the ranking at \u0394 = s agrees with the ranking at \u0394 < s in at least 80% of intervals."
+    },
+    "decision": "revise",
+    "failure_type": "unsupported_assumption",
+    "reason": "The gate reduces to known delayed Hedge, so any value is empirical. The proposal has two problems to fix. First, it conflates Algorithm 2's self-fed x_last with last-observed hold; it must define hold as the sync-time value and keep the predictor's input independent of the gate. Second, C2's per-\u0394 loss claim contradicts the stated information path. Any benefit also hinges on the untested assumption that end-of-interval ranking transfers to shorter horizons. In closed loop, the arms change h_true itself, so error comparisons must come from offline replay.",
+    "evidence": [
+      {
+        "chunk_id": "sni-method:chunk:0004",
+        "quote_sha256": "f676dc6ed742905ed1cfaf1fb5f74b8fa682fc7080930d55ba28e1f873d871c4",
+        "supports": "Algorithm 2 writes predictions into the state used as x_last."
+      },
+      {
+        "chunk_id": "sni-method:chunk:0005",
+        "quote_sha256": "520e2850f7cbb6eb0ab93e019607c92f8ef49470fac74f1b5f7d87607c1e083e",
+        "supports": "x_last and \u0394 are reset at each call, so hold must be defined separately."
+      }
+    ],
+    "strongest_counterargument": "The proposal itself admits there is no algorithmic novelty and specifies a cheap offline kill test. The definitional issue is easy to fix, so a direct 'test' decision would be reasonable.",
+    "required_test": "Run the offline replay on Cora with a separate h_sync and the predictor fed only x_pred. Compare Hedge against w* and the best fixed operator under both schedules. Also measure the rate of ranking agreement between \u0394 = s and \u0394 < s. Stop if the Hedge reduction is below 5%.",
+    "novelty_established": false
+  },
+  "claim_assessment": {
+    "status": "mixed_or_partial_overlap_reported",
+    "claims": [
+      {
+        "claim_id": "C1",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "sni-method:chunk:0003",
+          "sni-method:chunk:0004",
+          "sni-method:chunk:0005",
+          "prior_art:90f47e9e3c2039460910",
+          "W4409983225:chunk:0001",
+          "W4407013152:chunk:0001",
+          "W4396628137:chunk:0001",
+          "W7160826828:chunk:0001"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "sni-method:chunk:0003",
+            "quote_sha256": "182d54c86ca0dbc96925e5bc7a9c2f5f2386a6b406c031049c79327cf6412eb8",
+            "supports": "SNI already uses both operators, prediction and hold, but chooses between them statically by node importance."
+          },
+          {
+            "chunk_id": "prior_art:90f47e9e3c2039460910",
+            "quote_sha256": "8da5c58f871e8b19281483f1427d4c83e604d74fbf1934dc89dd08aeb988eec9",
+            "supports": "The gating rule itself is existing delayed-feedback expert weighting."
+          },
+          {
+            "chunk_id": "W4409983225:chunk:0001",
+            "quote_sha256": "4e6501562e827d029dc46099f4551406dd75dae32304e443d05e375f7276e1e5",
+            "supports": "Adaptive staleness reduction exists in SAT, but its mechanism is visible only at abstract level."
+          }
+        ],
+        "reason": "Both operators and the expert rule appear in the examined evidence. None of the examined chunks applies a sync-revealed loss-driven gate between SNI's predictor and hold. SAT's internals are unknown from its abstract alone. This absence does not establish novelty.",
+        "claim": {
+          "id": "C1",
+          "text": "An application question: whether sync-revealed expert gating between damped trend prediction and hold reduces harmful extrapolation in stale GNN embeddings.",
+          "role": "central",
+          "kind": "problem"
+        }
+      },
+      {
+        "claim_id": "C2",
+        "coverage": "partial",
+        "checked_chunk_ids": [
+          "prior_art:90f47e9e3c2039460910",
+          "sni-method:chunk:0002",
+          "sni-method:chunk:0004"
+        ],
+        "evidence": [
+          {
+            "chunk_id": "prior_art:90f47e9e3c2039460910",
+            "quote_sha256": "09a5f2374a807deb6ef88b13883d4fb8b8ebda4a61160fb8601dc08410bc5dbd",
+            "supports": "Scoring experts on losses revealed after a delay is generic delayed-feedback Hedge."
+          },
+          {
+            "chunk_id": "sni-method:chunk:0002",
+            "quote_sha256": "1083b46452d1c0ac18eefd7b5685c02a63afeff632dd7481003eb6c389207947",
+            "supports": "Feedback arrives only at sync epochs."
+          }
+        ],
+        "reason": "Delayed scoring is covered by the Hedge evidence. The horizon-matched attribution part is not found in the evidence. It is also internally inconsistent: C2 says losses are computed for every stale offset \u0394, but the proposal's own mechanism says only \u0394 = s is revealed and intermediate truth is never shown to the gate. Per-\u0394 losses cannot be computed online, because h(t0+\u0394) for \u0394 < s is never observed.",
+        "claim": {
+          "id": "C2",
+          "text": "A frozen-prediction, sync-revealed loss protocol with horizon-matched loss attribution. Losses are computed for every stale offset \u0394 by storing frozen outputs.",
+          "role": "supporting",
+          "kind": "method"
+        }
+      },
+      {
+        "claim_id": "C3",
+        "coverage": "unknown",
+        "checked_chunk_ids": [
+          "sni-method:chunk:0005",
+          "prior_art:90f47e9e3c2039460910"
+        ],
+        "evidence": [],
+        "reason": "This is an expected result, a hypothesis rather than an observation. No supplied evidence reports how predictor-versus-hold ranking behaves across a learning-rate drop.",
+        "claim": {
+          "id": "C3",
+          "text": "Expected result (hypothesis only): the gate beats the best fixed operator only when the predictor's relative quality changes over training, for example after the prespecified learning-rate drop.",
+          "role": "supporting",
+          "kind": "expected_result"
+        }
+      }
+    ],
+    "novelty_estimate": null,
+    "novelty_established": false,
+    "train_eligible": false,
+    "scope": "Model-reported coverage in explicitly examined evidence only. Exact quotes do not prove entailment; no-match is not novelty. Expected-result claims remain hypotheses. No automatic proposal rejection."
+  }
+}

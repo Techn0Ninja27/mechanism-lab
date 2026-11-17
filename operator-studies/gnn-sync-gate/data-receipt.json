@@ -1,0 +1,17 @@
+{
+  "url": "https://linqs-data.soe.ucsc.edu/public/datasets/cora/cora.tar.gz",
+  "archive_bytes": 168206,
+  "archive_sha256": "4f67c1434d39c076036039597d5326edb32c9b03c91e007ad49831c01b794ba0",
+  "files": [
+    {
+      "name": "cora.content",
+      "bytes": 7823427,
+      "sha256": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee"
+    },
+    {
+      "name": "cora.cites",
+      "bytes": 69928,
+      "sha256": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+    }
+  ]
+}

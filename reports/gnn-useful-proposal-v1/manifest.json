@@ -1,0 +1,39 @@
+{
+  "sources": [
+    {
+      "id": "sni-method",
+      "title": "SNI-GNN Section IV methods and analysis",
+      "url": "https://arxiv.org/html/2608.06441v1",
+      "path": "sources/sni-method.txt",
+      "evidence_level": "full_text"
+    },
+    {
+      "id": "W4396628137",
+      "title": "FreshGNN: Reducing Memory Access via Stable Historical Embeddings for Graph Neural Network Training",
+      "url": "https://doi.org/10.14778/3648160.3648184",
+      "path": "sources/W4396628137.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "W4407013152",
+      "title": "From Sancus to Sancus $$^q$$: staleness and quantization-aware full-graph decentralized training in graph neural networks",
+      "url": "https://doi.org/10.1007/s00778-024-00897-2",
+      "path": "sources/W4407013152.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "W4409983225",
+      "title": "Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction",
+      "url": "https://doi.org/10.1137/1.9781611978520.62",
+      "path": "sources/W4409983225.txt",
+      "evidence_level": "abstract"
+    },
+    {
+      "id": "W7160826828",
+      "title": "Sift: Channel-Wise Historical Embedding for High Efficiency Distributed Graph Neural Network Training with Accuracy Guarantee",
+      "url": "https://doi.org/10.1145/3809161",
+      "path": "sources/W7160826828.txt",
+      "evidence_level": "abstract"
+    }
+  ]
+}

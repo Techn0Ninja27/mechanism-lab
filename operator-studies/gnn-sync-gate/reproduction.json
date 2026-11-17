@@ -1,0 +1,6 @@
+{
+  "equal_parsed_json": true,
+  "byte_identical": false,
+  "scope": "Fresh Python process, same code/data, full eight-trajectory suite; JSON key order may differ because control labels use a set",
+  "result_sha256": "997c21574da224618da3cc5b56efa26241ec4dff2358919b3663ad59efbfd1a8"
+}

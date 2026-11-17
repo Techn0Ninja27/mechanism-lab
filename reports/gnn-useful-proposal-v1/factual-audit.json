@@ -1,0 +1,31 @@
+{
+  "source_result_sha256": "2d24e79e98f8849a60c1368111899059f3ec5e304720412f0a79dfc44fd4747c",
+  "scope": "Root audit of generated proposal and reviewer; experimental protocol is separately corrected, not a mutation of their outputs.",
+  "findings": [
+    {
+      "claim": "C2 claims horizon-matched losses at every stale offset.",
+      "assessment": "Unsupported: no intermediate truth is observed. The revised protocol learns only from the synchronization endpoint and reports shorter-horizon agreement as an offline diagnostic.",
+      "evidence": "Proposal C2 conflicts with its own specialized_operation; reviewer identifies this."
+    },
+    {
+      "claim": "x_last denotes both last observed hold and self-fed predictor state.",
+      "assessment": "They must be separate. The revised protocol stores h_sync independently, scores a frozen endpoint before updating the observation, and never feeds the gate mixture into the predictor expert.",
+      "evidence": "SNI Algorithm 2 self-feeding steps versus proposal operator_delta."
+    },
+    {
+      "claim": "The reviewer calls the gate an algorithmic no-op relative to Fixed Share.",
+      "assessment": "This means it is an existing algorithm, not that it leaves the baseline output unchanged. Its empirical application benefit remains an open question.",
+      "evidence": "Weighted mixture differs from fixed hold or fixed predictor; delayed expert weighting is known prior work."
+    },
+    {
+      "claim": "Closed-loop error comparisons must come from offline replay.",
+      "assessment": "Too strong: each closed-loop arm can be audited against a fresh computation on its own current parameters, if evaluation-only and cost separated. Offline replay provides the same-trajectory comparison; neither establishes downstream accuracy for the gate.",
+      "evidence": "Reviewer reason versus its suggested offline experiment."
+    },
+    {
+      "claim": "The model specifies public splits and METIS-like partitions.",
+      "assessment": "The separately labeled screening protocol instead uses LINQS raw Cora, a deterministic custom split and random partitions. This is a small development screen, not execution of the full generated protocol or a reproduction of SNI.",
+      "evidence": "operator-studies/gnn-sync-gate/protocol.json"
+    }
+  ]
+}

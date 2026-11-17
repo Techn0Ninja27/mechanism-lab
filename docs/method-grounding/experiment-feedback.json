@@ -64,6 +64,26 @@
       "result_sha256": "7457b74dbcddf116214dc2abb1476b38a6a9c78ce233c1ef37b6b8400a41eaf8",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "sni-sync-fixedshare-cora-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "tested_change": "Known Fixed Share mixed a self-fed damped trend predictor with last-observed hold; only sync endpoint losses trained gate. On Cora screening seeds2/3, relative L2 gate vs predictor: .0128588623 vs .0061635871 ordinary, .0115037620 vs .0057110058 LR-drop. Endpoint/shorter-horizon ranking agreement exceeds99.7%. Both 5% improvement gates fail. No closed-loop follow-up justified by this run.",
+      "verdict": "no_support_for_sync_fixedshare_in_cora_screen",
+      "scope": "CPU two-layer GCN synchronous trajectories; real features/labels, custom split, random4partitions, sync4, warmup20,120epochs; seeds0/1 tune one eta and constant mixture,2/3screen same graph.",
+      "limitations": [
+        "Known expert rule, not a new algorithm; this does not reject all adaptive prediction.",
+        "Offline replay does not measure downstream gated-GNN accuracy, communication performance or hardware speedup.",
+        "SNI Algorithm2-inspired recurrence and full boundary prediction; not author implementation or importance-sampled DPU replication.",
+        "Small exposed graph; narrow eta grid and no untouched graph validation."
+      ],
+      "report_path": "operator-studies/gnn-sync-gate/README.md",
+      "result_path": "operator-studies/gnn-sync-gate/result.json",
+      "result_sha256": "997c21574da224618da3cc5b56efa26241ec4dff2358919b3663ad59efbfd1a8",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

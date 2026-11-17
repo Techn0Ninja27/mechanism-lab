@@ -1,0 +1,10 @@
+{
+  "protocol_sha256": "fc09a8e40af48aa3c38163d81d36d6ccedd94289ecd1a07c9d645833f9d0146b",
+  "scope": "Frozen before model training or trajectory inspection",
+  "code_hashes": {
+    "screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "test_screen.py": "4c4e398107d01ec9d350088bd56b8597ff62de92cad0b7e35f71e015eaaa85b8",
+    "protocol.json": "fc09a8e40af48aa3c38163d81d36d6ccedd94289ecd1a07c9d645833f9d0146b",
+    "requirements.txt": "84cae147507f601f1de5ac2cace2b6a5faaad9d1219dd8cda4d67d3a37f251f4"
+  }
+}
