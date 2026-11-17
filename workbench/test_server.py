@@ -138,6 +138,42 @@ class HTTPTests(unittest.TestCase):
             self.assertFalse(row['claim_assessment']['novelty_established'])
             self.assertTrue(row['novelty_established'])
 
+    def test_citation_evidence_is_bounded_and_not_a_novelty_signal(self):
+        valid = {
+            'status': 'included', 'snapshot_sha256': 'a' * 64, 'seed': 'W4409983225',
+            'selected_ids': ['W4409983225', 'W7160826828'],
+            'included_ids': ['W7160826828'], 'omitted_ids': ['W4409983225'],
+            'included_chars': 1200, 'scope': 'Provider abstracts selected from a bounded current snapshot.'}
+        self.assertEqual(server.citation_evidence(None), {'status': 'not_recorded'})
+        self.assertEqual(server.citation_evidence(valid), valid)
+        for malformed in [
+            valid | {'snapshot_sha256': 'x'},
+            valid | {'seed': 'arxiv:2608.06441'},
+            valid | {'selected_ids': ['W1'] * 2},
+            valid | {'included_ids': ['W999']},
+            valid | {'included_chars': True},
+            valid | {'included_chars': 16001},
+            valid | {'scope': ''},
+            valid | {'status': []},
+            valid | {'selected_ids': ['W1'] * 9},
+            {k: v for k, v in valid.items() if k != 'scope'},
+        ]:
+            self.assertEqual(server.citation_evidence(malformed), {'status': 'invalid'})
+        self.assertEqual(server.citation_evidence({'status': 'not_requested'}), {'status': 'not_requested'})
+        empty = valid | {'included_ids': [], 'omitted_ids': valid['selected_ids'], 'included_chars': 0}
+        self.assertEqual(server.citation_evidence(empty), empty)
+        self.assertEqual(server.citation_evidence(valid | {'omitted_ids': ['W999']}), {'status': 'invalid'})
+        self.assertEqual(server.citation_evidence(valid | {'omitted_ids': valid['included_ids']}), {'status': 'invalid'})
+
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            run_dir = Path(tmp) / 'results/improvement-phase-2026-11-16/grounded-citation'
+            run_dir.mkdir(parents=True)
+            (run_dir / 'result.json').write_text(json.dumps({'status': 'reviewed', 'proposal': {}, 'review': {},
+                'citation_evidence': valid, 'novelty_established': True}))
+            row = next(x for x in server.grounded_rows() if x['id'] == 'grounded-citation')
+            self.assertEqual(row['citation_evidence'], valid)
+            self.assertTrue(row['novelty_established'])
+
     def test_project_grounded_result_is_discoverable(self):
         status, project = self.request('/api/projects', {'name': 'Completed grounded run'})
         self.assertEqual(status, 201)

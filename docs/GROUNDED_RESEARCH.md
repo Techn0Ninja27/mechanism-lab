@@ -1,6 +1,6 @@
 # Grounded research workflow
 
-Date: 2026-11-16.
+Updated: 2026-11-17.
 
 This workflow converts selected source documents into one narrow proposal, a separate critical model review, and an executable operator test when feasible. Model acceptance is not a novelty or utility verdict.
 
@@ -13,6 +13,10 @@ This workflow converts selected source documents into one narrow proposal, a sep
 5. Verify the reviewer’s objection with an algebraic or numerical check before training. If useful, design a fresh preregistered study using the central runner. Previously exposed final fixtures cannot confirm an adaptive improvement.
 
 Opus 5.5 is currently used for both proposal and review. Their judgments are correlated; the second call is a critique, not independent experimental validation. Source and code retrieval are separate from the model, and the model cannot fetch additional papers itself. External novelty review is still required.
+
+## Citation-neighborhood evidence (CLI)
+
+Protocol 7 accepts `--citation-config CONFIG.json` alongside the primary source pack. The configuration selects 1–8 papers from a saved bounded neighborhood; at most 16,000 abstract characters enter the two model stages. Planning stays offline, hashes bind the snapshot and selection, and missing abstracts stay visible. See [configuration, verification and limits](method-grounding/CITATION_EVIDENCE.md). The webapp displays the resulting provenance summary; selection through this optional path currently uses the CLI.
 
 ## Spending and failure behavior
 

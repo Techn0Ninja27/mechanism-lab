@@ -13,6 +13,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT), str(ROOT / 'scripts')]
 from world_search import Client
 from generation.sourcepack import validate_source_pack
+from generation.citation_evidence import load_citation_evidence
 from generation.claim_assessment import CLAIM_SCHEMA, ASSESSMENT_SCHEMA, validate_claims, assess as assess_claims
 from generation.method_lineage import inspect_pack
 from generation.experiment_feedback import inspect_feedback
@@ -166,15 +167,15 @@ def feedback_context(feedback):
     return chunks
 
 
-def execute(pack_path, question_path, output, execute_paid=False, search_config_path=None):
+def execute(pack_path, question_path, output, execute_paid=False, search_config_path=None, citation_config_path=None):
     output = pathlib.Path(output)
     output.mkdir(parents=True, exist_ok=True)
     with (output/'.pipeline.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        return _execute(pack_path, question_path, output, execute_paid, search_config_path)
+        return _execute(pack_path, question_path, output, execute_paid, search_config_path, citation_config_path)
 
 
-def _execute(pack_path, question_path, output, execute_paid=False, search_config_path=None):
+def _execute(pack_path, question_path, output, execute_paid=False, search_config_path=None, citation_config_path=None):
     pack = json.loads(pack_path.read_text()); validate_source_pack(pack)
     question = question_path.read_text().strip()
     if execute_paid and (output / 'result.json').exists():
@@ -182,6 +183,7 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
     if not question or not pack.get('chunks'):
         raise ValueError('Question and evidence chunks required')
     search = search_configuration(search_config_path)
+    citation = load_citation_evidence(citation_config_path)
     lineage_path = ROOT/'docs/method-grounding/lineage.json'
     lineage_registry = json.loads(lineage_path.read_text())
     lineage = inspect_pack(pack, lineage_registry)
@@ -208,8 +210,8 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
               'provider_max_price': {'prompt': 4, 'completion': 20},
               'shared_budget_path': str(ROOT / 'results/improvement-phase-2026-11-16/budget.json'),
               'shared_budget_usd': 10.0,
-              'dependency_hashes': {str(f): hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in ('scripts/world_search.py','generation/api_budget.py','generation/sourcepack.py','generation/prior_art_retrieval.py','generation/method_lineage.py','generation/corpus_registry.py','generation/experiment_feedback.py','generation/interface_contracts.py','generation/claim_assessment.py')},
-              'protocol_version': 6, 'search': search, 'lineage_registry_hash': digest(lineage_registry),
+              'dependency_hashes': {str(f): hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in ('scripts/world_search.py','generation/api_budget.py','generation/sourcepack.py','generation/prior_art_retrieval.py','generation/method_lineage.py','generation/corpus_registry.py','generation/experiment_feedback.py','generation/interface_contracts.py','generation/claim_assessment.py','generation/citation_evidence.py','generation/citation_neighborhood.py')},
+              'protocol_version': 7, 'search': search, 'citation_evidence_hash': digest(citation), 'citation_evidence': citation['summary'], 'lineage_registry_hash': digest(lineage_registry),
               'experiment_feedback_registry_hash':digest(feedback_registry),'experiment_feedback_hash':digest(feedback),
               'source_contract_registry_hash':digest(contract_registry),'source_contracts_hash':digest(source_contracts),
               'corpus_path': str(corpus), 'corpus_sha256': hashlib.sha256(corpus.read_bytes()).hexdigest() if corpus.exists() else None,
@@ -240,9 +242,9 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
                                  cache_dir=ROOT/'results/prior-art-cache')
     retrieved_chunks = retrieval_context(retrieval['records'])
     feedback_chunks=feedback_context(feedback)
-    validation_pack = {'chunks': pack['chunks'] + retrieved_chunks + feedback_chunks}
+    validation_pack = {'chunks': pack['chunks'] + retrieved_chunks + feedback_chunks + citation['chunks']}
     context = json.dumps({'selected_source_pack':pack, 'retrieved_prior_art':retrieved_chunks,
-                          'retrieval_coverage':retrieval.get('coverage',[]), 'retrieval_failures':retrieval.get('failures',[]),
+                          'citation_evidence':citation, 'retrieval_coverage':retrieval.get('coverage',[]), 'retrieval_failures':retrieval.get('failures',[]),
                           'known_method_lineage':lineage,'local_experiment_feedback':feedback_chunks,
                           'feedback_scope':feedback.get('scope'),'feedback_warnings':feedback.get('warnings',[]),
                           'curated_source_contracts':source_contracts}, ensure_ascii=False)
@@ -261,11 +263,12 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
               'A failed development experiment is not a ban on the source pair or proof of general infeasibility. Preserve its limitations; do not promote it to training, novelty, task-quality or production evidence. '
               'Where curated source contracts are supplied, account for every required input, intermediate-output exposure, representation and phase. Unknown fields are not compatible wildcards. '
               'These source-linked declarations are not formal proofs. Name the adapter or new operator needed for a mismatched interface; do not silently equate reported benefits with produced data. '
+              'Citation graph edges identify retrieval leads, not claim entailment. Missing abstracts and omitted neighbors remain coverage gaps. '
               'Retrieved abstracts identify prior work but do not establish a complete algorithm; empty/failed retrieval never implies novelty. '
               'Return JSON only, approximately 900 words, schema: ' + json.dumps(SCHEMA) + '\nQUESTION:\n' + question + '\n<UNTRUSTED_EVIDENCE>\n' + context + '\n</UNTRUSTED_EVIDENCE>')
     result = {'human_adjudicated': False, 'train_eligible': False, 'novelty_established': False,
               'pack_hash': config['pack_hash'], 'status': 'pending', 'lineage': lineage,'experiment_feedback':feedback,'source_contracts':source_contracts,
-              'retrieval': {k:v for k,v in retrieval.items() if k!='records'}, 'retrieved_source_count':len(retrieved_chunks)}
+              'retrieval': {k:v for k,v in retrieval.items() if k!='records'}, 'retrieved_source_count':len(retrieved_chunks), 'citation_evidence':citation['summary']}
     try:
         proposal = validate(parse(client.call({'id': 'proposal'}, 0, prompt)), validation_pack)
         result['proposal'] = proposal
@@ -294,6 +297,7 @@ if __name__ == '__main__':
     p.add_argument('--output', type=pathlib.Path, required=True)
     p.add_argument('--execute', action='store_true')
     p.add_argument('--search-config', type=pathlib.Path)
+    p.add_argument('--citation-config', type=pathlib.Path, help='Offline snapshot and 1–8 selected OpenAlex IDs')
     a = p.parse_args()
-    r = execute(a.pack, a.question, a.output, a.execute, a.search_config)
+    r = execute(a.pack, a.question, a.output, a.execute, a.search_config, a.citation_config)
     print(json.dumps({'status': r['status'], 'output': str(a.output)}))

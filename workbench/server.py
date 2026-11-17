@@ -431,6 +431,47 @@ def claim_assessment(value):
             "novelty_established": False, "train_eligible": False, "scope": value["scope"]}
 
 
+def citation_evidence(value):
+    """Expose bounded citation-neighborhood metadata, never a novelty score."""
+    if value is None:
+        return {"status": "not_recorded"}
+    if isinstance(value, dict) and value == {"status": "not_requested"}:
+        return {"status": "not_requested"}
+    fields = {"status", "snapshot_sha256", "seed", "selected_ids", "included_ids",
+              "omitted_ids", "included_chars", "scope"}
+    if not isinstance(value, dict) or set(value) != fields:
+        return {"status": "invalid"}
+    status = value.get("status")
+    if not isinstance(status, str) or status != "included":
+        return {"status": "invalid"}
+    if (not isinstance(value.get("snapshot_sha256"), str)
+            or not re.fullmatch(r"[0-9a-f]{64}", value["snapshot_sha256"])
+            or not isinstance(value.get("seed"), str)
+            or not re.fullmatch(r"W[0-9]+", value["seed"])
+            or not isinstance(value.get("included_chars"), int)
+            or isinstance(value["included_chars"], bool)
+            or not 0 <= value["included_chars"] <= 16000
+            or not isinstance(value.get("scope"), str)
+            or not value["scope"].strip() or len(value["scope"]) > 1000):
+        return {"status": "invalid"}
+    checked = {}
+    for name in ("selected_ids", "included_ids", "omitted_ids"):
+        ids = value.get(name)
+        if (not isinstance(ids, list) or len(ids) > 8
+                or any(not isinstance(x, str) or not re.fullmatch(r"W[0-9]+", x) for x in ids)
+                or len(set(ids)) != len(ids)):
+            return {"status": "invalid"}
+        checked[name] = list(ids)
+    selected, included, omitted = (set(checked[k]) for k in ("selected_ids", "included_ids", "omitted_ids"))
+    if (not selected or included & omitted or (included | omitted) != selected
+            or (not included and value["included_chars"] != 0)
+            or (included and value["included_chars"] == 0)):
+        return {"status": "invalid"}
+    return {"status": status, "snapshot_sha256": value["snapshot_sha256"],
+            "seed": value["seed"], **checked, "included_chars": value["included_chars"],
+            "scope": value["scope"]}
+
+
 def grounded_rows():
     """Expose completed grounded runs without source payloads or call receipts."""
     rows = []
@@ -527,6 +568,7 @@ def grounded_rows():
                      "status": data.get("status", "unknown"), "machine_review_only": True,
                      "empirical_result": False, "novelty_established": bool(data.get("novelty_established", False)),
                      "claim_assessment": claim_assessment(data.get("claim_assessment")),
+                     "citation_evidence": citation_evidence(data.get("citation_evidence")),
                      "pack_hash": data.get("pack_hash"), "proposal": {
                          "title": proposal.get("title"), "hypothesis": proposal.get("hypothesis"),
                          "baseline": proposal.get("baseline"), "operator_delta": proposal.get("operator_delta"),

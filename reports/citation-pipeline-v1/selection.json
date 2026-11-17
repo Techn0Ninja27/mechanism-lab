@@ -1,0 +1,133 @@
+{
+  "summary": {
+    "status": "included",
+    "snapshot_sha256": "a5c381dc363c1ae88c607c5fc1e61053a0bac81742478ceca00fcf6d44bc9293",
+    "seed": "W4409983225",
+    "selected_ids": [
+      "W4407013152",
+      "W4396628137",
+      "W7160826828",
+      "W4409983225"
+    ],
+    "included_ids": [
+      "W4407013152",
+      "W4396628137",
+      "W7160826828",
+      "W4409983225"
+    ],
+    "omitted_ids": [],
+    "included_chars": 5735,
+    "scope": "Selected provider abstracts from a current citation snapshot; citation and related links are retrieval leads, not evidence of overlap or novelty. Not a historical backtest or exhaustive prior-art search."
+  },
+  "sources": [
+    {
+      "id": "citation:W4407013152:b01ec1b2f3fc998c",
+      "source_id": "openalex:W4407013152",
+      "title": "From Sancus to Sancus $$^q$$: staleness and quantization-aware full-graph decentralized training in graph neural networks",
+      "url": "https://openalex.org/W4407013152",
+      "evidence_level": "provider_abstract",
+      "source_hash": "b01ec1b2f3fc998c85355dc1923996e7a398480266363728dcc19f85bbc58319",
+      "truncated": false,
+      "relations": [
+        {
+          "source": "W4409983225",
+          "target": "W4407013152",
+          "type": "provider_related"
+        }
+      ]
+    },
+    {
+      "id": "citation:W4396628137:5300409dee908489",
+      "source_id": "openalex:W4396628137",
+      "title": "FreshGNN: Reducing Memory Access via Stable Historical Embeddings for Graph Neural Network Training",
+      "url": "https://openalex.org/W4396628137",
+      "evidence_level": "provider_abstract",
+      "source_hash": "5300409dee908489832ea5f43111f36ed958fb7383265ad2a1e682f34888b12a",
+      "truncated": false,
+      "relations": [
+        {
+          "source": "W4409983225",
+          "target": "W4396628137",
+          "type": "provider_related"
+        }
+      ]
+    },
+    {
+      "id": "citation:W7160826828:fa001e14a569e654",
+      "source_id": "openalex:W7160826828",
+      "title": "Sift: Channel-Wise Historical Embedding for High Efficiency Distributed Graph Neural Network Training with Accuracy Guarantee",
+      "url": "https://openalex.org/W7160826828",
+      "evidence_level": "provider_abstract",
+      "source_hash": "fa001e14a569e65479cfce76316b49090db628c1aed93df652f8028445b76bab",
+      "truncated": false,
+      "relations": [
+        {
+          "source": "W4409983225",
+          "target": "W7160826828",
+          "type": "provider_related"
+        }
+      ]
+    },
+    {
+      "id": "citation:W4409983225:406071f31dfe8e0a",
+      "source_id": "openalex:W4409983225",
+      "title": "Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction",
+      "url": "https://openalex.org/W4409983225",
+      "evidence_level": "provider_abstract",
+      "source_hash": "406071f31dfe8e0a61224235bfbca6188dee8eda65e2005e826455bf907abd78",
+      "truncated": false,
+      "relations": [
+        {
+          "source": "W4409983225",
+          "target": "W2299115575",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2519887557",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2624431344",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2799069271",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2807021761",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2945827377",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2961295589",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2963241486",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2963581908",
+          "type": "cites"
+        },
+        {
+          "source": "W4409983225",
+          "target": "W2964571482",
+          "type": "cites"
+        }
+      ]
+    }
+  ]
+}

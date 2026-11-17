@@ -80,6 +80,7 @@ follow-up did not beat the stronger attention control.
 
 - **Source-grounded generation:** bounded evidence packets, quoted source spans,
   prior-art retrieval, method-lineage checks, and cost-accounted API calls.
+  The CLI can also attach [selected citation-neighborhood abstracts](docs/method-grounding/CITATION_EVIDENCE.md) from a saved snapshot; graph links are retrieval leads, not novelty scores.
 - **Atoms → molecules → executable chains:** typed operator interfaces,
   implementation hashes, bounded enumeration, and exact round-trip checks.
 - **Separate ranking criteria:** novelty evidence, feasibility, and
