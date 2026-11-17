@@ -67,3 +67,12 @@ No model call is made by this command. A full fresh evidence collection requires
 the versioned snapshots and inspected selectors in the source receipts. Next
 work is to inspect the additional retrieved baselines and resolve the model's
 state/threshold definitions before designing an efficacy experiment.
+
+## Follow-up decision
+
+The [frozen simple-control screen](../../operator-studies/serving-admission-screen/README.md)
+completed180traces and1,080arms with no censoring. Largest-first failed every
+primarygroup and did not reach5% median improvement even overFIFOalone. This
+ordering candidate is closed on the tested synthetic settings. The original
+model output remains unchanged. The [follow-up literature audit](followup-prior-art.md)
+records stronger adjacent methods and their different information assumptions.

@@ -63,10 +63,10 @@
     "result_sha256": "ece7f533fdcd170f808f3316927783f0cfdb90c8712239bda161613b900d633e"
   },
   "grounded-serving-v2": {
-    "status": "diagnostic_only_requires_revision",
-    "summary": "Corrected state-machine checks pass on five exposed toy traces. Largest-prompt-first loses7vs6 to smallest-reservation on a two-request counterexample. No efficacy, hardware or novelty claim; baseline and threshold revisions remain.",
-    "result_path": "operator-studies/serving-admission-preflight/summary.json",
-    "report_path": "operator-studies/serving-admission-preflight/README.md",
-    "result_sha256": "0bd09b570483b7b3e1861237c0ef737e2bb931edc6e0a5ed4f00cda2fa5acf84"
+    "status": "fails_frozen_local_development_gate",
+    "summary": "180 traces and 1,080 completed arms. Largest-prompt-first failed all six primary groups against simple matched controls, with no 5% median improvement over FIFO alone. Candidate closed under these synthetic settings; no general scheduling, hardware or novelty claim.",
+    "result_path": "operator-studies/serving-admission-screen/result.json",
+    "report_path": "operator-studies/serving-admission-screen/README.md",
+    "result_sha256": "7359654aa309ede23462bd507461e94d8ec7c76dc32b7c6bb2baf60a6ad0779d"
   }
 }

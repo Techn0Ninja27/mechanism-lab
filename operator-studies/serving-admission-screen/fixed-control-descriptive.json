@@ -1,0 +1,71 @@
+{
+  "scope": "Post-run descriptive decomposition of the frozen best-per-trace comparison envelope; does not change the gate.",
+  "groups": [
+    {
+      "arrival": "staggered",
+      "association": "independent",
+      "median_ratios_to_each_fixed_control": {
+        "fifo": 0.9995309568480301,
+        "smallest_reservation": 1.0049627791563276,
+        "smallest_prompt": 0.9939703153988868,
+        "smallest_prefill": 0.9816292083051492,
+        "fifo_backpressure": 0.958956432651016
+      }
+    },
+    {
+      "arrival": "staggered",
+      "association": "positive",
+      "median_ratios_to_each_fixed_control": {
+        "fifo": 1.0,
+        "smallest_reservation": 1.018689857058329,
+        "smallest_prompt": 1.0030456852791878,
+        "smallest_prefill": 1.0135424091233072,
+        "fifo_backpressure": 0.965760209434162
+      }
+    },
+    {
+      "arrival": "staggered",
+      "association": "negative",
+      "median_ratios_to_each_fixed_control": {
+        "fifo": 1.0074352428300561,
+        "smallest_reservation": 0.9909235028710345,
+        "smallest_prompt": 1.0453594259904464,
+        "smallest_prefill": 1.0565357216484883,
+        "fifo_backpressure": 1.0273508137432188
+      }
+    },
+    {
+      "arrival": "bursts",
+      "association": "independent",
+      "median_ratios_to_each_fixed_control": {
+        "fifo": 1.0,
+        "smallest_reservation": 1.001296339660749,
+        "smallest_prompt": 1.0066844919786098,
+        "smallest_prefill": 1.0066844919786098,
+        "fifo_backpressure": 1.0
+      }
+    },
+    {
+      "arrival": "bursts",
+      "association": "positive",
+      "median_ratios_to_each_fixed_control": {
+        "fifo": 1.0,
+        "smallest_reservation": 1.0,
+        "smallest_prompt": 1.0,
+        "smallest_prefill": 1.0,
+        "fifo_backpressure": 0.9578846515295293
+      }
+    },
+    {
+      "arrival": "bursts",
+      "association": "negative",
+      "median_ratios_to_each_fixed_control": {
+        "fifo": 1.0171052631578947,
+        "smallest_reservation": 0.931778306826893,
+        "smallest_prompt": 0.9019613018984558,
+        "smallest_prefill": 1.010852908844084,
+        "fifo_backpressure": 1.0711692054343351
+      }
+    }
+  ]
+}

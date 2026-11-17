@@ -1,0 +1,15 @@
+{
+  "scope": "Frozen before first stochastic development sweep; deterministic unit tests already run.",
+  "case_digest": "8102b685d66f2b57b3cd440fbb47bc273037b92f28f3c242c22eec11521f6288",
+  "code_hashes": {
+    "run.py": "d4946effde68365240a796ee488e3efca7d8d662d25a889af0d1008b6b8e4e8b",
+    "test_screen.py": "2e86c9ba10f2c74caf6be2cffbe8897089243e78ad05fb447dc2932851737001",
+    "simulator.py": "8c636c8de0046271924a826d7c93a4ad45200d87deca5c91a2ed0c890d00a7a3"
+  },
+  "protocol_sha256": "8b53aa4dd7003128368bf81bbac2a9de7dd87a9cf9184edefb44216732305a94",
+  "python": "3.12.14",
+  "seed_range": [
+    91000,
+    91009
+  ]
+}

@@ -187,6 +187,28 @@
       "result_sha256": "0bd09b570483b7b3e1861237c0ef737e2bb931edc6e0a5ed4f00cda2fa5acf84",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "serving-largest-prompt-screen-v1",
+      "source_urls": [
+        "https://arxiv.org/abs/2610.15579",
+        "https://arxiv.org/abs/2508.14544"
+      ],
+      "tested_change": "Largest-prompt-first decode admission versus FIFO, smallest-reservation, smallest-prompt, smallest-prefill and FIFO with backpressure in a fixed two-pool simulator. All 1,080 arms completed across 180 synthetic traces. All six primary groups at prefill capacity 8 failed: median mean-flow ratios to the best-control envelope were 1.0000\u20131.1122, and P99 ratios were 1.0000\u20131.1524. No primary group achieved 5% improvement versus FIFO alone. Local ordering candidate closed at these settings.",
+      "verdict": "fails_frozen_local_development_gate",
+      "scope": "24 jobs per trace, 10 seeds, two arrival patterns, three prompt/output associations, three prefill capacities, decode capacity 24. Hidden lengths remain in the oracle; unit-cost slots and instantaneous transfer.",
+      "limitations": [
+        "Synthetic development model, not real serving throughput or a general scheduling conclusion.",
+        "Best-per-trace control envelope is a conservative allocation test, not a realizable oracle policy.",
+        "With24requests P99 is the maximum; no production-tail or population confidence claim.",
+        "No implementation of full literature systems; simple matched controls sufficed for this failure.",
+        "Frozen variant resolves ambiguous generatedthresholds to5% meanflow, not retrospective validation of the original proposal."
+      ],
+      "report_path": "operator-studies/serving-admission-screen/README.md",
+      "result_path": "operator-studies/serving-admission-screen/result.json",
+      "result_sha256": "7359654aa309ede23462bd507461e94d8ec7c76dc32b7c6bb2baf60a6ad0779d",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
