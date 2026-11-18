@@ -1,0 +1,40 @@
+{
+  "schema": "campaign2-final-delta-native.v1",
+  "date": "2026-11-19",
+  "verdict": "ready_for_first_preparation_draw",
+  "commit": "d2fbc8f",
+  "plan_sha256": "7b290d4bc21ddc660b9ef8f65c38499c5bb725932637f95070304bd279a7a7ba",
+  "protocol_sha256": "4d583371eefadc4584446c8eccc61f7606d12457b6663db04b99acf298a0ca12",
+  "ledger_sha256_before_after": "16c468cff5c4ca102ec5e41ac63b629e91b2a1c241632396dcb864e5f288c5f5",
+  "dependency_count": 93,
+  "dependency_hashes_match": true,
+  "readiness": {
+    "status": "retrospective_parser_policy_pass",
+    "v2_mechanically_valid": 24,
+    "v2_key_matching": 24,
+    "strict_v1_mechanically_valid": 23,
+    "production_policy": "retrospective basis disclosed; original strict failure preserved"
+  },
+  "caps": {
+    "preparation_usd": 3.0,
+    "campaign_usd": 12.0,
+    "phase_usd": 30.0,
+    "phase_charged_usd": 5.0352276
+  },
+  "canonical_output": {
+    "path": "results/generation-comparison-campaign2-run",
+    "plan_exists": true,
+    "paid_preparation_receipts": 0,
+    "generation_receipts": 0,
+    "inventory_exists": false
+  },
+  "format_gate": {
+    "reference_review_required": true,
+    "legacy_fallback_rejected": true
+  },
+  "tests": {
+    "reference_lifecycle_and_readiness": 8,
+    "status": "passed"
+  },
+  "scope": "Read-only delta audit; no API calls and no production mutation."
+}
