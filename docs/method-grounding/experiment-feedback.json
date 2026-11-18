@@ -9,7 +9,7 @@
       ],
       "tested_change": "Fixed-budget visual-chunk ranking used ONLY prefill_q and prefill_text_visual_attention. Assignments were fixed BEFORE decode; decode_q was used ONLY to evaluate outputs, never to rank windows. Tested arms already included one-bit and two-bit mean logits, exact mean logits, exact softmax mass, embedding cosine, recency, position, interleaved and three seeded random controls. Relative L2 (candy/statue): one-bit 0.0251776756073 / 0.0222856578715; two-bit 0.0180378996159 / 0.0219474580539; exact mass 0.0151037603703 / 0.0151006670887. The exact-mass measurements are distinct, not identical. One-bit failed the frozen fidelity gate.",
       "verdict": "no_support_for_one_bit_in_exposed_pilot",
-      "scope": "Two already-exposed SmolVLM-256M still images; 30 layers and decoder steps 1\u20133. Eight chunks of eight visual tokens with fixed counts: two FP16, three INT4, three INT2; first chunk FP16. Generic affine KV quantization.",
+      "scope": "Two already-exposed SmolVLM-256M still images; 30 layers and decoder steps 1–3. Eight chunks of eight visual tokens with fixed counts: two FP16, three INT4, three INT2; first chunk FP16. Generic affine KV quantization.",
       "limitations": [
         "Not a WindowQuant or FIER replication; aligned-input embeddings and token chunks are proxies.",
         "Not held-out data, video clips, end-to-end generation or propagated error evaluation.",
@@ -90,14 +90,14 @@
       "source_urls": [
         "https://arxiv.org/abs/2604.01472"
       ],
-      "tested_change": "Baseline cost screen only, NO low-rank candidate: full Cholesky Newton\u2013Muon versus Muon on six-layer FP32 byte Transformers, widths 256/512, batch 4, sequence 64. Two fresh-process profiles per width. End-to-end per-step ratios 1.0508\u20131.0862; separate instrumented preconditioning fractions 0.1018\u20130.1493. Necessary cost screen met; time-to-loss and low-rank utility remain unmeasured.",
+      "tested_change": "Baseline cost screen only, NO low-rank candidate: full Cholesky Newton–Muon versus Muon on six-layer FP32 byte Transformers, widths 256/512, batch 4, sequence 64. Two fresh-process profiles per width. End-to-end per-step ratios 1.0508–1.0862; separate instrumented preconditioning fractions 0.1018–0.1493. Necessary cost screen met; time-to-loss and low-rank utility remain unmeasured.",
       "verdict": "baseline_cost_opportunity_not_candidate_benefit",
       "scope": "96 real paper abstracts, tiny custom architecture, one Mac MPS device, seed 0, refresh 32, three consecutive 32-step windows after eight warmup steps. Repeated in fresh processes with the same fixed arm order.",
       "limitations": [
         "FP32 generic PyTorch development port, not the optimized BF16 CUDA author implementation.",
         "Component barriers distort overlap; do not substitute their fractions for end-to-end times.",
         "Training loss is a sanity check only; no held-out loss, candidate fidelity, time-to-loss or novelty claim.",
-        "Polynomial inverse and larger refresh controls, low-rank cost/fidelity, and evidence that full Newton\u2013Muon beats Muon in time-to-loss are still required."
+        "Polynomial inverse and larger refresh controls, low-rank cost/fidelity, and evidence that full Newton–Muon beats Muon in time-to-loss are still required."
       ],
       "report_path": "operator-studies/newton-muon-cost-screen/README.md",
       "result_path": "operator-studies/newton-muon-cost-screen/result.json",
@@ -194,7 +194,7 @@
         "https://arxiv.org/abs/2610.15579",
         "https://arxiv.org/abs/2508.14544"
       ],
-      "tested_change": "Largest-prompt-first decode admission versus FIFO, smallest-reservation, smallest-prompt, smallest-prefill and FIFO with backpressure in a fixed two-pool simulator. All 1,080 arms completed across 180 synthetic traces. All six primary groups at prefill capacity 8 failed: median mean-flow ratios to the best-control envelope were 1.0000\u20131.1122, and P99 ratios were 1.0000\u20131.1524. No primary group achieved 5% improvement versus FIFO alone. Local ordering candidate closed at these settings.",
+      "tested_change": "Largest-prompt-first decode admission versus FIFO, smallest-reservation, smallest-prompt, smallest-prefill and FIFO with backpressure in a fixed two-pool simulator. All 1,080 arms completed across 180 synthetic traces. All six primary groups at prefill capacity 8 failed: median mean-flow ratios to the best-control envelope were 1.0000–1.1122, and P99 ratios were 1.0000–1.1524. No primary group achieved 5% improvement versus FIFO alone. Local ordering candidate closed at these settings.",
       "verdict": "fails_frozen_local_development_gate",
       "scope": "24 jobs per trace, 10 seeds, two arrival patterns, three prompt/output associations, three prefill capacities, decode capacity 24. Hidden lengths remain in the oracle; unit-cost slots and instantaneous transfer.",
       "limitations": [
@@ -312,7 +312,7 @@
       "id": "gnn-predictor-headroom-v1",
       "tested_change": "Development tuning of causal stale-embedding predictors on Cora. One pooled lambda=0.4, beta=0.05, mixture=1 configuration reduces stale relative L2 by 29.9% and 33.6% versus the original 0.2/0.2 setting under constant and dropping learning rates. This establishes a stronger comparator, not an engine-generated method.",
       "verdict": "baseline_under_tuned_no_engine_success",
-      "scope": "Seeds 10 and 11, two schedules, same graph and partition, open-loop trajectory replay. Seeds 12\u201315 remain unused.",
+      "scope": "Seeds 10 and 11, two schedules, same graph and partition, open-loop trajectory replay. Seeds 12–15 remain unused.",
       "limitations": [
         "Selection and measurement use the same development trajectories.",
         "No downstream accuracy, novelty or generator-quality claim.",
@@ -332,7 +332,7 @@
       "id": "gnn-closedloop-gap-v1",
       "tested_change": "Separate full-gradient, exact-detached and stale-hidden-state training on Cora. Across 1,600 runs and 24 primary staleness comparisons, 13 meet the exploratory rule and 9 survive the primary-family Bonferroni correction. No constant-rate two-layer regime is flagged; three-layer leads remain unconfirmed.",
       "verdict": "exploratory_gap_not_generated_method",
-      "scope": "16 seeds (30\u201345), two depths, two random partition counts, two schedules and three sync intervals. Task-regime selection on one graph, not independent confirmation.",
+      "scope": "16 seeds (30–45), two depths, two random partition counts, two schedules and three sync intervals. Task-regime selection on one graph, not independent confirmation.",
       "limitations": [
         "Exact evaluation differs from the stale training forward path; endpoint phase varies with sync interval.",
         "Depth is confounded with initialization; all three-layer arms use calibration-informed Glorot.",
@@ -350,7 +350,7 @@
     },
     {
       "id": "gnn-closedloop-confirm-v1",
-      "tested_change": "Fresh-seed evaluation-phase check: 64 runs on seeds 50\u201357. Moderate-lead primary difference is +2.708 accuracy points with a pointwise 95% interval [-0.098, 5.515]. The weaker >0.5-point and >2-SE allocation rule passes, but the interval includes zero. The legacy confirmed label is explicitly corrected in a separate interpretation artifact.",
+      "tested_change": "Fresh-seed evaluation-phase check: 64 runs on seeds 50–57. Moderate-lead primary difference is +2.708 accuracy points with a pointwise 95% interval [-0.098, 5.515]. The weaker >0.5-point and >2-SE allocation rule passes, but the interval includes zero. The legacy confirmed label is explicitly corrected in a separate interpretation artifact.",
       "verdict": "allocation_pass_primary_interval_includes_zero",
       "scope": "Two fixed Cora regimes and four existing controls; same-weight exact and own-forward evaluation. No new generated method.",
       "limitations": [
@@ -409,7 +409,7 @@
       "id": "gnn-closedloop-clamp-v1",
       "tested_change": "One missing-control check on nonnegative output projection: 40 runs, five arms, eight exposed seeds. Output-projected SNI, state-projected SNI and output-projected lag1 remain approximately 33.0, 34.2 and 32.2 accuracy points below hold. Logged raw baselines reproduce stored confirmation results.",
       "verdict": "projection_alone_insufficient_development",
-      "scope": "One fixed three-layer Cora regime with four random partitions and sync16; exposed seeds50\u201357, pointwise paired intervals. No new generated method.",
+      "scope": "One fixed three-layer Cora regime with four random partitions and sync16; exposed seeds50–57, pointwise paired intervals. No new generated method.",
       "limitations": [
         "No causal share of failure is attributed to sign errors.",
         "Per-epoch negativity series were discarded; only per-run layer aggregates remain.",
@@ -431,6 +431,7 @@
       "verdict": "development_instrument_pass_not_accuracy_estimate",
       "scope": "Eight reused development examples, two source-only reviews per packet; 16 of 16 reviews passed mechanical evidence validation and matched all frozen field labels. No paid calls and no production authorization.",
       "limitations": [
+        "A source-blind keyword rule matches all 32 unique field labels; this set tests reference handling, not reliable semantic judgment.",
         "This is a small reused development calibration, not a held-out reviewer accuracy estimate.",
         "Matching a frozen key does not prove reviewer independence or semantic truth beyond the audited source/key.",
         "The earlier v4 attempt remains failed because two reviews transcribed LaTeX-heavy evidence incorrectly.",

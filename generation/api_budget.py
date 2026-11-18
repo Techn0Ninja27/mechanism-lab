@@ -39,6 +39,79 @@ def request_id(request: Any) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
+def receipt_request_id(path: str | Path, request_hash: str) -> str:
+    """Stable reservation ID used by the model client for one receipt path."""
+    if not isinstance(request_hash, str) or len(request_hash) != 64:
+        raise BudgetError("request_hash must be a sha256")
+    # Match scripts.world_search.digest exactly (including its default JSON
+    # separators), since this ID is already part of the persisted protocol.
+    raw = json.dumps({"path": str(Path(path).resolve()), "request": request_hash},
+                     sort_keys=True).encode()
+    return hashlib.sha256(raw).hexdigest()
+
+
+def receipt_cost(receipt: dict[str, Any]) -> float:
+    """Extract the verified provider cost from a complete receipt."""
+    usage = receipt.get("usage") or {}
+    if not isinstance(usage, dict):
+        raise BudgetError("complete receipt usage is malformed")
+    details = usage.get("cost_details")
+    if details is not None and not isinstance(details, dict):
+        raise BudgetError("complete receipt cost details are malformed")
+    raw = []
+    if "cost" in usage:
+        raw.append(usage["cost"])
+    if isinstance(details, dict) and "upstream_inference_cost" in details:
+        raw.append(details["upstream_inference_cost"])
+    if any(isinstance(x, bool) or not isinstance(x, (int, float)) or
+           not math.isfinite(float(x)) or float(x) < 0 for x in raw):
+        raise BudgetError("complete receipt contains an invalid provider cost")
+    values = [float(x) for x in raw]
+    if (not values or not isinstance(receipt.get("response_id"), str) or
+            not receipt["response_id"].strip() or receipt.get("finish_reason") != "stop" or
+            not isinstance(receipt.get("content"), str) or not receipt["content"].strip()):
+        raise BudgetError("complete receipt lacks verified provider usage")
+    return max(values)
+
+
+def validate_and_reconcile_receipt(ledger: "BudgetLedger", path: str | Path,
+                                   receipt: dict[str, Any], request_hash: str,
+                                   reserve_usd: float) -> dict[str, Any]:
+    """Bind a complete local receipt to its existing reservation.
+
+    This rejects fabricated or copied receipts with no reservation, while
+    allowing a legitimate crash after the receipt was written but before
+    reconciliation. The ledger's own idempotent reconcile operation prevents
+    double charging. It cannot detect content swapped under a genuine matching
+    reservation.
+    """
+    if receipt.get("status") != "complete" or receipt.get("request_hash") != request_hash:
+        raise BudgetError("receipt status or request hash is invalid")
+    reserve = _amount(reserve_usd, "reserve_usd")
+    rid = receipt_request_id(path, request_hash)
+    if not ledger.path.exists():
+        raise BudgetError("complete receipt has no matching budget reservation")
+    snap = ledger.snapshot()
+    rec = snap["reservations"].get(rid)
+    if not rec:
+        raise BudgetError("complete receipt has no matching budget reservation")
+    if abs(float(rec.get("reserved_usd", -1)) - reserve) > 1e-12:
+        raise BudgetError("reservation amount does not match request")
+    metadata = rec.get("metadata") or {}
+    if metadata.get("request_hash") != request_hash:
+        raise BudgetError("reservation request hash mismatch")
+    actual = receipt_cost(receipt)
+    if rec.get("status") in {"pending", "unknown"}:
+        if actual > reserve + 1e-12:
+            raise BudgetError("receipt cost exceeds reserved amount")
+        return ledger.reconcile(rid, actual, verified=True, receipt_id=receipt["response_id"])
+    if rec.get("status") in {"reconciled", "over_budget"}:
+        if abs(float(rec.get("actual_usd", -1)) - actual) > 1e-12 or rec.get("receipt_id") != receipt.get("response_id"):
+            raise BudgetError("reconciled receipt does not match ledger")
+        return rec
+    raise BudgetError("reservation is in an invalid state")
+
+
 class BudgetLedger:
     """File-locked budget ledger safe for independent worker processes."""
 

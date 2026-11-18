@@ -66,6 +66,8 @@ def _recover_interrupted_draws(out, pack):
             if (rec.get('status') != 'complete' or rec.get('request') != req or
                     rec.get('request_hash') != c.request_hash(req)):
                 raise ValueError('provider receipt is incomplete or request-bound incorrectly')
+            from generation.api_budget import validate_and_reconcile_receipt
+            validate_and_reconcile_receipt(_anchor(out), call, rec, c.request_hash(req), c.reserve(c._prep_prompt(pack, kind)))
             value = getattr(c._prep(), f'validate_{kind}')(c.strict_json(rec['content']), pack)
         except BaseException as exc:
             _stop(out, f'interrupted draw has ambiguous provider state: {type(exc).__name__}: {str(exc)[:240]}')
@@ -142,6 +144,8 @@ def _validate_draw(out,kind,index,pack):
     rec=_read(call);req=c.expected_request(c._prep_prompt(pack,kind))
     if rec.get('status')!='complete' or rec.get('request')!=req or rec.get('request_hash')!=c.request_hash(req):
         raise ValueError('draw provider receipt/request invalid')
+    from generation.api_budget import validate_and_reconcile_receipt
+    validate_and_reconcile_receipt(_anchor(out), call, rec, c.request_hash(req), c.reserve(c._prep_prompt(pack, kind)))
     value=getattr(c._prep(),f'validate_{kind}')(c.strict_json(rec['content']),pack)
     path=draw/f'{kind}.json'
     if c.sha(path)!=meta.get('representation_sha256') or _read(path)!=value:raise ValueError('draw content changed')

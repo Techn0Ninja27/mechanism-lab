@@ -3,7 +3,8 @@ import argparse,concurrent.futures,fcntl,hashlib,json,os,pathlib,random,sys,thre
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 sys.path.insert(0,str(ROOT/'local_runner'))
-from generation.api_budget import BudgetLedger
+from generation.api_budget import (BudgetLedger, BudgetError, receipt_cost,
+                                    receipt_request_id, validate_and_reconcile_receipt)
 from run import key
 MODEL='anthropic/claude-sonnet-4.6'
 SEEDS=['porous','mirrored','tidal','braided']
@@ -48,6 +49,31 @@ class Client:
     fcntl.flock(lock,fcntl.LOCK_EX)
     return self._call(case,stage,prompt)
   return self._call(case,stage,prompt)
+ def _reserve_for_request(self,req):
+  return (sum(len(m['content'].encode()) for m in req['messages'])+512)*self.config['pricing']['prompt']+req['max_tokens']*self.config['pricing']['completion']
+ def _account_previous(self,path,previous,ledger):
+  req=previous.get('request')
+  if not isinstance(req,dict) or digest(req)!=previous.get('request_hash'):
+   raise BudgetError('previous receipt request/hash mismatch')
+  reserve=self._reserve_for_request(req)
+  if not isinstance(previous.get('reserved_usd'),(int,float)) or abs(float(previous['reserved_usd'])-reserve)>1e-12:
+   raise BudgetError('previous receipt reservation differs from recomputed request')
+  if ledger is None:
+   return receipt_cost(previous) if previous.get('status')=='complete' else reserve
+  if previous.get('status')=='complete':
+   rec=validate_and_reconcile_receipt(ledger,path,previous,previous['request_hash'],reserve)
+   return float(rec.get('actual_usd',0.0))
+  rid=receipt_request_id(path,previous['request_hash'])
+  snap=ledger.snapshot(); rec=snap['reservations'].get(rid)
+  if not rec:
+   raise BudgetError('previous incomplete receipt has no matching reservation')
+  if abs(float(rec.get('reserved_usd',-1))-reserve)>1e-12:
+   raise BudgetError('previous reservation differs from recomputed request')
+  if rec.get('status') in {'reconciled','over_budget'}:
+   return float(rec['actual_usd'])
+  if rec.get('status') in {'pending','unknown'}:
+   return float(rec['reserved_usd'])
+  raise BudgetError('previous reservation has invalid status')
  def _call(self,case,stage,prompt):
   folder=self.out/'calls';folder.mkdir(exist_ok=True);path=folder/f'{case["id"]}-{stage}.json'
   req={'model':self.config['model'],'messages':[{'role':'user','content':prompt}],'temperature':.7,'max_tokens':self.config['max_tokens_per_stage'][stage],'reasoning':{'enabled':False},'provider':{'allow_fallbacks':False}}
@@ -59,20 +85,20 @@ class Client:
   request_hash=digest(req)
   ledger=BudgetLedger(self.config['shared_budget_path'],self.config.get('shared_budget_usd',10.0)) if self.config.get('shared_budget_path') else None
   ledger_id=digest({'path':str(path.resolve()),'request':request_hash})
+  reserve=self._reserve_for_request(req)
   with self.lock:
    if path.exists():
     old=json.loads(path.read_text())
     if old['request_hash']!=request_hash:raise ValueError('Cached request mismatch; use a new output directory')
     if old.get('status')!='complete':raise ValueError('Previous call failed/unknown; no automatic retry')
+    if ledger:
+     validate_and_reconcile_receipt(ledger,path,old,request_hash,reserve)
     return old['content']
    # UTF-8 bytes conservatively bound input token count, plus framing margin.
-   reserve=(sum(len(m['content'].encode()) for m in req['messages'])+512)*self.config['pricing']['prompt']+req['max_tokens']*self.config['pricing']['completion']
    spent=0.0
    for f in folder.glob('*.json'):
-    previous=json.loads(f.read_text());usage=previous.get('usage') or {}
-    amounts=[usage.get('cost'),(usage.get('cost_details') or {}).get('upstream_inference_cost')]
-    amounts=[x for x in amounts if isinstance(x,(int,float)) and not isinstance(x,bool)]
-    spent += max(amounts) if amounts else previous['reserved_usd']
+    previous=json.loads(f.read_text())
+    spent += self._account_previous(f,previous,ledger)
    if spent+reserve>self.config['budget_usd']:raise ValueError('Conservative run budget exhausted')
    record={'status':'pending','request_hash':request_hash,'request':req,'reserved_usd':reserve,'timestamp':time.time()}
    path.write_text(json.dumps(record,indent=2))

@@ -30,7 +30,16 @@ class FakeClient:
             content=json.dumps({kind:rows})
         else:content=json.dumps({'candidates':[{'id':f'cand-{i:02d}','program':{'predict':{'var':'last_sync'},'update':{'var':'memory'}},'hypothesis':'h','falsifier':'f'} for i in range(4)]})
         req=c.expected_request(prompt)
-        c.write_new(self.out/'calls'/f"{case['id']}-{stage}.json",{'status':'complete','request':req,'request_hash':c.request_hash(req),'content':content,'reserved_usd':c.reserve(prompt)})
+        from generation.api_budget import receipt_request_id
+        call_path=self.out/'calls'/f"{case['id']}-{stage}.json"
+        request_hash=c.request_hash(req);reserve=c.reserve(prompt)
+        ledger=life._anchor(self.out)
+        rid=receipt_request_id(call_path,request_hash)
+        ledger.reserve(rid,reserve,{'request_hash':request_hash},allow_existing=False)
+        response_id=f"fixture-{case['id']}-{stage}"
+        actual=min(0.01,reserve)
+        c.write_new(call_path,{'status':'complete','request':req,'request_hash':request_hash,'content':content,'reserved_usd':reserve,'finish_reason':'stop','response_id':response_id,'usage':{'cost':actual}})
+        ledger.reconcile(rid,actual,verified=True,receipt_id=response_id)
         return content
 
 def reviews(out,kind,index,failed=False):

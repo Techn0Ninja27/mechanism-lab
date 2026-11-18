@@ -24,3 +24,17 @@ PYTHONPATH=. ../.venv/bin/python scripts/score_reference_calibration.py --root r
 ```
 
 This requires local frozen inputs. The output path must not exist.
+
+## Independent audit limitation
+
+Claude independently reproduced the counts, source windows and gold labels,
+but a source-blind keyword rule also matches all 32 unique field labels: cue
+words separate the four negative examples from the positives. Every negative
+is in a condition field. This set therefore demonstrates successful reference
+handling and reproducible bookkeeping, not reliable semantic judgment.
+Compound-claim assessments were supplied in only three of sixteen reviews;
+the decoder does not infer how many atomic claims a field contains. Reviewer
+agent names in the summary are naming-convention metadata, not saved launch
+receipts. The production guard still reads the failed chunk-field-calibration-v1
+check and remains disabled. Fresh, cue-balanced examples are required before
+claiming semantic calibration readiness.

@@ -45,3 +45,9 @@ causes an explicit terminal stop, including when interruption might have
 occurred before dispatch. We cannot infer that a request was never sent from
 the absence of a receipt. This conservative boundary can discard an otherwise
 recoverable attempt, but does not risk charging for a duplicate request.
+
+An explicit in-process exception currently records a terminal failure, even if
+it occurs after a complete receipt was written. A hard process kill at that
+point leaves no failure event and can recover that receipt. This conservative
+asymmetry is intentional for now: an explicit provider/schema failure is never
+reinterpreted as permission to retry or continue.
