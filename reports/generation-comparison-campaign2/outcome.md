@@ -41,3 +41,9 @@ flags are not yet independent adjudications of source truth. With well-formed
 reviews, that fidelity failure would have permitted the next predeclared draw.
 The malformed additional review was the reason advancement became unavailable
 and the campaign stopped. It was not the sole defect in the preparation.
+
+Independent model adjudication later classified the six flagged fields as two
+real atom errors, three reviewer false flags, and one rule ambiguity. Both
+consensus flags were errors in this one draw; that does not establish a general
+consensus rule. The main false-flag cluster involved unknown-information fields.
+See `adjudication-summary.json`. This does not change the stopped outcome.
