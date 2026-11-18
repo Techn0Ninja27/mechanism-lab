@@ -1,0 +1,114 @@
+{
+  "reviewer": "reviewer-b",
+  "purpose": "independent source-only offline chunk-support calibration",
+  "selection": {
+    "ordering": "lexicographic by record id",
+    "indexes": [0, 2, 4, 6, 8, 10],
+    "count_per_representation": 6
+  },
+  "input_sha256": {
+    "sourcepack.json": "8aae2d62fd3b56984aace30afdffbee05b45ee30497b39be5175913ec3013a75",
+    "representations/atoms.json": "6b1b13801ec4f5ef11df4f65cbbef69742d1791dd935faa444cf675d056b8af7",
+    "representations/distillations.json": "df8282517c8ec05e57d692832276cf781f85261048398d15428474dda5e48f1c"
+  },
+  "atoms": [
+    {
+      "index": 0,
+      "id": "fresh-1",
+      "verdict": "supported",
+      "reason": "The cited FreshGNN chunk explicitly states mini-batch training, a historical cache of reusable node embeddings, and a cache policy combining gradient-based and staleness criteria to select stable embeddings.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W4396628137:chunk:0001"]
+    },
+    {
+      "index": 2,
+      "id": "sancus-1",
+      "verdict": "supported",
+      "reason": "The cited Sancus chunk explicitly supports bounded embedding-staleness metrics, adaptive broadcast skipping, historical embeddings via cache, decentralized full-graph training, and the quantization-aware advanced version.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W4407013152:chunk:0001"]
+    },
+    {
+      "index": 4,
+      "id": "sat-1",
+      "verdict": "supported",
+      "reason": "The cited SAT chunk explicitly describes temporal-graph modeling of embedding evolution and prediction of future embeddings to alleviate staleness of cached historical embeddings in distributed GNN training.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W4409983225:chunk:0001"]
+    },
+    {
+      "index": 6,
+      "id": "sift-1",
+      "verdict": "supported",
+      "reason": "The cited Sift chunk explicitly names channel-wise partial historical embedding, the channel-wise quantitative accuracy model, sawtooth-like matrix rearrangement, and the hybrid parallel framework.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W7160826828:chunk:0001"]
+    },
+    {
+      "index": 8,
+      "id": "sni-1",
+      "verdict": "unsupported",
+      "reason": "The cited SNI-GNN chunk entails the SmartNIC/DPU prediction mechanism, one-time graph partitioning, historical caches, and Sync/Stale Epoch behavior, but it does not establish the stated fixed synchronization interval s condition. That condition appears only in a different chunk and is therefore unsupported under this cited-chunk review.",
+      "disputed_fields": ["conditions[1]: fixed synchronization interval s"],
+      "cited_chunk_ids": ["sni-method:chunk:0001"]
+    },
+    {
+      "index": 10,
+      "id": "sni-3",
+      "verdict": "supported",
+      "reason": "The cited SNI-GNN chunk contains Table I with all four predictor times and accuracies, states ARIMA's nearly order-of-magnitude cost, and states the separate Reddit comparison and condition.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["sni-method:chunk:0002"]
+    }
+  ],
+  "distillations": [
+    {
+      "index": 0,
+      "id": "fresh-1-cache",
+      "verdict": "supported",
+      "reason": "The cited FreshGNN chunk supports mini-batch embedding caching/reuse instead of repeated raw-feature fetching and the gradient/staleness stability screen; the listed unknowns are not positive claims.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W4396628137:chunk:0001"]
+    },
+    {
+      "index": 2,
+      "id": "sancus-1-staleness",
+      "verdict": "supported",
+      "reason": "The cited Sancus chunk supports decentralized full-graph training, bounded staleness metrics, adaptive broadcast skipping, cached historical embeddings, bounded errors, and a convergence guarantee; unspecified metric definitions and rate are listed as unknowns.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W4407013152:chunk:0001"]
+    },
+    {
+      "index": 4,
+      "id": "sat-1-idea",
+      "verdict": "supported",
+      "reason": "The cited SAT chunk supports the staleness/convergence motivation, temporal-graph embedding-evolution model, future-embedding prediction, adaptive reduction of staleness, and distributed GNN setting.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W4409983225:chunk:0001"]
+    },
+    {
+      "index": 6,
+      "id": "sift-1-channel",
+      "verdict": "supported",
+      "reason": "The cited Sift chunk supports the target of vertex-wise historical-embedding accuracy loss and the proposed channel-wise partial historical embedding guided by a quantitative accuracy model.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["W7160826828:chunk:0001"]
+    },
+    {
+      "index": 8,
+      "id": "sni-1-overview",
+      "verdict": "supported",
+      "reason": "The cited SNI-GNN chunk supports the DPU-held historical cache, in-network remote-embedding prediction, Sync/Stale Epoch alternation, smooth embedding motivation, and the SmartNIC resource constraint on per-dimension modeling. The omitted hardware and partitioning details are unknowns, not claims.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["sni-method:chunk:0001"]
+    },
+    {
+      "index": 10,
+      "id": "sni-3-optimizations",
+      "verdict": "supported",
+      "reason": "The cited SNI-GNN chunks explicitly support importance-based boundary-node sampling, the asynchronous pipeline that hides prediction latency, and predictive intermediate-result/self-feeding reuse; the unspecified ratios and measured reductions are unknowns.",
+      "disputed_fields": [],
+      "cited_chunk_ids": ["sni-method:chunk:0003", "sni-method:chunk:0004"]
+    }
+  ]
+}

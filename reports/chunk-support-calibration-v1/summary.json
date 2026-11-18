@@ -1,0 +1,106 @@
+{
+  "schema": "chunk-support-calibration-summary.v1",
+  "reviewed_by_a": 24,
+  "overlap": 12,
+  "agreement": 11,
+  "rows": [
+    {
+      "representation": "atom",
+      "id": "fresh-1",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "atom",
+      "id": "sancus-1",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "atom",
+      "id": "sat-1",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "atom",
+      "id": "sift-1",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "atom",
+      "id": "sni-1",
+      "a": "supported",
+      "b": "unsupported",
+      "agree": false
+    },
+    {
+      "representation": "atom",
+      "id": "sni-3",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "distillation",
+      "id": "fresh-1-cache",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "distillation",
+      "id": "sancus-1-staleness",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "distillation",
+      "id": "sat-1-idea",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "distillation",
+      "id": "sift-1-channel",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "distillation",
+      "id": "sni-1-overview",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    },
+    {
+      "representation": "distillation",
+      "id": "sni-3-optimizations",
+      "a": "supported",
+      "b": "supported",
+      "agree": true
+    }
+  ],
+  "review_hashes": {
+    "reviewer-a.json": "9ba2011d3339dc95f62724f2ec6f0cafcbe2da5d6fa9347a1a8abc261b31d468",
+    "reviewer-b.json": "ffcf3cb892f3a048949babda762a8fbd483f2d73f1248b3f7259f15427a3f001"
+  },
+  "root_check": {
+    "record": "atom/sni-1",
+    "finding": "Cited chunk sni-method:chunk:0001 names Sync/Stale operational modes but does not state the fixed synchronization interval s condition. This supports reviewer B on citation scope.",
+    "does_not_reverse_original_gate": true
+  },
+  "limitations": [
+    "Old records used only for offline calibration, never new campaign generation.",
+    "Reviewer A missed at least the disputed condition under the chunk criterion.",
+    "Small selected calibration sample; not a general error-rate estimate."
+  ]
+}
