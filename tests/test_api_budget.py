@@ -123,5 +123,40 @@ class BudgetTests(unittest.TestCase):
                         **kwargs}
                 with self.assertRaises(BudgetError): migrate_cap(p, **args)
 
+    def test_external_audit_head_compare_and_swap_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "ledger.json"
+            b = BudgetLedger(p, 30)
+            b.reserve("r", .25)
+            zero = "0" * 64
+            e1 = {"seq": 0, "event": "draw_started", "previous_hash": zero, "event_hash": "1" * 64}
+            got = b.anchor_event("campaign", zero, e1)
+            self.assertEqual(got["head"], "1" * 64)
+            self.assertEqual(b.anchor_event("campaign", zero, e1), got)
+            with self.assertRaises(BudgetError):
+                b.anchor_event("campaign", zero, {**e1, "event_hash": "2" * 64})
+            e2 = {"seq": 1, "event": "draw_completed", "previous_hash": "1" * 64, "event_hash": "2" * 64}
+            b.anchor_event("campaign", "1" * 64, e2)
+            self.assertEqual(b.read_event_anchor("campaign")["head"], "2" * 64)
+            self.assertEqual(b.read_event_anchor("missing")["head"], zero)
+            state = json.loads(p.read_text())
+            self.assertEqual(state["reservations"]["r"]["reserved_usd"], .25)
+            self.assertEqual(state["cap_usd"], 30)
+
+    def test_audit_heads_survive_future_reservations_and_validate_hashes(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "ledger.json"
+            b = BudgetLedger(p, 30)
+            zero = "0" * 64
+            e = {"seq": 0, "previous_hash": zero, "event_hash": "a" * 64}
+            b.anchor_event("c", zero, e)
+            b.reserve("later", 1)
+            self.assertEqual(BudgetLedger(p, 30).read_event_anchor("c")["last_event"], e)
+            for bad in ("",):
+                with self.assertRaises(BudgetError): b.anchor_event(bad, zero, e)
+            with self.assertRaises(BudgetError): b.anchor_event("c", "A" * 64, e)
+            with self.assertRaises(BudgetError): b.anchor_event("c", zero, {**e, "event_hash": "b" * 64})
+            with self.assertRaises(BudgetError): b.anchor_event("c", "a" * 64, {**e, "previous_hash": "b" * 64})
+
 
 if __name__ == "__main__": unittest.main()

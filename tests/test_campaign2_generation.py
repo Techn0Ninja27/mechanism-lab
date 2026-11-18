@@ -55,6 +55,9 @@ class Campaign2HarnessTests(unittest.TestCase):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.out=Path(self.tmp.name)/'campaign';c.plan(PACK,self.out)
         p=patch.object(life,'CANONICAL_OUTPUT',self.out);p.start();self.addCleanup(p.stop)
+        from generation.api_budget import BudgetLedger
+        anchor=BudgetLedger(Path(self.tmp.name)/'phase-ledger.json',30)
+        p=patch.object(life,'_anchor',return_value=anchor);p.start();self.addCleanup(p.stop)
         self.actual_calibration_check=c.require_calibration_ready
         p=patch.object(c,'require_calibration_ready',return_value=None);p.start();self.addCleanup(p.stop)
         FakeClient.calls=[];FakeClient.fail=False
@@ -127,6 +130,46 @@ class Campaign2HarnessTests(unittest.TestCase):
             life.execute_draw(self.out,'atoms',i);reviews(self.out,'atoms',i,failed=True);life.record_review(self.out,'atoms',i)
         with self.assertRaisesRegex(ValueError,'permanently stopped'):life.execute_draw(self.out,'distillations',0)
         self.assertEqual(len(FakeClient.calls),3)
+    def test_recover_review_event_after_external_anchor_before_append(self):
+        life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0)
+        original=life.journal._append_row
+        def interrupt(out,row):
+            if row['event']=='review_decided':raise KeyboardInterrupt()
+            return original(out,row)
+        with patch.object(life.journal,'_append_row',side_effect=interrupt):
+            with self.assertRaises(KeyboardInterrupt):life.record_review(self.out,'atoms',0)
+        locked=life.record_review(self.out,'atoms',0)
+        self.assertEqual(locked['status'],'locked');self.assertEqual(len(FakeClient.calls),1)
+        self.assertEqual(life._anchor(self.out).read_event_anchor(life._chain(self.out))['head'],life.journal.audit(self.out)['last_hash'])
+
+    def test_recover_locked_artifact_before_semantic_commit(self):
+        life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0)
+        original=life.journal.atomic_write
+        def interrupt(out,relative,data):
+            result=original(out,relative,data)
+            if relative=='selected/atoms.selection.json':raise KeyboardInterrupt()
+            return result
+        with patch.object(life.journal,'atomic_write',side_effect=interrupt):
+            with self.assertRaises(KeyboardInterrupt):life.record_review(self.out,'atoms',0)
+        locked=life.record_review(self.out,'atoms',0)
+        self.assertEqual(locked['draw'],0)
+        with self.assertRaises(ValueError):life.execute_draw(self.out,'atoms',1)
+        self.assertEqual(len(FakeClient.calls),1)
+
+    def test_partial_anchored_tail_recovers_without_new_call(self):
+        expected=self.accept('atoms',0)
+        log=self.out/life.journal.JOURNAL_NAME;lines=log.read_bytes().splitlines(keepends=True)
+        log.write_bytes(b''.join(lines[:-1])+lines[-1][:len(lines[-1])//2])
+        self.assertEqual(life.record_review(self.out,'atoms',0),expected)
+        self.assertEqual(len(FakeClient.calls),1)
+
+    def test_trimmed_journal_and_lock_cannot_move_selection(self):
+        self.accept('atoms',0)
+        log=self.out/life.journal.JOURNAL_NAME;lines=log.read_bytes().splitlines(keepends=True)
+        log.write_bytes(b''.join(lines[:-2]));(self.out/'selected/atoms.selection.json').unlink()
+        with self.assertRaises(ValueError):life.execute_draw(self.out,'atoms',1)
+        self.assertEqual(len(FakeClient.calls),1)
+
     def test_deleted_stop_after_exhaustion_does_not_reopen(self):
         for i in range(3):
             life.execute_draw(self.out,'atoms',i);reviews(self.out,'atoms',i,failed=True);life.record_review(self.out,'atoms',i)

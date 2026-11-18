@@ -78,6 +78,17 @@ class BudgetLedger:
             raise BudgetError(f"cannot read ledger: {exc}") from exc
         if state.get("version") != 1 or state.get("cap_usd") != self.cap_usd or not isinstance(state.get("reservations"), dict):
             raise BudgetError("invalid ledger format")
+        heads = state.get("audit_heads", {})
+        if not isinstance(heads, dict):
+            raise BudgetError("invalid audit_heads")
+        for chain_id, entry in heads.items():
+            if not isinstance(chain_id, str) or not chain_id.strip() or not isinstance(entry, dict):
+                raise BudgetError("invalid audit head entry")
+            head = entry.get("head")
+            if not isinstance(head, str) or len(head) != 64 or any(c not in "0123456789abcdef" for c in head):
+                raise BudgetError("invalid audit head hash")
+            if "last_event" in entry and entry["last_event"] is not None and not isinstance(entry["last_event"], dict):
+                raise BudgetError("invalid audit head event")
         for rid, rec in state["reservations"].items():
             if not isinstance(rid, str) or not isinstance(rec, dict):
                 raise BudgetError("invalid reservation record")
@@ -165,6 +176,46 @@ class BudgetLedger:
             if over_budget:
                 raise BudgetError("verified receipt exceeded budget cap; true usage retained and ledger locked")
             return rec
+
+    def anchor_event(self, chain_id: str, expected_head: str, event: dict[str, Any]) -> dict[str, Any]:
+        """CAS-anchor an external journal event without changing reservations."""
+        if not isinstance(chain_id, str) or not chain_id.strip():
+            raise BudgetError("chain_id must be a non-empty string")
+        if not isinstance(expected_head, str) or len(expected_head) != 64 or any(c not in "0123456789abcdef" for c in expected_head):
+            raise BudgetError("expected_head must be a lowercase sha256")
+        if not isinstance(event, dict):
+            raise BudgetError("event must be an object")
+        event_hash = event.get("event_hash")
+        previous_hash = event.get("previous_hash")
+        if not isinstance(event_hash, str) or len(event_hash) != 64 or any(c not in "0123456789abcdef" for c in event_hash):
+            raise BudgetError("event_hash must be a lowercase sha256")
+        if previous_hash != expected_head:
+            raise BudgetError("event previous_hash does not match expected_head")
+        with self._locked() as state:
+            heads = state.setdefault("audit_heads", {})
+            current = heads.get(chain_id)
+            current_head = current.get("head") if current else "0" * 64
+            if current_head != expected_head:
+                if current and current_head == event_hash and current.get("last_event") == event:
+                    return dict(current)
+                raise BudgetError("audit head compare-and-swap failed")
+            if current and current_head == event_hash:
+                if current.get("last_event") == event:
+                    return dict(current)
+                raise BudgetError("audit head hash already anchors a different event")
+            entry = {"head": event_hash, "last_event": dict(event)}
+            heads[chain_id] = entry
+            return dict(entry)
+
+    def read_event_anchor(self, chain_id: str) -> dict[str, Any]:
+        """Read an anchored external journal head under the ledger lock."""
+        if not isinstance(chain_id, str) or not chain_id.strip():
+            raise BudgetError("chain_id must be a non-empty string")
+        with self._locked() as state:
+            entry = state.get("audit_heads", {}).get(chain_id)
+            if entry is None:
+                return {"head": "0" * 64, "last_event": None}
+            return dict(entry)
 
 
 def migrate_cap(path: str | Path, *, old_cap_usd: float, new_cap_usd: float,

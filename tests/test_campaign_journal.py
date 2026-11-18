@@ -49,5 +49,32 @@ class CampaignJournalTests(unittest.TestCase):
         (self.out / "review.json").unlink()
         with self.assertRaises(ValueError): j.audit(self.out, allow_active=True)
 
+    def test_intent_recovery_after_artifact_write_before_target(self):
+        target = self.out / "intent.json"
+        # Simulate the durable intent and artifact write, but crash before the
+        # target event.  Recovery must use only the bytes in the intent.
+        data = b"declared"
+        payload = {"operation_id": "atoms-0"}
+        rows = j.audit(self.out, allow_active=True)["events"]
+        spec = {"intent_id": "i1", "target_event": "representation_locked",
+                "target_payload": payload,
+                "artifacts": {"intent.json": {"data": __import__('base64').b64encode(data).decode(), "sha256": j.sha256_bytes(data)}}}
+        row = {"seq": 0, "event": "event_intent", "payload": spec,
+               "previous_hash": "0" * 64}
+        row["event_hash"] = j._event_hash(0, "event_intent", spec, row["previous_hash"])
+        j._append_row(self.out, row)
+        target.write_bytes(data)
+        completed = j.recover_pending(self.out)
+        self.assertEqual(completed["event"], "representation_locked")
+        self.assertEqual(j.audit(self.out, allow_active=True)["events"][-1]["payload"]["intent_id"], "i1")
+
+    def test_intent_conflicting_existing_artifact_fails(self):
+        data = b"declared"; (self.out / "x").write_bytes(b"wrong")
+        spec = {"intent_id": "i2", "target_event": "representation_locked", "target_payload": {},
+                "artifacts": {"x": {"data": __import__('base64').b64encode(data).decode(), "sha256": j.sha256_bytes(data)}}}
+        row = {"seq": 0, "event": "event_intent", "payload": spec, "previous_hash": "0" * 64}
+        row["event_hash"] = j._event_hash(0, "event_intent", spec, row["previous_hash"]); j._append_row(self.out, row)
+        with self.assertRaises(ValueError): j.recover_pending(self.out)
+
 
 if __name__ == "__main__": unittest.main()
