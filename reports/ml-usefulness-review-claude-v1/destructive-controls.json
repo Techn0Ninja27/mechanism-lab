@@ -1,0 +1,115 @@
+{
+  "schema": "claude-destructive-controls.v1",
+  "status": "exploratory, post hoc, single run, not preregistered",
+  "scope": "constant learning rate only; seeds 20-27; 'fresh' means exact remote values with detached gradient, not full-gradient training",
+  "cross_edge_weight_share": 0.5282902717590332,
+  "per_seed": {
+    "hold_never_resync": [
+      0.7419999837875366,
+      0.7820000052452087,
+      0.7580000162124634,
+      0.722000002861023,
+      0.7739999890327454,
+      0.7900000214576721,
+      0.7820000052452087,
+      0.8059999942779541
+    ],
+    "zero_remote": [
+      0.6759999990463257,
+      0.7680000066757202,
+      0.7440000176429749,
+      0.7620000243186951,
+      0.7940000295639038,
+      0.7580000162124634,
+      0.7799999713897705,
+      0.777999997138977
+    ]
+  },
+  "summary": {
+    "hold_never_resync": {
+      "mean": 0.7695000022649765,
+      "sd": 0.02733391632755687
+    },
+    "zero_remote": {
+      "mean": 0.7575000077486038,
+      "sd": 0.036280653655642064
+    }
+  },
+  "paired_val_accuracy_differences": {
+    "hold_sync4_minus_fresh_detached": {
+      "mean_diff": -0.00024999678134918213,
+      "sd_diff": 0.0007070976774672692,
+      "ci95": [
+        -0.0008412391692399979,
+        0.00034124560654163365
+      ],
+      "n": 8
+    },
+    "trend_sync4_minus_fresh_detached": {
+      "mean_diff": 0.0007500052452087402,
+      "sd_diff": 0.001035105578252777,
+      "ci95": [
+        -0.00011550218510466832,
+        0.0016155126755221488
+      ],
+      "n": 8
+    },
+    "fresh_sync16_minus_fresh_detached": {
+      "mean_diff": 0.0,
+      "sd_diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 8
+    },
+    "hold_sync16_minus_fresh_detached": {
+      "mean_diff": 0.00025000423192977905,
+      "sd_diff": 0.00166904356383673,
+      "ci95": [
+        -0.0011455728341853955,
+        0.0016455812980449536
+      ],
+      "n": 8
+    },
+    "trend_sync16_minus_fresh_detached": {
+      "mean_diff": -0.0014999955892562866,
+      "sd_diff": 0.0025634833121544608,
+      "ci95": [
+        -0.003643461821849899,
+        0.0006434706433373258
+      ],
+      "n": 8
+    },
+    "hold_never_resync_minus_fresh_detached": {
+      "mean_diff": -0.01524999737739563,
+      "sd_diff": 0.014538134199079398,
+      "ci95": [
+        -0.027406113078594092,
+        -0.003093881676197169
+      ],
+      "n": 8
+    },
+    "zero_remote_minus_fresh_detached": {
+      "mean_diff": -0.02724999189376831,
+      "sd_diff": 0.033720500664747244,
+      "ci95": [
+        -0.05544551560883788,
+        0.0009455318213012556
+      ],
+      "n": 8
+    }
+  },
+  "receipts_sha256": {
+    "headroom.py": "fa6e0113d635acc921def80a97a026725ee689192f183b88deed3a18e32ca341",
+    "headroom-result.json": "3c5cd200744bb699c1bcbd7321a4c82b7cb342e31df6632e29c643aa42ebbeb5",
+    "screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "python": "3.12.14"
+  }
+}

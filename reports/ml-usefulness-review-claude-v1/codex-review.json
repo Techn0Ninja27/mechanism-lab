@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-18",
+  "reviewer": "Codex",
+  "scope": "Code and reported arithmetic review, not an independent repeat of training.",
+  "checks": [
+    "Original headroom.py and headroom-result.json hashes match destructive-controls.json.",
+    "Fixed SNI matches imported baseline exactly on seeded synthetic trajectory (seed701, shape40x8x3).",
+    "Paired accuracy differences independently recomputed from per-seed records.",
+    "Rerun wrapper refuses existing output before importing experiment code."
+  ],
+  "limitations": [
+    "Initial exploratory run had no pre-run freeze.",
+    "Closed-loop comparator uses detached cross-partition hidden states and one learning-rate schedule.",
+    "Individual approximate paired-t intervals are not simultaneous equivalence bounds."
+  ],
+  "artifacts": {
+    "headroom.py": "fa6e0113d635acc921def80a97a026725ee689192f183b88deed3a18e32ca341",
+    "headroom-result.json": "3c5cd200744bb699c1bcbd7321a4c82b7cb342e31df6632e29c643aa42ebbeb5",
+    "destructive_controls.py": "b1537aee24a4bb31bdd88fa08f43f3059b99140d32728ce43ef2fcf6b0f45d02",
+    "destructive-controls.json": "8bf3c44dd75a66817cdc6b8f52caa12bb23d3ad0f4e9da35578a55d87ce23920",
+    "rerun.py": "2f97160a4037bb1d017247c85dc1484e00f9648de8fc1ad4cffb266cec62e4ce"
+  }
+}

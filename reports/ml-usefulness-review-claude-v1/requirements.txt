@@ -1,0 +1,3 @@
+# Python 3.12.14; versions recorded by destructive_controls.py
+torch==2.15.0
+numpy==2.5.4

@@ -86,3 +86,5 @@ freeze remains locally at `results/gnn-predictor-headroom-v1-interrupted-2026-11
 The successful [result](result.json) and [freeze](freeze.json) are published here.
 The freeze binds the runner and actual Cora input bytes; input data stays local.
 Use the pinned requirements and a fresh output path to rerun.
+
+The [separate Claude calibration and exploratory closed-loop check](../../reports/ml-usefulness-review-claude-v1/README.md) motivated the expanded baseline grid. Its code, paired statistics, preserved outputs and limitations were reviewed by Codex; it is not an independent confirmation of this development-selected result.
