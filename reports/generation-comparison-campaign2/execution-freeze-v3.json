@@ -1,0 +1,12 @@
+{
+  "supersedes": "execution-freeze-v2.json",
+  "previous_plan_sha256": "87e4a732de1f613b0c74cc7385f7349241a5808d2734bbc5cf9b402cf5529736",
+  "plan_sha256": "b28faec86fcd6cece252e71fb34174e2ebe719bc9983fbeb9f984fae4fd5f7c0",
+  "preparation_cap_usd": 3,
+  "campaign_cap_usd": 12,
+  "phase_cap_usd": 30,
+  "paid_calls": 0,
+  "reason": "Consistent readiness authorization, isolated gate regression coverage, duplicate raw review set rejection; no paid attempt or cap reset",
+  "code_commit": "bb1062d",
+  "date": "2026-11-19"
+}
