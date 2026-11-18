@@ -1,0 +1,369 @@
+{
+  "schema": "recordwise-calibration-v6-evaluation.v1",
+  "date": "2026-11-19",
+  "packet_count": 12,
+  "reviews": [
+    {
+      "task_name": "/root/v6_review_00a",
+      "input_sha256": "4408ad3861ba6a313fe8283a229da4e9163a5105fb46679c823bbfddd0c86e9d",
+      "review_sha256": "59925254cc4eca95fc245a4931989d3a5caf2261670fbf8dee780f3434944ab5",
+      "launch_receipt_sha256": "a3a1ec36b31afc2ad18650ee209f4a478a5e442fa42cd523be7b29ab80bad66a",
+      "opaque_id": "0df34dfa3a37",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_00b",
+      "input_sha256": "4408ad3861ba6a313fe8283a229da4e9163a5105fb46679c823bbfddd0c86e9d",
+      "review_sha256": "e7e83a5c58c644854b989aeab4ae6e319c32c9abe0fea99792fff3a0fa0e4571",
+      "launch_receipt_sha256": "cc79a0fae9b8b91ae9379a915183e7dcba7274e1dcc9114941d72e89d97c69ac",
+      "opaque_id": "0df34dfa3a37",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_01a",
+      "input_sha256": "bbff160b4be503139129bbee237f25076d6cb4bcb48629b96acd307ff07ab015",
+      "review_sha256": "ae8597539837a6fa014aee2ecb28ed8c93025bd60749e7c75cbed622ccf90704",
+      "launch_receipt_sha256": "fe0f1c83b560f77c1168540a698a9c32ec3f5e035f18eae9d8bcc7437a27766e",
+      "opaque_id": "4f77f0b122ae",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_01b",
+      "input_sha256": "bbff160b4be503139129bbee237f25076d6cb4bcb48629b96acd307ff07ab015",
+      "review_sha256": "ec71cb9f1ff33776aa33a9e51ab26d85734f95b38ef607496377f7b89fe9742b",
+      "launch_receipt_sha256": "6d7f684b220bf0880d71461b717c48bc5e0176983f705043ca2b813b02da566b",
+      "opaque_id": "4f77f0b122ae",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_02a",
+      "input_sha256": "2065aa69178042f0840fed0b5483e714786d7e0ce45394a7cae3ad07f16084ff",
+      "review_sha256": "cde6370e46c0e8294e24d46ab11c46d48ef1a3b0dc6979a62b4f6d2af412f266",
+      "launch_receipt_sha256": "7af227f896f6a3e539f9dd302d0b452c47141ec92d2ec4d1bbc5d30ad2e593ad",
+      "opaque_id": "b7fdc40801c1",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_02b",
+      "input_sha256": "2065aa69178042f0840fed0b5483e714786d7e0ce45394a7cae3ad07f16084ff",
+      "review_sha256": "797dfb2e127652bcfc07f6a517c50fea907ad7559a6720aaed3c48ec78e52750",
+      "launch_receipt_sha256": "47335ae395b88e963755ad880bd04a49469a892e5ba0763d19227b49375460ea",
+      "opaque_id": "b7fdc40801c1",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_03a",
+      "input_sha256": "77e8cb94584f77aa29c6c51afeb860ef2a90d7842b005f9fc595f0141c955627",
+      "review_sha256": "3e1b0717d45f76711cd27df75a9e0499621a28108840445d2d46b603a1ac7981",
+      "launch_receipt_sha256": "c32d7a807ed9a0d60129a38d0cb26885b17b8ac84b95b330408b47d18650d890",
+      "opaque_id": "0fc76025f98e",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_03b",
+      "input_sha256": "77e8cb94584f77aa29c6c51afeb860ef2a90d7842b005f9fc595f0141c955627",
+      "review_sha256": "c77cceb913ad45280c9d77759ac647529b19eba6e90546243309f13c9dfe4327",
+      "launch_receipt_sha256": "bd66aa57dc2ca9a2acb1f9f51642dffdfd1ccf74b32522ceeff4d529320253a9",
+      "opaque_id": "0fc76025f98e",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_04a",
+      "input_sha256": "f8da3765b428ee8d5b54bb67a0fdea95b76d9a27f796bc0a8a4efd27c8e809cf",
+      "review_sha256": "cdd08b2b62f6abfbb3008f29c7af6e9a397540e66e5bcd80da10421257c65bb2",
+      "launch_receipt_sha256": "316a9be661b4fd5823b399e8a6b3b6e86cdd31a0097085eccd74644bf4398761",
+      "opaque_id": "693bddb3d692",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_04b",
+      "input_sha256": "f8da3765b428ee8d5b54bb67a0fdea95b76d9a27f796bc0a8a4efd27c8e809cf",
+      "review_sha256": "21be3523d93d200337c613ae9e588f6aa7e1685a1181c4e8b605021fdba5427f",
+      "launch_receipt_sha256": "61c4f039e8feed4b06de1c2a3900fad84801a3980180f242166bc2167226926c",
+      "opaque_id": "693bddb3d692",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_05a",
+      "input_sha256": "704702b013e45268f60d5f720817640e9880c23e414585adaae07f67e9df690e",
+      "review_sha256": "028e4604d3f973259c0365039a7744026079c4eb56c7c99518e46dbea9733bf0",
+      "launch_receipt_sha256": "9f1542ad88d96838fedd4b89341738d9c70be7e693bf474a6b342fa33465ed9c",
+      "opaque_id": "cf5bb406c1d1",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_05b",
+      "input_sha256": "704702b013e45268f60d5f720817640e9880c23e414585adaae07f67e9df690e",
+      "review_sha256": "804bc80478629c0f6205654dec8f045e8093f04c7a111d3fcf42a5677ac412ee",
+      "launch_receipt_sha256": "883fd446795c0a3123f94815eee87a5c4120aec7caead19587c45b4b9f5541fa",
+      "opaque_id": "cf5bb406c1d1",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_06a",
+      "input_sha256": "3bba1484b738e5f26e2fac05813b1d753e32ecc6ba623953cb98302a53b3fe6d",
+      "review_sha256": "2fed7f875f5dfefdeebf53d8b618ce259f98d4eb1258c6767da36df43d645a6d",
+      "launch_receipt_sha256": "5b63f7f71822aaf76f81ef9d0574fb165b1eeb2781cbb98fb8d042d81d11e78c",
+      "opaque_id": "49ac5ccab10f",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_06b",
+      "input_sha256": "3bba1484b738e5f26e2fac05813b1d753e32ecc6ba623953cb98302a53b3fe6d",
+      "review_sha256": "e559d7a3138749bf3e99daae7a58069591068bac4db688747f44451d30fb60f6",
+      "launch_receipt_sha256": "46430ae1a2f34fdbd2d549a4af1bd46f8e633801069f39ec7a89849cabb20c80",
+      "opaque_id": "49ac5ccab10f",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_07a",
+      "input_sha256": "da5071461a5182e52c6afd9b13f32c1bd47834e284cb7bf39ec7c146d7e5b85d",
+      "review_sha256": "86a27d3c5ad55019e34c34b6cc241132e30f477cb783b2e676eb729365dc8c88",
+      "launch_receipt_sha256": "e7e340608ec7eed1b5dbf6867fb85bdf4b61b503ebefbbedf6503e5fe485c977",
+      "opaque_id": "48d15a11bc5e",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_07b",
+      "input_sha256": "da5071461a5182e52c6afd9b13f32c1bd47834e284cb7bf39ec7c146d7e5b85d",
+      "review_sha256": "bba0212407ee004ab91c1b806c59a4a5da5ad849f82edbbced3d0e73979f1b55",
+      "launch_receipt_sha256": "719bf88d10e87b44a5cc2cdaec6f0fbaa095978693eee5f153209044efad3b17",
+      "opaque_id": "48d15a11bc5e",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_08a",
+      "input_sha256": "3ad87b6691353d558a4d6992ad2dc26b87e8051742cb529ac9b2d2efdc41d592",
+      "review_sha256": "62fd07c5df9929543b89a57acf17f23388db528cc55ee779dbc8057aed5a60af",
+      "launch_receipt_sha256": "a5721494b1a64aee63d4a2acb7dbc353c0f32573a514c1dea822c1ebdfb98d22",
+      "opaque_id": "00ec56b35d6b",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "unsupported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_08b",
+      "input_sha256": "3ad87b6691353d558a4d6992ad2dc26b87e8051742cb529ac9b2d2efdc41d592",
+      "review_sha256": "9e8e0d79d782acf36d5eff877068a6278e66892515c7f32d6b3b934ace0e9bd4",
+      "launch_receipt_sha256": "388e7071a76db66e80c9b608c68f008842f1ccaadc372f4cb91906a647828143",
+      "opaque_id": "00ec56b35d6b",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "unsupported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_09a",
+      "input_sha256": "a0fcb4d9286fff8c0ac04285bdfe412bb2ebaf6fe8d8134c80ce5a18bff72c01",
+      "review_sha256": "d6e0aa59ccb4f762a36d69afefa322c85509d15bbcb31d29212fce2dc176ddca",
+      "launch_receipt_sha256": "e94f3bbdc44030b46474586c3f1f6161136bf9c4fc285820a4b7cdf038646ced",
+      "opaque_id": "170478a459a5",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_09b",
+      "input_sha256": "a0fcb4d9286fff8c0ac04285bdfe412bb2ebaf6fe8d8134c80ce5a18bff72c01",
+      "review_sha256": "600deabcd0c4a711b7f5e797fc0457dcdf2584193ff8e767af539a2c85684640",
+      "launch_receipt_sha256": "a61e5b2dbb2a388fe8b56eee416df00655b74b39f5efc63dc8da4d6862c5a965",
+      "opaque_id": "170478a459a5",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_10a",
+      "input_sha256": "f6cd2906938eaa64c9f67eea2646299b2ecb20e78a6f49bc1a068f09aa1f5dcc",
+      "review_sha256": "1ba3949808c76729526f51f0af99e41cdf690b49bf942d882ea7a2636ec209aa",
+      "launch_receipt_sha256": "b44568296752e05bd89e3d9341232a9d96fb2c9b9b7b52a1e39862066102e90a",
+      "opaque_id": "859331ec7780",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "unsupported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_10b",
+      "input_sha256": "f6cd2906938eaa64c9f67eea2646299b2ecb20e78a6f49bc1a068f09aa1f5dcc",
+      "review_sha256": "04faf86ad8ec1448c4678340f6eccd14b4289c85365e8f80b51dd90d42154b63",
+      "launch_receipt_sha256": "b219836a2eaa70a1e6e874db8cb0c05483bd4d180b8f92d3fadcc928590ef234",
+      "opaque_id": "859331ec7780",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "supported",
+        "inputs[0]": "unsupported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "task_name": "/root/v6_review_11a",
+      "input_sha256": "95f01bfd7c9e24f976c659ed59e9d6e1bc5df9890d6d801e9c9f6fd08919a938",
+      "review_sha256": "f1e0e234bd629afdb5e47ddb7fae635c20bc40298456ff7e6917a0cf50549fa4",
+      "launch_receipt_sha256": "168724f84ffd96eb3505315f7d8e685e70cdc69f5ef0f6b811e49de913a47552",
+      "opaque_id": "d8eac2cf41cf",
+      "mechanically_valid": false,
+      "matches_key": false,
+      "error": "invalid claim assessment"
+    },
+    {
+      "task_name": "/root/v6_review_11b",
+      "input_sha256": "95f01bfd7c9e24f976c659ed59e9d6e1bc5df9890d6d801e9c9f6fd08919a938",
+      "review_sha256": "eeeb4a814d4045c57433f2d3a0099e37c412b1e09a0a02c79605ea9614187efb",
+      "launch_receipt_sha256": "a8a179705a7717d198fcfc86fbc26f3b4b0913f71154aca6254d742d14ba9918",
+      "opaque_id": "d8eac2cf41cf",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "field_verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    }
+  ],
+  "review_count": 24,
+  "mechanically_valid": 23,
+  "key_matching_reviews": 23,
+  "calibration_passed": false,
+  "production_authorized": false,
+  "freeze_sha256": "40188548d5b13139dac3b4f44b781810cb231bc1e30eafd512d16290c59ada34",
+  "scope": "12 constructed development examples, 24 fresh review contexts; not population accuracy or proof of independent errors."
+}

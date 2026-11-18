@@ -1,0 +1,8 @@
+{
+  "diagnostic_only": true,
+  "raw_field_verdict_maps_matching_key": 24,
+  "reviews": 24,
+  "original_gate_status": "failed",
+  "failure": "review-11-a includes subclaim_id, rejected by frozen decoder; raw output not repaired",
+  "production_authorized": false
+}
