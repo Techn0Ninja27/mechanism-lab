@@ -1,0 +1,17 @@
+{
+  "schema": "fidelity-calibration-score.v1",
+  "n": 8,
+  "matches": 8,
+  "false_flags_on_supported": 0,
+  "misses_on_unsupported_or_contradicted": 0,
+  "hashes": {
+    "inputs.json": "7692d83215e06c837a2fe9ade6f9242f172eb3834bec8be497a546a418e943ee",
+    "answer-key.json": "227b2430ced7ee27ba09ff2807662c06301f0e1cfe3f3e43e98fcc7e5cf7b56e",
+    "review.json": "0923ca070981787a5e27d6bd39f245be68a238b5c558ca98b590196863c8b0aa"
+  },
+  "limitations": [
+    "One source-only native reviewer, eight hand-made examples.",
+    "This does not estimate population error rates or establish reliability on difficult records."
+  ],
+  "api_cost_usd": 0
+}

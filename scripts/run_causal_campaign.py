@@ -20,7 +20,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.evaluate_causal_candidates import run_one
-from generation.campaign_selection import select_development, canonical_hash
+from generation.campaign_selection import select_development, final_report, canonical_hash
 
 SCHEMA = "causal-candidate-inventory.v1"
 DEV = tuple(range(100, 116))
@@ -166,13 +166,104 @@ def plan(inventory_path: Path, output: Path, stage: str, selection_path: Path | 
     return result
 
 
+def stage0_plan(output: Path) -> dict[str, Any]:
+    """Write a no-data planning receipt for the fixed campaign controls."""
+    if output.exists(): raise FileExistsError("output exists; choose a fresh directory")
+    output.mkdir(parents=True)
+    from scripts.generate_causal_campaign import linear_controls, aa_calibration
+    linear = linear_controls()
+    by_gain = {"gain_m05": -0.5, "gain_m025": -0.25, "gain_p01": 0.1}
+    controls = [{"id": "__hold__", "arm": "hold", "program_sha256": hashlib.sha256(json.dumps(_hold_candidate()["program"], sort_keys=True, separators=(",", ":")).encode()).hexdigest()}]
+    controls.extend({"id": key, "arm": "linear_control", "program_sha256": next(x["program_sha256"] for x in linear if x.get("gain") == gain)} for key, gain in by_gain.items())
+    controls.append({"id": "mean_sync", "arm": "linear_control", "program_sha256": next(x["program_sha256"] for x in linear if x.get("control_kind") == "mean_sync")})
+    controls.append({"id": "aa_control", "arm": "aa_control", "program_sha256": aa_calibration()[0]["program_sha256"]})
+    controls.append({"id": "g1_exact_detached", "arm": "g1_exact_detached", "program_sha256": None})
+    result = {"schema": "causal-campaign-stage0.v1", "status": "plan_only",
+              "task": {"parts": 4, "layers": 3, "lr_drop": False, "sync": 16, "warmup": 20, "epochs": 120,
+                       "primary_window": list(WINDOW)},
+              "development_seeds": list(DEV), "final_seeds": list(FINAL),
+              "controls": ["hold", "gain_m05", "gain_m025", "gain_p01", "mean_sync", "aa_control", "g1_exact_detached"],
+              "control_programs": controls,
+              "selection": {"metric": "mean_exact_eval_window_accuracy", "direction": "maximize",
+                            "failed_seed_ineligible": True, "ties": "candidate_id", "no_final_selection": True},
+              "precision": {"paired_sd": "measure_each_control_minus_hold_and_G1_minus_hold_on_development_picks",
+                            "projected_final_se": "paired_sd/sqrt(N)", "max_reference_sd": "measure_before_API_calls",
+                            "prospective_count_formula": "roundup_to_multiple_of_16(max(32, ceil((max_reference_sd/0.005)^2)))",
+                            "prospective_count_cap": 128,
+                            "rule": "if projected SE exceeds 0.5 percentage points, label low precision; do not add seeds"},
+              "provenance": {"dependency_hashes": _dependency_hashes(), "training_opened": False,
+                             "paid_calls": 0, "api_calls": 0},
+              "limitations": ["This receipt does not measure controls or candidates.",
+                              "G1 is an exact-detached reference, not full-gradient distributed training.",
+                              "No control or seed may be altered after this receipt without a new plan."]}
+    (output / "stage0.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
+
+
+def report_final(inventory_path: Path, selection_path: Path, runs_path: Path, hold_runs_path: Path,
+                 output: Path, *, dev_result_path: Path, control_selection_path: Path | None = None,
+                 control_runs_path: Path | None = None) -> dict[str, Any]:
+    """Analyze already-recorded final runs; never opens Cora or starts training."""
+    if output.exists(): raise FileExistsError("output exists; choose a fresh directory")
+    inventory, inv_sha = load_inventory(inventory_path)
+    selected = validate_selection(selection_path, inv_sha, inventory, "final",
+                                  dev_result_path=dev_result_path, code_sha256=None)
+    aggregate = json.loads(runs_path.read_text())
+    if not isinstance(aggregate,dict) or aggregate.get('stage')!='final' or aggregate.get('inventory_sha256')!=inv_sha:
+        raise ValueError('expected the final execution aggregate')
+    freeze_path=runs_path.parent/'freeze.json'
+    freeze=json.loads(freeze_path.read_text())
+    if freeze.get('selection_sha256')!=sha(selection_path) or freeze.get('inventory_sha256')!=inv_sha or freeze.get('development_result_sha256')!=sha(dev_result_path):
+        raise ValueError('final freeze input mismatch')
+    if freeze.get('dependency_hashes')!=_dependency_hashes() or freeze.get('seeds')!=list(FINAL):
+        raise ValueError('final execution code/data/seeds mismatch')
+    if control_selection_path is None:
+        raise ValueError('production report requires the frozen stronger control')
+    if freeze.get('control_selection_sha256')!=sha(control_selection_path):
+        raise ValueError('frozen control manifest mismatch')
+    control_meta=json.loads(control_selection_path.read_text());control=control_meta['control'];control_id=control['id']
+    if control_meta.get('schema')!='causal-control-selection.v1' or control_meta.get('final_seeds')!=list(FINAL) or canonical_hash(control['program'])!=control.get('program_sha256'):
+        raise ValueError('invalid control manifest')
+    rows=aggregate.get('runs')
+    if not isinstance(rows,list):raise ValueError('final aggregate missing runs')
+    chosen={r['candidate_id'] for r in selected['manifest']['selected'] if r.get('candidate_id') is not None}
+    allowed=chosen|{'__hold__',control_id}
+    if len(rows)!=len(allowed)*len(FINAL) or {(r.get('id'),r.get('seed')) for r in rows}!={(cid,seed) for cid in allowed for seed in FINAL}:
+        raise ValueError('final aggregate keys incomplete or duplicated')
+    control_runs=[r for r in rows if r['id']==control_id]
+    hold_runs=[r for r in rows if r['id']=='__hold__']
+    candidate_runs=[r for r in rows if r['id'] in chosen]
+    if control_runs_path is not None and json.loads(control_runs_path.read_text())!=control_runs:
+        raise ValueError('separate control records differ from aggregate')
+    if hold_runs_path is not None and json.loads(hold_runs_path.read_text())!=hold_runs:
+        raise ValueError('separate hold records differ from aggregate')
+    result=final_report(inventory['candidates'],selected['manifest'],candidate_runs,hold_runs,
+                        expected_seeds=FINAL,inventory_sha256=inv_sha,control_runs=control_runs,control_id=control_id)
+    output.mkdir(parents=True)
+    result.update({'inventory_sha256':inv_sha,'runs_sha256':sha(runs_path),'freeze_sha256':sha(freeze_path),
+                   'selection_sha256':sha(selection_path),'control_selection_sha256':sha(control_selection_path),
+                   'auto_execute':False,'paid_calls':0})
+    with (output/'report.json').open('x') as f:f.write(json.dumps(result,indent=2)+'\n')
+    return result
+
+
 def execute(inventory_path: Path, output: Path, stage: str, selection_path: Path | None = None,
-            *, dev_result_path: Path | None = None, code_sha256: str | None = None, seed_override: int | None = None) -> dict[str, Any]:
+            *, dev_result_path: Path | None = None, code_sha256: str | None = None, control_selection_path: Path | None = None, seed_override: int | None = None) -> dict[str, Any]:
     inventory, digest = load_inventory(inventory_path)
     if stage == "final":
         if selection_path is None: raise ValueError("final stage requires selection")
         candidates = validate_selection(selection_path, digest, inventory, stage, dev_result_path=dev_result_path, code_sha256=code_sha256)["candidates"]
         candidates = [*candidates, _hold_candidate()]
+        if control_selection_path is not None:
+            control_meta = json.loads(control_selection_path.read_text())
+            control = control_meta.get("control") if isinstance(control_meta, dict) else None
+            if control_meta.get("schema") != "causal-control-selection.v1" or control_meta.get("final_results_seen") is not False or not isinstance(control, dict):
+                raise ValueError("invalid frozen control selection")
+            expected = hashlib.sha256(json.dumps(control["program"], sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+            if control.get("program_sha256") != expected or control.get("id") != "linear-control-03": raise ValueError("control program hash/id mismatch")
+            if control_meta.get("final_seeds") != list(FINAL): raise ValueError("control seed mismatch")
+            if control["id"] not in {c["id"] for c in candidates}:
+                candidates.append({**control, "control_id": control["id"]})
         seeds = FINAL if seed_override is None else (seed_override,)
     else:
         candidates = inventory["candidates"]
@@ -181,7 +272,8 @@ def execute(inventory_path: Path, output: Path, stage: str, selection_path: Path
     dependencies = _dependency_hashes()
     freeze = {"inventory_sha256": digest, "selection_sha256": sha(selection_path) if selection_path else None,
               "development_result_sha256": sha(dev_result_path) if dev_result_path else None, "stage": stage,
-              "seeds": list(seeds), "dependency_hashes": dependencies}
+              "seeds": list(seeds), "dependency_hashes": dependencies,
+              "control_selection_sha256": sha(control_selection_path) if control_selection_path else None}
     freeze_path = output / "freeze.json"
     if freeze_path.exists() and json.loads(freeze_path.read_text()) != freeze:
         raise ValueError("existing campaign freeze does not match")
@@ -216,12 +308,21 @@ def execute(inventory_path: Path, output: Path, stage: str, selection_path: Path
 
 def main() -> None:
     p = argparse.ArgumentParser(); p.add_argument("--inventory", type=Path, required=True); p.add_argument("--output", type=Path, required=True)
-    p.add_argument("--stage", choices=("dev", "final"), default="dev"); p.add_argument("--selection", type=Path); p.add_argument("--dev-result", type=Path); p.add_argument("--code-sha256"); p.add_argument("--execute", action="store_true")
+    p.add_argument("--stage", choices=("dev", "final"), default="dev"); p.add_argument("--selection", type=Path); p.add_argument("--dev-result", type=Path); p.add_argument("--code-sha256"); p.add_argument("--runs", type=Path); p.add_argument("--hold-runs", type=Path); p.add_argument("--control-selection", type=Path); p.add_argument("--control-runs", type=Path); p.add_argument("--report", action="store_true"); p.add_argument("--execute", action="store_true")
     p.add_argument("--seed", type=int, help="single smoke seed; only for local smoke tests")
+    p.add_argument("--stage0", action="store_true", help="write the no-data stage-0 control plan")
     args = p.parse_args()
+    if args.stage0:
+        result = stage0_plan(args.output)
+        print(json.dumps({"schema": result["schema"], "output": str(args.output), "paid_calls": 0})); return
+    if args.report:
+        if not all((args.selection, args.dev_result, args.runs, args.control_selection)):
+            raise ValueError("report requires --selection, --dev-result, --runs and --control-selection")
+        result = report_final(args.inventory, args.selection, args.runs, args.hold_runs, args.output, dev_result_path=args.dev_result, control_selection_path=args.control_selection, control_runs_path=args.control_runs)
+        print(json.dumps({"schema": result["schema"], "output": str(args.output), "paid_calls": 0})); return
     if args.seed is not None and (args.stage != "dev" or args.seed != 98):
         raise ValueError("--seed is smoke-only and cannot select measurement seeds")
-    if args.execute: result = execute(args.inventory, args.output, args.stage, args.selection, dev_result_path=args.dev_result, code_sha256=args.code_sha256, seed_override=args.seed)
+    if args.execute: result = execute(args.inventory, args.output, args.stage, args.selection, dev_result_path=args.dev_result, code_sha256=args.code_sha256, control_selection_path=args.control_selection, seed_override=args.seed)
     else: result = plan(args.inventory, args.output, args.stage, args.selection, dev_result_path=args.dev_result, code_sha256=args.code_sha256)
     print(json.dumps({"schema": result["schema"], "stage": result["stage"], "output": str(args.output), "paid_calls": 0}))
 

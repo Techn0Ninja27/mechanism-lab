@@ -1,0 +1,146 @@
+{
+  "schema": "causal-stage0-result.v1",
+  "status": "reference_ready",
+  "arms": {
+    "__hold__": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": 0.0,
+      "paired_sd_minus_hold": 0.0
+    },
+    "gain_m05": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": 0.00944922014605254,
+      "paired_sd_minus_hold": 0.01598506132591201
+    },
+    "gain_m025": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": 0.012488281005062163,
+      "paired_sd_minus_hold": 0.011145776905386885
+    },
+    "gain_p01": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": -0.01107812556438148,
+      "paired_sd_minus_hold": 0.007818431398327328
+    },
+    "mean_sync": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": 0.016380858840420842,
+      "paired_sd_minus_hold": 0.016213235021074194
+    },
+    "aa_control": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": 0.0,
+      "paired_sd_minus_hold": 0.0
+    },
+    "g1_exact_detached": {
+      "n": 16,
+      "failed_seeds": [],
+      "paired_mean_minus_hold": 0.02217382739763707,
+      "paired_sd_minus_hold": 0.018207577416542806
+    }
+  },
+  "aa_exact_identity": true,
+  "reference": {
+    "g1_paired_sd": 0.018207577416542806,
+    "proposed_final_seed_count": 32,
+    "cap": 128
+  },
+  "training_opened": true,
+  "paid_calls": 0,
+  "freeze": {
+    "schema": "causal-stage0-freeze.v1",
+    "seeds": [
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115
+    ],
+    "controls": [
+      "__hold__",
+      "gain_m05",
+      "gain_m025",
+      "gain_p01",
+      "mean_sync",
+      "aa_control",
+      "g1_exact_detached"
+    ],
+    "window": [
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119
+    ],
+    "task": {
+      "parts": 4,
+      "layers": 3,
+      "sync": 16,
+      "lr_drop": false,
+      "epochs": 120
+    },
+    "dependency_hashes": {
+      "scripts/run_causal_campaign.py": "671a8d3efd145a1d6b2420d829ca5c16a8d1eeb69262afe374aaa58ab20a3761",
+      "scripts/evaluate_causal_candidates.py": "007d9e1c1ccb04b7b7051728098abd1b16a41fefded64dc33e7a46fb28916143",
+      "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
+      "generation/campaign_selection.py": "2ed83d5397d59d293bc233a5950249c72ee150a1c267c1b67bfb808c9bdaff1e",
+      "operator-studies/gnn-closedloop-gap/gap.py": "af08e6991bc751c9a7912962b8261d504218ce6e8928ab6f458089f8b6d955e6",
+      "operator-studies/gnn-sync-gate/screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+      "results/gnn-sync-gate-v1/data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+      "results/gnn-sync-gate-v1/data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e",
+      "stage0_runner": "4ecb2f55945884ef2666719cd0a958e6b7c635afe0354fe8f439ac7167bc1747",
+      "confirmation_trainer": "c27c7e8d4b459d5cd69a261e20fb0d2ef3f60e21a0bcd50a78d22c1ff4dbcbf7",
+      "campaign_protocol": "c6bcfdf8345c78f6031590e1824ef069dd49de6757e3fa67ce507fb42a29be8e"
+    },
+    "control_inventory_sha256": "5af296d5ffd2466ad53cabf37384602a4155706ea1098e1a3d438701cddb3f24",
+    "final_execution_enabled": false,
+    "paid_calls": 0
+  },
+  "raw_result_sha256": "c40deb755f4cb753a772039704bf3d4d1def7487807a3cfaba957ec48db20288",
+  "run_count": 112,
+  "scope": "Development control screen only; no final evaluation or generated candidates."
+}

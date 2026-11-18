@@ -1,0 +1,82 @@
+{
+  "schema": "causal-control-selection.v1",
+  "selected_on": "development seeds100-115 only",
+  "selection_rule": "maximum mean exact-forward accuracy epochs88-119 among four predeclared controls",
+  "source_result_sha256": "c40deb755f4cb753a772039704bf3d4d1def7487807a3cfaba957ec48db20288",
+  "control": {
+    "id": "linear-control-03",
+    "call_id": "linear-control-00",
+    "arm": "linear-control",
+    "control_kind": "mean_sync",
+    "gain": null,
+    "program": {
+      "predict": {
+        "op": "divsafe",
+        "args": [
+          {
+            "op": "add",
+            "args": [
+              {
+                "var": "last_sync"
+              },
+              {
+                "var": "previous_sync"
+              }
+            ]
+          },
+          {
+            "const": 2.0
+          }
+        ]
+      },
+      "update": {
+        "var": "memory"
+      }
+    },
+    "program_sha256": "54c7b65f8d6a3f3efd33748423962d5696fc083a7733bfa19f956071abb31401",
+    "status": "valid"
+  },
+  "final_seeds": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231
+  ],
+  "primary_comparison": "candidate minus frozen mean_sync control",
+  "hold_comparison": "secondary descriptive",
+  "final_results_seen": false,
+  "limitations": [
+    "Control family informed by earlier exploratory results.",
+    "Development advantage is not fresh-seed confirmation.",
+    "32 seeds are the original reference-variance allocation; no claim of power for candidate-minus-control.",
+    "G1 is a descriptive reference, not an upper bound."
+  ]
+}

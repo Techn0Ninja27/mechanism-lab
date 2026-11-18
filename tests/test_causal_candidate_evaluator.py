@@ -1,4 +1,5 @@
 import importlib.util
+import json
 from pathlib import Path
 import unittest
 from unittest.mock import patch
@@ -23,6 +24,16 @@ class EvaluatorTests(unittest.TestCase):
         self.assertEqual(a['final_train_loss'],b['final_train_loss'])
         self.assertEqual(a['post_update_exact_eval'],b['post_update_exact_eval_120'])
         self.assertEqual(a['window'],[{'t':r['t'],'own_eval':r['stale_eval'],'exact_eval':r['exact_eval']} for r in b['window']])
+
+    def test_hold_matches_preserved_confirmation_record(self):
+        path=Path(e.GAPDIR).parent/'gnn-closedloop-confirm/results/raw.json'
+        stored=json.loads(path.read_text())
+        expected=next(r for r in stored['runs'] if r['regime']=='moderate_lead' and r['seed']==50 and r['arm']=='hold')
+        actual=e.run_one(self.x,self.y,self.adj,self.sp,hold(),seed=50,window=tuple(range(88,120)))
+        self.assertEqual(actual['status'],'complete')
+        self.assertEqual(actual['final_train_loss'],expected['final_train_loss'])
+        self.assertEqual(actual['post_update_exact_eval'],expected['post_update_exact_eval_120'])
+        self.assertEqual(actual['window'],[{'t':r['t'],'own_eval':r['stale_eval'],'exact_eval':r['exact_eval']} for r in expected['window']])
 
     def test_runtime_failure_keeps_call_and_arm(self):
         with patch.object(e.ProgramRemote,'__call__',return_value=torch.full((len(self.y),e.gap.HID),float('nan'))):

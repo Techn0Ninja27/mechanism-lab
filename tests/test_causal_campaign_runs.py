@@ -29,6 +29,15 @@ class CampaignRunTests(unittest.TestCase):
             self.assertTrue((out / "plan.json").is_file())
             self.assertFalse(result["auto_execute"])
 
+    def test_stage0_plan_opens_no_data_or_training(self):
+        with tempfile.TemporaryDirectory() as t:
+            result = c.stage0_plan(Path(t) / "stage0")
+            self.assertEqual(result["schema"], "causal-campaign-stage0.v1")
+            self.assertFalse(result["provenance"]["training_opened"])
+            self.assertEqual(result["development_seeds"][0], 100)
+            self.assertEqual(result["final_seeds"][0], 200)
+            self.assertEqual(result["task"]["primary_window"], list(range(88, 120)))
+
     def test_dev_plan_retains_invalid_candidates(self):
         with tempfile.TemporaryDirectory() as t:
             root = Path(t); inv = root / "inventory.json"; rows = inventory(inv, invalid=True)
@@ -90,18 +99,20 @@ class CampaignRunTests(unittest.TestCase):
             digest=c.sha(inv)
             def fake_run(x,y,adj,sp,candidate,seed,**kwargs):
                 return {'id':candidate['id'],'call_id':candidate['call_id'],'arm':candidate['arm'],
-                        'seed':seed,'status':'complete','window':[{'t':i,'exact_eval':.8 if candidate['arm']!='hold' else .7} for i in c.WINDOW]}
+                        'seed':seed,'status':'complete','window':[{'t':i,'exact_eval':.9 if candidate['arm']=='linear-control' else (.8 if candidate['arm']!='hold' else .7)} for i in c.WINDOW]}
             devruns=[fake_run(None,None,None,None,rows[0],seed) for seed in c.DEV]
             selection=select_development(rows,devruns,inventory_sha256=digest)
             dev=root/'dev.json'; dev.write_text(json.dumps({'schema':'causal-campaign-result.v1','stage':'dev','inventory_sha256':digest,'dependency_hashes':c._dependency_hashes(),'runs':devruns}))
             sel=root/'selection.json';sel.write_text(json.dumps(selection))
             with patch.object(evaluator.gap.screen,'load_cora',return_value=(None,None,None)), patch.object(evaluator.gap,'splits',return_value=None), patch.object(evaluator,'run_one',side_effect=fake_run):
-                result=c.execute(inv,root/'final','final',sel,dev_result_path=dev)
+                result=c.execute(inv,root/'final','final',sel,dev_result_path=dev,control_selection_path=c.ROOT/'reports/generation-comparison-v2/control-selection.json')
             hold=[r for r in result['runs'] if r['arm']=='hold']
-            candidates=[r for r in result['runs'] if r['arm']!='hold']
+            candidates=[r for r in result['runs'] if r['arm'] not in ('hold','linear-control')]
             report=final_report(rows,selection,candidates,hold,inventory_sha256=digest)
             self.assertEqual(len(hold),32)
             self.assertTrue(report['reports'][0]['better_than_hold'])
+            strong=c.report_final(inv,sel,root/'final/result.json',None,root/'report',dev_result_path=dev,control_selection_path=c.ROOT/'reports/generation-comparison-v2/control-selection.json')
+            self.assertFalse(strong['reports'][0]['better_than_control'])
 
 
 if __name__ == "__main__":

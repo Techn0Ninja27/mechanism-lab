@@ -1,0 +1,65 @@
+{
+  "schema": "fidelity-calibration-inputs.v1",
+  "source_pack": {
+    "path": "results/gnn-useful-proposal-v1/pack.json",
+    "digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "records": [
+    {
+      "id": "fc-001",
+      "source_id": "sni-method",
+      "source_chunk": "sni-method:chunk:0001",
+      "exact_quote": "The core idea of SNI-GNN is to mitigate embedding staleness by predicting the current values of remote embeddings directly within the network, thus reducing the need for frequent synchronization.",
+      "claim": "SNI-GNN predicts remote embeddings in the network to reduce how often synchronization is needed."
+    },
+    {
+      "id": "fc-002",
+      "source_id": "W4396628137",
+      "source_chunk": "W4396628137:chunk:0001",
+      "exact_quote": "When paired with complementary system enhancements to support this selective historical cache, FreshGNN is able to accelerate the training speed on large graph datasets such as ogbn-papers100M and MAG240M by 3.4× up to 20.5× and reduce the memory access by 59%, with less than 1% influence on test accuracy.",
+      "claim": "FreshGNN reports 3.4×–20.5× training acceleration, 59% lower memory access, and less than 1% test-accuracy influence on the named large graph datasets."
+    },
+    {
+      "id": "fc-003",
+      "source_id": "sni-method",
+      "source_chunk": "sni-method:chunk:0003",
+      "exact_quote": "Nodes with more connections are considered more critical to the local subgraph’s updates and are selected for prediction. The sampling_ratio parameter controls the fraction of high-importance nodes that will receive predicted embeddings, allowing a trade-off between prediction accuracy and computational load.",
+      "claim": "SNI-GNN selects highly connected remote nodes for prediction and uses sampling_ratio to trade prediction accuracy against computational load."
+    },
+    {
+      "id": "fc-004",
+      "source_id": "W4407013152",
+      "source_chunk": "W4407013152:chunk:0001",
+      "exact_quote": "By introducing a set of novel bounded embedding staleness metrics and adaptively skipping broadcasts, Sancus abstracts decentralized GNN processing as sequential matrix multiplication and uses historical embeddings via cache. To further mitigate the communication volume, Sancus\"Equation missing\" conducts quantization-aware communication on embeddings to reduce the size of broadcast messages.",
+      "claim": "Sancus reduces decentralized-GNN communication by adaptively skipping broadcasts and quantizing embedding messages."
+    },
+    {
+      "id": "fc-005",
+      "source_id": "sni-method",
+      "source_chunk": "sni-method:chunk:0001",
+      "exact_quote": "The detailed prediction method is shown in Algorithm 1.",
+      "claim": "SNI-GNN trains its predictor online during every GNN training run."
+    },
+    {
+      "id": "fc-006",
+      "source_id": "W7160826828",
+      "source_chunk": "W7160826828:chunk:0001",
+      "exact_quote": "Sift has three components: a historical embedding evaluator with channel-wise quantitative accuracy model, a sawtooth-like matrix rearrangement for accelerating message passing, and a hybrid parallel framework for overlapping communication overhead.",
+      "claim": "Sift’s historical-embedding evaluator runs on a SmartNIC or other in-network accelerator."
+    },
+    {
+      "id": "fc-007",
+      "source_id": "sni-method",
+      "source_chunk": "sni-method:chunk:0002",
+      "exact_quote": "ARIMA achieves slightly higher peak accuracy, its computational cost is nearly an order of magnitude higher than our approach, making it unsuitable for real-time in-network processing.",
+      "claim": "ARIMA is suitable for real-time in-network processing in the SNI-GNN setting."
+    },
+    {
+      "id": "fc-008",
+      "source_id": "sni-method",
+      "source_chunk": "sni-method:chunk:0003",
+      "exact_quote": "In a Stale Epoch (Figure 10a), physical network communication for boundary nodes is skipped to reduce traffic volume.",
+      "claim": "During SNI-GNN stale epochs, boundary-node embeddings are broadcast over the physical network."
+    }
+  ]
+}

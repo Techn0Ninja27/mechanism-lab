@@ -1,0 +1,45 @@
+{
+  "inputSHA256": "7692d83215e06c837a2fe9ade6f9242f172eb3834bec8be497a546a418e943ee",
+  "reviews": [
+    {
+      "id": "fc-001",
+      "verdict": "supported",
+      "shortreason": "The quote directly states that SNI-GNN predicts remote embeddings in-network to reduce the need for frequent synchronization."
+    },
+    {
+      "id": "fc-002",
+      "verdict": "supported",
+      "shortreason": "The quote gives the stated 3.4×–20.5× acceleration, 59% memory-access reduction, less than 1% test-accuracy influence, and names both datasets."
+    },
+    {
+      "id": "fc-003",
+      "verdict": "supported",
+      "shortreason": "The quote says more-connected nodes are selected for prediction and that sampling_ratio trades prediction accuracy against computational load."
+    },
+    {
+      "id": "fc-004",
+      "verdict": "supported",
+      "shortreason": "The quote explicitly describes adaptively skipping broadcasts and quantization-aware communication to reduce broadcast-message size."
+    },
+    {
+      "id": "fc-005",
+      "verdict": "unsupported",
+      "shortreason": "The quote only says the prediction method is shown in Algorithm 1; it does not state that the predictor is trained online during every run."
+    },
+    {
+      "id": "fc-006",
+      "verdict": "unsupported",
+      "shortreason": "The quote lists Sift's components but does not state that its historical-embedding evaluator runs on a SmartNIC or another in-network accelerator."
+    },
+    {
+      "id": "fc-007",
+      "verdict": "contradicted",
+      "shortreason": "The quote explicitly says ARIMA's computational cost makes it unsuitable for real-time in-network processing."
+    },
+    {
+      "id": "fc-008",
+      "verdict": "contradicted",
+      "shortreason": "The quote explicitly says physical network communication for boundary nodes is skipped during a stale epoch, contrary to broadcasting them."
+    }
+  ]
+}

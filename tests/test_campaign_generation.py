@@ -63,6 +63,13 @@ class GenerationTests(unittest.TestCase):
                 self.assertEqual(len(set(p.split('<<<END TASK>>>')[0] for p in prompts.values())),1)
                 self.assertIn('Source 0 maps a recorded input to a documented output.', prompts['raw'])
                 self.assertNotIn('\\"chunks\\"', prompts['raw'])
+                self.assertIn('Source 0 maps a recorded input', prompts['atoms'])
+                self.assertIn('STATEMENT: A bounded statement', prompts['atoms'])
+                self.assertNotIn('executable_compatibility_proven', prompts['atoms'])
+                self.assertNotIn('novelty_established', prompts['atoms'])
+                self.assertNotIn('"atoms":', prompts['atoms'])
+                self.assertIn('SUMMARY: A source summary', prompts['distill'])
+                self.assertNotIn('"distillations":', prompts['distill'])
                 self.assertEqual({p.name for p in (out/'prompts').glob('*.txt')}, {f'{arm}.txt' for arm in g.ARMS})
                 frozen_prompt=out/'prompts'/'raw.txt';frozen_text=frozen_prompt.read_text()
                 frozen_prompt.write_text(frozen_text+' drift')
@@ -92,6 +99,13 @@ class GenerationTests(unittest.TestCase):
     def test_random_sampling_is_deterministic_and_bounded(self):
         a=g.random_inventory();self.assertEqual(a,g.random_inventory())
         for r in a:self.assertLessEqual(g.compile_program(r['program']).node_count,64)
+        self.assertTrue(all('last_sync' in json.dumps(r['program']['predict']) for r in a))
+        self.assertTrue(all('tanh' in json.dumps(r['program']['predict']) and '0.1' in json.dumps(r['program']['predict']) for r in a))
+        controls=g.linear_controls()
+        self.assertEqual([r['gain'] for r in controls[:3]], [-0.5, -0.25, 0.1])
+        self.assertEqual(controls[3]['control_kind'], 'mean_sync')
+        self.assertIn('clip', json.dumps(controls[0]['program']['predict']))
+        self.assertEqual(len(g.aa_calibration()), 1)
 
     def test_verify_rejects_prompt_drift_and_prompt_texts_rejects_path_escape(self):
         with tempfile.TemporaryDirectory() as t:

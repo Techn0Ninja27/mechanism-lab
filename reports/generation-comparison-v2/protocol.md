@@ -4,7 +4,8 @@
 results yet. This supersedes the deferred open-loop design in
 `reports/ml-usefulness-pilot-v1/protocol.md`. The user authorized paid work
 within the shared $20 phase budget. This campaign has a $6 ceiling including
-preparation, enforced by the existing shared ledger.
+preparation, enforced by the existing shared ledger. Only one paid attempt is
+allowed; creating a new directory does not authorize another $6 allocation.
 
 ## Question and scope
 
@@ -65,8 +66,11 @@ source choices were informed by earlier exploratory studies: this is an exposed
 task with fresh seed replication, not an untouched benchmark.
 
 Controls are hold; three groups of four random ASTs sampled by the fixed
-implementation (seed 20261119); and one four-candidate linear extrapolation group
-with gains 0, 0.25, 0.5 and 1. The linear group has the same development evaluation
+implementation (seed 20261119); and one four-candidate control group: capped extrapolation with gains -0.5,
+-0.25 and 0.1, plus the mean of the last two synchronized states. The horizon
+is capped at one observed interval. Random candidates are bounded perturbations
+of hold, rather than arbitrary programs that can ignore observations. A separate
+algebraically hold-equivalent A/A program checks the execution path. The linear group has the same development evaluation
 capacity as one model call. It is not exhaustive optimization over the DSL.
 Previously tested SNI and lag-one extrapolators are reported as historical
 context only, not mixed with fresh-seed comparisons. Beating these narrow controls
@@ -98,11 +102,17 @@ call-to-call variation remain separate.
 
 ## Decisions and stopping
 
-If nobody beats hold, close this task for the engine at these settings. If random
+If nobody beats hold and the evaluated picks have adequate precision, close
+this task for the engine at these settings. Low-precision or failed picks make
+that outcome inconclusive, rather than evidence for closure. If random
 or linear controls also improve, report easy DSL/control headroom without crediting
-typed representation. At least two of three positive calls in a model condition
-and no positive random groups can motivate a separately designed replication;
-it is not evidence of a significant difference between representations. Sources
+typed representation. At least two distinct positive selected ASTs in a source condition
+and no positive random/control groups can motivate a separately designed replication
+only if task-only does not also have two distinct positive picks;
+it is not evidence of a significant difference between representations. Exact AST
+duplicates are counted once for this allocation rule and reported across calls;
+this does not detect all semantic equivalences. If task-only also succeeds, the
+lead belongs to the task/DSL, with no representation attribution. Sources
 performing worse than task-only is also a reportable outcome. Do not select the
 most flattering interpretation after results arrive.
 
@@ -117,3 +127,64 @@ code, data, controls, seeds and selection inputs. Public reports omit private ra
 call logs and full source excerpts. Before execution, the real modules must pass
 an end-to-end mocked integration test and source-parity review. A protocol file
 alone is not evidence those gates have passed.
+
+
+## Pending stage-0 amendment (not yet implemented or frozen)
+
+Before paid preparation, execute exactly one free screen of hold, the four
+controls, the A/A program and exact-detached G1 on development seeds 100–115.
+This measures reference precision, not candidate precision or model-arm power.
+Using only the paired seed SD of G1 minus hold on the primary metric
+(mean exact-forward accuracy over pre-update epochs 88–119), propose N = 16 * ceil(max(32, ceil((SD / 0.005)^2)) / 16). Stop before API
+spending if any hold/G1/A/A seed is missing or nonfinite, the exact A/A fails identity,
+or N exceeds 128. Control failures and their paired SDs are descriptive and
+do not determine N. Otherwise final seeds would
+be 200 through 199+N. No additional reference arms, reruns or control changes
+follow this screen. This proposal supersedes the fixed-32 precision design only
+after the code, all manifests and analysis agree; the current audit plan remains
+an immutable superseded design artifact, not an executable approval.
+
+Candidate-minus-hold variation may differ from these references. Actual final
+SE above 0.5 percentage points or incomplete results remain low precision and
+cannot support closing the task. G1 is a reference, not an upper bound. No
+claims follow from a stage-0 plan file without executed results.
+
+
+### Precision interpretation and A/A scope
+
+The N calculation uses a point estimate from 16 development seeds, not an upper
+confidence bound or a power guarantee. At realised SE=0.5 percentage points,
+the allocation rule requires an observed gain above 1.0 point. Under an
+approximate normal model with known SE, power is roughly 50% for a true 1-point
+gain and 84% for a 1.5-point gain; these are illustrations, not predictions for
+generated candidates. A null does not rule out smaller useful gains.
+
+The exact A/A checks deterministic execution equivalence only. It is not a chaos
+floor. A tiny input perturbation would be a different sensitivity experiment and
+is outside this one-screen design. Random controls instead have a known
+pointwise bound: abs(perturbation) <= 0.1 * abs(last_sync). Actual changes may be
+smaller, including zero entries; report duplicates and do not resample.
+
+### Fixed preparation fidelity gate
+
+Before generation, a fresh reviewer receives only source excerpts and prepared
+records, without the task or experimental results. Review every substantive
+statement, port, condition and summary against its own cited evidence, using
+supported / unsupported / contradicted / indeterminate. Supported means the
+quoted evidence entails the claim; unsupported means it does not state or
+justify the claim; contradicted means it explicitly conflicts. Indeterminate
+means malformed evidence or an unresolved referent prevents adjudication, not
+reviewer hesitation. The reviewer is a fresh native agent, with no external API
+charge. A small fixed calibration set is reviewed once before paid preparation;
+its labels and all verdicts are retained. This small hand-built set cannot
+estimate a reliable population false-flag rate. Unknowns are checked
+as statements of missing information, not demanded as positive source claims.
+Save all record-level verdicts and explanations with source/record hashes.
+
+Apply identically to both representations: stop the single paid attempt if any
+record is contradicted, or any record is unsupported/indeterminate. No repair,
+resampling or replacement source is allowed. This strict gate estimates the
+pipeline conditional on faithful preparation and may stop it; it does not
+estimate unconditional representation performance. Reviewers may not reject
+records for favouring any estimator. If a task-exposed reviewer participates,
+disclose the exposure rather than claiming blindness.
