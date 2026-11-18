@@ -11,6 +11,10 @@ prior-art retrieval, executable experiments, and evidence-aware ranking. A
 molecule records how operators connect—not just which concepts occur together.
 A promising proposal still has to survive a baseline and a reproducible test.
 
+The experimental [executable candidate interface](docs/EXECUTABLE_CANDIDATES.md)
+compiles bounded causal programs and tests them in the actual training loop.
+Matched-source preparation is offline; the paid comparison is not yet frozen.
+
 An optional [three-candidate portfolio](reports/serving-portfolio-v1/README.md)
 keeps alternative mechanisms visible and compares every pair before selecting
 one for inspection. The first run exposed shared mechanisms missed by exact
@@ -47,6 +51,7 @@ scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Test the missing projection control** | **40 development runs:** projected predictors remain 32–34 accuracy points below hold. Projection alone does not rescue these implementations; no causal attribution or novel-method claim. | [Clamp control and audit](operator-studies/gnn-closedloop-clamp/README.md) |
 | **Check the selected regime on fresh seeds** | **64 runs:** primary gap +2.71 points, pointwise 95% interval **[-0.10, +5.51]**. The allocation rule passes, but the interval includes zero; evaluation-mode differences remain descriptive. | [Follow-up and interpretation](operator-studies/gnn-closedloop-confirm/README.md) |
 | **Check downstream staleness sensitivity** | **1,600 runs; 9/24 primary comparisons flagged after correction.** No constant-rate two-layer regime is flagged; three-layer leads remain exploratory and sensitive to evaluation semantics. | [Closed-loop grid and audit](operator-studies/gnn-closedloop-gap/README.md) |
 | **Strengthen the GNN comparator** | Tuning an existing predictor cuts development error by **29.9% / 33.6%**. This exposes an under-tuned control; it is not an engine-generated discovery or downstream accuracy gain. | [Causal predictor screen](operator-studies/gnn-predictor-headroom/README.md) |

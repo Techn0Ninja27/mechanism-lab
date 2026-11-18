@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 49)
+            self.assertEqual(ledger["study_count"], 50)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -154,6 +154,72 @@ class LedgerTests(unittest.TestCase):
             ledger_module._read = original
         self.assertEqual(primary, {})
         self.assertTrue(any("invalid numeric metric" in item for item in warnings))
+
+    def test_bounded_metric_path_selector_reads_only_dict_keys(self):
+        from scripts import export_research_ledger as ledger_module
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            result = root / "result.json"
+            result.write_text(json.dumps({"summary": {"hold": {"mean": 1.25}, "other": 3.0}}))
+            record = {"id": "selector-fixture", "result_path": "result.json", "metric_paths": {
+                "primary": {"hold_mean": ["summary", "hold", "mean"]},
+                "secondary": {"other": ["summary", "other"]},
+            }}
+            primary, secondary = ledger_module._selector_metrics(root, record, [])
+            self.assertEqual(primary, {"hold_mean": 1.25})
+            self.assertEqual(secondary, {"other": 3.0})
+
+    def test_metric_path_selector_rejects_missing_bad_type_nan_and_oversized_paths(self):
+        from scripts import export_research_ledger as ledger_module
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d); result = root / "result.json"
+            result.write_text(json.dumps({"x": {"value": 1.0}, "nan": float("nan")}))
+            def check(selector):
+                warnings = []
+                primary, secondary = ledger_module._selector_metrics(root, {"id": "bad", "result_path": "result.json", "metric_paths": selector}, warnings)
+                self.assertEqual((primary, secondary), ({}, {})); self.assertTrue(warnings)
+            check({"primary": {"missing": ["x", "nope"]}})
+            check({"primary": {"bad": ["x", "value", 1]}})
+            check({"primary": {"nan": ["nan"]}})
+            check({"primary": {str(i): ["x", "value"] for i in range(9)}})
+            check({"primary": {"escape": ["../result.json"]}})
+
+    def test_metric_path_selector_survives_feedback_validation_end_to_end(self):
+        from scripts import export_research_ledger as ledger_module
+        import hashlib
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d); report = root / "operator-studies/demo/README.md"; result = root / "operator-studies/demo/result.json"
+            report.parent.mkdir(parents=True); report.write_text("demo")
+            result.write_text(json.dumps({"summary": {"hold": {"mean": 1.5}}}) + "\n")
+            base = {"id": "selector-e2e", "source_urls": ["https://arxiv.org/abs/2608.06441"],
+                    "tested_change": "bounded selector test", "verdict": "diagnostic", "scope": "test scope",
+                    "limitations": ["not scientific evidence"], "report_path": "operator-studies/demo/README.md",
+                    "result_path": "operator-studies/demo/result.json", "result_sha256": hashlib.sha256(result.read_bytes()).hexdigest(),
+                    "train_eligible": False, "novelty_established": False}
+            registry = {"schema_version": "experiment-feedback.v1", "records": [base]}
+            (root / "docs").mkdir(); (root / "docs/method-grounding").mkdir()
+            (root / "docs/method-grounding/experiment-feedback.json").write_text(json.dumps(registry))
+            metadata = {"schema": "study-metrics.v1", "records": {"selector-e2e": {
+                "result_sha256": base["result_sha256"],
+                "metric_paths": {"primary": {"hold_mean": ["summary", "hold", "mean"]}},
+            }}}
+            (root / "docs/method-grounding/study-metrics.json").write_text(json.dumps(metadata))
+            rows, warnings = ledger_module._feedback_studies(root)
+            self.assertEqual(warnings, [])
+            self.assertEqual(rows[0]["primary_metrics"], {"hold_mean": 1.5})
+            metadata["records"]["selector-e2e"]["metric_paths"] = {"primary": {"missing": ["summary", "none"]}}
+            (root / "docs/method-grounding/study-metrics.json").write_text(json.dumps(metadata))
+            rows, warnings = ledger_module._feedback_studies(root)
+            self.assertEqual(rows[0]["primary_metrics"], {})
+            self.assertTrue(warnings)
+            metadata["records"]["selector-e2e"]["result_sha256"] = "0" * 64
+            (root / "docs/method-grounding/study-metrics.json").write_text(json.dumps(metadata))
+            rows, warnings = ledger_module._feedback_studies(root)
+            self.assertEqual(rows[0]["primary_metrics"], {})
+            self.assertTrue(any("study-metrics result hash" in item for item in warnings))
+            # The experiment-feedback record itself remains schema-valid and
+            # is never extended with UI-only selector metadata.
+            self.assertEqual(rows[0]["id"], "selector-e2e")
 
     def test_feedback_hash_mismatch_is_diagnostic_and_not_a_row(self):
         from scripts import export_research_ledger as ledger_module

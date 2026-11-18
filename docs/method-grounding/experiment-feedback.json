@@ -366,6 +366,26 @@
       "result_sha256": "12ba29df8cea885b37bf1dbe04675d1736b9b107e13ebff34519e2f5cd1d5d9b",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "gnn-closedloop-clamp-v1",
+      "tested_change": "One missing-control check on nonnegative output projection: 40 runs, five arms, eight exposed seeds. Output-projected SNI, state-projected SNI and output-projected lag1 remain approximately 33.0, 34.2 and 32.2 accuracy points below hold. Logged raw baselines reproduce stored confirmation results.",
+      "verdict": "projection_alone_insufficient_development",
+      "scope": "One fixed three-layer Cora regime with four random partitions and sync16; exposed seeds50\u201357, pointwise paired intervals. No new generated method.",
+      "limitations": [
+        "No causal share of failure is attributed to sign errors.",
+        "Per-epoch negativity series were discarded; only per-run layer aggregates remain.",
+        "Output projection and recurrence-state projection are distinct interventions.",
+        "No further Cora diagnostic grid is planned; this is input to an engine-pilot allocation decision."
+      ],
+      "report_path": "operator-studies/gnn-closedloop-clamp/README.md",
+      "result_path": "operator-studies/gnn-closedloop-clamp/results/summary.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "cf2118c5aa882fc3dc0406241f18ec1ef1b0d5913f0731a7b184e07209add950",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

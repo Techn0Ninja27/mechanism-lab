@@ -1,0 +1,318 @@
+{
+  "schema": "gnn-closedloop-clamp-summary.v1",
+  "status": "one regime, exposed development seeds 50-57, pointwise intervals; not held-out evidence",
+  "integrity_checks": {
+    "raw_bound_to_freeze": true,
+    "frozen_files_unchanged": true,
+    "unique_keys": true,
+    "exact_expected_key_set": true,
+    "all_metrics_finite": true,
+    "logged_reruns_reproduce_stored_sni_and_lag1": true,
+    "stale_epoch_count": true
+  },
+  "raw_sha256": "acf01f963437bb6a978b71bd2388d727ea6d2fbbc77c6977b232d9e855ac1faa",
+  "freeze_sha256": "5add6d12810b8eacf8e7e39faabd03f0c5ed223e513336cb58af4a3ae5ff87c2",
+  "baseline_raw_sha256": "427a07b07213010c60467109bd36f32080069bcd787131a6d79eec4507d9becd",
+  "reference_means": {
+    "G1_exact": 0.7643085897434503,
+    "hold_exact": 0.7372265611775219,
+    "hold_own": 0.7539218773599714
+  },
+  "arms": {
+    "sni": {
+      "mean_exact": 0.36312499950872734,
+      "mean_own": 0.2718437506991904,
+      "endpoint_exact_120": 0.4283749982714653,
+      "minus_hold_exact": {
+        "mean_pt": -37.41015616687946,
+        "se_pt": 2.096976320334555,
+        "pointwise_ci95_pt": [
+          -42.36866637394255,
+          -32.45164595981637
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_hold_own_forward": {
+        "mean_pt": -48.2078126660781,
+        "se_pt": 1.163902806845731,
+        "pointwise_ci95_pt": [
+          -50.95997724314552,
+          -45.45564808901068
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_G1_exact": {
+        "mean_pt": -40.118359023472294,
+        "se_pt": 2.310074352743111,
+        "pointwise_ci95_pt": [
+          -45.58076083796866,
+          -34.65595720897593
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_raw_predictor_exact": null,
+      "raw_forecast_negativity": {
+        "hidden1": {
+          "mean_negative_share": 0.18294698923578365,
+          "max_negative_share": 0.5361486785113811,
+          "mean_negative_norm_ratio": 0.16643938362109914,
+          "max_negative_norm_ratio": 0.6396755799651146
+        },
+        "hidden2": {
+          "mean_negative_share": 0.22425201068061493,
+          "max_negative_share": 0.5347898602485657,
+          "mean_negative_norm_ratio": 0.20888776704899797,
+          "max_negative_norm_ratio": 0.7005925849080086
+        }
+      }
+    },
+    "sni_emit": {
+      "mean_exact": 0.40716796947526745,
+      "mean_own": 0.31979687651619315,
+      "endpoint_exact_120": 0.5330000035464764,
+      "minus_hold_exact": {
+        "mean_pt": -33.00585917022545,
+        "se_pt": 2.9171451475738897,
+        "pointwise_ci95_pt": [
+          -39.90374058617868,
+          -26.10797775427222
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_hold_own_forward": {
+        "mean_pt": -43.412500084377825,
+        "se_pt": 1.9423544256195284,
+        "pointwise_ci95_pt": [
+          -48.005391359197766,
+          -38.819608809557884
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_G1_exact": {
+        "mean_pt": -35.71406202681828,
+        "se_pt": 3.52926831161367,
+        "pointwise_ci95_pt": [
+          -44.059369876459975,
+          -27.36875417717659
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_raw_predictor_exact": {
+        "mean_pt": 4.404296996654011,
+        "se_pt": 2.1012741794674787,
+        "pointwise_ci95_pt": [
+          -0.5643759281147949,
+          9.372969921422818
+        ],
+        "n_positive": 6,
+        "n": 8,
+        "reading_vs_reference": "better"
+      },
+      "raw_forecast_negativity": {
+        "hidden1": {
+          "mean_negative_share": 0.1820392472812185,
+          "max_negative_share": 0.5391634739935398,
+          "mean_negative_norm_ratio": 0.16565327376297173,
+          "max_negative_norm_ratio": 0.6511700451374054
+        },
+        "hidden2": {
+          "mean_negative_share": 0.22818894065936568,
+          "max_negative_share": 0.5432312823832035,
+          "mean_negative_norm_ratio": 0.20913096167088796,
+          "max_negative_norm_ratio": 0.7258146405220032
+        }
+      }
+    },
+    "sni_state": {
+      "mean_exact": 0.39480078031192534,
+      "mean_own": 0.3327070316299796,
+      "endpoint_exact_120": 0.4831250049173832,
+      "minus_hold_exact": {
+        "mean_pt": -34.24257808655966,
+        "se_pt": 2.4943221097298003,
+        "pointwise_ci95_pt": [
+          -40.14065214722675,
+          -28.34450402589257
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_hold_own_forward": {
+        "mean_pt": -42.12148457299918,
+        "se_pt": 2.3282939861169267,
+        "pointwise_ci95_pt": [
+          -47.62696853257127,
+          -36.61600061342709
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_G1_exact": {
+        "mean_pt": -36.950780943152495,
+        "se_pt": 3.0953853944310836,
+        "pointwise_ci95_pt": [
+          -44.27012924682425,
+          -29.631432639480746
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_raw_predictor_exact": {
+        "mean_pt": 3.1675780803197995,
+        "se_pt": 1.7041652005449979,
+        "pointwise_ci95_pt": [
+          -0.8620909528889076,
+          7.1972471135285065
+        ],
+        "n_positive": 6,
+        "n": 8,
+        "reading_vs_reference": "inconclusive"
+      },
+      "raw_forecast_negativity": {
+        "hidden1": {
+          "mean_negative_share": 0.20745456456056527,
+          "max_negative_share": 0.5910669788718224,
+          "mean_negative_norm_ratio": 0.021477484208776088,
+          "max_negative_norm_ratio": 0.1827655527740717
+        },
+        "hidden2": {
+          "mean_negative_share": 0.26074583200056867,
+          "max_negative_share": 0.6660444661974907,
+          "mean_negative_norm_ratio": 0.03130462900814261,
+          "max_negative_norm_ratio": 0.34613920375704765
+        }
+      }
+    },
+    "lag1": {
+      "mean_exact": 0.41215234287665226,
+      "mean_own": 0.4781289054371882,
+      "endpoint_exact_120": 0.4117499925196171,
+      "minus_hold_exact": {
+        "mean_pt": -32.50742183008697,
+        "se_pt": 1.7952266378318933,
+        "pointwise_ci95_pt": [
+          -36.75241473790427,
+          -28.26242892226967
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_hold_own_forward": {
+        "mean_pt": -27.579297192278318,
+        "se_pt": 2.474799435059642,
+        "pointwise_ci95_pt": [
+          -33.43120793642036,
+          -21.72738644813628
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_G1_exact": {
+        "mean_pt": -35.2156246866798,
+        "se_pt": 1.588399697644442,
+        "pointwise_ci95_pt": [
+          -38.97155461172986,
+          -31.45969476162975
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_raw_predictor_exact": null,
+      "raw_forecast_negativity": {
+        "hidden1": {
+          "mean_negative_share": 0.05506074693935213,
+          "max_negative_share": 0.28127019107341766,
+          "mean_negative_norm_ratio": 0.01722696408608998,
+          "max_negative_norm_ratio": 0.11183977592736483
+        },
+        "hidden2": {
+          "mean_negative_share": 0.10647132375492885,
+          "max_negative_share": 0.41616563498973846,
+          "mean_negative_norm_ratio": 0.0342449605771347,
+          "max_negative_norm_ratio": 0.1982468869537115
+        }
+      }
+    },
+    "lag1_emit": {
+      "mean_exact": 0.4156171879149042,
+      "mean_own": 0.49833984195720404,
+      "endpoint_exact_120": 0.418249998241663,
+      "minus_hold_exact": {
+        "mean_pt": -32.160937326261774,
+        "se_pt": 1.580005748629727,
+        "pointwise_ci95_pt": [
+          -35.897018919471634,
+          -28.424855733051917
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_hold_own_forward": {
+        "mean_pt": -25.558203540276736,
+        "se_pt": 2.2595031944320456,
+        "pointwise_ci95_pt": [
+          -30.901024793830757,
+          -20.215382286722715
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_G1_exact": {
+        "mean_pt": -34.86914018285461,
+        "se_pt": 1.4182726729057102,
+        "pointwise_ci95_pt": [
+          -38.222787745207455,
+          -31.51549262050176
+        ],
+        "n_positive": 0,
+        "n": 8,
+        "reading_vs_reference": "worse"
+      },
+      "minus_raw_predictor_exact": {
+        "mean_pt": 0.34648450382519513,
+        "se_pt": 0.2467036097080109,
+        "pointwise_ci95_pt": [
+          -0.23687085169036814,
+          0.9298398593407584
+        ],
+        "n_positive": 5,
+        "n": 8,
+        "reading_vs_reference": "within_band_point_estimate"
+      },
+      "raw_forecast_negativity": {
+        "hidden1": {
+          "mean_negative_share": 0.05103860183754155,
+          "max_negative_share": 0.2648720256984234,
+          "mean_negative_norm_ratio": 0.01606845590073937,
+          "max_negative_norm_ratio": 0.10273155011236668
+        },
+        "hidden2": {
+          "mean_negative_share": 0.10229475496547116,
+          "max_negative_share": 0.40526045113801956,
+          "mean_negative_norm_ratio": 0.032560133528746246,
+          "max_negative_norm_ratio": 0.19107423070818186
+        }
+      }
+    }
+  }
+}

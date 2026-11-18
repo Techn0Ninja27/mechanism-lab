@@ -274,6 +274,72 @@ def _closedloop_confirmation_metrics(root: Path, record: dict[str, Any], warning
     return primary, secondary
 
 
+def _selector_metrics(root: Path, record: dict[str, Any], warnings: list[str]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Resolve an optional bounded dict-key metric projection from a result."""
+    selectors = record.get("metric_paths")
+    if selectors is None:
+        return {}, {}
+    if not isinstance(selectors, dict) or not selectors or any(k not in {"primary", "secondary"} for k in selectors):
+        warnings.append(f"{record.get('id', '<unknown>')}: metric_paths selector is malformed")
+        return {}, {}
+    raw = _read(root / record["result_path"], None)
+    if not isinstance(raw, dict):
+        warnings.append(f"{record.get('id', '<unknown>')}: selector result is not an object")
+        return {}, {}
+    output: dict[str, dict[str, float]] = {"primary": {}, "secondary": {}}
+    for group in ("primary", "secondary"):
+        fields = selectors.get(group, {})
+        if not isinstance(fields, dict) or len(fields) > 8:
+            warnings.append(f"{record.get('id', '<unknown>')}: {group} metric selector is malformed")
+            return {}, {}
+        for name, path in fields.items():
+            if (not isinstance(name, str) or not name or len(name) > 100
+                    or not isinstance(path, list) or not 1 <= len(path) <= 8
+                    or any(not isinstance(key, str) or not key or len(key) > 100 for key in path)):
+                warnings.append(f"{record.get('id', '<unknown>')}: invalid {group} metric selector")
+                return {}, {}
+            value: Any = raw
+            for key in path:
+                if not isinstance(value, dict) or key not in value:
+                    warnings.append(f"{record.get('id', '<unknown>')}: selector path missing for {name}")
+                    return {}, {}
+                value = value[key]
+            try:
+                valid = not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(float(value))
+            except (ValueError, OverflowError):
+                valid = False
+            if not valid:
+                warnings.append(f"{record.get('id', '<unknown>')}: selector value is not finite for {name}")
+                return {}, {}
+            output[group][name] = float(value)
+    if not output["primary"] and not output["secondary"]:
+        warnings.append(f"{record.get('id', '<unknown>')}: metric selector has no fields")
+        return {}, {}
+    return output["primary"], output["secondary"]
+
+
+def _study_metric_selectors(root: Path, record: dict[str, Any], warnings: list[str]) -> tuple[dict[str, Any], dict[str, Any]] | None:
+    """Load UI-only selectors bound to the already verified result hash."""
+    path = root / "docs/method-grounding/study-metrics.json"
+    if not path.is_file():
+        return None
+    metadata = _read(path, None)
+    if not isinstance(metadata, dict) or metadata.get("schema") != "study-metrics.v1" or not isinstance(metadata.get("records"), dict):
+        warnings.append("study-metrics metadata is malformed")
+        return ({}, {})
+    entry = metadata["records"].get(record.get("id"))
+    if entry is None:
+        return None
+    if not isinstance(entry, dict) or entry.get("result_sha256") != record.get("result_sha256"):
+        warnings.append(f"{record.get('id', '<unknown>')}: study-metrics result hash does not match verified feedback")
+        return ({}, {})
+    selectors = entry.get("metric_paths")
+    if selectors is None:
+        warnings.append(f"{record.get('id', '<unknown>')}: study-metrics metric_paths is missing")
+        return ({}, {})
+    return _selector_metrics(root, {"id": record.get("id"), "result_path": record["result_path"], "metric_paths": selectors}, warnings)
+
+
 def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
     """Expose hash-checked feedback without promoting it to evidence.
 
@@ -310,11 +376,15 @@ def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
         record = valid[0]
         report = record["report_path"]
         result = record["result_path"]
-        primary_metrics, secondary_metrics = _headroom_metrics(root, record, warnings)
-        if not primary_metrics:
-            primary_metrics, secondary_metrics = _closedloop_metrics(root, record, warnings)
-        if not primary_metrics:
-            primary_metrics, secondary_metrics = _closedloop_confirmation_metrics(root, record, warnings)
+        selector_metrics = _study_metric_selectors(root, record, warnings)
+        if selector_metrics is not None:
+            primary_metrics, secondary_metrics = selector_metrics
+        else:
+            primary_metrics, secondary_metrics = _headroom_metrics(root, record, warnings)
+            if not primary_metrics:
+                primary_metrics, secondary_metrics = _closedloop_metrics(root, record, warnings)
+            if not primary_metrics:
+                primary_metrics, secondary_metrics = _closedloop_confirmation_metrics(root, record, warnings)
         rows.append({
             "id": record["id"], "cohort": "experiment_feedback",
             "title": record["id"], "artifact_directory": str(Path(report).parent),

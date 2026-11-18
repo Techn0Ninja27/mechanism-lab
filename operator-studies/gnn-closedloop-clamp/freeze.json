@@ -1,0 +1,55 @@
+{
+  "schema": "gnn-closedloop-clamp-freeze.v1",
+  "config": {
+    "seeds": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ],
+    "arms": [
+      "sni",
+      "sni_emit",
+      "sni_state",
+      "lag1",
+      "lag1_emit"
+    ],
+    "regime": {
+      "parts": 4,
+      "layers": 3,
+      "lr_drop": false,
+      "sync": 16,
+      "lag1_coef": [
+        0.8,
+        0.9
+      ]
+    },
+    "window_cycles": 2,
+    "baselines_from": "gnn-closedloop-confirm/results/raw.json",
+    "reading": {
+      "margin_points": 0.5,
+      "se_multiple": 2.0
+    }
+  },
+  "sha256": {
+    "operator-studies/gnn-closedloop-clamp/clamp.py": "aa05995d88706f56848feceb45e66396f4c471cb98c116cad7019cb51ef6d2df",
+    "operator-studies/gnn-closedloop-clamp/test_clamp.py": "7208b57d42eb3565b14840e55a12f523519a90f9756a668ca7a366000eeac721",
+    "operator-studies/gnn-closedloop-clamp/PLAN.md": "ab5136c9a7b3d9b482272e7851e64a803c6c5118bc1bcdca509b27a417f4e2db",
+    "operator-studies/gnn-closedloop-confirm/confirm.py": "c27c7e8d4b459d5cd69a261e20fb0d2ef3f60e21a0bcd50a78d22c1ff4dbcbf7",
+    "operator-studies/gnn-closedloop-confirm/freeze.json": "a1c1d4aaa9b7d82336c074a0b818c2284eee902f93d9947e370f3c966344e8db",
+    "operator-studies/gnn-closedloop-confirm/results/raw.json": "427a07b07213010c60467109bd36f32080069bcd787131a6d79eec4507d9becd",
+    "operator-studies/gnn-closedloop-gap/gap.py": "af08e6991bc751c9a7912962b8261d504218ce6e8928ab6f458089f8b6d955e6",
+    "operator-studies/gnn-sync-gate/screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "results/gnn-sync-gate-v1/data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "results/gnn-sync-gate-v1/data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "python": "3.12.14"
+  }
+}

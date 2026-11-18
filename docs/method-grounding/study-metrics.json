@@ -1,0 +1,50 @@
+{
+  "schema": "study-metrics.v1",
+  "records": {
+    "gnn-closedloop-clamp-v1": {
+      "result_sha256": "cf2118c5aa882fc3dc0406241f18ec1ef1b0d5913f0731a7b184e07209add950",
+      "metric_paths": {
+        "primary": {
+          "sni_emit_minus_hold_points": [
+            "arms",
+            "sni_emit",
+            "minus_hold_exact",
+            "mean_pt"
+          ],
+          "sni_state_minus_hold_points": [
+            "arms",
+            "sni_state",
+            "minus_hold_exact",
+            "mean_pt"
+          ],
+          "lag1_emit_minus_hold_points": [
+            "arms",
+            "lag1_emit",
+            "minus_hold_exact",
+            "mean_pt"
+          ]
+        },
+        "secondary": {
+          "sni_emit_minus_raw_points": [
+            "arms",
+            "sni_emit",
+            "minus_raw_predictor_exact",
+            "mean_pt"
+          ],
+          "sni_state_minus_raw_points": [
+            "arms",
+            "sni_state",
+            "minus_raw_predictor_exact",
+            "mean_pt"
+          ],
+          "lag1_emit_minus_raw_points": [
+            "arms",
+            "lag1_emit",
+            "minus_raw_predictor_exact",
+            "mean_pt"
+          ]
+        }
+      }
+    }
+  }
+}
