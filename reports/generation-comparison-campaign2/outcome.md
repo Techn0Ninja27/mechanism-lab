@@ -33,3 +33,11 @@ Any future comparison must be separately declared. This run will not be reopened
 or silently reclassified by a more permissive parser. A useful question for a
 future design is whether end-to-end generation helps despite preparation defects;
 that requires measuring those defects rather than pretending source fidelity.
+
+Clarification: valid reviews had already disqualified this draw on fidelity.
+Seven valid reviews flagged six unique fields across five records; both slots
+flagged records 1 and 8, and one slot flagged each of records 2, 3 and 5. These
+flags are not yet independent adjudications of source truth. With well-formed
+reviews, that fidelity failure would have permitted the next predeclared draw.
+The malformed additional review was the reason advancement became unavailable
+and the campaign stopped. It was not the sole defect in the preparation.

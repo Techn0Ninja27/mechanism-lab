@@ -116,7 +116,7 @@
       }
     },
     "campaign2-preparation-contract-v1": {
-      "result_sha256": "5ce9f7b08b638a15534eb2daaecf7dbd4dd8870479a0a7d0fb05e7669d66ea77",
+      "result_sha256": "56085fcfb689122de3e9f6532e8e880297d2d9eb3a6dc753e3507e2d0c1b2e24",
       "metric_paths": {
         "primary": {
           "paid_preparation_calls": [

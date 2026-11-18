@@ -16,6 +16,8 @@
   "train_eligible": false,
   "scope": "Preparation/review contract failure; no representation-performance or usefulness result.",
   "source_result": "reports/generation-comparison-campaign2/outcome.json",
-  "source_result_sha256": "1e02f689174a3629ee82762fe0bb67b1687b05c7c051bbe1782d096f189d2ccd",
-  "derivation": "Display summary; unsupported_review_flags counts valid reviews with at least one non-supported field."
+  "source_result_sha256": "c0da6db6a045cfa1e70427abd30a4d3c56a07a1812163310e32f5a2f1bc82a73",
+  "derivation": "Display summary; unsupported_review_flags counts valid reviews with at least one non-supported field.",
+  "draw_fidelity_disqualified": true,
+  "campaign_terminal_cause": "Malformed review prevented advancement under frozen contract"
 }

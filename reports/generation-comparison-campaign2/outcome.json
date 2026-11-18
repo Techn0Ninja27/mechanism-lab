@@ -223,6 +223,23 @@
   "phase_charge_usd": 5.1417516,
   "phase_cap_usd": 30,
   "provider_is_byok": false,
-  "reason": "One unknown field has its absence explanation in reason but lacks required absence_reason. Raw response preserved; no repair or redraw.",
-  "scientific_scope": "No representation comparison, novelty or usefulness finding; preparation/review contract failure."
+  "reason": "Valid reviews had already disqualified this draw under the zero-tolerance fidelity rule: seven valid reviews flagged six unique fields across five atoms. A malformed additional review prevented completion and advancement under the frozen contract, causing the terminal campaign stop. No review was repaired or replaced.",
+  "scientific_scope": "No representation comparison, novelty or usefulness finding; preparation/review contract failure.",
+  "initial_reason": "One unknown field has its absence explanation in reason but lacks required absence_reason. Raw response preserved; no repair or redraw.",
+  "fidelity_findings": {
+    "valid_reviews_with_flags": 7,
+    "distinct_flagged_records": 5,
+    "distinct_flagged_fields": 6,
+    "records_flagged_by_both_slots": [
+      1,
+      8
+    ],
+    "records_flagged_by_one_slot": [
+      2,
+      3,
+      5
+    ],
+    "interpretation": "Reviewer flags independently disqualify the draw; actual source-error versus reviewer-noise adjudication pending.",
+    "counterfactual": "With all reviews well formed, the fidelity failure would have allowed the next predeclared draw. The malformed review made advancement unavailable."
+  }
 }

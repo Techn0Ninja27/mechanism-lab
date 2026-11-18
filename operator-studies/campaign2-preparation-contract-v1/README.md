@@ -20,3 +20,11 @@ and [narrative](../../reports/generation-comparison-campaign2/outcome.md).
 
 No training or generation call was made. This stopped attempt is not reopened
 by loosening the parser or by redrawing under the same campaign identity.
+
+Clarification: valid reviews had already disqualified this draw on fidelity.
+Seven valid reviews flagged six unique fields across five records; both slots
+flagged records 1 and 8, and one slot flagged each of records 2, 3 and 5. These
+flags are not yet independent adjudications of source truth. With well-formed
+reviews, that fidelity failure would have permitted the next predeclared draw.
+The malformed additional review was the reason advancement became unavailable
+and the campaign stopped. It was not the sole defect in the preparation.
