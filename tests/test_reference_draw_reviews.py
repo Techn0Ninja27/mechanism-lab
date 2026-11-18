@@ -37,7 +37,7 @@ class ReferenceDrawReviewTests(unittest.TestCase):
             first = packet["evidence"][0]["evidence_id"]
             for field in packet["fields"]:
                 item = {"field_id": field["field_id"], "verdict": "supported",
-                        "reason": "the cited window states this claim",
+                        "reason": "the cited window states this claim in " + root.name,
                         "evidence_ids": [] if field["is_unknown"] else [first]}
                 if field["is_unknown"]:
                     item["absence_reason"] = "the supplied cited chunk does not specify it"

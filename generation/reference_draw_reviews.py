@@ -171,7 +171,7 @@ def materialize_review(root: str | Path, *, plan_sha256: str, kind: str,
                "disputed_claims": [x.get("claim_assessments", []) for x in non_supported],
                "disputed_fields": [x["field"] for x in non_supported],
                "field_items": items,
-               "raw_review_sha256": raw_hash}
+               "raw_review_sha256": raw_hash, "raw_review_content_sha256": _sha(raw_output)}
         rows.append(row)
     if {r["record_id"] for r in rows} != set(by_id) or len(rows) != 12:
         raise ValueError("review coverage is incomplete or duplicated")
@@ -221,6 +221,12 @@ def combine_reviews(review_a: Mapping[str, Any], review_b: Mapping[str, Any], *,
         raise ValueError("reviewer identities must differ")
     if {r["record_id"] for r in review_a["records"]} != {r["record_id"] for r in review_b["records"]}:
         raise ValueError("review slots cover different records")
+    content_a={r['record_id']:r.get('raw_review_content_sha256') for r in review_a['records']}
+    content_b={r['record_id']:r.get('raw_review_content_sha256') for r in review_b['records']}
+    if any(not isinstance(v,str) or len(v)!=64 for v in (*content_a.values(),*content_b.values())):
+        raise ValueError("raw review content hashes missing")
+    if content_a==content_b:
+        raise ValueError("duplicate raw review sets are not independent artifacts")
     if review_a.get("input_sha256") != review_b.get("input_sha256"):
         raise ValueError("review slots bind different inputs")
     for review in reviews:

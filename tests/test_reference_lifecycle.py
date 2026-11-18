@@ -37,7 +37,7 @@ class ReferenceLifecycleTests(unittest.TestCase):
                 items = []
                 for field in packet['fields']:
                     item = {'field_id': field['field_id'], 'verdict': 'supported',
-                            'reason': 'source-specific reason', 'evidence_ids': []}
+                            'reason': f'source-specific reason slot {slot}', 'evidence_ids': []}
                     if field['is_unknown']:
                         item['absence_reason'] = 'the cited source does not specify this'
                     else:
@@ -69,6 +69,17 @@ class ReferenceLifecycleTests(unittest.TestCase):
         path=self.out/'prep-draws/atoms/00/reference-slots/a/review-00.json'
         path.write_text(path.read_text()+' ')
         with self.assertRaises(ValueError): c._require_chunk_gate(self.out)
+
+    def test_copied_raw_review_set_cannot_lock(self):
+        life.execute_draw(self.out,'atoms',0)
+        life.export_reference_review_sets(self.out,'atoms',0)
+        self._raw_reviews()
+        root=self.out/'prep-draws/atoms/00/reference-slots'
+        for path in (root/'a').glob('review-*.json'):
+            (root/'b'/path.name).write_bytes(path.read_bytes())
+        with self.assertRaisesRegex(ValueError,'duplicate raw review sets'):
+            life.record_review(self.out,'atoms',0)
+        self.assertFalse((self.out/'selected/atoms.selection.json').exists())
 
     def test_legacy_review_cannot_lock(self):
         life.execute_draw(self.out,'atoms',0)

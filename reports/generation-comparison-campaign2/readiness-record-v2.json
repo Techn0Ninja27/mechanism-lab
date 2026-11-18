@@ -1,0 +1,36 @@
+{
+  "schema": "recordwise-calibration-readiness.v1",
+  "status": "retrospective_parser_policy_pass",
+  "calibration_criterion_satisfied": true,
+  "basis": "retrospective parser policy amended after run",
+  "strict_v1": {
+    "mechanically_valid": 23,
+    "total": 24,
+    "failed_tasks": [
+      "/root/v6_review_11a"
+    ]
+  },
+  "v2": {
+    "mechanically_valid": 24,
+    "key_matching": 24,
+    "total": 24
+  },
+  "field_verdicts": 96,
+  "known_limitations": [
+    "reviewer key and baseline artifacts were reachable elsewhere on disk",
+    "launch receipts were recorded after review batches and do not prove access isolation",
+    "the original evaluation scorer was created after the run",
+    "review slots were correlated and are not independent observations",
+    "this is a small reused development set, not a population accuracy estimate",
+    "one of 84 supported field judgments had partial decisive evidence",
+    "the original strict result remains failed; v2 is retrospective",
+    "launch receipts do not record exact prompts or prove which files were read",
+    "no contradicted or unknown labels are tested in this fixture",
+    "48 field items represent 30 unique claim/chunk items"
+  ],
+  "production_authorized": true,
+  "authorization_scope": "Calibration prerequisite accepted under disclosed retrospective policy; lifecycle, fidelity and budget checks remain mandatory.",
+  "raw_reviews_unchanged": true,
+  "supersedes": "readiness-record.json",
+  "campaign_policy_accepts_retrospective_basis": true
+}

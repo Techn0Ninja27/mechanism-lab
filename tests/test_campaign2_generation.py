@@ -50,7 +50,7 @@ def reviews(out,kind,index,failed=False):
         for packet_path in sorted(root.glob('input-*.json')):
             packet=json.loads(packet_path.read_text()); first=packet['evidence'][0]['evidence_id']; items=[]
             for field in packet['fields']:
-                item={'field_id':field['field_id'],'verdict':'supported','reason':'fixture source-specific evidence','evidence_ids':[]}
+                item={'field_id':field['field_id'],'verdict':'supported','reason':f'fixture source-specific evidence {reviewer}','evidence_ids':[]}
                 if field['is_unknown']: item['absence_reason']='fixture absent from supplied evidence'
                 else: item['evidence_ids']=[first]
                 items.append(item)

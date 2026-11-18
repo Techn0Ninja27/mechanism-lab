@@ -35,7 +35,7 @@ def require_calibration_ready():
         result=assess(ROOT/'results/recordwise-calibration-v6', config()['shared_budget_path'])
     except (ValueError,KeyError,OSError,TypeError) as exc:
         raise ValueError('reviewer calibration failed; paid campaign is disabled: '+str(exc)) from exc
-    if result.get('status')!='retrospective_parser_policy_pass' or result.get('v2')!={'mechanically_valid':24,'key_matching':24,'total':24}:
+    if result.get('production_authorized') is not True or result.get('status')!='retrospective_parser_policy_pass' or result.get('v2')!={'mechanically_valid':24,'key_matching':24,'total':24}:
         raise ValueError('reviewer calibration failed; paid campaign is disabled')
     # Protocol explicitly accepts this retrospective instrument assessment;
     # it does not relabel the original strict calibration as a pass.

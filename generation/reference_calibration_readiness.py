@@ -1,8 +1,8 @@
 """Read-only readiness assessment for the v6 reference-review calibration.
 
-The assessment is deliberately separate from the paid-campaign guard.  It
-records a retrospective parser-policy result and never changes a ledger or a
-production readiness flag.
+This is the read-only calibration prerequisite used by the paid-campaign
+guard under its explicitly retrospective parser policy. It never changes
+artifacts or the ledger; other lifecycle and budget gates still apply.
 """
 from __future__ import annotations
 
@@ -20,7 +20,13 @@ def _sha(path: Path) -> str:
 
 
 def _read(path: Path) -> Any:
-    return json.loads(path.read_text())
+    def unique(pairs):
+        result={}
+        for key,value in pairs:
+            if key in result: raise ValueError("duplicate JSON key: "+key)
+            result[key]=value
+        return result
+    return json.loads(path.read_text(),object_pairs_hook=unique)
 
 
 def _fail(message: str) -> None:
@@ -107,6 +113,14 @@ def assess(root: str | Path, ledger_path: str | Path) -> dict[str, Any]:
     pairs={(x.get("input"),x.get("slot")) for x in launches}
     if pairs!={(name,slot) for name in packet_specs for slot in ('a','b')}:
         _fail("packet/slot coverage mismatch")
+    expected_files={str((root/x['output']).resolve()) for x in launches}
+    if {str(p.resolve()) for p in (root/'reviews').glob('*.json')} != expected_files:
+        _fail("unexpected or missing raw review files")
+    audited={(x.get('opaque_id'),x.get('field')):x.get('audit',x.get('expected')) for x in audit.get('field_audits',[])}
+    if len(audited)!=48 or audited!={(pid,field):verdict for pid,fields in expected.items() for field,verdict in fields.items()}:
+        _fail("key audit field labels differ from answer key")
+    checked_review_hashes=0
+    field_verdict_count=0
     strict_failed = []
     v2_valid = 0
     v2_matches = 0
@@ -128,6 +142,7 @@ def assess(root: str | Path, ledger_path: str | Path) -> dict[str, Any]:
         spec = packet_specs.get(launch["input"])
         if spec is None or spec.get("sha256") != _sha(input_path):
             _fail(f"packet manifest hash mismatch: {task}")
+        checked_review_hashes += 1
         receipt = _read(receipt_path)
         if receipt.get("returned_task_name") != task or receipt.get("input_sha256") != launch["input_sha256"]:
             _fail(f"launch receipt mismatch: {task}")
@@ -141,6 +156,7 @@ def assess(root: str | Path, ledger_path: str | Path) -> dict[str, Any]:
         try:
             decoded = decode_review_v2(packet, raw)
             verdicts = {x["field"]: x["verdict"] for x in decoded["field_items"]}
+            field_verdict_count += len(decoded["field_items"])
             v2_valid += 1
             if verdicts == expected.get(packet.get("opaque_id"), {}):
                 v2_matches += 1
@@ -152,12 +168,12 @@ def assess(root: str | Path, ledger_path: str | Path) -> dict[str, Any]:
     return {
         "schema": "recordwise-calibration-readiness.v1",
         "status": "retrospective_parser_policy_pass",
-        "calibration_criterion_satisfied": True,
+        "calibration_criterion_satisfied": v2_valid == v2_matches == len(launches) == 24,
         "basis": "retrospective parser policy amended after run",
         "strict_v1": {"mechanically_valid": 24 - len(strict_failed), "total": 24,
                       "failed_tasks": strict_failed},
         "v2": {"mechanically_valid": v2_valid, "key_matching": v2_matches, "total": 24},
-        "field_verdicts": 96,
+        "field_verdicts": field_verdict_count,
         "known_limitations": [
             "reviewer key and baseline artifacts were reachable elsewhere on disk",
             "launch receipts were recorded after review batches and do not prove access isolation",
@@ -166,7 +182,11 @@ def assess(root: str | Path, ledger_path: str | Path) -> dict[str, Any]:
             "this is a small reused development set, not a population accuracy estimate",
             "one of 84 supported field judgments had partial decisive evidence",
             "the original strict result remains failed; v2 is retrospective",
+            "launch receipts do not record exact prompts or prove which files were read",
+            "no contradicted or unknown labels are tested in this fixture",
+            "48 field items represent 30 unique claim/chunk items",
         ],
-        "production_authorized": False,
-        "raw_reviews_unchanged": True,
+        "production_authorized": v2_valid == v2_matches == len(launches) == 24,
+        "authorization_scope": "Calibration prerequisite accepted under disclosed retrospective policy; lifecycle, fidelity and budget checks remain mandatory.",
+        "raw_reviews_unchanged": checked_review_hashes == len(launches) == 24,
     }

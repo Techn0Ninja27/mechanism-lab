@@ -66,6 +66,6 @@ The historical disabled-state statements above describe the original strict
 run. Campaign 2 now explicitly accepts the retrospective parser-v2 assessment
 as its calibration prerequisite, with these limitations retained. Its verifier
 recomputes the evidence and checks the external ledger anchor. See
-`../generation-comparison-campaign2/readiness-record.json` and `protocol.md`.
+`../generation-comparison-campaign2/readiness-record-v2.json` and `protocol.md`.
 This does not change the original failed result or imply that paid generation
 has already run.
