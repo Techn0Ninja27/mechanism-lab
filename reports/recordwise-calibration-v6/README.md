@@ -59,3 +59,13 @@ was computed by an inline script after the run, not a committed pre-run scorer.
 Any readiness based on parser v2 is retrospective: the optional-subclaim-ID
 policy was amended after observing this run. The original frozen result remains
 failed. This is disclosed instrument development, not a new review experiment.
+
+## Current integration status
+
+The historical disabled-state statements above describe the original strict
+run. Campaign 2 now explicitly accepts the retrospective parser-v2 assessment
+as its calibration prerequisite, with these limitations retained. Its verifier
+recomputes the evidence and checks the external ledger anchor. See
+`../generation-comparison-campaign2/readiness-record.json` and `protocol.md`.
+This does not change the original failed result or imply that paid generation
+has already run.
