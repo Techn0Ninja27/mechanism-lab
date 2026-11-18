@@ -14,6 +14,7 @@ sys.path[:0] = [str(ROOT), str(ROOT / 'scripts')]
 from world_search import Client
 from generation.sourcepack import validate_source_pack
 from generation.proposal_portfolio import annotate_candidates, compare_structures, validate_portfolio_review
+from generation.proposal_readiness import evaluate_result
 from generation.citation_evidence import load_citation_evidence
 from generation.claim_assessment import CLAIM_SCHEMA, ASSESSMENT_SCHEMA, validate_claims, assess as assess_claims
 from generation.method_lineage import inspect_pack
@@ -218,8 +219,8 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
               'provider_max_price': {'prompt': 4, 'completion': 20},
               'shared_budget_path': str(ROOT / 'results/improvement-phase-2026-11-16/budget.json'),
               'shared_budget_usd': 20.0,
-              'dependency_hashes': {str(f): hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in ('scripts/world_search.py','generation/api_budget.py','generation/sourcepack.py','generation/prior_art_retrieval.py','generation/method_lineage.py','generation/corpus_registry.py','generation/experiment_feedback.py','generation/interface_contracts.py','generation/claim_assessment.py','generation/citation_evidence.py','generation/citation_neighborhood.py','generation/proposal_portfolio.py')},
-              'protocol_version': 10, 'search': search, 'citation_evidence_hash': digest(citation), 'citation_evidence': citation['summary'], 'lineage_registry_hash': digest(lineage_registry),
+              'dependency_hashes': {str(f): hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in ('scripts/world_search.py','generation/api_budget.py','generation/sourcepack.py','generation/prior_art_retrieval.py','generation/method_lineage.py','generation/corpus_registry.py','generation/experiment_feedback.py','generation/interface_contracts.py','generation/claim_assessment.py','generation/citation_evidence.py','generation/citation_neighborhood.py','generation/proposal_portfolio.py','generation/proposal_readiness.py')},
+              'protocol_version': 11, 'search': search, 'citation_evidence_hash': digest(citation), 'citation_evidence': citation['summary'], 'lineage_registry_hash': digest(lineage_registry),
               'experiment_feedback_registry_hash':digest(feedback_registry),'experiment_feedback_hash':digest(feedback),
               'source_contract_registry_hash':digest(contract_registry),'source_contracts_hash':digest(source_contracts),
               'corpus_path': str(corpus), 'corpus_sha256': hashlib.sha256(corpus.read_bytes()).hexdigest() if corpus.exists() else None,
@@ -315,6 +316,7 @@ def _execute(pack_path, question_path, output, execute_paid=False, search_config
         result['status'] = 'reviewed'
     except Exception as exc:
         result.update(status='failed', error=type(exc).__name__ + ': ' + str(exc)[:400])
+    result['readiness'] = evaluate_result(result)
     (output / 'result.json').write_text(json.dumps(result, indent=2) + '\n')
     return result
 
@@ -356,6 +358,7 @@ def execute_portfolio(client, prompt, pack, context, valid_chunk_ids, output, re
         result['status']='reviewed'
     except Exception as exc:
         result.update(status='failed',error=type(exc).__name__+': '+str(exc)[:400])
+    result['readiness'] = evaluate_result(result)
     (output/'result.json').write_text(json.dumps(result,indent=2)+'\n')
     return result
 

@@ -1,0 +1,199 @@
+{
+  "schema": "proposal-readiness-replay.v1",
+  "manifest_sha256": "cd625ee5daff071cb29631be424b23669303f582445373bbcbd8cc94c8ade1cb",
+  "classifier_sha256": "93f3ff27cd783c563189c96ff0d32f727689d5396bf9f2b6537abb60af89ab44",
+  "records": [
+    {
+      "id": "serving-portfolio-decode",
+      "path": "results/serving-portfolio-v1/decode/result.json",
+      "result_sha256": "6bd12ab8c97fd86c6518ff9fe2239ad14bfc923c3673670881d6d2be18822b98",
+      "status": "reviewed",
+      "readiness": {
+        "schema": "review-readiness.v1",
+        "status": "needs_revision",
+        "reasons": [
+          {
+            "code": "selected_candidate",
+            "detail": "Portfolio selected cand-00."
+          },
+          {
+            "code": "mechanism_unresolved",
+            "detail": "The mechanism check remains unresolved."
+          }
+        ],
+        "limitations": [
+          "This is a model-review allocation signal, not a novelty, usefulness, feasibility or scientific-validity score.",
+          "Evidence spans, source fidelity and attached factual audits are not rechecked by this gate.",
+          "Retrieved-source count does not assess source relevance, recall or completeness.",
+          "Presence of metric and control text is not empirical validation.",
+          "Claim C1 coverage is partial; this does not establish novelty.",
+          "Claim C2 coverage is partial; this does not establish novelty.",
+          "Claim C3 coverage is unknown; this does not establish novelty."
+        ],
+        "auto_execute": false,
+        "novelty_established": false,
+        "train_eligible": false,
+        "candidate_gates": {
+          "cand-00": {
+            "schema": "review-readiness.v1",
+            "status": "needs_revision",
+            "reasons": [
+              {
+                "code": "mechanism_unresolved",
+                "detail": "The mechanism check remains unresolved."
+              }
+            ],
+            "limitations": [
+              "This is a model-review allocation signal, not a novelty, usefulness, feasibility or scientific-validity score.",
+              "Evidence spans, source fidelity and attached factual audits are not rechecked by this gate.",
+              "Retrieved-source count does not assess source relevance, recall or completeness.",
+              "Presence of metric and control text is not empirical validation.",
+              "Claim C1 coverage is partial; this does not establish novelty.",
+              "Claim C2 coverage is partial; this does not establish novelty.",
+              "Claim C3 coverage is unknown; this does not establish novelty."
+            ],
+            "auto_execute": false,
+            "novelty_established": false,
+            "train_eligible": false
+          },
+          "cand-01": {
+            "schema": "review-readiness.v1",
+            "status": "needs_revision",
+            "reasons": [
+              {
+                "code": "proposal_requests_revision",
+                "detail": "The proposal itself is marked revise."
+              },
+              {
+                "code": "review_requests_revision",
+                "detail": "The stored review is not a clean test recommendation."
+              },
+              {
+                "code": "review_failure_type",
+                "detail": "Stored failure_type is 'unsupported_assumption'."
+              },
+              {
+                "code": "mechanism_unresolved",
+                "detail": "The mechanism check remains unresolved."
+              }
+            ],
+            "limitations": [
+              "This is a model-review allocation signal, not a novelty, usefulness, feasibility or scientific-validity score.",
+              "Evidence spans, source fidelity and attached factual audits are not rechecked by this gate.",
+              "Retrieved-source count does not assess source relevance, recall or completeness.",
+              "Presence of metric and control text is not empirical validation.",
+              "Claim C1 coverage is partial; this does not establish novelty.",
+              "Claim C2 coverage is unknown; this does not establish novelty."
+            ],
+            "auto_execute": false,
+            "novelty_established": false,
+            "train_eligible": false
+          },
+          "cand-02": {
+            "schema": "review-readiness.v1",
+            "status": "not_recommended",
+            "reasons": [
+              {
+                "code": "model_rejection_or_redundancy",
+                "detail": "Stored proposal/review labels reject or redundant; this is preserved as model judgment."
+              }
+            ],
+            "limitations": [
+              "This is a model-review allocation signal, not a novelty, usefulness, feasibility or scientific-validity score.",
+              "Evidence spans, source fidelity and attached factual audits are not rechecked by this gate.",
+              "Retrieved-source count does not assess source relevance, recall or completeness.",
+              "Presence of metric and control text is not empirical validation.",
+              "Claim C1 coverage is covered; this does not establish novelty."
+            ],
+            "auto_execute": false,
+            "novelty_established": false,
+            "train_eligible": false
+          }
+        }
+      }
+    },
+    {
+      "id": "grounded-serving-v2",
+      "path": "results/improvement-phase-2026-11-16/grounded-serving-v2/result.json",
+      "result_sha256": "ade47a2ae036c17c4d211c68418e8d74c86f4dd73e662f71bad5a610d439e610",
+      "status": "reviewed",
+      "readiness": {
+        "schema": "review-readiness.v1",
+        "status": "needs_revision",
+        "reasons": [
+          {
+            "code": "proposal_requests_revision",
+            "detail": "The proposal itself is marked revise."
+          },
+          {
+            "code": "review_failure_type",
+            "detail": "Stored failure_type is 'weak_control'."
+          },
+          {
+            "code": "mechanism_unresolved",
+            "detail": "The mechanism check remains unresolved."
+          }
+        ],
+        "limitations": [
+          "This is a model-review allocation signal, not a novelty, usefulness, feasibility or scientific-validity score.",
+          "Evidence spans, source fidelity and attached factual audits are not rechecked by this gate.",
+          "Retrieved-source count does not assess source relevance, recall or completeness.",
+          "Presence of metric and control text is not empirical validation.",
+          "Claim C1 coverage is partial; this does not establish novelty.",
+          "Claim C2 coverage is partial; this does not establish novelty.",
+          "Claim C3 coverage is unknown; this does not establish novelty."
+        ],
+        "auto_execute": false,
+        "novelty_established": false,
+        "train_eligible": false
+      }
+    },
+    {
+      "id": "grounded-claim-pilot-v1",
+      "path": "results/improvement-phase-2026-11-16/grounded-claim-pilot-v1/result.json",
+      "result_sha256": "c3c40e72c5d03c0f6081724561b9ca8152c1366f0f9c309d3fbedb435e2f877d",
+      "status": "claim_only_replay_not_new_proposal",
+      "readiness": {
+        "schema": "review-readiness.v1",
+        "status": "incomplete",
+        "reasons": [
+          {
+            "code": "run_not_reviewed",
+            "detail": "Only reviewed grounded results can enter readiness triage."
+          }
+        ],
+        "limitations": [
+          "No experiment is authorized."
+        ],
+        "auto_execute": false,
+        "novelty_established": false,
+        "train_eligible": false
+      }
+    },
+    {
+      "id": "grounded-optimizer-v1",
+      "path": "results/improvement-phase-2026-11-16/grounded-optimizer-v1/result.json",
+      "result_sha256": "9646c7c57e6cf93f406e0337b02f74e09b0bc78477483546633f8d6a2705a7d6",
+      "status": "failed",
+      "readiness": {
+        "schema": "review-readiness.v1",
+        "status": "incomplete",
+        "reasons": [
+          {
+            "code": "run_not_reviewed",
+            "detail": "Only reviewed grounded results can enter readiness triage."
+          }
+        ],
+        "limitations": [
+          "No experiment is authorized."
+        ],
+        "auto_execute": false,
+        "novelty_established": false,
+        "train_eligible": false
+      }
+    }
+  ],
+  "scope": "Structural consistency replay over frozen local outputs. The gate is a workflow allocation signal; it does not establish novelty, usefulness, feasibility or scientific validity.",
+  "paid_calls": 0,
+  "experiment_launches": 0
+}

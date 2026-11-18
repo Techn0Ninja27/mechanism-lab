@@ -47,6 +47,7 @@ scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Triage proposal readiness** | Historical replay flags both reviewed serving runs for revision; the portfolio retains two revision candidates and one rejection. Structural checks only: predictive usefulness remains untested. | [Replay and limitations](reports/proposal-readiness-v1/README.md) |
 | **Generate and check a serving proposal** | Largest-prompt-first admission failed all six primary groups in a **180-trace / 1,080-arm** synthetic control screen. This local candidate is closed; no hardware or novelty claim. | [Proposal, audit and diagnostic](reports/serving-problem-v2/README.md) |
 | **Check held-out optimizer quality** | Newton–Muon reached lower final loss in both seeds, but worse average loss over training time. The frozen continuation rule failed; this local approximation candidate is closed at these settings. | [Held-out control and raw curves](operator-studies/newton-muon-heldout/README.md) |
 | **Test cheaper refresh scheduling** | Across six matched short runs, refresh64 versus32 was **0.24% costlier** at width256 and **1.57% cheaper** at width512. No consistent cost advantage or training-quality conclusion. | [Matched controls and raw results](operator-studies/newton-muon-refresh/README.md) |

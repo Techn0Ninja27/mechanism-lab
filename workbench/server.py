@@ -30,6 +30,12 @@ from urllib.parse import parse_qs, urlparse, unquote
 
 ROOT = pathlib.Path(os.environ.get("ALIEN_WORKSPACE", pathlib.Path(__file__).resolve().parents[1])).resolve()
 ENGINE = pathlib.Path(os.environ.get("ALIEN_REPO", ROOT / "upstream" if (ROOT / "upstream/alien.py").exists() else ROOT)).resolve()
+if str(ENGINE) not in sys.path:
+    sys.path.insert(0, str(ENGINE))
+try:
+    from generation.proposal_readiness import evaluate_result as _evaluate_readiness
+except Exception:
+    _evaluate_readiness = None
 WEB = pathlib.Path(__file__).resolve().parent
 RESULTS = ROOT / "results"
 JOBS_DIR = ROOT / "workspace" / ".app" / "jobs"
@@ -586,6 +592,23 @@ def grounded_rows():
         except (OSError, ValueError, TypeError, json.JSONDecodeError):
             return {**base, "status": "invalid", "summary": "Factual audit could not be read."}
 
+    def readiness_gate(result, portfolio):
+        """Derive a bounded review-readiness projection at read time."""
+        base = {"schema": "review-readiness.v1", "status": "incomplete",
+                "reasons": [{"code": "readiness_unavailable", "detail": "Readiness classifier is unavailable."}],
+                "limitations": ["Derived from recorded review fields; not an empirical result or verified novelty."],
+                "auto_execute": False, "novelty_established": False, "train_eligible": False,
+                "candidate_gates": {}}
+        if _evaluate_readiness is None:
+            return base
+        try:
+            gate = _evaluate_readiness(result)
+            if not isinstance(gate, dict):
+                return base
+            return {**base, **gate, "auto_execute": False, "novelty_established": False, "train_eligible": False}
+        except Exception:
+            return base
+
     def operator_check(run_id):
         record = links.get(run_id) if isinstance(links, dict) else None
         if not isinstance(record, dict):
@@ -698,6 +721,7 @@ def grounded_rows():
                      "review": {**{k: review.get(k) for k in ("decision", "failure_type", "reason", "strongest_counterargument", "required_test")},
                                 "mechanism_check": mechanism_summary(review.get("mechanism_check"))},
                      "portfolio": portfolio_view(data.get("portfolio")),
+                     "readiness": readiness_gate(data, data.get("portfolio")),
                      "budget": {"cap_usd": budget.get("cap_usd"), "actual_usd": spent, "active_reserved_usd": reserved},
                      "artifact": public_path(result_path),
                      "factual_audit": factual_audit(result_path),

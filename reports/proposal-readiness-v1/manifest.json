@@ -1,0 +1,36 @@
+{
+  "schema": "proposal-readiness-manifest.v1",
+  "frozen_date": "2026-11-18",
+  "scope": "Four pre-existing local grounded outputs; no model calls or experiment launches.",
+  "records": [
+    {
+      "id": "serving-portfolio-decode",
+      "path": "results/serving-portfolio-v1/decode/result.json",
+      "sha256": "6bd12ab8c97fd86c6518ff9fe2239ad14bfc923c3673670881d6d2be18822b98",
+      "expected_status": "needs_revision",
+      "expected_candidate_statuses": {
+        "cand-00": "needs_revision",
+        "cand-01": "needs_revision",
+        "cand-02": "not_recommended"
+      }
+    },
+    {
+      "id": "grounded-serving-v2",
+      "path": "results/improvement-phase-2026-11-16/grounded-serving-v2/result.json",
+      "sha256": "ade47a2ae036c17c4d211c68418e8d74c86f4dd73e662f71bad5a610d439e610",
+      "expected_status": "needs_revision"
+    },
+    {
+      "id": "grounded-claim-pilot-v1",
+      "path": "results/improvement-phase-2026-11-16/grounded-claim-pilot-v1/result.json",
+      "sha256": "c3c40e72c5d03c0f6081724561b9ca8152c1366f0f9c309d3fbedb435e2f877d",
+      "expected_status": "incomplete"
+    },
+    {
+      "id": "grounded-optimizer-v1",
+      "path": "results/improvement-phase-2026-11-16/grounded-optimizer-v1/result.json",
+      "sha256": "9646c7c57e6cf93f406e0337b02f74e09b0bc78477483546633f8d6a2705a7d6",
+      "expected_status": "incomplete"
+    }
+  ]
+}

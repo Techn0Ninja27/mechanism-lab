@@ -191,6 +191,9 @@ class GroundedResearchTests(unittest.TestCase):
             self.assertIsNone(result['portfolio']['review']['selected_candidate_id'])
             self.assertNotIn('proposal',result)
             self.assertEqual(len(result['portfolio']['claim_assessments']),3)
+            self.assertEqual(result['readiness']['status'], 'not_selected')
+            self.assertEqual(set(result['readiness']['candidate_gates']), {'cand-00','cand-01','cand-02'})
+            self.assertEqual(json.loads((pathlib.Path(tmp)/'result.json').read_text())['readiness'], result['readiness'])
             self.assertEqual([stage for _,stage in seen],[0,1])
             self.assertTrue(all(not c['auto_eligible'] for c in result['portfolio']['candidates']))
 
@@ -218,6 +221,9 @@ class GroundedResearchTests(unittest.TestCase):
             with patch.object(g,'inspect_feedback',return_value=feedback),patch.object(g,'inspect_contracts',return_value=contracts),patch.object(g,'Client',Client):
                 result=g.execute(pack,question,root/'run',True)
             self.assertEqual(result['status'],'reviewed')
+            self.assertEqual(result['readiness']['status'], 'needs_revision')
+            self.assertFalse(result['readiness']['auto_execute'])
+            self.assertEqual(json.loads((root/'run/result.json').read_text())['readiness'], result['readiness'])
             self.assertEqual(result['experiment_feedback'],feedback)
             self.assertEqual(result['source_contracts'],contracts)
             self.assertTrue(all('fixture scoped failure' in prompt for prompt in prompts))

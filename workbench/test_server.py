@@ -138,6 +138,44 @@ class HTTPTests(unittest.TestCase):
             self.assertFalse(row['claim_assessment']['novelty_established'])
             self.assertTrue(row['novelty_established'])
 
+    def test_readiness_is_derived_and_never_trusts_saved_gate(self):
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+            run_dir = Path(tmp) / 'results/improvement-phase-2026-11-16/grounded-readiness'
+            run_dir.mkdir(parents=True)
+            (run_dir / 'result.json').write_text(json.dumps({
+                'status': 'reviewed', 'readiness': {'status': 'test_design_candidate', 'auto_execute': True},
+                'proposal': {'title': 'Stored fake', 'evidence': []},
+                'review': {'decision': 'test', 'failure_type': 'weak_control'},
+            }))
+            original = server._evaluate_readiness
+            try:
+                server._evaluate_readiness = lambda result: {
+                    'schema': 'review-readiness.v1', 'status': 'needs_revision',
+                    'reasons': [{'code': 'weak_control', 'detail': 'Recorded review has a weak control.'}],
+                    'limitations': ['Derived from review fields only.'], 'auto_execute': False,
+                    'novelty_established': False, 'train_eligible': False, 'candidate_gates': {},
+                }
+                row = next(x for x in server.grounded_rows() if x['id'] == 'grounded-readiness')
+            finally:
+                server._evaluate_readiness = original
+            self.assertEqual(row['readiness']['status'], 'needs_revision')
+            self.assertFalse(row['readiness']['auto_execute'])
+            self.assertFalse(row['readiness']['novelty_established'])
+
+    def test_readiness_fallback_is_incomplete_when_classifier_unavailable(self):
+        original = server._evaluate_readiness
+        try:
+            server._evaluate_readiness = None
+            with tempfile.TemporaryDirectory() as tmp, mock.patch.object(server, 'ENGINE', Path(tmp)):
+                run_dir = Path(tmp) / 'results/improvement-phase-2026-11-16/grounded-no-readiness'
+                run_dir.mkdir(parents=True)
+                (run_dir / 'result.json').write_text(json.dumps({'status': 'reviewed', 'proposal': {}, 'review': {}}))
+                row = next(x for x in server.grounded_rows() if x['id'] == 'grounded-no-readiness')
+                self.assertEqual(row['readiness']['status'], 'incomplete')
+                self.assertFalse(row['readiness']['auto_execute'])
+        finally:
+            server._evaluate_readiness = original
+
     def test_citation_evidence_is_bounded_and_not_a_novelty_signal(self):
         valid = {
             'status': 'included', 'snapshot_sha256': 'a' * 64, 'seed': 'W4409983225',
