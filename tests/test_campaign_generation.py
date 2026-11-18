@@ -1,4 +1,5 @@
 import json
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
@@ -7,6 +8,19 @@ from generation.sourcepack import build_source_pack
 from scripts import generate_causal_campaign as g
 
 class GenerationTests(unittest.TestCase):
+    def passed_gate(self, out):
+        records=[]
+        for kind,key in (("atoms","atoms"),("distillations","distillations")):
+            value=json.loads((out/'representations'/f'{kind}.json').read_text())
+            for row in value[key]: records.append({'id':row['id'],'representation':'atom' if kind=='atoms' else 'distillation','verdict':'supported'})
+        review={'schema_version':'source-only-fidelity-review.v1','inputs':{
+            'sourcepack.json':g.sha(out/'sourcepack.json'),
+            'representations/atoms.json':g.sha(out/'representations/atoms.json'),
+            'representations/distillations.json':g.sha(out/'representations/distillations.json')},
+            'counts':{'total':24,'supported':24,'unsupported':0,'contradicted':0,'indeterminate':0},'records':records}
+        review_path=out/'fidelity-review.json'; review_path.write_text(json.dumps(review))
+        gate={'schema':'causal-preparation-fidelity-gate.v1','status':'passed','review_sha256':g.sha(review_path),
+              'counts':review['counts']}; (out/'fidelity-gate.json').write_text(json.dumps(gate))
     def fixture(self,root):
         sources=[]
         for i in range(5):
@@ -82,6 +96,7 @@ class GenerationTests(unittest.TestCase):
                 prep_call.write_text(json.dumps(tampered))
                 with self.assertRaises(ValueError): g.generation_plan(out)
                 prep_call.write_text(original)
+                self.passed_gate(out)
                 result=g.generate(out,True)
             inv=json.loads((out/'inventory.json').read_text())
             self.assertEqual(result['candidates'],64)
@@ -90,6 +105,16 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(seen,[(out,1.0),(out,6.0)])
             self.assertTrue(all(c['status']=='valid' for c in inv['candidates']))
             self.assertEqual(len({c['program_sha256'] for c in inv['candidates'] if c['arm']=='raw'}),1)
+
+    def test_stopped_fidelity_gate_blocks_before_client(self):
+        with tempfile.TemporaryDirectory() as t:
+            root=Path(t);path,_=self.fixture(root);out=root/'campaign';g.plan(path,out)
+            gate={'schema':'causal-preparation-fidelity-gate.v1','status':'stopped_before_generation',
+                  'counts':{'total':24,'supported':2,'unsupported':22,'contradicted':0,'indeterminate':0}}
+            (out/'fidelity-gate.json').write_text(json.dumps(gate))
+            with patch.object(g,'Client',side_effect=AssertionError('Client must not be constructed')):
+                with self.assertRaisesRegex(ValueError,'preparation gate status'):
+                    g.generate(out,True)
 
     def test_invalid_nonstandard_json_keeps_all_four_slots(self):
         rows=g.parse_candidates('{"candidates": NaN}',{'id':'raw-00','arm':'raw'})

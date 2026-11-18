@@ -1,7 +1,7 @@
 """Budgeted matched-representation pilot; no model calls without --execute.
 
 Preparation and generation share one calls directory, a $6 campaign ceiling,
-and the existing $20 phase ledger. Invalid outputs are retained, never repaired.
+and the existing $30 phase ledger. Invalid outputs are retained, never repaired.
 """
 from __future__ import annotations
 import argparse, fcntl, hashlib, json, random, sys
@@ -48,7 +48,7 @@ def config(budget=CAP):
     return {'model':'anthropic/claude-opus-5.5','reasoning':{'effort':'low'},'temperature':None,
             'system_prompt':SYSTEM,'max_tokens_per_stage':[TOKENS],'budget_usd':budget,
             'pricing':{'prompt':.000004,'completion':.000020},'provider_max_price':{'prompt':4,'completion':20},
-            'shared_budget_path':str(ROOT/'results/improvement-phase-2026-11-16/budget.json'),'shared_budget_usd':20.0}
+            'shared_budget_path':str(ROOT/'results/improvement-phase-2026-11-16/budget.json'),'shared_budget_usd':30.0}
 
 def reserve(prompt): return (len(SYSTEM.encode())+len(prompt.encode())+512)*.000004 + TOKENS*.000020
 
@@ -338,7 +338,44 @@ def generation_plan(out):
             'requests':requests,'conservative_generation_reservation_usd':sum(r['reserved_usd'] for r in requests),'campaign_cap_usd':CAP}
     return report,prompts
 
+def require_fidelity_gate(out):
+    """Require a hash-bound, all-supported preparation review before spending.
+
+    This guard is intentionally checked before ``verify``: a stopped preparation
+    attempt must remain stopped even if later working-tree changes make its
+    original plan unverifiable.  It validates only the mechanical contract;
+    semantic faithfulness is represented by the source-only review verdicts.
+    """
+    gate_path = out / 'fidelity-gate.json'
+    if not gate_path.is_file():
+        raise ValueError('generation blocked: missing fidelity-gate.json')
+    gate = json.loads(gate_path.read_text())
+    if gate.get('schema') != 'causal-preparation-fidelity-gate.v1' or gate.get('status') != 'passed':
+        raise ValueError(f"generation blocked: preparation gate status is {gate.get('status')!r}")
+    review_path = out / 'fidelity-review.json'
+    if not review_path.is_file() or sha(review_path) != gate.get('review_sha256'):
+        raise ValueError('generation blocked: fidelity review hash is not bound')
+    review = json.loads(review_path.read_text())
+    if review.get('schema_version') != 'source-only-fidelity-review.v1':
+        raise ValueError('generation blocked: fidelity review schema is invalid')
+    expected = {'total': 24, 'supported': 24, 'unsupported': 0, 'contradicted': 0, 'indeterminate': 0}
+    if review.get('counts') != expected or gate.get('counts') != expected:
+        raise ValueError('generation blocked: preparation fidelity is not complete')
+    if len(review.get('records', [])) != 24 or any(r.get('verdict') != 'supported' for r in review['records']):
+        raise ValueError('generation blocked: not every prepared record is supported')
+    pack_hash = review.get('inputs', {}).get('sourcepack.json')
+    if pack_hash != sha(out / 'sourcepack.json'):
+        raise ValueError('generation blocked: source pack hash is not bound')
+    for kind in ('atoms', 'distillations'):
+        path = out / 'representations' / f'{kind}.json'
+        expected_hash = review.get('inputs', {}).get(f'representations/{kind}.json')
+        if not path.is_file() or expected_hash != sha(path):
+            raise ValueError(f'generation blocked: {kind} representation hash is not bound')
+    return review
+
 def generate(out,execute=False):
+    if execute:
+        require_fidelity_gate(out)
     request_plan,prompts=generation_plan(out)
     if not execute:return request_plan
     if (out/'inventory.json').exists():raise FileExistsError('Inventory exists; no automatic regeneration')

@@ -14,7 +14,8 @@ separate workspace before training, analysis and explicit interpretation.
 Use `--prepare-only` to stage and verify inputs without repeating training.
 
 Accuracy points on the 1,000-node development-evaluation split, paired by
-seed, averaged over the final two sync cycles unless stated. Intervals are
+seed, averaged over the final 32 epochs (two sync intervals, phase-balanced)
+unless stated. Intervals are
 pointwise 95% (n = 8). Rule: > 0.5 points and > 2 SE.
 
 ## Moderate lead: 3 layers, 4 partitions, sync 16
@@ -39,19 +40,25 @@ Primary comparison +0.01 ± 0.02 points. Does not pass. Every arm sits at 0.776.
 - **The gap reappears on new seeds and passes the pre-written 2-SE
   allocation rule, but it is not confirmed at the 95% level.** The primary
   gap is 2.7 points, all eight seeds positive, and its pointwise 95% interval
-  includes zero. The 2-SE rule is the weaker criterion. (`summary.json` names
+  includes zero. The mean leans on one seed: per-seed gaps are 1.9, 2.3, 1.8,
+  2.3, 2.4, 0.1, 0.1 and 10.7 points. Without the largest the mean is about
+  1.6, and two seeds are about one node in a thousand. The 2-SE rule is the weaker criterion. (`summary.json` names
   this field `lead_confirmed_exact_forward`; read it as "passes the 2-SE
   rule".)
 - **Scored on its own forward, hold loses 1.0 point instead of 2.7.** This is
-  a descriptive decomposition of the observed gap, about 60% to 40%. It does
+  a descriptive decomposition of the observed gap, about 60% to 40%. The
+  own-minus-exact difference for hold (+1.67 ± 0.83) clears the 2-SE rule by
+  0.02 points and its 95% interval includes zero. It does
   not prove that 60% is caused by evaluation mismatch or that 1.0 point is
   the true underlying cost.
 - **The negative control stays null.**
 - **Both extrapolating predictors are far worse than hold here**, by 33 to 37
   points, in all eight seeds. They are unconstrained and can produce negative
-  values for post-ReLU hidden states. A non-negative projection or clamped
-  forecast is the obvious control and has not been run, so this says
-  "unclamped extrapolation fails", not "prediction fails".
+  values for post-ReLU hidden states. The non-negative projection control was
+  run afterwards in `../gnn-closedloop-clamp`: projected versions are still
+  32 to 34 points below hold on average, so the failure is not explained by
+  sign violations alone. This remains a statement about these two
+  extrapolators, not about prediction in general.
 
 ## Phase profile of hold (mean over seeds)
 
@@ -60,9 +67,16 @@ Primary comparison +0.01 ± 0.02 points. Does not pass. Every arm sits at 0.776.
 | Exact forward | 0.738 | 0.755 | 0.749 | 0.732 | 0.725 | 0.728 | 0.733 | 0.739 |
 | Own forward | 0.738 | 0.746 | 0.754 | 0.755 | 0.756 | 0.757 | 0.759 | 0.759 |
 
-On its own forward the model improves steadily through a cycle, then drops
-about 2 points at the sync, when its remote inputs change at once. Under an
-exact forward it is worst mid-cycle. This is consistent with a sync acting
+These are means over eight seeds with no intervals in the table. The window
+is the final 32 epochs (88 to 119), not two aligned cycles: syncs fall at
+epochs 100 and 116, so each phase appears twice but phases 0 to 3 are
+measured on average 16 epochs later in training than phases 4 to 15. The
+profile therefore mixes sync phase with training time. On its own
+forward the mean rises through a cycle (one small dip at phase 13 to 14),
+then is about 2 points lower at the sync epoch (2.1 ± 1.0, 7 of 8 seeds, 95%
+interval includes zero), which is when its remote inputs change at once.
+Under an exact forward the mean is lowest mid-cycle (phase 8 minus phase 2:
+−3.0 ± 1.7, 7 of 8 seeds, interval includes zero). This is consistent with a sync acting
 as a shock the model re-adapts to, which would also fit the first study's
 never-resync and non-monotone observations. It does not uniquely explain
 them: optimisation noise, the specific epoch-120 phase, and the compounding
@@ -74,7 +88,8 @@ tested mechanism.
 One regime, eight seeds, one small graph, random partitions, an emulation.
 Within that: a gap that passes the allocation rule on new seeds without
 reaching 95% confidence, an observed 1.0-point gap when hold is scored on its
-own forward, and unclamped extrapolation that is destructive. Depth remains confounded with initialisation. Nothing here
+own forward, and two extrapolating predictors that are destructive with or
+without projection. Depth remains confounded with initialisation. Nothing here
 concerns a generated method.
 
 

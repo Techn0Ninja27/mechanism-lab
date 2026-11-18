@@ -31,20 +31,28 @@ the stored confirmation run: G1 0.764, hold 0.737.
 | lag1_emit | 0.416 | -32.2 ± 1.6 (0/8) | -34.9 ± 1.4 (0/8) | +0.3 ± 0.2 (5/8) | 5% / 10% | 2% / 3% |
 
 `sni_emit` projects only the emitted value; `sni_state` also self-feeds the
-projected value. Negativity columns describe the raw forecast before any
+projected value. The norm column is the norm of the negative part divided by
+the norm of the forecast, a ratio and not a share. `sni_state`'s negativity is
+measured on forecasts produced from an already-projected state, so its row is
+not like-for-like with `sni`. "Final two sync cycles" means the final 32
+epochs (88 to 119). Negativity columns describe the raw forecast before any
 projection.
 
 ## Reading
 
-- **Projection alone is insufficient to reach hold.** Every projected arm is
-  still 32 to 34 points below hold, in all eight seeds.
-- **Projection helps the SNI-style recurrence a little**: +4.4 ± 2.1 points
-  over its raw form when only the output is projected, +3.2 ± 1.7
+- **Projection alone is insufficient to reach hold.** Every projected arm's
+  mean is still 32 to 34 points below hold, and every seed is below hold
+  (0 of 8 positive). Individual seeds vary: the best single seeds are 20 to 25
+  points below.
+- **The SNI-style recurrence scores a little higher with projection**:
+  +4.4 ± 2.1 points over its raw form when only the output is projected
+  (6 of 8 seeds; clears 2 SE narrowly, 95% interval includes zero), +3.2 ± 1.7
   (inconclusive) when the state is also projected. For lag1 the change is
   +0.35 points, inside the 0.5-point band.
-- **lag1 fails with very little negative mass**: 5 to 10% of entries are
-  negative, carrying 2 to 3% of the forecast norm, yet it sits 32 points
-  below hold. Whatever breaks lag1 here, sign violations are not a
+- **lag1 fails with little negative mass on average**: 6% and 11% of entries
+  are negative in layers 1 and 2, with a mean negative-part norm ratio of 2%
+  and 3%, yet it sits 33 points below hold. These are means over the 93 stale
+  epochs; per-run maxima reach 42% and 55% of entries. Whatever breaks lag1 here, sign violations are not a
   sufficient description of it.
 - About a fifth of SNI-style forecast entries are negative.
 
@@ -67,8 +75,11 @@ Found by Codex's code review after the freeze; frozen files were not changed.
 ## Consequence for the benchmark
 
 In this regime hold remains the baseline to beat, and the gap from hold to
-G1 (2.7 ± 1.2 points, passing the allocation rule but not 95%) is what a
-better estimator could act on. The simple extrapolators, projected or not,
+G1 (2.7 ± 1.2 points on the exact forward, passing the allocation rule but
+not 95%; 1.0 ± 0.4 with hold scored on its own forward) is what a better
+estimator could act on. A later development screen
+(`../gnn-generation-stage0`) found that averaging the last two syncs beats
+hold, so hold is no longer the strongest simple baseline. The simple extrapolators, projected or not,
 are far below hold. No further Cora diagnostics are planned.
 
 
