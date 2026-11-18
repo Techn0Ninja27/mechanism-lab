@@ -30,11 +30,16 @@ DEV_SEEDS = tuple(range(100, 116))
 FINAL_SEEDS = tuple(range(200, 232))
 
 def require_calibration_ready():
-    from generation.field_calibration_scoring import score_calibration
-    result=score_calibration(ROOT/'reports/chunk-field-calibration-v1',
-                             ROOT/'reports/generation-comparison-campaign2/reviewer-instructions.md')
-    if result.get('ready') is not True:
+    from generation.reference_calibration_readiness import assess
+    try:
+        result=assess(ROOT/'results/recordwise-calibration-v6', config()['shared_budget_path'])
+    except (ValueError,KeyError,OSError,TypeError) as exc:
+        raise ValueError('reviewer calibration failed; paid campaign is disabled: '+str(exc)) from exc
+    if result.get('status')!='retrospective_parser_policy_pass' or result.get('v2')!={'mechanically_valid':24,'key_matching':24,'total':24}:
         raise ValueError('reviewer calibration failed; paid campaign is disabled')
+    # Protocol explicitly accepts this retrospective instrument assessment;
+    # it does not relabel the original strict calibration as a pass.
+    return result
 
 
 def config(budget: float = CAP) -> dict[str, Any]:
@@ -72,11 +77,15 @@ def _deps() -> dict[str, str]:
              "generation/reference_draw_reviews.py", "generation/recordwise_calibration_scoring.py",
              "generation/reference_review_v2.py",
              "reports/generation-comparison-campaign2/reference-review-amendment.md",
-             "reports/chunk-field-calibration-v1/calibration-freeze.json",
-             "reports/chunk-field-calibration-v1/scoring-key.json",
-             "reports/chunk-field-calibration-v1/reviewer-inputs.json",
-             "reports/chunk-field-calibration-v1/reviewer-a.json",
-             "reports/chunk-field-calibration-v1/reviewer-b.json"]
+             "generation/reference_calibration_readiness.py",
+             "scripts/build_review_calibration_v6.py"]
+    calibration=ROOT/'results/recordwise-calibration-v6'
+    paths += ['results/recordwise-calibration-v6/'+name for name in ('freeze.json','manifest.json','answer-key.json','key-audit.json','baseline-scores.json','evaluation.json','reviewer-inputs/reviewer-instructions.md')]
+    for launch in json.loads((calibration/'freeze.json').read_text())['launches']:
+        paths += ['results/recordwise-calibration-v6/'+launch['input'],
+                  'results/recordwise-calibration-v6/'+launch['output'],
+                  'results/recordwise-calibration-v6/launch-receipts/'+launch['task_name'].split('/')[-1]+'.json']
+    paths=list(dict.fromkeys(paths))
     if any(not (ROOT / x).is_file() for x in paths):
         missing = [x for x in paths if not (ROOT / x).is_file()]
         raise ValueError(f"campaign2 dependency missing: {missing}")

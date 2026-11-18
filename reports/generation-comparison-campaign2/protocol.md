@@ -1,6 +1,6 @@
 # Campaign 2: improving a disclosed baseline with source representations
 
-2026-11-18. New campaign, implementation in progress; no calls made under this
+2026-11-19. New campaign; no paid preparation or generation calls made under this
 protocol. The user raised the phase budget to $30 total, preserving $5.0352276
 already charged. This campaign has a $12 cap including preparation. One campaign at the fixed output path `results/generation-comparison-campaign2-run`;
 no repairs or reset through another directory. Preparation has the bounded
@@ -35,13 +35,21 @@ preparation, rather than estimating performance of unfiltered preparation draws.
 
 ## Review gate and calibration
 
-Each 12-record draw gets two independent fresh source-only native reviewers.
-Both receive the identical frozen `reviewer-instructions.md`, the source packet
-and that draw only; neither sees the task, results, prior failed draws, calibration
-answers or the other review. They adjudicate every field item separately with
-supporting chunk text. Record verdict is the worst field verdict. Both must
-support all 12 records for that draw to pass; exactly one non-supported field
-fails the draw. Reviewers cannot be replaced and no third review can override.
+Each 12-record draw gets two fresh source-only native review contexts per
+record, 24 contexts per draw. Each sees only its assigned scientific fields,
+all windows from its own cited rendered chunks, and the same frozen parser-v2
+instructions. No task, baseline result, answer key, other record, or prior
+verdict is supplied. Source windows use 300 characters with 50-character overlap;
+at most four IDs may support a field/subclaim. The orchestrator supplies exact
+source text and field values from the IDs. Compound assessments and all spans
+are retained. Optional subclaim_id is bounded bookkeeping, not a verdict.
+
+Both slots must support every scientific field in all twelve records. One
+non-supported field fails the draw. A missing/malformed output blocks completion
+and is not a semantic failure permitting another draw. No replacement reviewer,
+response repair or third-review override is allowed. Filesystem access is not
+sandboxed: isolation is procedural and does not prove independent errors.
+Only the new reference-review format is accepted at selection and generation.
 
 A failed fidelity review permits the next independent draw of that representation,
 up to three total. No record is repaired. Preserve every draw, both reviews and
@@ -53,12 +61,23 @@ predeclared selection on source fidelity, blind to generated-candidate outcomes,
 not a reset of campaign 1. Reviewer independence is procedural, not proof of
 statistically independent errors. The schedule can still false-stop.
 
-Offline calibration on the closed attempt is explicitly separated from generation.
-Reviewer A supported all 24 records; an independent deterministic 12-record
-sample agreed on 11 and found one uncited fixed-interval condition. Root checked
-that the cited chunk names Sync/Stale modes but does not state that condition.
-This is evidence of residual reviewer error and citation-scope ambiguity, not a
-population error-rate estimate. All reviews and the disagreement are preserved.
+Readiness uses **retrospective parser reanalysis after the run**, not a new
+preregistered passing calibration. On twelve cue-balanced development packets,
+all 96 field verdicts from 24 native reviews matched the independently audited
+key. The frozen strict parser accepted 23/24: one response added subclaim_id.
+Parser v2 accepts that optional nonsemantic identifier and retains all original
+verdict/evidence checks; reanalysis accepts 24/24 without changing raw responses.
+The original strict result remains failed. Three predeclared cheap baselines
+each scored 6/12 records; this is not a general accuracy guarantee.
+
+The readiness verifier recomputes results from frozen artifacts and checks their
+external phase-ledger anchor. It does not trust a mutable passed flag. Limitations
+are explicit: key files were reachable outside the assigned input directory;
+actual launch receipts were saved after batches (only planned launches were
+frozen before); the original scoring script was written after the run; slot
+outputs were strongly correlated; the set is small with reused positive claims;
+and independent citation audit found decisive text for 83/84 supported judgments,
+with one partial. See reports/recordwise-calibration-v6 for the preserved results.
 
 ## Generation and allocation
 

@@ -75,8 +75,8 @@ class Campaign2HarnessTests(unittest.TestCase):
         p=patch.object(c,'require_calibration_ready',return_value=None);p.start();self.addCleanup(p.stop)
         FakeClient.calls=[];FakeClient.fail=False
         p=patch.object(c,'Client',FakeClient);p.start();self.addCleanup(p.stop)
-    def test_current_failed_calibration_blocks_client(self):
-        with patch.object(c,'require_calibration_ready',self.actual_calibration_check):
+    def test_calibration_failure_blocks_client(self):
+        with patch.object(c,'require_calibration_ready',self.actual_calibration_check), patch('generation.reference_calibration_readiness.assess',side_effect=ValueError('tampered calibration')):
             with self.assertRaisesRegex(ValueError,'calibration failed'):
                 life.execute_draw(self.out,'atoms',0)
         self.assertEqual(FakeClient.calls,[])
