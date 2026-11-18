@@ -16,10 +16,11 @@ sys.path[:0] = [str(ROOT), str(ROOT / "scripts")]
 from world_search import Client
 from generation.causal_program import compile_program
 from scripts.generate_causal_campaign import (ARMS, GRAMMAR, SYSTEM, TASK,
-    canonical, digest, sha, strict_json, write_new, reserve, random_inventory,
+    canonical, digest, sha, strict_json, write_new, reserve,
     linear_controls, aa_calibration, parse_candidates, expected_request,
     request_hash, config as old_config)
-from scripts.generate_causal_campaign import _plain_representation
+from scripts.generate_causal_campaign import _plain_representation, _source_header
+from generation.campaign2_random_controls import random_inventory
 
 MODEL_ARMS = ("task-only", "raw", "atoms", "distill")
 CALLS_PER_ARM = 6
@@ -71,7 +72,7 @@ def _deps() -> dict[str, str]:
              "reports/generation-comparison-v2/comparator-amendment.md",
              "reports/generation-comparison-v2/control-selection.json", "scripts/prepare_chunk_representations.py", "scripts/run_campaign2_preparation.py",
              "reports/generation-comparison-campaign2/reviewer-instructions.md",
-             "generation/campaign2_decisions.py", "scripts/run_causal_campaign.py",
+             "generation/campaign2_decisions.py", "generation/campaign2_random_controls.py", "scripts/run_causal_campaign.py",
              "generation/campaign_journal.py", "generation/field_calibration_scoring.py",
              "generation/evidence_reference_packets.py", "generation/record_review_packets.py",
              "generation/reference_draw_reviews.py", "generation/recordwise_calibration_scoring.py",
@@ -125,6 +126,7 @@ def plan(pack_path: Path, out: Path) -> dict[str, Any]:
            "source_support_rule": "claims and ports must be entailed by cited source chunks; quotes are pointers",
            "strong_control": "mean_sync selected from stage-0 and evaluated on final seeds",
            "random_inventory_sha256": digest({"candidates": random_rows}),
+           "controls_sha256": digest({"linear_controls": controls}),
            "scope": "One new campaign; six independent calls per model arm; no novelty claim."}
     write_new(out / "random-inventory.json", {"candidates": random_rows})
     write_new(out / "controls.json", {"linear_controls": controls})
@@ -134,16 +136,20 @@ def plan(pack_path: Path, out: Path) -> dict[str, Any]:
 def verify(out: Path) -> tuple[dict[str, Any], dict[str, Any], dict[str, str]]:
     doc = json.loads((out / "plan.json").read_text())
     if doc.get("schema") != "causal-generation-campaign2-plan.v1": raise ValueError("campaign2 plan schema")
+    if doc.get("task") != TASK or doc.get("grammar") != GRAMMAR: raise ValueError("task or grammar changed")
+    if doc.get("preparation_manifest_sha256") != sha(out/"preparation/manifest.json"): raise ValueError("preparation manifest changed")
     if doc.get("config") != config(): raise ValueError("campaign2 config changed")
     if doc.get("dependency_hashes") != _deps(): raise ValueError("campaign2 dependency changed")
     if doc.get("pack_sha256") != sha(out / "sourcepack.json"): raise ValueError("source pack changed")
     if doc.get("cases") != cases() or doc.get("dev_seeds") != list(DEV_SEEDS) or doc.get("final_seeds") != list(FINAL_SEEDS): raise ValueError("campaign2 sampling changed")
+    if doc.get("campaign_cap_usd") != CAP or doc.get("prep_draws_per_representation") != 3: raise ValueError("campaign2 limits changed")
     if doc.get("candidate_capacity") != K or doc.get("calls_per_arm") != CALLS_PER_ARM or doc.get("preparation_cap_usd") != 3.0: raise ValueError("campaign2 capacity changed")
     inv = json.loads((out / "random-inventory.json").read_text())
     if doc.get("random_inventory_sha256") != digest(inv): raise ValueError("random inventory changed")
+    if inv != {"candidates":random_inventory(replicates=6)}: raise ValueError("random sampler inventory changed")
     if len(inv.get("candidates", [])) != 24: raise ValueError("campaign2 random inventory must contain 24 controls")
     controls = json.loads((out / "controls.json").read_text())
-    if len(controls.get("linear_controls", [])) != 4: raise ValueError("controls changed")
+    if doc.get("controls_sha256") != digest(controls) or controls != {"linear_controls":linear_controls()}: raise ValueError("controls changed")
     pack = json.loads((out / "sourcepack.json").read_text())
     prompts = {"atoms": _prep_prompt(pack, "atoms"), "distillations": _prep_prompt(pack, "distillations")}
     manifest = json.loads((out / "preparation/manifest.json").read_text())
@@ -258,9 +264,9 @@ def generation_plan(out: Path) -> dict[str, Any]:
         return _plain_representation("atoms" if key == "atoms" else "distillations", records, pack)
     common = "<<<TASK>>>\n" + TASK + "\n" + GRAMMAR + "\n<<<END TASK>>>\n\n"
     prompts["task-only"] = common + "REFERENCE MATERIAL: none"
-    prompts["raw"] = common + "REFERENCE MATERIAL (source chunks)\n" + raw
-    prompts["atoms"] = common + "REFERENCE MATERIAL (typed records)\n" + render(atoms, "atoms")
-    prompts["distill"] = common + "REFERENCE MATERIAL (source-linked summaries)\n" + render(distill, "distillations")
+    prompts["raw"] = common + "REFERENCE MATERIAL\n" + _source_header(pack) + "\n\nSOURCE EXCERPTS\n" + raw
+    prompts["atoms"] = common + "REFERENCE MATERIAL\n" + render(atoms, "atoms")
+    prompts["distill"] = common + "REFERENCE MATERIAL\n" + render(distill, "distillations")
     outdir = out / "prompts"; outdir.mkdir(exist_ok=True); files={}
     for arm, text in prompts.items():
         path=outdir/f"{arm}.txt"

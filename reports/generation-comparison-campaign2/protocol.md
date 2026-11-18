@@ -83,7 +83,9 @@ with one partial. See reports/recordwise-calibration-v6 for the preserved result
 
 Use the same model configuration (Opus 5.5, low reasoning, 12,288 output-token
 cap, omitted temperature), common task, bounded AST grammar and literal
-scientific-field rendering as the preceding design. The common task discloses
+scientific-field rendering as the preceding design. All three source conditions
+receive the identical source identity header (titles, URLs and hashes) and
+REFERENCE MATERIAL prefix; raw excerpts are complete. The common task discloses
 the two-observation mean comparator and first-cycle h(20)/h(19)/interval-one
 semantics. No measured performance or evaluation results enter any prompt.
 
@@ -157,9 +159,18 @@ calls, including BYOK routing if present; no BYOK exemption or $50 cap is assume
 | No positives, all selected calls complete and adequately precise | Eligible to close this task at these settings |
 | Any no-eligible call, failed or low-precision pick | Inconclusive for closure |
 
-Random groups now match six calls per model condition (24 slots); the inherited
-sampler is a narrow perturbation family, not exhaustive random program search.
-Its duplicate and effectively-hold programs remain in the record. A/A was a
+Random groups match six calls per model condition (24 slots). Before any paid
+call the campaign-2 sampler replaces the inherited three-program control.
+Seed 20261119 samples signed gain magnitudes uniformly from [.01,.1], memory
+EMA coefficients from [.1,.9], and one of six vector bases with replacement:
+last observation, previous observation, their two differences, memory, or
+memory plus last observation. Prediction is last_sync plus
+`gain * tanh(vector) * last_sync`, an elementwise relative perturbation bounded
+by 10%. Memory updates are active EMAs. The 24 frozen ASTs and their predictions
+on a fixed synthetic state are distinct; none is structurally forced to hold.
+This remains a narrow perturbation family, not exhaustive random program search.
+Distinct ASTs and one synthetic signature do not establish semantic uniqueness
+on every real trajectory. No Cora result was used to select these parameters. A/A was a
 stage-0 identity check and is not an additional generation-inventory slot.
 The final inventory capacity is 124: 96 model +24 random +4 fixed controls.
 Preparation reserves at most $3 within the $12 campaign cap; all draw calls use

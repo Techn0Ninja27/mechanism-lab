@@ -20,6 +20,15 @@ class Campaign2Tests(unittest.TestCase):
         r=[x for x in self.full() if x["arm"]!="atoms"]+rows("atoms",6,positive=True,hashes=["a","b","c","a","b","c"])
         self.assertEqual(classify_campaign(r,expected_slots=SLOTS)["decision"],"replication_candidate")
 
+    def test_one_and_two_task_only_positives(self):
+        for count,decision in ((1,'replication_candidate'),(2,'attribution_blocked')):
+            with self.subTest(count=count):
+                r=self.full()
+                for row in r:
+                    index=int(row['call_id'].rsplit('-',1)[1])
+                    row['better_than_control']=(row['arm']=='atoms' and index<3) or (row['arm']=='task-only' and index<count)
+                self.assertEqual(classify_campaign(r,expected_slots=SLOTS)['decision'],decision)
+
     def test_two_source_programs_no_escalation(self):
         r=[x for x in self.full() if x["arm"]!="atoms"]+rows("atoms",6,positive=True,hashes=["a","b","a","b","a","b"])
         self.assertEqual(classify_campaign(r,expected_slots=SLOTS)["decision"],"no_escalation")

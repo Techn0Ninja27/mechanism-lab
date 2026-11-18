@@ -66,6 +66,15 @@ class ReferenceLifecycleTests(unittest.TestCase):
         self.assertEqual(generated['candidates'],124)
         self.assertEqual(json.loads((self.out/'inventory.json').read_text())['status'],'generated')
         self.assertEqual(len(FakeClient.calls),26)
+        from scripts.generate_causal_campaign import _source_header
+        pack=json.loads((self.out/'sourcepack.json').read_text());header=_source_header(pack)
+        for arm in ('raw','atoms','distill'):
+            self.assertIn(header,(self.out/'prompts'/f'{arm}.txt').read_text())
+        self.assertNotIn(header,(self.out/'prompts/task-only.txt').read_text())
+        raw=(self.out/'prompts/raw.txt').read_text()
+        for chunk in c._source_view(pack)['chunks']:
+            self.assertIn(chunk['text'],raw)
+
         path=self.out/'prep-draws/atoms/00/reference-slots/a/review-00.json'
         path.write_text(path.read_text()+' ')
         with self.assertRaises(ValueError): c._require_chunk_gate(self.out)
