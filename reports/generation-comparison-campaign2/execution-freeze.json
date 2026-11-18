@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-19",
+  "code_commit": "63c8e24",
+  "canonical_path": "results/generation-comparison-campaign2-run",
+  "plan_sha256": "7b290d4bc21ddc660b9ef8f65c38499c5bb725932637f95070304bd279a7a7ba",
+  "dependency_count": 93,
+  "preparation_cap_usd": 3,
+  "campaign_cap_usd": 12,
+  "phase_cap_usd": 30,
+  "phase_charged_usd": 5.0352276,
+  "model_calls": 24,
+  "model_candidates": 96,
+  "random_candidates": 24,
+  "fixed_controls": 4,
+  "calibration_basis": "retrospective parser policy amended after run; original strict failure preserved",
+  "status": "frozen_for_final_delta_audit_no_paid_calls"
+}
