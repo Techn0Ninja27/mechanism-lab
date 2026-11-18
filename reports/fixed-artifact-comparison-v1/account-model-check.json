@@ -1,0 +1,12 @@
+{
+  "schema": "fixed-artifact-account-model-check.v1",
+  "date_utc": "2026-11-18T20:09:06.364860+00:00",
+  "endpoint": "https://openrouter.ai/api/v1/models/user",
+  "paid_requests": 0,
+  "status": "read_only_query_completed",
+  "models_present": {
+    "anthropic/claude-opus-5.5": true,
+    "anthropic/claude-fable-5.2": true
+  },
+  "limitation": "Presence in account-filtered catalog does not prove a successful provider request or actual BYOK routing."
+}
