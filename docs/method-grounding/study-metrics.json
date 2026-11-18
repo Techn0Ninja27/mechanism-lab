@@ -83,6 +83,19 @@
           ]
         }
       }
+    },
+    "reference-review-calibration-v1": {
+      "result_sha256": "4518b3cf50965b4d9060a13d78fe71fb3cd810fbd868bde55aae4ce305cb0014",
+      "metric_paths": {
+        "primary": {
+          "mechanically_valid_reviews": ["mechanically_valid_count"],
+          "reviews_matching_key": ["matches_key_count"],
+          "packets": ["packet_count"]
+        },
+        "secondary": {
+          "reviews": ["review_count"]
+        }
+      }
     }
   }
 }

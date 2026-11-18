@@ -1,0 +1,7 @@
+{
+  "chain_id": "recordwise-calibration-v5-reference-reviews",
+  "anchor_head": "2e8b47fbf14d114f124c60f7bc949bab396a229174a26f606f934368651cfccc",
+  "evaluation_sha256": "4518b3cf50965b4d9060a13d78fe71fb3cd810fbd868bde55aae4ce305cb0014",
+  "money_unchanged": true,
+  "scope": "Post-completion provenance anchor; does not prove independent reasoning."
+}

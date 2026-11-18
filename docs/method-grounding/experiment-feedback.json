@@ -424,6 +424,26 @@
       "result_sha256": "cf2118c5aa882fc3dc0406241f18ec1ef1b0d5913f0731a7b184e07209add950",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "reference-review-calibration-v1",
+      "tested_change": "ID-based source-reference review instrument: 16 fresh native reviews of eight reused development packets selected fixed evidence-window IDs; code materialized the source text and compared each field verdict with the existing frozen key.",
+      "verdict": "development_instrument_pass_not_accuracy_estimate",
+      "scope": "Eight reused development examples, two source-only reviews per packet; 16 of 16 reviews passed mechanical evidence validation and matched all frozen field labels. No paid calls and no production authorization.",
+      "limitations": [
+        "This is a small reused development calibration, not a held-out reviewer accuracy estimate.",
+        "Matching a frozen key does not prove reviewer independence or semantic truth beyond the audited source/key.",
+        "The earlier v4 attempt remains failed because two reviews transcribed LaTeX-heavy evidence incorrectly.",
+        "The instrument result does not compare atoms with prose and establishes no novelty or usefulness claim."
+      ],
+      "report_path": "operator-studies/reference-review-calibration-v1/README.md",
+      "result_path": "operator-studies/reference-review-calibration-v1/summary.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "4518b3cf50965b4d9060a13d78fe71fb3cd810fbd868bde55aae4ce305cb0014",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
