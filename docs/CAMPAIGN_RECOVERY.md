@@ -36,3 +36,12 @@ added to the real phase ledger. Reservations and monetary totals were unchanged.
 Those entries are retained as historical test metadata, not silently removed.
 The fixture now uses a temporary ledger and checks that the real ledger remains
 byte-identical (or absent) throughout each test.
+
+## Interrupted provider calls
+
+A complete local provider receipt matching the frozen request can now rebuild
+the interrupted draw without another API call. A missing or ambiguous receipt
+causes an explicit terminal stop, including when interruption might have
+occurred before dispatch. We cannot infer that a request was never sent from
+the absence of a receipt. This conservative boundary can discard an otherwise
+recoverable attempt, but does not risk charging for a duplicate request.

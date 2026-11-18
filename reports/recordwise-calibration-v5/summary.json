@@ -1,0 +1,271 @@
+{
+  "schema": "reference-calibration-score.v1",
+  "date": "2026-11-19",
+  "packet_count": 8,
+  "review_count": 16,
+  "mechanically_valid_count": 16,
+  "matches_key_count": 16,
+  "calibration_passed": true,
+  "production_authorized": false,
+  "scope": "Development instrument check on the same eight frozen examples; not a population accuracy estimate or proof of reviewer independence.",
+  "manifest_sha256": "6ae03f52147777d4ac06ec076a343dfc0d8b251c2b90167780d0bcba697ea544",
+  "scorer_sha256": "171c3623e9da8cdb23e13c13ebd6f8f0230aef78ec7934ef1a740c2eccc597cc",
+  "reviews": [
+    {
+      "packet": "x9c4l7p2",
+      "index": 0,
+      "slot": "a",
+      "agent": "/root/id_review_0a",
+      "input_sha256": "d7b6046da6a153dc01890d1943168341acd5c0bfa560d00a04d28feb2b1a2e8a",
+      "review_sha256": "d0878911abda0dd10edf8aa97b600c71d8f5815345eb14d9b3db1636a2c1a6f3",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "x9c4l7p2",
+      "index": 0,
+      "slot": "b",
+      "agent": "/root/id_review_0b",
+      "input_sha256": "d7b6046da6a153dc01890d1943168341acd5c0bfa560d00a04d28feb2b1a2e8a",
+      "review_sha256": "f37877fd9cb7343afbf9cd5195c0be32af91134c815554eb6833090507783cc2",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "q7m2v9k4",
+      "index": 1,
+      "slot": "a",
+      "agent": "/root/id_review_1a",
+      "input_sha256": "8d3fe3b2f96e3a607fbbfb21f9690553016926382f564e412bf5dff41190483a",
+      "review_sha256": "3a6412945e5b0eb5b5c60a46e6f3baea17baed3d7400e015f585ce310272cbbf",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "q7m2v9k4",
+      "index": 1,
+      "slot": "b",
+      "agent": "/root/id_review_1b",
+      "input_sha256": "8d3fe3b2f96e3a607fbbfb21f9690553016926382f564e412bf5dff41190483a",
+      "review_sha256": "f922e0d7951c59a87c7a30ea0dd0ff444a55c37d696c0360fd1443e1d5b1aadb",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "h5p3t8w2",
+      "index": 2,
+      "slot": "a",
+      "agent": "/root/id_review_2a",
+      "input_sha256": "570c28e6b92471071ac8ca00f79f6e4e84edd1713deb30e3a0661b9b58c4942d",
+      "review_sha256": "33142c591d79b078f76d0e6bd6e980e8fad1292129d10649434985e0b3b65024",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "h5p3t8w2",
+      "index": 2,
+      "slot": "b",
+      "agent": "/root/id_review_2b",
+      "input_sha256": "570c28e6b92471071ac8ca00f79f6e4e84edd1713deb30e3a0661b9b58c4942d",
+      "review_sha256": "67a61833680e713e08a4f0a16518974903f659a5c0a36f143bc2fe49101a77ad",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "r2y7u4j9",
+      "index": 3,
+      "slot": "a",
+      "agent": "/root/id_review_3a",
+      "input_sha256": "bb893050587a79faa22f7fa69bd49296283caa67721b44700fd8b954fac144d9",
+      "review_sha256": "4fbdf57d7c6e572425168fa59e6552f885547d7b1be1e5293d2002725978e186",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "contradicted"
+      }
+    },
+    {
+      "packet": "r2y7u4j9",
+      "index": 3,
+      "slot": "b",
+      "agent": "/root/id_review_3b",
+      "input_sha256": "bb893050587a79faa22f7fa69bd49296283caa67721b44700fd8b954fac144d9",
+      "review_sha256": "b03cfc3eb2faf94642aefa92d09b6194bceafa784aa40caf13757ed9168bbda5",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "contradicted"
+      }
+    },
+    {
+      "packet": "m8f1z6q3",
+      "index": 4,
+      "slot": "a",
+      "agent": "/root/id_review_4a",
+      "input_sha256": "a2b68ef6b78b4cbb7201d876d23b844d28aee1f910ad3ac5c2806cd7a241a29d",
+      "review_sha256": "7305dcbeb7e9fc2a28abbbe906bc62b840ab49bdd1e9e5661f1fe6044b22cc2f",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "m8f1z6q3",
+      "index": 4,
+      "slot": "b",
+      "agent": "/root/id_review_4b",
+      "input_sha256": "a2b68ef6b78b4cbb7201d876d23b844d28aee1f910ad3ac5c2806cd7a241a29d",
+      "review_sha256": "72662488d2f27f4a2a394d1b80eb66261fe063e4abd7b073b69f509bab6b6248",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "n3a8e5v1",
+      "index": 5,
+      "slot": "a",
+      "agent": "/root/id_review_5a",
+      "input_sha256": "46a90513e5d34fac2edfe182593db680754a37f20f8b399df6329e5dca21d7f2",
+      "review_sha256": "09716f57c8b765b15edf67bf83b7d2b1e45a46f683e8dc7b802d2b16ff2c0a74",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "n3a8e5v1",
+      "index": 5,
+      "slot": "b",
+      "agent": "/root/id_review_5b",
+      "input_sha256": "46a90513e5d34fac2edfe182593db680754a37f20f8b399df6329e5dca21d7f2",
+      "review_sha256": "3471368f5cdccbeec131393c2b614f6403b31149eb39d0d6d16d4d922908dc64",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "c4r8n1x6",
+      "index": 6,
+      "slot": "a",
+      "agent": "/root/id_review_6a",
+      "input_sha256": "6741c4de6e6a1fed82c470ddd36cca7d8f39288e01de479bc1014f6dabea6ad0",
+      "review_sha256": "b2ffcf0e03b2121271694f4053dbd07d56b3f5a269d8fd59d4ffd62f78b8df25",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "c4r8n1x6",
+      "index": 6,
+      "slot": "b",
+      "agent": "/root/id_review_6b",
+      "input_sha256": "6741c4de6e6a1fed82c470ddd36cca7d8f39288e01de479bc1014f6dabea6ad0",
+      "review_sha256": "886c8eceec6934bcc75a444859e0436599c480a4591d7546dd3ac3ca5116e7d7",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "b6k9d2s7",
+      "index": 7,
+      "slot": "a",
+      "agent": "/root/id_review_7a",
+      "input_sha256": "dfe3fa486323aea7efffca149fde8434d0eb9ec338967ba667bd1309dd5b77e3",
+      "review_sha256": "f1c559f424f352fd85e8fe7be8601eabc63e095a07f4d8858ab67730ec2b1b77",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "b6k9d2s7",
+      "index": 7,
+      "slot": "b",
+      "agent": "/root/id_review_7b",
+      "input_sha256": "dfe3fa486323aea7efffca149fde8434d0eb9ec338967ba667bd1309dd5b77e3",
+      "review_sha256": "e7017d661fafe237f160a5cb97213d0c0a3851b791c4806540c4aa3d17a1d426",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    }
+  ]
+}

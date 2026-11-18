@@ -30,6 +30,57 @@ def _transaction(out,name,values=None,existing=(),**payload):
     return journal.commit_event(out,name,payload,artifacts,anchor=_anchor(out),chain_id=_chain(out))
 def _event(out,name,paths,**payload):return _transaction(out,name,existing=paths,**payload)
 
+def _recover_interrupted_draws(out, pack):
+    """Reconcile a draw whose paid call finished before draw_completed was logged.
+
+    The provider receipt is the durable boundary: a complete, hash-valid call
+    record can be materialised into the already-started draw without another
+    API request.  Anything else is deliberately terminal because the request
+    may have reached the provider and its cost cannot be inferred safely.
+    """
+    state = journal.audit(out, allow_active=True)
+    terminal = {
+        e.get('payload', {}).get('operation_id')
+        for e in state['events']
+        if e.get('event') in {'draw_completed', 'draw_failed'}
+    }
+    for event in state['events']:
+        if event.get('event') != 'draw_started':
+            continue
+        payload = event.get('payload', {})
+        operation_id = payload.get('operation_id')
+        if operation_id in terminal:
+            continue
+        kind, index = payload.get('kind'), payload.get('draw')
+        if kind not in KINDS or type(index) is not int:
+            _stop(out, 'interrupted draw has invalid identity')
+            raise ValueError('campaign is permanently stopped: invalid interrupted draw')
+        draw = _draw_dir(out, kind, index)
+        call = out / 'calls' / f'prep-{kind}-d{index}-0.json'
+        if not call.is_file():
+            _stop(out, f'interrupted draw before provider receipt: {operation_id}')
+            raise ValueError('campaign is permanently stopped: interrupted draw has no provider receipt')
+        try:
+            rec = _read(call)
+            req = c.expected_request(c._prep_prompt(pack, kind))
+            if (rec.get('status') != 'complete' or rec.get('request') != req or
+                    rec.get('request_hash') != c.request_hash(req)):
+                raise ValueError('provider receipt is incomplete or request-bound incorrectly')
+            value = getattr(c._prep(), f'validate_{kind}')(c.strict_json(rec['content']), pack)
+        except BaseException as exc:
+            _stop(out, f'interrupted draw has ambiguous provider state: {type(exc).__name__}: {str(exc)[:240]}')
+            raise ValueError('campaign is permanently stopped: ambiguous interrupted provider call') from exc
+        draw.mkdir(parents=True, exist_ok=True)
+        target = draw / f'{kind}.json'
+        meta = {'kind': kind, 'draw': index, 'status': 'awaiting_reviews',
+                'plan_sha256': c.sha(out / 'plan.json'),
+                'call_path': str(call.relative_to(out)), 'call_sha256': c.sha(call),
+                'path': str(target.relative_to(out)),
+                'representation_sha256': journal.sha256_bytes(_bytes(value))}
+        _transaction(out, 'draw_completed', {draw / 'draw.json': meta, target: value},
+                     existing=[call], operation_id=operation_id,
+                     recovered_after_interruption=True)
+
 def _campaign_root(path):
     for parent in path.parents:
         if (parent/'plan.json').is_file():return parent
@@ -53,8 +104,18 @@ def _locked(out):
         if (out/'campaign-stop.json').exists(): raise ValueError('campaign is permanently stopped')
         journal.recover_anchored_tail(out,_anchor(out),chain_id=_chain(out))
         journal.recover_pending(out,anchor=_anchor(out),chain_id=_chain(out))
-        state=journal.audit(out)
+        # An unfinished draw is recoverable only when its provider receipt is
+        # complete and hash-bound; _recover_interrupted_draws handles that
+        # boundary before the normal protected-artifact checks below.
+        state=journal.audit(out, allow_active=True)
         if state['stopped']: raise ValueError('campaign is permanently stopped by journal')
+        c.require_calibration_ready()
+        _,pack,_=c.verify(out)
+        # Reconcile an active draw before checking for the transient draw
+        # directory that execute_draw creates immediately after draw_started.
+        # A complete receipt is recoverable; a missing/ambiguous receipt stops.
+        _recover_interrupted_draws(out, pack)
+        state=journal.audit(out)
         for event in state['events']:
             payload=event['payload']
             if event['event']=='review_decided' and payload.get('draw')==MAX_DRAWS-1:
@@ -71,8 +132,6 @@ def _locked(out):
             if draw.is_dir() and ((draw/'failure.json').exists() or not (draw/'draw.json').exists()):
                 _stop(out,'recorded failed or interrupted draw')
                 raise ValueError('campaign is permanently stopped: failed or interrupted draw')
-        c.require_calibration_ready()
-        _,pack,_=c.verify(out)
         yield out,pack
 
 def _validate_draw(out,kind,index,pack):
