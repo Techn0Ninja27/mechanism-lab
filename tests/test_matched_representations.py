@@ -11,6 +11,7 @@ from scripts.prepare_matched_representations import (
     prepare,
     RENDER_EXCLUDED_PREFIX,
     render_source_context,
+    source_quotas,
     validate_atoms,
     validate_distillations,
 )
@@ -28,23 +29,28 @@ class MatchedRepresentationTests(unittest.TestCase):
     def atom_fixture(self):
         chunks = render_source_context(self.pack)["chunks"]
         rows = []
-        for i in range(ATOM_COUNT):
-            source = self.pack["sources"][i % len(self.pack["sources"])]
-            chunk = next(c for c in chunks if c["source_id"] == source["id"])
-            rows.append({"id": f"atom-{i:02d}", "source_id": source["id"],
-                         "statement": f"Statement {i}", "inputs": ["input"],
-                         "outputs": ["output"], "conditions": ["condition"],
-                         "unknowns": ["unknown"],
-                         "evidence": [{"chunk_id": chunk["id"], "quote": chunk["text"][:40]}]})
+        i = 0
+        for source in self.pack["sources"]:
+            for _ in range(source_quotas(self.pack)[source["id"]]):
+                chunk = next(c for c in chunks if c["source_id"] == source["id"])
+                rows.append({"id": f"atom-{i:02d}", "source_id": source["id"],
+                             "statement": f"Statement {i}", "inputs": ["input"],
+                             "outputs": ["output"], "conditions": ["condition"],
+                             "unknowns": ["unknown"],
+                             "evidence": [{"chunk_id": chunk["id"], "quote": chunk["text"][:40]}]})
+                i += 1
         return {"atoms": rows}
 
     def distill_fixture(self):
         rows = []
         chunks = render_source_context(self.pack)["chunks"]
+        i = 0
         for source in self.pack["sources"]:
-            chunk = next(c for c in chunks if c["source_id"] == source["id"])
-            rows.append({"source_id": source["id"], "summary": "Summary", "mechanisms": ["mechanism"],
-                         "unknowns": ["unknown"], "evidence": [{"chunk_id": chunk["id"], "quote": chunk["text"][:40]}]})
+            for _ in range(source_quotas(self.pack)[source["id"]]):
+                chunk = next(c for c in chunks if c["source_id"] == source["id"])
+                rows.append({"id": f"distill-{i:02d}", "source_id": source["id"], "summary": "Summary",
+                             "unknowns": ["unknown"], "evidence": [{"chunk_id": chunk["id"], "quote": chunk["text"][:40]}]})
+                i += 1
         return {"distillations": rows}
 
     def test_offline_plan_binds_all_sources_and_prompts(self):
@@ -56,12 +62,12 @@ class MatchedRepresentationTests(unittest.TestCase):
             self.assertEqual(manifest["paid_calls"], 0)
             prompts = json.loads((out / "prompts.json").read_text())
             self.assertEqual(set(prompts), {"atoms", "distillations"})
-            self.assertTrue(all(manifest["prompts"][k]["task_blind"] for k in prompts))
+            self.assertTrue(all(manifest["prompts"][k]["task_blind_intent"] for k in prompts))
             self.assertEqual(manifest["atom_count"], 12)
             self.assertIn("top-level key atoms", prompts["atoms"])
             self.assertIn("top-level key distillations", prompts["distillations"])
             self.assertIn("statement", prompts["atoms"])
-            self.assertIn("mechanisms", prompts["distillations"])
+            self.assertIn("unknowns", prompts["distillations"])
             self.assertEqual(len(manifest["render_exclusions"]), 1)
             self.assertEqual(manifest["render_exclusions"][0]["prefix_chars"], len(RENDER_EXCLUDED_PREFIX))
 
@@ -132,6 +138,7 @@ class MatchedRepresentationTests(unittest.TestCase):
     def test_distillations_require_all_five_sources(self):
         fixture = self.distill_fixture()
         self.assertEqual(validate_distillations(fixture, self.pack)["source_count"], 5)
+        self.assertEqual(validate_distillations(fixture, self.pack)["record_count"], 12)
         fixture["distillations"][-1]["source_id"] = fixture["distillations"][0]["source_id"]
         with self.assertRaises(ValueError):
             validate_distillations(fixture, self.pack)
