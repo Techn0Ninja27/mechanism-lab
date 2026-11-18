@@ -111,6 +111,120 @@ def _headroom_metrics(root: Path, record: dict[str, Any], warnings: list[str]) -
     return primary, secondary
 
 
+def _closedloop_metrics(root: Path, record: dict[str, Any], warnings: list[str]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Project integrity-qualified counts from the closed-loop summary v2."""
+    if record.get("id") != "gnn-closedloop-gap-v1":
+        return {}, {}
+    raw = _read(root / record["result_path"], None)
+    if not isinstance(raw, dict) or raw.get("schema") != "gnn-closedloop-gap-summary.v2":
+        warnings.append("gnn-closedloop-gap-v1: result schema is missing or malformed")
+        return {}, {}
+    checks = raw.get("integrity_checks")
+    required_checks = {"raw_bound_to_freeze", "frozen_files_unchanged", "n_seeds_16",
+                       "unique_keys", "exact_expected_key_set", "all_required_metrics_finite",
+                       "lag1_coefs_match_calibration"}
+    if (not isinstance(checks, dict) or set(checks) != required_checks
+            or any(type(checks[k]) is not bool or checks[k] is not True for k in required_checks)):
+        warnings.append("gnn-closedloop-gap-v1: integrity checks are not all true booleans")
+        return {}, {}
+    family = raw.get("primary_family")
+    if not isinstance(family, dict) or family.get("comparison") != "G1 - hold" or family.get("metric") != "eval@120":
+        warnings.append("gnn-closedloop-gap-v1: primary family is malformed")
+        return {}, {}
+
+    def integer(value: Any, label: str) -> int | None:
+        if isinstance(value, bool) or not isinstance(value, int) or value < 0:
+            warnings.append(f"gnn-closedloop-gap-v1: invalid integer {label}")
+            return None
+        return value
+
+    def finite(value: Any, label: str) -> float | None:
+        try:
+            valid = not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(float(value))
+        except (ValueError, OverflowError):
+            valid = False
+        if not valid:
+            warnings.append(f"gnn-closedloop-gap-v1: invalid numeric metric {label}")
+            return None
+        return float(value)
+
+    n_seeds = integer(raw.get("n_seeds"), "n_seeds")
+    size = integer(family.get("size"), "primary_family.size")
+    t95 = finite(family.get("t95"), "primary_family.t95")
+    t_bonf = finite(family.get("t_bonferroni"), "primary_family.t_bonferroni")
+    if n_seeds is None or size is None or t95 is None or t_bonf is None or n_seeds != 16 or size != 24:
+        warnings.append("gnn-closedloop-gap-v1: primary family counts do not match the declared study")
+        return {}, {}
+
+    regimes = raw.get("regimes")
+    regime_keys: set[tuple[int, int, bool, int]] = set()
+    if not isinstance(regimes, list) or len(regimes) != 16:
+        warnings.append("gnn-closedloop-gap-v1: regimes are missing or malformed")
+        return {}, {}
+    for row in regimes:
+        if not isinstance(row, dict):
+            warnings.append("gnn-closedloop-gap-v1: malformed primary regime")
+            return {}, {}
+        if row.get("metric") != family.get("metric"):
+            continue
+        values = (row.get("parts"), row.get("layers"), row.get("lr_drop"), row.get("metric"))
+        if (isinstance(values[0], bool) or not isinstance(values[0], int)
+                or isinstance(values[1], bool) or not isinstance(values[1], int)
+                or type(values[2]) is not bool or values[3] != family.get("metric")):
+            warnings.append("gnn-closedloop-gap-v1: malformed primary regime key")
+            return {}, {}
+        # A primary regime contributes one row per parts/layers/schedule; its
+        # sync comparisons are the 3 primary tests for that row.
+        by_sync = row.get("by_sync")
+        if not isinstance(by_sync, dict) or set(by_sync) != {"4", "16", "64"}:
+            warnings.append("gnn-closedloop-gap-v1: primary regime sync set is malformed")
+            return {}, {}
+        for sync in by_sync:
+            key = (values[0], values[1], values[2], int(sync))
+            if key in regime_keys:
+                warnings.append("gnn-closedloop-gap-v1: duplicate primary regime")
+                return {}, {}
+            regime_keys.add(key)
+    expected = {(p, l, d, s) for p in (4, 16) for l in (2, 3) for d in (False, True) for s in (4, 16, 64)}
+    if regime_keys != expected:
+        warnings.append("gnn-closedloop-gap-v1: primary regime count does not match primary family size")
+        return {}, {}
+    def flags(name: str) -> list[tuple[int, int, bool, int]] | None:
+        raw_flags = raw.get(name)
+        if not isinstance(raw_flags, list):
+            warnings.append(f"gnn-closedloop-gap-v1: {name} is malformed")
+            return None
+        parsed: list[tuple[int, int, bool, int]] = []
+        for item in raw_flags:
+            if (not isinstance(item, list) or len(item) != 4
+                    or isinstance(item[0], bool) or not isinstance(item[0], int)
+                    or isinstance(item[1], bool) or not isinstance(item[1], int)
+                    or type(item[2]) is not bool or isinstance(item[3], bool) or not isinstance(item[3], int)):
+                warnings.append(f"gnn-closedloop-gap-v1: malformed {name} flag")
+                return None
+            key = (item[0], item[1], item[2], item[3])
+            if key not in regime_keys or key in parsed:
+                warnings.append(f"gnn-closedloop-gap-v1: {name} contains an unknown or duplicate regime")
+                return None
+            parsed.append(key)
+        return parsed
+    unadjusted = flags("flagged_exploratory_unadjusted")
+    simultaneous = flags("flagged_simultaneous")
+    if unadjusted is None or simultaneous is None:
+        return {}, {}
+    if not set(simultaneous).issubset(unadjusted):
+        warnings.append("gnn-closedloop-gap-v1: simultaneous flags are not a subset of exploratory flags")
+        return {}, {}
+    primary = {"n_seeds": n_seeds, "primary_comparisons": size,
+               "flagged_exploratory_unadjusted_count": len(unadjusted),
+               "flagged_simultaneous_count": len(simultaneous)}
+    secondary = {"primary_t95": t95, "primary_t_bonferroni": t_bonf,
+                 "scope": "exploratory regime-selection development measurement; flagged regimes require independent confirmation; no engine or novelty claim",
+                 "primary_comparison": family.get("comparison"), "primary_metric": family.get("metric"),
+                 "other_families": raw.get("other_families")}
+    return primary, secondary
+
+
 def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
     """Expose hash-checked feedback without promoting it to evidence.
 
@@ -148,6 +262,8 @@ def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
         report = record["report_path"]
         result = record["result_path"]
         primary_metrics, secondary_metrics = _headroom_metrics(root, record, warnings)
+        if not primary_metrics:
+            primary_metrics, secondary_metrics = _closedloop_metrics(root, record, warnings)
         rows.append({
             "id": record["id"], "cohort": "experiment_feedback",
             "title": record["id"], "artifact_directory": str(Path(report).parent),

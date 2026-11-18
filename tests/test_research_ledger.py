@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 47)
+            self.assertEqual(ledger["study_count"], 48)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -78,6 +78,44 @@ class LedgerTests(unittest.TestCase):
         row = next(x for x in rows if x["id"] == "gnn-predictor-headroom-v1")
         self.assertEqual(row["primary_metrics"], {})
         self.assertTrue(any("invalid numeric metric constant_lr_sni_error" in item for item in warnings))
+
+    def test_closedloop_summary_projects_integrity_qualified_counts(self):
+        from scripts import export_research_ledger as ledger_module
+        record = {"id": "gnn-closedloop-gap-v1", "result_path": "operator-studies/gnn-closedloop-gap/results/summary-v2.json"}
+        warnings = []
+        primary, secondary = ledger_module._closedloop_metrics(ledger_module.ROOT, record, warnings)
+        self.assertEqual(warnings, [])
+        self.assertEqual(primary["n_seeds"], 16)
+        self.assertEqual(primary["primary_comparisons"], 24)
+        self.assertEqual(primary["flagged_exploratory_unadjusted_count"], 13)
+        self.assertEqual(primary["flagged_simultaneous_count"], 9)
+        self.assertIn("exploratory regime-selection", secondary["scope"])
+
+    def test_closedloop_malformed_flags_or_integrity_are_omitted(self):
+        from scripts import export_research_ledger as ledger_module
+        original = ledger_module._read
+        path = ledger_module.ROOT / "operator-studies/gnn-closedloop-gap/results/summary-v2.json"
+        raw = original(path, {})
+        raw["flagged_simultaneous"] = list(raw["flagged_simultaneous"]) + [list(raw["flagged_simultaneous"][0])]
+        record = {"id": "gnn-closedloop-gap-v1", "result_path": str(path.relative_to(ledger_module.ROOT))}
+        def fake_read(candidate, default):
+            return raw if Path(candidate).resolve() == path.resolve() else original(candidate, default)
+        ledger_module._read = fake_read
+        try:
+            primary, _ = ledger_module._closedloop_metrics(ledger_module.ROOT, record, [])
+        finally:
+            ledger_module._read = original
+        self.assertEqual(primary, {})
+
+        raw["integrity_checks"]["unique_keys"] = False
+        ledger_module._read = fake_read
+        warnings = []
+        try:
+            primary, _ = ledger_module._closedloop_metrics(ledger_module.ROOT, record, warnings)
+        finally:
+            ledger_module._read = original
+        self.assertEqual(primary, {})
+        self.assertTrue(any("integrity checks" in item for item in warnings))
 
     def test_feedback_hash_mismatch_is_diagnostic_and_not_a_row(self):
         from scripts import export_research_ledger as ledger_module

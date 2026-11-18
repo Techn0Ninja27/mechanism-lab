@@ -327,6 +327,26 @@
       "result_sha256": "0523442abbc9679fdb8e57bddab6676335abc9421ee0fb96c03a085ce52b1593",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "gnn-closedloop-gap-v1",
+      "tested_change": "Separate full-gradient, exact-detached and stale-hidden-state training on Cora. Across 1,600 runs and 24 primary staleness comparisons, 13 meet the exploratory rule and 9 survive the primary-family Bonferroni correction. No constant-rate two-layer regime is flagged; three-layer leads remain unconfirmed.",
+      "verdict": "exploratory_gap_not_generated_method",
+      "scope": "16 seeds (30\u201345), two depths, two random partition counts, two schedules and three sync intervals. Task-regime selection on one graph, not independent confirmation.",
+      "limitations": [
+        "Exact evaluation differs from the stale training forward path; endpoint phase varies with sync interval.",
+        "Depth is confounded with initialization; all three-layer arms use calibration-informed Glorot.",
+        "Predictor recovery and other comparisons have descriptive pointwise intervals only.",
+        "No generated-method, downstream research-engine usefulness or distributed-system benchmark claim."
+      ],
+      "report_path": "operator-studies/gnn-closedloop-gap/README.md",
+      "result_path": "operator-studies/gnn-closedloop-gap/results/summary-v2.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "672d4d5013a81214bc0395d3046d84de1a9f82acd8ca41831d83d912d0b69d61",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

@@ -1,0 +1,70 @@
+{
+  "schema": "gnn-closedloop-gap-freeze.v1",
+  "config": {
+    "calibration_seeds": [
+      20,
+      21
+    ],
+    "measurement_seeds": [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "parts": [
+      4,
+      16
+    ],
+    "layers": [
+      2,
+      3
+    ],
+    "lr_drop": [
+      false,
+      true
+    ],
+    "sync": [
+      4,
+      16,
+      64
+    ],
+    "stale_arms": [
+      "hold",
+      "sni",
+      "lag1"
+    ],
+    "never_resync_sync": 1000000,
+    "primary_metric": "eval@120",
+    "rule": {
+      "min_points": 0.5,
+      "min_se_multiple": 2.0
+    }
+  },
+  "sha256": {
+    "gap.py": "af08e6991bc751c9a7912962b8261d504218ce6e8928ab6f458089f8b6d955e6",
+    "run.py": "c4690e1204ea15470d965dc3fca326606da360411bd8603b8872fce783af67a3",
+    "test_gap.py": "ef326208c7c7caa585556c13472753b8eb9fac4a3262a0b25e5fd697cc9adb1f",
+    "PLAN.md": "ebc8ce5c3e9409dcccce98aeae3c84738128f892be839417c33f5a67eaba6cf2",
+    "PREFREEZE.md": "5b57721eb64c22b69f22108ed78e38b8bbfa788015fae1d15c97a2cf13e782f8",
+    "operator-studies/gnn-sync-gate/screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "results/gnn-sync-gate-v1/data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "results/gnn-sync-gate-v1/data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "python": "3.12.14"
+  }
+}
