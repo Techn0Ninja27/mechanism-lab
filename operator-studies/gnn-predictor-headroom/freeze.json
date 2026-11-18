@@ -1,0 +1,54 @@
+{
+  "schema": "gnn-predictor-headroom-freeze.v1",
+  "seeds": [
+    10,
+    11
+  ],
+  "schedules": [
+    false,
+    true
+  ],
+  "partition_seed": 321,
+  "sync": 4,
+  "warmup": 20,
+  "lambda_grid": [
+    0.05,
+    0.1,
+    0.2,
+    0.4,
+    0.8
+  ],
+  "beta_grid": [
+    0.05,
+    0.1,
+    0.2,
+    0.4,
+    0.8
+  ],
+  "mix_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "lag_grid": [
+    1,
+    2,
+    3
+  ],
+  "ridge_grid": [
+    0.001,
+    0.1,
+    10.0
+  ],
+  "source_hashes": {
+    "screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "run.py": "e1d99e58c27e811912c27e38a3938a9fa519c24fe8f668e1a015d45dac0884fc",
+    "protocol.json": "fc09a8e40af48aa3c38163d81d36d6ccedd94289ecd1a07c9d645833f9d0146b",
+    "data_receipt.json": "886ff2316e7f0f06ce80a00d58514edb82a086fb5fc22ec546dada4989f70840",
+    "data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "scope": "development-only causal predictor screen; seeds 12-15 reserved; no closed-loop claim"
+}

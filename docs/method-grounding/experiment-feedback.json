@@ -307,6 +307,26 @@
       "result_sha256": "5b3c40d736a4cf322b5d29d6a1e4f5958c2f240cdd90deb6e8e0d62a64fd9b0a",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "gnn-predictor-headroom-v1",
+      "tested_change": "Development tuning of causal stale-embedding predictors on Cora. One pooled lambda=0.4, beta=0.05, mixture=1 configuration reduces stale relative L2 by 29.9% and 33.6% versus the original 0.2/0.2 setting under constant and dropping learning rates. This establishes a stronger comparator, not an engine-generated method.",
+      "verdict": "baseline_under_tuned_no_engine_success",
+      "scope": "Seeds 10 and 11, two schedules, same graph and partition, open-loop trajectory replay. Seeds 12\u201315 remain unused.",
+      "limitations": [
+        "Selection and measurement use the same development trajectories.",
+        "No downstream accuracy, novelty or generator-quality claim.",
+        "Ridge control passes the 5% improvement threshold on the constant schedule but fails after the learning-rate drop.",
+        "Later generated candidates must beat jointly tuned controls."
+      ],
+      "report_path": "operator-studies/gnn-predictor-headroom/README.md",
+      "result_path": "operator-studies/gnn-predictor-headroom/result.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "0523442abbc9679fdb8e57bddab6676335abc9421ee0fb96c03a085ce52b1593",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }

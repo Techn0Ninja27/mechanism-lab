@@ -47,6 +47,7 @@ scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Strengthen the GNN comparator** | Tuning an existing predictor cuts development error by **29.9% / 33.6%**. This exposes an under-tuned control; it is not an engine-generated discovery or downstream accuracy gain. | [Causal predictor screen](operator-studies/gnn-predictor-headroom/README.md) |
 | **Check proposals against actual outcomes** | Seven directly tested operators (including corrected/specified variants), zero positive strong-control outcomes. Related follow-ups and unimplemented proposals are counted separately; review quality remains unvalidated. | [Outcome inventory](reports/proposal-outcome-table-v1/README.md) |
 | **Triage proposal readiness** | Historical replay flags both reviewed serving runs for revision; the portfolio retains two revision candidates and one rejection. Structural checks only: predictive usefulness remains untested. | [Replay and limitations](reports/proposal-readiness-v1/README.md) |
 | **Generate and check a serving proposal** | Largest-prompt-first admission failed all six primary groups in a **180-trace / 1,080-arm** synthetic control screen. This local candidate is closed; no hardware or novelty claim. | [Proposal, audit and diagnostic](reports/serving-problem-v2/README.md) |
