@@ -1,0 +1,36 @@
+{
+  "schema": "fixed-artifact-generation-outcome.v1",
+  "status": "generated_evaluation_pending",
+  "campaign": "fixed-artifact-comparison-v1",
+  "generation_calls": 48,
+  "candidate_slots": 192,
+  "valid_candidates": 139,
+  "invalid_candidates": 53,
+  "counts_by_decoder": {
+    "opus-5.5": {"valid": 51, "invalid": 45},
+    "fable-5.2": {"valid": 88, "invalid": 8}
+  },
+  "representations": ["task-only", "raw", "atoms", "distill"],
+  "upstream_inference_usd": 7.149892,
+  "conservative_reserve_usd": 23.279655,
+  "phase_reservation_usd": 28.4214066,
+  "inventory_sha256": "63f2e61bc7f30f090d5db69e9ceb6a04564b5fc86b004756c65571d409fb4378",
+  "accounting_sha256": "8414be8f2226750efa97bd413e873919fa075762b153912f2921b486c9e5b76a",
+  "evaluation_status": "development_evaluations_running",
+  "final_evaluation_results": 0,
+  "usefulness_results": 0,
+  "novelty_established": false,
+  "train_eligible": false,
+  "interpretation": "Format compliance only; no decoder or representation superiority claim.",
+  "preserves_preparation_snapshot": true,
+  "preserves_stopped_campaign2": true,
+  "source_reports": [
+    "reports/fixed-artifact-comparison-v1/README.md",
+    "reports/fixed-artifact-comparison-v1/execution-status.md",
+    "reports/fixed-artifact-comparison-v1/generation-freeze.json"
+  ],
+  "authoritative_artifacts": [
+    "results/fixed-artifact-comparison-v1/inventory.json",
+    "results/fixed-artifact-comparison-v1/generation-accounting.json"
+  ]
+}

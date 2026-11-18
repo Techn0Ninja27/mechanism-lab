@@ -1,0 +1,342 @@
+{
+  "schema": "fixed-artifact-call-validity.v1",
+  "calls": [
+    {
+      "call_id": "fable-5.2-atoms-00",
+      "decoder": "fable-5.2",
+      "arm": "atoms",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-atoms-01",
+      "decoder": "fable-5.2",
+      "arm": "atoms",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-atoms-02",
+      "decoder": "fable-5.2",
+      "arm": "atoms",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-atoms-03",
+      "decoder": "fable-5.2",
+      "arm": "atoms",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-atoms-04",
+      "decoder": "fable-5.2",
+      "arm": "atoms",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-atoms-05",
+      "decoder": "fable-5.2",
+      "arm": "atoms",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-distill-00",
+      "decoder": "fable-5.2",
+      "arm": "distill",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-distill-01",
+      "decoder": "fable-5.2",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-distill-02",
+      "decoder": "fable-5.2",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-distill-03",
+      "decoder": "fable-5.2",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-distill-04",
+      "decoder": "fable-5.2",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-distill-05",
+      "decoder": "fable-5.2",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-raw-00",
+      "decoder": "fable-5.2",
+      "arm": "raw",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-raw-01",
+      "decoder": "fable-5.2",
+      "arm": "raw",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-raw-02",
+      "decoder": "fable-5.2",
+      "arm": "raw",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-raw-03",
+      "decoder": "fable-5.2",
+      "arm": "raw",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-raw-04",
+      "decoder": "fable-5.2",
+      "arm": "raw",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-raw-05",
+      "decoder": "fable-5.2",
+      "arm": "raw",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-task-only-00",
+      "decoder": "fable-5.2",
+      "arm": "task-only",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-task-only-01",
+      "decoder": "fable-5.2",
+      "arm": "task-only",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-task-only-02",
+      "decoder": "fable-5.2",
+      "arm": "task-only",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-task-only-03",
+      "decoder": "fable-5.2",
+      "arm": "task-only",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-task-only-04",
+      "decoder": "fable-5.2",
+      "arm": "task-only",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "fable-5.2-task-only-05",
+      "decoder": "fable-5.2",
+      "arm": "task-only",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-atoms-00",
+      "decoder": "opus-5.5",
+      "arm": "atoms",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-atoms-01",
+      "decoder": "opus-5.5",
+      "arm": "atoms",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-atoms-02",
+      "decoder": "opus-5.5",
+      "arm": "atoms",
+      "mechanically_valid": 1,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-atoms-03",
+      "decoder": "opus-5.5",
+      "arm": "atoms",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-atoms-04",
+      "decoder": "opus-5.5",
+      "arm": "atoms",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-atoms-05",
+      "decoder": "opus-5.5",
+      "arm": "atoms",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-distill-00",
+      "decoder": "opus-5.5",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-distill-01",
+      "decoder": "opus-5.5",
+      "arm": "distill",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-distill-02",
+      "decoder": "opus-5.5",
+      "arm": "distill",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-distill-03",
+      "decoder": "opus-5.5",
+      "arm": "distill",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-distill-04",
+      "decoder": "opus-5.5",
+      "arm": "distill",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-distill-05",
+      "decoder": "opus-5.5",
+      "arm": "distill",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-raw-00",
+      "decoder": "opus-5.5",
+      "arm": "raw",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-raw-01",
+      "decoder": "opus-5.5",
+      "arm": "raw",
+      "mechanically_valid": 1,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-raw-02",
+      "decoder": "opus-5.5",
+      "arm": "raw",
+      "mechanically_valid": 4,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-raw-03",
+      "decoder": "opus-5.5",
+      "arm": "raw",
+      "mechanically_valid": 2,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-raw-04",
+      "decoder": "opus-5.5",
+      "arm": "raw",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-raw-05",
+      "decoder": "opus-5.5",
+      "arm": "raw",
+      "mechanically_valid": 0,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-task-only-00",
+      "decoder": "opus-5.5",
+      "arm": "task-only",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-task-only-01",
+      "decoder": "opus-5.5",
+      "arm": "task-only",
+      "mechanically_valid": 0,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-task-only-02",
+      "decoder": "opus-5.5",
+      "arm": "task-only",
+      "mechanically_valid": 1,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-task-only-03",
+      "decoder": "opus-5.5",
+      "arm": "task-only",
+      "mechanically_valid": 0,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-task-only-04",
+      "decoder": "opus-5.5",
+      "arm": "task-only",
+      "mechanically_valid": 3,
+      "slots": 4
+    },
+    {
+      "call_id": "opus-5.5-task-only-05",
+      "decoder": "opus-5.5",
+      "arm": "task-only",
+      "mechanically_valid": 0,
+      "slots": 4
+    }
+  ],
+  "interpretation": "Mechanical validity only. Development eligibility also requires every development seed to complete successfully; report that separately after testing."
+}

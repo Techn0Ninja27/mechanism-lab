@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 55)
+            self.assertEqual(ledger["study_count"], 56)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -70,6 +70,21 @@ class LedgerTests(unittest.TestCase):
             self.assertFalse(preparation["novelty_established"])
             self.assertFalse(preparation["evidence"]["train_eligible"])
             self.assertIn("preparation only", preparation["limitations"][0])
+            generation = rows["fixed-artifact-generation-v1"]
+            self.assertEqual(generation["raw_verdict"], "generation_complete_evaluation_pending")
+            self.assertEqual(generation["primary_metrics"]["generation_calls"], 48.0)
+            self.assertEqual(generation["primary_metrics"]["candidate_slots"], 192.0)
+            self.assertEqual(generation["primary_metrics"]["valid_candidates"], 139.0)
+            self.assertEqual(generation["primary_metrics"]["invalid_candidates"], 53.0)
+            self.assertEqual(generation["primary_metrics"]["opus_valid"], 51.0)
+            self.assertEqual(generation["primary_metrics"]["fable_valid"], 88.0)
+            self.assertAlmostEqual(generation["secondary_metrics"]["upstream_inference_usd"], 7.149892)
+            self.assertAlmostEqual(generation["secondary_metrics"]["conservative_reserve_usd"], 23.279655)
+            self.assertEqual(generation["secondary_metrics"]["final_evaluation_results"], 0.0)
+            self.assertEqual(generation["secondary_metrics"]["usefulness_results"], 0.0)
+            self.assertFalse(generation["novelty_established"])
+            self.assertFalse(generation["evidence"]["train_eligible"])
+            self.assertIn("format compliance", generation["limitations"][0])
 
     def test_hash_checked_feedback_is_read_only_and_non_promotional(self):
         rows = {x["id"]: x for x in build_ledger()["studies"]}

@@ -485,6 +485,26 @@
       "result_sha256": "4e894f1b565b67d5366867842b53d9a32f1c5a7d11f3bda8fc24127acc86fd64",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "fixed-artifact-generation-v1",
+      "tested_change": "Completed the predeclared fixed-artifact generation campaign and counted candidates accepted or rejected by the frozen structural/parser contract.",
+      "verdict": "generation_complete_evaluation_pending",
+      "scope": "48 calls and 192 slots across task-only, raw, atoms and distill representations for Opus and Fable; 139 structurally valid and 53 invalid. Development evaluations are running; no final or usefulness result exists.",
+      "limitations": [
+        "This is format compliance and generation accounting only; it does not establish decoder, representation or mechanism superiority.",
+        "Development evaluations are not final evaluations, and no usefulness result is available.",
+        "No candidate is promoted, selected, trained or eligible for training from this row.",
+        "The preparation snapshot and stopped Campaign 2 preparation attempt remain preserved and separate."
+      ],
+      "report_path": "operator-studies/fixed-artifact-generation-v1/README.md",
+      "result_path": "operator-studies/fixed-artifact-generation-v1/outcome.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "62a18d1c7fc9ff77279fec0161b27a173131e624416a524c2c995d23774fcda4",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
