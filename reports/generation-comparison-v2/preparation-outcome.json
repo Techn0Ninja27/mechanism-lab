@@ -1,0 +1,250 @@
+{
+  "schema": "causal-preparation-fidelity-gate.v1",
+  "status": "stopped_before_generation",
+  "reason": "fixed zero-unsupported-record gate failed",
+  "counts": {
+    "supported": 2,
+    "unsupported": 22,
+    "contradicted": 0,
+    "indeterminate": 0
+  },
+  "review_sha256": "5a1f8338cf2f8792a5bd53687bd0edecf9fb91729b017fcbcede0581051fc309",
+  "repair_allowed": false,
+  "regeneration_allowed": false,
+  "generation_calls": 0,
+  "ledger_cost_usd": 0.218348,
+  "usage_reported_cost_usd": 0.21616452,
+  "scope": "Own cited evidence coverage; unsupported does not establish falsehood or absence from full source.",
+  "input_hashes": {
+    "sourcepack.json": "8aae2d62fd3b56984aace30afdffbee05b45ee30497b39be5175913ec3013a75",
+    "representations/atoms.json": "6b1b13801ec4f5ef11df4f65cbbef69742d1791dd935faa444cf675d056b8af7",
+    "representations/distillations.json": "df8282517c8ec05e57d692832276cf781f85261048398d15428474dda5e48f1c"
+  },
+  "records": [
+    {
+      "id": "sni-1",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The cited quote supports Sync/Stale epochs and DPU prediction, but does not state the listed GPU/SmartNIC-per-node and fixed-interval conditions or the full cache/partitioning port details.",
+      "disputed_fields": [
+        "statement",
+        "inputs",
+        "conditions"
+      ]
+    },
+    {
+      "id": "sni-2",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quotes support EMA alpha=0.3 and exponential slope weights, but do not state the complete predictor equation, lambda=0.2, or the claimed trend construction as a whole.",
+      "disputed_fields": [
+        "statement",
+        "conditions"
+      ]
+    },
+    {
+      "id": "sni-3",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports only that ARIMA is slightly more accurate and nearly an order of magnitude more costly; it does not support the Table I times and accuracies for all predictors.",
+      "disputed_fields": [
+        "statement",
+        "outputs"
+      ]
+    },
+    {
+      "id": "sni-4",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports the prediction-error bound only; it does not state the gradient-error bound, learning rate, or O(1/sqrt(N)) convergence claim.",
+      "disputed_fields": [
+        "statement",
+        "outputs"
+      ]
+    },
+    {
+      "id": "sat-1",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports temporal-graph modeling and future-embedding prediction, but does not state the distributed-GNN/historical-value condition.",
+      "disputed_fields": [
+        "conditions"
+      ]
+    },
+    {
+      "id": "sat-2",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports alternating online training and convergence analysis, but does not state the listed distributed-GNN/predictor ports or online-training condition as a cited claim.",
+      "disputed_fields": [
+        "conditions",
+        "inputs",
+        "outputs"
+      ]
+    },
+    {
+      "id": "fresh-1",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports gradient/staleness screening for cache selection, but does not state the full mini-batch/cache port formulation.",
+      "disputed_fields": [
+        "statement",
+        "inputs",
+        "outputs",
+        "conditions"
+      ]
+    },
+    {
+      "id": "fresh-2",
+      "representation": "atom",
+      "verdict": "supported",
+      "reason": "The cited quote directly supports the datasets, 3.4x\u201320.5x speedup, 59% memory-access reduction, and less-than-1% test-accuracy influence; the condition is appropriately scoped to complementary enhancements.",
+      "disputed_fields": []
+    },
+    {
+      "id": "sift-1",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports channel-wise partial historical embedding with an accuracy guarantee, but does not state the quantitative accuracy-model detail or the listed condition/port fields.",
+      "disputed_fields": [
+        "statement",
+        "conditions"
+      ]
+    },
+    {
+      "id": "sift-2",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports the reported up-to-72% and up-to-21% gains, but does not state the experimental-comparison port/condition or the datasets/baselines context.",
+      "disputed_fields": [
+        "conditions"
+      ]
+    },
+    {
+      "id": "sancus-1",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports bounded staleness metrics, adaptive broadcast skipping, and cached historical embeddings, but does not support the quantization output or quantization condition stated here.",
+      "disputed_fields": [
+        "statement",
+        "outputs"
+      ]
+    },
+    {
+      "id": "sancus-2",
+      "representation": "atom",
+      "verdict": "unsupported",
+      "reason": "The quote supports up-to-86% communication avoidance, 3.0x average throughput, and no accuracy loss, but does not state the listed input/condition scope or outputs as framed.",
+      "disputed_fields": [
+        "inputs",
+        "conditions"
+      ]
+    },
+    {
+      "id": "sni-1-overview",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports the core in-network prediction idea, but not the detailed GPU/DPU cache workflow, Sync/Stale epoch mechanics, or smoothness/per-dimension motivation included in the summary.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sni-2-predictor",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quotes support alpha=0.3, slope weighting, and ARIMA's relative cost/accuracy, but not the full formula, lambda=0.2, trend-vector description, or all Table I figures.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sni-3-optimizations",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The cited quotes support boundary-node sampling and self-feeding, but do not cite the asynchronous pipeline claim or the complete three-optimization summary.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sni-4-theory",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports only the second-order prediction-error bound; gradient propagation and non-convex SGD convergence claims are uncited in this record.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sat-1-idea",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports temporal-graph modeling and future prediction, but not every added summary assertion, including adaptive staleness reduction and the distributed cached-embedding framing.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sat-2-online",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports alternating online predictor/GNN training and convergence analysis, but not the added empirical better-performance and convergence-speed claims.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "fresh-1-cache",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports the gradient/staleness cache-screening policy, but not the broader mini-batch framework and raw-feature-reuse details in the summary.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "fresh-2-results",
+      "representation": "distillation",
+      "verdict": "supported",
+      "reason": "The cited quote directly entails the two datasets, 3.4x\u201320.5x speedup, 59% memory-access reduction, and less-than-1% test-accuracy impact.",
+      "disputed_fields": []
+    },
+    {
+      "id": "sift-1-channel",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports channel-wise partial historical embedding with an accuracy guarantee, but not the summary's vertex-wise-loss motivation and quantitative-model detail.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sift-2-components",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports the two performance improvements, but does not state the evaluator, sawtooth rearrangement, and hybrid parallel components included in the summary.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sancus-1-staleness",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports bounded staleness metrics, adaptive broadcast skipping, decentralized processing, and cached embeddings, but not the added bounded-error and convergence-guarantee claims.",
+      "disputed_fields": [
+        "summary"
+      ]
+    },
+    {
+      "id": "sancus-2-quant",
+      "representation": "distillation",
+      "verdict": "unsupported",
+      "reason": "The quote supports the 86% communication, 3.0x throughput, and no-accuracy-loss figures, but not the summary's quantization-aware mechanism claim.",
+      "disputed_fields": [
+        "summary"
+      ]
+    }
+  ]
+}
