@@ -27,3 +27,12 @@ Scope: the anchor detects ordinary interruption and selective local deletion or
 editing. It does not resist an actor rewriting both the campaign directory and
 the phase ledger, and it does not prove reviewer independence or entailment.
 The semantic calibration gate remains separate and currently blocks paid work.
+
+## Test-ledger isolation correction, 2026-11-19
+
+The adversarial test fixture previously redirected the campaign directory but
+not its external audit anchor. Fourteen temporary-test chains were consequently
+added to the real phase ledger. Reservations and monetary totals were unchanged.
+Those entries are retained as historical test metadata, not silently removed.
+The fixture now uses a temporary ledger and checks that the real ledger remains
+byte-identical (or absent) throughout each test.

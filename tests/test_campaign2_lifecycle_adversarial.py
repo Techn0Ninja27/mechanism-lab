@@ -12,11 +12,18 @@ from unittest.mock import patch
 
 from scripts import generate_causal_campaign2 as c
 from scripts import run_campaign2_preparation as life
+from generation.api_budget import BudgetLedger
 from tests.test_campaign2_generation import FakeClient, PACK, reviews
 
 
 class Campaign2LifecycleAdversarialTests(unittest.TestCase):
     def setUp(self):
+        # Lifecycle events are externally anchored.  Point that anchor at a
+        # disposable ledger as well as redirecting the campaign directory;
+        # otherwise these mutation tests append audit heads to the developer's
+        # real phase ledger on every run.
+        self.live_ledger = Path(c.config()["shared_budget_path"])
+        self.live_ledger_before = self.live_ledger.read_bytes() if self.live_ledger.exists() else None
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.out = Path(self.tmp.name) / "campaign"
@@ -24,6 +31,13 @@ class Campaign2LifecycleAdversarialTests(unittest.TestCase):
         self.canonical = patch.object(life, "CANONICAL_OUTPUT", self.out)
         self.canonical.start()
         self.addCleanup(self.canonical.stop)
+        self.anchor = patch.object(
+            life,
+            "_anchor",
+            return_value=BudgetLedger(Path(self.tmp.name) / "phase-ledger.json", 30),
+        )
+        self.anchor.start()
+        self.addCleanup(self.anchor.stop)
         self.calibration = patch.object(c, "require_calibration_ready", return_value=None)
         self.calibration.start()
         self.addCleanup(self.calibration.stop)
@@ -32,6 +46,14 @@ class Campaign2LifecycleAdversarialTests(unittest.TestCase):
         self.client = patch.object(c, "Client", FakeClient)
         self.client.start()
         self.addCleanup(self.client.stop)
+        self.addCleanup(self._assert_live_ledger_unchanged)
+
+    def _assert_live_ledger_unchanged(self):
+        self.assertEqual(
+            self.live_ledger.read_bytes() if self.live_ledger.exists() else None,
+            self.live_ledger_before,
+            "adversarial tests must not write the shared phase ledger",
+        )
 
     def _failed_draw(self, kind="atoms", index=0):
         life.execute_draw(self.out, kind, index)
