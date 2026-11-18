@@ -230,4 +230,3 @@ def summarize_fixed_artifact(per_decoder_reports: Any, *, selections: Any = None
 # implementations.
 analyze_final_reports = summarize_fixed_artifact
 final_summary = summarize_fixed_artifact
-
