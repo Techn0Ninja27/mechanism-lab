@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-19",
+  "plan_sha256": "3e981ac166dd230569dfb2a628a8004a7367c2e935a34a08e7fcea79af8d6cce",
+  "previous_plan_sha256": "b28faec86fcd6cece252e71fb34174e2ebe719bc9983fbeb9f984fae4fd5f7c0",
+  "supersedes": "execution-freeze-v3.json",
+  "random_distinct_programs": 24,
+  "dependency_count": 94,
+  "paid_calls": 0,
+  "caps_usd": {
+    "preparation": 3,
+    "campaign": 12,
+    "phase": 30
+  },
+  "change": "Matched raw header,24 seeded bounded controls,controls/manifest/task/grammar verification; no prior paid attempt."
+}
