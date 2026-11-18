@@ -1,0 +1,268 @@
+{
+  "schema": "proposal-outcome-table.v1",
+  "date": "2026-11-18",
+  "author": "Claude",
+  "scope": "Read-only inventory; links and outcomes are as stated by study/report READMEs and frozen results, not re-derived. Not a quality validation of the readiness gate.",
+  "ordering_evidence": "file mtimes only; weak",
+  "counts": {
+    "direct": 7,
+    "related_followup": 1,
+    "not_run_rows": 2,
+    "positive_outcomes_among_direct": 0,
+    "direct_with_review_test": 4
+  },
+  "rows": [
+    {
+      "row": 1,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-01/result.json",
+      "result_sha256": "9ad670c5baa14434eb7cfd5e220419479e545e646638ff717a3248ca45cf68be",
+      "run_status": "reviewed",
+      "title": "Diagnostic revision: per-feature versus per-row normalization of the StableMiss random-feature decorrelation operator",
+      "proposal_decision": "revise",
+      "review_decision": "reject",
+      "review_failure_type": "algebraic_noop",
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "incomplete_record"
+      ],
+      "execution_type": "direct",
+      "studies": [
+        "operator-studies/normalization-axis"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "none_contradicting",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 2,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-02/result.json",
+      "result_sha256": "414cdce0cd46d38d5b46ebf59ec4d08be9c72e92fb4f399e625562c3f5293c98",
+      "run_status": "reviewed",
+      "title": "Diagnostic-first test of a shared-matrix polynomial operator against NeuMiss's untied masked recurrence at equal matrix-vector cost",
+      "proposal_decision": "revise",
+      "review_decision": "test",
+      "review_failure_type": "weak_control",
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "incomplete_record"
+      ],
+      "execution_type": "direct",
+      "studies": [
+        "operator-studies/neumiss-polynomial"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "partial",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 3,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-03/result.json",
+      "result_sha256": "d8bfeb5e5e7b10c1b6656caf0566677399453eaba4857bd95433b070207c846c",
+      "run_status": "reviewed",
+      "title": "Baseline diagnostic before any delta: per-mask truncation error of NeuMiss's masked Neumann recurrence versus a Jacobi-scaled variant at equal matvec count",
+      "proposal_decision": "revise",
+      "review_decision": "revise",
+      "review_failure_type": "algebraic_noop",
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "incomplete_record"
+      ],
+      "execution_type": "direct",
+      "studies": [
+        "operator-studies/jacobi-fixed-point"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "none_contradicting",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 4,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-interface-v2/result.json",
+      "result_sha256": "e5121b73903153da10f3137953c3bcb5f627426055e2a370983db482b4198b7d",
+      "run_status": "reviewed",
+      "title": "Prefill text-query, 1-bit-key window scoring as a ranking-only replacement for WindowQuant Eq. 8, at fixed per-layer precision counts",
+      "proposal_decision": "revise",
+      "review_decision": "test",
+      "review_failure_type": "none_found",
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "incomplete_record"
+      ],
+      "execution_type": "direct",
+      "studies": [
+        "operator-studies/trace-window-ablation",
+        "operator-studies/window-rank-contract",
+        "operator-studies/smolvlm-trace"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "readme_level_contradiction",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 5,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-contract-v1/result.json",
+      "result_sha256": "3828e26500a793208d25ca31e863cd831a9f1d05a9196c4b68576f1ae4588efe",
+      "run_status": "reviewed",
+      "title": "Rejection: no distinct, justified next operator test for the FIER/WindowQuant window-precision pairing after the exposed one-bit ranking failure",
+      "proposal_decision": "reject",
+      "review_decision": "reject",
+      "review_failure_type": "weak_control",
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "incomplete_record"
+      ],
+      "execution_type": "related_followup",
+      "studies": [
+        "operator-studies/trace-aggregation-ablation"
+      ],
+      "outcome": "mixed_not_a_test_of_proposal",
+      "audit_vs_proposal_or_review": "contradicted",
+      "experiment_feedback_record_ids": [
+        "fier-windowquant-onebit-trace-v1"
+      ]
+    },
+    {
+      "row": 6,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-systems-v1/result.json",
+      "result_sha256": "23df721ab4879354d4c5d615b5c7c100da6139099882fa748c0d580b8ce68f9f",
+      "run_status": "reviewed_after_manual_quote_relink",
+      "title": "Bounded local test: frequency-rank varint coding versus FaBC bitmaps for CPU-to-GPU walk-corpus transfer",
+      "proposal_decision": "investigate",
+      "review_decision": "test",
+      "review_failure_type": "weak_control",
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "run_not_reviewed"
+      ],
+      "execution_type": "direct",
+      "studies": [
+        "operator-studies/graph-walk-codecs"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "contradicted",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 7,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-gnn-gate-v1/result.json",
+      "result_sha256": "2d24e79e98f8849a60c1368111899059f3ec5e304720412f0a79dfc44fd4747c",
+      "run_status": "reviewed",
+      "title": "Sync-revealed Hedge gating between SNI-style damped trend prediction and last-observed hold for stale remote GNN embeddings: an application test",
+      "proposal_decision": "revise",
+      "review_decision": "revise",
+      "review_failure_type": "unsupported_assumption",
+      "readiness_status": "not_recommended",
+      "readiness_reason_codes": [
+        "model_rejection_or_redundancy"
+      ],
+      "execution_type": "direct_corrected_protocol",
+      "studies": [
+        "operator-studies/gnn-sync-gate"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "contradicted",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 8,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-optimizer-v1/result.json",
+      "result_sha256": "9646c7c57e6cf93f406e0337b02f74e09b0bc78477483546633f8d6a2705a7d6",
+      "run_status": "failed",
+      "title": "Is Newton\u2013Muon's activation-covariance refresh worth its cost at tiny scale? A cost-accounted screen of a low-rank-plus-diagonal K inverse (likely revise/reject)",
+      "proposal_decision": "revise",
+      "review_decision": null,
+      "review_failure_type": null,
+      "readiness_status": "incomplete",
+      "readiness_reason_codes": [
+        "run_not_reviewed"
+      ],
+      "execution_type": "not_run",
+      "studies": [
+        "operator-studies/newton-muon-preflight",
+        "operator-studies/newton-muon-cost-screen",
+        "operator-studies/newton-muon-heldout",
+        "operator-studies/newton-muon-refresh",
+        "operator-studies/newton-muon-polynomial",
+        "operator-studies/newton-muon-bound-diagnostic",
+        "operator-studies/newton-muon-kernel-probe"
+      ],
+      "outcome": "no_outcome_prerequisite_screens_only",
+      "audit_vs_proposal_or_review": "contradicted",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 9,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-serving-v2/result.json",
+      "result_sha256": "ade47a2ae036c17c4d211c68418e8d74c86f4dd73e662f71bad5a610d439e610",
+      "run_status": "reviewed",
+      "title": "Prompt-release-ordered decode admission for online non-clairvoyant disaggregated serving: a revise-level proposal",
+      "proposal_decision": "revise",
+      "review_decision": "test",
+      "review_failure_type": "weak_control",
+      "readiness_status": "needs_revision",
+      "readiness_reason_codes": [
+        "mechanism_unresolved",
+        "proposal_requests_revision",
+        "review_failure_type"
+      ],
+      "execution_type": "direct_specified_variant",
+      "studies": [
+        "operator-studies/serving-admission-preflight",
+        "operator-studies/serving-admission-screen"
+      ],
+      "outcome": "negative",
+      "audit_vs_proposal_or_review": "contradicted",
+      "experiment_feedback_record_ids": []
+    },
+    {
+      "row": 10,
+      "result_path": "results/improvement-phase-2026-11-16/grounded-serving-portfolio-v1/result.json",
+      "result_sha256": "6bd12ab8c97fd86c6518ff9fe2239ad14bfc923c3673670881d6d2be18822b98",
+      "run_status": "reviewed",
+      "title": "Certified-lower-bound decode admission with kill-and-restart into prefill-retained state for two-pool non-clairvoyant serving",
+      "proposal_decision": "investigate",
+      "review_decision": "test",
+      "review_failure_type": "none_found",
+      "readiness_status": "needs_revision",
+      "readiness_reason_codes": [
+        "mechanism_unresolved",
+        "selected_candidate"
+      ],
+      "execution_type": "not_run",
+      "studies": [],
+      "outcome": "none",
+      "audit_vs_proposal_or_review": "contradicted",
+      "experiment_feedback_record_ids": [
+        "serving-admission-preflight-v2",
+        "serving-largest-prompt-screen-v1"
+      ],
+      "selected_candidate_id": "cand-00",
+      "candidates": [
+        {
+          "id": "cand-00",
+          "proposal_decision": "investigate",
+          "review_decision": "test",
+          "review_failure_type": "none_found",
+          "readiness_status": "needs_revision",
+          "execution_type": "not_run"
+        },
+        {
+          "id": "cand-01",
+          "proposal_decision": "revise",
+          "review_decision": "revise",
+          "review_failure_type": "unsupported_assumption",
+          "readiness_status": "needs_revision",
+          "execution_type": "not_run"
+        },
+        {
+          "id": "cand-02",
+          "proposal_decision": "reject",
+          "review_decision": "reject",
+          "review_failure_type": "prior_art_overlap",
+          "readiness_status": "not_recommended",
+          "execution_type": "not_run"
+        }
+      ]
+    }
+  ]
+}

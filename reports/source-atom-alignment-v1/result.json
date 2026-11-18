@@ -1,0 +1,280 @@
+{
+  "schema": "exact-atom-quote-overlap.v1",
+  "pack_sha256": "8aae2d62fd3b56984aace30afdffbee05b45ee30497b39be5175913ec3013a75",
+  "atoms_sha256": "08544f45e606944f4e1ef7a1ca5998ee84a996df748524365e62a66d4da8fa0c",
+  "atom_count": 53,
+  "chunk_count": 9,
+  "atoms_with_quote_match": 0,
+  "rows": [
+    {
+      "atom_index": 0,
+      "atom_source_id": "local:ALzTQUgW8a",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 1,
+      "atom_source_id": "local:ALzTQUgW8a",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 2,
+      "atom_source_id": "local:ALzTQUgW8a",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 3,
+      "atom_source_id": "arxiv:2602.04915",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 4,
+      "atom_source_id": "arxiv:2602.04915",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 5,
+      "atom_source_id": "arxiv:2602.04915",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 6,
+      "atom_source_id": "arxiv:2511.05770",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 7,
+      "atom_source_id": "arxiv:2511.05770",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 8,
+      "atom_source_id": "arxiv:2511.05770",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 9,
+      "atom_source_id": "arxiv:2502.01717",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 10,
+      "atom_source_id": "arxiv:2502.01717",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 11,
+      "atom_source_id": "arxiv:2412.15266",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 12,
+      "atom_source_id": "arxiv:2412.15266",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 13,
+      "atom_source_id": "arxiv:2412.15266",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 14,
+      "atom_source_id": "arxiv:2603.02473",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 15,
+      "atom_source_id": "arxiv:2603.02473",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 16,
+      "atom_source_id": "arxiv:2603.02473",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 17,
+      "atom_source_id": "arxiv:2310.11766",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 18,
+      "atom_source_id": "arxiv:2310.11766",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 19,
+      "atom_source_id": "arxiv:2407.15913",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 20,
+      "atom_source_id": "arxiv:2407.15913",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 21,
+      "atom_source_id": "arxiv:2608.24195",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 22,
+      "atom_source_id": "arxiv:2608.24195",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 23,
+      "atom_source_id": "arxiv:2608.24195",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 24,
+      "atom_source_id": "arxiv:2512.09723",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 25,
+      "atom_source_id": "arxiv:2512.09723",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 26,
+      "atom_source_id": "arxiv:2512.09723",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 27,
+      "atom_source_id": "arxiv:2304.04259",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 28,
+      "atom_source_id": "arxiv:2304.04259",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 29,
+      "atom_source_id": "arxiv:2311.11908",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 30,
+      "atom_source_id": "arxiv:2311.11908",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 31,
+      "atom_source_id": "arxiv:2311.17847",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 32,
+      "atom_source_id": "arxiv:2311.17847",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 33,
+      "atom_source_id": "arxiv:2311.17847",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 34,
+      "atom_source_id": "arxiv:2306.08423",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 35,
+      "atom_source_id": "arxiv:2306.08423",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 36,
+      "atom_source_id": "arxiv:2306.08423",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 37,
+      "atom_source_id": "arxiv:2503.01281",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 38,
+      "atom_source_id": "arxiv:2503.01281",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 39,
+      "atom_source_id": "arxiv:2503.01281",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 40,
+      "atom_source_id": "arxiv:2508.08256",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 41,
+      "atom_source_id": "arxiv:2508.08256",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 42,
+      "atom_source_id": "arxiv:2508.08256",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 43,
+      "atom_source_id": "arxiv:2311.14023",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 44,
+      "atom_source_id": "arxiv:2311.14023",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 45,
+      "atom_source_id": "arxiv:2311.14023",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 46,
+      "atom_source_id": "arxiv:2601.07704",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 47,
+      "atom_source_id": "arxiv:2601.07704",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 48,
+      "atom_source_id": "arxiv:2606.28230",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 49,
+      "atom_source_id": "arxiv:2606.28230",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 50,
+      "atom_source_id": "arxiv:2302.07454",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 51,
+      "atom_source_id": "arxiv:2302.07454",
+      "matching_chunk_ids": []
+    },
+    {
+      "atom_index": 52,
+      "atom_source_id": "arxiv:2302.07454",
+      "matching_chunk_ids": []
+    }
+  ],
+  "limitations": [
+    "Exact text overlap only; matching quotes would still require source-identity and interpretation checks.",
+    "No matches means these inputs cannot support an exact-quote-grounded matched-context comparison without new extraction."
+  ],
+  "paid_calls": 0
+}

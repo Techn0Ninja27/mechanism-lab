@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-18",
+  "reviewer": "Codex",
+  "table_sha256": "5b5c3ddc371b7e462cc02b7e53833b45ff6485badd835b99bdc472df9022cd05",
+  "checks": [
+    {
+      "row": 1,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 2,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 3,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 4,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 5,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 6,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 7,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 8,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 9,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    },
+    {
+      "row": 10,
+      "hash_matches": true,
+      "proposal_label_matches": true,
+      "review_label_matches": true,
+      "readiness_matches": true
+    }
+  ],
+  "scope": "Original result hashes and proposal/review/readiness labels verified directly. Linked study README outcomes inspected; experiments not rerun. Execution types separate corrected variants and prerequisite studies. This does not validate predictive quality of review labels."
+}
