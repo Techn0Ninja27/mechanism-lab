@@ -44,20 +44,19 @@ class FakeClient:
 
 def reviews(out,kind,index,failed=False):
     draw=life._draw_dir(out,kind,index);value=json.loads((draw/f'{kind}.json').read_text());pack=prep._pack(out/'sourcepack.json')
+    life.export_reference_review_sets(out, kind, index)
     for reviewer in ('a','b'):
-        rows=[]
-        for record in value[kind]:
-            fields=[]
-            for field,text,unknown in prep._draw_fields(kind,record):
-                item={'field':field,'value':text,'verdict':'supported','reason':'fixture'}
-                if unknown:item['absence_reason']='fixture absent'
-                else:item.update(chunk_id=record['evidence'][0]['chunk_id'],support_quote=record['evidence'][0]['quote'])
-                fields.append(item)
-            rows.append({'record_id':record['id'],'criterion':'cited_chunk_support.v1','field_items':fields})
-        if failed and reviewer=='b':
-            rows[0]['field_items'][0].update(verdict='unsupported',disputed_field=rows[0]['field_items'][0]['field'],reason='fixture unsupported')
-        c.write_new(draw/f'review-{reviewer}.json',{'schema':prep.DRAW_REVIEW_SCHEMA,'reviewer_id':f'{kind}-{index}-{reviewer}',
-                    'context':{'plan_sha256':c.sha(out/'plan.json'),'kind':kind,'draw':index,'slot':reviewer},'input_sha256':{'source_pack':pack['digest'],kind:c.digest(value)},'records':rows})
+        root=draw/'reference-slots'/reviewer
+        for packet_path in sorted(root.glob('input-*.json')):
+            packet=json.loads(packet_path.read_text()); first=packet['evidence'][0]['evidence_id']; items=[]
+            for field in packet['fields']:
+                item={'field_id':field['field_id'],'verdict':'supported','reason':'fixture source-specific evidence','evidence_ids':[]}
+                if field['is_unknown']: item['absence_reason']='fixture absent from supplied evidence'
+                else: item['evidence_ids']=[first]
+                items.append(item)
+            if failed and reviewer=='b' and packet_path.name=='input-00.json':
+                items[0].update(verdict='unsupported',reason='fixture unsupported claim')
+            (root/f"review-{packet_path.stem.removeprefix('input-')}.json").write_text(json.dumps({'fields':items})+'\n')
 
 class Campaign2HarnessTests(unittest.TestCase):
     def setUp(self):
@@ -96,7 +95,7 @@ class Campaign2HarnessTests(unittest.TestCase):
         self.assertEqual(FakeClient.calls,[])
     def test_missing_review_cannot_advance(self):
         life.execute_draw(self.out,'atoms',0)
-        with self.assertRaises(FileNotFoundError):life.record_review(self.out,'atoms',0)
+        with self.assertRaises(ValueError):life.record_review(self.out,'atoms',0)
         with self.assertRaises(FileNotFoundError):life.execute_draw(self.out,'atoms',1)
         self.assertEqual(len(FakeClient.calls),1)
     def test_full_first_pass_lifecycle_and_generation(self):
@@ -135,8 +134,8 @@ class Campaign2HarnessTests(unittest.TestCase):
 
     def test_review_from_wrong_draw_is_rejected(self):
         life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0)
-        path=life._draw_dir(self.out,'atoms',0)/'review-b.json';data=json.loads(path.read_text());data['context']['draw']=1;path.write_text(json.dumps(data))
-        with self.assertRaisesRegex(ValueError,'bound to this draw'):life.record_review(self.out,'atoms',0)
+        path=life._draw_dir(self.out,'atoms',0)/'reference-slots/b/input-00.json';data=json.loads(path.read_text());data['review_context']['draw']=1;path.write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError,'artifact binding|bound to this draw'):life.record_review(self.out,'atoms',0)
         self.assertFalse((self.out/'selected/atoms.selection.json').exists())
 
     def test_exhaustion_stops_other_representation(self):
@@ -200,7 +199,7 @@ class Campaign2HarnessTests(unittest.TestCase):
 
     def test_review_tamper_after_fail_cannot_advance(self):
         life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0,failed=True);life.record_review(self.out,'atoms',0)
-        path=life._draw_dir(self.out,'atoms',0)/'review-b.json';d=json.loads(path.read_text());d['reviewer_id']='changed';path.write_text(json.dumps(d))
+        path=life._draw_dir(self.out,'atoms',0)/'reference-slots/b/review-00.json';d=json.loads(path.read_text());d['fields'][0]['reason']='changed';path.write_text(json.dumps(d))
         with self.assertRaises(ValueError):life.execute_draw(self.out,'atoms',1)
         self.assertEqual(len(FakeClient.calls),1)
 if __name__=='__main__':unittest.main()

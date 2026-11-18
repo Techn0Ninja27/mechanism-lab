@@ -18,3 +18,44 @@ format check. Production readiness remains disabled.
 
 This is a constructed development set; it establishes neither a population
 accuracy estimate nor statistically independent reviewer errors.
+
+## Independent audit caveats
+
+Claude independently judged the set fit to run with caveats. It contains
+30 unique claim/chunk items (24 supported and six unsupported), with repeated
+positive fields across paired packets. Contradictions and unknowns are untested.
+Ten positive claims overlap earlier development fixtures. Key-fitted heuristics
+can do better than the three predeclared baselines; chance-level results from
+those three alone do not prove the absence of shortcuts.
+
+Only the assigned packet and instructions were authorized for each native
+reviewer, but the filesystem did not enforce that boundary. Keys were outside
+the input directory, still readable elsewhere. Root saved launch intents and
+tool-returned task names; this is procedural provenance, not access isolation.
+The shuffled order happens to end with four negative packets.
+
+Some labels require resolving paper names from section context or the title,
+and reception timestamps from the buffer definition. All reviewers accepted
+those claims in this run. The fixture's earlier draft status text remains
+unchanged; the later freeze receipt records the independent key audit.
+Evidence-ID validity is checked mechanically, but source entailment is not
+proved by the decoder. A separate audit is needed to assess citation quality.
+
+Claude's audit of the completed outputs reproduced 96/96 matching field
+verdicts. All twelve judgments on negative examples named the missing qualifier.
+The decisive text was within the selected evidence for 83/84 supported field
+judgments; one was partial. Both reviewers combined windows for the boundary
+case. Reference selections matched across slots for 41/48 fields, so the two
+slots should not be treated as independent observations.
+
+The pre-run freeze contains the planned task/input schedule. Tool-returned
+launch receipts were recorded after each batch, often after reviews completed;
+there were no contemporaneous per-spawn prompt receipts. Earlier wording about
+receipts being saved before each spawn was inaccurate. Keys were readable in
+parent/sibling directories despite the explicit instruction to read only the
+assigned packet. No access-isolation guarantee is claimed. The first evaluation
+was computed by an inline script after the run, not a committed pre-run scorer.
+
+Any readiness based on parser v2 is retrospective: the optional-subclaim-ID
+policy was amended after observing this run. The original frozen result remains
+failed. This is disclosed instrument development, not a new review experiment.

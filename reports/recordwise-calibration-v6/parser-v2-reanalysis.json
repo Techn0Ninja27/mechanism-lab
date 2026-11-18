@@ -1,0 +1,337 @@
+{
+  "schema": "recordwise-calibration-v6-parser-v2-reanalysis.v1",
+  "status": "retrospective_parser_reanalysis",
+  "review_count": 24,
+  "strict_v1_result": {
+    "mechanically_valid": 23,
+    "total": 24,
+    "failed_files": [
+      "review-11-a.json"
+    ]
+  },
+  "v2_result": {
+    "mechanically_valid": 24,
+    "matches_key": 24,
+    "total": 24
+  },
+  "policy_change": "Allow only optional nonsemantic subclaim_id metadata; delegate all semantic and evidence validation to strict v1 decoder.",
+  "no_new_reviews": true,
+  "production_authorized": false,
+  "raw_reviews_unchanged": true,
+  "parser_sha256": "7c083bb4377afba87426b0c8157d10bf1a8900a5f9f217e8290782e62f267b4a",
+  "manifest_sha256": "62eeff5bbe27a60c1d28da725810b637de3517fea22253d9ee8554c6134513ab",
+  "reviews": [
+    {
+      "packet": "0df34dfa3a37",
+      "slot": "a",
+      "raw_sha256": "59925254cc4eca95fc245a4931989d3a5caf2261670fbf8dee780f3434944ab5",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "0df34dfa3a37",
+      "slot": "b",
+      "raw_sha256": "e7e83a5c58c644854b989aeab4ae6e319c32c9abe0fea99792fff3a0fa0e4571",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "4f77f0b122ae",
+      "slot": "a",
+      "raw_sha256": "ae8597539837a6fa014aee2ecb28ed8c93025bd60749e7c75cbed622ccf90704",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "4f77f0b122ae",
+      "slot": "b",
+      "raw_sha256": "ec71cb9f1ff33776aa33a9e51ab26d85734f95b38ef607496377f7b89fe9742b",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "b7fdc40801c1",
+      "slot": "a",
+      "raw_sha256": "cde6370e46c0e8294e24d46ab11c46d48ef1a3b0dc6979a62b4f6d2af412f266",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "b7fdc40801c1",
+      "slot": "b",
+      "raw_sha256": "797dfb2e127652bcfc07f6a517c50fea907ad7559a6720aaed3c48ec78e52750",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "0fc76025f98e",
+      "slot": "a",
+      "raw_sha256": "3e1b0717d45f76711cd27df75a9e0499621a28108840445d2d46b603a1ac7981",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "0fc76025f98e",
+      "slot": "b",
+      "raw_sha256": "c77cceb913ad45280c9d77759ac647529b19eba6e90546243309f13c9dfe4327",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "693bddb3d692",
+      "slot": "a",
+      "raw_sha256": "cdd08b2b62f6abfbb3008f29c7af6e9a397540e66e5bcd80da10421257c65bb2",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "693bddb3d692",
+      "slot": "b",
+      "raw_sha256": "21be3523d93d200337c613ae9e588f6aa7e1685a1181c4e8b605021fdba5427f",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "cf5bb406c1d1",
+      "slot": "a",
+      "raw_sha256": "028e4604d3f973259c0365039a7744026079c4eb56c7c99518e46dbea9733bf0",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "cf5bb406c1d1",
+      "slot": "b",
+      "raw_sha256": "804bc80478629c0f6205654dec8f045e8093f04c7a111d3fcf42a5677ac412ee",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "49ac5ccab10f",
+      "slot": "a",
+      "raw_sha256": "2fed7f875f5dfefdeebf53d8b618ce259f98d4eb1258c6767da36df43d645a6d",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "49ac5ccab10f",
+      "slot": "b",
+      "raw_sha256": "e559d7a3138749bf3e99daae7a58069591068bac4db688747f44451d30fb60f6",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "48d15a11bc5e",
+      "slot": "a",
+      "raw_sha256": "86a27d3c5ad55019e34c34b6cc241132e30f477cb783b2e676eb729365dc8c88",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "48d15a11bc5e",
+      "slot": "b",
+      "raw_sha256": "bba0212407ee004ab91c1b806c59a4a5da5ad849f82edbbced3d0e73979f1b55",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "00ec56b35d6b",
+      "slot": "a",
+      "raw_sha256": "62fd07c5df9929543b89a57acf17f23388db528cc55ee779dbc8057aed5a60af",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "unsupported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "00ec56b35d6b",
+      "slot": "b",
+      "raw_sha256": "9e8e0d79d782acf36d5eff877068a6278e66892515c7f32d6b3b934ace0e9bd4",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "unsupported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "170478a459a5",
+      "slot": "a",
+      "raw_sha256": "d6e0aa59ccb4f762a36d69afefa322c85509d15bbcb31d29212fce2dc176ddca",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "170478a459a5",
+      "slot": "b",
+      "raw_sha256": "600deabcd0c4a711b7f5e797fc0457dcdf2584193ff8e767af539a2c85684640",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "unsupported"
+      }
+    },
+    {
+      "packet": "859331ec7780",
+      "slot": "a",
+      "raw_sha256": "1ba3949808c76729526f51f0af99e41cdf690b49bf942d882ea7a2636ec209aa",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "unsupported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "859331ec7780",
+      "slot": "b",
+      "raw_sha256": "04faf86ad8ec1448c4678340f6eccd14b4289c85365e8f80b51dd90d42154b63",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "supported",
+        "inputs[0]": "unsupported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "d8eac2cf41cf",
+      "slot": "a",
+      "raw_sha256": "f1e0e234bd629afdb5e47ddb7fae635c20bc40298456ff7e6917a0cf50549fa4",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    },
+    {
+      "packet": "d8eac2cf41cf",
+      "slot": "b",
+      "raw_sha256": "eeeb4a814d4045c57433f2d3a0099e37c412b1e09a0a02c79605ea9614187efb",
+      "mechanically_valid": true,
+      "matches_key": true,
+      "verdicts": {
+        "statement": "unsupported",
+        "inputs[0]": "supported",
+        "outputs[0]": "supported",
+        "conditions[0]": "supported"
+      }
+    }
+  ]
+}

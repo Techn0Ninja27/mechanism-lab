@@ -215,15 +215,7 @@ def _decision(out,kind,index,pack):
         if decision.get('draw_sha256') != c.sha(draw/'draw.json') or decision.get('review_sha256') != expected_hashes or decision.get('combined') != combined:
             raise ValueError('recorded reference decision or review changed')
         return decision, value, meta
-    if decision.get('draw_sha256')!=c.sha(draw/'draw.json') or decision.get('review_sha256')!=[c.sha(p) for p in paths]:
-        raise ValueError('recorded decision or review changed')
-    review_values=[_read(p) for p in paths]
-    for slot,review in zip(('a','b'),review_values):
-        if review.get('context')!={'plan_sha256':c.sha(out/'plan.json'),'kind':kind,'draw':index,'slot':slot}:
-            raise ValueError('recorded review draw binding mismatch')
-    combined=c._prep().combine_draw_reviews(kind,*review_values,pack,value)
-    if combined!=decision.get('combined'):raise ValueError('decision no longer validates')
-    return decision,value,meta
+    raise ValueError('reference review packets are required; legacy review format is disabled')
 
 def _selected(out,kind,pack):
     path=out/'selected'/f'{kind}.selection.json'
@@ -291,19 +283,8 @@ def record_review(out,kind,index):
                 raw_paths=[p for slot in ('a','b') for p in (draw/'reference-slots'/slot).glob('review-*.json')]
                 _transaction(out,'review_decided',values, existing=raw_paths,
                              kind=kind,draw=index,review_schema='reference-dual-draw-review.v1')
-        elif (draw/'decision.json').exists():
-            decision,_,_=_decision(out,kind,index,pack)
         else:
-            paths=[draw/'review-a.json',draw/'review-b.json']
-            review_values=[_read(p) for p in paths]
-            for slot,review in zip(('a','b'),review_values):
-                expected_context={'plan_sha256':c.sha(out/'plan.json'),'kind':kind,'draw':index,'slot':slot}
-                if review.get('context')!=expected_context: raise ValueError('review is not bound to this draw and slot')
-            combined=c._prep().combine_draw_reviews(kind,*review_values,pack,value)
-            decision={'kind':kind,'draw':index,'draw_sha256':c.sha(draw/'draw.json'),
-                      'review_paths':[str(p.relative_to(out)) for p in paths],
-                      'review_sha256':[c.sha(p) for p in paths],'combined':combined}
-            _transaction(out,'review_decided',{draw/'decision.json':decision},existing=paths,kind=kind,draw=index)
+            raise ValueError('reference review packets are required; legacy review format is disabled')
         if decision['combined']['status']!='passed':
             if index==MAX_DRAWS-1:_stop(out,f'{kind} exhausted three reviewed draws')
             return {'status':'failed','kind':kind,'draw':index}

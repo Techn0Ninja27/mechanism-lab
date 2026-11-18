@@ -90,9 +90,9 @@ class Campaign2LifecycleAdversarialTests(unittest.TestCase):
     def test_review_hash_and_decision_mutations_cannot_advance(self):
         self._failed_draw("atoms", 0)
         draw = life._draw_dir(self.out, "atoms", 0)
-        review = draw / "review-b.json"
+        review = draw / "reference-slots/b/review-00.json"
         data = json.loads(review.read_text())
-        data["reviewer_id"] = "changed"
+        data["fields"][0]["reason"] = "changed"
         review.write_text(json.dumps(data))
         with self.assertRaises(ValueError):
             life.execute_draw(self.out, "atoms", 1)
@@ -109,11 +109,11 @@ class Campaign2LifecycleAdversarialTests(unittest.TestCase):
         with patch.object(life, "CANONICAL_OUTPUT", other):
             life.execute_draw(other, "atoms", 0)
             reviews(other, "atoms", 0)
-            path = life._draw_dir(other, "atoms", 0) / "review-a.json"
+            path = life._draw_dir(other, "atoms", 0) / "reference-slots/a/input-00.json"
             data = json.loads(path.read_text())
-            data["context"]["draw"] = 1
+            data["review_context"]["draw"] = 1
             path.write_text(json.dumps(data))
-            with self.assertRaisesRegex(ValueError, "bound to this draw"):
+            with self.assertRaisesRegex(ValueError, "artifact binding|bound to this draw"):
                 life.record_review(other, "atoms", 0)
 
     def test_uncited_quote_and_incomplete_fields_fail_before_lock(self):
@@ -122,9 +122,9 @@ class Campaign2LifecycleAdversarialTests(unittest.TestCase):
         draw = life._draw_dir(self.out, "atoms", 0)
         # Altering a review before the decision must fail validation and cannot
         # create a selection lock.
-        path = draw / "review-a.json"
+        path = draw / "reference-slots/a/review-00.json"
         data = json.loads(path.read_text())
-        data["records"][0]["field_items"][0]["support_quote"] = "not in cited chunk"
+        data["fields"][0]["evidence_ids"] = ["E9999"]
         path.write_text(json.dumps(data))
         with self.assertRaises(ValueError):
             life.record_review(self.out, "atoms", 0)

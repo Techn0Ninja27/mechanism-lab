@@ -70,6 +70,7 @@ def _deps() -> dict[str, str]:
              "generation/campaign_journal.py", "generation/field_calibration_scoring.py",
              "generation/evidence_reference_packets.py", "generation/record_review_packets.py",
              "generation/reference_draw_reviews.py", "generation/recordwise_calibration_scoring.py",
+             "generation/reference_review_v2.py",
              "reports/generation-comparison-campaign2/reference-review-amendment.md",
              "reports/chunk-field-calibration-v1/calibration-freeze.json",
              "reports/chunk-field-calibration-v1/scoring-key.json",
@@ -227,9 +228,7 @@ def _require_chunk_gate(out: Path) -> None:
             checked=combine_reviews(by_slot['a'],by_slot['b'],plan_sha256=sha(out/'plan.json'),kind=kind,draw=lock[kind]['draw'])
             if checked.get('status')!='passed': raise ValueError('reference reviews did not pass')
             continue
-        for review in vals:
-            checked = prep.validate_draw_review(kind, review, pack, atoms if kind == "atoms" else distill)
-            if checked.get("status") != "passed": raise ValueError("campaign2 generation blocked: unsupported selected record")
+        raise ValueError('campaign2 requires reference reviews; legacy format is disabled')
     receipts = d.get("draw_receipts")
     if not isinstance(receipts, list) or len(receipts) != 2 or any(not isinstance(x, dict) or not isinstance(x.get("call_sha256"), str) for x in receipts):
         raise ValueError("campaign2 generation blocked: selected draw receipts missing")

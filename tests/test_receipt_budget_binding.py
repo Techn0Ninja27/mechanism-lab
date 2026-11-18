@@ -95,6 +95,9 @@ class ReceiptBudgetBindingTests(unittest.TestCase):
                  "finish_reason":"stop","response_id":"r1","content":"{}",
                  "usage":{"cost":0.00001},"reserved_usd":reserve}
         path.write_text(json.dumps(receipt))
+        key_patch=patch('scripts.world_search.key',return_value='not-a-key');key_patch.start();self.addCleanup(key_patch.stop)
+        network_patch=patch('scripts.world_search.urllib.request.urlopen',side_effect=AssertionError('unexpected network'));network=network_patch.start();self.addCleanup(network_patch.stop)
+        self.addCleanup(network.assert_not_called)
         client=Client(out,config)
         with self.assertRaises(BudgetError): client.call({"id":"case"},0,"hello")
         ledger=BudgetLedger(self.ledger_path,1.0)

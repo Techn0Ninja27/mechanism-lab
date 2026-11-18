@@ -11,9 +11,8 @@ import json
 from pathlib import Path
 from typing import Any, Mapping
 
-from generation.evidence_reference_packets import (REVIEW_INSTRUCTIONS,
-                                                   build_evidence_packet,
-                                                   decode_review)
+from generation.evidence_reference_packets import build_evidence_packet
+from generation.reference_review_v2 import REVIEW_INSTRUCTIONS_V2 as REVIEW_INSTRUCTIONS, decode_review_v2 as decode_review
 from scripts import prepare_chunk_representations as prep
 
 SCHEMA = "reference-draw-review-set.v1"
@@ -96,6 +95,7 @@ def build_review_set(out: str | Path, *, plan_sha256: str, kind: str,
                 "representation_sha256": _sha(representation),
                 "instruction_sha256": _instruction_sha(),
                 "builder_sha256": _builder_sha(),
+                "parser_sha256": _file_sha(Path(__file__).with_name("reference_review_v2.py")),
                 "adapter_sha256": _file_sha(Path(__file__)),
                 "packets": packets}
     (root / "reviewer-instructions.md").write_text(REVIEW_INSTRUCTIONS + "\n")
@@ -128,6 +128,7 @@ def materialize_review(root: str | Path, *, plan_sha256: str, kind: str,
         raise ValueError("source pack digest mismatch")
     if (manifest.get("instruction_sha256") != _instruction_sha() or
             manifest.get("builder_sha256") != _builder_sha() or
+            manifest.get("parser_sha256") != _file_sha(Path(__file__).with_name("reference_review_v2.py")) or
             manifest.get("adapter_sha256") != _file_sha(Path(__file__))):
         raise ValueError("review instruction or builder changed")
     instruction_path = root / "reviewer-instructions.md"
@@ -183,6 +184,7 @@ def materialize_review(root: str | Path, *, plan_sha256: str, kind: str,
               "provenance": {"manifest_sha256": _file_sha(root / "manifest.json"),
                              "instruction_sha256": manifest["instruction_sha256"],
                              "builder_sha256": manifest["builder_sha256"],
+                             "parser_sha256": manifest["parser_sha256"],
                              "adapter_sha256": manifest["adapter_sha256"],
                              "packet_sha256": [x["sha256"] for x in manifest["packets"]]},
               "legacy_compatibility": {"status": "not_compatible",

@@ -70,6 +70,16 @@ class ReferenceLifecycleTests(unittest.TestCase):
         path.write_text(path.read_text()+' ')
         with self.assertRaises(ValueError): c._require_chunk_gate(self.out)
 
+    def test_legacy_review_cannot_lock(self):
+        life.execute_draw(self.out,'atoms',0)
+        # Old artifacts must not be sufficient to select a representation.
+        draw=self.out/'prep-draws/atoms/00'
+        for slot in 'ab':
+            (draw/f'review-{slot}.json').write_text(json.dumps({'schema':'chunk-grounded-draw-review.v1','records':[]}))
+        with self.assertRaisesRegex(ValueError,'legacy review format is disabled'):
+            life.record_review(self.out,'atoms',0)
+        self.assertFalse((self.out/'selected/atoms.selection.json').exists())
+
     def test_missing_raw_review_fails_closed(self):
         life.execute_draw(self.out, 'atoms', 0)
         life.export_reference_review_sets(self.out, 'atoms', 0)
