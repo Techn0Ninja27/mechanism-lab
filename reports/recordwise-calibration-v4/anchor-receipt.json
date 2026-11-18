@@ -1,0 +1,7 @@
+{
+  "chain_id": "recordwise-calibration-v4-direct-reviewset-2",
+  "anchor_head": "6271d988bf4953254e85d18de2a6bc76ec5cd6197e0f2d501cb9dfdb23a6683b",
+  "evaluation_sha256": "431ec477844ad2c69d9799aa9f1132df3ee9e062318cd1137347f102b40f89b7",
+  "ledger_charged_usd": 5.035227600000001,
+  "money_unchanged": true
+}

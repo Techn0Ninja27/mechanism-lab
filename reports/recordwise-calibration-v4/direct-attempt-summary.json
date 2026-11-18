@@ -1,0 +1,161 @@
+{
+  "schema": "recordwise-calibration-direct-attempt.v1",
+  "status": "failed_evidence_validation",
+  "review_count": 16,
+  "verdict_match_count": 16,
+  "mechanically_valid_count": 14,
+  "ready": false,
+  "reviews": [
+    {
+      "packet": 0,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_0a",
+      "input_sha256": "3779e3adb3d713ef8741891d6b8dbe25f164984cba5992afdc2d4731674e1aa8",
+      "review_sha256": "064aadf0826fe1c267e6e26e59f29ae1dfaebe2442c757849c16543318e751e7",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 0,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_0b",
+      "input_sha256": "3779e3adb3d713ef8741891d6b8dbe25f164984cba5992afdc2d4731674e1aa8",
+      "review_sha256": "ccba2b39cd763b75200a95ad121554320895850e25000851f9e8315f05174d17",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 1,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_1a",
+      "input_sha256": "ba85e385529efa5e9f73c0c3e1efaf456e13a30c05ed797cbb522c24c8b013af",
+      "review_sha256": "6b8d7020ae8b9aa40424aefd9911790bfbb1064a36ddd11ce15d5edae8beadfa",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 1,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_1b",
+      "input_sha256": "ba85e385529efa5e9f73c0c3e1efaf456e13a30c05ed797cbb522c24c8b013af",
+      "review_sha256": "48edea8e92dc776f9b48b94d3b61e8a20c651f817d60ca4e4db58bdf7fa74f9e",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 2,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_2a",
+      "input_sha256": "bd19fba627725870e18158ecb741b9c5298aa16908ccad911768bd7e39b4a70b",
+      "review_sha256": "f3c67fe80df6ed3110ae7e68ecd62a4a28483c3c135f6dafc16f4e29b844bd45",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 2,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_2b",
+      "input_sha256": "bd19fba627725870e18158ecb741b9c5298aa16908ccad911768bd7e39b4a70b",
+      "review_sha256": "8f16d290e9b8a2bcae4824fb2bfa0f1cdd40b1134f9c16eb151d1ee5ee7b5c44",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 3,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_3a",
+      "input_sha256": "244958b1851695cba960779e7f470394b9b1e22c207f94091f47832134c8e215",
+      "review_sha256": "19fa32228484ff1eaac447798f8747554a11ba288b755dfe4d9eaa28a7000d92",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 3,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_3b",
+      "input_sha256": "244958b1851695cba960779e7f470394b9b1e22c207f94091f47832134c8e215",
+      "review_sha256": "c6e0b124bd1ce5d8ad66985317bc8d7cea0f01ca519640cb41a027d8ba745933",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 4,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_4a",
+      "input_sha256": "682d1a0ef1222554f6ead0067f71789fa9c1376748f41ee8a8539acbad77b6cd",
+      "review_sha256": "1d0b2c2c6f126f0a0f3b3719cc556ddc1214366699a3d4cdf2bf1eab050d05f6",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 4,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_4b",
+      "input_sha256": "682d1a0ef1222554f6ead0067f71789fa9c1376748f41ee8a8539acbad77b6cd",
+      "review_sha256": "56532c56fd438484deadd1e3c271783a2922f066c10626083b0ec0ba32af93f5",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 5,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_5a",
+      "input_sha256": "86141413d24ef8a77f013a35bcbc900a4f72d08b909b571569e6ea89e5239c94",
+      "review_sha256": "c5c5be9b802e6db1306f48790124fbc246e1049e862559ea516fb1e5b276a43e",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 5,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_5b",
+      "input_sha256": "86141413d24ef8a77f013a35bcbc900a4f72d08b909b571569e6ea89e5239c94",
+      "review_sha256": "ca9ea4fd4c2dfc8086885551e41ce285b681567620bf93c826267475b7873120",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 6,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_6a",
+      "input_sha256": "20e231a0b764080aa0459f32c8e33dda55bbce756e6ab3cc83167430954262dd",
+      "review_sha256": "e6f01c04f1e768182be714a64c30c1818a2f52c09fbc279376087c99c4ef523f",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 6,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_6b",
+      "input_sha256": "20e231a0b764080aa0459f32c8e33dda55bbce756e6ab3cc83167430954262dd",
+      "review_sha256": "b75a001288f615bf0276e5d54784b6dae4e229a6e3e97aff295b804001d558e0",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": null
+    },
+    {
+      "packet": 7,
+      "slot": "a",
+      "native_agent": "/root/direct_v4_7a",
+      "input_sha256": "706d055b19cee13f86287107ae837ddee9f0d826fe503a295b62b843c82356ab",
+      "review_sha256": "10d891b3292c1cd990784fd20b29095b838ed820dc1fe878fb9f41dcfb058967",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": "evidence not bound"
+    },
+    {
+      "packet": 7,
+      "slot": "b",
+      "native_agent": "/root/direct_v4_7b",
+      "input_sha256": "706d055b19cee13f86287107ae837ddee9f0d826fe503a295b62b843c82356ab",
+      "review_sha256": "c006cabb2246e09ae01c3a4d214211a3f5e7954448f7718bc16e8d16a656865b",
+      "verdicts_match_key": true,
+      "mechanical_validation_error": "evidence not bound"
+    }
+  ],
+  "instruction_sha256": "482e3a374d3f54f038322513dc50b89a5245be1df65234073f9174389e91927c",
+  "answer_key_sha256": "dd1e939f65f8b3fff32af6aad3563c2a038e3cee13b6c627985282d6735c9019",
+  "limitations": [
+    "Eight hand-built development packets, not a population accuracy estimate.",
+    "Two malformed source quotations remain invalid; reviewer files were not repaired.",
+    "Earlier coordinated attempt was invalid and is not included."
+  ]
+}
