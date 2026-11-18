@@ -368,6 +368,25 @@
       "novelty_established": false
     },
     {
+      "id": "generation-comparison-stage0-v1",
+      "tested_change": "Development calibration comparing fixed baseline estimators against hold on a fixed Cora evaluation window. The stage-0 secondary metrics report paired mean differences of +1.638 points for the exact-window sync aggregate, +0.659 for own-forward evaluation and +2.556 at the endpoint comparison.",
+      "verdict": "development_calibration_no_novel_method",
+      "scope": "112 runs over 16 development seeds; fixed Cora regime and prespecified control arms. No fresh confirmation and no generated-method claim.",
+      "limitations": [
+        "Development calibration only; no fresh-seed confirmation.",
+        "The three summaries use different forward-pass or endpoint metrics and are not causal attributions.",
+        "No novelty, training eligibility or research-engine usefulness claim."
+      ],
+      "report_path": "operator-studies/gnn-generation-stage0/README.md",
+      "result_path": "operator-studies/gnn-generation-stage0/metrics.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "b18cd41cc7234db9adf30bb7e03bcf945eb32683514e09a459e5a3529483459c",
+      "train_eligible": false,
+      "novelty_established": false
+    },
+    {
       "id": "gnn-closedloop-clamp-v1",
       "tested_change": "One missing-control check on nonnegative output projection: 40 runs, five arms, eight exposed seeds. Output-projected SNI, state-projected SNI and output-projected lag1 remain approximately 33.0, 34.2 and 32.2 accuracy points below hold. Logged raw baselines reproduce stored confirmation results.",
       "verdict": "projection_alone_insufficient_development",

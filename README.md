@@ -46,11 +46,12 @@ extensions and results are specific to this fork.
 
 ## Results, including what failed
 
-Results recorded through **2026-11-17**. These are engineering pilots, not established
+Results recorded through **2026-11-18**. These are engineering pilots, not established
 scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Calibrate a stronger generator benchmark** | **112 development runs:** averaging the last two sync states gains **1.64 exact-window accuracy points** over hold. Selected from four controls; no fresh-seed confirmation or generated-method claim. | [Control screen and limits](reports/generation-comparison-v2/stage0-findings.md) |
 | **Test the missing projection control** | **40 development runs:** projected predictors remain 32–34 accuracy points below hold. Projection alone does not rescue these implementations; no causal attribution or novel-method claim. | [Clamp control and audit](operator-studies/gnn-closedloop-clamp/README.md) |
 | **Check the selected regime on fresh seeds** | **64 runs:** primary gap +2.71 points, pointwise 95% interval **[-0.10, +5.51]**. The allocation rule passes, but the interval includes zero; evaluation-mode differences remain descriptive. | [Follow-up and interpretation](operator-studies/gnn-closedloop-confirm/README.md) |
 | **Check downstream staleness sensitivity** | **1,600 runs; 9/24 primary comparisons flagged after correction.** No constant-rate two-layer regime is flagged; three-layer leads remain exploratory and sensitive to evaluation semantics. | [Closed-loop grid and audit](operator-studies/gnn-closedloop-gap/README.md) |

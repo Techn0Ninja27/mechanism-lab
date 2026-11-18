@@ -1,6 +1,32 @@
 {
   "schema": "study-metrics.v1",
   "records": {
+    "generation-comparison-stage0-v1": {
+      "result_sha256": "b18cd41cc7234db9adf30bb7e03bcf945eb32683514e09a459e5a3529483459c",
+      "metric_paths": {
+        "primary": {
+          "mean_sync_exact_points": [
+            "metrics",
+            "mean_sync",
+            "window_exact",
+            "mean_difference_pp"
+          ],
+          "mean_sync_own_points": [
+            "metrics",
+            "mean_sync",
+            "window_own",
+            "mean_difference_pp"
+          ],
+          "mean_sync_endpoint_points": [
+            "metrics",
+            "mean_sync",
+            "endpoint_exact",
+            "mean_difference_pp"
+          ]
+        },
+        "secondary": {}
+      }
+    },
     "gnn-closedloop-clamp-v1": {
       "result_sha256": "cf2118c5aa882fc3dc0406241f18ec1ef1b0d5913f0731a7b184e07209add950",
       "metric_paths": {
