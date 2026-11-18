@@ -8,6 +8,11 @@ from generation import campaign_journal as j
 
 class CampaignJournalTests(unittest.TestCase):
     def setUp(self):
+        live_ledger = Path(__file__).resolve().parents[1] / 'results/improvement-phase-2026-11-16/budget.json'
+        snapshot = live_ledger.read_bytes() if live_ledger.exists() else None
+        self.addCleanup(lambda: self.assertEqual(
+            live_ledger.read_bytes() if live_ledger.exists() else None,
+            snapshot, 'tests must not mutate the live phase ledger'))
         self.tmp = tempfile.TemporaryDirectory()
         self.out = Path(self.tmp.name)
     def tearDown(self): self.tmp.cleanup()

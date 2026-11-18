@@ -15,6 +15,11 @@ class Campaign2DrawRecoveryTests(unittest.TestCase):
     """Recovery tests use an isolated campaign and phase ledger."""
 
     def setUp(self):
+        live_ledger = Path(__file__).resolve().parents[1] / 'results/improvement-phase-2026-11-16/budget.json'
+        snapshot = live_ledger.read_bytes() if live_ledger.exists() else None
+        self.addCleanup(lambda: self.assertEqual(
+            live_ledger.read_bytes() if live_ledger.exists() else None,
+            snapshot, 'tests must not mutate the live phase ledger'))
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.out = Path(self.tmp.name) / 'campaign'
