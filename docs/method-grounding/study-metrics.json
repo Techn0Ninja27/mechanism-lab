@@ -1,6 +1,18 @@
 {
   "schema": "study-metrics.v1",
   "records": {
+    "matched-preparation-v1": {
+      "result_sha256": "4b0486599e55dde0f86d5fb56907d6ae3793bc9c09d7cceb4b51ab2b0c151204",
+      "metric_paths": {
+        "primary": {},
+        "secondary": {
+          "supported_records": ["counts", "supported"],
+          "unsupported_records": ["counts", "unsupported"],
+          "generation_calls": ["generation_calls"],
+          "ledger_cost_usd": ["ledger_cost_usd"]
+        }
+      }
+    },
     "generation-comparison-stage0-v1": {
       "result_sha256": "b18cd41cc7234db9adf30bb7e03bcf945eb32683514e09a459e5a3529483459c",
       "metric_paths": {

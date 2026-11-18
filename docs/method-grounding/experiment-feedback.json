@@ -368,6 +368,25 @@
       "novelty_established": false
     },
     {
+      "id": "matched-preparation-v1",
+      "tested_change": "Matched source preparation for typed atoms and prose distillations with exact own-quote coverage review. Two paid preparation calls produced 12 records per representation; the fixed zero-unsupported gate stopped before candidate generation.",
+      "verdict": "preparation_stopped_quote_coverage_failure",
+      "scope": "24 prepared records: 2 supported and 22 unsupported, symmetrically 11 of 12 per representation. Generation calls zero; ledger cost USD 0.218348.",
+      "limitations": [
+        "Unsupported own-quote coverage does not establish source falsehood or absence from the full source.",
+        "This is a preparation-fidelity finding, not a representation-performance comparison.",
+        "No repairs or regeneration are allowed for this stopped attempt."
+      ],
+      "report_path": "operator-studies/matched-preparation-v1/README.md",
+      "result_path": "operator-studies/matched-preparation-v1/outcome.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "4b0486599e55dde0f86d5fb56907d6ae3793bc9c09d7cceb4b51ab2b0c151204",
+      "train_eligible": false,
+      "novelty_established": false
+    },
+    {
       "id": "generation-comparison-stage0-v1",
       "tested_change": "Development calibration comparing fixed baseline estimators against hold on a fixed Cora evaluation window. The stage-0 secondary metrics report paired mean differences of +1.638 points for the exact-window sync aggregate, +0.659 for own-forward evaluation and +2.556 at the endpoint comparison.",
       "verdict": "development_calibration_no_novel_method",
