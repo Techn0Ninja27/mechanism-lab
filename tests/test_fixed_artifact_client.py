@@ -156,5 +156,16 @@ class FixedArtifactClientTests(unittest.TestCase):
             self.assertTrue((root/"receipts/.stop.json").exists())
         finally:d.cleanup()
 
+    def test_response_replacement_detected_by_external_anchor(self):
+        d,root,c=self.make(self.ok)
+        try:
+            c.call(req(),"one.json")
+            path=root/"receipts/one.json"; record=json.loads(path.read_text())
+            record["content"]="schema-valid replacement"
+            path.write_text(json.dumps(record))
+            with self.assertRaisesRegex(FixedArtifactError,"external ledger anchor"):
+                c.call(req(),"one.json")
+        finally:d.cleanup()
+
 
 if __name__ == "__main__": unittest.main()

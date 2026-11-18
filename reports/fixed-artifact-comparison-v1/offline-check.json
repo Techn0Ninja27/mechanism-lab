@@ -10,9 +10,9 @@
   "worst_case_campaign_reserve_usd": 24.800500200000002,
   "phase_worst_case_charged_usd": 29.942251800000005,
   "paid_calls": 0,
-  "generation_enabled": false,
+  "execution_authority": "none_requires_separate_audited_freeze",
   "code_hashes": {
-    "scripts/run_fixed_artifact_campaign.py": "ec083fc6d324b449ce37777fb88eb9e943f42a5ccbdc235a4841a8dd3586a55d",
+    "scripts/run_fixed_artifact_campaign.py": "f2f633418f46d5a842fe95bae72034bf5e99a9843b37c530d0202221dc81bace",
     "scripts/generate_causal_campaign2.py": "cd693ee9bb9074d5671b3b9046b5798f0deec3fea14add7dfb5a801be6c6fa5f",
     "scripts/generate_causal_campaign.py": "2c693db779e2a5915053026de339eaebe73ea4649301f65ede453e601becb294",
     "scripts/evaluate_causal_candidates.py": "007d9e1c1ccb04b7b7051728098abd1b16a41fefded64dc33e7a46fb28916143",
@@ -23,7 +23,7 @@
     "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
     "generation/fixed_artifact_decisions.py": "d76ddc6c7417fa6bc80d74b3c57facdf3960781d5d3f18845ddbd90015c2feaa",
     "generation/fixed_artifact_fidelity.py": "98b9c6b4bda40e600a132ff6a0b1a31692984bc7eed79f84e6753ef89e5101c3",
-    "reports/fixed-artifact-comparison-v1/protocol.md": "06dd5f2a4c7e32c0e91369b31530ea8f965b182cef74442fba694288fc9fcdb9",
+    "reports/fixed-artifact-comparison-v1/protocol.md": "ff79bb78e6d3eded7883504e4d1240202bc39ffab8c47b2da56d8572e4fc6f02",
     "reports/fixed-artifact-comparison-v1/atoms-fidelity.json": "6261904ecfff10a3b9e889eb5178b8d84fed9689f001bfc8f2b9f4e96edc0f99"
   },
   "dependency_hashes": {
@@ -58,7 +58,7 @@
     "model_version_independently_pinned": false
   },
   "date": "2026-11-19",
-  "scope": "Offline calculation with public model metadata and 5% BYOK-fee contingency; no account-specific route/access verification; not an execution freeze.",
+  "scope": "Offline calculation including 5% fee contingency; initial plan is not authority to make paid requests.",
   "ledger_sha256": "411720f64f2f8987898964e2bb721d89595fe52dea12c9ae170bb7b8f67a3850",
   "live_ledger_unchanged": true,
   "planned_generation_calls": 48,

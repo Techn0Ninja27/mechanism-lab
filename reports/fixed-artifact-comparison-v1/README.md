@@ -8,8 +8,8 @@ one prose artifact, and task-only prompts. The prospective design is in
 
 Implemented: an offline plan builder with input and prompt hashes, a seeded
 48-call schedule, conservative standard-price reservations, a descriptive
-fidelity table, and per-decoder decision rules. The planner has no paid execution
-command. Missing or invalid prose is preserved as unavailable; the protocol
+fidelity table, and per-decoder decision rules. The planner itself has no paid execution authority; the separate audited
+lifecycle is described in [execution-status.md](execution-status.md). Missing or invalid prose is preserved as unavailable; the protocol
 stops before generation in that case.
 
 [atoms-fidelity.json](atoms-fidelity.json) reproduces 23 valid reviews out of 24,
@@ -23,16 +23,17 @@ classifies the flags without changing the failed run.
 [offline-check.json](offline-check.json) records the conservative reservation
 including a 5% BYOK-fee contingency: $24.8005002 new, $29.9422518 phase total. No API request
 was made and the live ledger was byte-identical. [provider-check.md](provider-check.md) documents public prices, advertised model
-settings, and fee assumptions. This remains an offline plan, not an execution
-freeze: paid-runner integration and actual account/provider routing are unfinished.
+settings, and fee assumptions. The lifecycle and HTTP adapter are implemented. An independently audited
+execution freeze and the actual run are still pending; account routing is not
+claimed from metadata alone.
 
-The separate [request client](client-status.md) is implemented with an injected
-transport and fake-provider tests; it is not yet connected to campaign execution.
+The [request client](client-status.md) is integrated with the lifecycle and an
+explicit HTTP adapter. Tests inject fake providers and never read real credentials.
 
-Validation (65 tests):
+Validation (97 tests):
 
 ```sh
-../.venv/bin/python -m unittest tests.test_fixed_artifact_client tests.test_fixed_artifact_runner tests.test_fixed_artifact_fidelity tests.test_fixed_artifact_decisions tests.test_research_ledger
+../.venv/bin/python -m unittest tests.test_fixed_artifact_client tests.test_fixed_artifact_runner tests.test_fixed_artifact_fidelity tests.test_fixed_artifact_decisions tests.test_research_ledger tests.test_fixed_artifact_transport tests.test_fixed_artifact_analysis tests.test_fixed_artifact_execution tests.test_fixed_artifact_review_launch tests.test_fixed_artifact_command
 ```
 
 Recompute the fidelity table without altering any input:

@@ -10,7 +10,7 @@ class FixedArtifactRunnerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             out=Path(td)/"plan"
             plan=build_plan(out)
-            self.assertFalse(plan["generation_enabled"])
+            self.assertEqual(plan["execution_authority"],"none_requires_separate_audited_freeze")
             self.assertEqual(len(plan["cases"]),48)
             self.assertEqual(plan["prose_status"],"unavailable")
             self.assertEqual(json.loads((out/"fidelity.json").read_text())["atoms"]["status"],"gate_failed_reused_unselected")
@@ -113,7 +113,7 @@ class FixedArtifactRunnerTests(unittest.TestCase):
             out=Path(td)/"plan"; d=build_plan(out, prose_path=raw)
             self.assertEqual(d["prose_status"], "unavailable")
             self.assertEqual((out/"representations/distillations-raw.json").read_bytes(), raw.read_bytes())
-            self.assertFalse(verify_plan(out)["generation_enabled"])
+            self.assertEqual(verify_plan(out)["execution_authority"],"none_requires_separate_audited_freeze")
 
     def test_fee_contingency_bound_and_tamper(self):
         from scripts.run_fixed_artifact_campaign import _reserve_bytes, SYSTEM
@@ -127,5 +127,16 @@ class FixedArtifactRunnerTests(unittest.TestCase):
             plan["byok_fee_rate"]=0
             (out/"plan.json").write_text(json.dumps(plan))
             with self.assertRaises(ValueError): verify_plan(out)
+
+    def test_historical_verification_allows_increase_never_reset(self):
+        import scripts.run_fixed_artifact_campaign as m
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/"plan"; plan=build_plan(out)
+            initial=plan["phase_charged_before_usd"]
+            with patch.object(m,"_phase_charged",return_value=initial+0.5):
+                with self.assertRaises(ValueError):verify_plan(out)
+                verify_plan(out,require_current_phase=False)
+            with patch.object(m,"_phase_charged",return_value=initial-0.5):
+                with self.assertRaises(ValueError):verify_plan(out,require_current_phase=False)
 
 if __name__=='__main__': unittest.main()

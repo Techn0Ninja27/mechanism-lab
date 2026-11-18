@@ -1,0 +1,25 @@
+{
+  "schema": "fixed-artifact-test-receipt.v1",
+  "date": "2026-11-19",
+  "test_count": 97,
+  "command": [
+    "../.venv/bin/python",
+    "-m",
+    "unittest",
+    "tests.test_fixed_artifact_client",
+    "tests.test_fixed_artifact_runner",
+    "tests.test_fixed_artifact_fidelity",
+    "tests.test_fixed_artifact_decisions",
+    "tests.test_fixed_artifact_transport",
+    "tests.test_fixed_artifact_analysis",
+    "tests.test_fixed_artifact_execution",
+    "tests.test_fixed_artifact_review_launch",
+    "tests.test_fixed_artifact_command",
+    "tests.test_research_ledger"
+  ],
+  "exit_code": 0,
+  "real_provider_calls": 0,
+  "real_cora_training_runs": 0,
+  "live_ledger_unchanged": true,
+  "ledger_sha256": "411720f64f2f8987898964e2bb721d89595fe52dea12c9ae170bb7b8f67a3850"
+}

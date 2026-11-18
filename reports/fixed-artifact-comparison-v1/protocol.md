@@ -146,3 +146,19 @@ is checkpointed and reproducible; resuming a verified local job is not an API re
 
 A follow-up after this experiment requires a new prospective question and plan.
 This protocol does not reopen Campaign 2 or relabel any of its failed gates.
+
+## Execution records
+
+The immutable base plan grants no paid execution authority. A separate initial
+freeze, matching independent audit receipt, and explicit execution request are
+required before either paid stage. Preparation and generated prompt files have
+separate directories so the base plan is never rewritten after a call. Native
+review launch intents precede spawning, with completion records saved separately;
+these are procedural records, not proof of independent model judgement.
+
+Completed response checksums are anchored in the shared phase ledger. A verified
+completed receipt can rebuild a local checkpoint without a new request. An
+unverifiable or failed request is never resent automatically. Candidate exports
+are checked against those receipts, and exact code, runtime and data bindings
+are retained. See execution-status.md for the command sequence. The initial
+plan's zero paid-call count describes its creation, not subsequent runtime use.
