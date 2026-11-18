@@ -5,6 +5,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import math
 import sys
 from pathlib import Path
 from typing import Any
@@ -45,6 +46,71 @@ def _metric(v: dict[str, Any]) -> dict[str, Any]:
     return {k: v[k] for k in keys if k in v}
 
 
+def _headroom_metrics(root: Path, record: dict[str, Any], warnings: list[str]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Project the bounded numeric summary of the GNN headroom study.
+
+    The surrounding feedback validator has already checked the artifact hash.
+    This adapter is intentionally specific to this one schema: it exposes
+    descriptive development measurements and never turns them into a quality
+    or promotion signal.
+    """
+    if record.get("id") != "gnn-predictor-headroom-v1":
+        return {}, {}
+    path = root / record["result_path"]
+    raw = _read(path, None)
+    if not isinstance(raw, dict) or raw.get("schema") != "gnn-predictor-headroom-v1" or raw.get("status") != "complete":
+        warnings.append("gnn-predictor-headroom-v1: result schema is missing or malformed")
+        return {}, {}
+    summary = raw.get("schedule_summary")
+    if not isinstance(summary, dict) or set(summary) != {"constant", "lr_drop"}:
+        warnings.append("gnn-predictor-headroom-v1: schedule summary is missing or malformed")
+        return {}, {}
+
+    def number(value: Any, label: str) -> float | None:
+        try:
+            valid = not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(float(value))
+        except (ValueError, OverflowError):
+            valid = False
+        if not valid:
+            warnings.append(f"gnn-predictor-headroom-v1: invalid numeric metric {label}")
+            return None
+        return float(value)
+
+    primary: dict[str, float] = {}
+    secondary: dict[str, Any] = {"scope": "development-only open-loop trajectory replay; no downstream accuracy or novelty claim"}
+    names = {"constant": "constant_lr", "lr_drop": "lr_drop"}
+    for schedule, label in names.items():
+        row = summary[schedule]
+        selected = row.get("selected_candidates") if isinstance(row, dict) else None
+        reductions = row.get("reduction_vs_sni") if isinstance(row, dict) else None
+        if not isinstance(row, dict) or not isinstance(selected, dict) or not isinstance(reductions, dict):
+            warnings.append(f"gnn-predictor-headroom-v1: malformed metrics for {schedule}")
+            return {}, {}
+        fields = {
+            f"{label}_sni_error": row.get("sni"),
+            f"{label}_damped_mix_error": selected.get("damped_mix"),
+            f"{label}_ridge_error": selected.get("ridge"),
+            f"{label}_damped_mix_reduction_vs_sni": reductions.get("damped_mix"),
+            f"{label}_ridge_reduction_vs_sni": reductions.get("ridge"),
+        }
+        for metric, value in fields.items():
+            parsed = number(value, metric)
+            if parsed is None:
+                return {}, {}
+            primary[metric] = parsed
+    # The card shows four primary numbers: preserve both schedules there.
+    all_metrics = primary
+    primary = {k: all_metrics[k] for k in (
+        "constant_lr_sni_error", "constant_lr_damped_mix_error",
+        "lr_drop_sni_error", "lr_drop_damped_mix_error")}
+    secondary = {**{k: all_metrics[k] for k in (
+        "constant_lr_damped_mix_reduction_vs_sni", "lr_drop_damped_mix_reduction_vs_sni",
+        "constant_lr_ridge_reduction_vs_sni", "lr_drop_ridge_reduction_vs_sni",
+        "constant_lr_ridge_error", "lr_drop_ridge_error")}, **secondary}
+    secondary["interpretation"] = raw.get("interpretation", "")[:2000] if isinstance(raw.get("interpretation"), str) else ""
+    return primary, secondary
+
+
 def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
     """Expose hash-checked feedback without promoting it to evidence.
 
@@ -81,6 +147,7 @@ def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
         record = valid[0]
         report = record["report_path"]
         result = record["result_path"]
+        primary_metrics, secondary_metrics = _headroom_metrics(root, record, warnings)
         rows.append({
             "id": record["id"], "cohort": "experiment_feedback",
             "title": record["id"], "artifact_directory": str(Path(report).parent),
@@ -88,7 +155,7 @@ def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
             "audit_qualification": "registry_hash_and_paths_verified",
             "audit_note": ("Registry and result hash/path verified; this is not independent scientific validation. "
                            f"Tested change: {record['tested_change']} Scope: {record['scope']}"),
-            "primary_metrics": {}, "secondary_metrics": {},
+            "primary_metrics": primary_metrics, "secondary_metrics": secondary_metrics,
             "novelty_established": False, "human_adjudicated": False,
             "prior_art_status": "Source-linked local experiment; no novelty established.",
             "limitations": list(record["limitations"]),

@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 46)
+            self.assertEqual(ledger["study_count"], 47)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -46,6 +46,38 @@ class LedgerTests(unittest.TestCase):
         self.assertFalse(row["evidence"]["train_eligible"])
         self.assertEqual(row["artifact_refs"][1]["sha256"],
                          "3fcd902a467acb1570f43ff2559a217b6dfbf7af47bb1732872fd69c3bdae2c8")
+
+    def test_headroom_feedback_projects_bounded_numeric_summary(self):
+        row = next(x for x in build_ledger()["studies"] if x["id"] == "gnn-predictor-headroom-v1")
+        self.assertAlmostEqual(row["primary_metrics"]["constant_lr_sni_error"], 0.006535200583991728)
+        self.assertAlmostEqual(row["secondary_metrics"]["constant_lr_damped_mix_reduction_vs_sni"], 0.29894935312302723)
+        self.assertAlmostEqual(row["secondary_metrics"]["lr_drop_ridge_reduction_vs_sni"], 0.03583115998576373)
+        self.assertIn("development-only", row["secondary_metrics"]["scope"])
+        self.assertFalse(row["novelty_established"])
+        self.assertFalse(row["evidence"]["train_eligible"])
+
+    def test_headroom_malformed_numeric_summary_is_omitted(self):
+        from scripts import export_research_ledger as ledger_module
+        original = ledger_module._read
+        registry = original(ledger_module.ROOT / "docs/method-grounding/experiment-feedback.json", {})
+        target = next(x for x in registry["records"] if x["id"] == "gnn-predictor-headroom-v1")
+        result_path = str(ledger_module.ROOT / target["result_path"])
+        raw_result = original(Path(result_path), {})
+        raw_result["schedule_summary"]["constant"]["sni"] = float("nan")
+
+        def fake_read(path, default):
+            if str(path) == result_path:
+                return raw_result
+            return original(path, default)
+
+        ledger_module._read = fake_read
+        try:
+            rows, warnings = ledger_module._feedback_studies(ledger_module.ROOT)
+        finally:
+            ledger_module._read = original
+        row = next(x for x in rows if x["id"] == "gnn-predictor-headroom-v1")
+        self.assertEqual(row["primary_metrics"], {})
+        self.assertTrue(any("invalid numeric metric constant_lr_sni_error" in item for item in warnings))
 
     def test_feedback_hash_mismatch_is_diagnostic_and_not_a_row(self):
         from scripts import export_research_ledger as ledger_module
