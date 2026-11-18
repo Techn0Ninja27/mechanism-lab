@@ -113,7 +113,7 @@ class BudgetLedger:
         with self._locked() as state:
             return {"cap_usd": self.cap_usd, "charged_usd": self._charged(state), "available_usd": self.cap_usd - self._charged(state), "reservations": state["reservations"]}
 
-    def reserve(self, request: str, amount_usd: float, metadata: dict[str, Any] | None = None) -> dict[str, Any]:
+    def reserve(self, request: str, amount_usd: float, metadata: dict[str, Any] | None = None, *, allow_existing: bool = True) -> dict[str, Any]:
         if not isinstance(request, str) or not request.strip():
             raise BudgetError("request must be a non-empty ID")
         amount = _amount(amount_usd)
@@ -124,6 +124,8 @@ class BudgetLedger:
             if old:
                 if old["reserved_usd"] != amount:
                     raise BudgetError("request already exists with a different reservation")
+                if not allow_existing:
+                    raise BudgetError("request already has a ledger reservation; refusing duplicate paid request")
                 return old
             if self._charged(state) + amount > self.cap_usd + 1e-12:
                 raise BudgetError("budget cap would be exceeded")

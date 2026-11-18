@@ -30,17 +30,12 @@ DEV_SEEDS = tuple(range(100, 116))
 FINAL_SEEDS = tuple(range(200, 232))
 
 def require_calibration_ready():
-    folder=ROOT/'reports/chunk-field-calibration-v1'
-    score=json.loads((folder/'score.json').read_text())
-    freeze=json.loads((folder/'calibration-freeze.json').read_text())
-    if score.get('freeze')!=freeze: raise ValueError('calibration freeze mismatch')
-    if sha(folder/'reviewer-inputs.json')!=freeze.get('input_sha256') or sha(ROOT/'reports/generation-comparison-campaign2/reviewer-instructions.md')!=freeze.get('instructions_sha256'):
-        raise ValueError('calibration input or instructions changed')
-    reviews=score.get('reviews')
-    if not isinstance(reviews,list) or len(reviews)!=2 or any(r.get('criterion_pass') is not True for r in reviews):
+    from generation.field_calibration_scoring import score_calibration
+    result=score_calibration(ROOT/'reports/chunk-field-calibration-v1',
+                             ROOT/'reports/generation-comparison-campaign2/reviewer-instructions.md')
+    if result.get('ready') is not True:
         raise ValueError('reviewer calibration failed; paid campaign is disabled')
-    for item,name in zip(reviews,('reviewer-a.json','reviewer-b.json')):
-        if sha(folder/name)!=item.get('file_sha256'):raise ValueError('calibration reviewer artifact changed')
+
 
 def config(budget: float = CAP) -> dict[str, Any]:
     c = old_config(budget)
@@ -71,7 +66,13 @@ def _deps() -> dict[str, str]:
              "reports/generation-comparison-v2/comparator-amendment.md",
              "reports/generation-comparison-v2/control-selection.json", "scripts/prepare_chunk_representations.py", "scripts/run_campaign2_preparation.py",
              "reports/generation-comparison-campaign2/reviewer-instructions.md",
-             "generation/campaign2_decisions.py", "scripts/run_causal_campaign.py"]
+             "generation/campaign2_decisions.py", "scripts/run_causal_campaign.py",
+             "generation/campaign_journal.py", "generation/field_calibration_scoring.py",
+             "reports/chunk-field-calibration-v1/calibration-freeze.json",
+             "reports/chunk-field-calibration-v1/scoring-key.json",
+             "reports/chunk-field-calibration-v1/reviewer-inputs.json",
+             "reports/chunk-field-calibration-v1/reviewer-a.json",
+             "reports/chunk-field-calibration-v1/reviewer-b.json"]
     if any(not (ROOT / x).is_file() for x in paths):
         missing = [x for x in paths if not (ROOT / x).is_file()]
         raise ValueError(f"campaign2 dependency missing: {missing}")

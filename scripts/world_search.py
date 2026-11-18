@@ -77,7 +77,7 @@ class Client:
    record={'status':'pending','request_hash':request_hash,'request':req,'reserved_usd':reserve,'timestamp':time.time()}
    path.write_text(json.dumps(record,indent=2))
    if ledger:
-    try:ledger.reserve(ledger_id,reserve,{'model':req['model'],'request_hash':request_hash})
+    try:ledger.reserve(ledger_id,reserve,{'model':req['model'],'request_hash':request_hash},allow_existing=False)
     except Exception as exc:
      record.update(status='budget_denied',error=str(exc));path.write_text(json.dumps(record,indent=2));raise
   request=urllib.request.Request('https://openrouter.ai/api/v1/chat/completions',data=json.dumps(req).encode(),headers={'Authorization':'Bearer '+self.auth,'Content-Type':'application/json'})

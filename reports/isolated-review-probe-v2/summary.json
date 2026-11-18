@@ -1,0 +1,72 @@
+{
+  "schema": "isolated-review-probe.v2",
+  "status": "diagnostic_only_not_production_gate",
+  "records": [
+    {
+      "packet": 0,
+      "input_sha256": "243e46a8bd7d33eb6b5fbe21838f39106b6918dd4c8d06984b5dc31f7e936f6b",
+      "review_sha256": "a4943c36b690272a2771f3f2fa6407ad6f30b3df13647fe80544d4741f1bebf8",
+      "field_count": 8,
+      "validation_errors": [],
+      "non_supported_fields": [
+        {
+          "field": "statement",
+          "value": "SNI-GNN mitigates embedding staleness by predicting current values of remote embeddings within the network on SmartNICs (DPUs), alternating Sync Epochs (fresh embeddings exchanged, DPU caches updated) and Stale Epochs (DPUs supply predicted embeddings to local GPUs).",
+          "verdict": "unsupported",
+          "reason": "The prediction, SmartNIC/DPU placement, and the two epoch behaviors are stated. However, the supplied text says the architecture supports two operational modes; it does not state that Sync Epochs and Stale Epochs alternate, and the modes could be selected without alternation."
+        },
+        {
+          "field": "conditions[1]",
+          "value": "fixed synchronization interval s",
+          "verdict": "unsupported",
+          "reason": "The supplied chunk mentions reducing the need for frequent synchronization but does not state a fixed synchronization interval or define an interval s. The condition could be false while the passage remained true."
+        }
+      ]
+    },
+    {
+      "packet": 1,
+      "input_sha256": "ca564b80ae30a92869575aacb3c694374e440cf5327615e842858c2cbf25a0d0",
+      "review_sha256": "c4e73111a69de91f6195fd39a838d18893f6b418839cdac862ba56e6784a0af5",
+      "field_count": 6,
+      "validation_errors": [],
+      "non_supported_fields": [
+        {
+          "field": "statement",
+          "value": "SNI-GNN mitigates embedding staleness by predicting current values of remote embeddings within the network on SmartNICs (DPUs), alternating Sync Epochs (fresh embeddings exchanged, DPU caches updated) and Stale Epochs (DPUs supply predicted embeddings to local GPUs).",
+          "verdict": "unsupported",
+          "reason": "The cited design overview supports the prediction mechanism and defines both epoch modes, but it does not state that the system alternates between them; the claim could be false if one mode were selected without alternation."
+        }
+      ]
+    },
+    {
+      "packet": 2,
+      "input_sha256": "88268a92bb731d54ae48a528fc455f950902495b9bccae095384b5e1e497bd9b",
+      "review_sha256": "2a4076d989c52cd261d6b65a0932e5a2138b988175ab017646956b61d87e6120",
+      "field_count": 6,
+      "validation_errors": [],
+      "non_supported_fields": [
+        {
+          "field": "conditions[0]",
+          "value": "the reported speedups use a fixed 10% communication threshold",
+          "verdict": "unsupported",
+          "reason": "The cited chunk reports the speedups but does not state or imply any fixed 10% communication threshold; the claim could be false while the reported performance passage remained true."
+        }
+      ]
+    },
+    {
+      "packet": 3,
+      "input_sha256": "046e094c63141f0ddc5dcebeb34c12d3daa61a7b1966d3914d1c71d6152daf57",
+      "review_sha256": "aaf4f9bab500ca2d425dc968aa8ed6582a91dd45ff45051706db6681ef145ac2",
+      "field_count": 3,
+      "validation_errors": [],
+      "non_supported_fields": []
+    }
+  ],
+  "limitations": [
+    "Four exposed development probes, not an independent benchmark.",
+    "Both SNI variants retained the same alternating-epochs statement; its sequencing is not explicit in the cited chunk, so the nominal positive fixture was not unambiguously positive.",
+    "Metadata and unknown-scope false rejections from v1 were eliminated in these outputs.",
+    "The original 28-record production calibration remains failed."
+  ],
+  "api_cost_usd": 0
+}

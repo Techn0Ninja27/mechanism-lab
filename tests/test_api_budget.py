@@ -34,6 +34,16 @@ class BudgetTests(unittest.TestCase):
             with self.assertRaises(BudgetError): b.reconcile("r", .2, verified=True)
             with self.assertRaises(BudgetError): b.reconcile("r", .1, verified=False)
 
+    def test_duplicate_reservation_can_be_rejected_explicitly(self):
+        with tempfile.TemporaryDirectory() as d:
+            b = BudgetLedger(Path(d) / "ledger.json", 2)
+            b.reserve("same", .5)
+            with self.assertRaisesRegex(BudgetError, "duplicate paid request"):
+                b.reserve("same", .5, allow_existing=False)
+            b.reconcile("same", .25, verified=True, receipt_id="r")
+            with self.assertRaises(BudgetError):
+                b.reserve("same", .5, allow_existing=False)
+
     def test_rejects_bad_amounts_and_cap(self):
         with tempfile.TemporaryDirectory() as d:
             b = BudgetLedger(Path(d) / "ledger.json", 1)

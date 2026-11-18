@@ -6,6 +6,7 @@ import fcntl
 import json
 from pathlib import Path
 from scripts import generate_causal_campaign2 as c
+from generation import campaign_journal as journal
 
 MAX_DRAWS = 3
 KINDS = ('atoms', 'distillations')
@@ -17,14 +18,22 @@ def _draw_dir(out, kind, index):
     return out / 'prep-draws' / kind / f'{index:02d}'
 
 def _read(path): return json.loads(path.read_text())
+def _write(out,path,value):
+    journal.atomic_write(out,str(path.relative_to(out)),(json.dumps(value,indent=2,ensure_ascii=False,allow_nan=False)+'\n').encode())
+def _event(out,name,paths,**payload):
+    journal.record(out,name,{**payload,'artifacts':{str(p.relative_to(out)):c.sha(p) for p in paths}})
+def _campaign_root(path):
+    for parent in path.parents:
+        if (parent/'plan.json').is_file():return parent
+    raise ValueError('artifact has no campaign root')
 def _same_or_new(path, value):
     if path.exists():
         if _read(path) != value: raise ValueError(f'immutable artifact changed: {path.name}')
-    else: c.write_new(path, value)
+    else: _write(path.parent if path.name=="campaign-stop.json" else _campaign_root(path),path,value)
 
 def _stop(out, reason):
     p=out/'campaign-stop.json'
-    if not p.exists(): c.write_new(p, {'status':'stopped','reason':reason,'plan_sha256':c.sha(out/'plan.json')})
+    if not p.exists(): _write(out,p,{'status':'stopped','reason':reason,'plan_sha256':c.sha(out/'plan.json')})
 
 @contextmanager
 def _locked(out):
@@ -34,6 +43,24 @@ def _locked(out):
     with (out/'campaign.lock').open('a') as f:
         fcntl.flock(f,fcntl.LOCK_EX|fcntl.LOCK_NB)
         if (out/'campaign-stop.json').exists(): raise ValueError('campaign is permanently stopped')
+        state=journal.audit(out)
+        if state['stopped']: raise ValueError('campaign is permanently stopped by journal')
+        for event in state['events']:
+            payload=event['payload']
+            if event['event']=='review_decided' and payload.get('draw')==MAX_DRAWS-1:
+                decision=_read(_draw_dir(out,payload['kind'],payload['draw'])/'decision.json')
+                if decision['combined']['status']=='failed':
+                    _stop(out,'review schedule exhausted')
+                    raise ValueError('campaign is permanently stopped: review schedule exhausted')
+        committed={path for e in state['events'] for path in e['payload'].get('artifacts',{})}
+        protected=list((out/'prep-draws').glob('*/*/draw.json'))+list((out/'prep-draws').glob('*/*/decision.json'))+list((out/'selected').glob('*.json'))
+        protected += [p for p in (out/'preparation-result.json',out/'chunk-fidelity-gate.json') if p.exists()]
+        if any(str(p.relative_to(out)) not in committed for p in protected):
+            raise ValueError('uncommitted or deleted journal history; campaign disabled')
+        for draw in (out/'prep-draws').glob('*/*'):
+            if draw.is_dir() and ((draw/'failure.json').exists() or not (draw/'draw.json').exists()):
+                _stop(out,'recorded failed or interrupted draw')
+                raise ValueError('campaign is permanently stopped: failed or interrupted draw')
         c.require_calibration_ready()
         _,pack,_=c.verify(out)
         yield out,pack
@@ -57,7 +84,11 @@ def _decision(out,kind,index,pack):
     paths=[draw/'review-a.json',draw/'review-b.json']
     if decision.get('draw_sha256')!=c.sha(draw/'draw.json') or decision.get('review_sha256')!=[c.sha(p) for p in paths]:
         raise ValueError('recorded decision or review changed')
-    combined=c._prep().combine_draw_reviews(kind,*[_read(p) for p in paths],pack,value)
+    review_values=[_read(p) for p in paths]
+    for slot,review in zip(('a','b'),review_values):
+        if review.get('context')!={'plan_sha256':c.sha(out/'plan.json'),'kind':kind,'draw':index,'slot':slot}:
+            raise ValueError('recorded review draw binding mismatch')
+    combined=c._prep().combine_draw_reviews(kind,*review_values,pack,value)
     if combined!=decision.get('combined'):raise ValueError('decision no longer validates')
     return decision,value,meta
 
@@ -81,23 +112,27 @@ def execute_draw(out,kind,index):
             if _decision(out,kind,prior,pack)[0]['combined']['status']!='failed':raise ValueError('prior draw did not fail review')
         draw=_draw_dir(out,kind,index)
         if draw.exists():raise FileExistsError('draw already attempted; never retry')
+        operation_id=f'{kind}:{index}'
+        _event(out,'draw_started',[],operation_id=operation_id,kind=kind,draw=index)
         draw.mkdir(parents=True)
         call=out/'calls'/f'prep-{kind}-d{index}-0.json'
         try:
             client=c.Client(out,c.config(3.0))
             content=client.call({'id':f'prep-{kind}-d{index}'},0,c._prep_prompt(pack,kind))
             value=getattr(c._prep(),f'validate_{kind}')(c.strict_json(content),pack)
-            target=draw/f'{kind}.json';c.write_new(target,value)
+            target=draw/f'{kind}.json';_write(out,target,value)
             meta={'kind':kind,'draw':index,'status':'awaiting_reviews','plan_sha256':c.sha(out/'plan.json'),
                   'call_path':str(call.relative_to(out)),'call_sha256':c.sha(call),
                   'path':str(target.relative_to(out)),'representation_sha256':c.sha(target)}
-            c.write_new(draw/'draw.json',meta)
+            _write(out,draw/'draw.json',meta)
             _validate_draw(out,kind,index,pack)
+            _event(out,'draw_completed',[draw/'draw.json',target,call],operation_id=operation_id)
             return meta
-        except Exception as exc:
+        except BaseException as exc:
             _stop(out,f'preparation draw failure: {type(exc).__name__}: {str(exc)[:300]}')
-            c.write_new(draw/'failure.json',{'kind':kind,'draw':index,'error':f'{type(exc).__name__}: {str(exc)[:300]}',
+            _write(out,draw/'failure.json',{'kind':kind,'draw':index,'error':f'{type(exc).__name__}: {str(exc)[:300]}',
                          'call_sha256':c.sha(call) if call.exists() else None})
+            _event(out,'draw_failed',[draw/'failure.json'],operation_id=operation_id)
             raise
 
 def record_review(out,kind,index):
@@ -113,11 +148,16 @@ def record_review(out,kind,index):
             decision,_,_=_decision(out,kind,index,pack)
         else:
             paths=[draw/'review-a.json',draw/'review-b.json']
-            combined=c._prep().combine_draw_reviews(kind,*[_read(p) for p in paths],pack,value)
+            review_values=[_read(p) for p in paths]
+            for slot,review in zip(('a','b'),review_values):
+                expected_context={'plan_sha256':c.sha(out/'plan.json'),'kind':kind,'draw':index,'slot':slot}
+                if review.get('context')!=expected_context: raise ValueError('review is not bound to this draw and slot')
+            combined=c._prep().combine_draw_reviews(kind,*review_values,pack,value)
             decision={'kind':kind,'draw':index,'draw_sha256':c.sha(draw/'draw.json'),
                       'review_paths':[str(p.relative_to(out)) for p in paths],
                       'review_sha256':[c.sha(p) for p in paths],'combined':combined}
-            c.write_new(draw/'decision.json',decision)
+            _write(out,draw/'decision.json',decision)
+            _event(out,'review_decided',[draw/'decision.json',*paths],kind=kind,draw=index)
         if decision['combined']['status']!='passed':
             if index==MAX_DRAWS-1:_stop(out,f'{kind} exhausted three reviewed draws')
             return {'status':'failed','kind':kind,'draw':index}
@@ -127,6 +167,7 @@ def record_review(out,kind,index):
                   'review_paths':decision['review_paths'],'review_hashes':decision['review_sha256'],
                   'reviewers':decision['combined']['reviews']}
         _same_or_new(out/'selected'/f'{kind}.selection.json',selected)
+        _event(out,'representation_locked',[out/'selected'/f'{kind}.selection.json'],kind=kind,draw=index)
         return selected
 
 def select_pair(out):
@@ -151,6 +192,7 @@ def select_pair(out):
               'counts':{'total':24,'supported':24,'unsupported':0,'contradicted':0,'indeterminate':0},
               'reviews':reviews,'draw_receipts':receipts,'selection_sha256':c.sha(out/'selected/selection.json')}
         _same_or_new(out/'chunk-fidelity-gate.json',gate)
+        _event(out,'pair_locked',[out/'selected/selection.json',out/'preparation-result.json',out/'chunk-fidelity-gate.json',out/'representations/atoms.json',out/'representations/distillations.json'])
         return selection
 
 def main():

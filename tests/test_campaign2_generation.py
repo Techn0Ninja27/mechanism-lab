@@ -48,7 +48,7 @@ def reviews(out,kind,index,failed=False):
         if failed and reviewer=='b':
             rows[0]['field_items'][0].update(verdict='unsupported',disputed_field=rows[0]['field_items'][0]['field'],reason='fixture unsupported')
         c.write_new(draw/f'review-{reviewer}.json',{'schema':prep.DRAW_REVIEW_SCHEMA,'reviewer_id':f'{kind}-{index}-{reviewer}',
-                    'input_sha256':{'source_pack':pack['digest'],kind:c.digest(value)},'records':rows})
+                    'context':{'plan_sha256':c.sha(out/'plan.json'),'kind':kind,'draw':index,'slot':reviewer},'input_sha256':{'source_pack':pack['digest'],kind:c.digest(value)},'records':rows})
 
 class Campaign2HarnessTests(unittest.TestCase):
     def setUp(self):
@@ -103,11 +103,44 @@ class Campaign2HarnessTests(unittest.TestCase):
         FakeClient.fail=False
         with self.assertRaisesRegex(ValueError,'permanently stopped'):life.execute_draw(self.out,'distillations',0)
         self.assertEqual(len(FakeClient.calls),1)
+    def test_keyboard_interrupt_stops_even_if_stop_marker_removed(self):
+        with patch.object(FakeClient,'call',side_effect=KeyboardInterrupt):
+            with self.assertRaises(KeyboardInterrupt):life.execute_draw(self.out,'atoms',0)
+        (self.out/'campaign-stop.json').unlink()
+        with self.assertRaisesRegex(ValueError,'permanently stopped'):
+            life.execute_draw(self.out,'distillations',0)
+        self.assertEqual(FakeClient.calls,[])
+
+    def test_system_exit_and_unfinished_draw_block_other_kind(self):
+        with patch.object(c,'Client',side_effect=SystemExit('missing key')):
+            with self.assertRaises(SystemExit):life.execute_draw(self.out,'atoms',0)
+        with self.assertRaisesRegex(ValueError,'permanently stopped'):life.execute_draw(self.out,'distillations',0)
+
+    def test_review_from_wrong_draw_is_rejected(self):
+        life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0)
+        path=life._draw_dir(self.out,'atoms',0)/'review-b.json';data=json.loads(path.read_text());data['context']['draw']=1;path.write_text(json.dumps(data))
+        with self.assertRaisesRegex(ValueError,'bound to this draw'):life.record_review(self.out,'atoms',0)
+        self.assertFalse((self.out/'selected/atoms.selection.json').exists())
+
     def test_exhaustion_stops_other_representation(self):
         for i in range(3):
             life.execute_draw(self.out,'atoms',i);reviews(self.out,'atoms',i,failed=True);life.record_review(self.out,'atoms',i)
         with self.assertRaisesRegex(ValueError,'permanently stopped'):life.execute_draw(self.out,'distillations',0)
         self.assertEqual(len(FakeClient.calls),3)
+    def test_deleted_stop_after_exhaustion_does_not_reopen(self):
+        for i in range(3):
+            life.execute_draw(self.out,'atoms',i);reviews(self.out,'atoms',i,failed=True);life.record_review(self.out,'atoms',i)
+        (self.out/'campaign-stop.json').unlink()
+        with self.assertRaisesRegex(ValueError,'permanently stopped'):life.execute_draw(self.out,'distillations',0)
+        self.assertEqual(len(FakeClient.calls),3)
+
+    def test_deleted_failed_decision_cannot_be_rereviewed(self):
+        life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0,failed=True);life.record_review(self.out,'atoms',0)
+        (life._draw_dir(self.out,'atoms',0)/'decision.json').unlink()
+        with self.assertRaises(ValueError):life.record_review(self.out,'atoms',0)
+        with self.assertRaises(ValueError):life.execute_draw(self.out,'distillations',0)
+        self.assertEqual(len(FakeClient.calls),1)
+
     def test_review_tamper_after_fail_cannot_advance(self):
         life.execute_draw(self.out,'atoms',0);reviews(self.out,'atoms',0,failed=True);life.record_review(self.out,'atoms',0)
         path=life._draw_dir(self.out,'atoms',0)/'review-b.json';d=json.loads(path.read_text());d['reviewer_id']='changed';path.write_text(json.dumps(d))
