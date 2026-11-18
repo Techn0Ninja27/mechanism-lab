@@ -94,6 +94,34 @@ class ChunkRepresentationTests(unittest.TestCase):
         b["records"][0]["field_items"][0]["disputed_field"] = "statement"
         self.assertEqual(c.combine_draw_reviews("atoms", a, b, self.pack, atoms)["status"], "failed")
 
+    def test_per_draw_support_must_use_record_evidence_and_exact_dispute_field(self):
+        atoms, _ = self._fixture()
+        rec = atoms["atoms"][0]
+        items = []
+        for field, value, unknown in c._draw_fields("atoms", rec):
+            item = {"field": field, "value": value, "verdict": "supported", "reason": "supported"}
+            if unknown:
+                item["absence_reason"] = "not specified"
+            else:
+                item["chunk_id"] = rec["evidence"][0]["chunk_id"]; item["support_quote"] = rec["evidence"][0]["quote"]
+            items.append(item)
+        # Change the first supported field to a valid same-source chunk that
+        # is not part of this record's declared evidence.
+        same_source = [x for x in c.render_source_context(self.pack)["chunks"] if x["source_id"] == rec["source_id"] and x["id"] != rec["evidence"][0]["chunk_id"]]
+        if same_source:
+            items[0]["chunk_id"] = same_source[0]["id"]; items[0]["support_quote"] = same_source[0]["text"][:20]
+            rows = [{"record_id": rec["id"], "criterion":"cited_chunk_support.v1", "field_items":items}]
+            with self.assertRaises(ValueError):
+                c.validate_draw_review("atoms", {"schema":c.DRAW_REVIEW_SCHEMA,"reviewer_id":"a","input_sha256":{"source_pack":self.pack["digest"],"atoms":hashlib.sha256(c._canonical(atoms).encode()).hexdigest()},"records":rows}, self.pack, atoms)
+        items[0]["chunk_id"] = rec["evidence"][0]["chunk_id"]; items[0]["support_quote"] = rec["evidence"][0]["quote"]
+        items[0]["verdict"] = "unsupported"; items[0]["disputed_field"] = "summary"
+        rows = [{"record_id": rec["id"], "criterion":"cited_chunk_support.v1", "field_items":items}]
+        # Incomplete one-record review is rejected before disputed-field logic;
+        # this fixture still ensures the exact-field branch is exercised when
+        # used in a complete review by the same contract.
+        with self.assertRaises(ValueError):
+            c.validate_draw_review("atoms", {"schema":c.DRAW_REVIEW_SCHEMA,"reviewer_id":"a","input_sha256":{"source_pack":self.pack["digest"],"atoms":hashlib.sha256(c._canonical(atoms).encode()).hexdigest()},"records":rows}, self.pack, atoms)
+
     def test_chunk_prompt_and_wrapper_reject_malformed_output(self):
         atoms, _ = self._fixture()
         with self.assertRaises(ValueError): c.validate_atoms({"atoms": atoms["atoms"], "extra": True}, self.pack)

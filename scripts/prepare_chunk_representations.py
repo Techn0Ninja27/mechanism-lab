@@ -193,7 +193,8 @@ def validate_draw_review(kind: str, review: Any, pack: Mapping[str, Any], repres
         expected = _draw_fields(kind, by_id[rid])
         if not isinstance(items, list) or len(items) != len(expected):
             raise ValueError("draw review field coverage is incomplete")
-        if {x.get("field") for x in items if isinstance(x, Mapping)} != {x[0] for x in expected}:
+        fields = [x.get("field") for x in items if isinstance(x, Mapping)]
+        if len(fields) != len(set(fields)) or set(fields) != {x[0] for x in expected}:
             raise ValueError("draw review fields do not cover the record exactly")
         for item in items:
             if not isinstance(item, Mapping) or item.get("verdict") not in {"supported", "unsupported", "contradicted", "indeterminate"}:
@@ -208,9 +209,10 @@ def validate_draw_review(kind: str, review: Any, pack: Mapping[str, Any], repres
                         raise ValueError("unknown supported field requires an absence reason and no forced quote")
                 else:
                     cid, quote = item.get("chunk_id"), item.get("support_quote")
-                    if not isinstance(cid, str) or cid not in chunks or not isinstance(quote, str) or not quote or quote not in chunks[cid]["text"] or chunks[cid]["source_id"] != by_id[rid]["source_id"]:
+                    record_evidence = {e["chunk_id"] for e in by_id[rid]["evidence"]}
+                    if not isinstance(cid, str) or cid not in record_evidence or cid not in chunks or not isinstance(quote, str) or not quote or quote not in chunks[cid]["text"] or chunks[cid]["source_id"] != by_id[rid]["source_id"]:
                         raise ValueError("supported field lacks an exact quote from its cited source chunk")
-            elif not item.get("disputed_field"):
+            elif item.get("disputed_field") != field:
                 raise ValueError("non-supported field requires disputed_field")
         seen.add(rid)
     if seen != set(by_id):

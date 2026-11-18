@@ -1,0 +1,187 @@
+{
+  "schema": "isolated-review-diagnostic.v1",
+  "status": "not_a_validated_gate",
+  "api_cost_usd": 0,
+  "findings": [
+    "Both targeted unsupported qualifiers were identified in isolated reviews.",
+    "Reviewers also judged metadata and misinterpreted unknown fields; packet scope needs correction.",
+    "Single-record output schemas and claimed hashes varied; orchestration should supply provenance instead of asking models to calculate hashes."
+  ],
+  "records": [
+    {
+      "packet": 0,
+      "input_sha256": "7e305000f4131f65318c2e9011c83bbab6245b7a7e89ee6c22b218b64b5ad30c",
+      "review_sha256": "60846e0212de26b7243ecb53a2d56713b5a34767c0710a7b8577ce6cde00f632",
+      "non_supported_items": [
+        {
+          "path": "/fields/statement",
+          "field": null,
+          "value": "SNI-GNN mitigates embedding staleness by predicting current values of remote embeddings within the network on SmartNICs (DPUs), alternating Sync Epochs (fresh embeddings exchanged, DPU caches updated) and Stale Epochs (DPUs supply predicted embeddings to local GPUs).",
+          "verdict": "unsupported",
+          "reason": "The chunk supports the prediction purpose, DPU implementation, cache updates, and both epoch modes, but it does not state that Sync Epochs and Stale Epochs alternate. That sequencing claim requires an additional assumption."
+        },
+        {
+          "path": "/fields/conditions/1",
+          "field": null,
+          "value": "fixed synchronization interval s",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk gives no fixed synchronization interval, no symbol s, and no statement that synchronization occurs at a fixed interval."
+        },
+        {
+          "path": "/fields/unknowns/0",
+          "field": null,
+          "value": "the partitioning method used",
+          "verdict": "unsupported",
+          "reason": "The chunk says only that one-time graph partitioning occurs; it does not establish that the partitioning method is unknown or identify what method was used. Treating omission as an asserted unknown requires an additional assumption."
+        },
+        {
+          "path": "/fields/unknowns/1",
+          "field": null,
+          "value": "how the interval s is chosen in practice",
+          "verdict": "unsupported",
+          "reason": "The chunk never introduces an interval s or describes how synchronization timing is chosen, so it does not entail this specific unknown; it only leaves the topic unaddressed."
+        }
+      ]
+    },
+    {
+      "packet": 1,
+      "input_sha256": "1fabae8a0a71e9871749b14fda1a94ad1d71bcd024eeeda774ae145bc20f7a40",
+      "review_sha256": "5c14b95a1a0848bec99ecc1e6a167e17404a81a0c55afa276b53ed0951c8cd64",
+      "non_supported_items": [
+        {
+          "path": "/fields/0",
+          "field": "record.id",
+          "value": "narrow-sni",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk does not identify a record named narrow-sni."
+        },
+        {
+          "path": "/fields/8",
+          "field": "record.interpretation",
+          "value": "model_proposed_not_curated",
+          "verdict": "unsupported",
+          "reason": "The rendered technical section describes the design but does not classify this record as model-proposed or non-curated."
+        },
+        {
+          "path": "/fields/9",
+          "field": "record.executable_compatibility_proven",
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The rendered chunk contains design and algorithm text but no executable-compatibility assessment."
+        },
+        {
+          "path": "/fields/10",
+          "field": "record.train_eligible",
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The rendered chunk does not state whether the record is eligible for training."
+        },
+        {
+          "path": "/fields/11",
+          "field": "record.novelty_established",
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The rendered chunk gives no novelty or prior-art determination for the record."
+        }
+      ]
+    },
+    {
+      "packet": 2,
+      "input_sha256": "29d97dcbd5806a3c0a96fcd83c20abde35086a81ff4c0df3961744fc289ce602",
+      "review_sha256": "1ca44f6967432ba2bee693a3b2a3a93cf7e8e0c02274c362d3de8c8dc044d822",
+      "non_supported_items": [
+        {
+          "path": "/fields/conditions/0",
+          "field": null,
+          "value": "the reported speedups use a fixed 10% communication threshold",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk describes the cache policy and system enhancements but gives no 10% communication threshold or fixed-threshold condition."
+        },
+        {
+          "path": "/fields/unknowns/0",
+          "field": null,
+          "value": "the baselines compared against",
+          "verdict": "unsupported",
+          "reason": "The chunk reports performance figures but does not state which baselines were used, so this unknown-status field is not itself entailed by the passage."
+        },
+        {
+          "path": "/fields/interpretation",
+          "field": null,
+          "value": "model_proposed_not_curated",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk describes FreshGNN and its results but does not classify this interpretation as model-proposed or not curated."
+        },
+        {
+          "path": "/fields/executable_compatibility_proven",
+          "field": null,
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The chunk contains no executable artifact or compatibility verification result from which this boolean could follow."
+        },
+        {
+          "path": "/fields/train_eligible",
+          "field": null,
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The rendered passage does not discuss training-data eligibility or provide a basis for this boolean label."
+        },
+        {
+          "path": "/fields/novelty_established",
+          "field": null,
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The chunk presents the FreshGNN method and reported results but contains no novelty assessment."
+        }
+      ]
+    },
+    {
+      "packet": 3,
+      "input_sha256": "4739318936db17953ff6c0482e4a1f3776129e8fbc15f5c6794d504b072f2c24",
+      "review_sha256": "0022a7f6e18a6051f50d39924699c7abfa61d4ea055b03b5d67281ef4685f7e6",
+      "non_supported_items": [
+        {
+          "path": "/fields/record.id",
+          "field": null,
+          "value": "faithful-sat",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk identifies the paper and SAT, but nowhere states the opaque record identifier faithful-sat."
+        },
+        {
+          "path": "/fields/record.source_id",
+          "field": null,
+          "value": "W4409983225",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk text does not state the opaque source identifier W4409983225; the identifier appears only in the input metadata."
+        },
+        {
+          "path": "/fields/record.evidence[0].chunk_id",
+          "field": null,
+          "value": "W4409983225:chunk:0001",
+          "verdict": "unsupported",
+          "reason": "The rendered chunk text does not contain the chunk identifier; it is supplied only as citation metadata."
+        },
+        {
+          "path": "/fields/record.interpretation",
+          "field": null,
+          "value": "model_proposed_not_curated",
+          "verdict": "unsupported",
+          "reason": "The chunk supports that the paper proposes SAT, but it says nothing about whether the record is curated; the combined interpretation label therefore is not established by the passage."
+        },
+        {
+          "path": "/fields/record.train_eligible",
+          "field": null,
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "Training eligibility is a dataset or review-policy status, and the rendered chunk gives no such status or criterion."
+        },
+        {
+          "path": "/fields/record.novelty_established",
+          "field": null,
+          "value": false,
+          "verdict": "unsupported",
+          "reason": "The chunk calls SAT a novel framework, but it does not establish the record-level boolean status novelty_established; that status cannot be inferred without an external standard of establishment."
+        }
+      ]
+    }
+  ]
+}

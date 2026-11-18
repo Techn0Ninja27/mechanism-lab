@@ -87,10 +87,44 @@ def _canonical_inventory_hash(inventory: dict[str, Any]) -> str:
 
 def _dependency_hashes() -> dict[str, str]:
     from scripts import evaluate_causal_candidates as evaluator
-    files = [Path(__file__), ROOT / "scripts/evaluate_causal_candidates.py", ROOT / "generation/causal_program.py", ROOT / "generation/campaign_selection.py",
+    files = [Path(__file__), ROOT / "scripts/evaluate_causal_candidates.py", ROOT / "generation/causal_program.py", ROOT / "generation/campaign_selection.py", ROOT / "generation/campaign2_decisions.py",
              ROOT / "operator-studies/gnn-closedloop-gap/gap.py", ROOT / "operator-studies/gnn-sync-gate/screen.py",
              evaluator.gap.DATA / "cora.content", evaluator.gap.DATA / "cora.cites"]
     return {str(path.relative_to(ROOT)): sha(path) for path in files}
+
+
+def _campaign2_report_rows(result: dict[str, Any], inventory: dict[str, Any], selection: dict[str, Any]) -> list[dict[str, Any]]:
+    """Add explicit no-eligible call rows without fabricating an outcome."""
+    rows = [dict(row) for row in result.get("reports", [])]
+    arm_by_call = {c["call_id"]: c["arm"] for c in inventory.get("candidates", [])
+                   if isinstance(c, dict) and isinstance(c.get("call_id"), str) and isinstance(c.get("arm"), str)}
+    present = {row.get("call_id") for row in rows}
+    for item in selection.get("manifest", {}).get("selected", []):
+        if item.get("status") != "no_eligible_candidate" or item.get("call_id") in present:
+            continue
+        call_id = item.get("call_id")
+        arm = arm_by_call.get(call_id)
+        if arm is None:
+            raise ValueError(f"no-eligible selection call is absent from inventory: {call_id}")
+        rows.append({"call_id": call_id, "arm": arm, "status": "no_eligible_candidate",
+                     "program_sha256": None, "failed_final_seeds": None,
+                     "low_precision_control": True, "better_than_control": None})
+        present.add(call_id)
+    for row in rows:
+        if row.get("arm") == "linear_control":
+            row["arm"] = "linear-control"
+    return rows
+
+
+def _apply_campaign2_decision(result: dict[str, Any], inventory: dict[str, Any], selection: dict[str, Any]) -> dict[str, Any]:
+    if inventory.get("campaign") != "generation-comparison-campaign2":
+        return result
+    from generation.campaign2_decisions import classify_campaign
+    result["legacy_decision"] = result.get("decision")
+    result["reports"] = _campaign2_report_rows(result, inventory, selection)
+    result["decision"] = classify_campaign(result["reports"])
+    result["report_decision"] = result["decision"]
+    return result
 
 
 def validate_selection(selection_path: Path, inventory_sha: str, inventory: dict[str, Any], stage: str,
@@ -239,6 +273,7 @@ def report_final(inventory_path: Path, selection_path: Path, runs_path: Path, ho
         raise ValueError('separate hold records differ from aggregate')
     result=final_report(inventory['candidates'],selected['manifest'],candidate_runs,hold_runs,
                         expected_seeds=FINAL,inventory_sha256=inv_sha,control_runs=control_runs,control_id=control_id)
+    result = _apply_campaign2_decision(result, inventory, selected)
     output.mkdir(parents=True)
     result.update({'inventory_sha256':inv_sha,'runs_sha256':sha(runs_path),'freeze_sha256':sha(freeze_path),
                    'selection_sha256':sha(selection_path),'control_selection_sha256':sha(control_selection_path),

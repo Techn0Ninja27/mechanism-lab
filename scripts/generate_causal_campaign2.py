@@ -271,7 +271,7 @@ def _generate(out: Path, execute: bool = False) -> dict[str, Any]:
         _require_chunk_gate(out)
     req = generation_plan(out)
     if not execute: return req
-    if req["reservation_usd"] + 1.0 > CAP: raise ValueError("campaign2 reservation exceeds cap")
+    if req["reservation_usd"] + 3.0 > CAP: raise ValueError("campaign2 reservation exceeds cap")
     if (out/"inventory.json").exists(): raise FileExistsError("inventory exists; no regeneration")
     client=Client(out, config()); candidates=[]; prompts={k:(out/v['path']).read_text() for k,v in req['prompt_files'].items()}; stopped=False
     for case in req['requests']:

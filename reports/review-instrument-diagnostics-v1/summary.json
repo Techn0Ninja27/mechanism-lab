@@ -1,0 +1,809 @@
+{
+  "schema": "review-instrument-diagnostics.v1",
+  "diagnostic_not_entailment": true,
+  "reviews": [
+    {
+      "schema": "review-evidence-diagnostics.v1",
+      "reviewer_id": "field-cal-a",
+      "record_count": 28,
+      "field_item_count": 133,
+      "supported_quote_count": 81,
+      "quote_chars": {
+        "count": 81,
+        "min": 1392,
+        "median": 1734,
+        "max": 3486
+      },
+      "injected_header_quote_count": 17,
+      "reason_frequencies": [
+        {
+          "reason": "The cited source explicitly states this field or gives a logically equivalent formulation.",
+          "count": 81
+        },
+        {
+          "reason": "The cited source does not state this requested detail.",
+          "count": 47
+        },
+        {
+          "reason": "Source reports 3.4× to 20.5× speedup, not exactly 999x on every dataset.",
+          "count": 1
+        },
+        {
+          "reason": "The source explicitly gives sampling_ratio = 1/3, so the claim that no values are given is false.",
+          "count": 1
+        },
+        {
+          "reason": "The source reports 3.4× to 20.5× and does not support the added exactly-999x claim.",
+          "count": 1
+        },
+        {
+          "reason": "The source explicitly describes GPU and SmartNIC/DPU use, contradicting “No DPU is used.”",
+          "count": 1
+        },
+        {
+          "reason": "The source explicitly says each node has a GPU, contradicting “each node has no GPU.”",
+          "count": 1
+        }
+      ],
+      "flagged_fields": [
+        {
+          "record_id": "record-00",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "b01ec1b2f3fc998c85355dc1923996e7a398480266363728dcc19f85bbc58319",
+          "quote_chars": 1392,
+          "quote_sentences": 9,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "86%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-06",
+          "field": "summary",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "48.2",
+            "92.88%",
+            "46.83",
+            "92.14%",
+            "425.2",
+            "93.18%",
+            "57.37",
+            "92.39%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-07",
+          "field": "summary",
+          "verdict": "supported",
+          "quote_sha256": "b01ec1b2f3fc998c85355dc1923996e7a398480266363728dcc19f85bbc58319",
+          "quote_chars": 1392,
+          "quote_sentences": 9,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "86%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-09",
+          "field": "summary",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "inputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "outputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "conditions[1]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [
+            "fixed"
+          ],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-15",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "acdcccdb8ba365aacf908690635e1a1317fae7d7d6b97b45e35a6ccf12da44ad",
+          "quote_chars": 3439,
+          "quote_sentences": 16,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "92.88%",
+            "92.14%",
+            "93.18%",
+            "92.39%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-18",
+          "field": "outputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "406071f31dfe8e0a61224235bfbca6188dee8eda65e2005e826455bf907abd78",
+          "quote_chars": 1734,
+          "quote_sentences": 11,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-19",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-19",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-19",
+          "field": "inputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-19",
+          "field": "outputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "inputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "outputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "25b469e50c09f17c10d4c7b9a47c4adb4134b86711fe111acfa98e17a105d5df",
+          "quote_chars": 3486,
+          "quote_sentences": 30,
+          "header_present": true,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        }
+      ],
+      "scope": "Shape and lexical diagnostics only; no semantic verdict, gate, or faithfulness claim.",
+      "input_path": "reports/chunk-field-calibration-v1/reviewer-a.json",
+      "input_sha256": "9bdb5b2e3c8a840f7f55e57333193f306a088142aef54b2be8349f64b1d66d62"
+    },
+    {
+      "schema": "review-evidence-diagnostics.v1",
+      "reviewer_id": "field-cal-b",
+      "record_count": 28,
+      "field_item_count": 133,
+      "supported_quote_count": 81,
+      "quote_chars": {
+        "count": 81,
+        "min": 89,
+        "median": 145,
+        "max": 249
+      },
+      "injected_header_quote_count": 0,
+      "reason_frequencies": [
+        {
+          "reason": "The cited source text supports this field.",
+          "count": 81
+        },
+        {
+          "reason": "The cited excerpt does not provide this information.",
+          "count": 47
+        },
+        {
+          "reason": "The source reports 3.4× to 20.5×, not exactly 999x on every dataset.",
+          "count": 1
+        },
+        {
+          "reason": "The cited chunk explicitly gives sampling_ratio as 1/3 in Figure 9.",
+          "count": 1
+        },
+        {
+          "reason": "The summary includes an exact 999x claim, while the source reports only a 3.4× to 20.5× range.",
+          "count": 1
+        },
+        {
+          "reason": "The source explicitly uses a SmartNIC (DPU), contradicting the final sentence that no DPU is used.",
+          "count": 1
+        },
+        {
+          "reason": "The source explicitly says each node consists of a GPU.",
+          "count": 1
+        }
+      ],
+      "flagged_fields": [
+        {
+          "record_id": "record-00",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "748c6db92bee2b90e9e6746727b72bc83c1c1ee9491c861b5fa3fa18e511026c",
+          "quote_chars": 120,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "86%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-00",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "748c6db92bee2b90e9e6746727b72bc83c1c1ee9491c861b5fa3fa18e511026c",
+          "quote_chars": 120,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-00",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "748c6db92bee2b90e9e6746727b72bc83c1c1ee9491c861b5fa3fa18e511026c",
+          "quote_chars": 120,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-05",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "38ffa81a0eaeb8ae409e343aa893d13de396ac44701382b66139b6bc08009c24",
+          "quote_chars": 249,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-06",
+          "field": "summary",
+          "verdict": "supported",
+          "quote_sha256": "2f1d5cef465accc2872012d90fccffb9d0d3d9d5e32de9be8c55f0c7fbad3659",
+          "quote_chars": 92,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "0.2",
+            "48.2",
+            "92.88%",
+            "46.83",
+            "92.14%",
+            "425.2",
+            "93.18%",
+            "57.37",
+            "92.39%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-07",
+          "field": "summary",
+          "verdict": "supported",
+          "quote_sha256": "399913aa61d886c5d2ae9f2a1d55cdcaa5dc637c192b14e74b970a557e1b8726",
+          "quote_chars": 121,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "86%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-08",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "f4374003bd77c84bcf92e48aac68ef3e263210eb02bc32216e3f773ed46e715e",
+          "quote_chars": 89,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-08",
+          "field": "inputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "f4374003bd77c84bcf92e48aac68ef3e263210eb02bc32216e3f773ed46e715e",
+          "quote_chars": 89,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-08",
+          "field": "outputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "f4374003bd77c84bcf92e48aac68ef3e263210eb02bc32216e3f773ed46e715e",
+          "quote_chars": 89,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-08",
+          "field": "outputs[2]",
+          "verdict": "supported",
+          "quote_sha256": "f4374003bd77c84bcf92e48aac68ef3e263210eb02bc32216e3f773ed46e715e",
+          "quote_chars": 89,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-08",
+          "field": "conditions[1]",
+          "verdict": "supported",
+          "quote_sha256": "f4374003bd77c84bcf92e48aac68ef3e263210eb02bc32216e3f773ed46e715e",
+          "quote_chars": 89,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-10",
+          "field": "outputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "eb4cc640b1e1eedf0ce12a3933d4f269952684b96c9f656612427a5ec23e834d",
+          "quote_chars": 225,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-11",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "db7827052ee5615b1d5d7d1047b730c1924c5870d42e894781725a07d30c035e",
+          "quote_chars": 122,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-11",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "db7827052ee5615b1d5d7d1047b730c1924c5870d42e894781725a07d30c035e",
+          "quote_chars": 122,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "1e7179c5525091cd55e1c4a31bbdcdd8af58621f4a1048c4186337f18b37e5f4",
+          "quote_chars": 212,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-12",
+          "field": "conditions[1]",
+          "verdict": "supported",
+          "quote_sha256": "1e7179c5525091cd55e1c4a31bbdcdd8af58621f4a1048c4186337f18b37e5f4",
+          "quote_chars": 212,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [
+            "fixed"
+          ],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-14",
+          "field": "summary",
+          "verdict": "supported",
+          "quote_sha256": "aad1566c05c0cc6f19e59f7ed3bda73b817b5046df5036c347b3068c5068a539",
+          "quote_chars": 190,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [
+            "every"
+          ],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-15",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "f0b9a0a66c4e461c1e8a1fee2ecea890c738f3b43d55569f44bc4831f3c9cd5c",
+          "quote_chars": 131,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "48.2",
+            "92.88%",
+            "46.83",
+            "92.14%",
+            "425.2",
+            "93.18%",
+            "57.37",
+            "92.39%"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-15",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "f0b9a0a66c4e461c1e8a1fee2ecea890c738f3b43d55569f44bc4831f3c9cd5c",
+          "quote_chars": 131,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-15",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "f0b9a0a66c4e461c1e8a1fee2ecea890c738f3b43d55569f44bc4831f3c9cd5c",
+          "quote_chars": 131,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "92.06%",
+            "91.36%"
+          ],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-18",
+          "field": "outputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "a5f5edbb11dd45459f7a80920841c8db592a64521237e091e1f6197c076f5fee",
+          "quote_chars": 145,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-19",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "1e7179c5525091cd55e1c4a31bbdcdd8af58621f4a1048c4186337f18b37e5f4",
+          "quote_chars": 212,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-20",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "aad1566c05c0cc6f19e59f7ed3bda73b817b5046df5036c347b3068c5068a539",
+          "quote_chars": 190,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-24",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "a9e1ed48979fafce8c97f79e1d26f997c663038e300536aed0192087932f44e6",
+          "quote_chars": 135,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "statement",
+          "verdict": "supported",
+          "quote_sha256": "2f1d5cef465accc2872012d90fccffb9d0d3d9d5e32de9be8c55f0c7fbad3659",
+          "quote_chars": 92,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "0.2",
+            "5"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "inputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "2f1d5cef465accc2872012d90fccffb9d0d3d9d5e32de9be8c55f0c7fbad3659",
+          "quote_chars": 92,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "inputs[1]",
+          "verdict": "supported",
+          "quote_sha256": "2f1d5cef465accc2872012d90fccffb9d0d3d9d5e32de9be8c55f0c7fbad3659",
+          "quote_chars": 92,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "outputs[0]",
+          "verdict": "supported",
+          "quote_sha256": "2f1d5cef465accc2872012d90fccffb9d0d3d9d5e32de9be8c55f0c7fbad3659",
+          "quote_chars": 92,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [],
+          "lexical_overlap_warning": true,
+          "diagnostic": "diagnostic_not_entailment"
+        },
+        {
+          "record_id": "record-27",
+          "field": "conditions[0]",
+          "verdict": "supported",
+          "quote_sha256": "2f1d5cef465accc2872012d90fccffb9d0d3d9d5e32de9be8c55f0c7fbad3659",
+          "quote_chars": 92,
+          "quote_sentences": 1,
+          "header_present": false,
+          "qualifier_words_absent_from_quote": [],
+          "numeric_tokens_absent_from_quote": [
+            "0.2"
+          ],
+          "lexical_overlap_warning": false,
+          "diagnostic": "diagnostic_not_entailment"
+        }
+      ],
+      "scope": "Shape and lexical diagnostics only; no semantic verdict, gate, or faithfulness claim.",
+      "input_path": "reports/chunk-field-calibration-v1/reviewer-b.json",
+      "input_sha256": "28122db45c89ab306f8248d9f581f278bc78b7c5cfa0dc135096b609c55966bd"
+    }
+  ]
+}
