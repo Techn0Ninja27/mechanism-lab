@@ -81,8 +81,8 @@ def validate_and_reconcile_receipt(ledger: "BudgetLedger", path: str | Path,
 
     This rejects fabricated or copied receipts with no reservation, while
     allowing a legitimate crash after the receipt was written but before
-    reconciliation. The ledger's own idempotent reconcile operation prevents
-    double charging. It cannot detect content swapped under a genuine matching
+    reconciliation. Recovery retains the conservative reservation; only the
+    live client completion path may reconcile using firsthand provider usage. It cannot detect content swapped under a genuine matching
     reservation.
     """
     if receipt.get("status") != "complete" or receipt.get("request_hash") != request_hash:
@@ -104,7 +104,7 @@ def validate_and_reconcile_receipt(ledger: "BudgetLedger", path: str | Path,
     if rec.get("status") in {"pending", "unknown"}:
         if actual > reserve + 1e-12:
             raise BudgetError("receipt cost exceeds reserved amount")
-        return ledger.reconcile(rid, actual, verified=True, receipt_id=receipt["response_id"])
+        return ledger.mark_unknown(rid)
     if rec.get("status") in {"reconciled", "over_budget"}:
         if abs(float(rec.get("actual_usd", -1)) - actual) > 1e-12 or rec.get("receipt_id") != receipt.get("response_id"):
             raise BudgetError("reconciled receipt does not match ledger")

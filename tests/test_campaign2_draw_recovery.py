@@ -63,7 +63,7 @@ class Campaign2DrawRecoveryTests(unittest.TestCase):
                             e["payload"].get("recovered_after_interruption")
                             for e in events))
 
-    def test_pending_receipt_reconciles_once_without_call(self):
+    def test_pending_receipt_recovers_with_reservation_retained(self):
         with patch.object(BudgetLedger, 'reconcile', return_value=None):
             self._start_without_terminal(with_receipt=True)
         ledger=life._anchor(self.out)
@@ -73,7 +73,8 @@ class Campaign2DrawRecoveryTests(unittest.TestCase):
         first=ledger.snapshot()
         with life._locked(self.out): pass
         self.assertEqual(first['reservations'],ledger.snapshot()['reservations'])
-        self.assertTrue(all(r['status']=='reconciled' for r in first['reservations'].values()))
+        self.assertTrue(all(r['status']=='unknown' for r in first['reservations'].values()))
+        self.assertEqual(first['charged_usd'],sum(r['reserved_usd'] for r in first['reservations'].values()))
         self.assertEqual(len(FakeClient.calls),before)
 
     def test_receipt_copied_to_another_draw_has_no_reservation(self):

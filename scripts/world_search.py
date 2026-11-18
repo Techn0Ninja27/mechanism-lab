@@ -62,7 +62,7 @@ class Client:
    return receipt_cost(previous) if previous.get('status')=='complete' else reserve
   if previous.get('status')=='complete':
    rec=validate_and_reconcile_receipt(ledger,path,previous,previous['request_hash'],reserve)
-   return float(rec.get('actual_usd',0.0))
+   return float(rec['actual_usd'] if rec['status'] in {'reconciled','over_budget'} else rec['reserved_usd'])
   rid=receipt_request_id(path,previous['request_hash'])
   snap=ledger.snapshot(); rec=snap['reservations'].get(rid)
   if not rec:
@@ -99,11 +99,17 @@ class Client:
    for f in folder.glob('*.json'):
     previous=json.loads(f.read_text())
     spent += self._account_previous(f,previous,ledger)
+   if ledger:
+    # Missing local files must not remove previously reserved campaign spend.
+    for rec in ledger.snapshot()['reservations'].values():
+     saved=(rec.get('metadata') or {}).get('receipt_path')
+     if saved and pathlib.Path(saved).parent == folder.resolve() and not pathlib.Path(saved).exists():
+      spent += rec['actual_usd'] if rec['status'] in {'reconciled','over_budget'} else rec['reserved_usd']
    if spent+reserve>self.config['budget_usd']:raise ValueError('Conservative run budget exhausted')
    record={'status':'pending','request_hash':request_hash,'request':req,'reserved_usd':reserve,'timestamp':time.time()}
    path.write_text(json.dumps(record,indent=2))
    if ledger:
-    try:ledger.reserve(ledger_id,reserve,{'model':req['model'],'request_hash':request_hash},allow_existing=False)
+    try:ledger.reserve(ledger_id,reserve,{'model':req['model'],'request_hash':request_hash,'receipt_path':str(path.resolve())},allow_existing=False)
     except Exception as exc:
      record.update(status='budget_denied',error=str(exc));path.write_text(json.dumps(record,indent=2));raise
   request=urllib.request.Request('https://openrouter.ai/api/v1/chat/completions',data=json.dumps(req).encode(),headers={'Authorization':'Bearer '+self.auth,'Content-Type':'application/json'})

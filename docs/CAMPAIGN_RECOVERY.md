@@ -51,3 +51,10 @@ it occurs after a complete receipt was written. A hard process kill at that
 point leaves no failure event and can recover that receipt. This conservative
 asymmetry is intentional for now: an explicit provider/schema failure is never
 reinterpreted as permission to retry or continue.
+
+Recovered pending/unknown receipts now retain their full reservation as an
+unknown charge. Local-file cost claims cannot reconcile it down. Only the live
+client completion path uses firsthand provider usage for reconciliation. New
+reservations also record the receipt path, allowing campaign accounting to
+include charges whose local receipt file was deleted. Legacy reservations lack
+this path metadata; the phase ledger still retains their charge.

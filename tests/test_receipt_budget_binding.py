@@ -2,6 +2,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from generation.api_budget import BudgetError, BudgetLedger, receipt_request_id, validate_and_reconcile_receipt
 from scripts.world_search import Client, digest
@@ -32,20 +33,19 @@ class ReceiptBudgetBindingTests(unittest.TestCase):
                                            self.request_hash, self.reserve)
         self.assertFalse(self.ledger_path.exists())
 
-    def test_pending_reconciles_once_and_second_read_is_idempotent(self):
+    def test_pending_keeps_reserve_and_second_read_is_idempotent(self):
         ledger = self._ledger()
         first = validate_and_reconcile_receipt(ledger, self.path, self.receipt,
                                                self.request_hash, self.reserve)
-        self.assertEqual(first["status"], "reconciled")
+        self.assertEqual(first["status"], "unknown")
         second = validate_and_reconcile_receipt(ledger, self.path, self.receipt,
                                                 self.request_hash, self.reserve)
-        self.assertEqual(second["receipt_id"], "resp-1")
-        self.assertEqual(ledger.snapshot()["charged_usd"], 0.10)
+        self.assertEqual(second["status"], "unknown")
+        self.assertEqual(ledger.snapshot()["charged_usd"], self.reserve)
 
     def test_wrong_path_and_edited_cost_rejected_after_reconcile(self):
         ledger = self._ledger()
-        validate_and_reconcile_receipt(ledger, self.path, self.receipt,
-                                       self.request_hash, self.reserve)
+        ledger.reconcile(receipt_request_id(self.path,self.request_hash),0.10,verified=True,receipt_id="resp-1")
         with self.assertRaises(BudgetError):
             validate_and_reconcile_receipt(ledger, self.path.with_name("other.json"),
                                            self.receipt, self.request_hash, self.reserve)
@@ -61,6 +61,21 @@ class ReceiptBudgetBindingTests(unittest.TestCase):
             validate_and_reconcile_receipt(ledger, self.path, edited,
                                            self.request_hash, self.reserve)
         self.assertEqual(ledger.snapshot()["reservations"][receipt_request_id(self.path, self.request_hash)]["status"], "pending")
+
+    def test_missing_receipt_retains_campaign_charge(self):
+        out=Path(self.tmp.name)/'run';out.mkdir()
+        missing=out/'calls/old-0.json'
+        ledger=BudgetLedger(self.ledger_path,1.0)
+        ledger.reserve('old',0.9,{'receipt_path':str(missing.resolve())})
+        config={'model':'test','max_tokens_per_stage':[8],
+                'pricing':{'prompt':1e-6,'completion':1e-6},
+                'shared_budget_path':str(self.ledger_path),'shared_budget_usd':1.0,'budget_usd':0.5}
+        with patch('scripts.world_search.key',return_value='not-a-key'), patch('scripts.world_search.urllib.request.urlopen') as network:
+            client=Client(out,config)
+            with self.assertRaisesRegex(ValueError,'run budget exhausted'):
+                client.call({'id':'new'},0,'hello')
+            network.assert_not_called()
+        self.assertEqual(ledger.snapshot()['charged_usd'],0.9)
 
     def test_client_cache_hit_requires_bound_receipt(self):
         out = Path(self.tmp.name) / "run"
@@ -85,7 +100,7 @@ class ReceiptBudgetBindingTests(unittest.TestCase):
         ledger=BudgetLedger(self.ledger_path,1.0)
         ledger.reserve(receipt_request_id(path,digest(req)),reserve,{"request_hash":digest(req)})
         self.assertEqual(client.call({"id":"case"},0,"hello"),"{}")
-        self.assertEqual(ledger.snapshot()["charged_usd"],0.00001)
+        self.assertEqual(ledger.snapshot()["charged_usd"],reserve)
 
 
 if __name__ == "__main__":
