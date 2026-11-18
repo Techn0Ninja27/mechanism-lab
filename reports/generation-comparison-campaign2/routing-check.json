@@ -1,0 +1,13 @@
+{
+  "provider_name": "Claude Platform on AWS",
+  "model": "anthropic/claude-opus-5.5-20260921",
+  "is_byok": false,
+  "total_cost": 0.10545876,
+  "upstream_inference_cost": 0,
+  "finish_reason": "stop",
+  "check_type": "read_only_generation_metadata",
+  "completion_calls": 0,
+  "completion_receipt_sha256": "5e0e7658f14db8e159bd53b9bcd0c18c7a5055b720c3811ece8844e9cc7018e4",
+  "accounting_note": "Metadata reports total_cost 0.10545876; ledger retains conservative 0.106524 from the original completion usage fields. No reconciliation or budget reset performed.",
+  "byok_interpretation": "This request did not use BYOK. Metadata alone does not establish why account BYOK credentials were not selected."
+}
