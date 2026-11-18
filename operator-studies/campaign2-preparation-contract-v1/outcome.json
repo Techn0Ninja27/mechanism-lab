@@ -1,5 +1,5 @@
 {
-  "schema": "campaign2-stopped-review-contract.v1",
+  "schema": "campaign2-stopped-review-contract-display.v1",
   "status": "stopped_before_generation",
   "paid_preparation_calls": 1,
   "prepared_atoms": 12,
@@ -15,5 +15,7 @@
   "novelty_established": false,
   "train_eligible": false,
   "scope": "Preparation/review contract failure; no representation-performance or usefulness result.",
-  "source_result": "reports/generation-comparison-campaign2/outcome.json"
+  "source_result": "reports/generation-comparison-campaign2/outcome.json",
+  "source_result_sha256": "1e02f689174a3629ee82762fe0bb67b1687b05c7c051bbe1782d096f189d2ccd",
+  "derivation": "Display summary; unsupported_review_flags counts valid reviews with at least one non-supported field."
 }

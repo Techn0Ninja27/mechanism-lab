@@ -15,7 +15,7 @@ atom usefulness, source truth, novelty, or representation performance.
 The paid preparation call cost $0.106524 according to the larger verified
 provider usage field (`is_byok: false`). Phase spend became $5.1417516 of the
 $30 ledger cap. The original campaign directory, stop marker, raw response and
-review artifacts remain preserved. See the authoritative [outcome](outcome.json)
+review artifacts remain preserved. See the hash-bound [display summary](outcome.json)
 and [narrative](../../reports/generation-comparison-campaign2/outcome.md).
 
 No training or generation call was made. This stopped attempt is not reopened

@@ -459,8 +459,10 @@
       ],
       "report_path": "operator-studies/campaign2-preparation-contract-v1/README.md",
       "result_path": "operator-studies/campaign2-preparation-contract-v1/outcome.json",
-      "source_urls": ["https://arxiv.org/abs/2608.06441"],
-      "result_sha256": "8119adba3c747ab046d6952cbc9c0894327106b2958e784fd703ce426181fcf7",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "5ce9f7b08b638a15534eb2daaecf7dbd4dd8870479a0a7d0fb05e7669d66ea77",
       "train_eligible": false,
       "novelty_established": false
     }
