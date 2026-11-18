@@ -119,7 +119,7 @@ No automatic deployment, training-label promotion or novelty assertion follows.
 ## Spending and attempt boundary
 
 One output path: `results/fixed-artifact-comparison-v1`. One new campaign cap:
-$24.50, including the single prose preparation. This is inside the existing
+$24.85, including the single prose preparation. This is inside the existing
 $30 phase cap, which already has $5.1417516 charged. BYOK calls count toward the
 same limits; credit balances are not exemptions. Provider routing and prices
 must be frozen, and actual BYOK use is reported from receipts, not assumed.
@@ -130,9 +130,13 @@ candidate-generation request, recompute the full remaining schedule's
 conservative reservations from the actual frozen prompt bytes, output caps,
 provider prices and applicable fees. It must fit both caps. If it does not, stop
 before generation; do not reduce a model/arm after inspecting candidate results.
-Initial standard-price arithmetic for the 48-call schedule plus one prose draw
-is approximately $23.62 with a conservative prose-text bound; this is provisional,
-not permission to exceed the cap. Exact configuration must pass preflight.
+The read-only provider check supports the low-effort setting and output cap.
+Reasoning shares that cap with visible output, so truncation risks can differ
+by decoder. Standard-price reservation is $23.619524; include a separate 5%
+BYOK-fee contingency, yielding $24.8005002 and a phase total of $29.9422518.
+Do not assume the workspace free allowance or promotional credits.
+See provider-check.md and provider-metadata.json; actual routing remains to be
+verified from receipts. Exact configuration must pass preflight.
 
 A provider exception stops further requests across both decoders. Truncated
 responses retain their four invalid candidate slots and stop further spending.

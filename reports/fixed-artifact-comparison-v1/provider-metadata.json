@@ -1,0 +1,384 @@
+{
+  "schema": "fixed-artifact-provider-metadata.v1",
+  "retrieved_at_utc": "2026-11-18T19:14:00.506376+00:00",
+  "models_url": "https://openrouter.ai/api/v1/models",
+  "models_response_sha256": "a137bc4d4d2d92836f8033794476f39ed0175e26206c978db8f4bb05c56a620f",
+  "generation_requests": 0,
+  "models": [
+    {
+      "model": {
+        "id": "anthropic/claude-opus-5.5",
+        "canonical_slug": "anthropic/claude-opus-5.5-20260921",
+        "reasoning": {
+          "mandatory": true,
+          "supported_efforts": [
+            "max",
+            "xhigh",
+            "high",
+            "medium",
+            "low"
+          ],
+          "default_effort": "high"
+        },
+        "top_provider": {
+          "context_length": 1000000,
+          "max_completion_tokens": 128000,
+          "is_moderated": true
+        },
+        "pricing": {
+          "prompt": "0.000004",
+          "completion": "0.00002",
+          "web_search": "0.01",
+          "input_cache_read": "0.0000002",
+          "input_cache_write": "0.000005",
+          "input_cache_write_1h": "0.000008"
+        },
+        "supported_parameters": [
+          "include_reasoning",
+          "max_completion_tokens",
+          "max_tokens",
+          "reasoning",
+          "reasoning_effort",
+          "response_format",
+          "stop",
+          "structured_outputs",
+          "tool_choice",
+          "tools",
+          "verbosity"
+        ]
+      },
+      "endpoints_url": "https://openrouter.ai/api/v1/models/anthropic/claude-opus-5.5/endpoints",
+      "endpoints_response_sha256": "79a16fce87892eacaedda282e4fd4c20453ef0346f6367775e7fad73180aeaca",
+      "endpoints": [
+        {
+          "name": "Amazon Bedrock | anthropic/claude-opus-5.5-20260921",
+          "tag": "amazon-bedrock",
+          "provider_name": "Amazon Bedrock",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000004",
+            "completion": "0.00002",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.000005",
+            "input_cache_write_1h": "0.000008",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "stop",
+            "tool_choice",
+            "tools",
+            "response_format",
+            "verbosity",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Azure | anthropic/claude-opus-5.5-20260921",
+          "tag": "azure/global",
+          "provider_name": "Azure",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000004",
+            "completion": "0.00002",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.000005",
+            "input_cache_write_1h": "0.000008",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "structured_outputs",
+            "max_tokens",
+            "max_completion_tokens",
+            "tools",
+            "tool_choice",
+            "response_format",
+            "verbosity",
+            "stop",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Google | anthropic/claude-opus-5.5-20260921",
+          "tag": "google-vertex/global",
+          "provider_name": "Google",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000004",
+            "completion": "0.00002",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.000005",
+            "input_cache_write_1h": "0.000008",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "response_format",
+            "tool_choice",
+            "tools",
+            "verbosity",
+            "structured_outputs",
+            "stop",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Claude Platform on AWS | anthropic/claude-opus-5.5-20260921",
+          "tag": "claude-on-aws",
+          "provider_name": "Claude Platform on AWS",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000004",
+            "completion": "0.00002",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.000005",
+            "input_cache_write_1h": "0.000008",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "stop",
+            "tool_choice",
+            "tools",
+            "structured_outputs",
+            "response_format",
+            "verbosity",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Anthropic | anthropic/claude-opus-5.5-20260921",
+          "tag": "anthropic",
+          "provider_name": "Anthropic",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000004",
+            "completion": "0.00002",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.000005",
+            "input_cache_write_1h": "0.000008",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "stop",
+            "tool_choice",
+            "tools",
+            "structured_outputs",
+            "response_format",
+            "verbosity",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Anthropic | anthropic/claude-opus-5.5-20260921",
+          "tag": "anthropic/fast",
+          "provider_name": "Anthropic",
+          "service_tier": "priority",
+          "pricing": {
+            "prompt": "0.000008",
+            "completion": "0.00004",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000004",
+            "input_cache_write": "0.00001",
+            "input_cache_write_1h": "0.000016",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "stop",
+            "tool_choice",
+            "tools",
+            "structured_outputs",
+            "response_format",
+            "verbosity",
+            "reasoning_effort"
+          ]
+        }
+      ]
+    },
+    {
+      "model": {
+        "id": "anthropic/claude-fable-5.2",
+        "canonical_slug": "anthropic/claude-fable-5.2-20261109",
+        "reasoning": {
+          "mandatory": true,
+          "supported_efforts": [
+            "max",
+            "xhigh",
+            "high",
+            "medium",
+            "low"
+          ],
+          "default_effort": "high"
+        },
+        "top_provider": {
+          "context_length": 1000000,
+          "max_completion_tokens": 128000,
+          "is_moderated": true
+        },
+        "pricing": {
+          "prompt": "0.000008",
+          "completion": "0.00004",
+          "web_search": "0.01",
+          "input_cache_read": "0.0000002",
+          "input_cache_write": "0.00001",
+          "input_cache_write_1h": "0.000016"
+        },
+        "supported_parameters": [
+          "include_reasoning",
+          "max_completion_tokens",
+          "max_tokens",
+          "reasoning",
+          "reasoning_effort",
+          "response_format",
+          "stop",
+          "structured_outputs",
+          "tool_choice",
+          "tools",
+          "verbosity"
+        ]
+      },
+      "endpoints_url": "https://openrouter.ai/api/v1/models/anthropic/claude-fable-5.2/endpoints",
+      "endpoints_response_sha256": "7b7f13b23db48c4f30708f3acdd7d73fa781aa9e14a9dd6e6c80307dbb28a6b9",
+      "endpoints": [
+        {
+          "name": "Google | anthropic/claude-fable-5.2-20261109",
+          "tag": "google-vertex/global",
+          "provider_name": "Google",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000008",
+            "completion": "0.00004",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.00001",
+            "input_cache_write_1h": "0.000016",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "response_format",
+            "tool_choice",
+            "tools",
+            "verbosity",
+            "structured_outputs",
+            "stop",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Azure | anthropic/claude-fable-5.2-20261109",
+          "tag": "azure",
+          "provider_name": "Azure",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000008",
+            "completion": "0.00004",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.00001",
+            "input_cache_write_1h": "0.000016",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "structured_outputs",
+            "max_tokens",
+            "max_completion_tokens",
+            "tool_choice",
+            "tools",
+            "response_format",
+            "verbosity",
+            "stop",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Anthropic | anthropic/claude-fable-5.2-20261109",
+          "tag": "anthropic",
+          "provider_name": "Anthropic",
+          "service_tier": null,
+          "pricing": {
+            "prompt": "0.000008",
+            "completion": "0.00004",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000002",
+            "input_cache_write": "0.00001",
+            "input_cache_write_1h": "0.000016",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "stop",
+            "tool_choice",
+            "tools",
+            "structured_outputs",
+            "response_format",
+            "verbosity",
+            "reasoning_effort"
+          ]
+        },
+        {
+          "name": "Anthropic | anthropic/claude-fable-5.2-20261109",
+          "tag": "anthropic/fast",
+          "provider_name": "Anthropic",
+          "service_tier": "priority",
+          "pricing": {
+            "prompt": "0.000016",
+            "completion": "0.00008",
+            "web_search": "0.01",
+            "input_cache_read": "0.0000004",
+            "input_cache_write": "0.00002",
+            "input_cache_write_1h": "0.000032",
+            "discount": 0
+          },
+          "max_completion_tokens": 128000,
+          "supported_parameters": [
+            "reasoning",
+            "include_reasoning",
+            "max_tokens",
+            "stop",
+            "tool_choice",
+            "tools",
+            "structured_outputs",
+            "response_format",
+            "verbosity",
+            "reasoning_effort"
+          ]
+        }
+      ]
+    }
+  ]
+}

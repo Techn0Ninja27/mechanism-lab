@@ -14,17 +14,19 @@ stops before generation in that case.
 
 [atoms-fidelity.json](atoms-fidelity.json) reproduces 23 valid reviews out of 24,
 six fields flagged by either reviewer and two by both. Unknown-information fields
-are reported separately. These are reviewer measurements, not truth labels.
+are reported separately. These are reviewer measurements, not truth labels. A compound prose summary and
+a short typed field are different denominators: do not compare field-flag rates
+across representations as quality estimates.
 [The separate model adjudication](../generation-comparison-campaign2/adjudication-summary.json)
 classifies the flags without changing the failed run.
 
-[offline-check.json](offline-check.json) records a $23.619524 standard-price
-reservation and $28.7612756 phase total including existing spend. No API request
-was made and the live ledger was byte-identical. This is not a provider quote
-or an execution freeze: routing, fees, model setting support, the paid runner,
-and final evaluator/data/reviewer bindings still need verification before use.
+[offline-check.json](offline-check.json) records the conservative reservation
+including a 5% BYOK-fee contingency: $24.8005002 new, $29.9422518 phase total. No API request
+was made and the live ledger was byte-identical. [provider-check.md](provider-check.md) documents public prices, advertised model
+settings, and fee assumptions. This remains an offline plan, not an execution
+freeze: paid-runner integration and actual account/provider routing are unfinished.
 
-Validation (49 tests):
+Validation (51 tests):
 
 ```sh
 ../.venv/bin/python -m unittest tests.test_fixed_artifact_runner tests.test_fixed_artifact_fidelity tests.test_fixed_artifact_decisions tests.test_research_ledger

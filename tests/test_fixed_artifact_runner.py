@@ -70,6 +70,20 @@ class FixedArtifactRunnerTests(unittest.TestCase):
             out=Path(td)/"plan"; build_plan(out)
             (out/"controls.json").write_text((out/"controls.json").read_text()+"\n")
             with self.assertRaises(ValueError): verify_plan(out)
+
+    def test_dependency_and_reviewer_instruction_bindings_fail_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/"plan"; build_plan(out)
+            d=json.loads((out/"plan.json").read_text())
+            d["dependency_hashes"]["generation/campaign_selection.py"] = "0" * 64
+            (out/"plan.json").write_text(json.dumps(d))
+            with self.assertRaises(ValueError): verify_plan(out)
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/"plan"; build_plan(out)
+            d=json.loads((out/"plan.json").read_text())
+            d["reviewer_metadata"]["applies_to"] = ["summary"]
+            (out/"plan.json").write_text(json.dumps(d))
+            with self.assertRaises(ValueError): verify_plan(out)
         with tempfile.TemporaryDirectory() as td:
             out=Path(td)/"plan"; build_plan(out)
             (out/"prompts/raw.txt").write_text((out/"prompts/raw.txt").read_text()+"tamper")
@@ -100,5 +114,18 @@ class FixedArtifactRunnerTests(unittest.TestCase):
             self.assertEqual(d["prose_status"], "unavailable")
             self.assertEqual((out/"representations/distillations-raw.json").read_bytes(), raw.read_bytes())
             self.assertFalse(verify_plan(out)["generation_enabled"])
+
+    def test_fee_contingency_bound_and_tamper(self):
+        from scripts.run_fixed_artifact_campaign import _reserve_bytes, SYSTEM
+        price={"prompt":4e-6,"completion":20e-6}
+        inference=(len(SYSTEM.encode())+100+512)*price["prompt"]+12288*price["completion"]
+        self.assertAlmostEqual(_reserve_bytes(100,price),inference*1.05)
+        with tempfile.TemporaryDirectory() as td:
+            out=Path(td)/"plan"; plan=build_plan(out)
+            self.assertAlmostEqual(plan["worst_case_campaign_reserve_usd"],24.8005002)
+            self.assertLess(plan["phase_worst_case_charged_usd"],30)
+            plan["byok_fee_rate"]=0
+            (out/"plan.json").write_text(json.dumps(plan))
+            with self.assertRaises(ValueError): verify_plan(out)
 
 if __name__=='__main__': unittest.main()

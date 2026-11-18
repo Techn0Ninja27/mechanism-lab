@@ -22,11 +22,45 @@ DECODERS = {
 }
 CALLS_PER_ARM = 6
 K = 4
-CAP = 24.50
+CAP = 24.85
+BYOK_FEE_RATE = 0.05
 RAW_RENDER_UPPER_BYTES = 32406
 PHASE_CAP = 30.0
 STABLE_PLAN_SEED = 20261120
 UNAVAILABLE_DISTILL_PROMPT = "<prose unavailable; generation slots remain planned failures>"
+
+# Dependencies that define selection, review, preparation, and the fixed Cora
+# evaluator.  These are copied into the offline plan as hashes only: the plan
+# is not an execution manifest and never authorizes a paid call.
+DEPENDENCY_PATHS = (
+    "reports/fixed-artifact-comparison-v1/provider-metadata.json",
+    "reports/fixed-artifact-comparison-v1/provider-check.md",
+    "generation/campaign_selection.py",
+    "reports/generation-comparison-v2/comparator-amendment.md",
+    "reports/generation-comparison-v2/control-selection.json",
+    "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/reviewer-instructions.md",
+    "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/reviewer-instructions.md",
+    "generation/reference_review_v2.py",
+    "generation/evidence_reference_packets.py",
+    "generation/reference_draw_reviews.py",
+    "generation/record_review_packets.py",
+    "scripts/prepare_chunk_representations.py",
+    "scripts/prepare_matched_representations.py",
+    "scripts/evaluate_causal_candidates.py",
+    "generation/causal_program.py",
+    "operator-studies/gnn-closedloop-gap/gap.py",
+    "operator-studies/gnn-closedloop-gap/freeze.json",
+    "operator-studies/gnn-sync-gate/screen.py",
+    "results/gnn-sync-gate-v1/data/cora.content",
+    "results/gnn-sync-gate-v1/data/cora.cites",
+)
+
+REVIEWER_METADATA = {
+    "field_scope": "generic scientific-field",
+    "applies_to": ["summary", "typedfields"],
+    "model_version": "native",
+    "model_version_independently_pinned": False,
+}
 
 def sha(path: Path) -> str: return hashlib.sha256(path.read_bytes()).hexdigest()
 def canon(value: Any) -> str: return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
@@ -41,6 +75,16 @@ def frozen_prose_prompt() -> Path: return ROOT / "results/generation-comparison-
 def _code_hashes() -> dict[str, str]:
     names=("scripts/run_fixed_artifact_campaign.py","scripts/generate_causal_campaign2.py","scripts/generate_causal_campaign.py","scripts/evaluate_causal_candidates.py","scripts/run_causal_campaign.py","scripts/prepare_chunk_representations.py","scripts/prepare_matched_representations.py","generation/api_budget.py","generation/causal_program.py","generation/fixed_artifact_decisions.py","generation/fixed_artifact_fidelity.py","reports/fixed-artifact-comparison-v1/protocol.md","reports/fixed-artifact-comparison-v1/atoms-fidelity.json")
     return {n:sha(ROOT/n) for n in names}
+def _dependency_hashes() -> dict[str, str]:
+    missing = [n for n in DEPENDENCY_PATHS if not (ROOT/n).is_file()]
+    if missing: raise ValueError(f"dependency files missing: {missing}")
+    return {n: sha(ROOT/n) for n in DEPENDENCY_PATHS}
+def _reviewer_metadata() -> dict[str, Any]:
+    base = ROOT / "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots"
+    a = base/"a/reviewer-instructions.md"; b = base/"b/reviewer-instructions.md"
+    if a.read_bytes() != b.read_bytes():
+        raise ValueError("reviewer instruction slots a and b differ")
+    return dict(REVIEWER_METADATA)
 def _phase_charged() -> float:
     ledger=json.loads((ROOT/"results/improvement-phase-2026-11-16/budget.json").read_text())
     total=0.0
@@ -51,7 +95,8 @@ def _phase_charged() -> float:
     if not math.isfinite(total) or total < 0 or total > PHASE_CAP: raise ValueError("phase ledger charge exceeds cap")
     return float(total)
 def _reserve_bytes(n: int, pricing: dict[str,float]) -> float:
-    return (len(SYSTEM.encode("utf-8"))+n+512)*pricing["prompt"] + 12288*pricing["completion"]
+    inference = (len(SYSTEM.encode("utf-8"))+n+512)*pricing["prompt"] + 12288*pricing["completion"]
+    return inference * (1 + BYOK_FEE_RATE)
 
 def _raw_body(pack: dict[str, Any]) -> str:
     return "\n\n".join(f"CHUNK {x['id']} (source={x['source_id']})\n{x['text']}" for x in render_source_context(pack)["chunks"])
@@ -116,7 +161,7 @@ def build_plan(out: Path, *, prose_path: Path | None = None) -> dict[str, Any]:
     prompt_dir=out/"prompts"; prompt_dir.mkdir()
     for arm, body in bodies.items(): (prompt_dir/f"{arm}.txt").write_text(body)
     (prompt_dir/"prose-preparation.txt").write_text(prose_prompt)
-    plan={"schema":"fixed-artifact-comparison-plan.v1","status":"offline_plan_only","canonical_output":"results/fixed-artifact-comparison-v1","status_requires_prose":True,"source_pack_sha256":sha(out/"sourcepack.json"),"stopped_atom_sha256":sha(rep/"atoms.json"),"stopped_atom_draw_sha256":sha(stopped_atom_draw()),"stopped_outcome_sha256":sha(outcome),"prose_prompt_file_sha256":sha(prompt_source),"prose_prompt_body_sha256":text_sha(prose_prompt),"prose_prompt_input_bytes":prose_prompt_input,"raw_render_upper_bytes":RAW_RENDER_UPPER_BYTES,"prose_status":prose_status,"prose_raw_sha256":sha(rep/"distillations-raw.json") if (rep/"distillations-raw.json").exists() else None,"prose_artifact_sha256":sha(rep/"distillations.json") if prose is not None else None,"fidelity_sha256":sha(out/"fidelity.json"),"task_sha256":text_sha(TASK),"grammar_sha256":text_sha(GRAMMAR),"system_sha256":text_sha(SYSTEM),"code_hashes":_code_hashes(),"decoders":DECODERS,"provider_max_output_tokens":12288,"reasoning":"low","arms":ARMS,"calls_per_arm":CALLS_PER_ARM,"candidate_capacity":K,"cases":cases,"case_seed":STABLE_PLAN_SEED,"random_inventory_sha256":digest(random),"controls_sha256":digest(controls),"random_inventory_file_sha256":sha(ROOT/"results/generation-comparison-campaign2-run/random-inventory.json"),"controls_file_sha256":sha(ROOT/"results/generation-comparison-campaign2-run/controls.json"),"prompt_hashes":{k:text_sha(v) for k,v in bodies.items()},"prompt_bytes":prompt_bytes,"dev_seeds":list(range(100,116)),"final_seeds":list(range(200,232)),"phase_charged_before_usd":_phase_charged(),"phase_cap_usd":PHASE_CAP,"campaign_cap_usd":CAP,"prose_preparation_reserve_usd":prep_reserve,"generation_reserve_upper_usd":generation_reserve,"worst_case_campaign_reserve_usd":prep_reserve+generation_reserve,"phase_worst_case_charged_usd":_phase_charged()+prep_reserve+generation_reserve,"paid_calls":0,"generation_enabled":False,"scope":"Fixed-artifact intention-to-treat pilot; descriptive, no novelty or causal representation claim."}
+    plan={"schema":"fixed-artifact-comparison-plan.v1","status":"offline_plan_only","canonical_output":"results/fixed-artifact-comparison-v1","status_requires_prose":True,"source_pack_sha256":sha(out/"sourcepack.json"),"stopped_atom_sha256":sha(rep/"atoms.json"),"stopped_atom_draw_sha256":sha(stopped_atom_draw()),"stopped_outcome_sha256":sha(outcome),"prose_prompt_file_sha256":sha(prompt_source),"prose_prompt_body_sha256":text_sha(prose_prompt),"prose_prompt_input_bytes":prose_prompt_input,"raw_render_upper_bytes":RAW_RENDER_UPPER_BYTES,"prose_status":prose_status,"prose_raw_sha256":sha(rep/"distillations-raw.json") if (rep/"distillations-raw.json").exists() else None,"prose_artifact_sha256":sha(rep/"distillations.json") if prose is not None else None,"fidelity_sha256":sha(out/"fidelity.json"),"task_sha256":text_sha(TASK),"grammar_sha256":text_sha(GRAMMAR),"system_sha256":text_sha(SYSTEM),"code_hashes":_code_hashes(),"dependency_hashes":_dependency_hashes(),"reviewer_metadata":_reviewer_metadata(),"decoders":DECODERS,"provider_max_output_tokens":12288,"reasoning":"low","arms":ARMS,"calls_per_arm":CALLS_PER_ARM,"candidate_capacity":K,"cases":cases,"case_seed":STABLE_PLAN_SEED,"random_inventory_sha256":digest(random),"controls_sha256":digest(controls),"random_inventory_file_sha256":sha(ROOT/"results/generation-comparison-campaign2-run/random-inventory.json"),"controls_file_sha256":sha(ROOT/"results/generation-comparison-campaign2-run/controls.json"),"prompt_hashes":{k:text_sha(v) for k,v in bodies.items()},"prompt_bytes":prompt_bytes,"dev_seeds":list(range(100,116)),"final_seeds":list(range(200,232)),"phase_charged_before_usd":_phase_charged(),"byok_fee_rate":BYOK_FEE_RATE,"phase_cap_usd":PHASE_CAP,"campaign_cap_usd":CAP,"prose_preparation_reserve_usd":prep_reserve,"generation_reserve_upper_usd":generation_reserve,"worst_case_campaign_reserve_usd":prep_reserve+generation_reserve,"phase_worst_case_charged_usd":_phase_charged()+prep_reserve+generation_reserve,"paid_calls":0,"generation_enabled":False,"scope":"Fixed-artifact intention-to-treat pilot; descriptive, no novelty or causal representation claim."}
     if plan["worst_case_campaign_reserve_usd"] > CAP: raise ValueError("fixed-artifact cap exceeded")
     if plan["phase_worst_case_charged_usd"] > PHASE_CAP: raise ValueError("phase cap exceeded")
     (out/"plan.json").write_text(json.dumps(plan,indent=2)+"\n");(out/"prompt-hashes.json").write_text(json.dumps({k:text_sha(v) for k,v in bodies.items()},indent=2)+"\n")
@@ -135,8 +180,10 @@ def verify_plan(out: Path) -> dict[str, Any]:
     if d["source_pack_sha256"] != sha(out/"sourcepack.json") or d["stopped_atom_sha256"] != sha(out/"representations/atoms.json"): raise ValueError("immutable input changed")
     if d.get("stopped_atom_draw_sha256") != sha(stopped_atom_draw()) or d.get("stopped_outcome_sha256") != sha(stopped_outcome()): raise ValueError("stopped provenance changed")
     if d.get("prose_prompt_file_sha256") != sha(frozen_prose_prompt()): raise ValueError("prose prompt changed")
-    if d.get("phase_cap_usd") != PHASE_CAP or d.get("campaign_cap_usd") != CAP: raise ValueError("budget caps changed")
+    if d.get("byok_fee_rate") != BYOK_FEE_RATE or d.get("phase_cap_usd") != PHASE_CAP or d.get("campaign_cap_usd") != CAP: raise ValueError("budget caps changed")
     if d.get("code_hashes") != _code_hashes(): raise ValueError("code dependency changed")
+    if d.get("dependency_hashes") != _dependency_hashes(): raise ValueError("bound dependency changed")
+    if d.get("reviewer_metadata") != _reviewer_metadata(): raise ValueError("reviewer metadata changed")
     random_path=out/"random-inventory.json"; controls_path=out/"controls.json"
     if not random_path.is_file() or not controls_path.is_file(): raise ValueError("copied controls missing")
     random=json.loads(random_path.read_text()); controls=json.loads(controls_path.read_text())

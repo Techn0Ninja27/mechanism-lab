@@ -2001,10 +2001,10 @@
       "flagged_by_both": false
     }
   ],
-  "interpretation": "Flags are reviewer measurements; neither agreement nor adjudication is formal truth. No gate or true-error claim is made.",
+  "interpretation": "Flags are reviewer measurements; neither agreement nor adjudication is formal truth. A compound prose summary and a short typed field have different denominators: do not compare field-flag rates across representations as quality estimates. No gate or true-error claim is made.",
   "representation_sha256": "3b44616f91f80cfb85ce5222dcb56902f9c73caacf465ac9980abd0630605a40",
   "measurement_code_sha256": {
-    "generation/fixed_artifact_fidelity.py": "326f0c97758d65da1dfc45b29749bc500c7baa1bb1e9bc27ab1f74588910ea01",
+    "generation/fixed_artifact_fidelity.py": "98b9c6b4bda40e600a132ff6a0b1a31692984bc7eed79f84e6753ef89e5101c3",
     "generation/reference_review_v2.py": "7c083bb4377afba87426b0c8157d10bf1a8900a5f9f217e8290782e62f267b4a",
     "generation/evidence_reference_packets.py": "17aa22199daa288f39e9b1a4205f039ed9f9be01ce3999adbb9d504215dead29"
   }

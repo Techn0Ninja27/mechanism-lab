@@ -163,7 +163,7 @@ def build_report(reference_slots: str | Path, expected_indices: list[str] | tupl
                         "unknown_field_count": len(unknown),
                         "unknown_flagged_by_either": sum(r["flagged_by_either"] for r in unknown),
                         "unknown_flagged_by_both": sum(r["flagged_by_both"] for r in unknown)},
-            "unknowns": unknown, "interpretation": "Flags are reviewer measurements; neither agreement nor adjudication is formal truth. No gate or true-error claim is made."}
+            "unknowns": unknown, "interpretation": "Flags are reviewer measurements; neither agreement nor adjudication is formal truth. A compound prose summary and a short typed field have different denominators: do not compare field-flag rates across representations as quality estimates. No gate or true-error claim is made."}
 
 
 build_fidelity_report = build_report
