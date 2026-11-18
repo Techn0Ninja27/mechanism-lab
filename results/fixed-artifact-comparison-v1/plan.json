@@ -1,0 +1,555 @@
+{
+  "schema": "fixed-artifact-comparison-plan.v1",
+  "status": "offline_plan_only",
+  "canonical_output": "results/fixed-artifact-comparison-v1",
+  "status_requires_prose": true,
+  "source_pack_sha256": "8aae2d62fd3b56984aace30afdffbee05b45ee30497b39be5175913ec3013a75",
+  "stopped_atom_sha256": "3b44616f91f80cfb85ce5222dcb56902f9c73caacf465ac9980abd0630605a40",
+  "stopped_atom_draw_sha256": "4ede7bd98bd108c173259dc25a39ab3d5bcad46722ce668f07a39f50a745ac4e",
+  "stopped_outcome_sha256": "c0da6db6a045cfa1e70427abd30a4d3c56a07a1812163310e32f5a2f1bc82a73",
+  "prose_prompt_file_sha256": "54cfbefe0fbb8b4a2d996c8519d7a25ef934a47eea0dce423dbaa49a7e6951be",
+  "prose_prompt_body_sha256": "90258ea13a578b3c702a2c702c1978c5f2e6dd9e48bd60a964318f0b33e752d9",
+  "prose_prompt_input_bytes": 25956,
+  "raw_render_upper_bytes": 32406,
+  "prose_status": "unavailable",
+  "prose_raw_sha256": null,
+  "prose_artifact_sha256": null,
+  "fidelity_sha256": "65bb9ea9f3c75e814a089f327d868c9bfdb0c251bad128bd4bcb7ef0635a14d6",
+  "task_sha256": "ec2a224225255fe762bbc1b5fb444959e9a469f571ab134150995147244d45c0",
+  "grammar_sha256": "e5a32176fb166870618ec19780c124747b5543695902c4fd69d1c5ffb29e0180",
+  "system_sha256": "ecd94d5baa58804af22998ea896f738f87bfc8b16dadfff8b878f4734b1db191",
+  "code_hashes": {
+    "scripts/run_fixed_artifact_campaign.py": "f2f633418f46d5a842fe95bae72034bf5e99a9843b37c530d0202221dc81bace",
+    "scripts/generate_causal_campaign2.py": "cd693ee9bb9074d5671b3b9046b5798f0deec3fea14add7dfb5a801be6c6fa5f",
+    "scripts/generate_causal_campaign.py": "2c693db779e2a5915053026de339eaebe73ea4649301f65ede453e601becb294",
+    "scripts/evaluate_causal_candidates.py": "007d9e1c1ccb04b7b7051728098abd1b16a41fefded64dc33e7a46fb28916143",
+    "scripts/run_causal_campaign.py": "fa9bb96f62fff6bbf1b9894013e1a79ad3115be988456ae7fc482314e8d2b9a4",
+    "scripts/prepare_chunk_representations.py": "37dc68cfed98cc4ffdebd5dff45322c7195d5bbe8067ff543ce49df81eb586b6",
+    "scripts/prepare_matched_representations.py": "d1295cf383e9187e046c8f98a4ecc3fbc18223bbee0f9a709d9f182b3ee747a1",
+    "generation/api_budget.py": "9cbd5933e83cbe6bbb848051f28aa9ce65fca9e7286961680a81cd190bb781a0",
+    "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
+    "generation/fixed_artifact_decisions.py": "d76ddc6c7417fa6bc80d74b3c57facdf3960781d5d3f18845ddbd90015c2feaa",
+    "generation/fixed_artifact_fidelity.py": "98b9c6b4bda40e600a132ff6a0b1a31692984bc7eed79f84e6753ef89e5101c3",
+    "reports/fixed-artifact-comparison-v1/protocol.md": "ff79bb78e6d3eded7883504e4d1240202bc39ffab8c47b2da56d8572e4fc6f02",
+    "reports/fixed-artifact-comparison-v1/atoms-fidelity.json": "6261904ecfff10a3b9e889eb5178b8d84fed9689f001bfc8f2b9f4e96edc0f99"
+  },
+  "dependency_hashes": {
+    "reports/fixed-artifact-comparison-v1/provider-metadata.json": "082d6028ca916091d3e544e16090968510a04e542856b772141a0a1128170df3",
+    "reports/fixed-artifact-comparison-v1/provider-check.md": "ad5ccd0b86cc3d6812cf731f712f9455b1242c8a35bcc8df629678ffef5ec15f",
+    "generation/campaign_selection.py": "7052be04b7a6e28fd711ae4f73a9bdc81abcd2eaca7a068846e09912ccf2e676",
+    "reports/generation-comparison-v2/comparator-amendment.md": "4f00334c71857cb474878536a742a4b96993ca257a9d7b3bfd40fac3c8363f22",
+    "reports/generation-comparison-v2/control-selection.json": "39752e57fda74c9b2c917a738e74cf34d9af4a34bef73941e1a811a2a45734e0",
+    "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/reviewer-instructions.md": "f6a5e3d9fc9e8f530baec139e5ce11f97e94a824547657a845a60d20aa4ceb18",
+    "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/reviewer-instructions.md": "f6a5e3d9fc9e8f530baec139e5ce11f97e94a824547657a845a60d20aa4ceb18",
+    "generation/reference_review_v2.py": "7c083bb4377afba87426b0c8157d10bf1a8900a5f9f217e8290782e62f267b4a",
+    "generation/evidence_reference_packets.py": "17aa22199daa288f39e9b1a4205f039ed9f9be01ce3999adbb9d504215dead29",
+    "generation/reference_draw_reviews.py": "51e2d7cc81cb7926f2034dd00d48302c323b0467319e41b8f09aff743a1ae025",
+    "generation/record_review_packets.py": "eff8b72bbe765b89d666e78699f8b75f93726a4d57977b5f2a9ab22e88d6b142",
+    "scripts/prepare_chunk_representations.py": "37dc68cfed98cc4ffdebd5dff45322c7195d5bbe8067ff543ce49df81eb586b6",
+    "scripts/prepare_matched_representations.py": "d1295cf383e9187e046c8f98a4ecc3fbc18223bbee0f9a709d9f182b3ee747a1",
+    "scripts/evaluate_causal_candidates.py": "007d9e1c1ccb04b7b7051728098abd1b16a41fefded64dc33e7a46fb28916143",
+    "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
+    "operator-studies/gnn-closedloop-gap/gap.py": "af08e6991bc751c9a7912962b8261d504218ce6e8928ab6f458089f8b6d955e6",
+    "operator-studies/gnn-closedloop-gap/freeze.json": "b62a38a09de02887b031b831a18f715d513612a2017334d924b02be328cae22b",
+    "operator-studies/gnn-sync-gate/screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "results/gnn-sync-gate-v1/data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "results/gnn-sync-gate-v1/data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "reviewer_metadata": {
+    "field_scope": "generic scientific-field",
+    "applies_to": [
+      "summary",
+      "typedfields"
+    ],
+    "model_version": "native",
+    "model_version_independently_pinned": false
+  },
+  "decoders": {
+    "opus-5.5": {
+      "model": "anthropic/claude-opus-5.5",
+      "prompt": 4e-06,
+      "completion": 2e-05
+    },
+    "fable-5.2": {
+      "model": "anthropic/claude-fable-5.2",
+      "prompt": 8e-06,
+      "completion": 4e-05
+    }
+  },
+  "provider_max_output_tokens": 12288,
+  "reasoning": "low",
+  "arms": [
+    "task-only",
+    "raw",
+    "atoms",
+    "distill"
+  ],
+  "calls_per_arm": 6,
+  "candidate_capacity": 4,
+  "cases": [
+    {
+      "id": "opus-5.5-task-only-00",
+      "arm": "task-only",
+      "replicate": 0,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-task-only-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-task-only-00",
+      "arm": "task-only",
+      "replicate": 0,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-task-only-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-raw-00",
+      "arm": "raw",
+      "replicate": 0,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-raw-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-raw-00",
+      "arm": "raw",
+      "replicate": 0,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-raw-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-atoms-00",
+      "arm": "atoms",
+      "replicate": 0,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-atoms-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-atoms-00",
+      "arm": "atoms",
+      "replicate": 0,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-atoms-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-distill-00",
+      "arm": "distill",
+      "replicate": 0,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-distill-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-distill-00",
+      "arm": "distill",
+      "replicate": 0,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-distill-00",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-raw-01",
+      "arm": "raw",
+      "replicate": 1,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-raw-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-raw-01",
+      "arm": "raw",
+      "replicate": 1,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-raw-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-task-only-01",
+      "arm": "task-only",
+      "replicate": 1,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-task-only-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-task-only-01",
+      "arm": "task-only",
+      "replicate": 1,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-task-only-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-distill-01",
+      "arm": "distill",
+      "replicate": 1,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-distill-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-distill-01",
+      "arm": "distill",
+      "replicate": 1,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-distill-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-atoms-01",
+      "arm": "atoms",
+      "replicate": 1,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-atoms-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-atoms-01",
+      "arm": "atoms",
+      "replicate": 1,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-atoms-01",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-atoms-02",
+      "arm": "atoms",
+      "replicate": 2,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-atoms-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-atoms-02",
+      "arm": "atoms",
+      "replicate": 2,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-atoms-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-task-only-02",
+      "arm": "task-only",
+      "replicate": 2,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-task-only-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-task-only-02",
+      "arm": "task-only",
+      "replicate": 2,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-task-only-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-distill-02",
+      "arm": "distill",
+      "replicate": 2,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-distill-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-distill-02",
+      "arm": "distill",
+      "replicate": 2,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-distill-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-raw-02",
+      "arm": "raw",
+      "replicate": 2,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-raw-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-raw-02",
+      "arm": "raw",
+      "replicate": 2,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-raw-02",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-raw-03",
+      "arm": "raw",
+      "replicate": 3,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-raw-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-raw-03",
+      "arm": "raw",
+      "replicate": 3,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-raw-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-atoms-03",
+      "arm": "atoms",
+      "replicate": 3,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-atoms-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-atoms-03",
+      "arm": "atoms",
+      "replicate": 3,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-atoms-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-task-only-03",
+      "arm": "task-only",
+      "replicate": 3,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-task-only-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-task-only-03",
+      "arm": "task-only",
+      "replicate": 3,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-task-only-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-distill-03",
+      "arm": "distill",
+      "replicate": 3,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-distill-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-distill-03",
+      "arm": "distill",
+      "replicate": 3,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-distill-03",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-distill-04",
+      "arm": "distill",
+      "replicate": 4,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-distill-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-distill-04",
+      "arm": "distill",
+      "replicate": 4,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-distill-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-raw-04",
+      "arm": "raw",
+      "replicate": 4,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-raw-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-raw-04",
+      "arm": "raw",
+      "replicate": 4,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-raw-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-task-only-04",
+      "arm": "task-only",
+      "replicate": 4,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-task-only-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-task-only-04",
+      "arm": "task-only",
+      "replicate": 4,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-task-only-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-atoms-04",
+      "arm": "atoms",
+      "replicate": 4,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-atoms-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-atoms-04",
+      "arm": "atoms",
+      "replicate": 4,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-atoms-04",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-distill-05",
+      "arm": "distill",
+      "replicate": 5,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-distill-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-distill-05",
+      "arm": "distill",
+      "replicate": 5,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-distill-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-task-only-05",
+      "arm": "task-only",
+      "replicate": 5,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-task-only-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-task-only-05",
+      "arm": "task-only",
+      "replicate": 5,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-task-only-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-raw-05",
+      "arm": "raw",
+      "replicate": 5,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-raw-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-raw-05",
+      "arm": "raw",
+      "replicate": 5,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-raw-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "opus-5.5-atoms-05",
+      "arm": "atoms",
+      "replicate": 5,
+      "decoder": "opus-5.5",
+      "call_id": "opus-5.5-atoms-05",
+      "candidate_capacity": 4
+    },
+    {
+      "id": "fable-5.2-atoms-05",
+      "arm": "atoms",
+      "replicate": 5,
+      "decoder": "fable-5.2",
+      "call_id": "fable-5.2-atoms-05",
+      "candidate_capacity": 4
+    }
+  ],
+  "case_seed": 20261120,
+  "random_inventory_sha256": "801698799eb1ca3db04beaf6ffa2fbbce50e24629031291b53a2085472475627",
+  "controls_sha256": "eee60f29f40bbbe9a45d6f4ca0b97b4cf5b18f461454942de6361aa64e01eca3",
+  "random_inventory_file_sha256": "20687e1fde72d25c6c7317719d0bea2808837594f198de528a1034a330c7d0e4",
+  "controls_file_sha256": "741678c55dcb2cb58e8ba8e21eb25a852464d1a6b30223c5e9f4bbe319ff7a12",
+  "prompt_hashes": {
+    "task-only": "ad8f1331064f3a688ab2594146d7106e8b6252346433cddde56de6754098856d",
+    "raw": "2b4e836ce58a5b05ae30055fdfe1a7c5e21a117e4de0d849a3f6554f553d855c",
+    "atoms": "347421251724182b99e1254843cd001960b441a07875fda23ae376311c7ef33b",
+    "distill": "0b1ee9423f4c449c154b31ffea5040055a8fdd43940c74aca1a2ab4b53a30216"
+  },
+  "prompt_bytes": {
+    "task-only": 3216,
+    "raw": 27363,
+    "atoms": 11630,
+    "distill": 61
+  },
+  "dev_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115
+  ],
+  "final_seeds": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231
+  ],
+  "phase_charged_before_usd": 5.141751600000001,
+  "byok_fee_rate": 0.05,
+  "phase_cap_usd": 30.0,
+  "campaign_cap_usd": 24.85,
+  "prose_preparation_reserve_usd": 0.36998220000000004,
+  "generation_reserve_upper_usd": 24.430518000000003,
+  "worst_case_campaign_reserve_usd": 24.800500200000002,
+  "phase_worst_case_charged_usd": 29.942251800000005,
+  "paid_calls": 0,
+  "execution_authority": "none_requires_separate_audited_freeze",
+  "scope": "Fixed-artifact intention-to-treat pilot; descriptive, no novelty or causal representation claim."
+}

@@ -1,0 +1,146 @@
+<<<TASK>>>
+Propose four distinct causal hidden-state estimators for a partitioned GCN training task.
+The fixed environment is Cora, a three-layer GCN with hidden width 16, four random partitions, Adam at learning rate 0.01, constant learning rate, and 120 training epochs. Hidden states are post-ReLU. Remote states are observed during epochs 0 through 20 and then every 16 epochs. Between observations, estimate the remote hidden state without reading its exact current value. At epoch 20, last_sync is h(20), previous_sync is h(19), and observed_interval is 1 because every warmup epoch is observed. The next observation is epoch 36; from then on the observed interval is 16. Each hidden layer has independent memory and uses the same program.
+Hold retains the last observed state. The primary comparator is a frozen estimator that averages the last two observed states; improve on that comparator. Improve the mean node-classification accuracy of an exact forward pass over the final two synchronization cycles. Training labels are used only by the fixed GCN optimizer, never by the estimator. Candidate selection uses development seeds; final evaluation uses separate seeds. Do not change data, partitions, synchronization, model, optimizer, evaluation or training budget.
+Return exactly four candidates, with IDs cand-00 through cand-03, as JSON {"candidates":[{"id":"cand-00","program":{"predict":AST,"update":AST},"hypothesis":"short mechanism explanation","falsifier":"short testable failure condition"}, ...]}. Do not return code fences or Python code. There is no requirement that any candidate be novel or successful.
+AST leaves are {"var":NAME} or {"const":NUMBER}; operations are {"op":NAME,"args":[AST,...]}.
+Variables: last_sync, previous_sync, memory (node-by-feature tensors), age (epochs since observation), observed_interval (epochs between the last two observations). Memory starts at zero; there is no future/current hidden truth input. Constants must be finite in [-4,4].
+Operations: add/sub/mul/divsafe take two arguments; neg/abs/relu/tanh/norm/mean take one; clip takes a value and two literal constant bounds in increasing order. Norm and mean reduce each row to one value and require a vector input. Safe division replaces denominator magnitudes below 0.0001 by signed 0.0001. Scalars and per-row values broadcast to node-by-feature tensors. No indexing, Python evaluation, tools or external data.
+Each expression permits at most 32 nodes and depth 6. At an observed step, last_sync/previous_sync are advanced, age is zero, and update computes new memory. At an unobserved step, predict and update read the SAME old memory snapshot; memory is committed afterwards. Time advances once per epoch. Nonfinite or malformed programs fail and are not repaired.
+The frozen random-control family is a bounded perturbation of last_sync: 0.1*tanh(vector)*last_sync, so its elementwise absolute perturbation is at most 10% of |last_sync| (before numerical failure checks). This is a fixed sampler definition, not a result-dependent resampling rule.
+Hypothesis and falsifier must be nonempty strings of at most 1200 characters each. Output only the JSON object.
+<<<END TASK>>>
+
+REFERENCE MATERIAL
+CANONICAL SOURCES
+SOURCE sni-method
+TITLE: SNI-GNN Section IV methods and analysis
+URL: https://arxiv.org/html/2608.06441v1
+HASH: 04fdf898891add3548c0a846fd1811b1d7383acb8b5e2fe78d60323c7e6ffa1c
+SOURCE W4396628137
+TITLE: FreshGNN: Reducing Memory Access via Stable Historical Embeddings for Graph Neural Network Training
+URL: https://doi.org/10.14778/3648160.3648184
+HASH: 130a8bd744dd9230480f7f1a1795f8cc83fd4cb4b404439b630ea0e2bfd1ffce
+SOURCE W4407013152
+TITLE: From Sancus to Sancus $$^q$$: staleness and quantization-aware full-graph decentralized training in graph neural networks
+URL: https://doi.org/10.1007/s00778-024-00897-2
+HASH: 0eb8e1dc766628b50a961da7b504b9083e6b62b1d5d23bf588e34a8c2e686c8b
+SOURCE W4409983225
+TITLE: Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction
+URL: https://doi.org/10.1137/1.9781611978520.62
+HASH: 8270d505c8367807c4d1d05bffe5ee87b9dc0ac222c84ce9c85b293812b19301
+SOURCE W7160826828
+TITLE: Sift: Channel-Wise Historical Embedding for High Efficiency Distributed Graph Neural Network Training with Accuracy Guarantee
+URL: https://doi.org/10.1145/3809161
+HASH: b2d560cee7ecc551272cd79e1053f9729be55af894a56f344cabddf36e8c061f
+
+TYPED ATOMS
+ATOM sni-predictor (source=sni-method)
+STATEMENT: SNI-GNN uses a lightweight linear-trend predictor that estimates a remote node's current embedding as an EMA baseline plus a trend term, Δt·Φ_v·e^{-λΔt}. It sets α=0.3 and λ=0.2. Φ_v is a weighted average of slopes between consecutive history entries, with weights exp(-|τ_latest−τ_k|/5.0).
+INPUTS: history buffer H_v of (τ_k, h_v) pairs; current step t
+OUTPUTS: predicted embedding ĥ_v^(t)
+CONDITIONS: Δt = t − τ_latest
+UNKNOWNS: Choice of buffer capacity K
+EVIDENCE:
+  - sni-method:chunk:0001: we set $\alpha=0.3$ in our implementation
+  - sni-method:chunk:0002: $w_{k}\leftarrow\exp(-|\tau_{\text{latest}}-\tau_{k}|/5.0)$
+
+ATOM sni-modes (source=sni-method)
+STATEMENT: Training uses a fixed synchronization interval s. In Sync Epochs, workers broadcast their latest embeddings, and the SmartNIC updates its history and forwards the fresh embeddings to the GPU. In Stale Epochs, the network communication for boundary nodes is skipped, and the SmartNIC supplies predicted embeddings to the GPU. The prediction latency is described as hidden by the concurrent forward and backward passes.
+INPUTS: synchronization interval s
+OUTPUTS: fresh or predicted remote embeddings for GPU aggregation
+CONDITIONS: each node has a GPU and a SmartNIC
+UNKNOWNS: value of s used
+EVIDENCE:
+  - sni-method:chunk:0002: Training uses a fixed synchronization interval $s$ .
+  - sni-method:chunk:0003: physical network communication for boundary nodes is skipped to reduce traffic volume
+
+ATOM sni-sampling (source=sni-method)
+STATEMENT: SNI-GNN applies importance-based boundary node sampling. Remote nodes are ranked by the number of edges they have to the local subgraph. Prediction is applied to the fraction of top-ranked nodes set by sampling_ratio, and the remaining nodes use their last historical embeddings.
+INPUTS: edge counts of remote nodes to the local subgraph; sampling_ratio
+OUTPUTS: the set of nodes that receive predicted embeddings
+CONDITIONS: intended to reduce DPU memory and compute overhead
+UNKNOWNS: the sampling_ratio used in the experiments
+EVIDENCE:
+  - sni-method:chunk:0003: We define a node’s importance by the number of edges it has connecting to the local worker’s subgraph
+
+ATOM sni-bound (source=sni-method)
+STATEMENT: Suppose the second-order difference of embeddings is bounded by ε. Then the predictor's error is at most ½(Δt)²ε, where Δt ≤ s. The gradient error is at most ρC²B²(p+CB)ε_H. Under the paper's assumptions, the stated convergence rate is O(1/√N).
+INPUTS: ε; staleness Δt; constants ρ, C, B, p
+OUTPUTS: prediction error bound; gradient error bound; convergence rate
+CONDITIONS: ρ-smooth/Lipschitz loss and activations; learning rate η=min{1/ρ,1/√N}
+UNKNOWNS: full proofs (only proof sketches are given)
+EVIDENCE:
+  - sni-method:chunk:0005: $\|\hat{H}^{(t)}-H^{(t)}\|_{\infty}\leq\tfrac{1}{2}(\Delta t)^{2}\epsilon=:\epsilon_{H},$
+
+ATOM sat-idea (source=W4409983225)
+STATEMENT: SAT models GNN embedding evolution as a temporal graph and builds a model on it to predict future embeddings. The goal is to alleviate the staleness of cached historical embeddings in distributed GNN training.
+INPUTS: cached historical embeddings
+OUTPUTS: predicted future embeddings
+CONDITIONS: distributed GNN training with historical value approximation
+UNKNOWNS: the predictor architecture
+EVIDENCE:
+  - W4409983225:chunk:0001: model the GNN’s embedding evolution as a temporal graph and build a model upon it to predict future embedding
+
+ATOM sat-online (source=W4409983225)
+STATEMENT: SAT uses an online algorithm that trains the embedding predictor and the distributed GNN alternately, and the paper provides a convergence analysis.
+INPUTS: the GNN and the predictor
+OUTPUTS: the trained GNN
+CONDITIONS: 
+UNKNOWNS: the form of the convergence result
+EVIDENCE:
+  - W4409983225:chunk:0001: We propose an online algorithm to train the embedding predictor and the distributed GNN alternatively
+
+ATOM fresh-cache (source=W4396628137)
+STATEMENT: FreshGNN is a mini-batch GNN training framework. It caches node embeddings in a historical cache and reuses them instead of recomputing them from raw features at every iteration.
+INPUTS: node embeddings
+OUTPUTS: reused cached embeddings
+CONDITIONS: mini-batch training
+UNKNOWNS: cache size
+EVIDENCE:
+  - W4396628137:chunk:0001: leverages a historical cache for storing and reusing GNN node embeddings instead of re-computing them
+
+ATOM fresh-policy (source=W4396628137)
+STATEMENT: FreshGNN's cache policy combines gradient-based and staleness criteria. It selects relatively stable embeddings for caching and marks the others for recomputation. The abstract reports 3.4× to 20.5× speedups and a 59% reduction in memory access, with less than 1% effect on test accuracy.
+INPUTS: gradient information; staleness
+OUTPUTS: cache or recompute decisions
+CONDITIONS: evaluated on datasets such as ogbn-papers100M and MAG240M
+UNKNOWNS: exact thresholds
+EVIDENCE:
+  - W4396628137:chunk:0001: using a combination of gradient-based and staleness criteria
+
+ATOM sift-channel (source=W7160826828)
+STATEMENT: Sift supports channel-wise partial historical embedding, using an evaluator built on a channel-wise quantitative accuracy model.
+INPUTS: historical embedding channels
+OUTPUTS: channel-wise historical embedding choices
+CONDITIONS: distributed GNN training
+UNKNOWNS: details of the accuracy model
+EVIDENCE:
+  - W7160826828:chunk:0001: supporting channel-wise partial historical embedding with accuracy guarantee
+
+ATOM sift-components (source=W7160826828)
+STATEMENT: Sift has three components besides the evaluator's role: the evaluator itself, a sawtooth-like matrix rearrangement that accelerates message passing, and a hybrid parallel framework that overlaps communication overhead. It reports gains of up to 72% in total training performance over baselines.
+INPUTS: 
+OUTPUTS: training performance gains
+CONDITIONS: 
+UNKNOWNS: the specific baselines compared
+EVIDENCE:
+  - W7160826828:chunk:0001: a sawtooth-like matrix rearrangement for accelerating message passing, and a hybrid parallel framework for overlapping communication overhead
+
+ATOM sancus-skip (source=W4407013152)
+STATEMENT: Sancus introduces bounded embedding staleness metrics, adaptively skips broadcasts, and uses cached historical embeddings in decentralized GNN training.
+INPUTS: staleness metrics
+OUTPUTS: decisions to skip broadcasts
+CONDITIONS: decentralized full-graph training
+UNKNOWNS: the metric definitions
+EVIDENCE:
+  - W4407013152:chunk:0001: By introducing a set of novel bounded embedding staleness metrics and adaptively skipping broadcasts
+
+ATOM sancusq-quant (source=W4407013152)
+STATEMENT: Sancus^q applies quantization-aware communication to embeddings to reduce the size of broadcast messages. It reports avoiding up to 86% of communication, with 3.0× faster throughput on average, without accuracy loss.
+INPUTS: embeddings
+OUTPUTS: quantized broadcast messages
+CONDITIONS: compared against SOTA works
+UNKNOWNS: the quantization bit width
+EVIDENCE:
+  - W4407013152:chunk:0001: conducts quantization-aware communication on embeddings to reduce the size of broadcast messages
