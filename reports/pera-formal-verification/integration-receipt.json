@@ -1,0 +1,21 @@
+{
+  "schema": "pera-formal-feedback-integration.v1",
+  "source_pack_sha256": "756ac12016a998542b69499715a00a53a2f4442b438b490f3f7e624f350b3b20",
+  "registry_sha256": "008edd81401901cd9f85d6252c7b3908aa5bc4e26f7f64f589154ce0d90e168e",
+  "included_ids": [
+    "local_experiment:pera-algebra-diagnostic-v2",
+    "local_experiment:pera-author-layer-probe-v1",
+    "local_experiment:pera-lean-formal-verification-v1",
+    "local_experiment:pera-rank-counterexample-v1",
+    "local_experiment:pera-usefulness-comparison-v2"
+  ],
+  "result_hashes": {
+    "pera-algebra-diagnostic-v2": "27184f9d13b8e5d3d8516b39181bee81d08e6d23d13e7e433744b4dcbe8c7721",
+    "pera-author-layer-probe-v1": "b6fbbb60333dd27c198ca8e9da9ebf5845940c2444dc0008d1a91f5730e0b3f6",
+    "pera-lean-formal-verification-v1": "954169431dd79bf39dd6ce83093674330110fb838240d2470829e6258fb5c712",
+    "pera-rank-counterexample-v1": "d91ffaa64fb75a3dcb063ff07db1beff103acb11ac5ebb31c0e77802a33eebec",
+    "pera-usefulness-comparison-v2": "5b3c40d736a4cf322b5d29d6a1e4f5958c2f240cdd90deb6e8e0d62a64fd9b0a"
+  },
+  "paid_calls": 0,
+  "scope": "Verified source-matched generation receives the formal counterexample and bounded comparison as evidence, not evidence of downstream proposal-quality improvement."
+}

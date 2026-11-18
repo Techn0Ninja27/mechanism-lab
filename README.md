@@ -31,6 +31,9 @@ A [subsequent PERA audit](reports/pera-method-audit-v1/README.md) found a concre
 counterexample to the paper’s approximation theorem and an isolated published
 layer issue. The equation, theorem and implementation now have separate evidence;
 none of these checks establishes a new useful adaptation method.
+The [formal follow-up](reports/pera-formal-verification/README.md) verifies the
+counterexample, positive infimum and a bounded usefulness comparison in Lean: 18
+theorems, pinned dependencies, explicit axiom audit and reproducible build logs.
 
 This is an experimental fork of [The Alien Space of Science](https://github.com/alejandrohdez00/alien-space-of-science).
 The upstream authors created the sampling method and operate

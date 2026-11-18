@@ -2,6 +2,9 @@
 
 Date: 2026-11-18.
 
+Historical planning note, superseded by the [completed Lean project](pera-lean/README.md).
+The implementation proves the stronger positive-distance and infimum bounds.
+
 The full spectral-norm lower bound is mathematically elementary but is a poor
 first Lean target: it requires finite-dimensional operator norms, row spaces,
 rank, a kernel vector, and a quantitative angle estimate. The first theorem to
@@ -15,9 +18,10 @@ such vector.
 ```
 
 This establishes `P ∉ S_PERA`. Since the paper's displayed bound for `r = 1`
-and `P` has right side `sigma 3 P = 0`, non-membership is already enough to
-refute that theorem. It does not formalize the stronger `1 / sqrt 3` distance
-bound; that can be a second theorem after the membership proof compiles.
+and `P` has right side `sigma 3 P = 0`, non-membership rules out an exact
+representation. By itself it would not rule out arbitrarily close approximation
+or a zero infimum. The completed project therefore proves the stronger
+`1 / sqrt 3` distance bound and the positive infimum directly.
 
 ## Recommended Lean decomposition
 

@@ -102,16 +102,16 @@ larger model and could invalidate this particular counterexample.
 
 ## Verification status
 
-The local Python check verifies the exact integer identities for `3P`: symmetry,
-zero row sums, trace six, and `(3P)^2=3(3P)`. Those establish the projector
-construction and are recorded in `operator-studies/pera-rank-counterexample/result.json`.
-The universal real-analysis argument above is written and independently
-reviewed, but it is not yet a Lean theorem. Until a Lean file checks the
-quantifiers, the strongest accurate label is “analytical counterexample to the
-theorem as stated,” not “formally verified.”
+The complete [Lean project](../../operator-studies/pera-lean/README.md) now
+checks the universal spectral-error bound, positive infimum, target rank and
+projector properties, and a constructive strict comparison with rank-one LoRA.
+The [receipt](../../operator-studies/pera-lean/verification/result.json) records
+18 audited theorem dependencies with only Lean's standard axioms. The exact
+paper-to-statement correspondence remains a source interpretation checked in
+this audit; Lean does not parse and adjudicate the paper's prose.
 
-Even if formalized, this result would correct a theoretical claim. It would not
-show that PERA fails on language-model tasks, invalidate the paper's empirical
-tables, establish that the observation is novel, or supply a better adapter.
-The next useful empirical comparison would need matched parameter count,
-scaling, optimizer, memory and compute against LoRA, LoHa/ABBA, and HiRA.
+This corrects a theoretical claim. It does not show that PERA fails on
+language-model tasks, invalidate the empirical tables, establish priority,
+or supply a new practically superior adapter. Real task comparisons would
+need matched parameter count, scaling, optimizer, memory and compute against
+LoRA, LoHa/ABBA and HiRA.

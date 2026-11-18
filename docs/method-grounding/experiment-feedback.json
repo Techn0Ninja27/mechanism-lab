@@ -269,6 +269,44 @@
       "result_sha256": "d91ffaa64fb75a3dcb063ff07db1beff103acb11ac5ebb31c0e77802a33eebec",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "pera-lean-formal-verification-v1",
+      "tested_change": "Lean 4.24.0/mathlib formalization of the PERA v1 Appendix A.3 counterexample. Eighteen audited theorems establish a rank-two projector P, universal spectral error >=1/sqrt3 for every real rank-one-base tied PERA update, a positive infimum, and refutation of universal rank-two approximation. A rational PERA witness has error <=sqrt(2/3)<1 while every rank-one LoRA update has error >=1 on this target.",
+      "verdict": "lean_verified_scoped_counterexample_and_comparison",
+      "scope": "All real a,b in R3 and h in R, mathlib Euclidean operator norm. Standard axioms propext, Classical.choice, Quot.sound only. Proof concerns this parameterization and source version.",
+      "limitations": [
+        "Paper-to-formal-statement translation is separately audited; Lean does not verify prose.",
+        "No priority, downstream accuracy, speed, memory or novelty claim.",
+        "The constructive comparison uses one designed target and different parameter counts; it does not identify the exact PERA optimum."
+      ],
+      "report_path": "operator-studies/pera-lean/README.md",
+      "result_path": "operator-studies/pera-lean/verification/result.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.11841"
+      ],
+      "result_sha256": "954169431dd79bf39dd6ce83093674330110fb838240d2470829e6258fb5c712",
+      "train_eligible": false,
+      "novelty_established": false
+    },
+    {
+      "id": "pera-usefulness-comparison-v2",
+      "tested_change": "Exact rational matrix identities and float64 spectral-norm comparison on P=I-11T/3. Rank-one LoRA uses6scalars with error1; explicit PERA uses7 with error sqrt(2/3); actual3x2 times2x3 rank-two LoRA uses12 and exactly reconstructs P. Formal companion separately proves the strict PERA-versus-rank-one-LoRA inequality.",
+      "verdict": "bounded_constructive_comparison_not_downstream_utility",
+      "scope": "One hand-constructed3x3 target, no optimizer, no transformer dataset. Python Fraction identities and CPUfloat64 norms.",
+      "limitations": [
+        "Unequal parameter budgets; not a fair-compute benchmark.",
+        "No claim that the displayed PERA witness is optimal.",
+        "Earlier v1 nominal-rank control was inadequately represented; v2 uses actual factors and retains earlier attempts locally."
+      ],
+      "report_path": "operator-studies/pera-usefulness-check/README.md",
+      "result_path": "operator-studies/pera-usefulness-check/result-v2.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2604.11841"
+      ],
+      "result_sha256": "5b3c40d736a4cf322b5d29d6a1e4f5958c2f240cdd90deb6e8e0d62a64fd9b0a",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
