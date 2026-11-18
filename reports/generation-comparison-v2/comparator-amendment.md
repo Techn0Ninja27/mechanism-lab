@@ -35,3 +35,10 @@ conditions. The random sampler description is part of the common grammar, not
 evidence of its performance. Machine-readable `closure_eligible` requires a
 complete, adequately precise primary comparison with no positives; failure or
 low precision blocks closure.
+
+The comparator disclosed to the model was chosen by the stage-0 development
+screen. The task statement is therefore informed by that screen even though it
+contains no measured performance figures. Naming the two-observation average
+steers every arm toward the damping/averaging neighbourhood. The question is
+whether a source representation helps improve a disclosed strong baseline,
+not whether it helps discover that averaging can outperform holding.
