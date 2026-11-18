@@ -5,7 +5,7 @@ from pathlib import Path
 from statistics import mean, stdev
 
 ROOT=Path(__file__).resolve().parents[2]
-path=ROOT/'results/generation-comparison-stage0-v1/result.json'
+path=ROOT/'operator-studies/gnn-generation-stage0/results/raw.json'
 raw=json.loads(path.read_text())
 rows={(r['id'],r['seed']):r for r in raw['runs']}
 assert len(rows)==len(raw['runs'])==112

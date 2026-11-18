@@ -23,3 +23,15 @@ or representation advantage follows from this development screen.
 `metrics.json` is a byte-identical display copy of the linked metric receipt,
 kept here because the study registry requires result paths under
 `operator-studies/`. Its raw-result hash and numerical contents are unchanged.
+
+The original [raw records](results/raw.json) and [run-time freeze](results/freeze.json)
+are now included as exact-byte copies. Recompute all displayed secondary
+metrics without training or API access:
+
+```sh
+python3 reports/generation-comparison-v2/summarize_stage0.py
+```
+
+This replays numerical analysis of the saved records. The freeze records the
+run-time code hashes; later code revisions mean it is not a promise that HEAD
+will rerun training byte-identically.
