@@ -1,6 +1,6 @@
 {
   "schema": "fixed-artifact-execution-freeze.v1",
-  "plan_sha256": "eaab652f840057895b8ec326b86345ecd751e731cdfb42ce91521d36ecc37aa3",
+  "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
   "code_hashes": {
     "scripts/execute_fixed_artifact_campaign.py": "0f37e707ccd691cfccb87bf01e0b7b056456ae4105ea2523c013679da84bbd54",
     "scripts/fixed_artifact_campaign.py": "cd21fa0913114f7fde8a974f0ac48968858114a86219f1e09408a7d2514b6643",

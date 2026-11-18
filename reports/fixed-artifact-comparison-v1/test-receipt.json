@@ -1,7 +1,7 @@
 {
   "schema": "fixed-artifact-test-receipt.v1",
   "date": "2026-11-19",
-  "test_count": 97,
+  "test_count": 100,
   "command": [
     "../.venv/bin/python",
     "-m",

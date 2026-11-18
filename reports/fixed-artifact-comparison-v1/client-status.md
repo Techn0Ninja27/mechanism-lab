@@ -18,7 +18,7 @@ markers, changed cached requests, missing receipts, fabricated cache entries,
 invalid provider/model/usage data, reservation denial, phase-cap denial, and
 parity with the planner's reservation. All tests use temporary ledgers and fake
 transports. The focused client suite has 15 tests; the combined lifecycle and analysis
-suite has 97 tests. Completed receipt checksums are anchored in the phase ledger,
+suite has 100 tests. Completed receipt checksums are anchored in the phase ledger,
 so changing response text or usage without changing that anchor is detected.
 
 This is ordinary failure detection, not cryptographic proof of provider origin.

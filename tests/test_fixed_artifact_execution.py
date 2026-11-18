@@ -158,4 +158,25 @@ class FixedExecutionTests(unittest.TestCase):
         self.assertEqual(result['status'],'incomplete');self.assertEqual(len(result['candidates']),192)
         self.assertEqual(len(self.sent),2)
 
+    def test_direct_paid_stages_require_audit_with_valid_freeze(self):
+        self.freeze();audit=self.out/'execution-audit.json';audit.unlink()
+        with self.assertRaises(FileNotFoundError):execution.prepare(self.out,self.transport)
+        self.assertEqual(len(self.sent),0)
+        self.ready();audit.unlink()
+        with self.assertRaises(FileNotFoundError):execution.execute_generation(self.out,self.transport)
+        self.assertEqual(len(self.sent),1)
+
+    def test_canonical_copy_cannot_start_another_attempt(self):
+        import shutil
+        self.freeze();other=Path(self.temp.name)/'other';shutil.copytree(self.out,other)
+        with self.assertRaises(ValueError):execution.prepare(other,self.transport)
+        self.assertEqual(len(self.sent),0)
+
+    def test_phase_headroom_for_remaining_schedule_checked_before_call(self):
+        self.ready()
+        BudgetLedger(self.ledger,30).reserve('outside-campaign',10,{'scope':'unit fixture'})
+        result=execution.execute_generation(self.out,self.transport)
+        self.assertEqual(result['status'],'incomplete');self.assertEqual(len(self.sent),1)
+        self.assertEqual({x['attempt_status'] for x in result['candidates']},{'unattempted'})
+
 if __name__=='__main__': unittest.main()

@@ -1,0 +1,1844 @@
+{
+  "candidates": [
+    {
+      "id": "random-00-cand-00",
+      "call_id": "random-00",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.097859
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "memory"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.775931
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.224069
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "d66d621a26465ff3781fed7315219311c3077e5dc1cd981242149966a836d74d",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 0,
+      "gain": -0.097859,
+      "memory_alpha": 0.775931
+    },
+    {
+      "id": "random-00-cand-01",
+      "call_id": "random-00",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.042578
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "last_sync"
+                            },
+                            {
+                              "var": "previous_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.144125
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.855875
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "770b95b4f3a0af9e939c7ea2dbb0868c60145fad1c18c3eecd8bc5460c7e033e",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 0,
+      "gain": 0.042578,
+      "memory_alpha": 0.144125
+    },
+    {
+      "id": "random-00-cand-02",
+      "call_id": "random-00",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.071023
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "previous_sync"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.245815
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.754185
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "0609a30e0400e92c894b6af4e0a4b8ad59840be645ce6810e493aca32af04b3d",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 0,
+      "gain": -0.071023,
+      "memory_alpha": 0.245815
+    },
+    {
+      "id": "random-00-cand-03",
+      "call_id": "random-00",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.064572
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "last_sync"
+                            },
+                            {
+                              "var": "previous_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.505794
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.494206
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "b9d167a3b5c62265df732b9d08d19251a58c4576f39503696b54ee6f3572d82f",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 0,
+      "gain": -0.064572,
+      "memory_alpha": 0.505794
+    },
+    {
+      "id": "random-01-cand-00",
+      "call_id": "random-01",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.01527
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "last_sync"
+                            },
+                            {
+                              "var": "previous_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.285363
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.714637
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "eec486b499b42b1451fcb2373f12829325d5bfad06adafadd83eecb0e74ce26d",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 1,
+      "gain": -0.01527,
+      "memory_alpha": 0.285363
+    },
+    {
+      "id": "random-01-cand-01",
+      "call_id": "random-01",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.093659
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "memory"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.233585
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.766415
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "923c5c9d0c84ed043ddc62ec09f278af2183e5953324d3ac55f28cba9ccfba11",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 1,
+      "gain": -0.093659,
+      "memory_alpha": 0.233585
+    },
+    {
+      "id": "random-01-cand-02",
+      "call_id": "random-01",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.072551
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "memory"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.742092
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.257908
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "c7a9b2662198717aa39000504b08c914173200d09a7255d63334c1872cb09194",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 1,
+      "gain": -0.072551,
+      "memory_alpha": 0.742092
+    },
+    {
+      "id": "random-01-cand-03",
+      "call_id": "random-01",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.029051
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "previous_sync"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.55952
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.44048
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "5f8e56f1df9bdb38c3c66fef52ed3f0d24407e8199717b263eebfa490ea7deed",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 1,
+      "gain": 0.029051,
+      "memory_alpha": 0.55952
+    },
+    {
+      "id": "random-02-cand-00",
+      "call_id": "random-02",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.048562
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "last_sync"
+                            },
+                            {
+                              "var": "previous_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.77389
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.22611
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "ada7df2c75b1e0f8d15b3b4112cd305ad807cfd84fe78c5b96b43e2d3646eb70",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 2,
+      "gain": -0.048562,
+      "memory_alpha": 0.77389
+    },
+    {
+      "id": "random-02-cand-01",
+      "call_id": "random-02",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.057162
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "previous_sync"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.134563
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.865437
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "f35f2679c4ff146a60e34ef264ea2991cfa8dbda0683288aeba2ef1e7ca3c66b",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 2,
+      "gain": -0.057162,
+      "memory_alpha": 0.134563
+    },
+    {
+      "id": "random-02-cand-02",
+      "call_id": "random-02",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.041685
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "add",
+                          "args": [
+                            {
+                              "var": "memory"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.118862
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.881138
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "f6440c2294472f1735f502bcd1ce7dbe9d2e9c8e7c677256e3b82c8ba893cc03",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 2,
+      "gain": -0.041685,
+      "memory_alpha": 0.118862
+    },
+    {
+      "id": "random-02-cand-03",
+      "call_id": "random-02",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.025911
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "last_sync"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.606469
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.393531
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "d49b00cec270aa89d976b2402563954f50d193910a44193358c587d2a6ca29c4",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 2,
+      "gain": 0.025911,
+      "memory_alpha": 0.606469
+    },
+    {
+      "id": "random-03-cand-00",
+      "call_id": "random-03",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.085063
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "last_sync"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.725472
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.274528
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "fba5c8904633141615d889d7976efb1748b6962a811160002e83561f0a84f79f",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 3,
+      "gain": 0.085063,
+      "memory_alpha": 0.725472
+    },
+    {
+      "id": "random-03-cand-01",
+      "call_id": "random-03",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.016625
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "add",
+                          "args": [
+                            {
+                              "var": "memory"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.295399
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.704601
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "b307238e6d130c0542b39a07297012f8fcff4272267b3fcd7c114875eadbd8a2",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 3,
+      "gain": 0.016625,
+      "memory_alpha": 0.295399
+    },
+    {
+      "id": "random-03-cand-02",
+      "call_id": "random-03",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.051877
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "previous_sync"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.427994
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.572006
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "0620853dc424512f928d57cf0e77005ebd6dfe15e8ee3d29edf4093310559266",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 3,
+      "gain": 0.051877,
+      "memory_alpha": 0.427994
+    },
+    {
+      "id": "random-03-cand-03",
+      "call_id": "random-03",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.024413
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "memory"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.484872
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.515128
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "63dd05dbbdd87f6d20af678cb29dbf3fd1287f1c27e33bd38a77b461ec700eba",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 3,
+      "gain": 0.024413,
+      "memory_alpha": 0.484872
+    },
+    {
+      "id": "random-04-cand-00",
+      "call_id": "random-04",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": -0.076073
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "last_sync"
+                            },
+                            {
+                              "var": "previous_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.202199
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.797801
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "468ba114c9e985b6cab6483627fee3c4a4bcea6032862ca13e05601d4906cf41",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 4,
+      "gain": -0.076073,
+      "memory_alpha": 0.202199
+    },
+    {
+      "id": "random-04-cand-01",
+      "call_id": "random-04",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.023997
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "previous_sync"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.594133
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.405867
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "1905e6f62b63b8b5af82f41781218d92a0242be9123e48e264d8c0f896296b37",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 4,
+      "gain": 0.023997,
+      "memory_alpha": 0.594133
+    },
+    {
+      "id": "random-04-cand-02",
+      "call_id": "random-04",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.089707
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "previous_sync"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.502057
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.497943
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "1db185aec72e216466a4f2ce35b9f330a3319c4348d3d47759a203ec37d4f0eb",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 4,
+      "gain": 0.089707,
+      "memory_alpha": 0.502057
+    },
+    {
+      "id": "random-04-cand-03",
+      "call_id": "random-04",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.033698
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "memory"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.482898
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.517102
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "b954f7f5195c81149c3013e2affd827eae626e4136fb9b3eab3a1e2407249204",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 4,
+      "gain": 0.033698,
+      "memory_alpha": 0.482898
+    },
+    {
+      "id": "random-05-cand-00",
+      "call_id": "random-05",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.037887
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "add",
+                          "args": [
+                            {
+                              "var": "memory"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.585553
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.414447
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "c07fdc06ef0231954cea253a1292303674d4e02407e9b7e50685b53aaf1a6895",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 5,
+      "gain": 0.037887,
+      "memory_alpha": 0.585553
+    },
+    {
+      "id": "random-05-cand-01",
+      "call_id": "random-05",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.066108
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "last_sync"
+                            },
+                            {
+                              "var": "previous_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.512279
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.487721
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "c76f114f49503829ad8538cf5bc45ec38d82d7625679d191b1086def02797633",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 5,
+      "gain": 0.066108,
+      "memory_alpha": 0.512279
+    },
+    {
+      "id": "random-05-cand-02",
+      "call_id": "random-05",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.039737
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "var": "previous_sync"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.867259
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.132741
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "c18d5fcb93d93d76474aceba850c3f61de7c4da63aa7e6df389c8e2a91ac9368",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 5,
+      "gain": 0.039737,
+      "memory_alpha": 0.867259
+    },
+    {
+      "id": "random-05-cand-03",
+      "call_id": "random-05",
+      "arm": "random",
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.015261
+                },
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "op": "tanh",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "var": "previous_sync"
+                            },
+                            {
+                              "var": "last_sync"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "var": "last_sync"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "op": "add",
+          "args": [
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.775884
+                },
+                {
+                  "var": "last_sync"
+                }
+              ]
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "const": 0.224116
+                },
+                {
+                  "var": "memory"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "program_sha256": "d6e200307c6a598e1d13ebd68f9203ae7797173fff7aff02abcb9aa596bd38d1",
+      "status": "valid",
+      "control_family": "bounded_relative_perturbation_v1",
+      "group": 5,
+      "gain": 0.015261,
+      "memory_alpha": 0.775884
+    }
+  ]
+}

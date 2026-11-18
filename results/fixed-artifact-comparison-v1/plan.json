@@ -14,7 +14,7 @@
   "prose_status": "unavailable",
   "prose_raw_sha256": null,
   "prose_artifact_sha256": null,
-  "fidelity_sha256": "65bb9ea9f3c75e814a089f327d868c9bfdb0c251bad128bd4bcb7ef0635a14d6",
+  "fidelity_sha256": "50c68337dab7818bf5e2e8dcc88108cdd979aedd54cc63126e0ede2a18e2b38b",
   "task_sha256": "ec2a224225255fe762bbc1b5fb444959e9a469f571ab134150995147244d45c0",
   "grammar_sha256": "e5a32176fb166870618ec19780c124747b5543695902c4fd69d1c5ffb29e0180",
   "system_sha256": "ecd94d5baa58804af22998ea896f738f87bfc8b16dadfff8b878f4734b1db191",
@@ -30,8 +30,8 @@
     "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
     "generation/fixed_artifact_decisions.py": "d76ddc6c7417fa6bc80d74b3c57facdf3960781d5d3f18845ddbd90015c2feaa",
     "generation/fixed_artifact_fidelity.py": "98b9c6b4bda40e600a132ff6a0b1a31692984bc7eed79f84e6753ef89e5101c3",
-    "reports/fixed-artifact-comparison-v1/protocol.md": "ff79bb78e6d3eded7883504e4d1240202bc39ffab8c47b2da56d8572e4fc6f02",
-    "reports/fixed-artifact-comparison-v1/atoms-fidelity.json": "6261904ecfff10a3b9e889eb5178b8d84fed9689f001bfc8f2b9f4e96edc0f99"
+    "reports/fixed-artifact-comparison-v1/protocol.md": "78625b3308819daad0282d7e063cf0c878f7eb93e3975ebf98d064fc6545054d",
+    "reports/fixed-artifact-comparison-v1/atoms-fidelity.json": "3a51ec66a5041d32f091fbb3f8b40ee2e07cbe8318eeb1ad6b23d7b1f823f1f3"
   },
   "dependency_hashes": {
     "reports/fixed-artifact-comparison-v1/provider-metadata.json": "082d6028ca916091d3e544e16090968510a04e542856b772141a0a1128170df3",

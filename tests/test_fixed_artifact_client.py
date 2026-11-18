@@ -41,7 +41,7 @@ class FixedArtifactClientTests(unittest.TestCase):
         finally: d.cleanup()
 
     def test_partial_content_is_kept_and_global_stop(self):
-        d, root, c = self.make(lambda r: {"response_id": "r", "finish_reason": "length", "content": "partial", "usage": {"completion_tokens": 2}})
+        d, root, c = self.make(lambda r: {"response_id": "r", "resolved_model": r["model"], "finish_reason": "length", "content": "partial", "usage": {"prompt_tokens": 1, "completion_tokens": 2}})
         try:
             with self.assertRaises(FixedArtifactError): c.call(req(), "x.json")
             receipt = json.loads((root / "receipts/x.json").read_text())

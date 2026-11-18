@@ -2007,5 +2007,71 @@
     "generation/fixed_artifact_fidelity.py": "98b9c6b4bda40e600a132ff6a0b1a31692984bc7eed79f84e6753ef89e5101c3",
     "generation/reference_review_v2.py": "7c083bb4377afba87426b0c8157d10bf1a8900a5f9f217e8290782e62f267b4a",
     "generation/evidence_reference_packets.py": "17aa22199daa288f39e9b1a4205f039ed9f9be01ce3999adbb9d504215dead29"
+  },
+  "independent_model_adjudication": {
+    "record_indexing": "zero-based review packet index",
+    "source_path": "reports/generation-comparison-campaign2/adjudication-summary.json",
+    "source_sha256": "7a8038b170d2a021c6b38f3f4fb0e8cd43269d2d6f1e6ff28cee8f393f976455",
+    "assessment": {
+      "schema": "campaign2-independent-model-adjudication.v1",
+      "date": "2026-11-19",
+      "source_report_sha256": "5c423ae214965e01dc024a83b4e7384a29bf0cd38fa6049b55308bc0b6bb8348",
+      "adjudicator": "Claude via an independent source-reading agent",
+      "human_adjudicated": false,
+      "stopped_run_reopened": false,
+      "counts": {
+        "unique_flagged_fields": 6,
+        "real_atom_errors": 2,
+        "reviewer_false_flags": 3,
+        "rule_ambiguities": 1,
+        "atoms_without_identified_support_error": 10,
+        "atoms_total": 12
+      },
+      "fields": [
+        {
+          "record": 1,
+          "field": "conditions[0]",
+          "classification": "cited_chunk_omission",
+          "note": "Fact appears in the paper but outside the cited chunks."
+        },
+        {
+          "record": 1,
+          "field": "unknowns[0]",
+          "classification": "reviewer_false_flag",
+          "note": "Explanation says the value is absent; verdict was inverted."
+        },
+        {
+          "record": 2,
+          "field": "unknowns[0]",
+          "classification": "reviewer_false_flag",
+          "note": "Toy illustration ratio is not the experimental setting."
+        },
+        {
+          "record": 3,
+          "field": "unknowns[0]",
+          "classification": "rule_ambiguity",
+          "note": "Unknown includes a true parenthetical positive statement."
+        },
+        {
+          "record": 5,
+          "field": "outputs[0]",
+          "classification": "reviewer_false_flag",
+          "note": "Source explicitly describes training the GNN."
+        },
+        {
+          "record": 8,
+          "field": "outputs[0]",
+          "classification": "minor_overinference",
+          "note": "Evaluator and partial embedding do not establish emitted choices."
+        }
+      ],
+      "limitations": [
+        "One draw and model adjudication, not a calibrated error rate.",
+        "Agreement of two reviewers happened to identify both errors here; not evidence that consensus is a generally valid admission rule.",
+        "Ten clean atoms is qualified by the adjudicator's reading, not a formal proof or usefulness result."
+      ],
+      "source_report_path": "adjudication-source.md"
+    },
+    "interpretation": "Existing model adjudication, not human verification or an error-rate estimate; it does not change flags or artifact content."
   }
 }

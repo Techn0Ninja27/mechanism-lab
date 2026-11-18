@@ -1,0 +1,13 @@
+{
+  "schema": "fixed-artifact-preflight-revision.v1",
+  "reason": "Include existing model adjudication in the fidelity table; clarify required failed-review completion records.",
+  "previous_plan_sha256": "eaab652f840057895b8ec326b86345ecd751e731cdfb42ce91521d36ecc37aa3",
+  "previous_execution_freeze_sha256": "0265081cb9be1917146ec7606f2240908b7474ac41ea4559d0919713f7452ce1",
+  "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+  "execution_freeze_sha256": "d7cd3ba8e10f4688f9f643994f4865318a4f0f69e8db4f9da9081d468e07c5d1",
+  "paid_calls_before_revision": 0,
+  "campaign_reservations_before_revision": 0,
+  "prompt_hashes_unchanged": true,
+  "reservation_bound_unchanged": true,
+  "production_code_unchanged": true
+}

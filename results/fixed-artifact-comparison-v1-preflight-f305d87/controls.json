@@ -1,0 +1,241 @@
+{
+  "linear_controls": [
+    {
+      "id": "linear-control-00",
+      "call_id": "linear-control-00",
+      "arm": "linear-control",
+      "control_kind": "bounded_horizon",
+      "gain": -0.5,
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "const": -0.5
+                    },
+                    {
+                      "op": "sub",
+                      "args": [
+                        {
+                          "var": "last_sync"
+                        },
+                        {
+                          "var": "previous_sync"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "op": "clip",
+                  "args": [
+                    {
+                      "op": "divsafe",
+                      "args": [
+                        {
+                          "var": "age"
+                        },
+                        {
+                          "var": "observed_interval"
+                        }
+                      ]
+                    },
+                    {
+                      "const": 0.0
+                    },
+                    {
+                      "const": 1.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "var": "memory"
+        }
+      },
+      "program_sha256": "9184fc3fdd2de0752415a731d6494182700bde9d448e84cc6fbf363a2fe22efd",
+      "status": "valid"
+    },
+    {
+      "id": "linear-control-01",
+      "call_id": "linear-control-00",
+      "arm": "linear-control",
+      "control_kind": "bounded_horizon",
+      "gain": -0.25,
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "const": -0.25
+                    },
+                    {
+                      "op": "sub",
+                      "args": [
+                        {
+                          "var": "last_sync"
+                        },
+                        {
+                          "var": "previous_sync"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "op": "clip",
+                  "args": [
+                    {
+                      "op": "divsafe",
+                      "args": [
+                        {
+                          "var": "age"
+                        },
+                        {
+                          "var": "observed_interval"
+                        }
+                      ]
+                    },
+                    {
+                      "const": 0.0
+                    },
+                    {
+                      "const": 1.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "var": "memory"
+        }
+      },
+      "program_sha256": "82aed47823e5825d3c81afe6d2e0b603b8bfd54347ba20b61541fbec1c760d50",
+      "status": "valid"
+    },
+    {
+      "id": "linear-control-02",
+      "call_id": "linear-control-00",
+      "arm": "linear-control",
+      "control_kind": "bounded_horizon",
+      "gain": 0.1,
+      "program": {
+        "predict": {
+          "op": "add",
+          "args": [
+            {
+              "var": "last_sync"
+            },
+            {
+              "op": "mul",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "const": 0.1
+                    },
+                    {
+                      "op": "sub",
+                      "args": [
+                        {
+                          "var": "last_sync"
+                        },
+                        {
+                          "var": "previous_sync"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "op": "clip",
+                  "args": [
+                    {
+                      "op": "divsafe",
+                      "args": [
+                        {
+                          "var": "age"
+                        },
+                        {
+                          "var": "observed_interval"
+                        }
+                      ]
+                    },
+                    {
+                      "const": 0.0
+                    },
+                    {
+                      "const": 1.0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "update": {
+          "var": "memory"
+        }
+      },
+      "program_sha256": "d15befda6eda800e0800baec8ac2e39ae84116d42c81948e9841d684527c2ab8",
+      "status": "valid"
+    },
+    {
+      "id": "linear-control-03",
+      "call_id": "linear-control-00",
+      "arm": "linear-control",
+      "control_kind": "mean_sync",
+      "gain": null,
+      "program": {
+        "predict": {
+          "op": "divsafe",
+          "args": [
+            {
+              "op": "add",
+              "args": [
+                {
+                  "var": "last_sync"
+                },
+                {
+                  "var": "previous_sync"
+                }
+              ]
+            },
+            {
+              "const": 2.0
+            }
+          ]
+        },
+        "update": {
+          "var": "memory"
+        }
+      },
+      "program_sha256": "54c7b65f8d6a3f3efd33748423962d5696fc083a7733bfa19f956071abb31401",
+      "status": "valid"
+    }
+  ]
+}

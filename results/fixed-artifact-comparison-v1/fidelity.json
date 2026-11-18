@@ -4,7 +4,7 @@
     "representation_sha256": "3b44616f91f80cfb85ce5222dcb56902f9c73caacf465ac9980abd0630605a40",
     "draw_sha256": "4ede7bd98bd108c173259dc25a39ab3d5bcad46722ce668f07a39f50a745ac4e",
     "outcome_sha256": "c0da6db6a045cfa1e70427abd30a4d3c56a07a1812163310e32f5a2f1bc82a73",
-    "measurement_table_sha256": "6261904ecfff10a3b9e889eb5178b8d84fed9689f001bfc8f2b9f4e96edc0f99"
+    "measurement_table_sha256": "3a51ec66a5041d32f091fbb3f8b40ee2e07cbe8318eeb1ad6b23d7b1f823f1f3"
   },
   "distill": {
     "status": "unavailable",

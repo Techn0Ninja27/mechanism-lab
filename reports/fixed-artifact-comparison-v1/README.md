@@ -30,7 +30,7 @@ claimed from metadata alone.
 The [request client](client-status.md) is integrated with the lifecycle and an
 explicit HTTP adapter. Tests inject fake providers and never read real credentials.
 
-Validation (97 tests):
+Validation (100 tests):
 
 ```sh
 ../.venv/bin/python -m unittest tests.test_fixed_artifact_client tests.test_fixed_artifact_runner tests.test_fixed_artifact_fidelity tests.test_fixed_artifact_decisions tests.test_research_ledger tests.test_fixed_artifact_transport tests.test_fixed_artifact_analysis tests.test_fixed_artifact_execution tests.test_fixed_artifact_review_launch tests.test_fixed_artifact_command

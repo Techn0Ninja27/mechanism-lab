@@ -23,8 +23,8 @@
     "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
     "generation/fixed_artifact_decisions.py": "d76ddc6c7417fa6bc80d74b3c57facdf3960781d5d3f18845ddbd90015c2feaa",
     "generation/fixed_artifact_fidelity.py": "98b9c6b4bda40e600a132ff6a0b1a31692984bc7eed79f84e6753ef89e5101c3",
-    "reports/fixed-artifact-comparison-v1/protocol.md": "ff79bb78e6d3eded7883504e4d1240202bc39ffab8c47b2da56d8572e4fc6f02",
-    "reports/fixed-artifact-comparison-v1/atoms-fidelity.json": "6261904ecfff10a3b9e889eb5178b8d84fed9689f001bfc8f2b9f4e96edc0f99"
+    "reports/fixed-artifact-comparison-v1/protocol.md": "78625b3308819daad0282d7e063cf0c878f7eb93e3975ebf98d064fc6545054d",
+    "reports/fixed-artifact-comparison-v1/atoms-fidelity.json": "3a51ec66a5041d32f091fbb3f8b40ee2e07cbe8318eeb1ad6b23d7b1f823f1f3"
   },
   "dependency_hashes": {
     "reports/fixed-artifact-comparison-v1/provider-metadata.json": "082d6028ca916091d3e544e16090968510a04e542856b772141a0a1128170df3",
@@ -58,7 +58,7 @@
     "model_version_independently_pinned": false
   },
   "date": "2026-11-19",
-  "scope": "Offline calculation including 5% fee contingency; initial plan is not authority to make paid requests.",
+  "scope": "Fixed-artifact intention-to-treat pilot; descriptive, no novelty or causal representation claim.",
   "ledger_sha256": "411720f64f2f8987898964e2bb721d89595fe52dea12c9ae170bb7b8f67a3850",
   "live_ledger_unchanged": true,
   "planned_generation_calls": 48,

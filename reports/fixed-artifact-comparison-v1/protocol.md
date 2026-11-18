@@ -70,7 +70,10 @@ and flags are descriptive within each artifact: a long summary field and a short
 typed field are different denominators, so do not compare their rates as quality
 estimates. Reviewers are native Codex contexts; the serving model/version is not
 independently pinned, a limitation recorded with launch metadata. Two native review contexts per record; no output repair or replacement.
-Malformed/missing review output is recorded as missing measurement and cannot
+Every planned review context needs a launch intent and a completion record.
+A failed or non-returning context receives a completion record with status
+failed; no replacement context is launched. Malformed/missing review output
+is recorded as missing measurement and cannot
 stop generation, choose a different artifact or change its text. Do not give
 reviewers task results or other reviews. No fidelity/performance regression or
 “as-prepared” estimand: one artifact per arm cannot estimate that relationship.
