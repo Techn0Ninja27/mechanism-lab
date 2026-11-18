@@ -96,6 +96,24 @@
           "reviews": ["review_count"]
         }
       }
+    },
+    "campaign2-preparation-contract-v1": {
+      "result_sha256": "8119adba3c747ab046d6952cbc9c0894327106b2958e784fd703ce426181fcf7",
+      "metric_paths": {
+        "primary": {
+          "paid_preparation_calls": ["paid_preparation_calls"],
+          "prepared_atoms": ["prepared_atoms"],
+          "mechanically_valid_reviews": ["mechanically_valid_reviews"],
+          "unsupported_review_flags": ["unsupported_review_flags"],
+          "flagged_atoms": ["flagged_atoms"]
+        },
+        "secondary": {
+          "review_responses": ["review_responses"],
+          "generation_calls": ["generation_calls"],
+          "campaign_charge_usd": ["campaign_charge_usd"],
+          "phase_charge_usd": ["phase_charge_usd"]
+        }
+      }
     }
   }
 }

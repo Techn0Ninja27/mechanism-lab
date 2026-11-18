@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 53)
+            self.assertEqual(ledger["study_count"], 54)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -44,6 +44,14 @@ class LedgerTests(unittest.TestCase):
             self.assertEqual(calibration["primary_metrics"]["mechanically_valid_reviews"], 16.0)
             self.assertEqual(calibration["primary_metrics"]["reviews_matching_key"], 16.0)
             self.assertFalse(calibration["evidence"]["train_eligible"])
+            stopped = rows["campaign2-preparation-contract-v1"]
+            self.assertEqual(stopped["raw_verdict"], "preparation_stopped_review_contract_failure")
+            self.assertEqual(stopped["primary_metrics"]["paid_preparation_calls"], 1.0)
+            self.assertEqual(stopped["primary_metrics"]["mechanically_valid_reviews"], 23.0)
+            self.assertEqual(stopped["secondary_metrics"]["generation_calls"], 0.0)
+            self.assertAlmostEqual(stopped["secondary_metrics"]["campaign_charge_usd"], 0.106524)
+            self.assertFalse(stopped["novelty_established"])
+            self.assertFalse(stopped["evidence"]["train_eligible"])
 
     def test_hash_checked_feedback_is_read_only_and_non_promotional(self):
         rows = {x["id"]: x for x in build_ledger()["studies"]}

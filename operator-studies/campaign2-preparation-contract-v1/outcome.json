@@ -1,0 +1,19 @@
+{
+  "schema": "campaign2-stopped-review-contract.v1",
+  "status": "stopped_before_generation",
+  "paid_preparation_calls": 1,
+  "prepared_atoms": 12,
+  "review_responses": 24,
+  "mechanically_valid_reviews": 23,
+  "generation_calls": 0,
+  "campaign_charge_usd": 0.106524,
+  "phase_charge_usd": 5.1417516,
+  "phase_cap_usd": 30,
+  "provider_is_byok": false,
+  "unsupported_review_flags": 7,
+  "flagged_atoms": 5,
+  "novelty_established": false,
+  "train_eligible": false,
+  "scope": "Preparation/review contract failure; no representation-performance or usefulness result.",
+  "source_result": "reports/generation-comparison-campaign2/outcome.json"
+}

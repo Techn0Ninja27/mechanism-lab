@@ -445,6 +445,24 @@
       "result_sha256": "4518b3cf50965b4d9060a13d78fe71fb3cd810fbd868bde55aae4ce305cb0014",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "campaign2-preparation-contract-v1",
+      "tested_change": "One paid Campaign 2 preparation draw followed by 24 source-only record reviews under the frozen reference-ID contract.",
+      "verdict": "preparation_stopped_review_contract_failure",
+      "scope": "Twelve generated atoms, 24 review responses, 23 mechanically valid; seven valid review flags across five atoms. No prose preparation, candidate generation or training.",
+      "limitations": [
+        "The malformed absence_reason response is a contract failure, not a semantic judgment or representation-performance result.",
+        "Seven valid reviews flagged fields, but those flags were not independently adjudicated.",
+        "No atoms-versus-prose comparison, usefulness, novelty or downstream execution result exists.",
+        "The stopped attempt is preserved and is not repaired or redrawn under this campaign identity."
+      ],
+      "report_path": "operator-studies/campaign2-preparation-contract-v1/README.md",
+      "result_path": "operator-studies/campaign2-preparation-contract-v1/outcome.json",
+      "source_urls": ["https://arxiv.org/abs/2608.06441"],
+      "result_sha256": "8119adba3c747ab046d6952cbc9c0894327106b2958e784fd703ce426181fcf7",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
