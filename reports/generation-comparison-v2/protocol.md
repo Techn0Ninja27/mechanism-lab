@@ -40,7 +40,9 @@ Two task-blind-intent preparation calls produce typed atoms and prose records.
 Both require 12 records with identical quotas: four for the largest source by
 included characters, two for each remaining source. Ties use source ID order.
 Both preserve exact source-linked evidence and unknowns; prose records have no
-typed input/output ports. The soft output target is 18,000 UTF-8 bytes and the
+typed input/output ports. Statement and summary fields share a 2,400-character
+cap. Typed records still have additional port/condition fields: matching record
+counts and overall caps does not guarantee equal information volume. The soft output target is 18,000 UTF-8 bytes and the
 hard canonical validated cap is 24,000 bytes. Exact quotation validates source
 attachment, not semantic fidelity. Review fidelity and scan for task/result
 leakage before freezing generation prompts. Record all schema failures without

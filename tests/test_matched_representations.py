@@ -143,6 +143,18 @@ class MatchedRepresentationTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_distillations(fixture, self.pack)
 
+    def test_record_text_and_id_limits_match(self):
+        for factory, validator, key, field in (
+            (self.atom_fixture, validate_atoms, 'atoms', 'statement'),
+            (self.distill_fixture, validate_distillations, 'distillations', 'summary')):
+            fixture = factory()
+            fixture[key][0][field] = 'x' * 2400
+            validator(fixture, self.pack)
+            fixture[key][0][field] += 'x'
+            with self.assertRaises(ValueError): validator(fixture, self.pack)
+            fixture = factory(); fixture[key][0]['id'] = 'x' * 101
+            with self.assertRaises(ValueError): validator(fixture, self.pack)
+
     def test_plan_refuses_overwrite(self):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "plan"
