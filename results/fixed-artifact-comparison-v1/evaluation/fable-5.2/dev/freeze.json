@@ -1,0 +1,36 @@
+{
+  "inventory_sha256": "699589bf362c9f291b8106a2173870d92530fe5a609e72c26085fa3a55121308",
+  "selection_sha256": null,
+  "development_result_sha256": null,
+  "stage": "dev",
+  "seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115
+  ],
+  "dependency_hashes": {
+    "scripts/run_causal_campaign.py": "fa9bb96f62fff6bbf1b9894013e1a79ad3115be988456ae7fc482314e8d2b9a4",
+    "scripts/evaluate_causal_candidates.py": "007d9e1c1ccb04b7b7051728098abd1b16a41fefded64dc33e7a46fb28916143",
+    "generation/causal_program.py": "9f6f497b7214d4fcefd8803e4a0c1dc2773ece1e8851f0d4d18da4f810622c88",
+    "generation/campaign_selection.py": "7052be04b7a6e28fd711ae4f73a9bdc81abcd2eaca7a068846e09912ccf2e676",
+    "generation/campaign2_decisions.py": "e408ca72737be023c7c24fb5f8b5096dec3b6f5a63b74a444715ff9c75275ecd",
+    "operator-studies/gnn-closedloop-gap/gap.py": "af08e6991bc751c9a7912962b8261d504218ce6e8928ab6f458089f8b6d955e6",
+    "operator-studies/gnn-sync-gate/screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "results/gnn-sync-gate-v1/data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "results/gnn-sync-gate-v1/data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "control_selection_sha256": null
+}
