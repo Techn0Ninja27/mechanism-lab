@@ -26,10 +26,13 @@ was made and the live ledger was byte-identical. [provider-check.md](provider-ch
 settings, and fee assumptions. This remains an offline plan, not an execution
 freeze: paid-runner integration and actual account/provider routing are unfinished.
 
-Validation (51 tests):
+The separate [request client](client-status.md) is implemented with an injected
+transport and fake-provider tests; it is not yet connected to campaign execution.
+
+Validation (65 tests):
 
 ```sh
-../.venv/bin/python -m unittest tests.test_fixed_artifact_runner tests.test_fixed_artifact_fidelity tests.test_fixed_artifact_decisions tests.test_research_ledger
+../.venv/bin/python -m unittest tests.test_fixed_artifact_client tests.test_fixed_artifact_runner tests.test_fixed_artifact_fidelity tests.test_fixed_artifact_decisions tests.test_research_ledger
 ```
 
 Recompute the fidelity table without altering any input:
