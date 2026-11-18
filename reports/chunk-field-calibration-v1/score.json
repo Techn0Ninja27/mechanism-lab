@@ -1,0 +1,131 @@
+{
+  "schema": "field-calibration-score.v1",
+  "freeze": {
+    "input_sha256": "5f16b23cef6fbd6a678c320a12e817664d4670b707f077c48eb8214a9ff296b9",
+    "instructions_sha256": "52b0b60b324e58844e71b4a28ea9c2f7c031b0b818a6fb019124b4018f290dfb",
+    "scoring_key_sha256": "d975d4ed2a1ef426bbce1ecce63b2734dbe0e912581652cf4b0c99b1775eac02",
+    "reviewer_count": 2,
+    "single_pass": true,
+    "known_answer_access_for_reviewers": false,
+    "note": "IDs anonymized and shuffled to avoid planted-label leakage; original records preserved separately."
+  },
+  "reviews": [
+    {
+      "reviewer": "field-cal-a",
+      "file_sha256": "9bdb5b2e3c8a840f7f55e57333193f306a088142aef54b2be8349f64b1d66d62",
+      "all_28_records_and_133_field_values_verified": true,
+      "planted_detected": {
+        "cal-contradiction-atom-gpu": true,
+        "cal-unsupported-atom-speed": true,
+        "cal-contradiction-distill-dpu": true,
+        "cal-unsupported-distill-speed": true
+      },
+      "positive_checks_supported": {
+        "fresh-2": true,
+        "fresh-2-results": true
+      },
+      "real_condition_detected": null,
+      "criterion_pass": false,
+      "schema_note": "field_items shape preserved",
+      "non_supported_fields": {
+        "record-00": {},
+        "record-01": {
+          "outputs[0]": "unsupported"
+        },
+        "record-02": {},
+        "record-03": {
+          "unknowns[0]": "unsupported"
+        },
+        "record-04": {},
+        "record-05": {},
+        "record-06": {},
+        "record-07": {},
+        "record-08": {},
+        "record-09": {},
+        "record-10": {},
+        "record-11": {},
+        "record-12": {},
+        "record-13": {
+          "summary": "contradicted"
+        },
+        "record-14": {},
+        "record-15": {},
+        "record-16": {},
+        "record-17": {
+          "summary": "contradicted"
+        },
+        "record-18": {},
+        "record-19": {
+          "conditions[0]": "contradicted"
+        },
+        "record-20": {},
+        "record-21": {},
+        "record-22": {},
+        "record-23": {},
+        "record-24": {},
+        "record-25": {},
+        "record-26": {},
+        "record-27": {}
+      }
+    },
+    {
+      "reviewer": "field-cal-b",
+      "file_sha256": "28122db45c89ab306f8248d9f581f278bc78b7c5cfa0dc135096b609c55966bd",
+      "all_28_records_and_133_field_values_verified": true,
+      "planted_detected": {
+        "cal-contradiction-atom-gpu": true,
+        "cal-unsupported-atom-speed": true,
+        "cal-contradiction-distill-dpu": true,
+        "cal-unsupported-distill-speed": true
+      },
+      "positive_checks_supported": {
+        "fresh-2": true,
+        "fresh-2-results": true
+      },
+      "real_condition_detected": null,
+      "criterion_pass": false,
+      "schema_note": "reviewer-b used fields instead of field_items; scoring adapter preserves original content",
+      "non_supported_fields": {
+        "record-00": {},
+        "record-01": {
+          "outputs[0]": "contradicted"
+        },
+        "record-02": {},
+        "record-03": {
+          "unknowns[0]": "unsupported"
+        },
+        "record-04": {},
+        "record-05": {},
+        "record-06": {},
+        "record-07": {},
+        "record-08": {},
+        "record-09": {},
+        "record-10": {},
+        "record-11": {},
+        "record-12": {},
+        "record-13": {
+          "summary": "contradicted"
+        },
+        "record-14": {},
+        "record-15": {},
+        "record-16": {},
+        "record-17": {
+          "summary": "contradicted"
+        },
+        "record-18": {},
+        "record-19": {
+          "conditions[0]": "contradicted"
+        },
+        "record-20": {},
+        "record-21": {},
+        "record-22": {},
+        "record-23": {},
+        "record-24": {},
+        "record-25": {},
+        "record-26": {},
+        "record-27": {}
+      }
+    }
+  ],
+  "scope": "Single offline instrument check, not population reviewer accuracy; no original gate reversed."
+}

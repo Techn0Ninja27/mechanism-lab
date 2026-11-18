@@ -2,8 +2,9 @@
 
 2026-11-18. New campaign, implementation in progress; no calls made under this
 protocol. The user raised the phase budget to $30 total, preserving $5.0352276
-already charged. This campaign has a $12 cap including preparation. One attempt;
-no repairs, regeneration or reset through another directory. The stopped v5
+already charged. This campaign has a $12 cap including preparation. One campaign at the fixed output path `results/generation-comparison-campaign2-run`;
+no repairs or reset through another directory. Preparation has the bounded
+independent redraw schedule below, declared before any call. The stopped v5
 attempt remains a reported failure and none of its prepared records is used for
 generation here.
 
@@ -24,20 +25,33 @@ prompts state this criterion explicitly before any paid call.
 The same five-source/nine-chunk pack, injected-header exclusion, shared source
 view, 12-record quotas (4 for the largest source, 2 each for the others), text
 limits and exact-pointer validation apply to both representations. Typed fields
-remain a representational difference. One independent preparation request per
-representation is used; this does not estimate variability across preparation
-draws. Four sources remain abstracts, one a selected method section.
+remain a representational difference. Up to three independent preparation requests per representation are allowed.
+Select the first draw that passes its two reviews, independently for atoms and
+prose; atoms draw 0 with prose draw 2 is permitted. Each draw is reviewed and its verdict recorded before requesting the next
+draw for that representation. Never draw again for an already accepted
+representation. Report every draw index and both reviews, including failures;
+selected indices may differ and are disclosed without correction. This conditions the comparison on passing
+preparation, rather than estimating performance of unfiltered preparation draws. Four sources remain abstracts, one a selected method section.
 
 ## Review gate and calibration
 
-A fresh source-only native reviewer sees only the packet and prepared records,
-not the task, control results or generation prompts. It reviews all 24 records
-against their cited chunks. Verdicts are supported, unsupported, contradicted or
-indeterminate; the latter means malformed evidence or unresolved reference, not
-hesitation. Record-level reasons, cited chunks and input hashes are retained.
-Any non-supported record stops this attempt, without repair or resampling.
-A second reviewer may audit the gate, but may not reverse a failed gate to
-continue this campaign. Review is a fallible instrument, not proof of truth.
+Each 12-record draw gets two independent fresh source-only native reviewers.
+Both receive the identical frozen `reviewer-instructions.md`, the source packet
+and that draw only; neither sees the task, results, prior failed draws, calibration
+answers or the other review. They adjudicate every field item separately with
+supporting chunk text. Record verdict is the worst field verdict. Both must
+support all 12 records for that draw to pass; exactly one non-supported field
+fails the draw. Reviewers cannot be replaced and no third review can override.
+
+A failed fidelity review permits the next independent draw of that representation,
+up to three total. No record is repaired. Preserve every draw, both reviews and
+its outcome; once a draw passes, its selection is immutable. Provider errors stop
+the campaign, not trigger another draw. If either representation exhausts three
+draws without passing, stop the whole campaign: no lopsided comparison. After
+both qualify, generation uses only the two first-passing artifacts. This is a
+predeclared selection on source fidelity, blind to generated-candidate outcomes,
+not a reset of campaign 1. Reviewer independence is procedural, not proof of
+statistically independent errors. The schedule can still false-stop.
 
 Offline calibration on the closed attempt is explicitly separated from generation.
 Reviewer A supported all 24 records; an independent deterministic 12-record
@@ -61,7 +75,7 @@ its four candidates are not independent replicates. Same preparation is shared
 within each prepared condition. Comparisons remain exploratory and descriptive;
 there is no population novelty or representation-superiority claim.
 
-The generation inventory has 96 model slots, 12 fixed random-control slots and
+The generation inventory has 96 model slots, 24 fixed random-control slots and
 four fixed baseline-control slots. Preserve invalid slots and provider failures.
 Do not select or discard candidates using model opinions. A provider failure
 stops further spending and retains completed responses; no automatic retry.
@@ -94,10 +108,12 @@ confirmation test. Missing/failing seed bounds use accuracy 0 and 1, never a
 conditional mean over survivors. Exact duplicate ASTs count once for decision
 summaries; semantic duplicates may remain.
 
-A source condition needs at least two distinct positive picks to motivate a
+A source condition needs at least three distinct positive picks to motivate a
 separate replication; this is an allocation heuristic, not a significance test.
-Two distinct task-only positives give a task/DSL lead without representation
-attribution. Positive random/control picks against the stronger comparator also
+Two or more distinct task-only positives block representation attribution;
+three or more give a task/DSL lead. A source lead requires at least three
+distinct positive picks in that same condition and at most one task-only positive.
+Exactly one or two source positives are descriptive, with no escalation. Positive random/control picks against the stronger comparator also
 block representation attribution. A control merely matching itself cannot veto
 source picks. With no positive picks, closure is eligible only if every selected
 call has complete adequately precise primary results; missing/low-precision
@@ -110,3 +126,22 @@ representation, prompt, model, code, control and selection hashes. Generation
 requires the successful chunk-support gate before constructing an API client.
 The original stopped gate cannot be reused. The shared phase ledger charges all
 calls, including BYOK routing if present; no BYOK exemption or $50 cap is assumed.
+
+### Six-call outcomes and limits
+
+| Outcome | Recorded interpretation |
+|---|---|
+| Source condition >=3 distinct positives, task-only <=1, no random/control positive | Candidate for a separate replication, not representation superiority |
+| Task-only >=3 distinct positives | Task/DSL lead |
+| Task-only exactly2 or source only1–2 | Descriptive mixed outcome; no representation escalation |
+| Any random/control positive | Baseline/DSL headroom; no representation attribution |
+| No positives, all selected calls complete and adequately precise | Eligible to close this task at these settings |
+| Any no-eligible call, failed or low-precision pick | Inconclusive for closure |
+
+Random groups now match six calls per model condition (24 slots); the inherited
+sampler is a narrow perturbation family, not exhaustive random program search.
+Its duplicate and effectively-hold programs remain in the record. A/A was a
+stage-0 identity check and is not an additional generation-inventory slot.
+The final inventory capacity is 124: 96 model +24 random +4 fixed controls.
+Preparation reserves at most $3 within the $12 campaign cap; all draw calls use
+the same campaign directory and phase ledger.

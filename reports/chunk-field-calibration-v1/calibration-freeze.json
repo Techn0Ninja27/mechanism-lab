@@ -1,0 +1,9 @@
+{
+  "input_sha256": "5f16b23cef6fbd6a678c320a12e817664d4670b707f077c48eb8214a9ff296b9",
+  "instructions_sha256": "52b0b60b324e58844e71b4a28ea9c2f7c031b0b818a6fb019124b4018f290dfb",
+  "scoring_key_sha256": "d975d4ed2a1ef426bbce1ecce63b2734dbe0e912581652cf4b0c99b1775eac02",
+  "reviewer_count": 2,
+  "single_pass": true,
+  "known_answer_access_for_reviewers": false,
+  "note": "IDs anonymized and shuffled to avoid planted-label leakage; original records preserved separately."
+}

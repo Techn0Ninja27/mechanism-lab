@@ -75,7 +75,7 @@ def cases():
     return rows
 
 
-def random_inventory():
+def random_inventory(replicates=3):
     rng=random.Random(20261119)
     vectors=('last_sync','previous_sync','memory');variables=(*vectors,'age','observed_interval')
     def tree(depth,budget,vector=False):
@@ -94,7 +94,7 @@ def random_inventory():
         else:args=[tree(depth+1,budget-1,vector or op in ('norm','mean'))]
         return {'op':op,'args':args}
     rows=[]
-    for rep in range(3):
+    for rep in range(replicates):
         for i in range(4):
             # The outer expression is deliberately shallow enough for the
             # frozen depth-6 grammar. Its variable choice is the fixed random
