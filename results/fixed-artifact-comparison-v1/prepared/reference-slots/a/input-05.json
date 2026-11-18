@@ -1,0 +1,97 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "sat-2",
+  "record_metadata": {
+    "record_id": "sat-2",
+    "source_id": "W4409983225",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "W4409983225:chunk:0001"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "SAT uses an online algorithm that alternately trains the embedding predictor and the distributed GNN, and the authors provide a convergence analysis. The authors report reduced staleness and better performance and convergence speed on multiple large-scale graph datasets.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Specific datasets and numeric gains are not stated in the abstract.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 0,
+      "end": 300,
+      "text": "Staleness-Alleviated Distributed GNN Training via Online Dynamic-Embedding Prediction\nDespite the recent success of Graph Neural Networks (GNNs), it remains challenging to train GNNs on large-scale graphs due to neighbor explosions. As a remedy, distributed computing becomes a promising solution by "
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 250,
+      "end": 550,
+      "text": "ributed computing becomes a promising solution by leveraging abundant computing resources (e.g., GPU). However, the node dependency of graph data increases the difficulty of achieving high concurrency in distributed GNN training, which suffers from the massive communication overhead. To address it, "
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 500,
+      "end": 800,
+      "text": "he massive communication overhead. To address it, Historical value approximation is deemed a promising class of distributed training techniques. It utilizes an offline memory to cache historical information (e.g., node embedding) as an affordable approximation of the exact value and achieves high co"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 750,
+      "end": 1050,
+      "text": "roximation of the exact value and achieves high concurrency. However, such benefits come at the cost of involving dated training information, leading to staleness, imprecision, and convergence issues. To overcome these challenges, this paper proposes SAT (Staleness-Alleviated Training), a novel and "
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 1000,
+      "end": 1300,
+      "text": " SAT (Staleness-Alleviated Training), a novel and scalable distributed GNN training framework that reduces the embedding staleness adaptively. The key idea of SAT is to model the GNN’s embedding evolution as a temporal graph and build a model upon it to predict future embedding, which effectively al"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 1250,
+      "end": 1550,
+      "text": " to predict future embedding, which effectively alleviates the staleness of the cached historical embedding. We propose an online algorithm to train the embedding predictor and the distributed GNN alternatively and further provide a convergence analysis. Empirically, we demonstrate that SAT can effe"
+    },
+    {
+      "evidence_id": "E0006",
+      "chunk_id": "W4409983225:chunk:0001",
+      "start": 1500,
+      "end": 1734,
+      "text": "sis. Empirically, we demonstrate that SAT can effectively reduce embedding staleness and thus achieve better performance and convergence speed on multiple large-scale graph datasets. Code available at https://github.com/Ziyang-Yu/SAT."
+    }
+  ],
+  "packet_sha256": "77a9f6510af4e3c7d2dba1d077e66f78ae3ecd6f971f4369004bc37d7d20ff1d",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "a",
+    "record_index": 5
+  }
+}

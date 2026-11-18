@@ -1,0 +1,8 @@
+{
+  "schema": "fixed-artifact-execution-audit.v1",
+  "status": "passed",
+  "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+  "execution_freeze_sha256": "d7cd3ba8e10f4688f9f643994f4865318a4f0f69e8db4f9da9081d468e07c5d1",
+  "source_report": "audit-source.json",
+  "source_report_sha256": "d07b3033927540f6ba1880aabf57cb38397f5d97824c5fb1f2a02fbbe513e8e9"
+}

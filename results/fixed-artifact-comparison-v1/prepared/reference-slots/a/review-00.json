@@ -1,0 +1,49 @@
+{
+  "fields": [
+    {
+      "field_id": "F000",
+      "verdict": "supported",
+      "reason": "The cited chunks support the architecture, purpose, node components, cache and prediction behavior, and the two training modes described by the field.",
+      "evidence_ids": [
+        "E0000",
+        "E0001",
+        "E0006",
+        "E0007"
+      ],
+      "claim_assessments": [
+        {
+          "verdict": "supported",
+          "reason": "The design is explicitly described as mitigating embedding staleness by predicting current remote embeddings within the network.",
+          "evidence_ids": ["E0001"]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The system overview states that each node has a GPU and a SmartNIC, and identifies the SmartNIC as a DPU in the workflow description.",
+          "evidence_ids": ["E0000", "E0006"]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The workflow states that the DPU maintains historical embedding caches and performs lightweight prediction while the GPU performs the main GNN computation.",
+          "evidence_ids": ["E0006"]
+        },
+        {
+          "verdict": "supported",
+          "reason": "The workflow explicitly states that Sync Epochs exchange fresh embeddings and update DPU caches, while Stale Epochs have DPUs supply predicted embeddings to local GPUs.",
+          "evidence_ids": ["E0007"]
+        }
+      ]
+    },
+    {
+      "field_id": "F001",
+      "verdict": "supported",
+      "reason": "The supplied chunks identify SmartNIC/DPU functionality but do not state a specific SmartNIC hardware model; no cited chunk answers this unknown.",
+      "absence_reason": "No specific SmartNIC hardware model appears in the supplied cited chunks."
+    },
+    {
+      "field_id": "F002",
+      "verdict": "supported",
+      "reason": "The supplied chunks state that graph partitioning occurs but do not specify the algorithm used; no cited chunk answers this unknown.",
+      "absence_reason": "No graph partitioning algorithm is identified in the supplied cited chunks."
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "sift-1",
+  "record_metadata": {
+    "record_id": "sift-1",
+    "source_id": "W7160826828",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "W7160826828:chunk:0001"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "Sift is a distributed GNN training framework supporting channel-wise partial historical embedding with an accuracy guarantee. It has three components: a historical embedding evaluator with a channel-wise quantitative accuracy model, a sawtooth-like matrix rearrangement for message passing, and a hybrid parallel framework for overlapping communication.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Form of the channel-wise accuracy model is not detailed in the abstract.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "W7160826828:chunk:0001",
+      "start": 0,
+      "end": 300,
+      "text": "Sift: Channel-Wise Historical Embedding for High Efficiency Distributed Graph Neural Network Training with Accuracy Guarantee\nDistributed Graph Neural Network (DGNN) is a powerful tool in large-scale graph representation learning. However, high data-transfer overhead among workers in a DGNN training"
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "W7160826828:chunk:0001",
+      "start": 250,
+      "end": 550,
+      "text": "transfer overhead among workers in a DGNN training job confines its scalability and thus the overall performance. Vertex-wise historical embedding methods have demonstrated high potential to alleviate the problems, but still suffer from severe accuracy loss and limited performance scalability, which"
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "W7160826828:chunk:0001",
+      "start": 500,
+      "end": 800,
+      "text": "cy loss and limited performance scalability, which has been attributed to the information loss of critical channels in historical vertices and redundant information in local channels. This article explores the optimization of channel level and construct a quantitative accuracy model for channel-wise"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "W7160826828:chunk:0001",
+      "start": 750,
+      "end": 1050,
+      "text": "uct a quantitative accuracy model for channel-wise historical embedding. We propose Sift, a novel DGNN training framework, supporting channel-wise partial historical embedding with accuracy guarantee. Sift has three components: a historical embedding evaluator with channel-wise quantitative accuracy"
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "W7160826828:chunk:0001",
+      "start": 1000,
+      "end": 1300,
+      "text": " evaluator with channel-wise quantitative accuracy model, a sawtooth-like matrix rearrangement for accelerating message passing, and a hybrid parallel framework for overlapping communication overhead. Comprehensive experimental results show that Sift achieves near-linear parallel convergence speedup"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "W7160826828:chunk:0001",
+      "start": 1250,
+      "end": 1425,
+      "text": " achieves near-linear parallel convergence speedup, outperforming the state-of-the-art baselines by up to 72% in total training performance and up to 21% in convergence speed."
+    }
+  ],
+  "packet_sha256": "3c0294d529151532389803b9f3a08681c11b74378b3aab22d387192882e3a37b",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "b",
+    "record_index": 8
+  }
+}

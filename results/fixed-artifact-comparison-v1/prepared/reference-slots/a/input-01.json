@@ -1,0 +1,251 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "sni-2",
+  "record_metadata": {
+    "record_id": "sni-2",
+    "source_id": "sni-method",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "sni-method:chunk:0001",
+      "sni-method:chunk:0002"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "The linear-trend predictor estimates an embedding as an EMA baseline (alpha=0.3) plus a trend term: Delta t times a weighted trend vector times exp(-lambda Delta t), with lambda=0.2. Slopes between consecutive history entries are weighted by exp(-|tau_latest - tau_k|/5.0). In a reported comparison, ARIMA reached 93.18% peak accuracy at 425.2 s versus 92.88% at 48.2 s for the linear-trend predictor; HOLT is described as needing multiple state variables per dimension.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Dataset and setting for Table I are not explicitly stated in the table.",
+      "is_unknown": true
+    },
+    {
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "value": "Buffer capacity K value is not given.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 0,
+      "end": 300,
+      "text": "\nIV Design Details of SNI-GNN\nFig. 6: System architecture for SmartNIC-assisted full-graph GNN training. Each node has a GPU and a SmartNIC. SmartNICs handle embedding caching, asynchronous data transfer, and in-network prediction to enable efficient decentralized full-graph training.\nIV-A System Ov"
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 250,
+      "end": 550,
+      "text": " decentralized full-graph training.\nIV-A System Overview\nThe core idea of SNI-GNN is to mitigate embedding staleness by predicting the current values of remote embeddings directly within the network, thus reducing the need for frequent synchronization.\nOur design is guided by two key observations fr"
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 500,
+      "end": 800,
+      "text": "n.\nOur design is guided by two key observations from empirical studies of GNN training dynamics. First, as shown in Figure 5, embedding vectors evolve smoothly over time, making them amenable to temporal forecasting.\nSecond, different embedding dimensions exhibit distinct evolution patterns, suggest"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 750,
+      "end": 1050,
+      "text": "sions exhibit distinct evolution patterns, suggesting that per-dimension modeling would be ideal but computationally prohibitive for resource-constrained SmartNICs.\nThis tension motivates our design of a single lightweight predictor that operates across all dimensions, complemented by strategic samp"
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 1000,
+      "end": 1300,
+      "text": "oss all dimensions, complemented by strategic sampling to maintain feasibility.\nIn the following, we first introduce the design details of our lightweight predictor model (Section IV-B), followed by SmartNICs-specific system optimizations to reduce prediction latency (Section IV-C).\nTraining Workflo"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 1250,
+      "end": 1550,
+      "text": "rediction latency (Section IV-C).\nTraining Workflow.\nFigure 6 illustrates the overall architecture of SNI-GNN in a multi-node distributed training setup.\nAs initialization, SNI-GNN performs a one-time graph partitioning and each node holds a subgraph. Each node consists of a GPU for model computatio"
+    },
+    {
+      "evidence_id": "E0006",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 1500,
+      "end": 1800,
+      "text": ". Each node consists of a GPU for model computation and a SmartNIC (DPU) for in-network processing. During training, the DPU maintains historical embedding caches and performs lightweight prediction, while the GPU handles the main GNN computation. The architecture supports two operational modes: Syn"
+    },
+    {
+      "evidence_id": "E0007",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 1750,
+      "end": 2050,
+      "text": "e architecture supports two operational modes: Sync Epochs, where fresh embeddings are exchanged between nodes and DPU caches are updated, and Stale Epochs, where DPUs supply predicted embeddings to local GPUs. This design effectively positions the SmartNIC as an intelligent communication filter bet"
+    },
+    {
+      "evidence_id": "E0008",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 2000,
+      "end": 2300,
+      "text": "martNIC as an intelligent communication filter between the GPU and network, enabling embedding prediction directly in the data path.\nIV-B Lightweight Linear-Trend Predictor\nBased on the design rationale, we implement a lightweight linear-trend predictor that aims to reduce the staleness gap $\\Delta_"
+    },
+    {
+      "evidence_id": "E0009",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 2250,
+      "end": 2550,
+      "text": "tor that aims to reduce the staleness gap $\\Delta_{v}^{(t)}=\\|h_{v}^{(t)}-\\tilde{h}_{v}^{(t)}\\|$ without increasing inter-node communication.\nThe predictor estimates the embedding at the current time step by extrapolating the recent trend relative to the latest stored embedding. The prediction targe"
+    },
+    {
+      "evidence_id": "E0010",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 2500,
+      "end": 2800,
+      "text": " the latest stored embedding. The prediction target is given in Equation 4.\n$\\mathbf{\\hat{h}}_{v}^{(t)}=\\underbrace{\\mathbf{\\bar{h}}_{v}}_{\\text{baseline}}+\\underbrace{\\Delta t\\cdot\\mathbf{\\Phi}_{v}\\cdot e^{-\\lambda\\Delta t}}_{\\text{trend}}$\n(4)\nwhere:\n1.\n$\\Delta t=t-\\tau_{\\text{latest}}$ is the num"
+    },
+    {
+      "evidence_id": "E0011",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 2750,
+      "end": 3050,
+      "text": "e:\n1.\n$\\Delta t=t-\\tau_{\\text{latest}}$ is the number of steps since the most recent stored embedding.\n2.\n$\\mathbf{\\bar{h}}_{v}=\\alpha\\mathbf{h}_{v}^{(\\tau_{\\text{latest}})}+(1-\\alpha)\\overline{\\mathcal{H}_{v}}$ is an exponential-moving-average (EMA) baseline (we set $\\alpha=0.3$ in our implementati"
+    },
+    {
+      "evidence_id": "E0012",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 3000,
+      "end": 3300,
+      "text": " baseline (we set $\\alpha=0.3$ in our implementation).\n3.\n$\\mathbf{\\Phi}_{v}$ is a weighted trend vector estimated from recent slope estimates in the history.\n4.\n$e^{-\\lambda\\Delta t}$ (we use $\\lambda=0.2$ ) exponentially decays the trend contribution with time.\nThe detailed prediction method is sh"
+    },
+    {
+      "evidence_id": "E0013",
+      "chunk_id": "sni-method:chunk:0001",
+      "start": 3250,
+      "end": 3414,
+      "text": "on with time.\nThe detailed prediction method is shown in Algorithm 1.\nAlgorithm 1 In-Network Embedding Prediction Algorithm\nprocedure Predict( $\\mathcal{H}_{v},t$ )"
+    },
+    {
+      "evidence_id": "E0014",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 0,
+      "end": 300,
+      "text": "$\\tau_{\\text{latest}}\\leftarrow\\max(\\tau_{k}\\in\\mathcal{H}_{v})$\n$\\Delta t\\leftarrow t-\\tau_{\\text{latest}}$\n$\\mathbf{\\bar{h}}_{v}\\leftarrow 0.3\\cdot\\mathcal{H}_{v}[\\tau_{\\text{latest}}]+0.7\\cdot\\text{mean}(\\mathcal{H}_{v})$\n$\\mathbf{\\Phi}_{v}\\leftarrow\\mathbf{0}$ ; $W\\leftarrow 0$\nfor $k=2$ to $K$ "
+    },
+    {
+      "evidence_id": "E0015",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 250,
+      "end": 550,
+      "text": "row\\mathbf{0}$ ; $W\\leftarrow 0$\nfor $k=2$ to $K$ do\n$\\delta\\tau\\leftarrow\\tau_{k}-\\tau_{k-1}$\n$\\mathbf{\\phi}^{(k)}\\leftarrow(\\mathcal{H}_{v}[k]-\\mathcal{H}_{v}[k-1])/\\delta\\tau$\n$w_{k}\\leftarrow\\exp(-|\\tau_{\\text{latest}}-\\tau_{k}|/5.0)$\n$\\mathbf{\\Phi}_{v}\\leftarrow\\mathbf{\\Phi}_{v}+w_{k}\\cdot\\math"
+    },
+    {
+      "evidence_id": "E0016",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 500,
+      "end": 800,
+      "text": "hi}_{v}\\leftarrow\\mathbf{\\Phi}_{v}+w_{k}\\cdot\\mathbf{\\phi}^{(k)}$\n$W\\leftarrow W+w_{k}$\nend for\n$\\mathbf{\\Phi}_{v}\\leftarrow\\mathbf{\\Phi}_{v}/W$\nreturn $\\mathbf{\\bar{h}}_{v}+\\Delta t\\cdot\\mathbf{\\Phi}_{v}\\cdot\\exp(-0.2\\Delta t)$\nend procedure\nTo justify our choice, we compare the linear-trend predic"
+    },
+    {
+      "evidence_id": "E0017",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 750,
+      "end": 1050,
+      "text": "ify our choice, we compare the linear-trend predictor against ARIMA [50], HOLT [51], and an LSTM [52] baseline. As shown in Figure 7 and Table I, while ARIMA achieves slightly higher peak accuracy, its computational cost is nearly an order of magnitude higher than our approach, making it unsuitable "
+    },
+    {
+      "evidence_id": "E0018",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 1000,
+      "end": 1300,
+      "text": "de higher than our approach, making it unsuitable for real-time in-network processing.\nThe comparison between HOLT and Linear-Trend is particularly critical. Although both are lightweight and exhibit similar computation times per epoch, our Linear-Trend predictor achieves $\\approx$ 0.7% higher peak "
+    },
+    {
+      "evidence_id": "E0019",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 1250,
+      "end": 1550,
+      "text": "end predictor achieves $\\approx$ 0.7% higher peak accuracy (92.06% vs. 91.36% on Reddit) and demonstrates more stable convergence with significantly fewer gradient oscillations. From an architectural perspective, HOLT requires maintaining multiple state variables (level, trend, and seasonal componen"
+    },
+    {
+      "evidence_id": "E0020",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 1500,
+      "end": 1800,
+      "text": "ate variables (level, trend, and seasonal components) per embedding dimension, which rapidly exhausts the DPU’s limited on-board memory. Our Linear-Trend model minimizes this state storage, enabling the system to support larger graph partitions and a higher sampling ratio within the DPU’s resource b"
+    },
+    {
+      "evidence_id": "E0021",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 1750,
+      "end": 2050,
+      "text": " higher sampling ratio within the DPU’s resource budget.\nFig. 7: Comparison of prediction accuracy curves across different forecasting methods\nMethod\nTime (s)\nAcc. (%)\nOurs\n48.2\n92.88\nHOLT\n46.83\n92.14\nARIMA\n425.2\n93.18\nLSTM\n57.37\n92.39\nTABLE I: Computation time and peak accuracy of different predict"
+    },
+    {
+      "evidence_id": "E0022",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 2000,
+      "end": 2300,
+      "text": "tation time and peak accuracy of different predictors\nIV-C SmartNIC Implementation and Optimizations\nThe predictor runs on the SmartNIC and maintains a historical embedding table for sampled remote nodes. Training uses a fixed synchronization interval $s$ . At each sync epoch every worker broadcasts"
+    },
+    {
+      "evidence_id": "E0023",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 2250,
+      "end": 2550,
+      "text": "l $s$ . At each sync epoch every worker broadcasts its latest embeddings; the SmartNIC updates its history from received embeddings and forwards the fresh embeddings to the local GPU. During stale epochs (between syncs) the SmartNIC predicts the next embedding using the linear-trend model, and suppl"
+    },
+    {
+      "evidence_id": "E0024",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 2500,
+      "end": 2800,
+      "text": " embedding using the linear-trend model, and supplies the predicted embeddings to the GPU for aggregation.\nEach SmartNIC maintains a fixed-size circular buffer for each tracked remote node:\n$\\mathcal{H}_{v}=\\left\\{\\left(\\tau_{k},\\mathbf{h}_{v}^{(\\tau_{k})}\\right)\\right\\}_{k=1}^{K}\\in\\mathbb{R}^{K\\ti"
+    },
+    {
+      "evidence_id": "E0025",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 2750,
+      "end": 3050,
+      "text": "_{k})}\\right)\\right\\}_{k=1}^{K}\\in\\mathbb{R}^{K\\times D},\\quad\\tau_{k}\\in\\mathbb{Z}^{+}$\n(5)\nwhere $\\tau_{k}$ denotes the global step when embedding $\\mathbf{h}_{v}^{(\\tau_{k})}$ was received, and $K$ is the buffer capacity .\nHowever, due to the constraints on computing power and memory of the DPU o"
+    },
+    {
+      "evidence_id": "E0026",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 3000,
+      "end": 3300,
+      "text": "traints on computing power and memory of the DPU on the SmartNIC, a significant overhead would be introduced if we re-construct the entire time series for all nodes and perform trend calculation every time we update the historical records during synchronization rounds, as specified in Algorithm 1. T"
+    },
+    {
+      "evidence_id": "E0027",
+      "chunk_id": "sni-method:chunk:0002",
+      "start": 3250,
+      "end": 3439,
+      "text": "hronization rounds, as specified in Algorithm 1. Therefore, to further improve the efficiency of the predictor and keep the SmartNIC overhead low, we have implemented several optimizations."
+    }
+  ],
+  "packet_sha256": "7f4d6fc654cd0d963172693a7502d73e93f963f0cd4595b39a5d991131b2c14a",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "a",
+    "record_index": 1
+  }
+}

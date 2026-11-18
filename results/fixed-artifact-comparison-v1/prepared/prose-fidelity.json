@@ -1,0 +1,1175 @@
+{
+  "schema": "fixed-artifact-fidelity-table.v1",
+  "status": "descriptive",
+  "records": [
+    {
+      "record_id": "sni-1",
+      "index": "00",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-00.json",
+          "sha256": "25c33c788be44e4f0034740bcc283baec1863085019ee4d4ee413b3b63ddddf3",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-00.json",
+          "sha256": "80297ea721f649c98ae4d33dc858c4117b291909cc8068dc958ebe0193a10116",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-00.json",
+          "sha256": "f73af6e7d27bf905e7922ba572f4cdbd2d17571637b2e3d7d712749988c3a869",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-00.json",
+          "sha256": "05355b15eee278e4392b19cd1a975102ba59f2634479bf3d05db9c24c15cb3e2",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-1",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-1",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-1",
+          "field_id": "F002",
+          "field": "unknowns[1]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sni-2",
+      "index": "01",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-01.json",
+          "sha256": "1542988c6fbd65f01cc0f16d49826c7f0deb1aca096090ddb402f3c388f8f579",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-01.json",
+          "sha256": "f6ec084b9c0f16ce039ff8dabb188cb4ee87e0a137ab5efecc0b19e126b8f33c",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-01.json",
+          "sha256": "a860214d3a0611cabd35d6757e2a7acb7dd1a8b3b439161625d4a4725eafe4a7",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-01.json",
+          "sha256": "90d3a6e9363521f597a026de0c45a9408f152d702286c7322ad4cf09bfcc3ec1",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-2",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-2",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-2",
+          "field_id": "F002",
+          "field": "unknowns[1]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sni-3",
+      "index": "02",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-02.json",
+          "sha256": "48b86e98affa973956a0234f11f555a5872c026a29361b651d7ec781fc05bc12",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-02.json",
+          "sha256": "447086be87f4bb251926225ba6102e590bb38d95a4213a8f0be519036ef888c6",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-02.json",
+          "sha256": "0fe87564efe6bfc6ac453541ab1f77b610536cde96fbaefca1b1e7b2cf963817",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-02.json",
+          "sha256": "b9b955f1adf4e926a94c437da17229fa48336e44e1b43f23fd025d0acd97d4bd",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-3",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-3",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sni-4",
+      "index": "03",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-03.json",
+          "sha256": "c2e11a8c46a0169426d4d4476dc6c93c841472231098d4766dfab9b08ecc6178",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-03.json",
+          "sha256": "96b1bb6958cc0e16347190c82fb5c49a529f20a16b926c6104020ad5abae72a6",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-03.json",
+          "sha256": "3d8b48fbe0bf0a3818dd905f803b86539ccd7f09102a03384adc21dbfa1bec7d",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-03.json",
+          "sha256": "c17c5c8236d3da45ed864db024ee2ec4128cc52f8edcf97b08b421d2707b5d65",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-4",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-4",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "a"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-4",
+          "field_id": "F002",
+          "field": "unknowns[1]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sat-1",
+      "index": "04",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-04.json",
+          "sha256": "055ec452e1b9c4e1d3100b6aae4c6c1b3415bc92ca89451762604994e311a9fb",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-04.json",
+          "sha256": "d292f2a6137c138b28b5ba113efb220e17751074eeff732e98a3a3037f67d4ae",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-04.json",
+          "sha256": "7d88525ae1f66a2e270da69c0115eae052c83d20110bfe8d9faf6fd01450631d",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-04.json",
+          "sha256": "84db8d697b9ebc5af909b0df340da0266181c42ca45e9ad318734372f56c0d0b",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sat-1",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-1",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sat-2",
+      "index": "05",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-05.json",
+          "sha256": "cc09f7b718335a7b171081f8154348e55df7b05a07179b85c6b96aa37166cd0a",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-05.json",
+          "sha256": "7de2fdceb128ce66c72bf175091de1a028a7b9297aa6612ed68966c158e62a80",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-05.json",
+          "sha256": "459a9731c34b977259d6769016e83bc38c35df6e07e366d434eaae286161fc28",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-05.json",
+          "sha256": "4507f6c239aeed6453743222625187162b0f77f275e4c3c32fdbd03c50ebbe9f",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sat-2",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-2",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "fresh-1",
+      "index": "06",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-06.json",
+          "sha256": "21dd32073f25ffeff1745a86f55a66db41c8fd15a6f615ec70041c62f9d49162",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-06.json",
+          "sha256": "7f18905f3a0646d4c6dc7a541d8bc2c2bd54e2f6375e92d7aef663dc3f9a9906",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-06.json",
+          "sha256": "c44aa1070a4ac73d18bf874013cf2623b1c16e2f48443cb3319c95cdb2b546a3",
+          "status": "malformed:ValueError: unknown claim assessment key"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-06.json",
+          "sha256": "bcdeb761a6c1c61c50eff9c74fd0986619595ba6a127f98fcec8c2c77e94bafa",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "fresh-1",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-1",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 1,
+      "missing_or_malformed_reviews": [
+        "a"
+      ]
+    },
+    {
+      "record_id": "fresh-2",
+      "index": "07",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-07.json",
+          "sha256": "2abb9af7f8eddb287b332f7865cf293da88439edf7a5a28cd05a8c545ebbfcfd",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-07.json",
+          "sha256": "05312276bdf73ff21375f14b2355622b4b2c6e52964ae669d827bbea1e0dd1a4",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-07.json",
+          "sha256": "d722ca37695ab6f8d2a9552c9bb74f0c3d077c982d3a22479ce514e7427fae6d",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-07.json",
+          "sha256": "c0ca78177d5074414afba5fc1be9975bcbf93656d8b9e728aac74407022a6f3d",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "fresh-2",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-2",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sift-1",
+      "index": "08",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-08.json",
+          "sha256": "ebe77f1d09d5acda667a99e9db19bca0b3adb0bfd5cdc28d5da7e080e7d97bd0",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-08.json",
+          "sha256": "dd2a606f710f85dd49235f533a93db7f360efd9fc21a46ffec06f834cdb42e35",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-08.json",
+          "sha256": "d3a548de40e27c694f0d6c8d3b827d17f662dc1b042f1bb1a5562a4a665b10c2",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-08.json",
+          "sha256": "43af47232200505f83841b8c938d1ac65d2619c1e906e4c9fe2b31584c68cf05",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sift-1",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-1",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sift-2",
+      "index": "09",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-09.json",
+          "sha256": "54c9f139d300e7461e845f14892c8625b352203a0d3afe09ee1ddd57d0755822",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-09.json",
+          "sha256": "6c82a09a91e10ebd7a74d3b7c7b2d6531796cb3b00a356158132973dcc7a0422",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-09.json",
+          "sha256": "798505c269c4ac3e980d4fe277b849230edf3a2d974a14f664d03d3b75e1436e",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-09.json",
+          "sha256": "f2d0aeefdd5e4e7463323b93be489b751ead35bbde81ae94691c91094c92b619",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sift-2",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-2",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sancus-1",
+      "index": "10",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-10.json",
+          "sha256": "83ec87f01682ffa4f85b5235ed28a600f40b8e22dfefc1f85f92f0922c072375",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-10.json",
+          "sha256": "b84e414398586a5ccd061bde631b5bd503cb982d0b56f2d37f5204711e11f01f",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-10.json",
+          "sha256": "45b8fa83d0f4c2136f56952a855b340c243016b7f441306faea10b14e23217ee",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-10.json",
+          "sha256": "00a1b05b14ca6a931e3141a2a74a12ba01846b1261d15195654fa86925e2b0da",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sancus-1",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancus-1",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sancus-2",
+      "index": "11",
+      "inputs": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/input-11.json",
+          "sha256": "1acbeee00f17b9dd289edf6ae07e9d67f23b048d6d9112c23a4b7249cf8a317a",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/input-11.json",
+          "sha256": "9e4d74db1c34274c2e21ec836e07a20f8204975145bd8ad643aa2fc1636686c2",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/a/review-11.json",
+          "sha256": "56fac938df06eab2b55b11e93ec8719c3bc1a6a27e991bada745368e97b6619b",
+          "status": "present"
+        },
+        "b": {
+          "path": "/Users/altaiavdil/Proga/research/experiments/alien-science/upstream/results/fixed-artifact-comparison-v1/prepared/reference-slots/b/review-11.json",
+          "sha256": "e2ff67984ed8beef28fb5e4646246430a554434153629d993a3d76e5f277005e",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sancus-2",
+          "field_id": "F000",
+          "field": "summary",
+          "type": "field",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancus-2",
+          "field_id": "F001",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    }
+  ],
+  "fields": [
+    {
+      "record_id": "sni-1",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-1",
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-2",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-2",
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-3",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-3",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-4",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-4",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-4",
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-1",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-2",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-1",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-2",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-1",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-2",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-1",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-2",
+      "field_id": "F000",
+      "field": "summary",
+      "type": "field",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    }
+  ],
+  "summary": {
+    "record_count": 12,
+    "field_count": 27,
+    "valid_reviewer_slots": 23,
+    "total_reviewer_slots": 24,
+    "missing_or_malformed_review_slots": 1,
+    "flagged_by_either": 1,
+    "flagged_by_both": 0,
+    "unknown_field_count": 15,
+    "unknown_flagged_by_either": 1,
+    "unknown_flagged_by_both": 0
+  },
+  "unknowns": [
+    {
+      "record_id": "sni-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-1",
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-2",
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-3",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-4",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-4",
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-1",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-2",
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    }
+  ],
+  "interpretation": "Flags are reviewer measurements; neither agreement nor adjudication is formal truth. A compound prose summary and a short typed field have different denominators: do not compare field-flag rates across representations as quality estimates. No gate or true-error claim is made.",
+  "representation_sha256": "b99de32f52d925e45b565fc5e9b6db200e1af0faceddacc184e27396558a571c"
+}

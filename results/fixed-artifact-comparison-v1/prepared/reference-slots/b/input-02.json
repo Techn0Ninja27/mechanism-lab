@@ -1,0 +1,323 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "sni-3",
+  "record_metadata": {
+    "record_id": "sni-3",
+    "source_id": "sni-method",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "sni-method:chunk:0003",
+      "sni-method:chunk:0004",
+      "sni-method:chunk:0005"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "SmartNIC optimizations include importance-based boundary node sampling, where nodes with more edges to the local subgraph receive predicted embeddings and the rest use historical embeddings, controlled by sampling_ratio. They also include an asynchronous pipeline that skips boundary-node communication in Stale Epochs and has the GPU send fresh embeddings to the DPU during Sync Epochs. A third optimization reuses intermediate results via decayed trend accumulators and self-feeding of predicted values into ring buffers.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Measured overhead reductions from each optimization are not reported in these chunks.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 0,
+      "end": 300,
+      "text": "Fig. 8: Predictor design overview. The blue modules represent the functional modules of the predictor, while the green modules represent the optimization schemes we adopted and their corresponding optimization levels.\nFigure 8 shows the predictor architecture. The predictor contains four logical mod"
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 250,
+      "end": 550,
+      "text": "hitecture. The predictor contains four logical modules: the historical-embedding table, a cache manager, the predictor core, and a prediction controller. Together these modules manage memory, computation, and SmartNIC–GPU communication. We apply three optimizations: importance-based sampling, an asy"
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 500,
+      "end": 800,
+      "text": "e optimizations: importance-based sampling, an asynchronous data pipeline, and intermediate-result reuse to keep SmartNIC overhead low.\nIV-C1 Node sampling\nTo reduce the memory and computational overhead on the SmartNIC, we implement an importance-based node sampling strategy for the embedding predi"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 750,
+      "end": 1050,
+      "text": "sed node sampling strategy for the embedding predictor. In full-graph training, each worker requires access to remote node embeddings, which can strain the DPU’s limited resources. Our approach prioritizes prediction for the most influential remote nodes while using standard historical embeddings fo"
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 1000,
+      "end": 1300,
+      "text": "odes while using standard historical embeddings for the rest.\nWe define a node’s importance by the number of edges it has connecting to the local worker’s subgraph, a technique known as boundary node sampling. Nodes with more connections are considered more critical to the local subgraph’s updates a"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 1250,
+      "end": 1550,
+      "text": "ed more critical to the local subgraph’s updates and are selected for prediction. The sampling_ratio parameter controls the fraction of high-importance nodes that will receive predicted embeddings, allowing a trade-off between prediction accuracy and computational load.\nFig. 9: Node sampling methods"
+    },
+    {
+      "evidence_id": "E0006",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 1500,
+      "end": 1800,
+      "text": " computational load.\nFig. 9: Node sampling methods (taking the full-graph training of a three-node graph as an example). We set the sampling_ratio to 1/3, and after sorting the adjacency relationships of nodes for worker 2 and worker 3, node 4 and node 7 are selected to use predicted values for trai"
+    },
+    {
+      "evidence_id": "E0007",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 1750,
+      "end": 2050,
+      "text": "de 7 are selected to use predicted values for training, while other remote nodes only use historical embeddings.\nAs illustrated in Figure 9, the full graph is partitioned across three workers. When updating Subgraph 1 (nodes 1, 2, 3), we calculate the importance of its remote neighbors. Node 4 has t"
+    },
+    {
+      "evidence_id": "E0008",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 2000,
+      "end": 2300,
+      "text": "e importance of its remote neighbors. Node 4 has the most connections to Subgraph 1, followed by node 7. With a sampling_ratio of 1/3, only the top-ranked nodes (i.e., 4 and 7) are updated using the SmartNIC’s predictor. The remaining remote nodes are updated using their last known historical embedd"
+    },
+    {
+      "evidence_id": "E0009",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 2250,
+      "end": 2550,
+      "text": "e updated using their last known historical embeddings. This selective prediction reduces the DPU’s workload while focusing its computational power on the nodes most likely to affect model convergence.\nIV-C2 Communication Pipeline\nFig. 10: The asynchronous communication pipeline in SNI-GNN (illustra"
+    },
+    {
+      "evidence_id": "E0010",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 2500,
+      "end": 2800,
+      "text": "ronous communication pipeline in SNI-GNN (illustrated with a 2-worker, 2-layer GNN configuration).\nAs shown in Figure 10, we have designed specialized data slicing and asynchronous pipelines to mitigate the inherent overhead of transferring data through DPU RAM and the additional latency required fo"
+    },
+    {
+      "evidence_id": "E0011",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 2750,
+      "end": 3050,
+      "text": "ugh DPU RAM and the additional latency required for DPU-to-GPU transmission. We categorize training epochs into two distinct execution modes: Stale Epochs and Sync Epochs.\nIn a Stale Epoch (Figure 10a), physical network communication for boundary nodes is skipped to reduce traffic volume. Instead of"
+    },
+    {
+      "evidence_id": "E0012",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 3000,
+      "end": 3300,
+      "text": "es is skipped to reduce traffic volume. Instead of waiting for a broadcast, the GPU asynchronously obtains extrapolated values ( $P_{n,i}$ ) from the DPU and merges them with the local cache. By offloading the prediction logic entirely to the SmartNIC, we ensure that the GPU’s GNN training process ("
+    },
+    {
+      "evidence_id": "E0013",
+      "chunk_id": "sni-method:chunk:0003",
+      "start": 3250,
+      "end": 3415,
+      "text": "C, we ensure that the GPU’s GNN training process ( $C_{n,i}$ ) remains undisturbed, with the prediction latency hidden by the concurrent forward and backward passes."
+    },
+    {
+      "evidence_id": "E0014",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 0,
+      "end": 300,
+      "text": "In a Sync Epoch (Figure 10b), the GPU performs global embedding synchronization ( $B_{n,i}$ ) and concurrently sends the fresh embeddings of remote workers to the DPU. This allows the DPU to update the linear-trend model and generate the predicted values for the subsequent epoch. Because the DPU is "
+    },
+    {
+      "evidence_id": "E0015",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 250,
+      "end": 550,
+      "text": "lues for the subsequent epoch. Because the DPU is positioned directly on the data path, it can provide these predictions to the GPU immediately after the broadcast is completed without introducing additional synchronization barriers. By carefully scheduling the computational workload and data transm"
+    },
+    {
+      "evidence_id": "E0016",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 500,
+      "end": 800,
+      "text": "eduling the computational workload and data transmission ( $T_{n,i}$ ) between the DPU and GPU, our pipeline minimizes the architectural overhead introduced by utilizing the DPU as an intermediate transmission layer, ensuring that the benefits of active staleness mitigation outweigh the costs of har"
+    },
+    {
+      "evidence_id": "E0017",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 750,
+      "end": 1050,
+      "text": "ive staleness mitigation outweigh the costs of hardware offloading.\nIV-C3 Predictive intermediate Result Reuse\nSince the prediction process requires shifting the time window each time synchronization occurs, it necessitates repeatedly recalculating trends. Additionally, as the synchronization interv"
+    },
+    {
+      "evidence_id": "E0018",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 1000,
+      "end": 1300,
+      "text": "rends. Additionally, as the synchronization interval increases, intermediate historical data may be missing. If interpolation methods are used to replace the intermediate historical data, it would incur significant computational overhead. Therefore, we employ prediction records to substitute for the"
+    },
+    {
+      "evidence_id": "E0019",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 1250,
+      "end": 1550,
+      "text": "we employ prediction records to substitute for the intermediate historical data. Moreover, each time the time window slides, some previously computed results, as well as intermediate predictions and the latest synchronization results, are overwritten. To address this algorithmic characteristic, we d"
+    },
+    {
+      "evidence_id": "E0020",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 1500,
+      "end": 1800,
+      "text": ". To address this algorithmic characteristic, we designed a prediction algorithm that reuses intermediate results, as shown in Algorithm 2.\nThe most critical steps in the algorithm are as follows:\ni) Trend accumulators: Trends are stored in a prefix sum-like manner. During each update, only the impa"
+    },
+    {
+      "evidence_id": "E0021",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 1750,
+      "end": 2050,
+      "text": "sum-like manner. During each update, only the impact of the oldest historical record needs to be removed, and then the trend is updated using the latest embedding record.\nii) Self-feeding: Since the time steps of the warm-up phase and the actual training phase are different, if we want to use interm"
+    },
+    {
+      "evidence_id": "E0022",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 2000,
+      "end": 2300,
+      "text": "ning phase are different, if we want to use intermediate cached results to reduce the computational load of the predictor, historical records need to be filled. Therefore, directly using predicted values as historical records to fill the historical record table can reduce interpolation overhead.\nAlg"
+    },
+    {
+      "evidence_id": "E0023",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 2250,
+      "end": 2550,
+      "text": "ecord table can reduce interpolation overhead.\nAlgorithm 2 Self-Feeding Trend Update\nInputs:\nBatch nodes $\\mathcal{I}$ ; optional observations $X^{obs}\\!\\in\\!\\mathbb{R}^{|\\mathcal{I}|\\times d}$ ; mask $M^{obs}\\!\\in\\!\\{0,1\\}^{|\\mathcal{I}|}$ ; time $t$ .\nState:\nRing buffers $H\\!\\in\\!\\mathbb{R}^{N\\tim"
+    },
+    {
+      "evidence_id": "E0024",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 2500,
+      "end": 2800,
+      "text": "$ .\nState:\nRing buffers $H\\!\\in\\!\\mathbb{R}^{N\\times W\\times d}$ , $T\\!\\in\\!\\mathbb{Z}^{N\\times W}$ , write index $pos\\!\\in\\!\\{0,\\dots,W-1\\}^{N}$ ;\nLast values $x^{last}\\!\\in\\!\\mathbb{R}^{N\\times d}$ , $t^{last}\\!\\in\\!\\mathbb{Z}^{N}$ ;\nTrend accumulators $N\\!\\in\\!\\mathbb{R}^{N\\times d}$ , $D\\!\\in\\!\\"
+    },
+    {
+      "evidence_id": "E0025",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 2750,
+      "end": 3050,
+      "text": "tors $N\\!\\in\\!\\mathbb{R}^{N\\times d}$ , $D\\!\\in\\!\\mathbb{R}^{N}$ .\nParams:\nWindow $W$ ; decay rates $\\lambda>0$ , $\\beta>0$ ; numerical $\\varepsilon>0$ .\nProcedure:\n1.\nFor each $i\\in\\mathcal{I}$ :\n(a)\n$\\Delta\\leftarrow t-t^{last}[i]$ ;\n(b)\nTrend: $v\\leftarrow N[i]/\\max(D[i],\\varepsilon)$ .\n(c)\nPredi"
+    },
+    {
+      "evidence_id": "E0026",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 3000,
+      "end": 3300,
+      "text": "leftarrow N[i]/\\max(D[i],\\varepsilon)$ .\n(c)\nPredict: $x^{pred}\\leftarrow x^{last}[i]+v\\cdot\\Delta\\cdot e^{-\\beta\\Delta}$ .\n(d)\nSelf-feed: $x^{new}\\leftarrow\\begin{cases}X^{obs}[i],&\\text{if }M^{obs}[i]=1\\\\\nx^{pred},&\\text{otherwise}\\end{cases}$\n(e)\nWrite ring buffer: $p\\leftarrow pos[i]$ ; $H[i,p,:"
+    },
+    {
+      "evidence_id": "E0027",
+      "chunk_id": "sni-method:chunk:0004",
+      "start": 3250,
+      "end": 3392,
+      "text": "Write ring buffer: $p\\leftarrow pos[i]$ ; $H[i,p,:]\\!\\leftarrow\\!x^{new}$ ; $T[i,p]\\!\\leftarrow\\!t$ ; $pos[i]\\!\\leftarrow\\!(p+1)\\bmod W$ .\n(f)"
+    },
+    {
+      "evidence_id": "E0028",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 0,
+      "end": 300,
+      "text": "Decay accumulators: $\\gamma\\leftarrow e^{-\\lambda\\Delta}$ ; $N[i]\\!\\leftarrow\\!\\gamma N[i]$ ; $D[i]\\!\\leftarrow\\!\\gamma D[i]$ .\n(g)\nNew slope: $s_{new}\\leftarrow(x^{new}-x^{last}[i])/\\max(\\Delta,\\varepsilon)$ .\n(h)\nUpdate accumulators: $N[i]\\!\\leftarrow\\!N[i]+s_{new}$ ; $D[i]\\!\\leftarrow\\!D[i]+1$ .\n"
+    },
+    {
+      "evidence_id": "E0029",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 250,
+      "end": 550,
+      "text": "row\\!N[i]+s_{new}$ ; $D[i]\\!\\leftarrow\\!D[i]+1$ .\n(i)\nUpdate last: $x^{last}[i]\\!\\leftarrow\\!x^{new}$ ; $t^{last}[i]\\!\\leftarrow\\!t$ .\n(j)\nOutput $x^{pred}$ for node $i$ .\nIV-D Theoretical Analysis\nWe analyze the convergence of SNI-GNN by bounding the prediction error and its impact on gradients.\nWe"
+    },
+    {
+      "evidence_id": "E0030",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 500,
+      "end": 800,
+      "text": "e prediction error and its impact on gradients.\nWe assume standard bounds: $N$ nodes, dimension $d$ , weight matrices bounded by $C$ , and adjacency blocks bounded by $B$ . The loss $\\mathcal{L}$ and activations are $\\rho$ -smooth/Lipschitz.\nTheorem IV.1 (Prediction Error).\nIf the second-order diffe"
+    },
+    {
+      "evidence_id": "E0031",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 750,
+      "end": 1050,
+      "text": "IV.1 (Prediction Error).\nIf the second-order difference of embeddings is bounded by $\\|H^{(t)}-2H^{(t-1)}+H^{(t-2)}\\|_{\\infty}\\leq\\epsilon$ , the linear-trend predictor error satisfies:\n$\\|\\hat{H}^{(t)}-H^{(t)}\\|_{\\infty}\\leq\\tfrac{1}{2}(\\Delta t)^{2}\\epsilon=:\\epsilon_{H},$\nwhere $\\Delta t\\leq s$ i"
+    },
+    {
+      "evidence_id": "E0032",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1000,
+      "end": 1300,
+      "text": "}\\epsilon=:\\epsilon_{H},$\nwhere $\\Delta t\\leq s$ is the staleness.\nProof Sketch.\nApproximating $H^{(t)}$ via a second-order Taylor expansion around $\\tau_{\\text{latest}}$ , the linear predictor captures the first-order trend ( $\\bar{h}\\approx H^{(\\tau)}$ , $\\Phi\\approx H^{\\prime(\\tau)}$ ). The error"
+    },
+    {
+      "evidence_id": "E0033",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1250,
+      "end": 1550,
+      "text": "u)}$ , $\\Phi\\approx H^{\\prime(\\tau)}$ ). The error is thus dominated by the second-order term $\\frac{1}{2}(\\Delta t)^{2}H^{\\prime\\prime(\\tau)}$ , bounded by $\\epsilon$ .\n∎\nNext, we bound how this error propagates to gradients. Let $p$ be the maximum communicating workers.\nLemma IV.2 (Gradient Error "
+    },
+    {
+      "evidence_id": "E0034",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1500,
+      "end": 1800,
+      "text": "communicating workers.\nLemma IV.2 (Gradient Error Bound).\nThe gradient estimation error is bounded by:\n$\\|\\nabla\\hat{\\mathcal{L}}-\\nabla\\mathcal{L}\\|_{\\infty}\\leq K:=\\rho C^{2}B^{2}(p+CB)\\epsilon_{H}.$\nProof Sketch.\nUsing the triangle inequality and sub-multiplicativity on the GNN aggregation $T^{(l"
+    },
+    {
+      "evidence_id": "E0035",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1750,
+      "end": 2050,
+      "text": "sub-multiplicativity on the GNN aggregation $T^{(l)}=\\sum AH$ , the feature error bounds are $\\|\\hat{T}-T\\|_{\\infty}\\leq pCB\\epsilon_{H}$ and $\\|\\hat{Z}-Z\\|_{\\infty}\\leq C^{2}B^{2}\\epsilon_{H}$ . Since backpropagation distributes these errors linearly through $\\rho$ -Lipschitz components, the gradie"
+    },
+    {
+      "evidence_id": "E0036",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 2000,
+      "end": 2300,
+      "text": "y through $\\rho$ -Lipschitz components, the gradient difference is bounded by $K$ .\n∎\nTheorem IV.3 (Convergence).\nWith learning rate $\\eta=\\min\\{\\frac{1}{\\rho},\\frac{1}{\\sqrt{N}}\\}$ , non-convex SGD with SNI-GNN satisfies:\n$\\min_{t}\\mathbb{E}[\\|\\nabla\\mathcal{L}(W_{t})\\|_{F}^{2}]\\leq\\frac{2(\\mathcal"
+    },
+    {
+      "evidence_id": "E0037",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 2250,
+      "end": 2550,
+      "text": "a\\mathcal{L}(W_{t})\\|_{F}^{2}]\\leq\\frac{2(\\mathcal{L}_{0}-\\mathcal{L}^{*})+\\rho K}{\\sqrt{N}}=O(1/\\sqrt{N}).$\nProof Sketch.\nThis follows from standard SGD analysis with inexact gradients [24]. The gradient bias $K$ is constant; setting sync interval $s=O(N^{-1/4})$ ensures the error term $\\epsilon_{H"
+    },
+    {
+      "evidence_id": "E0038",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 2500,
+      "end": 2623,
+      "text": "s=O(N^{-1/4})$ ensures the error term $\\epsilon_{H}\\propto s^{2}$ does not dominate the $O(1/\\sqrt{N})$ convergence rate.\n∎"
+    }
+  ],
+  "packet_sha256": "be140a72a3006f0dc3d17dd46dccfb30934eff81a2fefb0a2cb1181a6adba161",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "b",
+    "record_index": 2
+  }
+}

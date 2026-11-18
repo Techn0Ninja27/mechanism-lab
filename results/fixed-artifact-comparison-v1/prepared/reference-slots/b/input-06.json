@@ -1,0 +1,97 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "fresh-1",
+  "record_metadata": {
+    "record_id": "fresh-1",
+    "source_id": "W4396628137",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "W4396628137:chunk:0001"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "FreshGNN is a mini-batch GNN training framework that caches and reuses node embeddings instead of recomputing them from raw features each iteration. Its cache policy combines gradient-based and staleness criteria to select relatively stable embeddings for caching.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Exact gradient and staleness thresholds are not given in the abstract.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 0,
+      "end": 300,
+      "text": "FreshGNN: Reducing Memory Access via Stable Historical Embeddings for Graph Neural Network Training\nA key performance bottleneck when training graph neural network (GNN) models on large, real-world graphs is loading node features onto a GPU. Due to limited GPU memory, expensive data movement is nece"
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 250,
+      "end": 550,
+      "text": "imited GPU memory, expensive data movement is necessary to facilitate the storage of these features on alternative devices with slower access (e.g. CPU memory). Moreover, the irregularity of graph structures contributes to poor data locality which further exacerbates the problem. Consequently, exist"
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 500,
+      "end": 800,
+      "text": "rther exacerbates the problem. Consequently, existing frameworks capable of efficiently training large GNN models usually incur a significant accuracy degradation because of the currently-available shortcuts involved. To address these limitations, we instead propose FreshGNN, a general-purpose GNN m"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 750,
+      "end": 1050,
+      "text": " instead propose FreshGNN, a general-purpose GNN mini-batch training framework that leverages a historical cache for storing and reusing GNN node embeddings instead of re-computing them through fetching raw features at every iteration. Critical to its success, the corresponding cache policy is desig"
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 1000,
+      "end": 1300,
+      "text": "s success, the corresponding cache policy is designed, using a combination of gradient-based and staleness criteria, to selectively screen those embeddings which are relatively stable and can be cached, from those that need to be re-computed to reduce estimation errors and subsequent downstream accu"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 1250,
+      "end": 1550,
+      "text": "e estimation errors and subsequent downstream accuracy loss. When paired with complementary system enhancements to support this selective historical cache, FreshGNN is able to accelerate the training speed on large graph datasets such as ogbn-papers100M and MAG240M by 3.4× up to 20.5× and reduce the"
+    },
+    {
+      "evidence_id": "E0006",
+      "chunk_id": "W4396628137:chunk:0001",
+      "start": 1500,
+      "end": 1618,
+      "text": "00M and MAG240M by 3.4× up to 20.5× and reduce the memory access by 59%, with less than 1% influence on test accuracy."
+    }
+  ],
+  "packet_sha256": "9faef02ad950914f8172375fdfc024a0d3659aaee0d95357b13ad21df94ee026",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "b",
+    "record_index": 6
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "fields": [
+    {
+      "field_id": "F000",
+      "verdict": "supported",
+      "reason": "Each component of the summary is directly stated in the cited rendered chunks.",
+      "evidence_ids": ["E0010", "E0015", "E0019", "E0021"],
+      "claim_assessments": [
+        {
+          "subclaim_id": "ema-trend-form",
+          "verdict": "supported",
+          "reason": "The prediction equation, EMA baseline with alpha 0.3, and exponential trend decay with lambda 0.2 are stated directly.",
+          "evidence_ids": ["E0010", "E0011", "E0012"]
+        },
+        {
+          "subclaim_id": "weighted-consecutive-slopes",
+          "verdict": "supported",
+          "reason": "The algorithm computes slopes between consecutive history entries and weights them by the stated exponential function with scale 5.0.",
+          "evidence_ids": ["E0014", "E0015", "E0016"]
+        },
+        {
+          "subclaim_id": "arima-linear-comparison",
+          "verdict": "supported",
+          "reason": "The table reports ARIMA at 425.2 seconds and 93.18 percent peak accuracy, and Ours at 48.2 seconds and 92.88 percent.",
+          "evidence_ids": ["E0021"]
+        },
+        {
+          "subclaim_id": "holt-state-variables",
+          "verdict": "supported",
+          "reason": "The discussion states that HOLT maintains multiple state variables, including level, trend, and seasonal components, per embedding dimension.",
+          "evidence_ids": ["E0019", "E0020"]
+        }
+      ]
+    },
+    {
+      "field_id": "F001",
+      "verdict": "supported",
+      "reason": "The supplied table excerpt lists methods, computation times, and accuracies but does not explicitly state the dataset or experimental setting within the table.",
+      "evidence_ids": [],
+      "absence_reason": "The cited table text contains only the method, time, and accuracy columns and has no explicit dataset or setting entry."
+    },
+    {
+      "field_id": "F002",
+      "verdict": "supported",
+      "reason": "The source identifies K as buffer capacity but does not provide a numeric value for K.",
+      "evidence_ids": [],
+      "absence_reason": "The cited buffer definition names K and defines it as capacity, but no numerical capacity is given in the supplied chunks."
+    }
+  ]
+}

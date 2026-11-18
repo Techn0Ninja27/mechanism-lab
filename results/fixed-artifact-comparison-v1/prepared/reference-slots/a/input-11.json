@@ -1,0 +1,90 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "sancus-2",
+  "record_metadata": {
+    "record_id": "sancus-2",
+    "source_id": "W4407013152",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "W4407013152:chunk:0001"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "The advanced version of Sancus applies quantization-aware communication on embeddings to reduce broadcast message size. It is reported to avoid up to 86% communication with 3.0x faster average throughput without accuracy loss versus compared works.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Quantization bit-widths are not stated in the abstract.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "W4407013152:chunk:0001",
+      "start": 0,
+      "end": 300,
+      "text": "From Sancus to Sancus $$^q$$: staleness and quantization-aware full-graph decentralized training in graph neural networks\nAbstract Graph neural networks (GNNs) have emerged due to their success at modeling graph data. Yet, it is challenging for GNNs to efficiently scale to large graphs. Thus, distri"
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "W4407013152:chunk:0001",
+      "start": 250,
+      "end": 550,
+      "text": "to efficiently scale to large graphs. Thus, distributed GNNs come into play. To avoid communication caused by expensive data movement between workers, we propose Sancus and its advanced version Sancus\"Equation missing\", the staleness and quantization-aware communication-avoiding decentralized GNN sy"
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "W4407013152:chunk:0001",
+      "start": 500,
+      "end": 800,
+      "text": "-aware communication-avoiding decentralized GNN system. By introducing a set of novel bounded embedding staleness metrics and adaptively skipping broadcasts, Sancus abstracts decentralized GNN processing as sequential matrix multiplication and uses historical embeddings via cache. To further mitigat"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "W4407013152:chunk:0001",
+      "start": 750,
+      "end": 1050,
+      "text": "istorical embeddings via cache. To further mitigate the communication volume, Sancus\"Equation missing\" conducts quantization-aware communication on embeddings to reduce the size of broadcast messages. Theoretically, we show bounded approximation errors of embeddings and gradients with a known fastes"
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "W4407013152:chunk:0001",
+      "start": 1000,
+      "end": 1300,
+      "text": "rs of embeddings and gradients with a known fastest convergence guarantee. Empirically, we evaluate Sancus and Sancus\"Equation missing\" with common GNN models via different system setups on large-scale benchmark datasets. Compared to SOTA works, Sancus\"Equation missing\" can avoid up to $$86\\%$$ 86 %"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "W4407013152:chunk:0001",
+      "start": 1250,
+      "end": 1392,
+      "text": "us\"Equation missing\" can avoid up to $$86\\%$$ 86 % communication with $$3.0\\times $$ 3.0 × faster throughput on average without accuracy loss."
+    }
+  ],
+  "packet_sha256": "2db849c5ba7cc725e2b6f4e24f18de81d32a687d538cc0a480b09f4938454927",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "a",
+    "record_index": 11
+  }
+}

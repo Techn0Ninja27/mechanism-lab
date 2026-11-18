@@ -1,0 +1,87 @@
+{
+  "schema": "reference-draw-review-set.v1",
+  "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+  "kind": "distillations",
+  "draw": 0,
+  "slot": "b",
+  "pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae",
+  "representation_sha256": "01c5f45544ddca056775f99148a23dd92f98b7b4baa6b9e0f80f54be29491b6a",
+  "instruction_sha256": "f6a5e3d9fc9e8f530baec139e5ce11f97e94a824547657a845a60d20aa4ceb18",
+  "builder_sha256": "17aa22199daa288f39e9b1a4205f039ed9f9be01ce3999adbb9d504215dead29",
+  "parser_sha256": "7c083bb4377afba87426b0c8157d10bf1a8900a5f9f217e8290782e62f267b4a",
+  "adapter_sha256": "51e2d7cc81cb7926f2034dd00d48302c323b0467319e41b8f09aff743a1ae025",
+  "packets": [
+    {
+      "path": "input-00.json",
+      "record_id": "sni-1",
+      "sha256": "80297ea721f649c98ae4d33dc858c4117b291909cc8068dc958ebe0193a10116",
+      "packet_sha256": "a172350a2d355732fe45fe9657909d5cb550af998c2c65d70d784d9fa3aeaf41"
+    },
+    {
+      "path": "input-01.json",
+      "record_id": "sni-2",
+      "sha256": "f6ec084b9c0f16ce039ff8dabb188cb4ee87e0a137ab5efecc0b19e126b8f33c",
+      "packet_sha256": "7f4d6fc654cd0d963172693a7502d73e93f963f0cd4595b39a5d991131b2c14a"
+    },
+    {
+      "path": "input-02.json",
+      "record_id": "sni-3",
+      "sha256": "447086be87f4bb251926225ba6102e590bb38d95a4213a8f0be519036ef888c6",
+      "packet_sha256": "be140a72a3006f0dc3d17dd46dccfb30934eff81a2fefb0a2cb1181a6adba161"
+    },
+    {
+      "path": "input-03.json",
+      "record_id": "sni-4",
+      "sha256": "96b1bb6958cc0e16347190c82fb5c49a529f20a16b926c6104020ad5abae72a6",
+      "packet_sha256": "d1c1442425025248d69d09e85aa05fda771538d437a2a70cbfca89990f2f084f"
+    },
+    {
+      "path": "input-04.json",
+      "record_id": "sat-1",
+      "sha256": "d292f2a6137c138b28b5ba113efb220e17751074eeff732e98a3a3037f67d4ae",
+      "packet_sha256": "01ad2ba66fd6b4e2391babdee971dd6bb14d566f7e79ab3d6b8f1d4d52b39016"
+    },
+    {
+      "path": "input-05.json",
+      "record_id": "sat-2",
+      "sha256": "7de2fdceb128ce66c72bf175091de1a028a7b9297aa6612ed68966c158e62a80",
+      "packet_sha256": "77a9f6510af4e3c7d2dba1d077e66f78ae3ecd6f971f4369004bc37d7d20ff1d"
+    },
+    {
+      "path": "input-06.json",
+      "record_id": "fresh-1",
+      "sha256": "7f18905f3a0646d4c6dc7a541d8bc2c2bd54e2f6375e92d7aef663dc3f9a9906",
+      "packet_sha256": "9faef02ad950914f8172375fdfc024a0d3659aaee0d95357b13ad21df94ee026"
+    },
+    {
+      "path": "input-07.json",
+      "record_id": "fresh-2",
+      "sha256": "05312276bdf73ff21375f14b2355622b4b2c6e52964ae669d827bbea1e0dd1a4",
+      "packet_sha256": "fcb8afdfe2d2f3f78a5aff792de1639745645fa585b2e749cd20cf6f748e9961"
+    },
+    {
+      "path": "input-08.json",
+      "record_id": "sift-1",
+      "sha256": "dd2a606f710f85dd49235f533a93db7f360efd9fc21a46ffec06f834cdb42e35",
+      "packet_sha256": "3c0294d529151532389803b9f3a08681c11b74378b3aab22d387192882e3a37b"
+    },
+    {
+      "path": "input-09.json",
+      "record_id": "sift-2",
+      "sha256": "6c82a09a91e10ebd7a74d3b7c7b2d6531796cb3b00a356158132973dcc7a0422",
+      "packet_sha256": "b8acfd84d98cccc8e27bf14d3eb3d40604cc418fc0c346c1e541d5f3c82f486b"
+    },
+    {
+      "path": "input-10.json",
+      "record_id": "sancus-1",
+      "sha256": "b84e414398586a5ccd061bde631b5bd503cb982d0b56f2d37f5204711e11f01f",
+      "packet_sha256": "b918a9e4e8722872732b23c0a688afbc87350a46ac1cba49d0ead0ac067d1c97"
+    },
+    {
+      "path": "input-11.json",
+      "record_id": "sancus-2",
+      "sha256": "9e4d74db1c34274c2e21ec836e07a20f8204975145bd8ad643aa2fc1636686c2",
+      "packet_sha256": "2db849c5ba7cc725e2b6f4e24f18de81d32a687d538cc0a480b09f4938454927"
+    }
+  ]
+}

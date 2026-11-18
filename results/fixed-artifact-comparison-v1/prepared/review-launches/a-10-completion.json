@@ -1,0 +1,7 @@
+{
+  "schema": "fixed-artifact-review-completion.v1",
+  "intent_sha256": "3e5f1a50837f20c2fb6c7a128060fddf26b3daf745a88df9d2e07122577d0436",
+  "agent_task": "/root/fixed_prose_10a",
+  "status": "completed",
+  "completed_at_utc": "2026-11-18T20:47:11.141896+00:00"
+}

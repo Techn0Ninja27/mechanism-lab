@@ -1,0 +1,131 @@
+{
+  "schema": "record-review-evidence-references.v1",
+  "opaque_id": "sni-4",
+  "record_metadata": {
+    "record_id": "sni-4",
+    "source_id": "sni-method",
+    "representation_schema": "chunk-grounded-distillations.v1",
+    "evidence_chunk_ids": [
+      "sni-method:chunk:0005"
+    ],
+    "source_pack_digest": "ba6909f189498cce1e90c4d6b7cf2c5674b5ffd726da28496209716129842dae"
+  },
+  "fields": [
+    {
+      "field_id": "F000",
+      "field": "summary",
+      "value": "Theoretical analysis: if the second-order difference of embeddings is bounded by epsilon, the predictor error is at most (1/2)(Delta t)^2 epsilon. The resulting gradient error is bounded by rho C^2 B^2 (p+CB) epsilon_H. Under the stated assumptions and learning rate, non-convex SGD is claimed to attain an O(1/sqrt(N)) rate; the analysis is presented only through proof sketches.",
+      "is_unknown": false
+    },
+    {
+      "field_id": "F001",
+      "field": "unknowns[0]",
+      "value": "Full proofs are not included in the chunk.",
+      "is_unknown": true
+    },
+    {
+      "field_id": "F002",
+      "field": "unknowns[1]",
+      "value": "Whether the bounded second-order difference assumption holds empirically is not established here.",
+      "is_unknown": true
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "E0000",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 0,
+      "end": 300,
+      "text": "Decay accumulators: $\\gamma\\leftarrow e^{-\\lambda\\Delta}$ ; $N[i]\\!\\leftarrow\\!\\gamma N[i]$ ; $D[i]\\!\\leftarrow\\!\\gamma D[i]$ .\n(g)\nNew slope: $s_{new}\\leftarrow(x^{new}-x^{last}[i])/\\max(\\Delta,\\varepsilon)$ .\n(h)\nUpdate accumulators: $N[i]\\!\\leftarrow\\!N[i]+s_{new}$ ; $D[i]\\!\\leftarrow\\!D[i]+1$ .\n"
+    },
+    {
+      "evidence_id": "E0001",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 250,
+      "end": 550,
+      "text": "row\\!N[i]+s_{new}$ ; $D[i]\\!\\leftarrow\\!D[i]+1$ .\n(i)\nUpdate last: $x^{last}[i]\\!\\leftarrow\\!x^{new}$ ; $t^{last}[i]\\!\\leftarrow\\!t$ .\n(j)\nOutput $x^{pred}$ for node $i$ .\nIV-D Theoretical Analysis\nWe analyze the convergence of SNI-GNN by bounding the prediction error and its impact on gradients.\nWe"
+    },
+    {
+      "evidence_id": "E0002",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 500,
+      "end": 800,
+      "text": "e prediction error and its impact on gradients.\nWe assume standard bounds: $N$ nodes, dimension $d$ , weight matrices bounded by $C$ , and adjacency blocks bounded by $B$ . The loss $\\mathcal{L}$ and activations are $\\rho$ -smooth/Lipschitz.\nTheorem IV.1 (Prediction Error).\nIf the second-order diffe"
+    },
+    {
+      "evidence_id": "E0003",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 750,
+      "end": 1050,
+      "text": "IV.1 (Prediction Error).\nIf the second-order difference of embeddings is bounded by $\\|H^{(t)}-2H^{(t-1)}+H^{(t-2)}\\|_{\\infty}\\leq\\epsilon$ , the linear-trend predictor error satisfies:\n$\\|\\hat{H}^{(t)}-H^{(t)}\\|_{\\infty}\\leq\\tfrac{1}{2}(\\Delta t)^{2}\\epsilon=:\\epsilon_{H},$\nwhere $\\Delta t\\leq s$ i"
+    },
+    {
+      "evidence_id": "E0004",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1000,
+      "end": 1300,
+      "text": "}\\epsilon=:\\epsilon_{H},$\nwhere $\\Delta t\\leq s$ is the staleness.\nProof Sketch.\nApproximating $H^{(t)}$ via a second-order Taylor expansion around $\\tau_{\\text{latest}}$ , the linear predictor captures the first-order trend ( $\\bar{h}\\approx H^{(\\tau)}$ , $\\Phi\\approx H^{\\prime(\\tau)}$ ). The error"
+    },
+    {
+      "evidence_id": "E0005",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1250,
+      "end": 1550,
+      "text": "u)}$ , $\\Phi\\approx H^{\\prime(\\tau)}$ ). The error is thus dominated by the second-order term $\\frac{1}{2}(\\Delta t)^{2}H^{\\prime\\prime(\\tau)}$ , bounded by $\\epsilon$ .\n∎\nNext, we bound how this error propagates to gradients. Let $p$ be the maximum communicating workers.\nLemma IV.2 (Gradient Error "
+    },
+    {
+      "evidence_id": "E0006",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1500,
+      "end": 1800,
+      "text": "communicating workers.\nLemma IV.2 (Gradient Error Bound).\nThe gradient estimation error is bounded by:\n$\\|\\nabla\\hat{\\mathcal{L}}-\\nabla\\mathcal{L}\\|_{\\infty}\\leq K:=\\rho C^{2}B^{2}(p+CB)\\epsilon_{H}.$\nProof Sketch.\nUsing the triangle inequality and sub-multiplicativity on the GNN aggregation $T^{(l"
+    },
+    {
+      "evidence_id": "E0007",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 1750,
+      "end": 2050,
+      "text": "sub-multiplicativity on the GNN aggregation $T^{(l)}=\\sum AH$ , the feature error bounds are $\\|\\hat{T}-T\\|_{\\infty}\\leq pCB\\epsilon_{H}$ and $\\|\\hat{Z}-Z\\|_{\\infty}\\leq C^{2}B^{2}\\epsilon_{H}$ . Since backpropagation distributes these errors linearly through $\\rho$ -Lipschitz components, the gradie"
+    },
+    {
+      "evidence_id": "E0008",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 2000,
+      "end": 2300,
+      "text": "y through $\\rho$ -Lipschitz components, the gradient difference is bounded by $K$ .\n∎\nTheorem IV.3 (Convergence).\nWith learning rate $\\eta=\\min\\{\\frac{1}{\\rho},\\frac{1}{\\sqrt{N}}\\}$ , non-convex SGD with SNI-GNN satisfies:\n$\\min_{t}\\mathbb{E}[\\|\\nabla\\mathcal{L}(W_{t})\\|_{F}^{2}]\\leq\\frac{2(\\mathcal"
+    },
+    {
+      "evidence_id": "E0009",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 2250,
+      "end": 2550,
+      "text": "a\\mathcal{L}(W_{t})\\|_{F}^{2}]\\leq\\frac{2(\\mathcal{L}_{0}-\\mathcal{L}^{*})+\\rho K}{\\sqrt{N}}=O(1/\\sqrt{N}).$\nProof Sketch.\nThis follows from standard SGD analysis with inexact gradients [24]. The gradient bias $K$ is constant; setting sync interval $s=O(N^{-1/4})$ ensures the error term $\\epsilon_{H"
+    },
+    {
+      "evidence_id": "E0010",
+      "chunk_id": "sni-method:chunk:0005",
+      "start": 2500,
+      "end": 2623,
+      "text": "s=O(N^{-1/4})$ ensures the error term $\\epsilon_{H}\\propto s^{2}$ does not dominate the $O(1/\\sqrt{N})$ convergence rate.\n∎"
+    }
+  ],
+  "packet_sha256": "d1c1442425025248d69d09e85aa05fda771538d437a2a70cbfca89990f2f084f",
+  "review_output_contract": {
+    "fields": "field_id, verdict, reason, evidence_ids, optional claim_assessments",
+    "forbidden": [
+      "field",
+      "value",
+      "quote",
+      "chunk_id",
+      "hash",
+      "metadata"
+    ]
+  },
+  "review_context": {
+    "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+    "kind": "distillations",
+    "draw": 0,
+    "slot": "a",
+    "record_index": 3
+  }
+}

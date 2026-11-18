@@ -1,0 +1,103 @@
+{
+  "schema": "fixed-artifact-independent-audit.v1",
+  "status": "passed",
+  "reviewer": "Claude",
+  "date": "2026-11-19",
+  "reviewed_commit": "247410d609e2f740290acf1012010b0f98f1b2ca",
+  "plan_sha256": "5536303877bde4b75bf6f36b3159bf5363d32eda15db2cf80df4f9dc46f9cbe3",
+  "execution_freeze_sha256": "d7cd3ba8e10f4688f9f643994f4865318a4f0f69e8db4f9da9081d468e07c5d1",
+  "scope": "Integrity clearance only: bindings, prompts, guards, budget and crash behaviour of the frozen plan. Not a claim about fidelity, novelty, usefulness, or the truth of any prepared record.",
+  "basis": {
+    "full_audit_commit": "f305d87777ddcfe71df9bf109ee87301402320d0",
+    "full_audit_plan_sha256": "eaab652f840057895b8ec326b86345ecd751e731cdfb42ce91521d36ecc37aa3",
+    "full_audit_execution_freeze_sha256": "0265081cb9be1917146ec7606f2240908b7474ac41ea4559d0919713f7452ce1",
+    "full_audit_reports": {
+      "plan_prompt_receipt": {
+        "path": "reports/generation-comparison-review-claude-v1/fixed-artifact-plan-receipt-f305d87.json",
+        "sha256": "9dc59053500950b323320fae6ddb0570ffdaf9e1b26679fd3ba08d3d301ebe0f"
+      },
+      "lifecycle_audit_notes": {
+        "path": "reports/generation-comparison-review-claude-v1/campaign2-lifecycle-audit-042286f.md",
+        "sha256": "2a803cacb794a0c786dee66614a170525ae8e6165f262824f79bf9f126451f5c",
+        "note": "earlier passes; the fixed-artifact guard/budget/crash audit was reported to Codex by message 6f1b5a1e and is summarised in checks below"
+      }
+    },
+    "delta_verified_by_reviewer_directly": [
+      "HEAD equals reviewed_commit; no tracked file modified",
+      "plan and execution-freeze sha256 recomputed from the canonical directory equal the values above",
+      "execution freeze differs from the f305d87 freeze ONLY in plan_sha256; code_hashes, schedule, models, phase_ledger, runtime and caps are identical",
+      "plan differs from the f305d87 plan ONLY in fidelity_sha256 and the two code_hashes entries for protocol.md and atoms-fidelity.json",
+      "prompt-hashes.json identical to the f305d87 snapshot",
+      "atoms-fidelity.json now embeds independent_model_adjudication with source path and sha256, human_adjudicated false",
+      "canonical directory contains no calls, receipts, prepared prose, inventory or audit files",
+      "phase ledger cap 30.0 with 48 reservations and no entry for this campaign"
+    ]
+  },
+  "checks": [
+    {
+      "id": "identity_and_bindings",
+      "result": "pass",
+      "evidence": "all 44 bound hashes recomputed at f305d87; plan verification failed for each of 16 single alterations on a scratch copy"
+    },
+    {
+      "id": "atom_artifact_provenance",
+      "result": "pass",
+      "evidence": "bytes equal campaign-2 draw 0 on disk, its draw record and outcome record; re-validating the call content reproduces the file"
+    },
+    {
+      "id": "prose_preparation_prompt",
+      "result": "pass",
+      "evidence": "byte-identical to the campaign-2 prose prompt previously receipted; 24 of 24 validator rules stated; 0 forbidden-pattern hits; 0 of 1,342 fragments from 45 result documents"
+    },
+    {
+      "id": "generation_prompts",
+      "result": "pass",
+      "evidence": "committed builder reproduces task-only, raw and atoms prompts byte for byte; task block identical across conditions and decoders; atoms body is the 12 unchanged records with no flags or verdicts"
+    },
+    {
+      "id": "decision_classifier",
+      "result": "pass",
+      "evidence": "per-decoder labels and cross-decoder mapping confirmed on synthetic counts"
+    },
+    {
+      "id": "atoms_fidelity_table",
+      "result": "pass",
+      "evidence": "65 fields, 12 unknowns, 6 flagged by either reviewer, 2 by both, 23 of 24 valid reviews recomputed from the review files; adjudication now embedded and labelled a model reading"
+    },
+    {
+      "id": "paid_path_guards",
+      "result": "pass",
+      "evidence": "no receipt, mismatched receipt, failed status, non-canonical copy, symlinked canonical path, edited plan or freeze, generate before prepare: zero transport calls each; preview never loads the key"
+    },
+    {
+      "id": "budget",
+      "result": "pass",
+      "evidence": "reservation reproduced: 24.8005002 of 24.85 campaign and 29.9422518 of 30.00 phase; per-call preflight stops at first call and mid-schedule; over-cap post-prose bound stops before generation; full reservation retained; overcharge raises ledger and stops"
+    },
+    {
+      "id": "crash_and_failure",
+      "result": "pass",
+      "evidence": "real process kills at each boundary of the preparation call and of early and late generation calls: no request resent in any scenario; completed prefix preserved; fabricated or copied receipts rejected"
+    },
+    {
+      "id": "prose_invalid_branch",
+      "result": "pass",
+      "evidence": "invalid prose retains raw bytes, leaves all 192 slots unattempted, one transport call total"
+    },
+    {
+      "id": "schedule",
+      "result": "pass",
+      "evidence": "every block of 8 calls covers each decoder and arm once; decoder requests for an arm differ only in model and max_price"
+    }
+  ],
+  "limitations": [
+    "No real provider was contacted. Acceptance of reasoning effort low under required parameters, presence of usage cost and token counts, the returned model string, finish_reason values and own-key routing are confirmed only by the first paid receipt; a mismatch stops the campaign with one preparation reservation charged.",
+    "The audit receipt mechanism is two unsigned JSON files. It is integrity evidence against accident, not a security boundary: a consistent hand-written pair, or direct use of the low-level client, reaches the transport.",
+    "Tests noticed 10 of 27 guard removals at f305d87; every guard was reproduced working, but most are not protected against later edits. Three regression tests were added at the reviewed commit and were not re-audited by mutation.",
+    "The full guard, budget and crash audit ran at f305d87. The reviewed commit differs in protocol text, the fidelity table, a revision record and tests; production code hashes are identical, verified by comparing the two execution freezes.",
+    "Headroom is checked, not reserved in the ledger: another spender on the shared phase ledger during the run would trip the per-call preflight.",
+    "Not covered until they exist: the real prose artifact, the real prose generation prompt, the prose fidelity table.",
+    "Fidelity flags are reviewer outputs and the adjudication is a model reading; neither is ground truth. Reviewer independence is declared, not evidenced.",
+    "Four of five sources are abstracts; one preparation draw per representation; results will concern these two artifacts, this benchmark and these two decoders only."
+  ]
+}
