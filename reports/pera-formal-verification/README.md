@@ -120,3 +120,11 @@ The arXiv record retrieved on 18 November 2026 lists v1 only. Our correction is
 explicitly version-scoped. No messages were sent to the authors. No model
 weights, datasets or paid inference calls were needed; shared API spending
 remains **$4.8168796 of $20**.
+
+## Author-review draft
+
+A subsequent [public-record check](../pera-author-submission/prior-check.md) found
+that the final ACL version retains the same bound, with no prior public correction
+found in the inspected sources. A concise [email draft](../pera-author-submission/email-draft.md)
+and [technical note](../pera-author-submission/technical-note.md) are prepared.
+Nothing has been sent; no priority claim is made.
