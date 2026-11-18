@@ -1,0 +1,63 @@
+{
+  "schema": "gnn-closedloop-confirm-freeze.v1",
+  "config": {
+    "seeds": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ],
+    "arms": [
+      "G1",
+      "hold",
+      "sni",
+      "lag1"
+    ],
+    "regimes": {
+      "negative_control": {
+        "parts": 4,
+        "layers": 2,
+        "lr_drop": false,
+        "sync": 4,
+        "lag1_coef": [
+          0.95
+        ]
+      },
+      "moderate_lead": {
+        "parts": 4,
+        "layers": 3,
+        "lr_drop": false,
+        "sync": 16,
+        "lag1_coef": [
+          0.8,
+          0.9
+        ]
+      }
+    },
+    "window_cycles": 2,
+    "rule": {
+      "min_points": 0.5,
+      "min_se_multiple": 2.0
+    }
+  },
+  "sha256": {
+    "operator-studies/gnn-closedloop-confirm/confirm.py": "c27c7e8d4b459d5cd69a261e20fb0d2ef3f60e21a0bcd50a78d22c1ff4dbcbf7",
+    "operator-studies/gnn-closedloop-confirm/test_confirm.py": "5b155781bc87e14abdf3285a19fa0d0dbc081cb25f93367ca62aa5b4b6735b94",
+    "operator-studies/gnn-closedloop-confirm/PLAN.md": "2111f48eae7f535c9042cd5464bdef912584684b0d071e39da9f053c159f4009",
+    "operator-studies/gnn-closedloop-gap/gap.py": "af08e6991bc751c9a7912962b8261d504218ce6e8928ab6f458089f8b6d955e6",
+    "operator-studies/gnn-closedloop-gap/freeze.json": "b62a38a09de02887b031b831a18f715d513612a2017334d924b02be328cae22b",
+    "operator-studies/gnn-closedloop-gap/results/raw.json": "16357af683df65e69fb8e6ebb55423278b34795957f953403a55166eca9b3858",
+    "operator-studies/gnn-sync-gate/screen.py": "701934659483f7e202797054265e5c2fde30ed50a24a6347046b783d37b074c0",
+    "results/gnn-sync-gate-v1/data/cora.content": "b8ebed0fd45e53995abafd1b70cf6a9fcc8f86abc5826d69b97fe6ca46e9c8ee",
+    "results/gnn-sync-gate-v1/data/cora.cites": "ec1a372391b7f0f60a6aff0084e8abd8f19f0faa7e1f2441a41c492042d5945e"
+  },
+  "versions": {
+    "torch": "2.15.0",
+    "numpy": "2.5.4",
+    "python": "3.12.14"
+  }
+}

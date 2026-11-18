@@ -1,0 +1,24 @@
+{
+  "schema": "gnn-confirmation-interpretation.v1",
+  "status": "allocation_signal_not_scientific_confirmation",
+  "source_summary_sha256": "5082846ce563a87730eb388043d983abf6723a53c6de98c29d9595a8f2da3a57",
+  "source_raw_sha256": "427a07b07213010c60467109bd36f32080069bcd787131a6d79eec4507d9becd",
+  "primary_mean_points": 2.708202856592834,
+  "primary_se_points": 1.186878376383117,
+  "primary_pointwise_ci95_points": [
+    -0.09828975220268799,
+    5.514695465388356
+  ],
+  "allocation_rule_passed": true,
+  "primary_positive_at_pointwise_95": false,
+  "historical_label": "lead_confirmed_exact_forward means only >0.5 points and >2 SE; it is not a 95% confirmation flag.",
+  "scope": "Eight fresh seeds in one selected Cora regime; fixed comparison, pointwise interval, no new ML method.",
+  "limitations": [
+    "The interval is not a simultaneous or equivalence bound.",
+    "Own-forward versus exact-forward difference is a descriptive evaluation decomposition, not a causal attribution.",
+    "Unclamped extrapolators were tested; projection and bounded forecasts remain missing controls."
+  ],
+  "auto_execute": false,
+  "train_eligible": false,
+  "novelty_established": false
+}

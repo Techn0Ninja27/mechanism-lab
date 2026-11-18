@@ -225,6 +225,55 @@ def _closedloop_metrics(root: Path, record: dict[str, Any], warnings: list[str])
     return primary, secondary
 
 
+def _closedloop_confirmation_metrics(root: Path, record: dict[str, Any], warnings: list[str]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Project the bounded interval interpretation of the confirmation follow-up."""
+    if record.get("id") != "gnn-closedloop-confirm-v1":
+        return {}, {}
+    raw = _read(root / record["result_path"], None)
+    if not isinstance(raw, dict) or raw.get("schema") != "gnn-confirmation-interpretation.v1":
+        warnings.append("gnn-closedloop-confirm-v1: result schema is missing or malformed")
+        return {}, {}
+
+    def finite(value: Any, label: str) -> float | None:
+        try:
+            valid = not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(float(value))
+        except (ValueError, OverflowError):
+            valid = False
+        if not valid:
+            warnings.append(f"gnn-closedloop-confirm-v1: invalid numeric metric {label}")
+            return None
+        return float(value)
+
+    mean = finite(raw.get("primary_mean_points"), "primary_mean_points")
+    interval = raw.get("primary_pointwise_ci95_points")
+    if (not isinstance(interval, list) or len(interval) != 2):
+        warnings.append("gnn-closedloop-confirm-v1: confidence interval is malformed")
+        return {}, {}
+    low, high = finite(interval[0], "primary_pointwise_ci95_points[0]"), finite(interval[1], "primary_pointwise_ci95_points[1]")
+    if mean is None or low is None or high is None or low > high or not low <= mean <= high:
+        warnings.append("gnn-closedloop-confirm-v1: confidence interval does not contain the mean")
+        return {}, {}
+    for field in ("auto_execute", "train_eligible", "novelty_established"):
+        if type(raw.get(field)) is not bool or raw[field] is not False:
+            warnings.append(f"gnn-closedloop-confirm-v1: safety field {field} is not false")
+            return {}, {}
+    expected_positive = low > 0
+    if type(raw.get("primary_positive_at_pointwise_95")) is not bool or raw["primary_positive_at_pointwise_95"] != expected_positive:
+        warnings.append("gnn-closedloop-confirm-v1: positive-at-95 flag contradicts the interval")
+        return {}, {}
+    if type(raw.get("allocation_rule_passed")) is not bool:
+        warnings.append("gnn-closedloop-confirm-v1: allocation rule flag is malformed")
+        return {}, {}
+    primary = {"mean_points": mean, "ci95_lower_points": low, "ci95_upper_points": high}
+    secondary = {
+        "scope": raw.get("scope") if isinstance(raw.get("scope"), str) else "",
+        "positive_at_pointwise_95": "yes; pointwise only" if expected_positive else "no; interval is not strictly positive",
+        "historical_label": raw.get("historical_label") if isinstance(raw.get("historical_label"), str) else "",
+        "allocation_rule_passed": raw["allocation_rule_passed"],
+    }
+    return primary, secondary
+
+
 def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
     """Expose hash-checked feedback without promoting it to evidence.
 
@@ -264,6 +313,8 @@ def _feedback_studies(root: Path) -> tuple[list[dict[str, Any]], list[str]]:
         primary_metrics, secondary_metrics = _headroom_metrics(root, record, warnings)
         if not primary_metrics:
             primary_metrics, secondary_metrics = _closedloop_metrics(root, record, warnings)
+        if not primary_metrics:
+            primary_metrics, secondary_metrics = _closedloop_confirmation_metrics(root, record, warnings)
         rows.append({
             "id": record["id"], "cohort": "experiment_feedback",
             "title": record["id"], "artifact_directory": str(Path(report).parent),

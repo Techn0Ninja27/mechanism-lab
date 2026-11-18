@@ -47,6 +47,7 @@ scientific discoveries.
 
 | Experiment | What happened | Evidence |
 |---|---|---|
+| **Check the selected regime on fresh seeds** | **64 runs:** primary gap +2.71 points, pointwise 95% interval **[-0.10, +5.51]**. The allocation rule passes, but the interval includes zero; evaluation-mode differences remain descriptive. | [Follow-up and interpretation](operator-studies/gnn-closedloop-confirm/README.md) |
 | **Check downstream staleness sensitivity** | **1,600 runs; 9/24 primary comparisons flagged after correction.** No constant-rate two-layer regime is flagged; three-layer leads remain exploratory and sensitive to evaluation semantics. | [Closed-loop grid and audit](operator-studies/gnn-closedloop-gap/README.md) |
 | **Strengthen the GNN comparator** | Tuning an existing predictor cuts development error by **29.9% / 33.6%**. This exposes an under-tuned control; it is not an engine-generated discovery or downstream accuracy gain. | [Causal predictor screen](operator-studies/gnn-predictor-headroom/README.md) |
 | **Check proposals against actual outcomes** | Seven directly tested operators (including corrected/specified variants), zero positive strong-control outcomes. Related follow-ups and unimplemented proposals are counted separately; review quality remains unvalidated. | [Outcome inventory](reports/proposal-outcome-table-v1/README.md) |

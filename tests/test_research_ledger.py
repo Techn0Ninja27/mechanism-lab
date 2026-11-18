@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 48)
+            self.assertEqual(ledger["study_count"], 49)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -116,6 +116,44 @@ class LedgerTests(unittest.TestCase):
             ledger_module._read = original
         self.assertEqual(primary, {})
         self.assertTrue(any("integrity checks" in item for item in warnings))
+
+    def test_closedloop_confirmation_projects_interval_without_promoting_it(self):
+        from scripts import export_research_ledger as ledger_module
+        record = {"id": "gnn-closedloop-confirm-v1", "result_path": "operator-studies/gnn-closedloop-confirm/results/interpretation.json"}
+        warnings = []
+        primary, secondary = ledger_module._closedloop_confirmation_metrics(ledger_module.ROOT, record, warnings)
+        self.assertEqual(warnings, [])
+        self.assertAlmostEqual(primary["mean_points"], 2.708202856592834)
+        self.assertLess(primary["ci95_lower_points"], 0)
+        self.assertGreater(primary["ci95_upper_points"], primary["mean_points"])
+        self.assertTrue(secondary["positive_at_pointwise_95"].startswith("no;"))
+        self.assertTrue(secondary["allocation_rule_passed"])
+
+    def test_closedloop_confirmation_rejects_conflicting_flags_or_nan(self):
+        from scripts import export_research_ledger as ledger_module
+        original = ledger_module._read
+        path = ledger_module.ROOT / "operator-studies/gnn-closedloop-confirm/results/interpretation.json"
+        raw = original(path, {})
+        record = {"id": "gnn-closedloop-confirm-v1", "result_path": str(path.relative_to(ledger_module.ROOT))}
+        def fake_read(candidate, default):
+            return raw if Path(candidate).resolve() == path.resolve() else original(candidate, default)
+        raw["primary_positive_at_pointwise_95"] = True
+        ledger_module._read = fake_read
+        try:
+            primary, _ = ledger_module._closedloop_confirmation_metrics(ledger_module.ROOT, record, [])
+        finally:
+            ledger_module._read = original
+        self.assertEqual(primary, {})
+        raw["primary_positive_at_pointwise_95"] = False
+        raw["primary_mean_points"] = float("nan")
+        warnings = []
+        ledger_module._read = fake_read
+        try:
+            primary, _ = ledger_module._closedloop_confirmation_metrics(ledger_module.ROOT, record, warnings)
+        finally:
+            ledger_module._read = original
+        self.assertEqual(primary, {})
+        self.assertTrue(any("invalid numeric metric" in item for item in warnings))
 
     def test_feedback_hash_mismatch_is_diagnostic_and_not_a_row(self):
         from scripts import export_research_ledger as ledger_module

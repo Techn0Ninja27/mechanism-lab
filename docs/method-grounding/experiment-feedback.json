@@ -347,6 +347,25 @@
       "result_sha256": "672d4d5013a81214bc0395d3046d84de1a9f82acd8ca41831d83d912d0b69d61",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "gnn-closedloop-confirm-v1",
+      "tested_change": "Fresh-seed evaluation-phase check: 64 runs on seeds 50\u201357. Moderate-lead primary difference is +2.708 accuracy points with a pointwise 95% interval [-0.098, 5.515]. The weaker >0.5-point and >2-SE allocation rule passes, but the interval includes zero. The legacy confirmed label is explicitly corrected in a separate interpretation artifact.",
+      "verdict": "allocation_pass_primary_interval_includes_zero",
+      "scope": "Two fixed Cora regimes and four existing controls; same-weight exact and own-forward evaluation. No new generated method.",
+      "limitations": [
+        "Pointwise interval only; not a simultaneous or equivalence bound.",
+        "Evaluation decomposition is descriptive, not a causal estimate.",
+        "Unclamped extrapolation fails here; projection and bounded forecasts remain missing controls."
+      ],
+      "report_path": "operator-studies/gnn-closedloop-confirm/README.md",
+      "result_path": "operator-studies/gnn-closedloop-confirm/results/interpretation.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "12ba29df8cea885b37bf1dbe04675d1736b9b107e13ebff34519e2f5cd1d5d9b",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
