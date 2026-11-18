@@ -1,0 +1,2011 @@
+{
+  "schema": "fixed-artifact-fidelity-table.v1",
+  "status": "descriptive",
+  "records": [
+    {
+      "record_id": "sni-predictor",
+      "index": "00",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-00.json",
+          "sha256": "bfceabd824ad127babc743d4ebf9450c834a97ded7d1274ff4180f7e5a31e215",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-00.json",
+          "sha256": "a0fbc3ea989920999d6ede2efd921d85bc4146286bb52e7072cabb9a3e510cdc",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-00.json",
+          "sha256": "99d6324b3139f62331616d43f37ae234ae50d928b4224c73af7bf6df073b2dde",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-00.json",
+          "sha256": "e63d0f0b18a13fa50f3cc0e8c477686d30181a5c497a269945daea1683e95735",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-predictor",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-predictor",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-predictor",
+          "field_id": "F002",
+          "field": "inputs[1]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-predictor",
+          "field_id": "F003",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-predictor",
+          "field_id": "F004",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-predictor",
+          "field_id": "F005",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sni-modes",
+      "index": "01",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-01.json",
+          "sha256": "f284def31e5d50d072374a97e23114c74c82834a38963bacdcd34fe473c97999",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-01.json",
+          "sha256": "5d2b0037fcea9e6b0e1d91a94a3cf7dc90aa2aa2fc4bf409176130f8d790b49d",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-01.json",
+          "sha256": "bd46c9595c59f06ce00645f62f3cca4ecd4ae8d02472e4ef43da6a4782ba80f5",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-01.json",
+          "sha256": "46cdb11e08aab63b919b235ebd904e7eb2136dd829787905bd0b279ca008cb23",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-modes",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-modes",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-modes",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-modes",
+          "field_id": "F003",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "a",
+            "b"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": true
+        },
+        {
+          "record_id": "sni-modes",
+          "field_id": "F004",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "a"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sni-sampling",
+      "index": "02",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-02.json",
+          "sha256": "846a5095bba6de2c45f923f15fd359949463b57b1bc9e877e0e9fac4e4b71814",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-02.json",
+          "sha256": "faa007cdc3b93fe720b6b523235d76134a7443e72226801cf3796eec0c3ba9dd",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-02.json",
+          "sha256": "56ced2c52e0337957a5712c7629db37add561fbacb6772c318838fcf2725a544",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-02.json",
+          "sha256": "1205e51161eda785f9561a65ae53bd43211243f6b77838e029463a33bfb72abe",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-sampling",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-sampling",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-sampling",
+          "field_id": "F002",
+          "field": "inputs[1]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-sampling",
+          "field_id": "F003",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-sampling",
+          "field_id": "F004",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-sampling",
+          "field_id": "F005",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "a"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sni-bound",
+      "index": "03",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-03.json",
+          "sha256": "ea1b7ce0960a8de8bb2a13f57acf8f8348e655d8e42d3947930d75a9b2545a2d",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-03.json",
+          "sha256": "a4cee9bb81a0cbd2e961d2b0986251db025375c2cdb960130e39ea7645a989dc",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-03.json",
+          "sha256": "5ac60f74a41eb68a11090c71d7375bcdacd47b8f23309485be479c4470f44055",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-03.json",
+          "sha256": "f88e91bc5da8a2ed7c1090fbf394a361935aeef08bd5837940e70a9e8cebb35a",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sni-bound",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F002",
+          "field": "inputs[1]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F003",
+          "field": "inputs[2]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F004",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F005",
+          "field": "outputs[1]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F006",
+          "field": "outputs[2]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F007",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F008",
+          "field": "conditions[1]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sni-bound",
+          "field_id": "F009",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "b"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sat-idea",
+      "index": "04",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-04.json",
+          "sha256": "e96e9d3b5de35655348ddfe317b7bfd624ace68e444799d5e26beaea52fad5c9",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-04.json",
+          "sha256": "1ccd72e6ba6c15e9f6fbc3e237a853cfc2d330f308dcdaa8b3c2f46ec5de4b7e",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-04.json",
+          "sha256": "495b664cce25e7a4dd67e36e2770c0632b05b18f8212ea7f0aff67598aa8e044",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-04.json",
+          "sha256": "b85086eff7ecb58b01f809f7661b1f059a9012b3130de9ac60d229b0b70db04e",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sat-idea",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-idea",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-idea",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-idea",
+          "field_id": "F003",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-idea",
+          "field_id": "F004",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sat-online",
+      "index": "05",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-05.json",
+          "sha256": "758873472eb455d3bc62bb217a349cf0c1c73c0006cc7ee5f34f424ed3bcf65b",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-05.json",
+          "sha256": "1fe7663029ca8b1519d5802aac25b718240c8c3cbcdc7eada8871ce89e68f771",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-05.json",
+          "sha256": "3dd705779187e96942a1e9f3aa4723fd4938eddcfc84851cf64f1b7cb79750ac",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-05.json",
+          "sha256": "d59d793b1c0e5aebfa3bc567cd3a3ed88fc51f8b1dd594bd4089404dc1d78284",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sat-online",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-online",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-online",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "a"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sat-online",
+          "field_id": "F003",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "fresh-cache",
+      "index": "06",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-06.json",
+          "sha256": "40a8468dc12d05ebf568c02cf02acbeed194cc28b8d37315db3e1e95de73e90a",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-06.json",
+          "sha256": "a9ff53242bd941c8e27451f492d7cccfe71a39ff05833ddcd0514f8779168906",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-06.json",
+          "sha256": "23f0ce6fb8b789fe436c706e1c2bfe5afe3105d38bde55eaede60e799756c221",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-06.json",
+          "sha256": "c1219899bbf57606193ebf052f260849901b2ac763bad524bfc7402803fbbda1",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "fresh-cache",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-cache",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-cache",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-cache",
+          "field_id": "F003",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-cache",
+          "field_id": "F004",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "fresh-policy",
+      "index": "07",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-07.json",
+          "sha256": "a447f741951d60c3f2c0360a6e0899af919f45dc0b66c9cd247f1ff696b194c5",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-07.json",
+          "sha256": "93cbca233d88f699cd2cdcf64514c6057a6cca8d76494b66d2c486605050f71f",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-07.json",
+          "sha256": "70b6857f655727baf9729ef7a397f1015ec122e4cff55b5f40bd430b6c8f9a5c",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-07.json",
+          "sha256": "999dad19a17f5151024896042289deccb17d2cb8c6bfcbb0201a2e8c50827ffc",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "fresh-policy",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-policy",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-policy",
+          "field_id": "F002",
+          "field": "inputs[1]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-policy",
+          "field_id": "F003",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-policy",
+          "field_id": "F004",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "fresh-policy",
+          "field_id": "F005",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sift-channel",
+      "index": "08",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-08.json",
+          "sha256": "276ceb24b421122baf9a80dc3f01c62d74d44a84a59a628d5064c4b6284c9376",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-08.json",
+          "sha256": "8494481eba14e3e57ee46d6e1ab216c5fd2addc92cc0961bd97185791649ec4d",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-08.json",
+          "sha256": "732a3806f29d59452aa44c99c04c7d6e3d31bee45f7845687b4117f0c8ad514c",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-08.json",
+          "sha256": "e64bda7ae672634644cd332f3bd6e1bb70f04afec069b9686b703b5653ad9a34",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sift-channel",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-channel",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-channel",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [
+            "a",
+            "b"
+          ],
+          "flagged_by_either": true,
+          "flagged_by_both": true
+        },
+        {
+          "record_id": "sift-channel",
+          "field_id": "F003",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-channel",
+          "field_id": "F004",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sift-components",
+      "index": "09",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-09.json",
+          "sha256": "13d59f4f285b88c92b371c2016b590915caa75b2652e926e81f9c5338cfecb0d",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-09.json",
+          "sha256": "e36509dc688832bbc4c55dcac534bd3979ed6ae14403c57b9ea8ddd5e33f9e7d",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-09.json",
+          "sha256": "095cc964e76658dfe7a74db443944e43db6fc42dd3781fe03a3b61cbba45fc8f",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-09.json",
+          "sha256": "42afea51f9bc3e7be9f4a31a02189002da2a24e98a03809f6d6629c2d63045b6",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sift-components",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-components",
+          "field_id": "F001",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sift-components",
+          "field_id": "F002",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    },
+    {
+      "record_id": "sancus-skip",
+      "index": "10",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-10.json",
+          "sha256": "5163a5ed833edbf2075c8962cd8a808f2622056a850804cc92abefaaf522e1f5",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-10.json",
+          "sha256": "6da0b9c39d39c6d23a5509bf80adea9f3eeccfb6c58682098157bfcfa4f463af",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-10.json",
+          "sha256": "1c774625f427a909250b8801443b0f9500e2ade86ac0a359d1a4033673c0ca53",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-10.json",
+          "sha256": "2dc884d2b5326860a338d54305fd62d558db9fa9685b5ac8c36519d9274ab2e7",
+          "status": "malformed:ValueError: supported item needs evidence"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sancus-skip",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancus-skip",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancus-skip",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancus-skip",
+          "field_id": "F003",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancus-skip",
+          "field_id": "F004",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 1,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 1,
+      "missing_or_malformed_reviews": [
+        "b"
+      ]
+    },
+    {
+      "record_id": "sancusq-quant",
+      "index": "11",
+      "inputs": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/input-11.json",
+          "sha256": "d58f15d47ab20b58800e664f0195e7009e63ff84fec6696eeed8f0dcf0818920",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/input-11.json",
+          "sha256": "75abda73717e22c4fddbfaab7cfb82ccebeee0cfcd7b58aaf7d25d966ccb7e16",
+          "status": "present"
+        }
+      },
+      "reviews": {
+        "a": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/a/review-11.json",
+          "sha256": "63a37189d020cb56e92ecf571c927e00dd5b62a78ef2208ddba0627dfe9e3113",
+          "status": "present"
+        },
+        "b": {
+          "path": "results/generation-comparison-campaign2-run/prep-draws/atoms/00/reference-slots/b/review-11.json",
+          "sha256": "5c97cd273a3448d46558b946f1a8fae52ab309fdcd810d2431d8463afc4e46d5",
+          "status": "present"
+        }
+      },
+      "fields": [
+        {
+          "record_id": "sancusq-quant",
+          "field_id": "F000",
+          "field": "statement",
+          "type": "statement",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancusq-quant",
+          "field_id": "F001",
+          "field": "inputs[0]",
+          "type": "inputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancusq-quant",
+          "field_id": "F002",
+          "field": "outputs[0]",
+          "type": "outputs",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancusq-quant",
+          "field_id": "F003",
+          "field": "conditions[0]",
+          "type": "conditions",
+          "is_unknown": false,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        },
+        {
+          "record_id": "sancusq-quant",
+          "field_id": "F004",
+          "field": "unknowns[0]",
+          "type": "unknown",
+          "is_unknown": true,
+          "valid_reviewer_slots": 2,
+          "flagged_by_slots": [],
+          "flagged_by_either": false,
+          "flagged_by_both": false
+        }
+      ],
+      "valid_reviewer_slots": 2,
+      "missing_or_malformed_reviews": []
+    }
+  ],
+  "fields": [
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F002",
+      "field": "inputs[1]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F003",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F004",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F005",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-modes",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-modes",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-modes",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-modes",
+      "field_id": "F003",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a",
+        "b"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": true
+    },
+    {
+      "record_id": "sni-modes",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F002",
+      "field": "inputs[1]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F003",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F004",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F005",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F002",
+      "field": "inputs[1]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F003",
+      "field": "inputs[2]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F004",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F005",
+      "field": "outputs[1]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F006",
+      "field": "outputs[2]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F007",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F008",
+      "field": "conditions[1]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F009",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "b"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-idea",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-idea",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-idea",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-idea",
+      "field_id": "F003",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-idea",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-online",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-online",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-online",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-online",
+      "field_id": "F003",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-cache",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-cache",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-cache",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-cache",
+      "field_id": "F003",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-cache",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F002",
+      "field": "inputs[1]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F003",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F004",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F005",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-channel",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-channel",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-channel",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a",
+        "b"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": true
+    },
+    {
+      "record_id": "sift-channel",
+      "field_id": "F003",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-channel",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-components",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-components",
+      "field_id": "F001",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-components",
+      "field_id": "F002",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-skip",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-skip",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-skip",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-skip",
+      "field_id": "F003",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-skip",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancusq-quant",
+      "field_id": "F000",
+      "field": "statement",
+      "type": "statement",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancusq-quant",
+      "field_id": "F001",
+      "field": "inputs[0]",
+      "type": "inputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancusq-quant",
+      "field_id": "F002",
+      "field": "outputs[0]",
+      "type": "outputs",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancusq-quant",
+      "field_id": "F003",
+      "field": "conditions[0]",
+      "type": "conditions",
+      "is_unknown": false,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancusq-quant",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    }
+  ],
+  "summary": {
+    "record_count": 12,
+    "field_count": 65,
+    "valid_reviewer_slots": 23,
+    "total_reviewer_slots": 24,
+    "missing_or_malformed_review_slots": 1,
+    "flagged_by_either": 6,
+    "flagged_by_both": 2,
+    "unknown_field_count": 12,
+    "unknown_flagged_by_either": 3,
+    "unknown_flagged_by_both": 0
+  },
+  "unknowns": [
+    {
+      "record_id": "sni-predictor",
+      "field_id": "F005",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-modes",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-sampling",
+      "field_id": "F005",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "a"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sni-bound",
+      "field_id": "F009",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [
+        "b"
+      ],
+      "flagged_by_either": true,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-idea",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sat-online",
+      "field_id": "F003",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-cache",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "fresh-policy",
+      "field_id": "F005",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-channel",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sift-components",
+      "field_id": "F002",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancus-skip",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 1,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    },
+    {
+      "record_id": "sancusq-quant",
+      "field_id": "F004",
+      "field": "unknowns[0]",
+      "type": "unknown",
+      "is_unknown": true,
+      "valid_reviewer_slots": 2,
+      "flagged_by_slots": [],
+      "flagged_by_either": false,
+      "flagged_by_both": false
+    }
+  ],
+  "interpretation": "Flags are reviewer measurements; neither agreement nor adjudication is formal truth. No gate or true-error claim is made.",
+  "representation_sha256": "3b44616f91f80cfb85ce5222dcb56902f9c73caacf465ac9980abd0630605a40",
+  "measurement_code_sha256": {
+    "generation/fixed_artifact_fidelity.py": "326f0c97758d65da1dfc45b29749bc500c7baa1bb1e9bc27ab1f74588910ea01",
+    "generation/reference_review_v2.py": "7c083bb4377afba87426b0c8157d10bf1a8900a5f9f217e8290782e62f267b4a",
+    "generation/evidence_reference_packets.py": "17aa22199daa288f39e9b1a4205f039ed9f9be01ce3999adbb9d504215dead29"
+  }
+}

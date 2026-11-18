@@ -51,6 +51,7 @@ class DecisionIntegrityTests(unittest.TestCase):
     def test_expected_missing_decoder_is_incomplete(self):
         result = classify_fixed_artifact(self.full(), expected_decoders=("opus", "fable"))
         self.assertEqual(result["status"], "incomplete")
+        self.assertEqual(result["cross_decoder_interpretation"], "incomplete_no_cross_decoder_comparison")
         self.assertEqual(result["per_decoder"]["fable"]["decision"], "incomplete")
 
     def test_extra_call_cannot_close(self):

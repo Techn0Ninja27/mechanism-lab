@@ -114,6 +114,6 @@ def classify_fixed_artifact(reports: Any, *, expected_slots: Mapping[str, int] =
         result["per_decoder"] = per_decoder
         return result
     return {"schema": "fixed-artifact-decision.v1", "status": "complete" if all(x["status"]=="complete" for x in per_decoder.values()) else "incomplete", "decision": "per_decoder",
-            "cross_decoder_interpretation": "same_descriptive_label" if len({x["decision"] for x in per_decoder.values()})==1 else "decoder_dependent_no_representation_reading",
+            "cross_decoder_interpretation": ("incomplete_no_cross_decoder_comparison" if any(x["status"] != "complete" for x in per_decoder.values()) else "same_label_only_not_equal_results" if len({x["decision"] for x in per_decoder.values()})==1 else "decoder_dependent_no_representation_reading"),
             "reason": "decoder results are reported separately and never pooled", "per_decoder": per_decoder,
             "auto_execute": False, "train_eligible": False, "novelty_established": False}
