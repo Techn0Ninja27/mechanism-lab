@@ -27,3 +27,11 @@ The development gap between G1 and mean-sync is about 0.58 points. This is a
 reference difference, not a ceiling: detachment, stale-state smoothing and
 optimization can change downstream accuracy in either direction. Do not claim
 that a candidate must close a fixed fraction of that gap to be useful.
+
+All generation conditions are told the primary comparator averages the last two
+observed states, without its measured performance or development results. This
+intentionally supplies a strong baseline to improve upon; it is identical across
+conditions. The random sampler description is part of the common grammar, not
+evidence of its performance. Machine-readable `closure_eligible` requires a
+complete, adequately precise primary comparison with no positives; failure or
+low precision blocks closure.

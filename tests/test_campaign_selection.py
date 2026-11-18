@@ -145,4 +145,53 @@ class CampaignSelectionTests(unittest.TestCase):
         self.assertAlmostEqual(r['secondary_metrics']['own_forward_window_vs_hold']['difference'],.1)
         self.assertAlmostEqual(r['secondary_metrics']['endpoint_exact_vs_hold']['difference'],.2)
 
+    def _control_comparison(self, inv, arms, candidate_score=.7, control_score=.6, score_by_id=None, fail_first=False):
+        inv=copy.deepcopy(inv)
+        for row,arm in zip(inv,arms): row['arm']=arm; row['call_id']=row['id']+'-call'
+        dev=[{"candidate_id":c['id'],"call_id":c['call_id'],"arm":c['arm'],"seed":s,"status":"complete","window":[{"t":1,"exact_eval":.8},{"t":2,"exact_eval":.8}]} for c in inv for s in SEEDS]
+        sel=select_development(inv,dev,expected_seeds=SEEDS,expected_window=(1,2))
+        final=[]
+        for c in inv:
+            score=(score_by_id or {}).get(c['id'],candidate_score)
+            for s in range(200,232): final.append({"candidate_id":c['id'],"call_id":c['call_id'],"arm":c['arm'],"seed":s,"status":"failed" if fail_first and s==200 else "complete","window":[{"t":1,"exact_eval":score},{"t":2,"exact_eval":score}]})
+        hold=[{"id":"__hold__","seed":s,"status":"complete","arm":"hold","window":[{"t":1,"exact_eval":.5},{"t":2,"exact_eval":.5}]} for s in range(200,232)]
+        control=[{"id":"ctrl","control_id":"ctrl","seed":s,"status":"complete","arm":"control","window":[{"t":1,"exact_eval":control_score},{"t":2,"exact_eval":control_score}]} for s in range(200,232)]
+        return final_report(inv,sel,final,hold,control_runs=control,control_id='ctrl',expected_seeds=range(200,232),expected_window=(1,2))
+
+    def test_two_distinct_atom_picks_beating_control_are_replication_candidate(self):
+        inv=[dict(INV[0],id='a',arm='atoms'),dict(INV[1],id='b',arm='atoms')]
+        out=self._control_comparison(inv,['atoms','atoms'],.7,.6)
+        self.assertTrue(out['decision']['representation_replication_candidate'])
+
+    def test_linear_control_equal_to_control_does_not_block_replication(self):
+        inv=[dict(INV[0],id='a',arm='atoms'),dict(INV[1],id='b',arm='atoms'),dict(INV[2],id='l',arm='linear-control')]
+        out=self._control_comparison(inv,['atoms','atoms','linear-control'],.7,.6,score_by_id={'l':.6})
+        self.assertTrue(out['decision']['representation_replication_candidate'])
+
+    def test_linear_control_beating_control_blocks_replication(self):
+        inv=[dict(INV[0],id='a',arm='atoms'),dict(INV[1],id='b',arm='atoms'),dict(INV[2],id='l',arm='linear-control')]
+        out=self._control_comparison(inv,['atoms','atoms','linear-control'],.8,.6)
+        self.assertFalse(out['decision']['representation_replication_candidate'])
+
+    def test_no_eligible_call_is_not_closure_without_positive_results(self):
+        inv=[dict(INV[0],id='a',arm='atoms',call_id='a-call')]
+        dev=[{"candidate_id":"a","call_id":"a-call","arm":"atoms","seed":s,"status":"failed","error":"compile"} for s in SEEDS]
+        sel=select_development(inv,dev,expected_seeds=SEEDS,expected_window=(1,2))
+        hold=[{"id":"__hold__","seed":s,"status":"complete","arm":"hold","window":[{"t":1,"exact_eval":.5},{"t":2,"exact_eval":.5}]} for s in range(200,232)]
+        out=final_report(inv,sel,[],hold,expected_seeds=range(200,232),expected_window=(1,2))
+        self.assertFalse(out['decision']['closure_eligible'])
+        self.assertTrue(out['decision']['low_precision_present'])
+
+    def test_positive_adequate_control_result_is_not_closure(self):
+        inv=[dict(INV[0],id='a',arm='atoms',call_id='a-call')]
+        out=self._control_comparison(inv,['atoms'],.8,.6)
+        self.assertFalse(out['decision']['low_precision_present'])
+        self.assertFalse(out['decision']['closure_eligible'])
+
+    def test_low_precision_control_prevents_closure_without_positive(self):
+        inv=[dict(INV[0],id='a',arm='atoms',call_id='a-call')]
+        out=self._control_comparison(inv,['atoms'],.6,.7,fail_first=True)
+        self.assertTrue(out['decision']['low_precision_present'])
+        self.assertFalse(out['decision']['closure_eligible'])
+
 if __name__=='__main__': unittest.main()
