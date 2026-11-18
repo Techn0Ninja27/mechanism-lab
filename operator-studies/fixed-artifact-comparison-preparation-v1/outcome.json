@@ -1,0 +1,33 @@
+{
+  "schema": "fixed-artifact-comparison-preparation-status.v1",
+  "status": "preparation_snapshot_before_generation",
+  "provider_is_byok": true,
+  "paid_preparation_calls": 1,
+  "prepared_records": 12,
+  "source_only_review_responses": 24,
+  "mechanically_valid_reviews": 23,
+  "malformed_reviews": 1,
+  "malformed_review_id": "a06",
+  "prose_fidelity_fields": 27,
+  "prose_unknown_fields": 15,
+  "prose_flagged_either": 1,
+  "prose_flagged_both": 0,
+  "planned_generation_calls": 48,
+  "planned_generation_slots": 192,
+  "planned_models": ["Opus", "Fable"],
+  "planned_representations": ["task-only", "raw", "atoms", "prose"],
+  "generation_calls": 0,
+  "comparison_results": 0,
+  "actual_upstream_inference_usd": 0.105936,
+  "conservative_reserve_usd": 0.3699822,
+  "novelty_established": false,
+  "train_eligible": false,
+  "scope": "This row covers preparation only; generation began after the independent content check and will be reported separately. No comparison result, usefulness result, or novelty claim.",
+  "snapshot_timing": "before_generation",
+  "preserves_stopped_campaign2": true,
+  "source_reports": [
+    "reports/fixed-artifact-comparison-v1/README.md",
+    "reports/fixed-artifact-comparison-v1/execution-status.md",
+    "reports/fixed-artifact-comparison-v1/atoms-fidelity.json"
+  ]
+}

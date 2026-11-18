@@ -11,7 +11,7 @@ class LedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             out = Path(d) / "ledger.json"
             ledger = export(out)
-            self.assertEqual(ledger["study_count"], 54)
+            self.assertEqual(ledger["study_count"], 55)
             rows = {x["id"]:x for x in ledger["studies"]}
             for sid in ("pera-algebra-diagnostic-v2", "pera-author-layer-probe-v1", "pera-rank-counterexample-v1", "pera-lean-formal-verification-v1", "pera-usefulness-comparison-v2"):
                 self.assertIn(sid, rows)
@@ -52,6 +52,24 @@ class LedgerTests(unittest.TestCase):
             self.assertAlmostEqual(stopped["secondary_metrics"]["campaign_charge_usd"], 0.106524)
             self.assertFalse(stopped["novelty_established"])
             self.assertFalse(stopped["evidence"]["train_eligible"])
+            preparation = rows["fixed-artifact-comparison-preparation-v1"]
+            self.assertEqual(preparation["raw_verdict"], "preparation_snapshot_before_generation")
+            self.assertEqual(preparation["primary_metrics"]["prepared_records"], 12.0)
+            self.assertEqual(preparation["primary_metrics"]["mechanically_valid_reviews"], 23.0)
+            self.assertEqual(preparation["primary_metrics"]["malformed_reviews"], 1.0)
+            self.assertEqual(preparation["primary_metrics"]["prose_fidelity_fields"], 27.0)
+            self.assertEqual(preparation["primary_metrics"]["prose_unknown_fields"], 15.0)
+            self.assertEqual(preparation["primary_metrics"]["prose_flagged_either"], 1.0)
+            self.assertEqual(preparation["secondary_metrics"]["prose_flagged_both"], 0.0)
+            self.assertEqual(preparation["secondary_metrics"]["planned_generation_calls"], 48.0)
+            self.assertEqual(preparation["secondary_metrics"]["planned_generation_slots"], 192.0)
+            self.assertEqual(preparation["secondary_metrics"]["generation_calls"], 0.0)
+            self.assertEqual(preparation["secondary_metrics"]["comparison_results"], 0.0)
+            self.assertAlmostEqual(preparation["secondary_metrics"]["actual_upstream_inference_usd"], 0.105936)
+            self.assertAlmostEqual(preparation["secondary_metrics"]["conservative_reserve_usd"], 0.3699822)
+            self.assertFalse(preparation["novelty_established"])
+            self.assertFalse(preparation["evidence"]["train_eligible"])
+            self.assertIn("preparation only", preparation["limitations"][0])
 
     def test_hash_checked_feedback_is_read_only_and_non_promotional(self):
         rows = {x["id"]: x for x in build_ledger()["studies"]}

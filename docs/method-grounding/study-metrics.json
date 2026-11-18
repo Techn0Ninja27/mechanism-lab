@@ -150,6 +150,30 @@
           ]
         }
       }
+    },
+    "fixed-artifact-comparison-preparation-v1": {
+      "result_sha256": "4e894f1b565b67d5366867842b53d9a32f1c5a7d11f3bda8fc24127acc86fd64",
+      "metric_paths": {
+        "primary": {
+          "paid_preparation_calls": ["paid_preparation_calls"],
+          "prepared_records": ["prepared_records"],
+          "source_only_review_responses": ["source_only_review_responses"],
+          "mechanically_valid_reviews": ["mechanically_valid_reviews"],
+          "malformed_reviews": ["malformed_reviews"],
+          "prose_fidelity_fields": ["prose_fidelity_fields"],
+          "prose_unknown_fields": ["prose_unknown_fields"],
+          "prose_flagged_either": ["prose_flagged_either"]
+        },
+        "secondary": {
+          "prose_flagged_both": ["prose_flagged_both"],
+          "planned_generation_calls": ["planned_generation_calls"],
+          "planned_generation_slots": ["planned_generation_slots"],
+          "generation_calls": ["generation_calls"],
+          "comparison_results": ["comparison_results"],
+          "actual_upstream_inference_usd": ["actual_upstream_inference_usd"],
+          "conservative_reserve_usd": ["conservative_reserve_usd"]
+        }
+      }
     }
   }
 }

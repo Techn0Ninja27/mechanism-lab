@@ -465,6 +465,26 @@
       "result_sha256": "56085fcfb689122de3e9f6532e8e880297d2d9eb3a6dc753e3507e2d0c1b2e24",
       "train_eligible": false,
       "novelty_established": false
+    },
+    {
+      "id": "fixed-artifact-comparison-preparation-v1",
+      "tested_change": "Validated one BYOK prose-preparation request and recorded descriptive source-only reviews for the fixed-artifact comparison before generation began.",
+      "verdict": "preparation_snapshot_before_generation",
+      "scope": "Twelve prepared records; 24 source-only review responses, 23 mechanically valid and malformed review a06; prose fidelity has 27 fields, 15 unknowns, one either flag and zero both flags. The comparison plans 48 calls and 192 slots but has no generation or comparison result.",
+      "limitations": [
+        "This row covers preparation only; generation began after the independent content check and will be reported separately.",
+        "No usefulness, representation-performance, training, source-truth or novelty result exists.",
+        "The actual upstream inference charge ($0.105936) and conservative reservation ($0.3699822) are accounting fields, not comparison outcomes.",
+        "The stopped Campaign 2 preparation attempt remains preserved and is not reopened or overwritten."
+      ],
+      "report_path": "operator-studies/fixed-artifact-comparison-preparation-v1/README.md",
+      "result_path": "operator-studies/fixed-artifact-comparison-preparation-v1/outcome.json",
+      "source_urls": [
+        "https://arxiv.org/abs/2608.06441"
+      ],
+      "result_sha256": "4e894f1b565b67d5366867842b53d9a32f1c5a7d11f3bda8fc24127acc86fd64",
+      "train_eligible": false,
+      "novelty_established": false
     }
   ]
 }
