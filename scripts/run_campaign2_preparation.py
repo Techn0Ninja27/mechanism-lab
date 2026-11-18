@@ -8,6 +8,7 @@ from pathlib import Path
 from scripts import generate_causal_campaign2 as c
 from generation import campaign_journal as journal
 from generation.api_budget import BudgetLedger
+from generation import reference_draw_reviews as reference_reviews
 
 MAX_DRAWS = 3
 KINDS = ('atoms', 'distillations')
@@ -29,6 +30,58 @@ def _transaction(out,name,values=None,existing=(),**payload):
     artifacts.update({str(path.relative_to(out)):path.read_bytes() for path in existing})
     return journal.commit_event(out,name,payload,artifacts,anchor=_anchor(out),chain_id=_chain(out))
 def _event(out,name,paths,**payload):return _transaction(out,name,existing=paths,**payload)
+
+def _reference_root(out, kind, index):
+    return _draw_dir(out, kind, index) / 'reference-slots'
+
+def export_reference_review_sets(out, kind, index):
+    """Create the two immutable, record-isolated reviewer packet sets.
+
+    This is an offline preparation step. It never calls a model and does not
+    alter the legacy readiness guard.
+    """
+    _draw_dir(Path(out), kind, index)
+    with _locked(out) as (out, pack):
+        draw = _draw_dir(out, kind, index)
+        value, _ = _validate_draw(out, kind, index, pack)
+        root = _reference_root(out, kind, index)
+        if root.exists():
+            raise FileExistsError('reference review packets already exported')
+        import tempfile
+        artifacts = {}
+        with tempfile.TemporaryDirectory() as temp:
+            for slot in ('a', 'b'):
+                scratch = Path(temp) / slot
+                reference_reviews.build_review_set(scratch, plan_sha256=c.sha(out/'plan.json'),
+                    kind=kind, draw=index, slot=slot, pack=pack, representation=value)
+                for path in scratch.iterdir():
+                    artifacts[str((root/slot/path.name).relative_to(out))] = path.read_bytes()
+        journal.commit_event(out, 'reference_packets_exported', {'kind':kind,'draw':index},
+            artifacts, anchor=_anchor(out), chain_id=_chain(out))
+        return {'kind': kind, 'draw': index,
+                'slots': [str((root / slot).relative_to(out)) for slot in ('a', 'b')]}
+
+def _reference_pair(out, kind, index, pack, value):
+    root = _reference_root(out, kind, index)
+    if not root.is_dir():
+        return None
+    plan_hash = c.sha(out / 'plan.json')
+    materialized = []
+    for slot in ('a', 'b'):
+        slot_dir = root / slot
+        raw = sorted(slot_dir.glob('review-*.json'))
+        if len(raw) != 12:
+            raise ValueError('reference review set requires twelve raw outputs per slot')
+        review = reference_reviews.materialize_review(slot_dir,
+            plan_sha256=plan_hash, kind=kind, draw=index, slot=slot,
+            pack=pack, representation=value, reviewer_id=f'reference-{slot}')
+        out_path = slot_dir / 'materialized-review.json'
+        if out_path.exists() and _read(out_path) != review:
+            raise ValueError('reference materialization changed')
+        materialized.append(review)
+    combined = reference_reviews.combine_reviews(materialized[0], materialized[1],
+                                                  plan_sha256=plan_hash, kind=kind, draw=index)
+    return materialized, combined
 
 def _recover_interrupted_draws(out, pack):
     """Reconcile a draw whose paid call finished before draw_completed was logged.
@@ -155,6 +208,13 @@ def _decision(out,kind,index,pack):
     draw=_draw_dir(out,kind,index);decision=_read(draw/'decision.json')
     value,meta=_validate_draw(out,kind,index,pack)
     paths=[draw/'review-a.json',draw/'review-b.json']
+    reference_pair = _reference_pair(out, kind, index, pack, value)
+    if reference_pair is not None:
+        materialized, combined = reference_pair
+        expected_hashes = [c.sha(draw / 'reference-slots' / slot / 'materialized-review.json') for slot in ('a', 'b')]
+        if decision.get('draw_sha256') != c.sha(draw/'draw.json') or decision.get('review_sha256') != expected_hashes or decision.get('combined') != combined:
+            raise ValueError('recorded reference decision or review changed')
+        return decision, value, meta
     if decision.get('draw_sha256')!=c.sha(draw/'draw.json') or decision.get('review_sha256')!=[c.sha(p) for p in paths]:
         raise ValueError('recorded decision or review changed')
     review_values=[_read(p) for p in paths]
@@ -216,7 +276,22 @@ def record_review(out,kind,index):
             return existing
         draw=_draw_dir(out,kind,index)
         value,meta=_validate_draw(out,kind,index,pack)
-        if (draw/'decision.json').exists():
+        reference_pair = _reference_pair(out, kind, index, pack, value)
+        if reference_pair is not None:
+            materialized, combined = reference_pair
+            paths = [draw / 'reference-slots' / slot / 'materialized-review.json' for slot in ('a', 'b')]
+            if (draw / 'decision.json').exists():
+                decision, _, _ = _decision(out, kind, index, pack)
+            else:
+                decision={'kind':kind,'draw':index,'draw_sha256':c.sha(draw/'draw.json'),
+                          'review_paths':[str(p.relative_to(out)) for p in paths],
+                          'review_sha256':[journal.sha256_bytes(_bytes(r)) for r in materialized], 'combined':combined,
+                          'review_schema':'reference-dual-draw-review.v1'}
+                values={draw/'decision.json':decision, **dict(zip(paths,materialized))}
+                raw_paths=[p for slot in ('a','b') for p in (draw/'reference-slots'/slot).glob('review-*.json')]
+                _transaction(out,'review_decided',values, existing=raw_paths,
+                             kind=kind,draw=index,review_schema='reference-dual-draw-review.v1')
+        elif (draw/'decision.json').exists():
             decision,_,_=_decision(out,kind,index,pack)
         else:
             paths=[draw/'review-a.json',draw/'review-b.json']
@@ -253,7 +328,8 @@ def select_pair(out):
             representations[kind]={'status':'validated','path':str(target.relative_to(out)),'sha256':journal.sha256_bytes(_bytes(values[target])),
                                    'call_path':meta['call_path'],'call_sha256':meta['call_sha256']}
             for p,h,r in zip(meta['review_paths'],meta['review_hashes'],meta['reviewers']):
-                reviews.append({'kind':kind,'path':p,'sha256':h,'reviewer_id':r['reviewer_id'],'artifact_sha256':r['artifact_sha256']})
+                reviews.append({'kind':kind,'path':p,'sha256':h,'reviewer_id':r['reviewer_id'],
+                                'artifact_sha256':r.get('artifact_sha256', r.get('sha256'))})
             receipts.append({'kind':kind,'draw':meta['draw'],'call_path':meta['call_path'],'call_sha256':meta['call_sha256'],
                              'representation_sha256':meta['representation_sha256']})
         values[out/'preparation-result.json']={'schema':'causal-generation-campaign2-preparation.v1','status':'ready',
@@ -268,11 +344,11 @@ def select_pair(out):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
     p.add_argument('--kind',choices=KINDS);p.add_argument('--draw',type=int)
-    action=p.add_mutually_exclusive_group(required=True);action.add_argument('--execute',action='store_true');action.add_argument('--record-review',action='store_true');action.add_argument('--select-pair',action='store_true')
+    action=p.add_mutually_exclusive_group(required=True);action.add_argument('--execute',action='store_true');action.add_argument('--record-review',action='store_true');action.add_argument('--export-reference',action='store_true');action.add_argument('--select-pair',action='store_true')
     a=p.parse_args()
     if a.select_pair:r=select_pair(a.output)
     else:
         if a.kind is None or a.draw is None:p.error('kind and draw required')
-        r=(execute_draw if a.execute else record_review)(a.output,a.kind,a.draw)
+        r=(execute_draw if a.execute else export_reference_review_sets if a.export_reference else record_review)(a.output,a.kind,a.draw)
     print(json.dumps({'status':r.get('status'),'kind':r.get('kind'),'draw':r.get('draw')},indent=2))
 if __name__=='__main__':main()

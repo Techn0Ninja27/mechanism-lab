@@ -68,6 +68,9 @@ def _deps() -> dict[str, str]:
              "reports/generation-comparison-campaign2/reviewer-instructions.md",
              "generation/campaign2_decisions.py", "scripts/run_causal_campaign.py",
              "generation/campaign_journal.py", "generation/field_calibration_scoring.py",
+             "generation/evidence_reference_packets.py", "generation/record_review_packets.py",
+             "generation/reference_draw_reviews.py", "generation/recordwise_calibration_scoring.py",
+             "reports/generation-comparison-campaign2/reference-review-amendment.md",
              "reports/chunk-field-calibration-v1/calibration-freeze.json",
              "reports/chunk-field-calibration-v1/scoring-key.json",
              "reports/chunk-field-calibration-v1/reviewer-inputs.json",
@@ -218,6 +221,12 @@ def _require_chunk_gate(out: Path) -> None:
         raise ValueError("campaign2 generation blocked: review kinds incomplete")
     for kind, vals in review_values.items():
         if vals[0].get("reviewer_id") == vals[1].get("reviewer_id"): raise ValueError("campaign2 generation blocked: reviewers are not distinct")
+        if all(v.get("schema")=="reference-draw-review.v1" for v in vals):
+            from generation.reference_draw_reviews import combine_reviews
+            by_slot={v['context']['slot']:v for v in vals}
+            checked=combine_reviews(by_slot['a'],by_slot['b'],plan_sha256=sha(out/'plan.json'),kind=kind,draw=lock[kind]['draw'])
+            if checked.get('status')!='passed': raise ValueError('reference reviews did not pass')
+            continue
         for review in vals:
             checked = prep.validate_draw_review(kind, review, pack, atoms if kind == "atoms" else distill)
             if checked.get("status") != "passed": raise ValueError("campaign2 generation blocked: unsupported selected record")

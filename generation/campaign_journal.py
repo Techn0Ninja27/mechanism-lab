@@ -16,7 +16,7 @@ from typing import Any, Mapping
 
 EVENTS = {
     "draw_started", "draw_completed", "draw_failed", "review_decided",
-    "representation_locked", "pair_locked", "event_intent",
+    "representation_locked", "pair_locked", "event_intent", "reference_packets_exported",
 }
 JOURNAL_NAME = "campaign-events.jsonl"
 
